@@ -1,5 +1,5 @@
 [ignore]
-.*/node_modules/.*
+;.*/node_modules/.*
 .*/build/.*
 
 [include]
@@ -9,5 +9,10 @@
 [lints]
 
 [options]
+all=false
+emoji=true
 
 [strict]
+
+[untyped]
+.*/node_modules/.*

@@ -1,7 +1,8 @@
 import React from 'react';
+import type {Node} from 'react';
 import './App.css';
 
-function App() {
+const App = (): Node => {
   return (
     <div className="App">
       In progress...
