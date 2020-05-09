@@ -1,13 +1,12 @@
 import React from 'react';
-import type {Node} from 'react';
 import './App.css';
 
-const App = (): Node => {
+const App = () => {
   return (
     <div className="App">
       In progress...
     </div>
   );
-}
+};
 
 export default App;
