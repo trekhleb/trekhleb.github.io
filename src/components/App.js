@@ -1,11 +1,18 @@
+// @flow
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+
 import './App.css';
+import Layout from './Layout';
+import Routes from './Routes';
 
 const App = () => {
   return (
-    <div className="App">
-      Coming soon...
-    </div>
+    <BrowserRouter>
+      <Layout>
+        <Routes />
+      </Layout>
+    </BrowserRouter>
   );
 };
 

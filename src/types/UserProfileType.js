@@ -1,10 +1,10 @@
 // @flow
-import type { Image } from './image';
+import type { ImageType } from './ImageType';
 import type { SocialLink } from './links';
 
-export type Profile = {|
+export type UserProfileType = {|
   firstName?: ?string,
   lastName?: ?string,
-  picture?: ?Image,
+  avatar?: ?ImageType,
   socialLinks?: ?Array<SocialLink>,
 |};

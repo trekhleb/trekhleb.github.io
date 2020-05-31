@@ -30,6 +30,9 @@ module.exports = {
     // @see: https://github.com/gajus/eslint-plugin-flowtype/issues/225#issuecomment-373562581
     'flowtype/no-types-missing-file-annotation': 0,
 
-    'arrow-body-style': 0
+    'arrow-body-style': 0,
+
+    //I want to be able to have just one named constant per file and export it.
+    'import/prefer-default-export': 0,
   },
 };
