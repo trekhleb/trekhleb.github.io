@@ -4,17 +4,17 @@ import type { Node } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { routes } from '../constants/routes';
-import UserProfile from './UserProfile';
-import NotFound from './NotFound';
+import NotFoundScreen from './screens/NotFoundScreen';
+import HomeScreen from './screens/HomeScreen';
 
 const Routes = (): Node => {
   return (
     <Switch>
       <Route exact path={routes.home}>
-        <UserProfile />
+        <HomeScreen />
       </Route>
       <Route path="*">
-        <NotFound />
+        <NotFoundScreen />
       </Route>
     </Switch>
   );

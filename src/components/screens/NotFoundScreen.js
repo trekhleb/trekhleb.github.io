@@ -2,7 +2,7 @@
 import React from 'react';
 import type { Node } from 'react';
 
-const NotFound = (): Node => {
+const NotFoundScreen = (): Node => {
   return (
     <div>
       Page is not found
@@ -10,4 +10,4 @@ const NotFound = (): Node => {
   );
 };
 
-export default NotFound;
+export default NotFoundScreen;

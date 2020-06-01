@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 
 import './App.css';
-import Layout from './Layout';
+import Layout from './shared/Layout';
 import Routes from './Routes';
 
 const App = () => {
