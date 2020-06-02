@@ -1,18 +1,25 @@
 // @flow
 import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 
 import './App.css';
 import Layout from './shared/Layout';
 import Routes from './Routes';
+import { googleAnalyticsTrack } from '../utils/analytics';
+
+const history = createBrowserHistory();
+history.listen((location: Location): void => {
+  googleAnalyticsTrack(location);
+});
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <Layout>
         <Routes />
       </Layout>
-    </BrowserRouter>
+    </Router>
   );
 };
 
