@@ -16,15 +16,6 @@ const NavigationMenu = (): Node => {
       <li>
         <Link to={routes.home}>Home</Link>
       </li>
-      <li>
-        <Link to={routes.about}>About Me</Link>
-      </li>
-      <li>
-        <Link to={routes.projects}>Projects</Link>
-      </li>
-      <li>
-        <Link to={routes.blog}>Blog</Link>
-      </li>
     </ul>
   );
 };
