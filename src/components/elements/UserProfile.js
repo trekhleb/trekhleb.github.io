@@ -1,20 +1,24 @@
 import React from 'react';
 import { userProfileData } from '../../database/userProfileData';
 
-const avatarStyle = {
-  width: '150px',
-  borderRadius: '50%',
-};
-
 const rowStyle = {
   display: 'flex',
   flexDirection: 'row',
 };
 
+const avatarContainerStyle = {
+  marginRight: '20px',
+};
+
+const avatarStyle = {
+  width: '120px',
+  borderRadius: '50%',
+};
+
 const UserProfile = () => {
   return (
     <div style={rowStyle}>
-      <div>
+      <div style={avatarContainerStyle}>
         <img
           style={avatarStyle}
           src={userProfileData?.avatar?.src}
@@ -27,6 +31,9 @@ const UserProfile = () => {
           {' '}
           {userProfileData?.lastName}
         </h1>
+        <div>
+          {userProfileData?.summary}
+        </div>
       </div>
     </div>
   );
