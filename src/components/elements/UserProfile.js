@@ -1,5 +1,7 @@
+// @flow
 import React from 'react';
 import { userProfileData } from '../../database/userProfileData';
+import SocialLinks from '../shared/SocialLinks';
 
 const rowStyle = {
   display: 'flex',
@@ -33,6 +35,9 @@ const UserProfile = () => {
         </h1>
         <div>
           {userProfileData?.summary}
+        </div>
+        <div>
+          <SocialLinks links={userProfileData?.socialLinks} />
         </div>
       </div>
     </div>

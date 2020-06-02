@@ -1,11 +1,11 @@
 // @flow
 import type { ImageType } from './ImageType';
-import type { SocialLink } from './links';
+import type { SocialLinkType } from './SocialLinkType';
 
 export type UserProfileType = {|
   firstName?: ?string,
   lastName?: ?string,
   summary?: ?string,
   avatar?: ?ImageType,
-  socialLinks?: ?Array<SocialLink>,
+  socialLinks?: ?Array<SocialLinkType>,
 |};
