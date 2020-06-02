@@ -1,2 +1,0 @@
-(this["webpackJsonptrekhleb.github.io"]=this["webpackJsonptrekhleb.github.io"]||[]).push([[0],{3:function(e,t,n){e.exports=n(9)},8:function(e,t,n){},9:function(e,t,n){"use strict";n.r(t);var o=n(0),r=n.n(o),i=n(2),a=n.n(i),c=(n(8),function(){return r.a.createElement("div",{className:"App"},"Coming soon...")});a.a.render(r.a.createElement(r.a.StrictMode,null,r.a.createElement(c,null)),document.getElementById("root"))}},[[3,1,2]]]);
-//# sourceMappingURL=main.501c3c82.chunk.js.map
