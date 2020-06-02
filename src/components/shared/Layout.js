@@ -18,6 +18,7 @@ const menuContainerStyle = {
   display: 'flex',
   flexDirection: 'row',
   padding: framePadding,
+  borderBottom: '1px solid #EEE',
 };
 
 const contentContainerStyle = {
