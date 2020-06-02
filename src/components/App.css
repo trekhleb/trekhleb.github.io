@@ -12,3 +12,11 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
+.m-0 {
+  margin: 0;
+}
+
+.p-0 {
+  padding: 0;
+}

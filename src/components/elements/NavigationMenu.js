@@ -5,14 +5,9 @@ import { Link } from 'react-router-dom';
 
 import { routes } from '../../constants/routes';
 
-const menuListStyle = {
-  margin: 0,
-  padding: 0,
-};
-
 const NavigationMenu = (): Node => {
   return (
-    <ul style={menuListStyle}>
+    <ul className="m-0 p-0">
       <li>
         <Link to={routes.home}>Home</Link>
       </li>
