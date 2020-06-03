@@ -7,11 +7,13 @@ import { routes } from '../../constants/routes';
 
 const NavigationMenu = (): Node => {
   return (
-    <ul className="m-0 p-0">
-      <li>
-        <Link to={routes.home}>Home</Link>
-      </li>
-    </ul>
+    <nav>
+      <ul className="flex flex-row">
+        <li className="mr-3">
+          <Link to={routes.home}>Home</Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

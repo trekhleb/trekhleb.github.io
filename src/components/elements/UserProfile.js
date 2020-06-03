@@ -3,37 +3,23 @@ import React from 'react';
 import { userProfileData } from '../../database/userProfileData';
 import SocialLinks from '../shared/SocialLinks';
 
-const rowStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-};
-
-const avatarContainerStyle = {
-  marginRight: '20px',
-};
-
-const avatarStyle = {
-  width: '120px',
-  borderRadius: '50%',
-};
-
 const UserProfile = () => {
   return (
-    <div style={rowStyle}>
-      <div style={avatarContainerStyle}>
+    <div className="flex flex-col items-center sm:flex-row">
+      <figure className="mr-0 sm:mr-6">
         <img
-          style={avatarStyle}
+          className="w-48 rounded-full"
           src={userProfileData?.avatar?.src}
           alt={userProfileData?.avatar?.caption}
         />
-      </div>
-      <div>
-        <h1>
+      </figure>
+      <div className="flex flex-col justify-center items-center sm:items-start">
+        <h1 className="flex flex-row text-3xl">
           {userProfileData?.firstName}
           {' '}
           {userProfileData?.lastName}
         </h1>
-        <div>
+        <div className="mb-2">
           {userProfileData?.summary}
         </div>
         <div>

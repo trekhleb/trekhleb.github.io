@@ -11,7 +11,7 @@ const SocialLinks = (props: SocialLinksProps): Node => {
   const { links } = props;
 
   const linksElements = links.map((socialLink: SocialLinkType) => (
-    <li key={socialLink?.type}>
+    <li key={socialLink?.type} className="mr-3">
       <a href={socialLink?.url}>
         {socialLink?.type}
       </a>
@@ -19,9 +19,11 @@ const SocialLinks = (props: SocialLinksProps): Node => {
   ));
 
   return (
-    <ul>
-      {linksElements}
-    </ul>
+    <nav>
+      <ul className="flex flex-row">
+        {linksElements}
+      </ul>
+    </nav>
   );
 };
 

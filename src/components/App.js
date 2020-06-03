@@ -3,7 +3,6 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { createBrowserHistory } from 'history';
 
-import './App.css';
 import Layout from './shared/Layout';
 import Routes from './Routes';
 import { googleAnalyticsTrack } from '../utils/analytics';

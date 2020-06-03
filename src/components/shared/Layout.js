@@ -2,44 +2,24 @@
 import React from 'react';
 import type { Node } from 'react';
 import NavigationMenu from '../elements/NavigationMenu';
-import { framePadding } from '../../constants/styles';
 
 type LayoutProps = {
   children: Node,
-};
-
-const containerStyle = {
-  display: 'flex',
-  flexDirection: 'column',
-  minHeight: '100vh',
-};
-
-const menuContainerStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  padding: framePadding,
-  borderBottom: '1px solid #EEE',
-};
-
-const contentContainerStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  flex: 1,
-  padding: framePadding,
 };
 
 const Layout = (props: LayoutProps): Node => {
   const { children } = props;
 
   return (
-    <div style={containerStyle}>
-      <div style={menuContainerStyle}>
+    <main className="flex flex-col min-h-screen">
+      <header className="flex flex-row p-6 border-b border-b-gray-300">
         <NavigationMenu />
-      </div>
-      <div style={contentContainerStyle}>
+      </header>
+      <section className="flex flex-row flex-grow p-6">
         {children}
-      </div>
-    </div>
+      </section>
+      <footer className="flex flex-row p-6" />
+    </main>
   );
 };
 
