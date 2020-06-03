@@ -1,16 +1,16 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
-import { Link } from 'react-router-dom';
 
 import { routes } from '../../constants/routes';
+import RouterLink from '../shared/RouterLink';
 
 const NavigationMenu = (): Node => {
   return (
     <nav>
       <ul className="flex flex-row">
         <li className="mr-3">
-          <Link to={routes.home}>Home</Link>
+          <RouterLink to={routes.home}>Home</RouterLink>
         </li>
       </ul>
     </nav>

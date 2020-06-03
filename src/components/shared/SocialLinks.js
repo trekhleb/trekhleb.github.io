@@ -2,6 +2,7 @@
 import React from 'react';
 import type { Node } from 'react';
 import type { SocialLinkType } from '../../types/SocialLinkType';
+import ExternalLink from './ExternalLink';
 
 type SocialLinksProps = {
   links: SocialLinkType[],
@@ -12,9 +13,9 @@ const SocialLinks = (props: SocialLinksProps): Node => {
 
   const linksElements = links.map((socialLink: SocialLinkType) => (
     <li key={socialLink?.type} className="mr-3">
-      <a href={socialLink?.url}>
+      <ExternalLink to={socialLink?.url}>
         {socialLink?.type}
-      </a>
+      </ExternalLink>
     </li>
   ));
 
