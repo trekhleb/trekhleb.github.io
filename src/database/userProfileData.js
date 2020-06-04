@@ -23,5 +23,20 @@ export const userProfileData: UserProfileType = {
       type: socialLinkTypes.linkedIn,
       url: 'https://www.linkedin.com/in/trekhleb/',
     },
+    {
+      type: socialLinkTypes.medium,
+      url: 'https://medium.com/@trekhleb',
+      hidden: true,
+    },
+    {
+      type: socialLinkTypes.stackOverflow,
+      url: 'https://stackoverflow.com/users/7794070/oleksii-trekhleb',
+      hidden: true,
+    },
+    {
+      type: socialLinkTypes.devTo,
+      url: 'https://dev.to/trekhleb',
+      hidden: true,
+    },
   ],
 };

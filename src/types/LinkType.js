@@ -1,5 +1,5 @@
 // @flow
 export type LinkType = {|
-  url?: ?string,
+  url: string,
   caption?: ?string,
 |};

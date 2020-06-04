@@ -3,9 +3,9 @@ import type { ImageType } from './ImageType';
 import type { SocialLinkType } from './SocialLinkType';
 
 export type UserProfileType = {|
-  firstName?: ?string,
-  lastName?: ?string,
+  firstName: string,
+  lastName: string,
+  avatar: ImageType,
   summary?: ?string,
-  avatar?: ?ImageType,
   socialLinks?: ?Array<SocialLinkType>,
 |};
