@@ -12,16 +12,16 @@ export const userProfileData: UserProfileType = {
   },
   socialLinks: [
     {
+      type: socialLinkTypes.linkedIn,
+      url: 'https://www.linkedin.com/in/trekhleb/',
+    },
+    {
       type: socialLinkTypes.gitHub,
       url: 'https://github.com/trekhleb',
     },
     {
       type: socialLinkTypes.twitter,
       url: 'https://twitter.com/Trekhleb',
-    },
-    {
-      type: socialLinkTypes.linkedIn,
-      url: 'https://www.linkedin.com/in/trekhleb/',
     },
     {
       type: socialLinkTypes.medium,
@@ -31,6 +31,16 @@ export const userProfileData: UserProfileType = {
     {
       type: socialLinkTypes.stackOverflow,
       url: 'https://stackoverflow.com/users/7794070/oleksii-trekhleb',
+      hidden: true,
+    },
+    {
+      type: socialLinkTypes.facebook,
+      url: 'https://www.facebook.com/oleksii.trekhleb',
+      hidden: true,
+    },
+    {
+      type: socialLinkTypes.instagram,
+      url: 'https://www.instagram.com/oleksii_trekhleb',
       hidden: true,
     },
     {
