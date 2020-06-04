@@ -9,6 +9,7 @@ export const userProfileData: UserProfileType = {
   summary: 'Software Engineer @ Uber',
   avatar: {
     src: avatarImage,
+    caption: 'Oleksii Trekhleb',
   },
   socialLinks: [
     {
