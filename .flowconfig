@@ -11,7 +11,7 @@
 [options]
 all=false
 emoji=true
-esproposal.optional_chaining=true
+esproposal.optional_chaining=enable
 
 [strict]
 
