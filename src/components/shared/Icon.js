@@ -3,6 +3,10 @@ import React from 'react';
 import type { Node } from 'react';
 import { iconKeys, icons } from '../../icons';
 
+const defaultProps = {
+  className: '',
+};
+
 type IconProps = {
   iconKey: $Values<typeof iconKeys>,
   className?: ?string,
@@ -23,5 +27,7 @@ const Icon = (props: IconProps): Node => {
     />
   );
 };
+
+Icon.defaultProps = defaultProps;
 
 export default Icon;
