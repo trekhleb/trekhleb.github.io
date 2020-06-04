@@ -8,7 +8,7 @@ import { iconKeys } from '../../icons';
 import { socialLinkTypes } from '../../types/SocialLinkType';
 
 type SocialLinksProps = {
-  links: SocialLinkType[],
+  links: ?(SocialLinkType[]),
 };
 
 const linkToIcon = {
@@ -25,7 +25,7 @@ const linkToIcon = {
 const SocialLinks = (props: SocialLinksProps): Node => {
   const { links } = props;
 
-  const linksElements = links
+  const linksElements = (links || [])
     .filter((socialLink: SocialLinkType) => {
       return !socialLink?.hidden;
     })

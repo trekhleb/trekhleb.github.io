@@ -1,4 +1,3 @@
-// @flow
 import { ReactComponent as FacebookIcon } from './facebook.svg';
 import { ReactComponent as GithubIcon } from './github.svg';
 import { ReactComponent as InstagramIcon } from './instagram.svg';
