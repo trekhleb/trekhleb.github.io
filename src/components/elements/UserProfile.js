@@ -19,7 +19,7 @@ const UserProfile = () => {
           {' '}
           {userProfileData?.lastName}
         </h1>
-        <div className="mb-4">
+        <div className="mb-4 font-light">
           {userProfileData?.summary}
         </div>
         <div>
