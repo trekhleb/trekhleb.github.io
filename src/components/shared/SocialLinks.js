@@ -2,7 +2,7 @@
 import React from 'react';
 import type { Node } from 'react';
 import type { SocialLinkType } from '../../types/SocialLinkType';
-import ExternalLink from './ExternalLink';
+import Link from './Link';
 import Icon from './Icon';
 import { iconKeys } from '../../icons';
 import { socialLinkTypes } from '../../types/SocialLinkType';
@@ -39,9 +39,9 @@ const SocialLinks = (props: SocialLinksProps): Node => {
 
       return (
         <li key={socialLink?.type} className="mr-4 flex flex-row items-center">
-          <ExternalLink to={socialLink.url}>
+          <Link to={socialLink.url}>
             {linkIcon}
-          </ExternalLink>
+          </Link>
         </li>
       );
     });

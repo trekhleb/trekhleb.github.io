@@ -12,7 +12,7 @@ const Layout = (props: LayoutProps): Node => {
 
   return (
     <main className="flex flex-col min-h-screen">
-      <header className="flex flex-row p-6 border-b border-b-gray-300">
+      <header className="flex flex-row p-6">
         <NavigationMenu />
       </header>
       <section className="flex flex-row flex-grow p-6">

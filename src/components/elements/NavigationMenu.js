@@ -3,14 +3,20 @@ import React from 'react';
 import type { Node } from 'react';
 
 import { routes } from '../../constants/routes';
-import RouterLink from '../shared/RouterLink';
+import Link from '../shared/Link';
 
 const NavigationMenu = (): Node => {
+  const listClassName = 'mr-6';
+  const linkClassName = 'uppercase text-xs';
+
   return (
     <nav>
       <ul className="flex flex-row">
-        <li className="mr-3">
-          <RouterLink to={routes.home}>Home</RouterLink>
+        <li className={listClassName}>
+          <Link className={linkClassName} to={routes.home}>Home</Link>
+        </li>
+        <li className={listClassName}>
+          <Link className={linkClassName} to={routes.projects}>Projects</Link>
         </li>
       </ul>
     </nav>
