@@ -4,7 +4,7 @@ import type { Node } from 'react';
 
 const ProjectsScreen = (): Node => {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col font-light">
       <div>Coming soon...</div>
     </div>
   );
