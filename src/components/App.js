@@ -1,13 +1,13 @@
 // @flow
 import React from 'react';
 import { Router } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
+import { createHashHistory } from 'history';
 
 import Layout from './shared/Layout';
 import Routes from './Routes';
 import { googleAnalyticsTrack } from '../utils/analytics';
 
-const history = createBrowserHistory();
+const history = createHashHistory();
 history.listen((location: Location): void => {
   googleAnalyticsTrack(location);
 });
