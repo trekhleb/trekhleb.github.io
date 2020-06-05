@@ -1,6 +1,6 @@
 // @flow
 import type { UserProfileType } from '../types/UserProfileType';
-import avatarImage from '../images/avatar_500x500.jpg';
+import avatarImage from './images/avatar_500x500.jpg';
 import { socialLinkTypes } from '../types/SocialLinkType';
 
 export const userProfileData: UserProfileType = {
