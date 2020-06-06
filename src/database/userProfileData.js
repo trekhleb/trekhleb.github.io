@@ -8,7 +8,7 @@ export const userProfileData: UserProfileType = {
   lastName: 'Trekhleb',
   summary: [
     'Software Engineer @ Uber',
-    'Author of 70k ⭐️ javascript-algorithms repo @ GitHub',
+    'Author of 70k ⭐️ javascript-algorithms GitHub repo',
   ],
   avatar: {
     src: avatarImage,
