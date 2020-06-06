@@ -6,6 +6,6 @@ export type UserProfileType = {|
   firstName: string,
   lastName: string,
   avatar: ImageType,
-  summary?: ?string,
-  socialLinks?: ?Array<SocialLinkType>,
+  summary: string[],
+  socialLinks: SocialLinkType[],
 |};

@@ -6,7 +6,10 @@ import { socialLinkTypes } from '../types/SocialLinkType';
 export const userProfileData: UserProfileType = {
   firstName: 'Oleksii',
   lastName: 'Trekhleb',
-  summary: 'Software Engineer @ Uber',
+  summary: [
+    'Software Engineer @ Uber',
+    'Author of 70k ⭐️ javascript-algorithms GitHub repo',
+  ],
   avatar: {
     src: avatarImage,
     caption: 'Oleksii Trekhleb',

@@ -4,6 +4,14 @@ import { userProfileData } from '../../database/userProfileData';
 import SocialLinks from '../shared/SocialLinks';
 
 const UserProfile = () => {
+  const summaryLines = userProfileData.summary.map(
+    (summaryLine: string) => (
+      <div key={summaryLine} className="text-center sm:text-left mb-2">
+        {summaryLine}
+      </div>
+    ),
+  );
+
   return (
     <div className="flex flex-col items-center sm:flex-row">
       <figure className="mr-0 sm:mr-6">
@@ -13,14 +21,15 @@ const UserProfile = () => {
           alt={userProfileData?.avatar?.caption}
         />
       </figure>
+
       <div className="flex flex-col justify-center items-center sm:items-start">
-        <h1 className="flex flex-row text-3xl">
+        <h1 className="flex flex-row text-3xl text-center mb-0 sm:mb-2">
           {userProfileData?.firstName}
           {' '}
           {userProfileData?.lastName}
         </h1>
         <div className="mb-4 font-light">
-          {userProfileData?.summary}
+          {summaryLines}
         </div>
         <div>
           <SocialLinks links={userProfileData?.socialLinks} />
