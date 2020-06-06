@@ -4,7 +4,10 @@
   "private": false,
   "license": "MIT",
   "scripts": {
+    "build:style":"tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "prestart": "yarn build:style",
     "start": "react-scripts start",
+    "prebuild": "yarn build:style",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
@@ -23,9 +26,11 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
+    "autoprefixer": "^9.8.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-flowtype": "^4.7.0",
@@ -34,7 +39,8 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.1",
     "flow-bin": "^0.124.0",
-    "gh-pages": "^2.2.0"
+    "gh-pages": "^2.2.0",
+    "postcss-cli": "^7.1.1"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -38,7 +38,7 @@ const SocialLinks = (props: SocialLinksProps): Node => {
       }
 
       return (
-        <li key={socialLink?.type} className="mr-4 flex flex-row items-center">
+        <li key={socialLink?.type} className="mr-4 flex flex-row items-center last:mr-0">
           <Link to={socialLink.url}>
             {linkIcon}
           </Link>

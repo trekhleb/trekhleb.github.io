@@ -6,7 +6,7 @@ import { routes } from '../../constants/routes';
 import Link from '../shared/Link';
 
 const NavigationMenu = (): Node => {
-  const listClassName = 'mr-6';
+  const listClassName = 'mr-6 last:mr-0';
   const linkClassName = 'uppercase text-xs';
 
   return (
