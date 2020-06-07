@@ -1,9 +1,9 @@
 // @flow
-import type { UserProfileType } from '../types/UserProfileType';
+import type { UserType } from '../types/UserType';
 import avatarImage from './images/avatar_500x500.jpg';
 import { socialLinkTypes } from '../types/SocialLinkType';
 
-export const userProfileData: UserProfileType = {
+export const userData: UserType = {
   firstName: 'Oleksii',
   lastName: 'Trekhleb',
   summary: [
@@ -14,6 +14,11 @@ export const userProfileData: UserProfileType = {
     src: avatarImage,
     caption: 'Oleksii Trekhleb',
   },
+  tags: [
+    { name: 'JavaScript' },
+    { name: 'React' },
+    { name: 'Python' },
+  ],
   socialLinks: [
     {
       type: socialLinkTypes.linkedIn,

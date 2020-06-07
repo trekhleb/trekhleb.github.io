@@ -1,10 +1,11 @@
 // @flow
 import React from 'react';
-import { userProfileData } from '../../database/userProfileData';
+import { userData } from '../../database/userData';
 import SocialLinks from '../shared/SocialLinks';
+import Avatar from '../shared/Avatar';
 
 const UserProfile = () => {
-  const summaryLines = (userProfileData?.summary || []).map(
+  const summaryLines = (userData?.summary || []).map(
     (summaryLine: string) => (
       <div key={summaryLine} className="text-center sm:text-left mb-2">
         {summaryLine}
@@ -12,31 +13,21 @@ const UserProfile = () => {
     ),
   );
 
-  const avatar = userProfileData?.avatar ? (
-    <figure className="mr-0 sm:mr-6">
-      <img
-        className="w-48 h-48 rounded-full"
-        src={userProfileData?.avatar?.src}
-        alt={userProfileData?.avatar?.caption}
-      />
-    </figure>
-  ) : null;
-
   return (
     <div className="flex flex-col items-center sm:flex-row">
-      {avatar}
+      <Avatar avatar={userData?.avatar} />
 
       <div className="flex flex-col justify-center items-center sm:items-start">
         <h1 className="flex flex-row text-3xl text-center mb-0 sm:mb-2">
-          {userProfileData?.firstName}
+          {userData?.firstName}
           {' '}
-          {userProfileData?.lastName}
+          {userData?.lastName}
         </h1>
         <div className="mb-4 font-light">
           {summaryLines}
         </div>
         <div>
-          <SocialLinks links={userProfileData?.socialLinks} />
+          <SocialLinks links={userData?.socialLinks} />
         </div>
       </div>
     </div>
