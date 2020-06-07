@@ -2,14 +2,15 @@
 import type { LinkType } from './LinkType';
 
 export const socialLinkTypes = {
-  twitter: 'Twitter',
-  linkedIn: 'LinkedIn',
-  gitHub: 'GitHub',
-  medium: 'Medium',
   devTo: 'DevTo',
   facebook: 'Facebook',
-  stackOverflow: 'StackOverflow',
+  gitHub: 'GitHub',
   instagram: 'Instagram',
+  linkedIn: 'LinkedIn',
+  medium: 'Medium',
+  stackOverflow: 'StackOverflow',
+  twitter: 'Twitter',
+  youTube: 'YouTube',
 };
 
 export type SocialLinkType = {|

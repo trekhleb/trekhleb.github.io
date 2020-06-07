@@ -6,6 +6,7 @@ import { ReactComponent as TwitterIcon } from './twitter.svg';
 import { ReactComponent as LinkedinIcon } from './linkedin.svg';
 import { ReactComponent as StackoverflowIcon } from './stackoverflow.svg';
 import { ReactComponent as DevtoIcon } from './devto.svg';
+import { ReactComponent as YouTubeIcon } from './youtube.svg';
 
 export const iconKeys = {
   facebook: 'facebook',
@@ -16,6 +17,7 @@ export const iconKeys = {
   stackoverflow: 'stackoverflow',
   twitter: 'twitter',
   devto: 'devto',
+  youtube: 'youtube',
 };
 
 export const icons = {
@@ -27,4 +29,5 @@ export const icons = {
   [iconKeys.linkedin]: LinkedinIcon,
   [iconKeys.stackoverflow]: StackoverflowIcon,
   [iconKeys.devto]: DevtoIcon,
+  [iconKeys.youtube]: YouTubeIcon,
 };

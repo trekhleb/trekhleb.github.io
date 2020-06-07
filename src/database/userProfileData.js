@@ -52,5 +52,10 @@ export const userProfileData: UserProfileType = {
       url: 'https://dev.to/trekhleb',
       hidden: true,
     },
+    {
+      type: socialLinkTypes.youTube,
+      url: 'https://www.youtube.com/c/OleksiiTrekhlebs',
+      hidden: true,
+    },
   ],
 };

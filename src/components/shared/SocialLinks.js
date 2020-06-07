@@ -20,6 +20,7 @@ const linkToIcon = {
   [socialLinkTypes.medium]: iconKeys.medium,
   [socialLinkTypes.facebook]: iconKeys.facebook,
   [socialLinkTypes.devTo]: iconKeys.devto,
+  [socialLinkTypes.youTube]: iconKeys.youtube,
 };
 
 const SocialLinks = (props: SocialLinksProps): Node => {
