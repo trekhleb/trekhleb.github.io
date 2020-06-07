@@ -11,7 +11,7 @@ const Layout = (props: LayoutProps): Node => {
   const { children } = props;
 
   return (
-    <main className="flex flex-col min-h-screen">
+    <main className="flex flex-col flex-grow">
       <header className="flex flex-row p-6">
         <NavigationMenu />
       </header>
