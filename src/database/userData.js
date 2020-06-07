@@ -15,9 +15,10 @@ export const userData: UserType = {
     caption: 'Oleksii Trekhleb',
   },
   tags: [
-    { name: 'JavaScript' },
-    { name: 'React' },
-    { name: 'Python' },
+    { name: 'javascript' },
+    { name: 'react' },
+    { name: 'python' },
+    { name: 'full stack' },
   ],
   socialLinks: [
     {
