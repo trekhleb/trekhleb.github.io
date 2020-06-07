@@ -8,7 +8,7 @@ export const userData: UserType = {
   lastName: 'Trekhleb',
   summary: [
     'Software Engineer @ Uber',
-    'Author of 70k ⭐️ javascript-algorithms repo on GitHub',
+    'Author of 70k ★️ javascript-algorithms repo on GitHub',
   ],
   avatar: {
     src: avatarImage,
@@ -33,16 +33,6 @@ export const userData: UserType = {
       url: 'https://twitter.com/Trekhleb',
     },
     {
-      type: socialLinkTypes.medium,
-      url: 'https://medium.com/@trekhleb',
-      hidden: true,
-    },
-    {
-      type: socialLinkTypes.stackOverflow,
-      url: 'https://stackoverflow.com/users/7794070/oleksii-trekhleb',
-      hidden: true,
-    },
-    {
       type: socialLinkTypes.facebook,
       url: 'https://www.facebook.com/oleksii.trekhleb',
       hidden: true,
@@ -53,8 +43,18 @@ export const userData: UserType = {
       hidden: true,
     },
     {
+      type: socialLinkTypes.medium,
+      url: 'https://medium.com/@trekhleb',
+      hidden: true,
+    },
+    {
       type: socialLinkTypes.devTo,
       url: 'https://dev.to/trekhleb',
+      hidden: true,
+    },
+    {
+      type: socialLinkTypes.stackOverflow,
+      url: 'https://stackoverflow.com/users/7794070/oleksii-trekhleb',
       hidden: true,
     },
     {
