@@ -13,7 +13,7 @@ const NavigationMenu = (): Node => {
     <nav>
       <ul className="flex flex-row">
         <li className={listClassName}>
-          <Link className={linkClassName} to={routes.home}>Home</Link>
+          <Link className={linkClassName} to={routes.about}>About</Link>
         </li>
         <li className={listClassName}>
           <Link className={linkClassName} to={routes.projects}>Projects</Link>

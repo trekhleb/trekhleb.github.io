@@ -1,7 +1,6 @@
 // @flow
 export const routes = {
-  home: '/',
-  about: '/about',
+  about: '/',
   projects: '/projects',
   blog: '/blog',
 };
