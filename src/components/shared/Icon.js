@@ -2,6 +2,7 @@
 import React from 'react';
 import type { Node } from 'react';
 import { iconKeys, icons } from '../../icons';
+import type { IconType } from '../../icons';
 
 const defaultProps = {
   className: '',
@@ -13,17 +14,27 @@ type IconProps = {
 };
 
 const Icon = (props: IconProps): Node => {
-  const { iconKey, className } = props;
+  const {
+    iconKey,
+    className = defaultProps.className,
+  } = props;
 
   if (!Object.prototype.hasOwnProperty.call(icons, iconKey)) {
     return iconKey;
   }
 
-  const IconComponent = icons[iconKey];
+  const icon: IconType = icons[iconKey];
+  const IconComponent = icon.component;
+
+  const fillCurrent = Object.prototype.hasOwnProperty.call(icon, 'fillCurrent')
+    ? icon.fillCurrent
+    : true;
+
+  const fillCurrentClass = fillCurrent ? 'fill-current' : '';
 
   return (
     <IconComponent
-      className={`w-5 h-5 fill-current ${className || ''}`}
+      className={`w-5 h-5 ${fillCurrentClass} ${className || ''}`}
     />
   );
 };

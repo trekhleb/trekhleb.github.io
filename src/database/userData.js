@@ -14,6 +14,9 @@ export const userData: UserType = {
     src: avatarImage,
     caption: 'Oleksii Trekhleb',
   },
+  location: {
+    name: 'Amsterdam, The Netherlands',
+  },
   tags: [
     { name: 'javascript' },
     { name: 'react' },

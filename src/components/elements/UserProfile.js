@@ -4,6 +4,7 @@ import { userData } from '../../database/userData';
 import SocialLinks from '../shared/SocialLinks';
 import Avatar from '../shared/Avatar';
 import Tags from '../shared/Tags';
+import Location from '../shared/Location';
 
 const UserProfile = () => {
   const summaryLines = (userData?.summary || []).map(
@@ -17,6 +18,12 @@ const UserProfile = () => {
   const tags = userData?.tags ? (
     <div className="mb-5">
       <Tags tags={userData.tags} />
+    </div>
+  ) : null;
+
+  const location = userData?.location ? (
+    <div className="mb-4">
+      <Location location={userData.location} />
     </div>
   ) : null;
 
@@ -35,6 +42,7 @@ const UserProfile = () => {
         <div className="mb-4 font-light">
           {summaryLines}
         </div>
+        {location}
         {tags}
         <SocialLinks links={userData?.socialLinks} />
       </div>

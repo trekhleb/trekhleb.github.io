@@ -1,33 +1,69 @@
-import { ReactComponent as FacebookIcon } from './facebook.svg';
-import { ReactComponent as GithubIcon } from './github.svg';
-import { ReactComponent as InstagramIcon } from './instagram.svg';
-import { ReactComponent as MediumIcon } from './medium.svg';
-import { ReactComponent as TwitterIcon } from './twitter.svg';
-import { ReactComponent as LinkedinIcon } from './linkedin.svg';
-import { ReactComponent as StackoverflowIcon } from './stackoverflow.svg';
-import { ReactComponent as DevtoIcon } from './devto.svg';
-import { ReactComponent as YouTubeIcon } from './youtube.svg';
+// @flow
+import type { ComponentType } from 'react';
 
-export const iconKeys = {
+// $FlowFixMe
+import { ReactComponent as FacebookIcon } from './icomoon/facebook.svg';
+// $FlowFixMe
+import { ReactComponent as GithubIcon } from './icomoon/github.svg';
+// $FlowFixMe
+import { ReactComponent as InstagramIcon } from './icomoon/instagram.svg';
+// $FlowFixMe
+import { ReactComponent as MediumIcon } from './icomoon/medium.svg';
+// $FlowFixMe
+import { ReactComponent as TwitterIcon } from './icomoon/twitter.svg';
+// $FlowFixMe
+import { ReactComponent as LinkedinIcon } from './icomoon/linkedin.svg';
+// $FlowFixMe
+import { ReactComponent as StackoverflowIcon } from './icomoon/stackoverflow.svg';
+// $FlowFixMe
+import { ReactComponent as DevtoIcon } from './icomoon/devto.svg';
+// $FlowFixMe
+import { ReactComponent as YouTubeIcon } from './icomoon/youtube.svg';
+// $FlowFixMe
+import { ReactComponent as LocationIcon } from './feather/location.svg';
+// $FlowFixMe
+import { ReactComponent as PriceTagIcon } from './icomoon/price-tag.svg';
+
+export type IconKeysType = {
+  [string]: string,
+};
+
+export const iconKeys: IconKeysType = {
+  devto: 'devto',
   facebook: 'facebook',
   github: 'github',
   instagram: 'instagram',
   linkedin: 'linkedin',
+  location: 'location',
   medium: 'medium',
+  pricetag: 'pricetag',
   stackoverflow: 'stackoverflow',
   twitter: 'twitter',
-  devto: 'devto',
   youtube: 'youtube',
 };
 
-export const icons = {
-  [iconKeys.facebook]: FacebookIcon,
-  [iconKeys.github]: GithubIcon,
-  [iconKeys.instagram]: InstagramIcon,
-  [iconKeys.medium]: MediumIcon,
-  [iconKeys.twitter]: TwitterIcon,
-  [iconKeys.linkedin]: LinkedinIcon,
-  [iconKeys.stackoverflow]: StackoverflowIcon,
-  [iconKeys.devto]: DevtoIcon,
-  [iconKeys.youtube]: YouTubeIcon,
+export type IconType = {|
+  component: ComponentType<any>,
+  fillCurrent?: boolean,
+|};
+
+export type IconsType = {
+  [iconKey: $Values<typeof iconKeys>]: IconType,
+};
+
+export const icons: IconsType = {
+  [iconKeys.devto]: { component: DevtoIcon },
+  [iconKeys.facebook]: { component: FacebookIcon },
+  [iconKeys.github]: { component: GithubIcon },
+  [iconKeys.instagram]: { component: InstagramIcon },
+  [iconKeys.linkedin]: { component: LinkedinIcon },
+  [iconKeys.location]: {
+    component: LocationIcon,
+    fillCurrent: false,
+  },
+  [iconKeys.medium]: { component: MediumIcon },
+  [iconKeys.pricetag]: { component: PriceTagIcon },
+  [iconKeys.stackoverflow]: { component: StackoverflowIcon },
+  [iconKeys.twitter]: { component: TwitterIcon },
+  [iconKeys.youtube]: { component: YouTubeIcon },
 };
