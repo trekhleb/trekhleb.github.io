@@ -1,32 +1,34 @@
 {
   "files": {
     "main.css": "/static/css/main.4891ccb5.chunk.css",
-    "main.js": "/static/js/main.6a55dcf8.chunk.js",
-    "main.js.map": "/static/js/main.6a55dcf8.chunk.js.map",
+    "main.js": "/static/js/main.2f2d3bdb.chunk.js",
+    "main.js.map": "/static/js/main.2f2d3bdb.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.039e51de.js",
     "runtime-main.js.map": "/static/js/runtime-main.039e51de.js.map",
-    "static/js/2.85efe527.chunk.js": "/static/js/2.85efe527.chunk.js",
-    "static/js/2.85efe527.chunk.js.map": "/static/js/2.85efe527.chunk.js.map",
+    "static/js/2.a7d3cbe1.chunk.js": "/static/js/2.a7d3cbe1.chunk.js",
+    "static/js/2.a7d3cbe1.chunk.js.map": "/static/js/2.a7d3cbe1.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.f4a6ef2eccbfdd45eb918713f44143bd.js": "/precache-manifest.f4a6ef2eccbfdd45eb918713f44143bd.js",
+    "precache-manifest.f41abe1c79535349819a560daf53d293.js": "/precache-manifest.f41abe1c79535349819a560daf53d293.js",
     "service-worker.js": "/service-worker.js",
     "static/css/main.4891ccb5.chunk.css.map": "/static/css/main.4891ccb5.chunk.css.map",
-    "static/js/2.85efe527.chunk.js.LICENSE.txt": "/static/js/2.85efe527.chunk.js.LICENSE.txt",
+    "static/js/2.a7d3cbe1.chunk.js.LICENSE.txt": "/static/js/2.a7d3cbe1.chunk.js.LICENSE.txt",
     "static/media/avatar_500x500.jpg": "/static/media/avatar_500x500.311555ce.jpg",
     "static/media/devto.8747d71b.svg": "/static/media/devto.8747d71b.svg",
     "static/media/facebook.3158acf9.svg": "/static/media/facebook.3158acf9.svg",
     "static/media/github.87c45790.svg": "/static/media/github.87c45790.svg",
     "static/media/instagram.b56ebdc9.svg": "/static/media/instagram.b56ebdc9.svg",
     "static/media/linkedin.eba15d05.svg": "/static/media/linkedin.eba15d05.svg",
+    "static/media/location.0ca3d1a8.svg": "/static/media/location.0ca3d1a8.svg",
     "static/media/medium.98b18eb8.svg": "/static/media/medium.98b18eb8.svg",
+    "static/media/price-tag.c8c7abf8.svg": "/static/media/price-tag.c8c7abf8.svg",
     "static/media/stackoverflow.31b0763d.svg": "/static/media/stackoverflow.31b0763d.svg",
     "static/media/twitter.42aba263.svg": "/static/media/twitter.42aba263.svg",
     "static/media/youtube.d5b8a578.svg": "/static/media/youtube.d5b8a578.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.039e51de.js",
-    "static/js/2.85efe527.chunk.js",
+    "static/js/2.a7d3cbe1.chunk.js",
     "static/css/main.4891ccb5.chunk.css",
-    "static/js/main.6a55dcf8.chunk.js"
+    "static/js/main.2f2d3bdb.chunk.js"
   ]
 }
