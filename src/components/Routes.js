@@ -11,7 +11,7 @@ import ProjectsScreen from './screens/ProjectsScreen';
 const Routes = (): Node => {
   return (
     <Switch>
-      <Route exact path={routes.home}>
+      <Route exact path={routes.about}>
         <HomeScreen />
       </Route>
       <Route exact path={routes.projects}>
