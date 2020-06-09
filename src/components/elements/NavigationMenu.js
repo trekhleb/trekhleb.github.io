@@ -7,7 +7,7 @@ import Link from '../shared/Link';
 
 const NavigationMenu = (): Node => {
   const listClassName = 'mr-6 last:mr-0';
-  const linkClassName = 'uppercase text-xs';
+  const linkClassName = 'uppercase text-xs font-normal';
 
   return (
     <nav>

@@ -19,7 +19,7 @@ const UserProfile = () => {
   ].join(' ');
 
   const userNameElement = userData?.firstName || userData?.lastName ? (
-    <h1 className="flex flex-row text-3xl text-center mb-0 leading-tight">
+    <h1 className="flex flex-row text-3xl text-center mb-0 leading-tight font-normal">
       {userName}
     </h1>
   ) : null;

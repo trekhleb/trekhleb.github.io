@@ -35,7 +35,7 @@ const SocialLinks = (props: SocialLinksProps): Node => {
 
       if (Object.prototype.hasOwnProperty.call(linkToIcon, socialLink.type)) {
         const iconKey = linkToIcon[socialLink.type];
-        linkIcon = <Icon iconKey={iconKey} className="w-8 h-8" />;
+        linkIcon = <Icon iconKey={iconKey} className="w-6 h-6" />;
       }
 
       return (
