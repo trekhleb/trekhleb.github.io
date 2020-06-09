@@ -7,6 +7,7 @@ import type { LocationType } from './LocationType';
 export type UserType = {|
   firstName?: string,
   lastName?: string,
+  position?: string,
   avatar?: ImageType,
   summary?: string[],
   socialLinks?: SocialLinkType[],

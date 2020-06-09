@@ -6,8 +6,8 @@ import { socialLinkTypes } from '../types/SocialLinkType';
 export const userData: UserType = {
   firstName: 'Oleksii',
   lastName: 'Trekhleb',
+  position: 'Software Engineer @ Uber',
   summary: [
-    'Software Engineer @ Uber',
     'Author of 70k ★️ javascript-algorithms repo on GitHub',
   ],
   avatar: {

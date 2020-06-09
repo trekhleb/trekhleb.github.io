@@ -13,7 +13,7 @@ const Location = (props: LocationProps) => {
 
   return (
     <div className="flex flex-row items-center font-light text-sm">
-      <Icon iconKey={iconKeys.location} className="mr-1" />
+      <Icon iconKey={iconKeys.location} className="mr-1 w-4 h-4" />
       <div>{location.name}</div>
     </div>
   );

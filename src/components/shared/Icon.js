@@ -34,7 +34,7 @@ const Icon = (props: IconProps): Node => {
 
   return (
     <IconComponent
-      className={`w-5 h-5 ${fillCurrentClass} ${className || ''}`}
+      className={`${fillCurrentClass} ${className || ''}`}
     />
   );
 };
