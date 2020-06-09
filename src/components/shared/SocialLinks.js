@@ -1,11 +1,12 @@
 // @flow
-import React from 'react';
+import React, { useState } from 'react';
 import type { Node } from 'react';
 import type { SocialLinkType } from '../../types/SocialLinkType';
 import Link from './Link';
 import Icon from './Icon';
 import { iconKeys } from '../../icons';
 import { socialLinkTypes } from '../../types/SocialLinkType';
+import { activeLinkColor } from '../../constants/style';
 
 type SocialLinksProps = {
   links: ?(SocialLinkType[]),
@@ -26,9 +27,18 @@ const linkToIcon = {
 const SocialLinks = (props: SocialLinksProps): Node => {
   const { links } = props;
 
+  const [showSecondary, setShowSecondary] = useState(false);
+
+  const toggleSecondary = () => {
+    setShowSecondary(!showSecondary);
+  };
+
   const linksElements = (links || [])
     .filter((socialLink: SocialLinkType) => {
-      return !socialLink?.hidden;
+      if (showSecondary) {
+        return true;
+      }
+      return !socialLink?.secondary;
     })
     .map((socialLink: SocialLinkType) => {
       let linkIcon = socialLink.type;
@@ -39,7 +49,7 @@ const SocialLinks = (props: SocialLinksProps): Node => {
       }
 
       return (
-        <li key={socialLink?.type} className="mr-4 flex flex-row items-center last:mr-0">
+        <li key={socialLink?.type} className="mr-4 mb-2 flex flex-row items-center last:mr-0">
           <Link to={socialLink.url}>
             {linkIcon}
           </Link>
@@ -49,8 +59,17 @@ const SocialLinks = (props: SocialLinksProps): Node => {
 
   return (
     <nav>
-      <ul className="flex flex-row">
+      <ul className="flex flex-row flex-wrap">
         {linksElements}
+        <li className="flex flex-row items-center mb-2">
+          <div
+            role="button"
+            className={`cursor-pointer text-xs font-light hover:${activeLinkColor}`}
+            onClick={toggleSecondary}
+          >
+            {showSecondary ? '- less' : '+ more'}
+          </div>
+        </li>
       </ul>
     </nav>
   );

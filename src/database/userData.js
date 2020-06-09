@@ -39,32 +39,32 @@ export const userData: UserType = {
     {
       type: socialLinkTypes.facebook,
       url: 'https://www.facebook.com/oleksii.trekhleb',
-      hidden: true,
+      secondary: true,
     },
     {
       type: socialLinkTypes.instagram,
       url: 'https://www.instagram.com/oleksii_trekhleb',
-      hidden: true,
+      secondary: true,
     },
     {
       type: socialLinkTypes.medium,
       url: 'https://medium.com/@trekhleb',
-      hidden: true,
+      secondary: true,
     },
     {
       type: socialLinkTypes.devTo,
       url: 'https://dev.to/trekhleb',
-      hidden: true,
+      secondary: true,
     },
     {
       type: socialLinkTypes.stackOverflow,
       url: 'https://stackoverflow.com/users/7794070/oleksii-trekhleb',
-      hidden: true,
+      secondary: true,
     },
     {
       type: socialLinkTypes.youTube,
       url: 'https://www.youtube.com/c/OleksiiTrekhlebs',
-      hidden: true,
+      secondary: true,
     },
   ],
 };

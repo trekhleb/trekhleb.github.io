@@ -51,7 +51,7 @@ const UserProfile = () => {
   ) : null;
 
   const tagsElement = userData?.tags ? (
-    <div className="mb-6">
+    <div className="mb-4">
       <Tags tags={userData.tags} />
     </div>
   ) : null;

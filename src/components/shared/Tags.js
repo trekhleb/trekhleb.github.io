@@ -21,7 +21,7 @@ const Tags = (props: TagsProps) => {
   );
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row flex-wrap">
       {tagsElements}
     </div>
   );
