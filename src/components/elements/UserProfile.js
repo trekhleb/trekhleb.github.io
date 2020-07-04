@@ -5,6 +5,8 @@ import SocialLinks from '../shared/SocialLinks';
 import Avatar from '../shared/Avatar';
 import Tags from '../shared/Tags';
 import Location from '../shared/Location';
+import { iconKeys } from '../../icons';
+import Icon from '../shared/Icon';
 
 const UserProfile = () => {
   const avatarElement = userData?.avatar ? (
@@ -19,13 +21,14 @@ const UserProfile = () => {
   ].join(' ');
 
   const userNameElement = userData?.firstName || userData?.lastName ? (
-    <h1 className="flex flex-row text-3xl text-center mb-0 leading-tight font-normal">
+    <h1 className="flex flex-row text-3xl text-center mb-1 leading-tight font-normal">
       {userName}
     </h1>
   ) : null;
 
   const positionElement = userData?.position ? (
-    <div className="mb-3 font-light text-gray-600">
+    <div className="mb-3 font-light text-gray-600 flex flex-row items-center">
+      <Icon iconKey={iconKeys.briefcase} className="mr-1 w-4 h-4" />
       {userData.position}
     </div>
   ) : null;

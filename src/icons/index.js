@@ -22,6 +22,8 @@ import { ReactComponent as YouTubeIcon } from './icomoon/youtube.svg';
 // $FlowFixMe
 import { ReactComponent as LocationIcon } from './feather/location.svg';
 // $FlowFixMe
+import { ReactComponent as BriefcaseIcon } from './feather/briefcase.svg';
+// $FlowFixMe
 import { ReactComponent as PriceTagIcon } from './icomoon/price-tag.svg';
 
 export type IconKeysType = {
@@ -40,6 +42,7 @@ export const iconKeys: IconKeysType = {
   stackoverflow: 'stackoverflow',
   twitter: 'twitter',
   youtube: 'youtube',
+  briefcase: 'briefcase',
 };
 
 export type IconType = {|
@@ -66,4 +69,8 @@ export const icons: IconsType = {
   [iconKeys.stackoverflow]: { component: StackoverflowIcon },
   [iconKeys.twitter]: { component: TwitterIcon },
   [iconKeys.youtube]: { component: YouTubeIcon },
+  [iconKeys.briefcase]: {
+    component: BriefcaseIcon,
+    fillCurrent: false,
+  },
 };
