@@ -18,7 +18,7 @@ const Avatar = (props: AvatarProps): Node => {
   return (
     <figure>
       <img
-        className="w-48 h-48 rounded-full"
+        className="w-64 h-64 rounded-full"
         src={avatar?.src}
         alt={avatar?.caption}
       />
