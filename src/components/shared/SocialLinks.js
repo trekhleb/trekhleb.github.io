@@ -29,7 +29,8 @@ const SocialLinks = (props: SocialLinksProps): Node => {
 
   const [showSecondary, setShowSecondary] = useState(false);
 
-  const toggleSecondary = () => {
+  const toggleSecondary = (event) => {
+    event.preventDefault();
     setShowSecondary(!showSecondary);
   };
 
@@ -57,18 +58,19 @@ const SocialLinks = (props: SocialLinksProps): Node => {
       );
     });
 
+  /* eslint-disable jsx-a11y/anchor-is-valid */
   return (
     <nav>
       <ul className="flex flex-row flex-wrap">
         {linksElements}
         <li className="flex flex-row items-center mb-2">
-          <div
-            role="button"
+          <a
+            href="#"
             className={`cursor-pointer text-xs font-light hover:${activeLinkColor}`}
             onClick={toggleSecondary}
           >
             {showSecondary ? '- less' : '+ more'}
-          </div>
+          </a>
         </li>
       </ul>
     </nav>

@@ -16,5 +16,5 @@ export const socialLinkTypes = {
 export type SocialLinkType = {|
   ...LinkType,
   type: $Values<typeof socialLinkTypes>,
-  secondary?: ?boolean,
+  secondary?: boolean,
 |};
