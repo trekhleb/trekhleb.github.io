@@ -2,8 +2,9 @@
 
 export type ProjectType = {|
   name: string,
-  description: string,
+  description: string[],
   url?: string,
-  startDate?: string,
-  endDate?: string,
+  startDate?: Date,
+  endDate?: Date,
+  archived?: boolean,
 |};

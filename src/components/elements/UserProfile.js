@@ -1,14 +1,22 @@
 // @flow
 import React from 'react';
-import { userData } from '../../database/userData';
+import type { Node } from 'react';
+
 import SocialLinks from '../shared/SocialLinks';
 import Avatar from '../shared/Avatar';
 import Tags from '../shared/Tags';
 import Location from '../shared/Location';
 import { iconKeys } from '../../icons';
 import Icon from '../shared/Icon';
+import type { UserType } from '../../types/UserType';
 
-const UserProfile = () => {
+type UserProfileProps = {
+  userData: UserType,
+};
+
+const UserProfile = (props: UserProfileProps): Node => {
+  const { userData } = props;
+
   const avatarElement = userData?.avatar ? (
     <div className="mr-0 mb-3 sm:mr-6 sm:mb-0">
       <Avatar avatar={userData?.avatar} />

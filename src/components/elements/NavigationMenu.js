@@ -2,22 +2,30 @@
 import React from 'react';
 import type { Node } from 'react';
 
-import { routes } from '../../constants/routes';
 import Link from '../shared/Link';
+import { navigation } from '../../database/navigation';
+import type { NavigationType } from '../../types/NavigationType';
 
 const NavigationMenu = (): Node => {
   const listClassName = 'mr-6 last:mr-0';
   const linkClassName = 'uppercase text-xs font-normal';
 
+  const navigationItems = Object.values(navigation)
+    // $FlowFixMe
+    .map((navigationItem: NavigationType) => {
+      return (
+        <li className={listClassName} key={navigationItem.route}>
+          <Link className={linkClassName} to={navigationItem.route}>
+            {navigationItem.menuName}
+          </Link>
+        </li>
+      );
+    });
+
   return (
     <nav>
       <ul className="flex flex-row">
-        <li className={listClassName}>
-          <Link className={linkClassName} to={routes.about}>About</Link>
-        </li>
-        <li className={listClassName}>
-          <Link className={linkClassName} to={routes.projects}>Projects</Link>
-        </li>
+        {navigationItems}
       </ul>
     </nav>
   );
