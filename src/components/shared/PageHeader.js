@@ -14,7 +14,7 @@ const PageHeader = (props: PageHeaderProps): Node => {
   }
 
   return (
-    <h1 className="text-3xl mb-6 leading-tight font-normal">
+    <h1 className="text-3xl mt-6 mb-12 leading-tight font-normal">
       {children}
     </h1>
   );

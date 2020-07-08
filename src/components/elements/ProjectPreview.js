@@ -15,7 +15,7 @@ const ProjectPreview = (props: ProjectPreviewProps): Node => {
   const { project } = props;
 
   const projectName = (
-    <div className="mb-3 text-lg">
+    <div className="mb-3 text-xl">
       {project.name}
     </div>
   );
@@ -49,7 +49,7 @@ const ProjectPreview = (props: ProjectPreviewProps): Node => {
   ) : null;
 
   return (
-    <div className="mb-12">
+    <div className="mb-12 pb-3">
       {projectName}
       {projectLink}
       {projectDescription}
