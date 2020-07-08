@@ -6,6 +6,7 @@ import type { ProjectType } from '../../types/ProjectType';
 import Icon from '../shared/Icon';
 import { iconKeys } from '../../icons';
 import Link from '../shared/Link';
+import DateRange from '../shared/DateRange';
 
 type ProjectPreviewProps = {
   project: ProjectType,
@@ -33,6 +34,16 @@ const ProjectPreview = (props: ProjectPreviewProps): Node => {
     </div>
   ) : null;
 
+  const projectDates = (
+    <div className="mb-3">
+      <DateRange
+        className="text-sm text-gray-600 font-light"
+        startDate={project.startDate}
+        endDate={project.endDate}
+      />
+    </div>
+  );
+
   /* eslint-disable react/no-array-index-key */
   const projectDescriptionLines = project.description
     ? project.description.map((descriptionLine: string, index: number) => (
@@ -52,6 +63,7 @@ const ProjectPreview = (props: ProjectPreviewProps): Node => {
     <div className="mb-12 pb-3">
       {projectName}
       {projectLink}
+      {projectDates}
       {projectDescription}
     </div>
   );
