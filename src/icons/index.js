@@ -20,11 +20,13 @@ import { ReactComponent as DevtoIcon } from './icomoon/devto.svg';
 // $FlowFixMe
 import { ReactComponent as YouTubeIcon } from './icomoon/youtube.svg';
 // $FlowFixMe
+import { ReactComponent as PriceTagIcon } from './icomoon/price-tag.svg';
+// $FlowFixMe
 import { ReactComponent as LocationIcon } from './feather/location.svg';
 // $FlowFixMe
 import { ReactComponent as BriefcaseIcon } from './feather/briefcase.svg';
 // $FlowFixMe
-import { ReactComponent as PriceTagIcon } from './icomoon/price-tag.svg';
+import { ReactComponent as ExternalLinkIcon } from './feather/external-link.svg';
 
 export type IconKeysType = {
   [string]: string,
@@ -43,6 +45,7 @@ export const iconKeys: IconKeysType = {
   twitter: 'twitter',
   youtube: 'youtube',
   briefcase: 'briefcase',
+  externalLink: 'externalLink',
 };
 
 export type IconType = {|
@@ -60,10 +63,6 @@ export const icons: IconsType = {
   [iconKeys.github]: { component: GithubIcon },
   [iconKeys.instagram]: { component: InstagramIcon },
   [iconKeys.linkedin]: { component: LinkedinIcon },
-  [iconKeys.location]: {
-    component: LocationIcon,
-    fillCurrent: false,
-  },
   [iconKeys.medium]: { component: MediumIcon },
   [iconKeys.pricetag]: { component: PriceTagIcon },
   [iconKeys.stackoverflow]: { component: StackoverflowIcon },
@@ -71,6 +70,14 @@ export const icons: IconsType = {
   [iconKeys.youtube]: { component: YouTubeIcon },
   [iconKeys.briefcase]: {
     component: BriefcaseIcon,
+    fillCurrent: false,
+  },
+  [iconKeys.location]: {
+    component: LocationIcon,
+    fillCurrent: false,
+  },
+  [iconKeys.externalLink]: {
+    component: ExternalLinkIcon,
     fillCurrent: false,
   },
 };

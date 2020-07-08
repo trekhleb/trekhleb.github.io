@@ -13,18 +13,27 @@ type LinkProps = {
   to: string,
   children: Node,
   className?: string,
+  startEnhancer?: Node,
 };
 
 const Link = (props: LinkProps): Node => {
-  const { children, to, className = '' } = props;
+  const {
+    children,
+    to,
+    className = '',
+    startEnhancer = null,
+  } = props;
+
+  const commonClasses = 'flex flex-row items-center';
 
   const isExternal = to.startsWith('http');
 
   const externalLink = (
     <a
       href={to}
-      className={`hover:${activeLinkColor} ${className}`}
+      className={`${commonClasses} hover:${activeLinkColor} ${className}`}
     >
+      {startEnhancer}
       {children}
     </a>
   );
@@ -33,9 +42,10 @@ const Link = (props: LinkProps): Node => {
     <NavLink
       activeClassName={activeLinkColor}
       to={to}
-      className={`hover:${activeLinkColor} ${className}`}
+      className={`${commonClasses} hover:${activeLinkColor} ${className}`}
       exact
     >
+      {startEnhancer}
       {children}
     </NavLink>
   );

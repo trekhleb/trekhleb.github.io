@@ -1,7 +1,11 @@
 // @flow
 import React from 'react';
 import type { Node } from 'react';
+
 import type { ProjectType } from '../../types/ProjectType';
+import Icon from '../shared/Icon';
+import { iconKeys } from '../../icons';
+import Link from '../shared/Link';
 
 type ProjectPreviewProps = {
   project: ProjectType,
@@ -18,9 +22,14 @@ const ProjectPreview = (props: ProjectPreviewProps): Node => {
 
   const projectLink = project.url ? (
     <div className="mb-3">
-      <a href={project.url} rel="noopener noreferrer" target="_blank">
-        See the project
-      </a>
+      <Link
+        to={project.url}
+        startEnhancer={
+          <Icon iconKey={iconKeys.externalLink} className="mr-1 w-4 h-4" />
+        }
+      >
+        <span>See the project</span>
+      </Link>
     </div>
   ) : null;
 
