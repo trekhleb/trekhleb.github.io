@@ -21,7 +21,7 @@ const ProjectPreview = (props: ProjectPreviewProps): Node => {
     </div>
   );
 
-  const projectLink = project.url ? (
+  const projectLink = project.url && !project.archived ? (
     <div className="mb-3">
       <Link
         to={project.url}
