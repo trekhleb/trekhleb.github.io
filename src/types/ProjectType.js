@@ -1,4 +1,5 @@
 // @flow
+import type { TagType } from './TagType';
 
 export type ProjectType = {|
   name: string,
@@ -7,4 +8,5 @@ export type ProjectType = {|
   startDate?: Date,
   endDate?: Date,
   archived?: boolean,
+  tags?: TagType[],
 |};

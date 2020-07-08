@@ -7,6 +7,7 @@ import Icon from '../shared/Icon';
 import { iconKeys } from '../../icons';
 import Link from '../shared/Link';
 import DateRange from '../shared/DateRange';
+import Tags from '../shared/Tags';
 
 type ProjectPreviewProps = {
   project: ProjectType,
@@ -44,6 +45,12 @@ const ProjectPreview = (props: ProjectPreviewProps): Node => {
     </div>
   );
 
+  const projectTags = project?.tags ? (
+    <div className="mb-3">
+      <Tags tags={project.tags} />
+    </div>
+  ) : null;
+
   /* eslint-disable react/no-array-index-key */
   const projectDescriptionLines = project.description
     ? project.description.map((descriptionLine: string, index: number) => (
@@ -64,6 +71,7 @@ const ProjectPreview = (props: ProjectPreviewProps): Node => {
       {projectName}
       {projectLink}
       {projectDates}
+      {projectTags}
       {projectDescription}
     </div>
   );
