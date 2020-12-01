@@ -8,7 +8,7 @@ export const userData: UserType = {
   lastName: 'Trekhleb',
   position: 'Software Engineer @ Uber',
   summary: [
-    'Author of 70k ★️ javascript-algorithms repo on GitHub',
+    'Author of 80k ★️ javascript-algorithms repo on GitHub',
   ],
   avatar: {
     src: avatarImage,

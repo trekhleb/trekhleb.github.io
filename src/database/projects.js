@@ -3,6 +3,22 @@ import type { ProjectType } from '../types/ProjectType';
 
 export const projects: ProjectType[] = [
   {
+    name: '📖 👆🏻 Printed Links Detector',
+    url: 'https://trekhleb.github.io/links-detector/',
+    startDate: new Date('01/12/2020'),
+    endDate: new Date('01/10/2020'),
+    description: [
+      'Links Detector makes printed links clickable via your smartphone camera. No need to type a link in, just scan and click on it.',
+    ],
+    tags: [
+      { name: 'TensorFlow' },
+      { name: 'Tesseract' },
+      { name: 'Python' },
+      { name: 'TypeScript' },
+      { name: 'React' },
+    ],
+  },
+  {
     name: '🤖 Interactive Machine Learning Experiments',
     url: 'https://github.com/trekhleb/machine-learning-experiments',
     startDate: new Date('01/01/2020'),
