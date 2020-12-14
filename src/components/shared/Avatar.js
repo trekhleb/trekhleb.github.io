@@ -1,6 +1,6 @@
 
 // @flow
-import React from 'react';
+import React from "react";
 import type { Node } from 'react';
 import type { ImageType } from '../../types/ImageType';
 
