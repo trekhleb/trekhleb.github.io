@@ -4,4 +4,3 @@
 [![codecov](https://codecov.io/gh/trekhleb/trekhleb.github.io/branch/source/graph/badge.svg?token=MQ1DJEY2I5)](https://codecov.io/gh/trekhleb/trekhleb.github.io)
 
 In progress...
-
