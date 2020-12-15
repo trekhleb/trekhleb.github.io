@@ -30,8 +30,11 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
-    - name: Run the tests
-      run: yarn ci
+    - name: Run linting
+      run: yarn lint
 
-    - name: Build
-      run: yarn build
+    - name: Run flow check
+      run: yarn flow
+
+    - name: Run tests
+      run: yarn coverage

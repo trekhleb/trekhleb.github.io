@@ -2,6 +2,7 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
+    'jest/globals': true,
   },
   extends: [
     'plugin:react/recommended',
@@ -22,6 +23,7 @@ module.exports = {
   plugins: [
     'react',
     'flowtype',
+    'jest',
   ],
   rules: {
     // @see: https://stackoverflow.com/questions/43031126/jsx-not-allowed-in-files-with-extension-js-with-eslint-config-airbnb
