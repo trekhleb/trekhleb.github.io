@@ -87,7 +87,7 @@ export const projects: ProjectType[] = [
     endDate: new Date('01/10/2018'),
     description: [
       'I\'ve created open-source repository with ES6 based JavaScript examples of classic data-structures and algorithms for learning purpose. Each data-structure and algorithm has its own README description. All code is 100% covered with unit-tests. Repository also contains simple playground where users may practice/test different data-structures and algorithmic approaches. It also has a link on YouTube playlist with all data-structures and algorithms related videos being gathered in one place.',
-      'This 70k+ ★️ project was "The most trending repository of the week" on GitHub (as for May 25th, 2018) and "The most trending repository of the month" (as for June 15th, 2018) with the peak of 5000 stars per day!',
+      'This 90k+ ★️ project was "The most trending repository of the week" on GitHub (as for May 25th, 2018) and "The most trending repository of the month" (as for June 15th, 2018) with the peak of 5000 stars per day!',
       'The project has been counted as a 2nd among “Top 10 projects open sourced in 2018” based on the stars number during their first 28 days after the launch by @github (https://blog.github.com/2018-12-13-new-open-source-projects/)',
     ],
     tags: [
