@@ -16,7 +16,7 @@
     "lint": "eslint ./src",
     "ci": "yarn lint && yarn flow",
     "predeploy": "yarn build",
-    "deploy": "gh-pages --dist ./build  --branch master"
+    "deploy": "gh-pages --dist ./build  --branch public"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
