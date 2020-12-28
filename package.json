@@ -1,0 +1,62 @@
+{
+  "name": "trekhleb.github.io",
+  "version": "0.1.0",
+  "private": false,
+  "license": "MIT",
+  "scripts": {
+    "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "prestart": "yarn build:style",
+    "start": "react-scripts start",
+    "prebuild": "yarn build:style",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "coverage": "jest --coverage",
+    "eject": "react-scripts eject",
+    "flow": "flow",
+    "lint": "eslint ./src",
+    "ci": "yarn lint && yarn flow",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages --dist ./build  --branch master"
+  },
+  "dependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "history": "^4.10.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.0.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "3.4.1",
+    "tailwindcss": "^1.4.6"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-flowtype": "^4.7.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^24.1.3",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "flow-bin": "^0.124.0",
+    "gh-pages": "^2.2.0",
+    "postcss-cli": "^7.1.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
