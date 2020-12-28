@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "license": "MIT",
+  "homepage": "https://trekhleb.dev",
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "prestart": "yarn build:style",
