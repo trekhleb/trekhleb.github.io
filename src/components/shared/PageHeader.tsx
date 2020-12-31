@@ -4,7 +4,7 @@ type PageHeaderProps = {
   children: React.ReactNode,
 };
 
-const PageHeader = (props: PageHeaderProps): React.ReactElement => {
+const PageHeader = (props: PageHeaderProps): React.ReactElement | null => {
   const { children } = props;
 
   if (!children) {
