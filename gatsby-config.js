@@ -1,37 +1,11 @@
-module.exports = {
-  plugins: [],
-  siteMetadata: {
-    profile: {
-      firstName: 'Oleksii',
-      lastName: 'Trekhleb',
-      position: 'Software Engineer @ Uber',
-    },
-    projects: [
-      {
-        name: '📖 👆🏻 Printed Links Detector',
-        tags: [
-          { name: 'TensorFlow' },
-          { name: 'Tesseract' },
-          { name: 'Python' },
-          { name: 'TypeScript' },
-          { name: 'React' },
-        ],
-      },
-      {
-        name: '🤖 Interactive Machine Learning Experiments',
-        tags: [
-          { name: 'TensorFlow' },
-          { name: 'Python' },
-          { name: 'JavaScript' },
-          { name: 'React' },
-        ],
-      },
-      {
-        name: '📈 Coronavirus (COVID-19) Dashboard',
-        tags: [
-          { name: 'React' },
-        ],
-      },
-    ],
-  },
-}
+'use strict';
+
+/**
+ * Source-map-support mimics node's stack trace making debugging easier.
+ * ts-node register helps importing and compiling TypeScript modules into JS.
+ * @see: https://www.extensive.one/converting-gatsby-config-and-node-api-to-typescript/
+ */
+require('source-map-support').install();
+require('ts-node').register();
+
+module.exports = require('./gatsby-config.ts');
