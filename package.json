@@ -11,7 +11,9 @@
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages --dist ./public  --branch public"
   },
   "dependencies": {
     "gatsby": "^2.26.1",
@@ -25,6 +27,7 @@
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
     "eslint": "^7.16.0",
+    "gh-pages": "^3.1.0",
     "source-map-support": "^0.5.19",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
