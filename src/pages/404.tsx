@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { PageProps } from 'gatsby';
+import PageHeader from '../components/shared/PageHeader';
 
-const NotFound = () => {
+const NotFound = (props: PageProps): React.ReactElement => {
   return (
     <main>
       <title>Not found</title>
-      <h1>Page not found</h1>
+      <PageHeader>Page not found</PageHeader>
     </main>
   );
 }

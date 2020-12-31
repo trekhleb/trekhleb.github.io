@@ -1,9 +1,17 @@
 import * as React from 'react';
+import { PageProps } from 'gatsby';
 
-const IndexPage = () => {
+import PageHeader from '../components/shared/PageHeader';
+
+const Index = (props: PageProps): React.ReactElement => {
   return (
-    <div>Index</div>
+    <React.Fragment>
+      <PageHeader>About</PageHeader>
+      <p>
+        About info
+      </p>
+    </React.Fragment>
   );
 }
 
-export default IndexPage;
+export default Index;
