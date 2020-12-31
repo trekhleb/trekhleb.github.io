@@ -1,16 +1,10 @@
 import * as React from 'react';
-import { PageProps } from 'gatsby';
 
-import PageHeader from '../components/shared/PageHeader';
+import AboutScreen from '../components/screens/AboutScreen';
 
-const Index = (props: PageProps): React.ReactElement => {
+const Index = (): React.ReactElement => {
   return (
-    <React.Fragment>
-      <PageHeader>About</PageHeader>
-      <p>
-        About info
-      </p>
-    </React.Fragment>
+    <AboutScreen />
   );
 }
 

@@ -6,6 +6,7 @@
   "homepage": "https://trekhleb.dev",
   "license": "0BSD",
   "scripts": {
+    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
     "develop": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
@@ -17,6 +18,9 @@
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.11.1",
+    "@typescript-eslint/parser": "^4.11.1",
+    "eslint": "^7.16.0",
     "source-map-support": "^0.5.19",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"
