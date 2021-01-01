@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 
 import PageHeader from '../shared/PageHeader';
 import { Projects as ProjectsType } from '../../types/Project';
@@ -17,9 +17,7 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
     <PageLayout>
       <ScreenTitle>Projects</ScreenTitle>
       <PageHeader>Projects</PageHeader>
-      <div>
-        <ProjectsList projects={projects} />
-      </div>
+      <ProjectsList projects={projects} />
     </PageLayout>
   );
 };

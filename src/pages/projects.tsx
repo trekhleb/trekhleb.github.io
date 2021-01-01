@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { graphql, PageProps } from 'gatsby';
 
 import { Projects as ProjectsType } from '../types/Project';
@@ -15,6 +15,11 @@ export const query = graphql`
       siteMetadata {
         projects {
           name
+          archived
+          description
+          startDate
+          endDate
+          url
           tags {
             name
           }

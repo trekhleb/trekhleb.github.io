@@ -13,6 +13,11 @@ export interface ProjectsPageQuery_site_siteMetadata_projects_tags {
 
 export interface ProjectsPageQuery_site_siteMetadata_projects {
   name: string | null;
+  archived: boolean | null;
+  description: (string | null)[] | null;
+  startDate: any | null;
+  endDate: any | null;
+  url: string | null;
   tags: (ProjectsPageQuery_site_siteMetadata_projects_tags | null)[] | null;
 }
 
