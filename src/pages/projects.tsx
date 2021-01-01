@@ -32,6 +32,6 @@ const Projects = (props: ProjectsPageProps): React.ReactElement => {
   return (
     <ProjectsScreen projects={projects} />
   );
-}
+};
 
 export default Projects;

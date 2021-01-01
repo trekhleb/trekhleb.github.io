@@ -14,6 +14,6 @@ const AboutScreen = (): React.ReactElement => {
       </p>
     </PageLayout>
   );
-}
+};
 
 export default AboutScreen;

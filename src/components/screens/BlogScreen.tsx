@@ -14,6 +14,6 @@ const BlogScreen = (): React.ReactElement => {
       </p>
     </PageLayout>
   );
-}
+};
 
 export default BlogScreen;

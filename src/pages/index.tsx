@@ -6,6 +6,6 @@ const Index = (): React.ReactElement => {
   return (
     <AboutScreen />
   );
-}
+};
 
 export default Index;

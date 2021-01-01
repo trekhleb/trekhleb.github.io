@@ -11,12 +11,12 @@ type Routes = Record<Slug, Route>;
 
 export const routes: Routes = {
   home: {
-    path: '/'
+    path: '/',
   },
   projects: {
-    path: '/projects'
+    path: '/projects',
   },
   blog: {
-    path: '/blog'
+    path: '/blog',
   },
 };

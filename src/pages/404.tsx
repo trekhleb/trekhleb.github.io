@@ -5,6 +5,6 @@ const NotFound = (): React.ReactElement => {
   return (
     <NotFoundScreen />
   );
-}
+};
 
 export default NotFound;

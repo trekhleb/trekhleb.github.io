@@ -6,6 +6,6 @@ const Projects = (): React.ReactElement => {
   return (
     <BlogScreen />
   );
-}
+};
 
 export default Projects;

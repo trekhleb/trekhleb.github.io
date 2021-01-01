@@ -22,6 +22,6 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
       </div>
     </PageLayout>
   );
-}
+};
 
 export default ProjectsScreen;

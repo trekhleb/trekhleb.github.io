@@ -11,6 +11,6 @@ const NotFoundScreen = (): React.ReactElement => {
       <PageHeader>Page not found</PageHeader>
     </PageLayout>
   );
-}
+};
 
 export default NotFoundScreen;
