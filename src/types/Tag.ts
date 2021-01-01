@@ -1,5 +1,5 @@
 export type Tag = {
-  name: string,
+  name?: string | null,
 };
 
-export type Tags = Tag[];
+export type Tags = (Tag | null)[];

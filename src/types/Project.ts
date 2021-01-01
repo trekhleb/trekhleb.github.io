@@ -1,8 +1,8 @@
 import { Tags } from './Tag';
 
 export type Project = {
-  name: string,
-  tags: Tags,
+  name?: string | null,
+  tags?: Tags | null,
 };
 
-export type Projects = Project[];
+export type Projects = (Project | null)[];
