@@ -12,7 +12,11 @@ const ScreenTitle = (props: ScreenTitleProps): React.ReactElement | null => {
   }
 
   return (
-    <title>{children}</title>
+    <title>
+      Trekhleb
+      {' | '}
+      {children}
+    </title>
   );
 };
 
