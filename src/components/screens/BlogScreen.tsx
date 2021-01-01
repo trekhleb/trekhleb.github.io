@@ -4,16 +4,16 @@ import PageHeader from '../shared/PageHeader';
 import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
 
-const AboutScreen = (): React.ReactElement => {
+const BlogScreen = (): React.ReactElement => {
   return (
     <PageLayout>
-      <ScreenTitle>About</ScreenTitle>
-      <PageHeader>About</PageHeader>
+      <ScreenTitle>Blog</ScreenTitle>
+      <PageHeader>Blog</PageHeader>
       <p>
-        About info
+        In progress...
       </p>
     </PageLayout>
   );
 }
 
-export default AboutScreen;
+export default BlogScreen;
