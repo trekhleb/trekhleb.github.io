@@ -18,7 +18,8 @@
   "dependencies": {
     "gatsby": "^2.26.1",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "tailwindcss": "^2.0.2"
   },
   "devDependencies": {
     "@types/node": "^14.14.17",
@@ -26,6 +27,7 @@
     "@types/react-dom": "^17.0.0",
     "@typescript-eslint/eslint-plugin": "^4.11.1",
     "@typescript-eslint/parser": "^4.11.1",
+    "autoprefixer": "^10.1.0",
     "eslint": "^7.2.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-plugin-import": "^2.22.1",
@@ -33,7 +35,9 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.0.0",
     "gatsby-plugin-codegen": "^1.2.14",
+    "gatsby-plugin-postcss": "^3.4.0",
     "gh-pages": "^3.1.0",
+    "postcss": "^8.2.2",
     "source-map-support": "^0.5.19",
     "ts-node": "^9.1.1",
     "typescript": "^4.1.3"

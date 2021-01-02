@@ -8,7 +8,11 @@ const gatsbyConfig: GatsbyConfig = {
       resolve: 'gatsby-plugin-codegen',
       options: {},
     },
+    {
+      resolve: 'gatsby-plugin-postcss',
+      options: {},
+    },
   ],
-}
+};
 
 export default gatsbyConfig;
