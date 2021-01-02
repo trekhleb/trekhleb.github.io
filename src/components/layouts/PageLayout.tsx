@@ -1,5 +1,6 @@
 import React from 'react';
-import NavMenu from '../shared/NavMenu';
+import Header from '../shared/Header';
+import Footer from '../shared/Footer';
 
 type PageLayoutProps = {
   children: React.ReactNode,
@@ -14,12 +15,11 @@ const PageLayout = (props: PageLayoutProps): React.ReactElement | null => {
 
   return (
     <main>
-      <nav>
-        <NavMenu />
-      </nav>
+      <Header />
       <article>
         {children}
       </article>
+      <Footer />
     </main>
   );
 };

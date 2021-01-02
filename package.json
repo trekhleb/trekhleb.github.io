@@ -16,6 +16,7 @@
     "deploy": "gh-pages --dist ./public  --branch public"
   },
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "gatsby": "^2.26.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
