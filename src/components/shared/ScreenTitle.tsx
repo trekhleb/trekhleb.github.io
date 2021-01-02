@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet';
 
 type ScreenTitleProps = {
   children: React.ReactNode,
@@ -12,11 +13,13 @@ const ScreenTitle = (props: ScreenTitleProps): React.ReactElement | null => {
   }
 
   return (
-    <title>
-      Trekhleb
-      {' | '}
-      {children}
-    </title>
+    <Helmet>
+      <title>
+        Trekhleb
+        {' | '}
+        {children}
+      </title>
+    </Helmet>
   );
 };
 
