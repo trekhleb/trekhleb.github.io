@@ -28,6 +28,7 @@ module.exports = {
     'no-use-before-define': 'off',
     '@typescript-eslint/no-use-before-define': 'error',
     'no-shadow': 'off',
+    'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/explicit-function-return-type': 'warn',
     'no-empty': 'warn',
     '@typescript-eslint/no-shadow': 'error',

@@ -4,8 +4,8 @@ import NavMenu from './NavMenu';
 
 const Header = (): React.ReactElement => {
   return (
-    <header>
-      <div>
+    <header className="flex flex-row items-center p-6">
+      <div className="mr-6">
         <Logo />
       </div>
       <nav>

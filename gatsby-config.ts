@@ -12,6 +12,10 @@ const gatsbyConfig: GatsbyConfig = {
       resolve: 'gatsby-plugin-postcss',
       options: {},
     },
+    {
+      resolve: 'gatsby-plugin-react-helmet',
+      options: {},
+    },
   ],
 };
 

@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Project as ProjectType } from '../../types/Project';
 import DateRange from '../shared/DateRange';
+import Card from '../shared/Card';
+import CardContent from '../shared/CardContent';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -52,12 +54,14 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   ) : null;
 
   return (
-    <div>
-      {projectName}
-      {projectDates}
-      {projectDescription}
-      {projectTags}
-    </div>
+    <Card>
+      <CardContent>
+        {projectName}
+        {projectDates}
+        {projectDescription}
+        {projectTags}
+      </CardContent>
+    </Card>
   );
 };
 

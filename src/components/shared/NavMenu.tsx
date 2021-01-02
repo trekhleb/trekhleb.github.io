@@ -1,26 +1,26 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-import { routes } from '../../constants/routes';
+import { Route, routes } from '../../constants/routes';
 
 const NavMenu = (): React.ReactElement => {
+  const links = Object.values(routes).map((route: Route): React.ReactElement => {
+    return (
+      <li key={route.path} className="ml-5">
+        <Link
+          to={route.path}
+          className="uppercase text-xs"
+          activeClassName="font-extrabold"
+        >
+          {route.name}
+        </Link>
+      </li>
+    );
+  });
+
   return (
-    <ul>
-      <li>
-        <Link to={routes.home.path}>
-          About
-        </Link>
-      </li>
-      <li>
-        <Link to={routes.projects.path}>
-          Projects
-        </Link>
-      </li>
-      <li>
-        <Link to={routes.blog.path}>
-          Blog
-        </Link>
-      </li>
+    <ul className="flex flex-row">
+      {links}
     </ul>
   );
 };
