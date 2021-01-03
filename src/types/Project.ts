@@ -3,7 +3,9 @@ import { DateString } from './Date';
 
 export type Project = {
   name?: string | null,
-  url?: string | null,
+  coverURL?: string | null,
+  srcURL?: string | null,
+  demoURL?: string | null,
   description?: (string | null)[] | null,
   startDate?: DateString | null,
   endDate?: DateString | null,

@@ -7375,7 +7375,7 @@
               "defaultValue": null
             },
             {
-              "name": "url",
+              "name": "srcURL",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -7807,7 +7807,7 @@
               "deprecationReason": null
             },
             {
-              "name": "url",
+              "name": "srcURL",
               "description": null,
               "args": [],
               "type": {
@@ -8204,7 +8204,7 @@
               "deprecationReason": null
             },
             {
-              "name": "siteMetadata___projects___url",
+              "name": "siteMetadata___projects___srcURL",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

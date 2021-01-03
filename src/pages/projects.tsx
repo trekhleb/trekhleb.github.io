@@ -19,7 +19,7 @@ export const query = graphql`
           description
           startDate
           endDate
-          url
+          srcURL
           tags {
             name
           }

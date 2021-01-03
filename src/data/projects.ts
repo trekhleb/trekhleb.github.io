@@ -1,9 +1,14 @@
+// <reference path='../declarations.d.ts'/>
+
 import { Projects } from '../types/Project';
+
+// import LinksDetectorCover from '../images/projects/links-detector-cover.png';
 
 export const projects: Projects = [
   {
     name: '📖 👆🏻 Printed Links Detector',
-    url: 'https://trekhleb.github.io/links-detector/',
+    srcURL: 'https://trekhleb.github.io/links-detector/',
+    // coverURL: LinksDetectorCover,
     startDate: '2020-10-01',
     endDate: '2020-12-01',
     description: [
@@ -19,7 +24,7 @@ export const projects: Projects = [
   },
   {
     name: '🤖 Interactive Machine Learning Experiments',
-    url: 'https://github.com/trekhleb/machine-learning-experiments',
+    srcURL: 'https://github.com/trekhleb/machine-learning-experiments',
     startDate: '2020-01-01',
     endDate: '2020-05-01',
     description: [
@@ -34,7 +39,7 @@ export const projects: Projects = [
   },
   {
     name: '📈 Coronavirus (COVID-19) Dashboard',
-    url: 'https://trekhleb.github.io/covid-19/',
+    srcURL: 'https://trekhleb.github.io/covid-19/',
     startDate: '2020-03-01',
     description: [
       'Coronavirus (COVID-19) dashboard to show the dynamics of Coronavirus distribution per country',
@@ -45,7 +50,7 @@ export const projects: Projects = [
   },
   {
     name: '🤖 NanoNeuron',
-    url: 'https://github.com/trekhleb/nano-neuron',
+    srcURL: 'https://github.com/trekhleb/nano-neuron',
     startDate: '2019-12-01',
     description: [
       'NanoNeuron is 7 simple JavaScript functions that will give you a feeling of how machines can actually "learn".',
@@ -56,7 +61,7 @@ export const projects: Projects = [
   },
   {
     name: '🌍 usePosition: React hook for fetching and following a browser geolocation',
-    url: 'https://github.com/trekhleb/use-position',
+    srcURL: 'https://github.com/trekhleb/use-position',
     startDate: '2019-01-01',
     description: [
       'React hook usePosition() allows you to fetch client\'s browser geolocation and/or subscribe to all further geolocation changes.',
@@ -68,7 +73,7 @@ export const projects: Projects = [
   },
   {
     name: '🤖 Homemade Machine Learning',
-    url: 'https://github.com/trekhleb/homemade-machine-learning',
+    srcURL: 'https://github.com/trekhleb/homemade-machine-learning',
     startDate: '2018-12-01',
     description: [
       'The project contains examples of popular machine learning algorithms implemented in Python with mathematics behind them being explained. Each algorithm has interactive Jupyter Notebook demo that allows you to play with training data, algorithms configurations and immediately see the results, charts and predictions right in your browser.',
@@ -81,7 +86,7 @@ export const projects: Projects = [
   },
   {
     name: '📝 JavaScript Algorithms and Data-Structures',
-    url: 'https://github.com/trekhleb/javascript-algorithms',
+    srcURL: 'https://github.com/trekhleb/javascript-algorithms',
     startDate: '2018-02-01',
     description: [
       'I\'ve created open-source repository with ES6 based JavaScript examples of classic data-structures and algorithms for learning purpose. Each data-structure and algorithm has its own README description. All code is 100% covered with unit-tests. Repository also contains simple playground where users may practice/test different data-structures and algorithmic approaches. It also has a link on YouTube playlist with all data-structures and algorithms related videos being gathered in one place.',
@@ -95,7 +100,7 @@ export const projects: Projects = [
   },
   {
     name: '🤖 Machine Learning in MatLab/Octave',
-    url: 'https://github.com/trekhleb/machine-learning-octave',
+    srcURL: 'https://github.com/trekhleb/machine-learning-octave',
     startDate: '2018-10-01',
     description: [
       'Examples of popular machine learning algorithms (neural networks, linear/logistic regression, K-Means, etc.) with code examples and mathematics being explained.',
@@ -107,7 +112,7 @@ export const projects: Projects = [
   },
   {
     name: '📚 Playground and cheatsheet for learning Python',
-    url: 'https://github.com/trekhleb/learn-python',
+    srcURL: 'https://github.com/trekhleb/learn-python',
     startDate: '2018-08-01',
     description: [
       'Collection of Python scripts that are split by topics and contain code examples with explanations, different use cases and links to further readings.',
@@ -119,7 +124,7 @@ export const projects: Projects = [
   },
   {
     name: '➡️ Aggregatus | Data Aggregation Service',
-    url: 'https://aggregatus.io/',
+    srcURL: 'https://aggregatus.io/',
     startDate: '2017-01-01',
     endDate: '2018-01-01',
     archived: true,
@@ -140,7 +145,7 @@ export const projects: Projects = [
   },
   {
     name: '🌾 Angular-library-seed',
-    url: 'https://github.com/trekhleb/angular-library-seed',
+    srcURL: 'https://github.com/trekhleb/angular-library-seed',
     startDate: '2017-01-01',
     endDate: '2018-01-01',
     description: [
@@ -156,7 +161,7 @@ export const projects: Projects = [
   },
   {
     name: '📕 AllBible.info',
-    url: 'http://allbible.info/',
+    srcURL: 'http://allbible.info/',
     startDate: '2010-02-01',
     description: [
       'Online Bible study web-service that gives users possibility to study Bible by reading it in 4 modern translations, comparing verses to theirs Greek and Hebrew originals, investigating cross-linked verses, making a cross-Bible search, listening to audio Bible, using different Bible study plans (chronological, topical and so on), exploring Bible geographic maps and using a lot more other features.',
@@ -171,7 +176,7 @@ export const projects: Projects = [
   },
   {
     name: '🧶 Hook&Thread',
-    url: 'http://hook-and-thread.com/',
+    srcURL: 'http://hook-and-thread.com/',
     startDate: '2016-11-01',
     archived: true,
     description: [
@@ -185,7 +190,7 @@ export const projects: Projects = [
   },
   {
     name: '🕸 SiteProm Web Studio',
-    url: 'http://site-prom.com/',
+    srcURL: 'http://site-prom.com/',
     startDate: '2008-01-01',
     endDate: '2011-12-01',
     archived: true,

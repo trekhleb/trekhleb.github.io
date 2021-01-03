@@ -10,7 +10,7 @@ const NavMenu = (): React.ReactElement => {
         <Link
           to={route.path}
           className="uppercase text-xs"
-          activeClassName="font-extrabold"
+          activeClassName="font-bold"
         >
           {route.name}
         </Link>
