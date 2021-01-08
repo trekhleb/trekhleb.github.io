@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby';
 import { UseImagesQuery, UseImagesQuery_allFile_nodes } from './__generated__/UseImagesQuery';
 
-export const useImages = (): UseImagesQuery_allFile_nodes[] => {
+export const useFluidCovers = (): UseImagesQuery_allFile_nodes[] => {
   // @see: https://www.npmjs.com/package/gatsby-image
   const images: UseImagesQuery = useStaticQuery(graphql`
     query UseImagesQuery {

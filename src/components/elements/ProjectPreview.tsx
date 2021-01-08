@@ -7,7 +7,7 @@ import Card from '../shared/Card';
 import CardContent from '../shared/CardContent';
 import CardMedia from '../shared/CardMedia';
 import H3 from '../shared/H3';
-import { useProjectCover } from '../../hooks/useProjectCover';
+import { useFluidCover } from '../../hooks/useFluidCover';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -16,8 +16,8 @@ type ProjectPreviewProps = {
 const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null => {
   const { project } = props;
 
-  const cover = useProjectCover({
-    coverPath: project && project.coverPath,
+  const cover = useFluidCover({
+    imagePath: project && project.coverPath,
   });
 
   if (!project) {

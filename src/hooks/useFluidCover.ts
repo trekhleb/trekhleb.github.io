@@ -1,26 +1,26 @@
-import { useImages } from './useImages';
+import { useFluidCovers } from './useFluidCovers';
 import {
   UseImagesQuery_allFile_nodes,
   UseImagesQuery_allFile_nodes_childImageSharp,
 } from './__generated__/UseImagesQuery';
 
-type UseProjectCoverProps = {
-  coverPath?: string | null | undefined,
+type UseFluidCoverProps = {
+  imagePath?: string | null | undefined,
 };
 
-export const useProjectCover = (
-  props: UseProjectCoverProps,
+export const useFluidCover = (
+  props: UseFluidCoverProps,
 ): UseImagesQuery_allFile_nodes_childImageSharp | undefined | null => {
-  const { coverPath } = props;
-  const allImages: UseImagesQuery_allFile_nodes[] = useImages();
+  const { imagePath } = props;
+  const allImages: UseImagesQuery_allFile_nodes[] = useFluidCovers();
 
-  if (!coverPath) {
+  if (!imagePath) {
     return undefined;
   }
 
   const foundNode: UseImagesQuery_allFile_nodes | undefined = allImages.find(
     (node: UseImagesQuery_allFile_nodes) => {
-      return node.relativePath === coverPath;
+      return node.relativePath === imagePath;
     },
   );
 
