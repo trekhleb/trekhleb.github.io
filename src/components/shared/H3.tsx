@@ -1,10 +1,10 @@
 import React from 'react';
 
-type CardMediaProps = {
+type H3Props = {
   children: React.ReactNode,
 };
 
-const _CardMedia = (props: CardMediaProps): React.ReactElement | null => {
+const H3 = (props: H3Props): React.ReactElement | null => {
   const { children } = props;
 
   if (!children) {
@@ -12,10 +12,10 @@ const _CardMedia = (props: CardMediaProps): React.ReactElement | null => {
   }
 
   return (
-    <div>
+    <h3 className="text-xl mb-5 mt-0">
       {children}
-    </div>
+    </h3>
   );
 };
 
-export default _CardMedia;
+export default H3;

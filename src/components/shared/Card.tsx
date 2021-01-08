@@ -12,7 +12,7 @@ const Card = (props: CardProps): React.ReactElement | null => {
   }
 
   return (
-    <div className="shadow-xl rounded-xl overflow-hidden bg-white">
+    <div className="shadow-xl rounded-md overflow-hidden bg-white flex flex-col">
       {children}
     </div>
   );

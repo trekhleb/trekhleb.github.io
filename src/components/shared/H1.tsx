@@ -1,10 +1,10 @@
 import React from 'react';
 
-type PageHeaderProps = {
+type H1Props = {
   children: React.ReactNode,
 };
 
-const PageHeader = (props: PageHeaderProps): React.ReactElement | null => {
+const H1 = (props: H1Props): React.ReactElement | null => {
   const { children } = props;
 
   if (!children) {
@@ -18,4 +18,4 @@ const PageHeader = (props: PageHeaderProps): React.ReactElement | null => {
   );
 };
 
-export default PageHeader;
+export default H1;

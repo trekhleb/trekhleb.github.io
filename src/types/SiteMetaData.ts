@@ -1,7 +1,1 @@
-import { Profile } from './Profile';
-import { Projects } from './Project';
-
-export type SiteMetaData = {
-  profile: Profile,
-  projects: Projects,
-};
+export type SiteMetaData = Record<string, unknown>;

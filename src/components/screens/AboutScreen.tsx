@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PageHeader from '../shared/PageHeader';
+import H1 from '../shared/H1';
 import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
 
@@ -8,7 +8,7 @@ const AboutScreen = (): React.ReactElement => {
   return (
     <PageLayout>
       <ScreenTitle>About</ScreenTitle>
-      <PageHeader>About</PageHeader>
+      <H1>About</H1>
       <p>
         About info
       </p>

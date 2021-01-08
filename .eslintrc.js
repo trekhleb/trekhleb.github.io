@@ -30,6 +30,7 @@ module.exports = {
     'no-shadow': 'off',
     'react/jsx-props-no-spreading': 'off',
     '@typescript-eslint/explicit-function-return-type': 'warn',
+    camelcase: 'off',
     'no-empty': 'warn',
     '@typescript-eslint/no-shadow': 'error',
     'react/jsx-one-expression-per-line': 'off',

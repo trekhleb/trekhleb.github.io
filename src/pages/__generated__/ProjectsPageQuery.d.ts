@@ -17,6 +17,7 @@ export interface ProjectsPageQuery_site_siteMetadata_projects {
   description: (string | null)[] | null;
   startDate: any | null;
   endDate: any | null;
+  coverURL: string | null;
   srcURL: string | null;
   tags: (ProjectsPageQuery_site_siteMetadata_projects_tags | null)[] | null;
 }

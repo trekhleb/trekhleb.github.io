@@ -12,7 +12,7 @@ const CardContent = (props: CardContentProps): React.ReactElement | null => {
   }
 
   return (
-    <div className="p-3">
+    <div className="p-4">
       {children}
     </div>
   );

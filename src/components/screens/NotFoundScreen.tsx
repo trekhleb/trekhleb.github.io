@@ -1,5 +1,5 @@
 import React from 'react';
-import PageHeader from '../shared/PageHeader';
+import H1 from '../shared/H1';
 import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
 
@@ -8,7 +8,7 @@ const NotFoundScreen = (): React.ReactElement => {
     <PageLayout>
       <ScreenTitle>Not found</ScreenTitle>
       <title>Not found</title>
-      <PageHeader>Page not found</PageHeader>
+      <H1>Page not found</H1>
     </PageLayout>
   );
 };

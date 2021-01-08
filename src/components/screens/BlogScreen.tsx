@@ -1,6 +1,6 @@
 import React from 'react';
 
-import PageHeader from '../shared/PageHeader';
+import H1 from '../shared/H1';
 import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
 
@@ -8,7 +8,7 @@ const BlogScreen = (): React.ReactElement => {
   return (
     <PageLayout>
       <ScreenTitle>Blog</ScreenTitle>
-      <PageHeader>Blog</PageHeader>
+      <H1>Blog</H1>
       <p>
         In progress...
       </p>
