@@ -22,6 +22,7 @@ export interface UseImagesQuery_allFile_nodes_childImageSharp {
 export interface UseImagesQuery_allFile_nodes {
   base: string;
   name: string;
+  relativePath: string;
   childImageSharp: UseImagesQuery_allFile_nodes_childImageSharp | null;
 }
 

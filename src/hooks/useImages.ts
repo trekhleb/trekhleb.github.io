@@ -11,6 +11,7 @@ export const useImages = (): UseImagesQuery_allFile_nodes[] => {
         nodes {
           base
           name
+          relativePath
           childImageSharp {
             fluid(
               fit: COVER,

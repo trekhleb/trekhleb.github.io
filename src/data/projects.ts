@@ -5,7 +5,7 @@ export const projects: Projects = [
     name: '📖 👆🏻 Printed Links Detector',
     srcURL: 'https://github.com/trekhleb/links-detector',
     demoURL: 'https://trekhleb.github.io/links-detector/',
-    coverImageName: 'links-detector-cover.png',
+    coverPath: 'projects/links-detector-cover.png',
     startDate: '2020-10-01',
     endDate: '2020-12-01',
     summary: [
@@ -32,7 +32,7 @@ export const projects: Projects = [
     name: '🤖 Interactive Machine Learning Experiments',
     srcURL: 'https://github.com/trekhleb/machine-learning-experiments',
     demoURL: 'https://trekhleb.dev/machine-learning-experiments/',
-    coverImageName: 'machine-learning-experiments-cover.png',
+    coverPath: 'projects/machine-learning-experiments-cover.png',
     startDate: '2020-01-01',
     endDate: '2020-05-01',
     summary: [
@@ -56,7 +56,7 @@ export const projects: Projects = [
     name: '📈 Coronavirus (COVID-19) Dashboard',
     srcURL: 'https://github.com/trekhleb/covid-19/',
     demoURL: 'https://trekhleb.github.io/covid-19/',
-    coverImageName: 'covid-dashboard-cover.png',
+    coverPath: 'projects/covid-dashboard-cover.png',
     startDate: '2020-03-01',
     summary: [
       'Coronavirus (COVID-19) dashboard to show the dynamics of Сoronavirus distribution per country',
@@ -72,7 +72,7 @@ export const projects: Projects = [
   {
     name: '🤖 NanoNeuron',
     srcURL: 'https://github.com/trekhleb/nano-neuron',
-    coverImageName: 'nano-neuron-cover.png',
+    coverPath: 'projects/nano-neuron-cover.png',
     startDate: '2019-12-01',
     summary: [
       'NanoNeuron is 7 simple JavaScript functions that will give you a feeling of how machines can actually "learn".',
@@ -92,7 +92,7 @@ export const projects: Projects = [
     name: '🌍 usePosition: React hook for fetching and following a browser geolocation',
     srcURL: 'https://github.com/trekhleb/use-position',
     demoURL: 'https://trekhleb.dev/use-position',
-    coverImageName: 'use-position-cover.png',
+    coverPath: 'projects/use-position-cover.png',
     startDate: '2019-01-01',
     summary: [
       'React hook usePosition() for fetching and following a browser geolocation',
@@ -111,7 +111,7 @@ export const projects: Projects = [
     name: '🤖 Homemade Machine Learning',
     srcURL: 'https://github.com/trekhleb/homemade-machine-learning',
     startDate: '2018-12-01',
-    coverImageName: 'homemade-machine-learning-cover.png',
+    coverPath: 'projects/homemade-machine-learning-cover.png',
     summary: [
       'Python examples of popular machine learning algorithms with interactive Jupyter demos and math being explained',
     ],
@@ -132,7 +132,7 @@ export const projects: Projects = [
     name: '📝 JavaScript Algorithms and Data-Structures',
     srcURL: 'https://github.com/trekhleb/javascript-algorithms',
     startDate: '2018-02-01',
-    coverImageName: 'javascript-algorithms-cover.png',
+    coverPath: 'projects/javascript-algorithms-cover.png',
     summary: [
       'Algorithms and data structures implemented in JavaScript with explanations and links to further readings',
     ],
@@ -152,7 +152,7 @@ export const projects: Projects = [
     name: '🤖 Machine Learning in MatLab/Octave',
     srcURL: 'https://github.com/trekhleb/machine-learning-octave',
     startDate: '2018-10-01',
-    coverImageName: 'machine-learning-octave-cover.png',
+    coverPath: 'projects/machine-learning-octave-cover.png',
     summary: [
       'MatLab/Octave examples of popular machine learning algorithms with code examples and mathematics being explained',
     ],
@@ -171,7 +171,7 @@ export const projects: Projects = [
     name: '📚 Playground and cheatsheet for learning Python',
     srcURL: 'https://github.com/trekhleb/learn-python',
     startDate: '2018-08-01',
-    coverImageName: 'learn-python-cover.png',
+    coverPath: 'projects/learn-python-cover.png',
     summary: [
       'Playground and cheatsheet for learning Python. Collection of Python scripts that are split by topics and contain code examples with explanations',
     ],
@@ -189,7 +189,7 @@ export const projects: Projects = [
     startDate: '2017-01-01',
     endDate: '2018-01-01',
     archived: true,
-    coverImageName: 'aggregatus-cover-1.png',
+    coverPath: 'projects/aggregatus-cover-1.png',
     summary: [
       'Service that helps you to aggregate information of the same meaning but from the different websites and make it searchable, filterable and sortable as if it all was from the one website',
     ],
@@ -230,7 +230,7 @@ export const projects: Projects = [
     name: '📕 AllBible.info',
     srcURL: 'http://allbible.info/',
     startDate: '2010-02-01',
-    coverImageName: 'allbible-cover.png',
+    coverPath: 'projects/allbible-cover.png',
     summary: [
       'Online Bible study web-service that gives users possibility to study Bible by reading it in 4 modern translations, comparing verses to theirs Greek and Hebrew originals, investigating cross-linked verses, making a cross-Bible search, listening to audio Bible, using different Bible study plans and more',
     ],

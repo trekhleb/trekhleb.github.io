@@ -17,7 +17,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   const { project } = props;
 
   const cover = useProjectCover({
-    coverImageName: project && project.coverImageName,
+    coverPath: project && project.coverPath,
   });
 
   if (!project) {
@@ -63,11 +63,8 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
 
   const projectCover = cover && cover.fluid ? (
     <Img
-      fluid={{
-        ...cover.fluid,
-        // aspectRatio: 1, // override the original returned aspectRatio
-      }}
-      // style={{ maxWidth: 250 }}
+      fluid={cover.fluid}
+      style={{ height: '100%' }}
       alt={project?.name || ''}
       title={project?.name || ''}
       durationFadeIn={500}

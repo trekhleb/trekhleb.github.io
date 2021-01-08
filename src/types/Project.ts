@@ -5,7 +5,7 @@ export type Project = {
   name?: string | null,
   summary?: (string | null)[] | null,
   description?: (string | null)[] | null,
-  coverImageName?: string | null,
+  coverPath?: string | null,
   srcURL?: string | null,
   demoURL?: string | null,
   startDate?: DateString | null,
