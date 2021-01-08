@@ -1,19 +1,19 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import { Route, routes } from '../../constants/routes';
+import HyperLink from './HyperLink';
 
 const NavMenu = (): React.ReactElement => {
   const links = Object.values(routes).map((route: Route): React.ReactElement => {
     return (
       <li key={route.path} className="ml-5">
-        <Link
+        <HyperLink
           to={route.path}
           className="uppercase text-xs"
           activeClassName="font-bold"
         >
           {route.name}
-        </Link>
+        </HyperLink>
       </li>
     );
   });

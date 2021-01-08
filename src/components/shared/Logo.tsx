@@ -5,7 +5,7 @@ import { routes } from '../../constants/routes';
 const Logo = (): React.ReactElement => {
   return (
     <div>
-      <Link to={routes.home.path} className="font-extrabold text-xs tracking-widest">
+      <Link to={routes.home.path} className="font-extrabold text-sm tracking-widest">
         TREKHLEB
       </Link>
     </div>
