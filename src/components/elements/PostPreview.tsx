@@ -17,10 +17,17 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
     </H3>
   );
 
+  const postSummary = post?.excerpt ? (
+    <div>
+      {post?.excerpt}
+    </div>
+  ) : null;
+
   return (
     <Card>
       <CardContent>
         {postTitle}
+        {postSummary}
       </CardContent>
     </Card>
   );
