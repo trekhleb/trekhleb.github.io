@@ -15,11 +15,14 @@ export const query = graphql`
       nodes {
         id
         timeToRead
+        excerpt(pruneLength: 300, format: PLAIN)
+        fields {
+          slug
+        }
         frontmatter {
           title
           date(formatString: "DD MMMM, YYYY")
         }
-        excerpt(pruneLength: 300, format: PLAIN)
       }
     }
   }

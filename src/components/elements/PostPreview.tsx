@@ -3,6 +3,7 @@ import { BlogPageQuery_allMarkdownRemark_nodes } from '../../pages/__generated__
 import Card from '../shared/Card';
 import CardContent from '../shared/CardContent';
 import H3 from '../shared/H3';
+import HyperLink from '../shared/HyperLink';
 
 type PostPreviewProps = {
   post: BlogPageQuery_allMarkdownRemark_nodes,
@@ -17,6 +18,10 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
     </H3>
   );
 
+  const postTitleLink = post.fields?.slug ? (
+    <HyperLink to={post.fields.slug}>{postTitle}</HyperLink>
+  ) : null;
+
   const postSummary = post?.excerpt ? (
     <div>
       {post?.excerpt}
@@ -26,7 +31,7 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   return (
     <Card>
       <CardContent>
-        {postTitle}
+        {postTitleLink}
         {postSummary}
       </CardContent>
     </Card>
