@@ -1,4 +1,4 @@
-// This TSConfig is used for importing gatsby-config.ts in gatsby-config.js.
+// This TSConfig is used for importing gatsby-config.ts in gatsby-config.js and also for TS type checking.
 // @see: https://www.typescriptlang.org/tsconfig
 {
   "compilerOptions": {
@@ -14,7 +14,7 @@
     "skipLibCheck": true,
     "noEmit": true
   },
-  "files": [
-    "gatsby-config.ts"
-  ]
+  "include": [
+    "src/**/*"
+  ],
 }

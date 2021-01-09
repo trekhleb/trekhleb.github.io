@@ -4,6 +4,7 @@ import { DateString } from '../../types/Date';
 export type DateRangeProps = {
   startDate?: DateString | null,
   endDate?: DateString | null,
+  className?: string,
 };
 
 const months = [
@@ -28,7 +29,7 @@ const dateToString = (date: Date): string => {
 };
 
 const DateRange = (props: DateRangeProps): React.ReactElement | null => {
-  const { startDate, endDate } = props;
+  const { startDate, endDate, className = '' } = props;
 
   if (!startDate && !endDate) {
     return null;
@@ -41,7 +42,7 @@ const DateRange = (props: DateRangeProps): React.ReactElement | null => {
   const endDateString = endDate ? dateToString(new Date(endDate)) : null;
 
   return (
-    <div>
+    <div className={className}>
       {startDateString}
       {dateSeparator}
       {endDateString}

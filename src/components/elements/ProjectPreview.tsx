@@ -8,6 +8,7 @@ import CardContent from '../shared/CardContent';
 import CardMedia from '../shared/CardMedia';
 import H3 from '../shared/H3';
 import { useFluidCover } from '../../hooks/useFluidCover';
+import Tags from '../shared/Tags';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -30,20 +31,20 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     </H3>
   );
 
-  const projectTags = (project?.tags || []).map((tag) => {
-    if (!tag) {
-      return null;
-    }
-    return (
-      <span key={tag.name}>{tag.name}</span>
-    );
-  });
+  const projectTags = project?.tags ? (
+    <div>
+      <Tags tags={project.tags} />
+    </div>
+  ) : null;
 
   const projectDates = (
-    <DateRange
-      startDate={project.startDate}
-      endDate={project.endDate}
-    />
+    <div className="mb-3">
+      <DateRange
+        startDate={project.startDate}
+        endDate={project.endDate}
+        className='className="text-sm text-gray-600 font-light"'
+      />
+    </div>
   );
 
   /* eslint-disable react/no-array-index-key */
@@ -56,13 +57,14 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   ) : null;
 
   const projectSummary = projectSummaryLines ? (
-    <div>
+    <div className="mb-3">
       {projectSummaryLines}
     </div>
   ) : null;
 
   const projectCover = cover && cover.fluid ? (
     <Img
+      // @ts-ignore
       fluid={cover.fluid}
       style={{ height: '100%' }}
       alt={project?.name || ''}
@@ -81,7 +83,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         {projectName}
         {projectDates}
         {projectSummary}
-        {/* {projectTags} */}
+        {projectTags}
       </CardContent>
     </Card>
   );
