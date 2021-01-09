@@ -14885,6 +14885,16 @@
               "defaultValue": null
             },
             {
+              "name": "showLineNumbers",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "BooleanQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "pathCheck",
               "description": "",
               "type": {
@@ -15159,6 +15169,16 @@
             },
             {
               "name": "disableBgImage",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "BooleanQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "showLineNumbers",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -16081,6 +16101,18 @@
               "deprecationReason": null
             },
             {
+              "name": "showLineNumbers",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pathCheck",
               "description": null,
               "args": [],
@@ -16388,6 +16420,18 @@
             },
             {
               "name": "disableBgImage",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "showLineNumbers",
               "description": null,
               "args": [],
               "type": {
@@ -17782,6 +17826,12 @@
             },
             {
               "name": "pluginCreator___pluginOptions___disableBgImage",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___pluginOptions___showLineNumbers",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -22388,6 +22438,12 @@
               "deprecationReason": null
             },
             {
+              "name": "pluginOptions___plugins___pluginOptions___showLineNumbers",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pluginOptions___plugins___nodeAPIs",
               "description": null,
               "isDeprecated": false,
@@ -22509,6 +22565,12 @@
             },
             {
               "name": "pluginOptions___disableBgImage",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___showLineNumbers",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
