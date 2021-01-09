@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Projects } from '../../types/Project';
+import { Project } from '../../types/Project';
 import ProjectPreview from './ProjectPreview';
 import Cards from '../shared/Cards';
 
 type ProjectsListProps = {
-  projects: Projects,
+  projects: Project[],
 };
 
 const ProjectsList = (props: ProjectsListProps): React.ReactElement => {

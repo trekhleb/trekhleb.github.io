@@ -17,7 +17,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   const { project } = props;
 
   const cover = useFluidCover({
-    imagePath: project && project.coverPath,
+    imagePath: project && project.cover && project.cover.srcPath,
   });
 
   if (!project) {

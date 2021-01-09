@@ -1,13 +1,13 @@
 import React from 'react';
 
 import H1 from '../shared/H1';
-import { Projects as ProjectsType } from '../../types/Project';
+import { Project as ProjectType } from '../../types/Project';
 import ProjectsList from '../elements/ProjectsList';
 import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
 
 type ProjectsScreenProps = {
-  projects: ProjectsType,
+  projects: ProjectType[],
 };
 
 const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {

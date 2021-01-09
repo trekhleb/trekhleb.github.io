@@ -1,17 +1,17 @@
-import { Tags } from './Tag';
+import { Tag } from './Tag';
 import { DateString } from './Date';
+import { Image } from './Image';
+import { Link } from './Link';
 
 export type Project = {
-  name?: string | null,
-  summary?: (string | null)[] | null,
-  description?: (string | null)[] | null,
-  coverPath?: string | null,
-  srcURL?: string | null,
-  demoURL?: string | null,
-  startDate?: DateString | null,
-  endDate?: DateString | null,
-  tags?: Tags | null,
-  archived?: boolean | null,
+  name?: string,
+  summary?: string[],
+  description?: string[],
+  cover?: Image,
+  srcURL?: Link,
+  demoURL?: Link,
+  startDate?: DateString,
+  endDate?: DateString,
+  tags?: Tag[],
+  archived?: boolean,
 };
-
-export type Projects = (Project | null)[];
