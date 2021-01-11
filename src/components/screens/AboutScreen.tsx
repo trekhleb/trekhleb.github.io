@@ -1,10 +1,10 @@
 import React from 'react';
 
-import H1 from '../shared/H1';
 import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
 import type { Profile as ProfileType } from '../../types/Profile';
 import Profile from '../elements/Profile';
+import H, { hLevel } from '../shared/H';
 
 type AboutScreenProps = {
   profile: ProfileType,
@@ -15,8 +15,8 @@ const AboutScreen = (props: AboutScreenProps): React.ReactElement => {
 
   return (
     <PageLayout>
-      <ScreenTitle>About</ScreenTitle>
-      <H1>About</H1>
+      <ScreenTitle title="About" />
+      <H level={hLevel.h1}>About</H>
       <Profile profile={profile} />
     </PageLayout>
   );

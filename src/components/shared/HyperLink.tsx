@@ -1,26 +1,32 @@
 import { Link } from 'gatsby';
 import React from 'react';
 
+import type { Link as LinkType } from '../../types/Link';
+
 type HyperLinkProps = {
-  to: string,
+  link: LinkType,
   children: React.ReactNode,
   className?: string,
   activeClassName?: string,
   startEnhancer?: React.ReactNode,
 };
 
-const HyperLink = (props: HyperLinkProps): React.ReactElement => {
+const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
   const {
-    to,
+    link,
     children,
     className = '',
     activeClassName = '',
     startEnhancer = null,
   } = props;
 
+  if (!link?.url) {
+    return null;
+  }
+
   const commonClasses = 'flex flex-row items-center';
 
-  const isExternal = to.startsWith('http');
+  const isExternal = link.url.startsWith('http');
 
   const separator = startEnhancer ? (
     <span className="w-1" />
@@ -28,7 +34,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement => {
 
   const externalLink = (
     <a
-      href={to}
+      href={link.url}
       className={`${commonClasses} ${className}`}
     >
       {startEnhancer}
@@ -39,7 +45,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement => {
 
   const internalLink = (
     <Link
-      to={to}
+      to={link.url}
       activeClassName={activeClassName}
       className={`${commonClasses} ${className}`}
     >

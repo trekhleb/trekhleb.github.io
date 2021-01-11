@@ -1,14 +1,13 @@
 import React from 'react';
-import Img from 'gatsby-image';
 
 import { Project as ProjectType } from '../../types/Project';
 import DateRange from '../shared/DateRange';
 import Card from '../shared/Card';
 import CardContent from '../shared/CardContent';
 import CardMedia from '../shared/CardMedia';
-import H3 from '../shared/H3';
-import { useFluidCover } from '../../hooks/useFluidCover';
 import Tags from '../shared/Tags';
+import FluidImage from '../shared/FluidImage';
+import H, { hLevel } from '../shared/H';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -17,18 +16,14 @@ type ProjectPreviewProps = {
 const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null => {
   const { project } = props;
 
-  const cover = useFluidCover({
-    imagePath: project && project.cover && project.cover.srcPath,
-  });
-
   if (!project) {
     return null;
   }
 
   const projectName = (
-    <H3>
+    <H level={hLevel.h3}>
       {project.name}
-    </H3>
+    </H>
   );
 
   const projectTags = project?.tags ? (
@@ -62,16 +57,8 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     </div>
   ) : null;
 
-  const projectCover = cover && cover.fluid ? (
-    <Img
-      // @ts-ignore
-      fluid={cover.fluid}
-      style={{ height: '100%' }}
-      alt={project?.name || ''}
-      title={project?.name || ''}
-      durationFadeIn={500}
-      fadeIn
-    />
+  const projectCover = project.cover ? (
+    <FluidImage image={project.cover} />
   ) : null;
 
   return (

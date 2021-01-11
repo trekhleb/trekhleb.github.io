@@ -6,7 +6,7 @@ import { Image } from './Image';
 export type Profile = {
   firstName?: string,
   lastName?: string,
-  positions?: string[],
+  position?: string,
   avatar?: Image,
   summary?: string[],
   socialLinks?: SocialLink[],

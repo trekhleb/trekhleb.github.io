@@ -1,14 +1,14 @@
 import React from 'react';
-import H1 from '../shared/H1';
+
 import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
+import H, { hLevel } from '../shared/H';
 
 const NotFoundScreen = (): React.ReactElement => {
   return (
     <PageLayout>
-      <ScreenTitle>Not found</ScreenTitle>
-      <title>Not found</title>
-      <H1>Page not found</H1>
+      <ScreenTitle title="Page not found" />
+      <H level={hLevel.h1}>Page not found</H>
     </PageLayout>
   );
 };

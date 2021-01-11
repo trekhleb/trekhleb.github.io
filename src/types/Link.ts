@@ -1,4 +1,4 @@
 export type Link = {
-  url?: string,
-  caption?: string,
+  url?: string | null,
+  caption?: string | null,
 };

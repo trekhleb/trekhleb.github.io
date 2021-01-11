@@ -1,23 +1,18 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import { windowNamePrefix, windowNameSeparator } from '../../constants/siteMeta';
 
 type ScreenTitleProps = {
-  children: React.ReactNode,
+  title: string,
 };
 
-const ScreenTitle = (props: ScreenTitleProps): React.ReactElement | null => {
-  const { children } = props;
-
-  if (!children) {
-    return null;
-  }
+const ScreenTitle = (props: ScreenTitleProps): React.ReactElement => {
+  const { title } = props;
 
   return (
     <Helmet>
       <title>
-        Trekhleb
-        {' | '}
-        {children}
+        {`${windowNamePrefix} ${windowNameSeparator} ${title}`}
       </title>
     </Helmet>
   );
