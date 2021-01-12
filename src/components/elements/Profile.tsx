@@ -72,14 +72,16 @@ const Profile = (props: ProfileProps): React.ReactElement => {
   );
 
   return (
-    <div>
+    <div className="flex flex-col items-center sm:flex-row">
       {avatarElement}
-      {userNameElement}
-      {positionElement}
-      {summaryLinesElement}
-      {locationElement}
-      {tagsElement}
-      {socialLinksElement}
+      <div className="flex flex-col justify-center items-center sm:items-start">
+        {userNameElement}
+        {positionElement}
+        {summaryLinesElement}
+        {locationElement}
+        {tagsElement}
+        {socialLinksElement}
+      </div>
     </div>
   );
 };
