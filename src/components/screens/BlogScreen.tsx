@@ -4,7 +4,7 @@ import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
 import PostsList from '../elements/PostsList';
 import { BlogPageQuery } from '../../pages/__generated__/BlogPageQuery';
-import H, { hLevel } from '../shared/H';
+import PageHeader from '../shared/PageHeader';
 
 type BlogScreenProps = {
   posts: BlogPageQuery;
@@ -16,7 +16,7 @@ const BlogScreen = (props: BlogScreenProps): React.ReactElement => {
   return (
     <PageLayout>
       <ScreenTitle title="Blog" />
-      <H level={hLevel.h1}>Blog</H>
+      <PageHeader>Blog</PageHeader>
       <PostsList posts={posts} />
     </PageLayout>
   );
