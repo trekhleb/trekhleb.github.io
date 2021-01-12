@@ -6,6 +6,7 @@ import Avatar from '../shared/Avatar';
 import Location from '../shared/Location';
 import H, { hLevel } from '../shared/H';
 import Tags from '../shared/Tags';
+import SocialLinks from '../shared/SocialLinks';
 
 type ProfileProps = {
   profile: ProfileType,
@@ -66,6 +67,10 @@ const Profile = (props: ProfileProps): React.ReactElement => {
     </div>
   ) : null;
 
+  const socialLinksElement = (
+    <SocialLinks links={profile?.socialLinks} />
+  );
+
   return (
     <div>
       {avatarElement}
@@ -74,6 +79,7 @@ const Profile = (props: ProfileProps): React.ReactElement => {
       {summaryLinesElement}
       {locationElement}
       {tagsElement}
+      {socialLinksElement}
     </div>
   );
 };

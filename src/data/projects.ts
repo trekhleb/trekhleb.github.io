@@ -46,7 +46,6 @@ export const projects: Project[] = [
       { name: 'AI' },
       { name: 'Machine Learning' },
       { name: 'TensorFlow' },
-      { name: 'TensorFlow' },
       { name: 'Python' },
       { name: 'JavaScript' },
       { name: 'React' },

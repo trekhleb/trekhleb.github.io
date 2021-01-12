@@ -16,7 +16,6 @@ const AboutScreen = (props: AboutScreenProps): React.ReactElement => {
   return (
     <PageLayout>
       <ScreenTitle title="About" />
-      <H level={hLevel.h1}>About</H>
       <Profile profile={profile} />
     </PageLayout>
   );

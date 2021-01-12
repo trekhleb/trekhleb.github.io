@@ -1,15 +1,19 @@
 import React from 'react';
-import { Link } from 'gatsby';
 
 import { routes } from '../../constants/routes';
 import { brandName } from '../../constants/siteMeta';
+import type { Link as LinkType } from '../../types/Link';
+import HyperLink from './HyperLink';
 
 const Logo = (): React.ReactElement => {
+  const link: LinkType = {
+    url: routes.home.path,
+  };
   return (
     <div>
-      <Link to={routes.home.path} className="font-extrabold text-sm tracking-widest uppercase">
+      <HyperLink link={link} className="font-extrabold text-sm tracking-widest uppercase">
         {brandName}
-      </Link>
+      </HyperLink>
     </div>
   );
 };

@@ -16,9 +16,9 @@ type HProps = {
 };
 
 const classes = {
-  [hLevel.h1]: 'text-3xl mb-6 mt-0',
-  [hLevel.h2]: 'text-2xl mb-6 mt-0',
-  [hLevel.h3]: 'text-xl mb-6 mt-0',
+  [hLevel.h1]: 'text-3xl',
+  [hLevel.h2]: 'text-2xl',
+  [hLevel.h3]: 'text-xl',
 };
 
 const H = (props: HProps): React.ReactElement | null => {

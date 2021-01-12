@@ -2,6 +2,7 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import type { Link as LinkType } from '../../types/Link';
+import { activeLinkColor } from '../../constants/style';
 
 type HyperLinkProps = {
   link: LinkType,
@@ -24,7 +25,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     return null;
   }
 
-  const commonClasses = 'flex flex-row items-center';
+  const commonClasses = `flex flex-row items-center hover:${activeLinkColor}`;
 
   const isExternal = link.url.startsWith('http');
 

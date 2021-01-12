@@ -17,4 +17,5 @@ type socialLinkTypesValues = typeof socialLinkTypes[socialLinkTypesKeys];
 
 export interface SocialLink extends Link {
   type?: socialLinkTypesValues,
+  secondary?: boolean,
 }
