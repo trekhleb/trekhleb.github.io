@@ -5,13 +5,19 @@ import HyperLink from './HyperLink';
 import { issuesURL } from '../../constants/links';
 import { Link } from '../../types/Link';
 
-const Footer = (): React.ReactElement => {
+type FooterProps = {
+  className?: string,
+};
+
+const Footer = (props: FooterProps): React.ReactElement => {
+  const { className = '' } = props;
+
   const issuesLink: Link = {
     url: issuesURL,
   };
 
   return (
-    <footer className="p-12">
+    <footer className={`${className}`}>
       <HyperLink
         link={issuesLink}
         className="text-xs"

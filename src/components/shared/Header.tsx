@@ -2,9 +2,15 @@ import React from 'react';
 import Logo from './Logo';
 import NavMenu from './NavMenu';
 
-const Header = (): React.ReactElement => {
+type HeaderProps = {
+  className?: string,
+};
+
+const Header = (props: HeaderProps): React.ReactElement => {
+  const { className = '' } = props;
+
   return (
-    <header className="flex flex-row items-center py-6 px-12">
+    <header className={`flex flex-row items-center ${className}`}>
       <div className="mr-6">
         <Logo />
       </div>

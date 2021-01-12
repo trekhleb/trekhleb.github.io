@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../shared/Header';
 import Footer from '../shared/Footer';
+import { layoutPaddingX, layoutPaddingY } from '../../constants/style';
 
 type PageLayoutProps = {
   children: React.ReactNode,
@@ -15,11 +16,11 @@ const PageLayout = (props: PageLayoutProps): React.ReactElement | null => {
 
   return (
     <main>
-      <Header />
-      <article className="px-12 py-6">
+      <Header className={`${layoutPaddingX} ${layoutPaddingY}`} />
+      <article className={`${layoutPaddingX} ${layoutPaddingY}`}>
         {children}
       </article>
-      <Footer />
+      <Footer className={`${layoutPaddingX} ${layoutPaddingY}`} />
     </main>
   );
 };

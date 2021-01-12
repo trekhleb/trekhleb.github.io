@@ -7,6 +7,7 @@ import Location from '../shared/Location';
 import H, { hLevel } from '../shared/H';
 import Tags from '../shared/Tags';
 import SocialLinks from '../shared/SocialLinks';
+import Greeting from '../shared/Greeting';
 
 type ProfileProps = {
   profile: ProfileType,
@@ -16,7 +17,7 @@ const Profile = (props: ProfileProps): React.ReactElement => {
   const { profile } = props;
 
   const avatarElement = profile.avatar ? (
-    <div className="mr-0 mb-3 sm:mr-6 sm:mb-0">
+    <div className="mr-0 mb-6 sm:mr-6 sm:mb-0">
       <Avatar avatar={profile.avatar} className="w-64 h-64 rounded-full overflow-hidden" />
     </div>
   ) : null;
@@ -72,15 +73,20 @@ const Profile = (props: ProfileProps): React.ReactElement => {
   );
 
   return (
-    <div className="flex flex-col items-center sm:flex-row">
-      {avatarElement}
-      <div className="flex flex-col justify-center items-center sm:items-start">
-        {userNameElement}
-        {positionElement}
-        {summaryLinesElement}
-        {locationElement}
-        {tagsElement}
-        {socialLinksElement}
+    <div>
+      <div className="flex flex-col items-center sm:flex-row mb-12">
+        {avatarElement}
+        <div className="flex flex-col justify-center items-center sm:items-start">
+          {userNameElement}
+          {positionElement}
+          {summaryLinesElement}
+          {locationElement}
+          {tagsElement}
+          {socialLinksElement}
+        </div>
+      </div>
+      <div>
+        <Greeting />
       </div>
     </div>
   );
