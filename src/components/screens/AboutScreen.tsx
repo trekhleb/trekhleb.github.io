@@ -4,7 +4,6 @@ import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
 import type { Profile as ProfileType } from '../../types/Profile';
 import Profile from '../elements/Profile';
-import H, { hLevel } from '../shared/H';
 
 type AboutScreenProps = {
   profile: ProfileType,
