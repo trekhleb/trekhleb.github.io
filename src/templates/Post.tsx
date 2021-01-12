@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { graphql, PageProps } from 'gatsby';
 import { PostTemplateQuery } from './__generated__/PostTemplateQuery';
+import PostScreen from '../components/screens/PostScreen';
 
 interface BlogPostProps extends PageProps {
   data: PostTemplateQuery,
@@ -19,14 +20,8 @@ export const query = graphql`
 
 const BlogPost = (props: BlogPostProps): React.ReactElement => {
   const { data } = props;
-  const post = data.markdownRemark;
   return (
-    <div>
-      <div>
-        <h1>{post?.frontmatter?.title}</h1>
-        <div dangerouslySetInnerHTML={{ __html: post?.html || '' }} />
-      </div>
-    </div>
+    <PostScreen post={data} />
   );
 };
 

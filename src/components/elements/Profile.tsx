@@ -28,7 +28,7 @@ const Profile = (props: ProfileProps): React.ReactElement => {
 
   const userNameElement = userName ? (
     <div className="flex flex-row text-center">
-      <H level={hLevel.h2} className="mb-1">
+      <H level={hLevel.h1} className="mb-1">
         {userName}
       </H>
     </div>
