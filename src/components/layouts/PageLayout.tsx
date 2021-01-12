@@ -16,7 +16,7 @@ const PageLayout = (props: PageLayoutProps): React.ReactElement | null => {
   return (
     <main>
       <Header />
-      <article className="p-6">
+      <article className="px-12 py-6">
         {children}
       </article>
       <Footer />

@@ -18,8 +18,8 @@ const Cards = (props: CardsProps): React.ReactElement | null => {
   }
 
   const modeClasses = mode === cardModeGrid
-    ? 'grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
-    : 'grid gap-8 grid-cols-1';
+    ? 'grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+    : 'grid gap-12 grid-cols-1';
 
   return (
     <div className={`${modeClasses}`}>

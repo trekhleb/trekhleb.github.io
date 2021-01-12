@@ -11,7 +11,7 @@ const Footer = (): React.ReactElement => {
   };
 
   return (
-    <footer className="p-6">
+    <footer className="p-12">
       <HyperLink
         link={issuesLink}
         className="text-xs"
