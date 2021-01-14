@@ -947,26 +947,6 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "port",
-                  "description": "",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "IntQueryOperatorInput",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
-                  "name": "host",
-                  "description": "",
-                  "type": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "StringQueryOperatorInput",
-                    "ofType": null
-                  },
-                  "defaultValue": null
-                },
-                {
                   "name": "polyfill",
                   "description": "",
                   "type": {
@@ -13399,30 +13379,6 @@
               "deprecationReason": null
             },
             {
-              "name": "port",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Int",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "host",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "polyfill",
               "description": null,
               "args": [],
@@ -13588,26 +13544,6 @@
               "defaultValue": null
             },
             {
-              "name": "port",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "IntQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "host",
-              "description": "",
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "StringQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
               "name": "polyfill",
               "description": "",
               "type": {
@@ -13733,18 +13669,6 @@
             },
             {
               "name": "siteMetadata___description",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "port",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "host",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -15008,6 +14932,16 @@
               "defaultValue": null
             },
             {
+              "name": "trackingIds",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "pathCheck",
               "description": "",
               "type": {
@@ -16256,6 +16190,22 @@
                 "kind": "SCALAR",
                 "name": "Boolean",
                 "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "trackingIds",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                }
               },
               "isDeprecated": false,
               "deprecationReason": null
@@ -17996,6 +17946,12 @@
             },
             {
               "name": "pluginCreator___pluginOptions___showLineNumbers",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___pluginOptions___trackingIds",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -22741,6 +22697,12 @@
             },
             {
               "name": "pluginOptions___showLineNumbers",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginOptions___trackingIds",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

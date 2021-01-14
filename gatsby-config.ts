@@ -1,5 +1,6 @@
 import { GatsbyConfig } from 'gatsby';
 import { siteMetadata } from './src/data/siteMetadata';
+import { GOOGLE_ANALYTICS_ID } from './src/config/analytics';
 
 const gatsbyConfig: GatsbyConfig = {
   siteMetadata,
@@ -58,6 +59,17 @@ const gatsbyConfig: GatsbyConfig = {
               showLineNumbers: false,
             },
           },
+        ],
+      },
+    },
+
+    // @see: https://www.gatsbyjs.com/plugins/gatsby-plugin-google-gtag/
+    {
+      resolve: 'gatsby-plugin-google-gtag',
+      options: {
+        // You can add multiple tracking ids and a page-view event will be fired for all of them.
+        trackingIds: [
+          GOOGLE_ANALYTICS_ID,
         ],
       },
     },

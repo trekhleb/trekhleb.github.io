@@ -6,7 +6,36 @@ In progress....
 
 ## Development
 
-### Icons
+[Gatsby cheat-sheet](https://www.gatsbyjs.com/gatsby-cheat-sheet.pdf)
+
+### Running the project locally
+
+To run project locally in development mode on [http://localhost:8000](http://localhost:8000):
+
+```bash
+npm run develop
+```
+
+To build the production version of the project:
+
+```bash
+npm run build
+```
+
+Serve the production build for testing on [http://localhost:9000](http://localhost:9000):
+
+```bash
+npm run serve
+```
+
+To do ESLint and Type checking:
+
+```bash
+npm run lint
+npm run type
+```
+
+### Working with icons
 
 Use [react-icons.github.io](https://react-icons.github.io/react-icons) to search for available icons.
 
