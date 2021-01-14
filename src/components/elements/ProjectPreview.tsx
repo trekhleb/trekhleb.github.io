@@ -1,4 +1,6 @@
 import React from 'react';
+import { IoPlay } from '@react-icons/all-files/io5/IoPlay';
+import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 
 import { Project as ProjectType } from '../../types/Project';
 import DateRange from '../shared/DateRange';
@@ -8,6 +10,8 @@ import CardMedia from '../shared/CardMedia';
 import Tags from '../shared/Tags';
 import FluidImage from '../shared/FluidImage';
 import CardTitle from '../shared/CardTitle';
+import HyperLink from '../shared/HyperLink';
+import CardActions from '../shared/CardActions';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -19,12 +23,6 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   if (!project) {
     return null;
   }
-
-  const projectName = (
-    <CardTitle>
-      {project.name}
-    </CardTitle>
-  );
 
   const projectTags = project?.tags ? (
     <div>
@@ -57,6 +55,18 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     </div>
   ) : null;
 
+  const demoLink = project.demoURL ? (
+    <HyperLink link={project.demoURL} startEnhancer={<IoPlay />}>
+      Launch
+    </HyperLink>
+  ) : null;
+
+  const sourceCodeLink = project.srcURL ? (
+    <HyperLink link={project.srcURL} startEnhancer={<FaGithub />}>
+      Source Code
+    </HyperLink>
+  ) : null;
+
   const projectCover = project.cover ? (
     <FluidImage image={project.cover} />
   ) : null;
@@ -67,8 +77,14 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         {projectCover}
       </CardMedia>
       <CardContent>
-        {projectName}
+        <CardTitle link={project.demoURL || project.srcURL}>
+          {project.name}
+        </CardTitle>
         {projectSummary}
+        <CardActions>
+          {demoLink}
+          {sourceCodeLink}
+        </CardActions>
         {projectTags}
         {projectDates}
       </CardContent>
