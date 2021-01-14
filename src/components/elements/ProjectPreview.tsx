@@ -7,7 +7,7 @@ import CardContent from '../shared/CardContent';
 import CardMedia from '../shared/CardMedia';
 import Tags from '../shared/Tags';
 import FluidImage from '../shared/FluidImage';
-import H, { hLevel } from '../shared/H';
+import CardTitle from '../shared/CardTitle';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -21,9 +21,9 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   }
 
   const projectName = (
-    <H level={hLevel.h3}>
+    <CardTitle>
       {project.name}
-    </H>
+    </CardTitle>
   );
 
   const projectTags = project?.tags ? (
@@ -37,7 +37,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
       <DateRange
         startDate={project.startDate}
         endDate={project.endDate}
-        className='className="text-sm text-gray-600 font-light"'
+        className="text-sm text-gray-600 font-light"
       />
     </div>
   );
@@ -52,7 +52,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   ) : null;
 
   const projectSummary = projectSummaryLines ? (
-    <div className="mb-3">
+    <div className="mb-3 font-light">
       {projectSummaryLines}
     </div>
   ) : null;
@@ -68,9 +68,9 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
       </CardMedia>
       <CardContent>
         {projectName}
-        {projectDates}
         {projectSummary}
         {projectTags}
+        {projectDates}
       </CardContent>
     </Card>
   );
