@@ -1,6 +1,7 @@
 ---
-title: "NanoNeuron"
+title: "NanoNeuron - 7 simple JS functions that explain how machines learn"
 date: "2017-08-10"
+cover: "../images/posts/nano-neuron/01-header.png"
 ---
 
 7 simple JavaScript functions that will give you a feeling of how machines can actually "learn".
@@ -19,7 +20,7 @@ You've probably heard about Neurons in the context of [Neural Networks](https://
 
 By the way, the formula for converting Celsius to Fahrenheit is this:
 
-![Celsius to Fahrenheit](https://github.com/trekhleb/nano-neuron/blob/master/assets/01_celsius_to_fahrenheit.png?raw=true)
+![Celsius to Fahrenheit](../images/posts/nano-neuron/02-formula-C-to-F.png)
 
 But for now our NanoNeuron doesn't know about it...
 
@@ -227,10 +228,10 @@ function trainModel({model, epochs, alpha, xTrain, yTrain}) {
     // Forward propagation.
     const [predictions, cost] = forwardPropagation(model, xTrain, yTrain);
     costHistory.push(cost);
-  
+
     // Backward propagation.
     const [dW, dB] = backwardPropagation(predictions, xTrain, yTrain);
-  
+
     // Adjust our NanoNeuron parameters to increase accuracy of our model predictions.
     nanoNeuron.w += alpha * dW;
     nanoNeuron.b += alpha * dB;
@@ -266,7 +267,7 @@ const alpha = 0.0005;
 const trainingCostHistory = trainModel({model: nanoNeuron, epochs, alpha, xTrain, yTrain});
 ```
 
-Let's check how the cost function was changing during the training. We're expecting that the cost after the training should be much lower than before. This would mean that NanoNeuron got smarter. The opposite is also possible. 
+Let's check how the cost function was changing during the training. We're expecting that the cost after the training should be much lower than before. This would mean that NanoNeuron got smarter. The opposite is also possible.
 
 ```javascript
 console.log('Cost before the training:', trainingCostHistory[0]); // i.e. -> 4694.3335043

@@ -37,7 +37,7 @@ const DateRange = (props: DateRangeProps): React.ReactElement | null => {
 
   const startDateString = startDate ? dateToString(new Date(startDate)) : null;
 
-  const dateSeparator = startDate || endDate ? ' → ' : null;
+  const dateSeparator = startDate && endDate ? ' → ' : null;
 
   const endDateString = endDate ? dateToString(new Date(endDate)) : null;
 

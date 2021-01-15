@@ -10,9 +10,16 @@ interface BlogPostProps extends PageProps {
 export const query = graphql`
   query PostTemplateQuery ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      timeToRead
       html
+      excerpt(pruneLength: 300, format: PLAIN)
+      fields {
+        slug
+      }
       frontmatter {
         title
+        date(formatString: "DD MMMM, YYYY")
       }
     }
   }

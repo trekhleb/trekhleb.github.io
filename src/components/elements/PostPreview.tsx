@@ -5,6 +5,7 @@ import Card from '../shared/Card';
 import CardContent from '../shared/CardContent';
 import type { Link as LinkType } from '../../types/Link';
 import CardTitle from '../shared/CardTitle';
+import DateRange from '../shared/DateRange';
 
 type PostPreviewProps = {
   post: BlogPageQuery_allMarkdownRemark_nodes,
@@ -29,10 +30,15 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
     </div>
   ) : null;
 
+  const dateElement = post?.frontmatter?.date ? (
+    <DateRange startDate={post.frontmatter.date} />
+  ) : null;
+
   return (
     <Card>
       <CardContent>
         {postTitleLink}
+        {dateElement}
         {postSummary}
       </CardContent>
     </Card>
