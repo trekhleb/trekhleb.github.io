@@ -1,8 +1,8 @@
 import { useFluidCovers } from './useFluidCovers';
 import {
   UseImagesQuery_allFile_nodes,
-  UseImagesQuery_allFile_nodes_childImageSharp,
 } from './__generated__/UseImagesQuery';
+import { FluidImage } from '../types/Image';
 
 type UseFluidCoverProps = {
   imagePath?: string | null | undefined,
@@ -10,7 +10,7 @@ type UseFluidCoverProps = {
 
 export const useFluidCover = (
   props: UseFluidCoverProps,
-): UseImagesQuery_allFile_nodes_childImageSharp | undefined | null => {
+): FluidImage | undefined | null => {
   const { imagePath } = props;
   const allImages: UseImagesQuery_allFile_nodes[] = useFluidCovers();
 
@@ -28,5 +28,5 @@ export const useFluidCover = (
     return undefined;
   }
 
-  return foundNode?.childImageSharp;
+  return foundNode?.childImageSharp?.fluid;
 };

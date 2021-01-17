@@ -6,6 +6,8 @@ import CardContent from '../shared/CardContent';
 import type { Link as LinkType } from '../../types/Link';
 import CardTitle from '../shared/CardTitle';
 import DateRange from '../shared/DateRange';
+import FluidImage from '../shared/FluidImage';
+import CardMedia from '../shared/CardMedia';
 
 type PostPreviewProps = {
   post: BlogPageQuery_allMarkdownRemark_nodes,
@@ -17,6 +19,10 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   const postLink: LinkType = {
     url: post.fields?.slug,
   };
+
+  const postCover = post.frontmatter?.cover?.childImageSharp?.fluid ? (
+    <FluidImage fluidImage={post.frontmatter?.cover?.childImageSharp?.fluid} />
+  ) : null;
 
   const postTitleLink = post.fields?.slug ? (
     <CardTitle link={postLink}>
@@ -36,6 +42,9 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
 
   return (
     <Card>
+      <CardMedia>
+        {postCover}
+      </CardMedia>
       <CardContent>
         {postTitleLink}
         {dateElement}

@@ -22,6 +22,19 @@ export const query = graphql`
         frontmatter {
           title
           date(formatString: "DD MMMM, YYYY")
+          cover {
+            childImageSharp {
+              fluid(
+                fit: COVER,
+                cropFocus: CENTER,
+                grayscale: false,
+                quality: 90,
+                maxWidth: 1000
+              ) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

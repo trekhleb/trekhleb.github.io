@@ -1,19 +1,21 @@
 import React from 'react';
 import Img from 'gatsby-image';
 
-import { Image } from '../../types/Image';
+import { Image, FluidImage as FluidImageType } from '../../types/Image';
 import { useFluidCover } from '../../hooks/useFluidCover';
 
 type FluidImageProps = {
-  image: Image | null | undefined,
+  image?: Image | null | undefined,
+  fluidImage?: FluidImageType | null | undefined,
 };
 
 const FluidImage = (props: FluidImageProps): React.ReactElement | null => {
-  const { image } = props;
+  const { image, fluidImage: fluidImageProvided } = props;
 
-  const fluidImage = useFluidCover({ imagePath: image?.srcPath });
+  const fluidImageFetched = useFluidCover({ imagePath: image?.srcPath });
+  const fluidImage = fluidImageProvided || fluidImageFetched;
 
-  if (!image || !fluidImage) {
+  if (!fluidImage) {
     // @TODO: Consider to return an image placeholder.
     return null;
   }
@@ -21,7 +23,7 @@ const FluidImage = (props: FluidImageProps): React.ReactElement | null => {
   return (
     <Img
       // @ts-ignore
-      fluid={fluidImage.fluid}
+      fluid={fluidImage}
       style={{ height: '100%' }}
       alt={image?.caption || ''}
       title={image?.caption || ''}
