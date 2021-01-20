@@ -15,3 +15,9 @@ Adding base styles
 
 @tailwind components;
 @tailwind utilities;
+
+/* Removing the backticks from inline code-blocks that were added by Tailwind */
+.prose code::before,
+.prose code::after {
+  content: "" !important;
+}

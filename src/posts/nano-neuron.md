@@ -44,7 +44,7 @@ function NanoNeuron(w, b) {
 }
 ```
 
-_(...wait... [linear regression](https://en.wikipedia.org/wiki/Linear_regression) is it you?)_  🧐
+...wait... [linear regression](https://en.wikipedia.org/wiki/Linear_regression) is it you?  🧐
 
 ### Celsius to Fahrenheit conversion
 
