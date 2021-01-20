@@ -15,12 +15,12 @@ export const query = graphql`
       nodes {
         id
         timeToRead
-        excerpt(pruneLength: 300, format: PLAIN)
         fields {
           slug
         }
         frontmatter {
           title
+          summary
           date(formatString: "DD MMMM, YYYY")
           cover {
             childImageSharp {

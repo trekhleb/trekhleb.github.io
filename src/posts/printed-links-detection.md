@@ -1,7 +1,11 @@
 ---
-title: "📖 👆🏻 Making the Printed Links Clickable Using TensorFlow 2 Object Detection API"
-date: "2018-08-10"
+title: "Making the Printed Links Clickable Using TensorFlow 2 Object Detection API"
+date: "2020-12-01"
+cover: "../images/posts/printed-links-detection/01-cover.png"
+summary: "In this article we will start solving the issue of making the printed links (i.e. in a book or in a magazine) clickable via your smartphone camera"
 ---
+
+# Making the Printed Links Clickable Using TensorFlow 2 Object Detection API
 
 ![Links Detector Cover](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/01-banner.png)
 
@@ -11,7 +15,7 @@ _In this article we will start solving the issue of making the printed links (i.
 
 We will use [TensorFlow 2 Object Detection API](https://github.com/tensorflow/models/tree/master/research/object_detection) to train a custom object detector model to find positions and bounding boxes of the sub-strings like `https://` in the text image (i.e. in smartphone camera stream).
 
-The text of each link (right continuation of `https://` bounding box) will be recognized by using [Tesseract](https://tesseract.projectnaptha.com/) library. The recognition part will not be covered in this article, but you may find the complete code example of the application in [links-detector repository](https://github.com/trekhleb/links-detector).   
+The text of each link (right continuation of `https://` bounding box) will be recognized by using [Tesseract](https://tesseract.projectnaptha.com/) library. The recognition part will not be covered in this article, but you may find the complete code example of the application in [links-detector repository](https://github.com/trekhleb/links-detector).
 
 > 🚀 [**Launch Links Detector demo**](https://trekhleb.github.io/links-detector/) from your smartphone to see the final result.
 
@@ -19,7 +23,7 @@ The text of each link (right continuation of `https://` bounding box) will be re
 
 Here is how the final solution will look like:
 
-![Links Detector Demo](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/03-links-detector-demo.gif)
+![Links Detector Demo](../images/posts/printed-links-detection/02-demo.gif)
 
 > ⚠️ Currently the application is in _experimental_ _Alpha_ stage and has [many issues and limitations](https://github.com/trekhleb/links-detector/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement). So don't raise your expectations level too high until these issues are resolved 🤷🏻‍. Also, the purpose of this article is more about learning how to work with TensorFlow 2 Object Detection API rather than coming up with a production-ready model.
 
@@ -81,7 +85,7 @@ Let's see how we could approach the problem on a high level.
 
 - 💔 System complexity growth. The application tech stack grew from just `JavaScript` to, let's say, `JavaScript + Python`. We need to take care of the autoscaling.
 - 💔 Offline mode for the app is not possible since it needs an internet connection to work.
-- 💔 Too many HTTP requests between the client and the server may become a bottleneck at some point. Imagine if we would want to improve the performance of the detection, let's say, from `1` to `10+` frames per second. This means that each client will send `10+` requests per second. For `10` simultaneous clients it is already `100+` requests per second. The `HTTP/2` bidirectional streaming and `gRPC` might be useful in this case, but we're going back to the increased system complexity here.  
+- 💔 Too many HTTP requests between the client and the server may become a bottleneck at some point. Imagine if we would want to improve the performance of the detection, let's say, from `1` to `10+` frames per second. This means that each client will send `10+` requests per second. For `10` simultaneous clients it is already `100+` requests per second. The `HTTP/2` bidirectional streaming and `gRPC` might be useful in this case, but we're going back to the increased system complexity here.
 - 💔 System becomes more expensive. Almost all points from the Pros section need to be paid for.
 
 #### Option 2: Detection model on the front-end
@@ -96,16 +100,16 @@ Let's see how we could approach the problem on a high level.
 
 **Pros:**
 
-- 💚 System is less complex. We don't need to set up the servers, build the API, and introduce an additional Python stack to the system. 
+- 💚 System is less complex. We don't need to set up the servers, build the API, and introduce an additional Python stack to the system.
 - 💚 Offline mode is possible. The app doesn't need an internet connection to work since the model is fully loaded to the device. So the Progressive Web Application ([PWA](https://web.dev/progressive-web-apps/)) might be built to support that.
-- 💚 System is "kind of" scaling automatically. The more clients you have, the more cores and GPUs they bring. This is not a proper scaling solution though (more about that in a Cons section below). 
+- 💚 System is "kind of" scaling automatically. The more clients you have, the more cores and GPUs they bring. This is not a proper scaling solution though (more about that in a Cons section below).
 - 💚 System is cheaper. We only need a server for static assets (`HTML`, `JS`, `CSS`, model files, etc.). This may be done for free, let's say, on GitHub.
 - 💚 No issue with the growing number of HTTP requests per second to the server-side.
 
 **Cons:**
 
 - 💔 Only horizontal scaling is possible (each client will have its own CPU/GPU). Vertical scaling is not possible since we can't influence the client's device performance. As a result, we can't guarantee fast detection for low performant devices.
-- 💔 It is not possible to guard the model usage and control the callers/clients of the model. Everyone could download the model and re-use it. 
+- 💔 It is not possible to guard the model usage and control the callers/clients of the model. Everyone could download the model and re-use it.
 - 💔 Battery consumption of the client's device might become an issue. For the model to work it needs computational resources. So clients might not be happy with their iPhone getting warmer and warmer while the app is working.
 
 #### High-level conclusion
@@ -150,7 +154,7 @@ const extractLinkFromText = (text: string): string | null => {
 
 💔 The thing is that the _recognition + detection_ time may vary from `2` to `20+` seconds depending on the size of the text, on the amount of "something that looks like a text" on the image, on the image quality and on other factors. So it will be really hard to achieve those `0.5-1` frames per second to make the user experience at least _close_ to real-time.
 
-💔 Also if we would think about it, we're asking the library to recognize the **whole** text from the image for us even though it might contain only one or two links in it (i.e. only ~10% of the text might be useful for us), or it may even not contain the links at all. In this case, it sounds like a waste of computational resources. 
+💔 Also if we would think about it, we're asking the library to recognize the **whole** text from the image for us even though it might contain only one or two links in it (i.e. only ~10% of the text might be useful for us), or it may even not contain the links at all. In this case, it sounds like a waste of computational resources.
 
 #### Option 2: Tesseract + TensorFlow based solution
 
@@ -169,7 +173,7 @@ Take a look at the picture below:
 
 You may notice that Tesseract needs to do **much less** work in case if it would have some hints about where are the links might be located (see the number of blue boxes on both pictures).
 
-So the question now is which object detection model we should choose and how to re-train it to support the detection of the custom `https://` objects.  
+So the question now is which object detection model we should choose and how to re-train it to support the detection of the custom `https://` objects.
 
 > Finally! We've got closer to the TensorFlow part of the article 😀
 
@@ -178,7 +182,7 @@ So the question now is which object detection model we should choose and how to 
 Training a new object detection model is not a reasonable option in our context because of the following reasons:
 
 - 💔 The training process might take days/weeks and bucks.
-- 💔 We most probably won't be able to collect hundreds of thousands of _labeled_ images of the books that have links in them (we might try to generate them though, but more about that later). 
+- 💔 We most probably won't be able to collect hundreds of thousands of _labeled_ images of the books that have links in them (we might try to generate them though, but more about that later).
 
 So instead of creating a new model, we should better teach an existing object detection model to do the custom object detection for us (to do the [transfer learning](https://en.wikipedia.org/wiki/Transfer_learning)). In our case, the "custom objects" would be the images with `https://` text drawn in them. This approach has the following benefits:
 
@@ -242,7 +246,7 @@ The **`ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8`** model might be a good fi
 - 💚 It is relatively lightweight: `20Mb` archived.
 - 💚 It is pretty fast: `39ms` for the detection.
 - 💚 It uses the MobileNet v2 network as a feature extractor which is optimized for usage on mobile devices to reduce energy consumption.
-- 💚 It does the object detection for the whole image and for all objects in it **in one go** regardless of the image content (no [regions proposal](https://en.wikipedia.org/wiki/Region_Based_Convolutional_Neural_Networks) step is involved which makes the detection faster). 
+- 💚 It does the object detection for the whole image and for all objects in it **in one go** regardless of the image content (no [regions proposal](https://en.wikipedia.org/wiki/Region_Based_Convolutional_Neural_Networks) step is involved which makes the detection faster).
 - 💔 It is not the most accurate model though (everything is a tradeoff ⚖️).
 
 The model name encodes some several important characteristics that you may read more about if you want:
@@ -252,7 +256,7 @@ The model name encodes some several important characteristics that you may read 
 - [MobileNet v2](https://ai.googleblog.com/2018/04/mobilenetv2-next-generation-of-on.html) convolutional neural network ([CNN](https://en.wikipedia.org/wiki/Convolutional_neural_network)) is used as a feature extractor.
 - The model was trained on [COCO dataset](https://cocodataset.org/#home)
 
-## 🛠 Installing Object Detection API 
+## 🛠 Installing Object Detection API
 
 In this article, we're going to install the Tensorflow 2 Object Detection API _as a Python package_. It is convenient in case if you're experimenting in [Google Colab](https://colab.research.google.com/) (recommended) or in [Jupyter](https://jupyter.org/try). For both cases no local installation is needed, you may experiment right in your browser.
 
@@ -329,7 +333,7 @@ CACHE_FOLDER = './cache'
 def download_tf_model(model_name, cache_folder):
     model_url = TF_MODELS_BASE_PATH + model_name + '.tar.gz'
     model_dir = tf.keras.utils.get_file(
-        fname=model_name, 
+        fname=model_name,
         origin=model_url,
         untar=True,
         cache_dir=pathlib.Path(cache_folder).absolute()
@@ -391,7 +395,7 @@ def load_coco_labels():
         use_display_name=True
     )
     category_index = label_map_util.create_category_index(categories)
-    
+
     # Class Name to Class ID mapping.
     label_map_dict = label_map_util.get_label_map_dict(label_map, use_display_name=True)
 
@@ -459,7 +463,7 @@ def detection_fn_from_checkpoint(config_path, checkpoint_path):
         detections = model.postprocess(prediction_dict, shapes)
 
         return detections, prediction_dict, tf.reshape(shapes, [-1])
-    
+
     return detect_fn
 
 inference_detect_fn = detection_fn_from_checkpoint(
@@ -743,14 +747,14 @@ def preprocess_resize(target_width):
 def preprocess_crop_square():
     def preprocess(image: Image.Image, log) -> Image.Image:
         (width, height) = image.size
-        
+
         left = 0
         top = 0
         right = width
         bottom = height
-        
+
         crop_size = min(width, height)
-        
+
         if width >= height:
             # Horizontal image.
             log(f'Squre cropping: Horizontal {crop_size}x{crop_size}')
@@ -780,19 +784,19 @@ def preprocess_color(brightness, contrast, color, sharpness):
     # @see: https://pillow.readthedocs.io/en/3.0.x/reference/ImageEnhance.html
     def preprocess(image: Image.Image, log) -> Image.Image:
         log('Coloring')
-        
+
         enhancer = ImageEnhance.Color(image)
         image = enhancer.enhance(color)
 
         enhancer = ImageEnhance.Brightness(image)
         image = enhancer.enhance(brightness)
-        
+
         enhancer = ImageEnhance.Contrast(image)
         image = enhancer.enhance(contrast)
-        
+
         enhancer = ImageEnhance.Sharpness(image)
         image = enhancer.enhance(sharpness)
-        
+
         return image
     return preprocess
 
@@ -800,48 +804,48 @@ def preprocess_color(brightness, contrast, color, sharpness):
 def preprocess_pipeline(src_dir, dest_dir, preprocessors=[], files_num_limit=0, override=False):
     # Create destination folder if not exists.
     Path(dest_dir).mkdir(parents=False, exist_ok=True)
-    
+
     # Get the list of files to be copied.
     src_file_names = os.listdir(src_dir)
     files_total = files_num_limit if files_num_limit > 0 else len(src_file_names)
     files_processed = 0
-    
+
     # Logger function.
     def preprocessor_log(message):
         print('  ' + message)
-    
+
     # Iterate through files.
     for src_file_index, src_file_name in enumerate(src_file_names):
         if files_num_limit > 0 and src_file_index >= files_num_limit:
             break
-            
-        # Copy file.        
+
+        # Copy file.
         src_file_path = os.path.join(src_dir, src_file_name)
         dest_file_path = os.path.join(dest_dir, src_file_name)
-        
+
         progress = math.floor(100 * (src_file_index + 1) / files_total)
         print(f'Image {src_file_index + 1}/{files_total} | {progress}% |  {src_file_path}')
-        
+
         if not os.path.isfile(src_file_path):
             preprocessor_log('Source is not a file, skipping...\n')
             continue
-        
+
         if not override and os.path.exists(dest_file_path):
             preprocessor_log('File already exists, skipping...\n')
             continue
-            
+
         shutil.copy(src_file_path, dest_file_path)
         files_processed += 1
-        
+
         # Preprocess file.
         image = Image.open(dest_file_path)
-        
+
         for preprocessor in preprocessors:
             image = preprocessor(image, preprocessor_log)
-        
+
         image.save(dest_file_path, quality=95)
         print('')
-        
+
     print(f'{files_processed} out of {files_total} files have been processed')
 
 # Launching the image preprocessing pipeline.
@@ -872,17 +876,17 @@ import numpy as np
 def preview_images(images_dir, images_num=1, figsize=(15, 15)):
     image_names = os.listdir(images_dir)
     image_names = image_names[:images_num]
-    
+
     num_cells = math.ceil(math.sqrt(images_num))
     figure = plt.figure(figsize=figsize)
-    
+
     for image_index, image_name in enumerate(image_names):
         image_path = os.path.join(images_dir, image_name)
         image = Image.open(image_path)
-        
+
         figure.add_subplot(num_cells, num_cells, image_index + 1)
         plt.imshow(np.asarray(image))
-    
+
     plt.show()
 
 preview_images('dataset/printed_links/processed', images_num=4, figsize=(16, 16))
@@ -930,13 +934,13 @@ def partition_dataset(
     test_ratio,
     val_ratio,
     copy_xml
-):    
+):
     if not os.path.exists(train_dir):
         os.makedirs(train_dir)
-        
+
     if not os.path.exists(test_dir):
         os.makedirs(test_dir)
-        
+
     if not os.path.exists(val_dir):
         os.makedirs(val_dir)
 
@@ -944,47 +948,47 @@ def partition_dataset(
               if re.search(r'([a-zA-Z0-9\s_\\.\-\(\):])+(.jpg|.jpeg|.png)$', f, re.IGNORECASE)]
 
     num_images = len(images)
-    
+
     num_train_images = math.ceil(train_ratio * num_images)
     num_test_images = math.ceil(test_ratio * num_images)
     num_val_images = math.ceil(val_ratio * num_images)
-    
+
     print('Intended split')
     print(f'  train: {num_train_images}/{num_images} images')
     print(f'  test: {num_test_images}/{num_images} images')
     print(f'  val: {num_val_images}/{num_images} images')
-    
+
     actual_num_train_images = 0
     actual_num_test_images = 0
     actual_num_val_images = 0
-    
+
     def copy_random_images(num_images, dest_dir):
         copied_num = 0
-        
+
         if not num_images:
             return copied_num
-        
+
         for i in range(num_images):
             if not len(images):
                 break
-                
+
             idx = random.randint(0, len(images)-1)
             filename = images[idx]
             shutil.copyfile(os.path.join(images_dir, filename), os.path.join(dest_dir, filename))
-            
+
             if copy_xml:
                 xml_filename = os.path.splitext(filename)[0]+'.xml'
                 shutil.copyfile(os.path.join(xml_labels_dir, xml_filename), os.path.join(dest_dir, xml_filename))
-            
+
             images.remove(images[idx])
             copied_num += 1
-        
+
         return copied_num
-    
+
     actual_num_train_images = copy_random_images(num_train_images, train_dir)
     actual_num_test_images = copy_random_images(num_test_images, test_dir)
     actual_num_val_images = copy_random_images(num_val_images, val_dir)
-    
+
     print('\n', 'Actual split')
     print(f'  train: {actual_num_train_images}/{num_images} images')
     print(f'  test: {actual_num_test_images}/{num_images} images')
@@ -1094,7 +1098,7 @@ def split(df, group):
 def create_tf_example(group, path, label_map_dict):
     with tf1.gfile.GFile(os.path.join(path, '{}'.format(group.filename)), 'rb') as fid:
         encoded_jpg = fid.read()
-        
+
     encoded_jpg_io = io.BytesIO(encoded_jpg)
     image = Image.open(encoded_jpg_io)
     width, height = image.size
@@ -1130,33 +1134,33 @@ def create_tf_example(group, path, label_map_dict):
         'image/object/class/text': dataset_util.bytes_list_feature(classes_text),
         'image/object/class/label': dataset_util.int64_list_feature(classes),
     }))
-    
+
     return tf_example
 
 
 def dataset_to_tfrecord(
     images_dir,
-    xmls_dir, 
+    xmls_dir,
     label_map_path,
     output_path,
     csv_path=None
 ):
     label_map = label_map_util.load_labelmap(label_map_path)
     label_map_dict = label_map_util.get_label_map_dict(label_map)
-    
+
     tfrecord_writer = tf1.python_io.TFRecordWriter(output_path)
     images_path = os.path.join(images_dir)
     csv_examples = xml_to_csv(xmls_dir)
     grouped_examples = split(csv_examples, 'filename')
-    
+
     for group in grouped_examples:
         tf_example = create_tf_example(group, images_path, label_map_dict)
         tfrecord_writer.write(tf_example.SerializeToString())
-        
+
     tfrecord_writer.close()
-    
+
     print('Successfully created the TFRecord file: {}'.format(output_path))
-    
+
     if csv_path is not None:
         csv_examples.to_csv(csv_path, index=None)
         print('Successfully created the CSV file: {}'.format(csv_path))
@@ -1217,7 +1221,7 @@ import tensorflow as tf
 def count_tfrecords(tfrecords_filename):
     raw_dataset = tf.data.TFRecordDataset(tfrecords_filename)
     # Keep in mind that the list() operation might be
-    # a performance bottleneck for large datasets. 
+    # a performance bottleneck for large datasets.
     return len(list(raw_dataset))
 
 TRAIN_RECORDS_NUM = count_tfrecords('dataset/printed_links/tfrecords/train.record')
@@ -1266,7 +1270,7 @@ def visualize_tfrecords(tfrecords_filename, label_map=None, print_num=1):
         with tf.io.gfile.GFile(label_map,'r') as f:
             text_format.Merge(f.read(), label_map_proto)
             class_dict = {}
-            
+
             for entry in label_map_proto.item:
                 class_dict[entry.id] = {'name': entry.name}
 
@@ -1286,9 +1290,9 @@ def visualize_tfrecords(tfrecords_filename, label_map=None, print_num=1):
 
         scores = np.ones(boxes.shape[0])
 
-        visualization_utils.visualize_boxes_and_labels_on_image_array( 
-            image,                                               
-            boxes,                                                     
+        visualization_utils.visualize_boxes_and_labels_on_image_array(
+            image,
+            boxes,
             classes,
             scores,
             class_dict,
@@ -1375,7 +1379,7 @@ from object_detection.protos import pipeline_pb2
 # Adjust pipeline config modification here if needed.
 def modify_config(pipeline):
     # Model config.
-    pipeline.model.ssd.num_classes = 1    
+    pipeline.model.ssd.num_classes = 1
 
     # Train config.
     pipeline.train_config.batch_size = 8
@@ -1407,15 +1411,15 @@ def setup_pipeline(pipeline_config_path):
     return pipeline
 
 def read_pipeline_config(pipeline_config_path):
-    pipeline = pipeline_pb2.TrainEvalPipelineConfig()                                                                                                                                                                                                          
-    with tf.io.gfile.GFile(pipeline_config_path, "r") as f:                                                                                                                                                                                                                     
-        proto_str = f.read()                                                                                                                                                                                                                                          
+    pipeline = pipeline_pb2.TrainEvalPipelineConfig()
+    with tf.io.gfile.GFile(pipeline_config_path, "r") as f:
+        proto_str = f.read()
         text_format.Merge(proto_str, pipeline)
     return pipeline
 
 def write_pipeline_config(pipeline_config_path, pipeline):
-    config_text = text_format.MessageToString(pipeline)                                                                                                                                                                                                        
-    with tf.io.gfile.GFile(pipeline_config_path, "wb") as f:                                                                                                                                                                                                                       
+    config_text = text_format.MessageToString(pipeline)
+    with tf.io.gfile.GFile(pipeline_config_path, "wb") as f:
         f.write(config_text)
 
 # Adjusting the pipeline configuration.
@@ -1645,7 +1649,7 @@ python ./models/research/object_detection/model_main_tf2.py \
   --alsologtostderr
 ```
 
-While the model is training (it may take around`~10 minutes` for `1000` iterations in [GoogleColab GPU](https://colab.research.google.com/notebooks/gpu.ipynb) runtime) you should be able to observe the training progress in TensorBoard. The `localization` and `classification` losses should decrease which means that the model is doing a good job in localizing and classifying new custom objects.  
+While the model is training (it may take around`~10 minutes` for `1000` iterations in [GoogleColab GPU](https://colab.research.google.com/notebooks/gpu.ipynb) runtime) you should be able to observe the training progress in TensorBoard. The `localization` and `classification` losses should decrease which means that the model is doing a good job in localizing and classifying new custom objects.
 
 ![Training Process](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/26-tensorboard-training.jpg)
 
@@ -1686,7 +1690,7 @@ After launching the script you should be able to see several side-by-side images
 
 ## 🗜 Exporting the Model
 
-Once the training process is complete we should save the trained model for further usage. To export the model we will use the [exporter_main_v2.py](https://github.com/tensorflow/models/blob/master/research/object_detection/exporter_main_v2.py) script from Object Detection API. It prepares an object detection TensorFlow graph for inference using model configuration and a trained checkpoint. The script outputs associated checkpoint files, a SavedModel, and a copy of the model config: 
+Once the training process is complete we should save the trained model for further usage. To export the model we will use the [exporter_main_v2.py](https://github.com/tensorflow/models/blob/master/research/object_detection/exporter_main_v2.py) script from Object Detection API. It prepares an object detection TensorFlow graph for inference using model configuration and a trained checkpoint. The script outputs associated checkpoint files, a SavedModel, and a copy of the model config:
 
 ```bash
 %%bash
@@ -1800,7 +1804,7 @@ def tensors_from_tfrecord(
         image = example['image']
         image = tf.cast(image, dtype=dtype)
         images.append(image)
-    
+
     return images
 
 def test_detection(tfrecords_filename, tfrecords_num, detect_fn):
@@ -1810,9 +1814,9 @@ def test_detection(tfrecords_filename, tfrecords_num, detect_fn):
         dtype=tf.uint8
     )
 
-    for image_tensor in image_tensors:   
+    for image_tensor in image_tensors:
         image_np = image_tensor.numpy()
-    
+
         # The model expects a batch of images, so add an axis with `tf.newaxis`.
         input_tensor = tf.expand_dims(image_tensor, 0)
 
@@ -1822,13 +1826,13 @@ def test_detection(tfrecords_filename, tfrecords_num, detect_fn):
         # Convert to numpy arrays, and take index [0] to remove the batch dimension.
         # We're only interested in the first num_detections.
         num_detections = int(detections.pop('num_detections'))
-        
+
         detections = {key: value[0, :num_detections].numpy() for key, value in detections.items()}
         detections['num_detections'] = num_detections
 
         # detection_classes should be ints.
         detections['detection_classes'] = detections['detection_classes'].astype(np.int64)
-        
+
         image_np_with_detections = image_np.astype(int).copy()
 
         visualization_utils.visualize_boxes_and_labels_on_image_array(
@@ -1845,7 +1849,7 @@ def test_detection(tfrecords_filename, tfrecords_num, detect_fn):
 
         plt.figure(figsize=(8, 8))
         plt.imshow(image_np_with_detections)
-        
+
     plt.show()
 
 
@@ -1864,7 +1868,7 @@ The fact that the model is able to detect custom objects (in our case the `https
 
 ## 🗜 Converting the Model for Web
 
-As you remember from the beginning of this article, our goal was to use the custom object detection model in the browser. Luckily, there is a [TensorFlow.js](https://www.tensorflow.org/js) JavaScript version of the TensorFlow library exists. In JavaScript, we can't work with our saved model directly. Instead, we need to convert it to [tfjs_graph_model](https://www.tensorflow.org/js/tutorials/conversion/import_saved_model) format.  
+As you remember from the beginning of this article, our goal was to use the custom object detection model in the browser. Luckily, there is a [TensorFlow.js](https://www.tensorflow.org/js) JavaScript version of the TensorFlow library exists. In JavaScript, we can't work with our saved model directly. Instead, we need to convert it to [tfjs_graph_model](https://www.tensorflow.org/js/tutorials/conversion/import_saved_model) format.
 
 To do this we need to install the tensorflowjs Python package:
 
@@ -1957,6 +1961,6 @@ As the next steps which might improve the model performance we might do the foll
 - etc.
 
 Even though the model has a lot to be improved to make it closer to the production-ready state, I still hope that this article was useful for you and gave you some guidelines and inspiration to play around with your custom object detectors.
- 
+
 Happy training, folks!
 

@@ -1,13 +1,17 @@
 ---
-title: "🤖 Interactive Machine Learning Experiments"
-date: "2020-08-10"
+title: "Interactive Machine Learning Experiments"
+date: "2020-05-05"
+cover: "../images/posts/machine-learning-experiments/01-cover.png"
+summary: "Recognize digits and sketches. Detect objects. Classify images. Write a Shakespeare poem. All with TensorFlow 2 models demo."
 ---
+
+# Interactive Machine Learning Experiments
 
 ## TL;DR
 
 Hey readers!
 
-I've open-sourced new [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) project on GitHub. Each experiment consists of 🏋️ _Jupyter/Colab notebook_ (to see how a model was trained) and 🎨 _demo page_ (to see a model in action right in your browser). 
+I've open-sourced new [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) project on GitHub. Each experiment consists of 🏋️ _Jupyter/Colab notebook_ (to see how a model was trained) and 🎨 _demo page_ (to see a model in action right in your browser).
 
 Although the models may be a little dumb (remember, these are just experiments, not a production ready code), they will try to do their best to:
 
@@ -16,9 +20,9 @@ Although the models may be a little dumb (remember, these are just experiments, 
 - 🌅 Classify your uploaded image
 - 📝 Write a Shakespeare poem with you
 - ✊🖐✌️ Play with you in Rock-Paper-Scissors game
-- etc. 
+- etc.
 
-I've trained the models on _Python_ using _TensorFlow 2_ with _Keras_ support  and then consumed them for a demo in a browser using _React_ and _JavaScript_ version of _Tensorflow_. 
+I've trained the models on _Python_ using _TensorFlow 2_ with _Keras_ support  and then consumed them for a demo in a browser using _React_ and _JavaScript_ version of _Tensorflow_.
 
 ![Interactive Machine Learning Experiments](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/repository-cover.png)
 
@@ -50,13 +54,13 @@ I'm a [software engineer](https://www.linkedin.com/in/trekhleb/) and for the las
 
 ### Models training
 
-- 🏋🏻‍ I used [Keras](https://www.tensorflow.org/guide/keras/overview) inside [TensorFlow 2](https://www.tensorflow.org/) for modelling and training. Since I had zero experience with machine learning frameworks, I needed to start with something. One of the selling points in favor of TensorFlow was that it has both Python and [JavaScript flavor](https://www.tensorflow.org/js) of the library with similar API. So eventually I used Python version for training and JavaScript version for demos. 
+- 🏋🏻‍ I used [Keras](https://www.tensorflow.org/guide/keras/overview) inside [TensorFlow 2](https://www.tensorflow.org/) for modelling and training. Since I had zero experience with machine learning frameworks, I needed to start with something. One of the selling points in favor of TensorFlow was that it has both Python and [JavaScript flavor](https://www.tensorflow.org/js) of the library with similar API. So eventually I used Python version for training and JavaScript version for demos.
 
 - 🏋🏻‍ I trained TensorFlow models on Python inside [Jupyter](https://jupyter.org/) notebooks locally and sometimes used [Colab](https://colab.research.google.com/) to make the training faster on GPU.
 
 - 💻 Most of the models were trained on good old MacBook's Pro CPU (2,9 GHz Dual-Core Intel Core i5).
 
-- 🔢 Of course there is no way you could run away from [NumPy](https://numpy.org/) for matrix/tensors operations.   
+- 🔢 Of course there is no way you could run away from [NumPy](https://numpy.org/) for matrix/tensors operations.
 
 ### Models demo
 
@@ -66,7 +70,7 @@ I'm a [software engineer](https://www.linkedin.com/in/trekhleb/) and for the las
 
 - 👨🏻‍🎨 The [Demo application](http://trekhleb.github.io/machine-learning-experiments) was created on [React](https://reactjs.org/) using [create-react-app](https://github.com/facebook/create-react-app) starter with a default [Flow](https://flow.org/en/) flavour for type checking.
 
-- 💅🏻 For styling, I used [Material UI](https://material-ui.com/). It was, as they say, "to kill two birds" at once and try out a new styling framework (sorry, [Bootstrap](https://getbootstrap.com/) 🤷🏻‍). 
+- 💅🏻 For styling, I used [Material UI](https://material-ui.com/). It was, as they say, "to kill two birds" at once and try out a new styling framework (sorry, [Bootstrap](https://getbootstrap.com/) 🤷🏻‍).
 
 ## Experiments
 
@@ -163,7 +167,7 @@ You upload a picture, and the model tries to classify it depending on what it "s
 
 ![Image Classification (MobileNetV2)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/story/08-image-classification.gif)
 
-### Experiments with Recurrent Neural Networks (RNN) 
+### Experiments with Recurrent Neural Networks (RNN)
 
 > A [recurrent neural network (RNN)](https://en.wikipedia.org/wiki/Recurrent_neural_network) is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc.
 

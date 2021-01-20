@@ -1,10 +1,11 @@
 ---
 title: "NanoNeuron - 7 simple JS functions that explain how machines learn"
-date: "2017-08-10"
-cover: "../images/posts/nano-neuron/01-header.png"
+date: "2019-12-06"
+cover: "../images/posts/nano-neuron/01-cover.png"
+summary: "The NanoNeuron.js code example contains 7 simple JavaScript functions (which touches on model prediction, cost calculation, forward/backwards propagation, and training) that will give you a feeling of how machines can actually learn. No 3rd-party libraries, no external data-sets or dependencies, only pure and simple JavaScript functions."
 ---
 
-7 simple JavaScript functions that will give you a feeling of how machines can actually "learn".
+# NanoNeuron - 7 simple JS functions that explain how machines learn
 
 ## TL;DR
 

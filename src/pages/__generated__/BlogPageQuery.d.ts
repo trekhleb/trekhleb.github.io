@@ -29,6 +29,7 @@ export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover {
 
 export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter {
   title: string | null;
+  summary: string | null;
   date: any | null;
   cover: BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover | null;
 }
@@ -36,7 +37,6 @@ export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter {
 export interface BlogPageQuery_allMarkdownRemark_nodes {
   id: string;
   timeToRead: number | null;
-  excerpt: string | null;
   fields: BlogPageQuery_allMarkdownRemark_nodes_fields | null;
   frontmatter: BlogPageQuery_allMarkdownRemark_nodes_frontmatter | null;
 }

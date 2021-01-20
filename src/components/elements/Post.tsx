@@ -1,7 +1,6 @@
 import React from 'react';
 
 import { PostTemplateQuery } from '../../templates/__generated__/PostTemplateQuery';
-import PageHeader from '../shared/PageHeader';
 import { blogPostColor } from '../../constants/style';
 
 type PostProps = {
@@ -15,8 +14,7 @@ const Post = (props: PostProps): React.ReactElement | null => {
   // @see: https://github.com/tailwindlabs/tailwindcss-typography
   return (
     <div className="flex flex-col items-center">
-      <article className={`w-full prose prose-sm sm:prose ${blogPostColor}`} style={{maxWidth: '100%'}}>
-        <PageHeader>{post.markdownRemark?.frontmatter?.title || ''}</PageHeader>
+      <article className={`w-full prose prose-sm sm:prose ${blogPostColor}`} style={{ maxWidth: '100%' }}>
         <div dangerouslySetInnerHTML={{ __html: post.markdownRemark?.html || '' }} />
       </article>
     </div>

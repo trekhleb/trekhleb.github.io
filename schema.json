@@ -3698,6 +3698,16 @@
                 "ofType": null
               },
               "defaultValue": null
+            },
+            {
+              "name": "summary",
+              "description": "",
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
             }
           ],
           "interfaces": null,
@@ -8572,6 +8582,18 @@
               },
               "isDeprecated": false,
               "deprecationReason": null
+            },
+            {
+              "name": "summary",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
             }
           ],
           "inputFields": null,
@@ -10321,6 +10343,12 @@
             },
             {
               "name": "childMarkdownRemark___frontmatter___cover___children",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "childMarkdownRemark___frontmatter___summary",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -20467,6 +20495,12 @@
               "description": null,
               "isDeprecated": true,
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
+            },
+            {
+              "name": "frontmatter___summary",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
             },
             {
               "name": "excerpt",

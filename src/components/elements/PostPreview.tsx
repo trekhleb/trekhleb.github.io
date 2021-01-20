@@ -13,6 +13,11 @@ type PostPreviewProps = {
   post: BlogPageQuery_allMarkdownRemark_nodes,
 };
 
+// Adjusting the time to read.
+// gatsby-transformer-remark plugin relies on the 265 average words per minute.
+// @see: https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-transformer-remark/src/utils/time-to-read.js
+const timeToReadMultiplier = 0.6;
+
 const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   const { post } = props;
 
@@ -30,14 +35,20 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
     </CardTitle>
   ) : null;
 
-  const postSummary = post?.excerpt ? (
+  const postSummary = post?.frontmatter?.summary ? (
     <div>
-      {post?.excerpt}
+      {post?.frontmatter?.summary}
     </div>
   ) : null;
 
   const dateElement = post?.frontmatter?.date ? (
     <DateRange startDate={post.frontmatter.date} />
+  ) : null;
+
+  const timeToRead = post?.timeToRead ? (
+    <div>
+      {Math.floor(post?.timeToRead * timeToReadMultiplier)} minutes to read
+    </div>
   ) : null;
 
   return (
@@ -49,6 +60,7 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
         {postTitleLink}
         {dateElement}
         {postSummary}
+        {timeToRead}
       </CardContent>
     </Card>
   );
