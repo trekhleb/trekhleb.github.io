@@ -12,6 +12,7 @@ import FluidImage from '../shared/FluidImage';
 import CardTitle from '../shared/CardTitle';
 import HyperLink from '../shared/HyperLink';
 import CardActions from '../shared/CardActions';
+import Row from '../shared/Row';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -25,17 +26,17 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   }
 
   const projectTags = project?.tags ? (
-    <div>
+    <div className="mb-3">
       <Tags tags={project.tags} />
     </div>
   ) : null;
 
   const projectDates = (
-    <div className="mb-3">
+    <div>
       <DateRange
         startDate={project.startDate}
         endDate={project.endDate}
-        className="text-sm text-gray-600 font-light"
+        className="text-xs text-gray-600 font-light"
       />
     </div>
   );
@@ -56,8 +57,12 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   ) : null;
 
   const demoLink = project.demoURL ? (
-    <HyperLink link={project.demoURL} startEnhancer={<IoPlay />}>
-      Launch
+    <HyperLink
+      link={project.demoURL}
+      startEnhancer={<IoPlay />}
+      className="mr-6"
+    >
+      Launch Demo
     </HyperLink>
   ) : null;
 
@@ -82,8 +87,10 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         </CardTitle>
         {projectSummary}
         <CardActions>
-          {demoLink}
-          {sourceCodeLink}
+          <Row>
+            {demoLink}
+            {sourceCodeLink}
+          </Row>
         </CardActions>
         {projectTags}
         {projectDates}

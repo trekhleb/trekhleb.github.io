@@ -5,8 +5,6 @@ cover: "../images/posts/printed-links-detection/01-cover.png"
 summary: "In this article we will start solving the issue of making the printed links (i.e. in a book or in a magazine) clickable via your smartphone camera"
 ---
 
-# Making the Printed Links Clickable Using TensorFlow 2 Object Detection API
-
 ![Links Detector Cover](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/01-banner.png)
 
 ## 📃 TL;DR

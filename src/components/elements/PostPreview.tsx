@@ -10,15 +10,11 @@ import CardTitle from '../shared/CardTitle';
 import FluidImage from '../shared/FluidImage';
 import CardMedia from '../shared/CardMedia';
 import Row from '../shared/Row';
+import { timeToReadMultiplier } from '../../constants/posts';
 
 type PostPreviewProps = {
   post: BlogPageQuery_allMarkdownRemark_nodes,
 };
-
-// Adjusting the time to read.
-// gatsby-transformer-remark plugin relies on the 265 average words per minute.
-// @see: https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-transformer-remark/src/utils/time-to-read.js
-const timeToReadMultiplier = 0.6;
 
 const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   const { post } = props;
@@ -53,7 +49,7 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   const timeToRead = post?.timeToRead ? (
     <Row>
       <FiClock className="mr-1" />
-      {Math.floor(post?.timeToRead * timeToReadMultiplier)} min read
+      {Math.floor(post?.timeToRead * timeToReadMultiplier)} min to read
     </Row>
   ) : null;
 

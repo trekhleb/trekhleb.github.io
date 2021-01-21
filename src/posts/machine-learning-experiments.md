@@ -5,8 +5,6 @@ cover: "../images/posts/machine-learning-experiments/01-cover.png"
 summary: "Recognize digits and sketches. Detect objects. Classify images. Write a Shakespeare poem. All with TensorFlow 2 models demo."
 ---
 
-# Interactive Machine Learning Experiments
-
 ## TL;DR
 
 Hey readers!

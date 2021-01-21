@@ -5,8 +5,6 @@ cover: "../images/posts/recipes-generation/01-cover.jpeg"
 summary: "I've trained a character-level LSTM RNN on ~100k recipes dataset using TensorFlow, and it suggested me to cook Cream Soda with Onions, Puff Pastry Strawberry Soup, Zucchini flavor Tea and Salmon Mousse of Beef and Stilton Salad with Jalapenos"
 ---
 
-# Generating cooking recipes using TensorFlow and LSTM Recurrent Neural Network: A step-by-step guide
-
 ## TL;DR
 
 I've trained a character-level LSTM _(Long short-term memory)_ RNN _(Recurrent Neural Network)_ on _~100k_ recipes dataset using TensorFlow, and it suggested me to cook _"Cream Soda with Onions"_, _"Puff Pastry Strawberry Soup"_, _"Zucchini flavor Tea"_ and _"Salmon Mousse of Beef and Stilton Salad with Jalapenos"_ .
@@ -191,13 +189,13 @@ Here is a path to dataset file after it has been downloaded:
 
 _<small>➔ output:</small>_
 
-> ```text
+> ```shell
 > ./tmp/datasets/recipes_raw.zip
 > ```
 
 Let's print the cache folder and see what exactly has been downloaded:
 
-```bash
+```shell
 !ls -la ./tmp/datasets/
 ```
 

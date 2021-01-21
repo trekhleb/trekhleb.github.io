@@ -18,7 +18,14 @@ const gatsbyConfig: GatsbyConfig = {
     'gatsby-plugin-sharp',
 
     // @see: https://www.gatsbyjs.com/plugins/gatsby-transformer-sharp/
-    'gatsby-transformer-sharp',
+    {
+      resolve: 'gatsby-transformer-sharp',
+      options: {
+        // Suppress the "You can't use childImageSharp together with 02-demo.gif —
+        // use publicURL instead." warning.
+        checkSupportedExtensions: false,
+      },
+    },
 
     // @see: https://www.gatsbyjs.com/plugins/gatsby-source-filesystem/
     {
@@ -57,6 +64,28 @@ const gatsbyConfig: GatsbyConfig = {
             resolve: 'gatsby-remark-prismjs',
             options: {
               showLineNumbers: false,
+              aliases: {
+                sh: 'shell',
+                es6: 'javascript',
+                js: 'javascript',
+                env: 'bash',
+                mdx: 'md',
+                '.json': 'json',
+              },
+            },
+          },
+
+          // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-copy-linked-files/?=gatsby-remark-copy-linked-files
+          {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              // Ignoring these file extensions since they should be recognized and handled
+              // by the gatsby-transformer-sharp plugin.
+              // @see: https://www.gatsbyjs.com/plugins/gatsby-transformer-sharp/#parsing-algorithm
+              ignoreFileExtensions: ['png', 'jpg', 'jpeg', 'tiff', 'tif', 'webp'],
+              // Save files like `02-demo.gif`
+              // to `public/md-assets/2a0039f3a61f4510f41678438e4c863a/02-demo.gif`
+              destinationDir: (f: {name: string, hash: string}): string => `md-assets/${f.hash}/${f.name}`,
             },
           },
         ],
