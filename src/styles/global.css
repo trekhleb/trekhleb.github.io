@@ -21,3 +21,9 @@ Adding base styles
 .prose code::after {
   content: "" !important;
 }
+
+/* Removing the " from quotes that were added by Tailwind */
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: "" !important;
+}

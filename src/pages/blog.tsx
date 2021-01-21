@@ -21,7 +21,7 @@ export const query = graphql`
         frontmatter {
           title
           summary
-          date(formatString: "DD MMMM, YYYY")
+          date(formatString: "MMM D, YYYY")
           cover {
             childImageSharp {
               fluid(

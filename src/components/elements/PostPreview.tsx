@@ -1,13 +1,15 @@
 import React from 'react';
+import { FiCalendar } from '@react-icons/all-files/fi/FiCalendar';
+import { FiClock } from '@react-icons/all-files/fi/FiClock';
 
 import { BlogPageQuery_allMarkdownRemark_nodes } from '../../pages/__generated__/BlogPageQuery';
 import Card from '../shared/Card';
 import CardContent from '../shared/CardContent';
 import type { Link as LinkType } from '../../types/Link';
 import CardTitle from '../shared/CardTitle';
-import DateRange from '../shared/DateRange';
 import FluidImage from '../shared/FluidImage';
 import CardMedia from '../shared/CardMedia';
+import Row from '../shared/Row';
 
 type PostPreviewProps = {
   post: BlogPageQuery_allMarkdownRemark_nodes,
@@ -36,19 +38,23 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   ) : null;
 
   const postSummary = post?.frontmatter?.summary ? (
-    <div>
+    <div className="mb-3">
       {post?.frontmatter?.summary}
     </div>
   ) : null;
 
   const dateElement = post?.frontmatter?.date ? (
-    <DateRange startDate={post.frontmatter.date} />
+    <Row className="mr-6">
+      <FiCalendar className="mr-1" />
+      {post.frontmatter.date}
+    </Row>
   ) : null;
 
   const timeToRead = post?.timeToRead ? (
-    <div>
-      {Math.floor(post?.timeToRead * timeToReadMultiplier)} minutes to read
-    </div>
+    <Row>
+      <FiClock className="mr-1" />
+      {Math.floor(post?.timeToRead * timeToReadMultiplier)} min read
+    </Row>
   ) : null;
 
   return (
@@ -58,9 +64,11 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
       </CardMedia>
       <CardContent>
         {postTitleLink}
-        {dateElement}
         {postSummary}
-        {timeToRead}
+        <Row className="text-xs">
+          {dateElement}
+          {timeToRead}
+        </Row>
       </CardContent>
     </Card>
   );
