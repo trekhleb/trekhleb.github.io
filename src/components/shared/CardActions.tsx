@@ -1,4 +1,5 @@
 import React from 'react';
+import Row from './Row';
 
 type CardActionsProps = {
   children: React.ReactNode,
@@ -11,9 +12,13 @@ const CardActions = (props: CardActionsProps): React.ReactElement | null => {
     return null;
   }
 
+  const commonClasses = 'px-4 pb-4';
+
   return (
-    <div>
-      {children}
+    <div className={commonClasses}>
+      <Row>
+        {children}
+      </Row>
     </div>
   );
 };

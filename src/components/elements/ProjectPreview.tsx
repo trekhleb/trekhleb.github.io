@@ -35,7 +35,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     <DateRange
       startDate={project.startDate}
       endDate={project.endDate}
-      className="text-xs text-gray-500 font-light mb-3"
+      className="text-xs text-gray-500 font-light"
     />
   );
 
@@ -76,6 +76,13 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     <FluidImage image={project.cover} />
   ) : null;
 
+  const actions = demoLink || sourceCodeLink ? (
+    <CardActions>
+      {demoLink}
+      {sourceCodeLink}
+    </CardActions>
+  ) : null;
+
   return (
     <Card>
       <CardMedia link={defaultProjectUrl}>
@@ -88,13 +95,8 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         {projectSummary}
         {projectTags}
         {projectDates}
-        <CardActions>
-          <Row>
-            {demoLink}
-            {sourceCodeLink}
-          </Row>
-        </CardActions>
       </CardContent>
+      {actions}
     </Card>
   );
 };

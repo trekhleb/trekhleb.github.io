@@ -25,7 +25,7 @@ const CardContent = (props: CardContentProps): React.ReactElement | null => {
     : `${commonClasses}`;
 
   return (
-    <div className={classes}>
+    <div className={classes} style={{ flex: 1 }}>
       {children}
     </div>
   );
