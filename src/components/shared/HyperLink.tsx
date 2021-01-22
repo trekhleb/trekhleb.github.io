@@ -27,7 +27,9 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     return null;
   }
 
-  const commonClasses = formatted ? `flex flex-row items-center hover:${activeLinkColor}` : '';
+  const commonClasses = formatted
+    ? `transition duration-200 ease-in-out flex flex-row items-center hover:${activeLinkColor}`
+    : '';
 
   const isExternal = link.url.startsWith('http');
 
