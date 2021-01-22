@@ -36,7 +36,7 @@ const Profile = (props: ProfileProps): React.ReactElement => {
   ) : null;
 
   const positionElement = profile?.position ? (
-    <div className="mb-3 font-light text-gray-600 flex flex-row items-center">
+    <div className="mb-3 font-light text-gray-500 flex flex-row items-center">
       <FiBriefcase className="mr-1 w-4 h-4" />
       {profile.position}
     </div>
@@ -57,7 +57,7 @@ const Profile = (props: ProfileProps): React.ReactElement => {
   ) : null;
 
   const locationElement = profile?.location ? (
-    <div className="mb-3 text-gray-600">
+    <div className="mb-3 text-gray-500">
       <Location location={profile.location} />
     </div>
   ) : null;

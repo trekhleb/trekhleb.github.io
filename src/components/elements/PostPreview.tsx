@@ -57,7 +57,7 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
           {post?.frontmatter?.title}
         </CardTitle>
         {postSummary}
-        <Row className="text-xs">
+        <Row className="text-xs text-gray-500">
           {dateElement}
           {timeToRead}
         </Row>
