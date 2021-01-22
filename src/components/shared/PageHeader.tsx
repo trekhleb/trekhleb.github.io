@@ -3,13 +3,18 @@ import H, { hLevel } from './H';
 
 type PageHeaderProps = {
   children: React.ReactNode,
+  className?: string,
 };
 
 const PageHeader = (props: PageHeaderProps): React.ReactElement | null => {
-  const { children } = props;
+  const { children, className = '' } = props;
+
+  const commonClasses = 'mb-6 uppercase font-extrabold';
+
+  const classes = `${commonClasses} ${className}`;
 
   return (
-    <H level={hLevel.h1} className="mb-6">{children}</H>
+    <H level={hLevel.h1} className={classes}>{children}</H>
   );
 };
 
