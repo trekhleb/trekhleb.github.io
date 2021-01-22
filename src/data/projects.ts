@@ -292,7 +292,7 @@ export const projects: Project[] = [
   },
   {
     name: '🕸 SiteProm Web Studio',
-    srcURL: { url: 'http://site-prom.com/' },
+    demoURL: { url: 'http://site-prom.com/' },
     startDate: '2008-01-01',
     endDate: '2011-12-01',
     archived: true,

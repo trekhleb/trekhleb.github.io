@@ -27,12 +27,6 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
     <FluidImage fluidImage={post.frontmatter?.cover?.childImageSharp?.fluid} />
   ) : null;
 
-  const postTitleLink = post.fields?.slug ? (
-    <CardTitle link={postLink}>
-      {post?.frontmatter?.title}
-    </CardTitle>
-  ) : null;
-
   const postSummary = post?.frontmatter?.summary ? (
     <div className="mb-3">
       {post?.frontmatter?.summary}
@@ -59,7 +53,9 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
         {postCover}
       </CardMedia>
       <CardContent mode={cardContentModeRow}>
-        {postTitleLink}
+        <CardTitle link={postLink}>
+          {post?.frontmatter?.title}
+        </CardTitle>
         {postSummary}
         <Row className="text-xs">
           {dateElement}

@@ -56,7 +56,9 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     </div>
   ) : null;
 
-  const demoLink = project.demoURL ? (
+  const defaultProjectUrl = project.archived ? undefined : project.demoURL || project.srcURL;
+
+  const demoLink = project.demoURL && !project.archived ? (
     <HyperLink
       link={project.demoURL}
       startEnhancer={<IoPlay />}
@@ -66,7 +68,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     </HyperLink>
   ) : null;
 
-  const sourceCodeLink = project.srcURL ? (
+  const sourceCodeLink = project.srcURL && !project.archived ? (
     <HyperLink link={project.srcURL} startEnhancer={<FaGithub />}>
       Source Code
     </HyperLink>
@@ -82,7 +84,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         {projectCover}
       </CardMedia>
       <CardContent>
-        <CardTitle link={project.demoURL || project.srcURL}>
+        <CardTitle link={defaultProjectUrl}>
           {project.name}
         </CardTitle>
         {projectSummary}
