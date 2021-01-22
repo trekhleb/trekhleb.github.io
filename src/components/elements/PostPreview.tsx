@@ -49,7 +49,7 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
 
   return (
     <Card mode={cardModeRow}>
-      <CardMedia mode={cardMediaModeRow}>
+      <CardMedia mode={cardMediaModeRow} link={postLink}>
         {postCover}
       </CardMedia>
       <CardContent mode={cardContentModeRow}>

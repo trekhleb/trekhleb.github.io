@@ -10,6 +10,7 @@ type HyperLinkProps = {
   className?: string,
   activeClassName?: string,
   startEnhancer?: React.ReactNode,
+  formatted?: boolean,
 };
 
 const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
@@ -19,13 +20,14 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     className = '',
     activeClassName = '',
     startEnhancer = null,
+    formatted = true,
   } = props;
 
   if (!link?.url) {
     return null;
   }
 
-  const commonClasses = `flex flex-row items-center hover:${activeLinkColor}`;
+  const commonClasses = formatted ? `flex flex-row items-center hover:${activeLinkColor}` : '';
 
   const isExternal = link.url.startsWith('http');
 
@@ -38,8 +40,8 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
       href={link.url}
       className={`${commonClasses} ${className}`}
     >
-      {startEnhancer}
-      {separator}
+      {formatted && startEnhancer}
+      {formatted && separator}
       {children}
     </a>
   );
@@ -50,7 +52,8 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
       activeClassName={activeClassName}
       className={`${commonClasses} ${className}`}
     >
-      {startEnhancer}
+      {formatted && startEnhancer}
+      {formatted && separator}
       {children}
     </Link>
   );

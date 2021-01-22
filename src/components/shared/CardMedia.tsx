@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from '../../types/Link';
+import HyperLink from './HyperLink';
 
 type CardMediaMode = 'row' | 'column';
 
@@ -9,20 +11,36 @@ type CardMediaProps = {
   children: React.ReactNode,
   className?: string,
   mode?: CardMediaMode,
+  link?: Link,
 };
 
 const CardMedia = (props: CardMediaProps): React.ReactElement | null => {
-  const { children, className = '', mode = cardMediaModeColumn } = props;
+  const {
+    children,
+    className = '',
+    mode = cardMediaModeColumn,
+    link,
+  } = props;
 
-  const commonClasses = `h-48 bg-cover bg-gray-200 overflow-hidden block ${className}`;
+  const linkClasses = link && link.url
+    ? 'cursor-pointer'
+    : '';
+
+  const commonClasses = `h-48 bg-cover bg-gray-200 overflow-hidden block ${className} ${linkClasses}`;
 
   const classes = mode === cardMediaModeRow
     ? `${commonClasses} sm:h-full sm:w-2/5 lg:w-1/4`
     : `${commonClasses} mb-2`;
 
+  const wrappedChildren = link && link.url ? (
+    <HyperLink link={link} formatted={false}>
+      {children}
+    </HyperLink>
+  ) : children;
+
   return (
     <div className={classes}>
-      {children}
+      {wrappedChildren}
     </div>
   );
 };

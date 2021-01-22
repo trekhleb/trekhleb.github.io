@@ -80,7 +80,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
 
   return (
     <Card>
-      <CardMedia>
+      <CardMedia link={defaultProjectUrl}>
         {projectCover}
       </CardMedia>
       <CardContent>
