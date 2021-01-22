@@ -234,6 +234,7 @@ export const projects: Project[] = [
   {
     name: '🌾 Angular-library-seed',
     srcURL: { url: 'https://github.com/trekhleb/angular-library-seed' },
+    cover: { srcPath: 'projects/angular-library-seed-cover.png' },
     startDate: '2017-01-01',
     endDate: '2018-01-01',
     summary: [

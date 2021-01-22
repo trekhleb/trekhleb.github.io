@@ -3,12 +3,12 @@ import { FiCalendar } from '@react-icons/all-files/fi/FiCalendar';
 import { FiClock } from '@react-icons/all-files/fi/FiClock';
 
 import { BlogPageQuery_allMarkdownRemark_nodes } from '../../pages/__generated__/BlogPageQuery';
-import Card from '../shared/Card';
-import CardContent from '../shared/CardContent';
+import Card, { cardModeRow } from '../shared/Card';
+import CardContent, { cardContentModeRow } from '../shared/CardContent';
 import type { Link as LinkType } from '../../types/Link';
 import CardTitle from '../shared/CardTitle';
 import FluidImage from '../shared/FluidImage';
-import CardMedia from '../shared/CardMedia';
+import CardMedia, { cardMediaModeRow } from '../shared/CardMedia';
 import Row from '../shared/Row';
 import { timeToReadMultiplier } from '../../constants/posts';
 
@@ -54,11 +54,11 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   ) : null;
 
   return (
-    <Card>
-      <CardMedia>
+    <Card mode={cardModeRow}>
+      <CardMedia mode={cardMediaModeRow}>
         {postCover}
       </CardMedia>
-      <CardContent>
+      <CardContent mode={cardContentModeRow}>
         {postTitleLink}
         {postSummary}
         <Row className="text-xs">
