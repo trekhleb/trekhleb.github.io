@@ -112,7 +112,7 @@ export const projects: Project[] = [
   {
     name: '📘 JavaScript Algorithms Book',
     demoURL: { url: 'https://www.newline.co/javascript-algorithms' },
-    cover: { srcPath: 'projects/javascript-algorithms-book-cover-2.png' },
+    cover: { srcPath: 'projects/javascript-algorithms-book-cover-1.png' },
     startDate: '2018-09-01',
     endDate: '2019-09-01',
     summary: [
@@ -194,7 +194,7 @@ export const projects: Project[] = [
     srcURL: { url: 'https://github.com/trekhleb/learn-python' },
     startDate: '2018-08-01',
     endDate: '2018-09-01',
-    cover: { srcPath: 'projects/learn-python-cover.png' },
+    cover: { srcPath: 'projects/learn-python-cover-2.jpg' },
     summary: [
       'Playground and cheatsheet for learning Python. Collection of Python scripts that are split by topics and contain code examples with explanations',
     ],

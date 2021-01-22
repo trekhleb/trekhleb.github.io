@@ -32,13 +32,11 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   ) : null;
 
   const projectDates = (
-    <div>
-      <DateRange
-        startDate={project.startDate}
-        endDate={project.endDate}
-        className="text-xs text-gray-500 font-light"
-      />
-    </div>
+    <DateRange
+      startDate={project.startDate}
+      endDate={project.endDate}
+      className="text-xs text-gray-500 font-light mb-3"
+    />
   );
 
   /* eslint-disable react/no-array-index-key */
@@ -88,14 +86,14 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
           {project.name}
         </CardTitle>
         {projectSummary}
+        {projectTags}
+        {projectDates}
         <CardActions>
           <Row>
             {demoLink}
             {sourceCodeLink}
           </Row>
         </CardActions>
-        {projectTags}
-        {projectDates}
       </CardContent>
     </Card>
   );

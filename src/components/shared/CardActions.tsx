@@ -12,7 +12,7 @@ const CardActions = (props: CardActionsProps): React.ReactElement | null => {
   }
 
   return (
-    <div className="mb-3">
+    <div>
       {children}
     </div>
   );
