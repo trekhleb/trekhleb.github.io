@@ -5,7 +5,7 @@ import { routes } from '../../constants/routes';
 
 const Greeting = (): React.ReactElement => {
   const projectsLink: Link = {
-    url: routes.projects.path,
+    url: `${routes.projects.path}/`,
   };
 
   const projectsLinkElement = (
