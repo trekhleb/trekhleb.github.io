@@ -17,7 +17,7 @@ const Card = (props: CardProps): React.ReactElement | null => {
     return null;
   }
 
-  const commonCardStyles = 'shadow-xl rounded-md overflow-hidden bg-white flex flex-col';
+  const commonCardStyles = 'transition duration-200 ease-in-out shadow-2xl rounded-md overflow-hidden bg-white flex flex-col';
 
   const classes = mode === cardModeRow
     ? `${commonCardStyles} sm:flex-row`
