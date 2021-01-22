@@ -293,6 +293,7 @@ export const projects: Project[] = [
   {
     name: '🕸 SiteProm Web Studio',
     demoURL: { url: 'http://site-prom.com/' },
+    cover: { srcPath: 'projects/siteprom-cover-1.png' },
     startDate: '2008-01-01',
     endDate: '2011-12-01',
     archived: true,
