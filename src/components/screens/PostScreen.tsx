@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PageLayout from '../layouts/PageLayout';
-import ScreenTitle from '../shared/ScreenTitle';
+import ScreenTitle, { screenTitleModeSuffix } from '../shared/ScreenTitle';
 import { PostTemplateQuery } from '../../templates/__generated__/PostTemplateQuery';
 import Post from '../elements/Post';
 
@@ -14,7 +14,10 @@ const PostScreen = (props: PostScreenProps): React.ReactElement => {
 
   return (
     <PageLayout>
-      <ScreenTitle title={post.markdownRemark?.frontmatter?.title || ''} />
+      <ScreenTitle
+        mode={screenTitleModeSuffix}
+        title={post.markdownRemark?.frontmatter?.title || ''}
+      />
       <Post post={post} />
     </PageLayout>
   );
