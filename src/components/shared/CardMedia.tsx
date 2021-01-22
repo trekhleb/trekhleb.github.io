@@ -14,11 +14,11 @@ type CardMediaProps = {
 const CardMedia = (props: CardMediaProps): React.ReactElement | null => {
   const { children, className = '', mode = cardMediaModeColumn } = props;
 
-  const commonClasses = `mb-2 bg-cover h-48 bg-gray-200 overflow-hidden block ${className}`;
+  const commonClasses = `h-48 bg-cover bg-gray-200 overflow-hidden block ${className}`;
 
   const classes = mode === cardMediaModeRow
     ? `${commonClasses} sm:h-full sm:w-2/5 lg:w-1/4`
-    : `${commonClasses}`;
+    : `${commonClasses} mb-2`;
 
   return (
     <div className={classes}>
