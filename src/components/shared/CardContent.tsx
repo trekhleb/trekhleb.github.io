@@ -18,7 +18,7 @@ const CardContent = (props: CardContentProps): React.ReactElement | null => {
     return null;
   }
 
-  const commonClasses = `p-4 ${className}`;
+  const commonClasses = `p-6 ${className}`;
 
   const classes = mode === cardContentModeRow
     ? `${commonClasses} sm:w-3/5 lg:w-3/4`

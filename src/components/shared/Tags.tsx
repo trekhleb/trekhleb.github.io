@@ -5,10 +5,11 @@ import Tag from './Tag';
 
 type TagsProps = {
   tags: TagType[],
+  className?: string,
 };
 
 const Tags = (props: TagsProps): React.ReactElement | null => {
-  const { tags } = props;
+  const { tags, className = '' } = props;
 
   if (!tags) {
     return null;
@@ -20,8 +21,11 @@ const Tags = (props: TagsProps): React.ReactElement | null => {
     ),
   );
 
+  const defaultClasses = 'flex flex-row flex-wrap';
+  const classes = `${defaultClasses} ${className}`;
+
   return (
-    <div className="flex flex-row flex-wrap">
+    <div className={classes}>
       {tagsElements}
     </div>
   );

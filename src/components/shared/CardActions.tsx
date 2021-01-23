@@ -12,7 +12,7 @@ const CardActions = (props: CardActionsProps): React.ReactElement | null => {
     return null;
   }
 
-  const commonClasses = 'px-4 pb-4';
+  const commonClasses = 'px-6 pb-6';
 
   return (
     <div className={commonClasses}>

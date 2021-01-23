@@ -26,7 +26,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   }
 
   const projectTags = project?.tags ? (
-    <div className="mb-3">
+    <div>
       <Tags tags={project.tags} />
     </div>
   ) : null;
@@ -35,7 +35,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     <DateRange
       startDate={project.startDate}
       endDate={project.endDate}
-      className="text-xs text-gray-500 font-light"
+      className="text-xs text-gray-500 font-light mb-3"
     />
   );
 
@@ -92,9 +92,9 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         <CardTitle link={defaultProjectUrl}>
           {project.name}
         </CardTitle>
+        {projectDates}
         {projectSummary}
         {projectTags}
-        {projectDates}
       </CardContent>
       {actions}
     </Card>
