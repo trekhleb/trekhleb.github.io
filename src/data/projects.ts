@@ -280,6 +280,8 @@ export const projects: Project[] = [
     archived: true,
     summary: [
       'Web-shop of knitted accessories.',
+      'We\'ve launched this project with my wife to get an online selling platform for knitted accessories she was producing at that time.\n' +
+      'The project was running on WordPress with the great support of the WooCommerce module.',
     ],
     description: [
       'Hook&Thread is a web-shop of knitted accessories.',
