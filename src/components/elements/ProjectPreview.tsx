@@ -10,8 +10,8 @@ import CardMedia from '../shared/CardMedia';
 import Tags from '../shared/Tags';
 import FluidImage from '../shared/FluidImage';
 import CardTitle from '../shared/CardTitle';
-import HyperLink from '../shared/HyperLink';
 import CardActions from '../shared/CardActions';
+import ButtonLink from '../shared/ButtonLink';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -58,19 +58,19 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   const defaultProjectUrl = project.archived ? undefined : project.demoURL || project.srcURL;
 
   const demoLink = project.demoURL && !project.archived ? (
-    <HyperLink
+    <ButtonLink
       link={project.demoURL}
       startEnhancer={<IoPlay />}
       className="mr-6"
     >
       Launch Demo
-    </HyperLink>
+    </ButtonLink>
   ) : null;
 
   const sourceCodeLink = project.srcURL && !project.archived ? (
-    <HyperLink link={project.srcURL} startEnhancer={<FaGithub />}>
+    <ButtonLink link={project.srcURL} startEnhancer={<FaGithub />}>
       Source Code
-    </HyperLink>
+    </ButtonLink>
   ) : null;
 
   const projectCover = project.cover ? (

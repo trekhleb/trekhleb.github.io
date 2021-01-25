@@ -4,7 +4,7 @@ import React from 'react';
 import type { Link as LinkType } from '../../types/Link';
 import { activeLinkColor } from '../../constants/style';
 
-type HyperLinkProps = {
+export type HyperLinkProps = {
   link: LinkType,
   children: React.ReactNode,
   className?: string,
