@@ -12,11 +12,12 @@ import FluidImage from '../shared/FluidImage';
 import CardTitle from '../shared/CardTitle';
 import HyperLink from '../shared/HyperLink';
 import CardActions from '../shared/CardActions';
-import Row from '../shared/Row';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
 };
+
+const tagsPerProject = 3;
 
 const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null => {
   const { project } = props;
@@ -27,7 +28,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
 
   const projectTags = project?.tags ? (
     <div>
-      <Tags tags={project.tags} numToShow={3} />
+      <Tags tags={project.tags} numToShow={tagsPerProject} />
     </div>
   ) : null;
 
