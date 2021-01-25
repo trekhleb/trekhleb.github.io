@@ -7,6 +7,7 @@ type ExpanderProps = {
   onRender: (item: any, index: number) => React.ReactElement,
   toHide?: (item: any, index: number) => boolean,
   className?: string,
+  expandable?: boolean,
 };
 
 const Expander = (props: ExpanderProps): React.ReactElement | null => {
@@ -15,6 +16,7 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
     onRender,
     className = '',
     toHide = (item, index) => false,
+    expandable = true,
   } = props;
 
   const [expanded, setExpanded] = useState(false);
@@ -41,17 +43,17 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
     .map((item: any, index: number) => onRender(item, index))
     .map((child: React.ReactElement, index: number) => {
       return (
-        <li className="mr-4 mb-2 flex flex-row items-center last:mr-0" key={index}>
+        <li className="mr-4 flex flex-row items-center last:mr-0" key={index}>
           {child}
         </li>
       );
     });
 
   /* eslint-disable jsx-a11y/anchor-is-valid */
-  const moreLessButton = somethingToHide ? (
-    <li className="flex flex-row items-center mb-2">
+  const moreLessButton = somethingToHide && expandable ? (
+    <li className="flex flex-row items-center">
       <HyperLink
-        link={{ url: '#' }}
+        link={{ url: '#', caption: expanded ? 'Show less' : 'Show more' }}
         className="text-xs font-light"
         onClick={toggle}
       >

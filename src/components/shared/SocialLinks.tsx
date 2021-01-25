@@ -17,6 +17,8 @@ import Expander from './Expander';
 
 type SocialLinksProps = {
   links: SocialLinkType[] | null | undefined,
+  expandable?: boolean,
+  iconClassName?: string,
 };
 
 const linkToIcon = {
@@ -32,7 +34,11 @@ const linkToIcon = {
 };
 
 const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
-  const { links = [] } = props;
+  const {
+    links = [],
+    expandable = true,
+    iconClassName = 'w-6 h-6',
+  } = props;
 
   if (!links) {
     return null;
@@ -43,13 +49,10 @@ const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
     const linkType = socialLink?.type || '';
     if (linkType in linkToIcon) {
       const Icon = linkToIcon[linkType];
-      linkIcon = <Icon className="w-6 h-6" />;
+      linkIcon = <Icon className={iconClassName} />;
     }
-    const link: LinkType = {
-      url: socialLink.url,
-    };
     return (
-      <HyperLink link={link}>
+      <HyperLink link={socialLink}>
         {linkIcon || socialLink.url}
       </HyperLink>
     );
@@ -64,6 +67,7 @@ const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
       items={links}
       onRender={onRender}
       toHide={toHide}
+      expandable={expandable}
     />
   );
 };

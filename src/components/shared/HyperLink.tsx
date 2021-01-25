@@ -33,6 +33,8 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     ? `transition duration-200 ease-in-out flex flex-row items-center hover:${activeLinkColor}`
     : '';
 
+  const caption = link?.caption || undefined;
+
   const isExternal = link.url.startsWith('http');
   const isHash = link.url.startsWith('#');
 
@@ -45,6 +47,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
       href={link.url}
       className={`${commonClasses} ${className}`}
       onClick={onClick}
+      title={caption}
     >
       {formatted && startEnhancer}
       {formatted && separator}
@@ -58,6 +61,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
       activeClassName={activeClassName}
       className={`${commonClasses} ${className}`}
       onClick={onClick}
+      title={caption}
     >
       {formatted && startEnhancer}
       {formatted && separator}
