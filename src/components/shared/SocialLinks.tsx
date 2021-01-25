@@ -68,6 +68,7 @@ const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
       onRender={onRender}
       toHide={toHide}
       expandable={expandable}
+      itemClassName="mr-4 mb-2"
     />
   );
 };

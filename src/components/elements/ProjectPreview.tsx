@@ -27,7 +27,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
 
   const projectTags = project?.tags ? (
     <div>
-      <Tags tags={project.tags} />
+      <Tags tags={project.tags} numToShow={3} />
     </div>
   ) : null;
 

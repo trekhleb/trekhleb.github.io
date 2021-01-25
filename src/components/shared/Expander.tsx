@@ -7,6 +7,7 @@ type ExpanderProps = {
   onRender: (item: any, index: number) => React.ReactElement,
   toHide?: (item: any, index: number) => boolean,
   className?: string,
+  itemClassName?: string,
   expandable?: boolean,
 };
 
@@ -15,6 +16,7 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
     items,
     onRender,
     className = '',
+    itemClassName = '',
     toHide = (item, index) => false,
     expandable = true,
   } = props;
@@ -35,15 +37,17 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
   const filteredItems = items
     .filter((item: any, index: number) => {
       const hide = !toHide(item, index);
-      if (hide) {
+      if (!hide) {
         somethingToHide = true;
       }
       return expanded || hide;
     })
     .map((item: any, index: number) => onRender(item, index))
     .map((child: React.ReactElement, index: number) => {
+      const itemDefaultClasses = 'flex flex-row items-center last:mr-0';
+      const itemClasses = `${itemDefaultClasses} ${itemClassName}`;
       return (
-        <li className="mr-4 flex flex-row items-center last:mr-0" key={index}>
+        <li className={itemClasses} key={index}>
           {child}
         </li>
       );
@@ -51,7 +55,7 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
 
   /* eslint-disable jsx-a11y/anchor-is-valid */
   const moreLessButton = somethingToHide && expandable ? (
-    <li className="flex flex-row items-center">
+    <li className="flex flex-row items-center mb-2">
       <HyperLink
         link={{ url: '#', caption: expanded ? 'Show less' : 'Show more' }}
         className="text-xs font-light"
