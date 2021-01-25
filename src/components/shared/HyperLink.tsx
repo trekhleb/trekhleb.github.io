@@ -11,6 +11,7 @@ type HyperLinkProps = {
   activeClassName?: string,
   startEnhancer?: React.ReactNode,
   formatted?: boolean,
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void,
 };
 
 const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
@@ -21,6 +22,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     activeClassName = '',
     startEnhancer = null,
     formatted = true,
+    onClick = (e) => {},
   } = props;
 
   if (!link?.url) {
@@ -32,6 +34,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     : '';
 
   const isExternal = link.url.startsWith('http');
+  const isHash = link.url.startsWith('#');
 
   const separator = startEnhancer ? (
     <span className="w-1" />
@@ -41,6 +44,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     <a
       href={link.url}
       className={`${commonClasses} ${className}`}
+      onClick={onClick}
     >
       {formatted && startEnhancer}
       {formatted && separator}
@@ -53,6 +57,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
       to={link.url}
       activeClassName={activeClassName}
       className={`${commonClasses} ${className}`}
+      onClick={onClick}
     >
       {formatted && startEnhancer}
       {formatted && separator}
@@ -60,7 +65,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     </Link>
   );
 
-  return isExternal ? externalLink : internalLink;
+  return isExternal || isHash ? externalLink : internalLink;
 };
 
 export default HyperLink;
