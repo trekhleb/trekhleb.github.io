@@ -33,7 +33,7 @@ const Post = (props: PostProps): React.ReactElement | null => {
   // @see: https://github.com/tailwindlabs/tailwindcss-typography
   return (
     <div className="flex flex-col items-center">
-      <article className={`w-full prose prose-sm sm:prose ${blogPostColor}`} style={{ maxWidth: '100%' }}>
+      <article className={`w-full prose prose-sm sm:prose ${blogPostColor}`} style={{ maxWidth: '860px' }}>
         <PageHeader>{post.markdownRemark?.frontmatter?.title || ''}</PageHeader>
         <Row>
           {dateElement}
