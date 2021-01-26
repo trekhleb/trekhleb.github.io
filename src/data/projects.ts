@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     name: '📖 👆🏻 Printed Links Detector',
     srcURL: { url: 'https://github.com/trekhleb/links-detector' },
-    demoURL: { url: 'https://trekhleb.github.io/links-detector/' },
+    demoURL: { url: 'https://trekhleb.dev/links-detector/' },
     cover: { srcPath: 'projects/links-detector-cover.png' },
     startDate: '2020-10-01',
     endDate: '2020-12-01',
@@ -54,7 +54,7 @@ export const projects: Project[] = [
   {
     name: '📈 Coronavirus (COVID-19) Dashboard',
     srcURL: { url: 'https://github.com/trekhleb/covid-19/' },
-    demoURL: { url: 'https://trekhleb.github.io/covid-19/' },
+    demoURL: { url: 'https://trekhleb.dev/covid-19/' },
     cover: { srcPath: 'projects/covid-dashboard-cover.png' },
     startDate: '2020-03-01',
     endDate: '2020-04-01',
