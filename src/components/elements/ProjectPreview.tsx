@@ -12,6 +12,7 @@ import FluidImage from '../shared/FluidImage';
 import CardTitle from '../shared/CardTitle';
 import CardActions from '../shared/CardActions';
 import ButtonLink from '../shared/ButtonLink';
+import Archived from '../shared/Archived';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -80,6 +81,12 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     <FluidImage image={project.cover} />
   ) : null;
 
+  const archivedStamp = project?.archived ? (
+    <CardActions>
+      <Archived />
+    </CardActions>
+  ) : null;
+
   const actions = demoLink || sourceCodeLink ? (
     <CardActions>
       {demoLink}
@@ -101,6 +108,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         {projectTags}
       </CardContent>
       {actions}
+      {archivedStamp}
     </Card>
   );
 };

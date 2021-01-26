@@ -43,7 +43,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
   const isHash = link.url.startsWith('#');
 
   const separator = startEnhancer ? (
-    <span className="w-1" />
+    <span className="w-2" />
   ) : null;
 
   const externalLink = (
