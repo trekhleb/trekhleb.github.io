@@ -5,7 +5,7 @@ export const projects: Project[] = [
     name: '📖 👆🏻 Printed Links Detector',
     srcURL: { url: 'https://github.com/trekhleb/links-detector' },
     demoURL: { url: 'https://trekhleb.dev/links-detector/' },
-    cover: { srcPath: 'projects/links-detector-cover.png' },
+    cover: { srcPath: 'projects/links-detector/cover.png' },
     startDate: '2020-10-01',
     endDate: '2020-12-01',
     summary: [
@@ -32,7 +32,7 @@ export const projects: Project[] = [
     name: '🤖 Interactive Machine Learning Experiments',
     srcURL: { url: 'https://github.com/trekhleb/machine-learning-experiments' },
     demoURL: { url: 'https://trekhleb.dev/machine-learning-experiments/' },
-    cover: { srcPath: 'projects/machine-learning-experiments-cover.png' },
+    cover: { srcPath: 'projects/machine-learning-experiments/cover.png' },
     startDate: '2020-01-01',
     endDate: '2020-05-01',
     summary: [
@@ -55,7 +55,7 @@ export const projects: Project[] = [
     name: '📈 Coronavirus (COVID-19) Dashboard',
     srcURL: { url: 'https://github.com/trekhleb/covid-19/' },
     demoURL: { url: 'https://trekhleb.dev/covid-19/' },
-    cover: { srcPath: 'projects/covid-dashboard-cover.png' },
+    cover: { srcPath: 'projects/covid-dashboard/cover.png' },
     startDate: '2020-03-01',
     endDate: '2020-04-01',
     summary: [
@@ -72,7 +72,7 @@ export const projects: Project[] = [
   {
     name: '🤖 NanoNeuron',
     srcURL: { url: 'https://github.com/trekhleb/nano-neuron' },
-    cover: { srcPath: 'projects/nano-neuron-cover.png' },
+    cover: { srcPath: 'projects/nano-neuron/cover.png' },
     startDate: '2019-12-01',
     endDate: '2020-01-01',
     summary: [
@@ -93,7 +93,7 @@ export const projects: Project[] = [
     name: '🌍 usePosition: React hook for fetching and following a browser geolocation',
     srcURL: { url: 'https://github.com/trekhleb/use-position' },
     demoURL: { url: 'https://trekhleb.dev/use-position' },
-    cover: { srcPath: 'projects/use-position-cover.png' },
+    cover: { srcPath: 'projects/use-position/cover.png' },
     startDate: '2019-01-01',
     endDate: '2019-02-01',
     summary: [
@@ -112,7 +112,7 @@ export const projects: Project[] = [
   {
     name: '📘 JavaScript Algorithms Book',
     demoURL: { url: 'https://www.newline.co/javascript-algorithms' },
-    cover: { srcPath: 'projects/javascript-algorithms-book-cover-1.png' },
+    cover: { srcPath: 'projects/javascript-algorithms-book/cover-1.png' },
     startDate: '2018-09-01',
     endDate: '2019-09-01',
     summary: [
@@ -132,7 +132,7 @@ export const projects: Project[] = [
     srcURL: { url: 'https://github.com/trekhleb/homemade-machine-learning' },
     startDate: '2018-12-01',
     endDate: '2019-01-01',
-    cover: { srcPath: 'projects/homemade-machine-learning-cover.png' },
+    cover: { srcPath: 'projects/homemade-machine-learning/cover.png' },
     summary: [
       'Python examples of popular machine learning algorithms with interactive Jupyter demos and math being explained',
     ],
@@ -153,7 +153,7 @@ export const projects: Project[] = [
     name: '📝 JavaScript Algorithms and Data-Structures',
     srcURL: { url: 'https://github.com/trekhleb/javascript-algorithms' },
     startDate: '2018-02-01',
-    cover: { srcPath: 'projects/javascript-algorithms-cover.png' },
+    cover: { srcPath: 'projects/javascript-algorithms/cover.png' },
     summary: [
       'Algorithms and data structures implemented in JavaScript with explanations and links to further readings',
     ],
@@ -174,7 +174,7 @@ export const projects: Project[] = [
     srcURL: { url: 'https://github.com/trekhleb/machine-learning-octave' },
     startDate: '2018-10-01',
     endDate: '2018-11-01',
-    cover: { srcPath: 'projects/machine-learning-octave-cover.png' },
+    cover: { srcPath: 'projects/machine-learning-octave/cover.png' },
     summary: [
       'MatLab/Octave examples of popular machine learning algorithms with code examples and mathematics being explained',
     ],
@@ -194,7 +194,7 @@ export const projects: Project[] = [
     srcURL: { url: 'https://github.com/trekhleb/learn-python' },
     startDate: '2018-08-01',
     endDate: '2018-09-01',
-    cover: { srcPath: 'projects/learn-python-cover-2.jpg' },
+    cover: { srcPath: 'projects/learn-python/cover-2.jpg' },
     summary: [
       'Playground and cheatsheet for learning Python. Collection of Python scripts that are split by topics and contain code examples with explanations',
     ],
@@ -212,7 +212,7 @@ export const projects: Project[] = [
     startDate: '2017-01-01',
     endDate: '2018-01-01',
     archived: true,
-    cover: { srcPath: 'projects/aggregatus-cover-1.png' },
+    cover: { srcPath: 'projects/aggregatus/cover-1.png' },
     summary: [
       'Service that helps you to aggregate information of the same meaning but from the different websites and make it searchable, filterable and sortable as if it all was from the one website',
     ],
@@ -234,7 +234,7 @@ export const projects: Project[] = [
   {
     name: '🌾 Angular-library-seed',
     srcURL: { url: 'https://github.com/trekhleb/angular-library-seed' },
-    cover: { srcPath: 'projects/angular-library-seed-cover.png' },
+    cover: { srcPath: 'projects/angular-library-seed/cover.png' },
     startDate: '2017-01-01',
     endDate: '2018-01-01',
     summary: [
@@ -255,7 +255,7 @@ export const projects: Project[] = [
     srcURL: { url: 'http://allbible.info/' },
     startDate: '2010-02-01',
     endDate: '2017-02-01',
-    cover: { srcPath: 'projects/allbible-cover.png' },
+    cover: { srcPath: 'projects/allbible/cover.png' },
     summary: [
       'Online Bible study web-service that gives users possibility to study Bible by reading it in 4 modern translations, comparing verses to theirs Greek and Hebrew originals, investigating cross-linked verses, making a cross-Bible search, listening to audio Bible, using different Bible study plans and more',
     ],
@@ -274,7 +274,7 @@ export const projects: Project[] = [
   {
     name: '🧶 Hook&Thread',
     demoURL: { url: 'http://hook-and-thread.com/' },
-    cover: { srcPath: 'projects/hook-and-thread-cover-2.png' },
+    cover: { srcPath: 'projects/hook-and-thread/cover-2.png' },
     startDate: '2016-11-01',
     endDate: '2016-12-01',
     archived: true,
@@ -295,7 +295,7 @@ export const projects: Project[] = [
   {
     name: '🕸 SiteProm Web Studio',
     demoURL: { url: 'http://site-prom.com/' },
-    cover: { srcPath: 'projects/siteprom-cover-1.png' },
+    cover: { srcPath: 'projects/siteprom/cover-1.png' },
     startDate: '2008-01-01',
     endDate: '2011-12-01',
     archived: true,
