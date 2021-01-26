@@ -9,6 +9,7 @@ export type HyperLinkProps = {
   children: React.ReactNode,
   className?: string,
   activeClassName?: string,
+  hoverClassName?: string | null | undefined,
   startEnhancer?: React.ReactNode,
   formatted?: boolean,
   onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void,
@@ -20,6 +21,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     children,
     className = '',
     activeClassName = '',
+    hoverClassName = null,
     startEnhancer = null,
     formatted = true,
     onClick = (e) => {},
@@ -29,8 +31,10 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     return null;
   }
 
+  const hoverClasses = hoverClassName || `hover:${activeLinkColor}`;
+
   const commonClasses = formatted
-    ? `transition duration-200 ease-in-out flex flex-row items-center hover:${activeLinkColor}`
+    ? `transition duration-200 ease-in-out flex flex-row items-center ${hoverClasses}`
     : '';
 
   const caption = link?.caption || undefined;

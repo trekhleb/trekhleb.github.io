@@ -28,7 +28,7 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   ) : null;
 
   const postSummary = post?.frontmatter?.summary ? (
-    <div className="mb-3">
+    <div className="mb-3 font-light">
       {post?.frontmatter?.summary}
     </div>
   ) : null;

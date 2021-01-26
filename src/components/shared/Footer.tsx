@@ -26,7 +26,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
           <HyperLink
             link={issuesLink}
             className="text-xs"
-            startEnhancer={(<FaGithub size={16} />)}
+            startEnhancer={(<FaGithub size={20} />)}
           >
             Feedback
           </HyperLink>
@@ -39,7 +39,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
           <SocialLinks
             links={profile?.socialLinks}
             expandable={false}
-            iconClassName="w-4 h-4"
+            iconClassName="w-5 h-5"
           />
         </div>
 

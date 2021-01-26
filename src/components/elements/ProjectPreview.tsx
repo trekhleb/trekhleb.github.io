@@ -61,14 +61,17 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     <ButtonLink
       link={project.demoURL}
       startEnhancer={<IoPlay />}
-      className="mr-6"
+      className="mr-4"
     >
       Launch Demo
     </ButtonLink>
   ) : null;
 
   const sourceCodeLink = project.srcURL && !project.archived ? (
-    <ButtonLink link={project.srcURL} startEnhancer={<FaGithub />}>
+    <ButtonLink
+      link={project.srcURL}
+      startEnhancer={<FaGithub />}
+    >
       Source Code
     </ButtonLink>
   ) : null;
