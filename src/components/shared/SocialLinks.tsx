@@ -11,7 +11,6 @@ import { FaDev } from '@react-icons/all-files/fa/FaDev';
 
 import { socialLinkTypes } from '../../types/SocialLink';
 import type { SocialLink as SocialLinkType } from '../../types/SocialLink';
-import type { Link as LinkType } from '../../types/Link';
 import HyperLink from './HyperLink';
 import Expander from './Expander';
 
@@ -19,6 +18,7 @@ type SocialLinksProps = {
   links: SocialLinkType[] | null | undefined,
   expandable?: boolean,
   iconClassName?: string,
+  itemClassName?: string,
 };
 
 const linkToIcon = {
@@ -38,6 +38,7 @@ const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
     links = [],
     expandable = true,
     iconClassName = 'w-6 h-6',
+    itemClassName = 'mr-4 mb-2',
   } = props;
 
   if (!links) {
@@ -68,7 +69,7 @@ const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
       onRender={onRender}
       toHide={toHide}
       expandable={expandable}
-      itemClassName="mr-4 mb-2"
+      itemClassName={itemClassName}
     />
   );
 };

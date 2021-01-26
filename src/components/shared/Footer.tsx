@@ -40,6 +40,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
             links={profile?.socialLinks}
             expandable={false}
             iconClassName="w-5 h-5"
+            itemClassName="mr-4"
           />
         </div>
 

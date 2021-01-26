@@ -15,12 +15,14 @@ const PageLayout = (props: PageLayoutProps): React.ReactElement | null => {
   }
 
   return (
-    <main>
-      <Header className={`${layoutPaddingX} ${layoutPaddingY}`} />
-      <article className={`${layoutPaddingX} ${layoutPaddingY}`}>
-        {children}
-      </article>
-      <Footer className={`${layoutPaddingX} ${layoutPaddingY}`} />
+    <main className="flex flex-col items-center">
+      <div className="max-w-screen-xl">
+        <Header className={`${layoutPaddingX} ${layoutPaddingY}`} />
+        <article className={`${layoutPaddingX} ${layoutPaddingY}`}>
+          {children}
+        </article>
+        <Footer className={`${layoutPaddingX} ${layoutPaddingY}`} />
+      </div>
     </main>
   );
 };
