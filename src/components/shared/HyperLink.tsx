@@ -24,7 +24,8 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     hoverClassName = null,
     startEnhancer = null,
     formatted = true,
-    onClick = (e) => {},
+    /* eslint-disable-next-line @typescript-eslint/no-empty-function */
+    onClick = (): void => {},
   } = props;
 
   if (!link?.url) {

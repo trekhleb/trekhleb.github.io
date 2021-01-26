@@ -2,6 +2,7 @@ import React, { SyntheticEvent, useState } from 'react';
 
 import HyperLink from './HyperLink';
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 type ExpanderProps = {
   items: any[],
   onRender: (item: any, index: number) => React.ReactElement,
@@ -17,7 +18,7 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
     onRender,
     className = '',
     itemClassName = '',
-    toHide = (item, index) => false,
+    toHide = (): boolean => false,
     expandable = true,
   } = props;
 
@@ -46,6 +47,7 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
     .map((child: React.ReactElement, index: number) => {
       const itemDefaultClasses = 'flex flex-row items-center last:mr-0';
       const itemClasses = `${itemDefaultClasses} ${itemClassName}`;
+      /* eslint-disable react/no-array-index-key */
       return (
         <li className={itemClasses} key={index}>
           {child}
