@@ -64,7 +64,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
       startEnhancer={<IoPlay />}
       className="mr-4"
     >
-      Launch Demo
+      Demo
     </ButtonLink>
   ) : null;
 
