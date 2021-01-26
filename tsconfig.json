@@ -1,0 +1,20 @@
+// This TSConfig is used for importing gatsby-config.ts in gatsby-config.js and also for TS type checking.
+// @see: https://www.typescriptlang.org/tsconfig
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "CommonJS",
+    "moduleResolution": "Node",
+    "jsx": "react",
+    "strict": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "noEmit": true
+  },
+  "include": [
+    "src/**/*"
+  ],
+}

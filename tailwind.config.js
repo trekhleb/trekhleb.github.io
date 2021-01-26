@@ -1,30 +1,31 @@
 // @see: https://tailwindcss.com/docs/configuration/
 // @see: https://github.com/tailwindcss/tailwindcss/blob/master/stubs/defaultConfig.stub.js
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
-  purge: [],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
       fontFamily: {
-        roboto: [
+        sans: [
           'Roboto',
-          'system-ui',
-          '-apple-system',
-          'BlinkMacSystemFont',
-          '"Segoe UI"',
-          '"Helvetica Neue"',
-          'Arial',
-          '"Noto Sans"',
-          'sans-serif',
-          '"Apple Color Emoji"',
-          '"Segoe UI Emoji"',
-          '"Segoe UI Symbol"',
-          '"Noto Color Emoji"',
+          ...defaultTheme.fontFamily.sans,
         ],
+      },
+      boxShadow: {
+        // The shadow-card class that is used for Cards.
+        // @see: https://tailwindcss.com/docs/box-shadow
+        card: '0 2px 1px -1px rgba(0, 0, 0, .2), 0 1px 1px 0 rgba(0, 0, 0, .14), 0 1px 3px 0 rgba(0, 0, 0, .12)',
       },
     },
   },
   variants: {
-    margin: ['responsive', 'last'],
+    extend: {},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

@@ -1,0 +1,29 @@
+/* @TODO: Remove unused Roboto font variants to reduce the bundle size */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+@tailwind base;
+
+/*
+Adding base styles
+@see: https://tailwindcss.com/docs/adding-base-styles
+*/
+@layer base {
+  /*.blog-post h1 {*/
+  /*  @apply text-3xl;*/
+  /*}*/
+}
+
+@tailwind components;
+@tailwind utilities;
+
+/* Removing the backticks from inline code-blocks that were added by Tailwind */
+.prose code::before,
+.prose code::after {
+  content: "" !important;
+}
+
+/* Removing the " from quotes that were added by Tailwind */
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: "" !important;
+}

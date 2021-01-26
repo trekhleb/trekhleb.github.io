@@ -1,40 +1,58 @@
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-    'jest/globals': true,
-  },
+  parser: '@typescript-eslint/parser',
   extends: [
-    'plugin:react/recommended',
-    'plugin:flowtype/recommended',
+    'eslint:recommended',
     'airbnb',
+    'airbnb/hooks',
+    'plugin:import/typescript',
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
   ],
-  globals: {
-    Atomics: 'readonly',
-    SharedArrayBuffer: 'readonly',
-  },
+  plugins: [
+    '@typescript-eslint',
+  ],
   parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 11,
-    sourceType: 'module',
   },
-  plugins: [
-    'react',
-    'flowtype',
-    'jest',
-  ],
   rules: {
-    // @see: https://stackoverflow.com/questions/43031126/jsx-not-allowed-in-files-with-extension-js-with-eslint-config-airbnb
-    'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
-
-    // @see: https://github.com/gajus/eslint-plugin-flowtype/issues/225#issuecomment-373562581
-    'flowtype/no-types-missing-file-annotation': 0,
-
-    'arrow-body-style': 0,
-
-    //I want to be able to have just one named constant per file and export it.
-    'import/prefer-default-export': 0,
+    'react/prop-types': 'off',
+    '@typescript-eslint/ban-ts-ignore': 'off',
+    'import/prefer-default-export': 'off',
+    'arrow-body-style': 'off',
+    'react/require-default-props': 'off',
+    'no-useless-return': 'off',
+    'no-use-before-define': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
+    '@typescript-eslint/no-use-before-define': 'error',
+    'no-shadow': 'off',
+    'react/jsx-props-no-spreading': 'off',
+    'react/no-danger': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'warn',
+    camelcase: 'off',
+    'no-empty': 'warn',
+    '@typescript-eslint/no-empty-function': 'warn',
+    '@typescript-eslint/no-shadow': 'error',
+    'react/jsx-one-expression-per-line': 'off',
+    'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
+    'import/extensions': ['error', 'ignorePackages', {
+      js: 'never',
+      jsx: 'never',
+      ts: 'never',
+      tsx: 'never',
+    }],
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
+    'import/resolver': {
+      node: {
+        extensions: ['.js', '.jsx', '.ts', '.tsx', '.json', '.d.ts'],
+      },
+    },
   },
 };

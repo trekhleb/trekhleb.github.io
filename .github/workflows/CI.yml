@@ -29,16 +29,13 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn install
+        run: npm i
 
       - name: Run linting
-        run: yarn lint
+        run: npm run lint
 
-      - name: Run flow check
-        run: yarn flow
-
-      - name: Run tests
-        run: yarn coverage
+      - name: Run type checking
+        run: npm run type
 
   deploy:
     runs-on: ubuntu-latest
@@ -56,14 +53,14 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install dependencies
-        run: yarn install
+        run: npm i
 
       - name: Deploy
         run: |
           git config --global user.name $user_name
           git config --global user.email $user_email
           git remote set-url origin https://${github_token}@github.com/${repository}
-          yarn deploy
+          npm run deploy
         env:
           user_name: 'github-actions-bot'
           user_email: 'github-actions-bot@users.noreply.github.com'
