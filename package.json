@@ -13,7 +13,7 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "predeploy": "npm run build",
-    "deploy": "gh-pages --dist ./public  --branch public"
+    "deploy": "gh-pages --dist ./public --branch public"
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
