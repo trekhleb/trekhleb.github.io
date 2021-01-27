@@ -252,7 +252,7 @@ export const projects: Project[] = [
   },
   {
     name: '📕 AllBible.info',
-    srcURL: { url: 'http://allbible.info/' },
+    demoURL: { url: 'https://allbible.info/' },
     startDate: '2010-02-01',
     endDate: '2017-02-01',
     cover: { srcPath: 'projects/allbible/cover.png' },
