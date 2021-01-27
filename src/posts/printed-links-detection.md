@@ -195,7 +195,7 @@ If you follow the [Model Zoo](https://github.com/tensorflow/models/blob/master/r
 
 ![Model Zoo](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/09-model-zoo.jpg)
 
-_Image source: [TensorFlow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) repository_
+*Image source: [TensorFlow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) repository*
 
 Of course, we would want to find the right balance between the detection **speed** and **accuracy** while picking the model. But what might be even more important in our case is the **size** of the model since it will be loaded to the client-side.
 
@@ -363,7 +363,7 @@ For now, the model can detect the object of [90 COCO dataset classes](https://co
 
 ![COCO classes](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/11-coco-classes.jpg)
 
-_Image source: [COCO dataset](https://cocodataset.org/#explore) website_
+*Image source: [COCO dataset](https://cocodataset.org/#explore) website*
 
 Let's see how the model performs on some general images that contain the objects of these classes.
 
@@ -478,7 +478,7 @@ Let's try to detect the object on this image:
 
 ![General Object Inference](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/12-inference-01.jpg)
 
-_Image source: [oleksii_trekhleb](https://www.instagram.com/oleksii_trekhleb/?hl=en) Instagram_
+*Image source: [oleksii_trekhleb](https://www.instagram.com/oleksii_trekhleb/?hl=en) Instagram*
 
 To do that let's save the image to the `inference/test/` folder of our project. If you're using Google Colab you may create this folder and upload the image manually.
 
@@ -1323,7 +1323,7 @@ TensorBoard will allow us to monitor the training process and see if the model i
 
 ![TensorBoard](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/24-tensorboard.gif)
 
-_Image source: [TensorBoard homepage](https://www.tensorflow.org/tensorboard)_
+*Image source: [TensorBoard homepage](https://www.tensorflow.org/tensorboard)*
 
 The cool part about TensorBoard is that we may run it directly in Google Colab. However, if you're running the notebook in your local installation of Jupyter you may also [install it as Python package](https://github.com/tensorflow/tensorboard/blob/master/README.md) and launch it from the terminal.
 
