@@ -19,6 +19,7 @@ export const profile: Profile = {
     { name: 'javascript' },
     { name: 'react' },
     { name: 'python' },
+    { name: 'go' },
     { name: 'full stack' },
   ],
   socialLinks,
