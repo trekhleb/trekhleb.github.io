@@ -16,11 +16,11 @@ export const profile: Profile = {
     name: 'Amsterdam, The Netherlands',
   },
   tags: [
-    { name: 'javascript' },
-    { name: 'react' },
-    { name: 'python' },
-    { name: 'go' },
-    { name: 'full stack' },
+    { name: 'JavaScript' },
+    { name: 'React' },
+    { name: 'Python' },
+    { name: 'GO' },
+    { name: 'Full Stack' },
   ],
   socialLinks,
 };
