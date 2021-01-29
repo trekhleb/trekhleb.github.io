@@ -21,7 +21,7 @@ const PageLayout = (props: PageLayoutProps): React.ReactElement | null => {
         <article className={`${layoutPaddingX} ${layoutPaddingY}`}>
           {children}
         </article>
-        <Footer className={`${layoutPaddingX} ${layoutPaddingY}`} />
+        <Footer className={`${layoutPaddingX} py-12`} />
       </div>
     </main>
   );
