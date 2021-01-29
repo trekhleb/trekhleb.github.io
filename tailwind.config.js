@@ -29,7 +29,7 @@ module.exports = {
           css: {
             // color: '#0FF',
             a: {
-              // color: theme('colors.red.600'),
+              color: theme('colors.red.600'),
               '&:hover': {
                 color: theme('colors.red.500'),
               },
