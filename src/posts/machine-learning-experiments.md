@@ -9,7 +9,7 @@ summary: "Recognize digits and sketches. Detect objects. Classify images. Write 
 
 Hey readers!
 
-I've open-sourced new [**🤖 Interactive Machine Learning Experiments**](https://github.com/trekhleb/machine-learning-experiments) project on GitHub. Each experiment consists of 🏋️ _Jupyter/Colab notebook_ (to see how a model was trained) and 🎨 _demo page_ (to see a model in action right in your browser).
+I've open-sourced new [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments) project on GitHub. Each experiment consists of 🏋️ _Jupyter/Colab notebook_ (to see how a model was trained) and 🎨 _demo page_ (to see a model in action right in your browser).
 
 Although the models may be a little dumb (remember, these are just experiments, not a production ready code), they will try to do their best to:
 
@@ -74,8 +74,8 @@ I'm a [software engineer](https://www.linkedin.com/in/trekhleb/) and for the las
 
 So, in short, you may access Demo page and Jupyter notebooks by these links:
 
-- 🎨 [**Launch ML experiments demo**](http://trekhleb.github.io/machine-learning-experiments)
-- 🏋️ [**Check ML experiments Jupyter notebooks**](https://github.com/trekhleb/machine-learning-experiments)
+- 🎨 [Launch ML experiments demo](http://trekhleb.github.io/machine-learning-experiments)
+- 🏋️ [Check ML experiments Jupyter notebooks](https://github.com/trekhleb/machine-learning-experiments)
 
 ### Experiments with Multilayer Perceptron (MLP)
 
