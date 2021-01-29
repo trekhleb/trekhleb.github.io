@@ -1,7 +1,7 @@
 ---
 title: "NanoNeuron - 7 simple JS functions that explain how machines learn"
 date: "2019-12-06"
-cover: "../images/posts/nano-neuron/01-cover.png"
+cover: "assets/01-cover.png"
 summary: "The NanoNeuron.js code example contains 7 simple JavaScript functions (which touches on model prediction, cost calculation, forward/backwards propagation, and training) that will give you a feeling of how machines can actually learn. No 3rd-party libraries, no external data-sets or dependencies, only pure and simple JavaScript functions."
 ---
 
@@ -19,7 +19,7 @@ You've probably heard about Neurons in the context of [Neural Networks](https://
 
 By the way, the formula for converting Celsius to Fahrenheit is this:
 
-![Celsius to Fahrenheit](../images/posts/nano-neuron/02-formula-C-to-F.png)
+![Celsius to Fahrenheit](assets/02-formula-C-to-F.png)
 
 But for now our NanoNeuron doesn't know about it...
 

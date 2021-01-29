@@ -1,7 +1,7 @@
 ---
 title: "Making the Printed Links Clickable Using TensorFlow 2 Object Detection API"
 date: "2020-12-01"
-cover: "../images/posts/printed-links-detection/01-cover.png"
+cover: "assets/01-cover.png"
 summary: "In this article we will start solving the issue of making the printed links (i.e. in a book or in a magazine) clickable via your smartphone camera"
 ---
 
@@ -21,7 +21,7 @@ The text of each link (right continuation of `https://` bounding box) will be re
 
 Here is how the final solution will look like:
 
-![Links Detector Demo](../images/posts/printed-links-detection/02-demo.gif)
+![Links Detector Demo](assets/02-demo.gif)
 
 > ⚠️ Currently the application is in _experimental_ _Alpha_ stage and has [many issues and limitations](https://github.com/trekhleb/links-detector/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement). So don't raise your expectations level too high until these issues are resolved 🤷🏻‍. Also, the purpose of this article is more about learning how to work with TensorFlow 2 Object Detection API rather than coming up with a production-ready model.
 

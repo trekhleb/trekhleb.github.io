@@ -1,7 +1,7 @@
 ---
 title: "Generating cooking recipes using TensorFlow and LSTM Recurrent Neural Network: A step-by-step guide"
 date: "2020-06-18"
-cover: "../images/posts/recipes-generation/01-cover.jpeg"
+cover: "assets/01-cover.jpeg"
 summary: "I've trained a character-level LSTM RNN on ~100k recipes dataset using TensorFlow, and it suggested me to cook Cream Soda with Onions, Puff Pastry Strawberry Soup, Zucchini flavor Tea and Salmon Mousse of Beef and Stilton Salad with Jalapenos"
 ---
 
@@ -17,7 +17,7 @@ Here you may find more examples of what I ended up with:
 
 This article contains details of how the LSTM model was actually trained on Python using [TensorFlow 2](https://www.tensorflow.org/) with [Keras API](https://www.tensorflow.org/guide/keras).
 
-![Cooking recipes generator demo](../images/posts/recipes-generation/02-demo.gif)
+![Cooking recipes generator demo](assets/02-demo.gif)
 
 ## What our model will eventually learn
 

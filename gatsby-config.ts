@@ -84,8 +84,8 @@ const gatsbyConfig: GatsbyConfig = {
               // @see: https://www.gatsbyjs.com/plugins/gatsby-transformer-sharp/#parsing-algorithm
               ignoreFileExtensions: ['png', 'jpg', 'jpeg', 'tiff', 'tif', 'webp'],
               // Save files like `02-demo.gif`
-              // to `public/md-assets/2a0039f3a61f4510f41678438e4c863a/02-demo.gif`
-              destinationDir: (f: {name: string, hash: string}): string => `md-assets/${f.hash}/${f.name}`,
+              // to `public/posts-assets/2a0039f3a61f4510f41678438e4c863a/02-demo.gif`
+              destinationDir: (f: {name: string, hash: string}): string => `posts-assets/${f.hash}/${f.name}`,
             },
           },
         ],
