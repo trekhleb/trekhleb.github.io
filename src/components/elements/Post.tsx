@@ -25,7 +25,7 @@ const Post = (props: PostProps): React.ReactElement | null => {
   const timeToRead = post?.markdownRemark?.timeToRead ? (
     <Row>
       <FiClock className="mr-1" />
-      {Math.floor(post?.markdownRemark?.timeToRead * timeToReadMultiplier)} min to read
+      {Math.ceil(post?.markdownRemark?.timeToRead * timeToReadMultiplier) || 1} min to read
     </Row>
   ) : null;
 

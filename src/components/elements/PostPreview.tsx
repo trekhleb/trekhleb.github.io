@@ -43,7 +43,7 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   const timeToRead = post?.timeToRead ? (
     <Row>
       <FiClock className="mr-1" />
-      {Math.floor(post?.timeToRead * timeToReadMultiplier)} min to read
+      {Math.floor(post?.timeToRead * timeToReadMultiplier) || 1} min to read
     </Row>
   ) : null;
 
