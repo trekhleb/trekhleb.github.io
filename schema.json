@@ -3680,11 +3680,11 @@
               "defaultValue": null
             },
             {
-              "name": "date",
+              "name": "summary",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "DateQueryOperatorInput",
+                "name": "StringQueryOperatorInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -3700,11 +3700,11 @@
               "defaultValue": null
             },
             {
-              "name": "summary",
+              "name": "date",
               "description": "",
               "type": {
                 "kind": "INPUT_OBJECT",
-                "name": "StringQueryOperatorInput",
+                "name": "DateQueryOperatorInput",
                 "ofType": null
               },
               "defaultValue": null
@@ -8519,6 +8519,30 @@
               "deprecationReason": null
             },
             {
+              "name": "summary",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "cover",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "OBJECT",
+                "name": "File",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "date",
               "description": null,
               "args": [
@@ -8566,30 +8590,6 @@
               "type": {
                 "kind": "SCALAR",
                 "name": "Date",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "cover",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "OBJECT",
-                "name": "File",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "summary",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "String",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -10126,7 +10126,7 @@
               "deprecationReason": null
             },
             {
-              "name": "childMarkdownRemark___frontmatter___date",
+              "name": "childMarkdownRemark___frontmatter___summary",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -10348,7 +10348,7 @@
               "deprecationReason": null
             },
             {
-              "name": "childMarkdownRemark___frontmatter___summary",
+              "name": "childMarkdownRemark___frontmatter___date",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -20593,7 +20593,7 @@
               "deprecationReason": null
             },
             {
-              "name": "frontmatter___date",
+              "name": "frontmatter___summary",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -20971,7 +20971,7 @@
               "deprecationReason": "Sorting on fields that need arguments to resolve is deprecated."
             },
             {
-              "name": "frontmatter___summary",
+              "name": "frontmatter___date",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null

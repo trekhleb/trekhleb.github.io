@@ -1,8 +1,12 @@
 ---
 title: "Interactive Machine Learning Experiments"
-date: "2020-05-05"
-cover: "assets/01-cover.png"
+
 summary: "Recognize digits and sketches. Detect objects. Classify images. Write a Shakespeare poem. All with TensorFlow 2 models demo."
+
+cover: assets/01-cover.png
+
+date: 2020-05-05
+
 ---
 
 ## TL;DR
