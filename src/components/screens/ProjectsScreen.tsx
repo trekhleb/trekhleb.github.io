@@ -5,6 +5,8 @@ import ProjectsList from '../elements/ProjectsList';
 import PageLayout from '../layouts/PageLayout';
 import ScreenTitle from '../shared/ScreenTitle';
 import PageHeader from '../shared/PageHeader';
+import Badge from '../shared/Badge';
+import Row from '../shared/Row';
 
 type ProjectsScreenProps = {
   projects: ProjectType[],
@@ -13,10 +15,15 @@ type ProjectsScreenProps = {
 const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
   const { projects } = props;
 
+  const projectsNum = projects.length;
+
   return (
     <PageLayout>
       <ScreenTitle title="Projects" />
-      <PageHeader>Projects</PageHeader>
+      <Row>
+        <PageHeader>Projects</PageHeader>
+        <Badge className="ml-3 self-start">{projectsNum}</Badge>
+      </Row>
       <ProjectsList projects={projects} />
     </PageLayout>
   );
