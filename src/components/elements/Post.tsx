@@ -6,7 +6,7 @@ import { PostTemplateQuery } from '../../templates/__generated__/PostTemplateQue
 import { blogPostColor } from '../../constants/style';
 import PageHeader from '../shared/PageHeader';
 import Row from '../shared/Row';
-import { timeToReadMultiplier } from '../../constants/posts';
+import { timeToReadFromRemark } from '../../utils/time';
 
 type PostProps = {
   post: PostTemplateQuery,
@@ -25,7 +25,7 @@ const Post = (props: PostProps): React.ReactElement | null => {
   const timeToRead = post?.markdownRemark?.timeToRead ? (
     <Row>
       <FiClock className="mr-1" />
-      {Math.ceil(post?.markdownRemark?.timeToRead * timeToReadMultiplier) || 1} min to read
+      {timeToReadFromRemark(post?.markdownRemark?.timeToRead)} min to read
     </Row>
   ) : null;
 

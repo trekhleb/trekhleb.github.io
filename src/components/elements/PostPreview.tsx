@@ -10,7 +10,7 @@ import CardTitle from '../shared/CardTitle';
 import FluidImage from '../shared/FluidImage';
 import CardMedia, { cardMediaModeRow } from '../shared/CardMedia';
 import Row from '../shared/Row';
-import { timeToReadMultiplier } from '../../constants/posts';
+import { timeToReadFromRemark } from '../../utils/time';
 
 type PostPreviewProps = {
   post: BlogPageQuery_allMarkdownRemark_nodes,
@@ -43,7 +43,7 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   const timeToRead = post?.timeToRead ? (
     <Row>
       <FiClock className="mr-1" />
-      {Math.floor(post?.timeToRead * timeToReadMultiplier) || 1} min to read
+      {timeToReadFromRemark(post?.timeToRead)} min to read
     </Row>
   ) : null;
 
