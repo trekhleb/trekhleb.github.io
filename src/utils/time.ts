@@ -7,7 +7,7 @@ export const timeToReadFromRemark = (
   if (typeof remarkTimeToRead !== 'number') {
     return null;
   }
-  const timeToReadMultiplier = 0.6;
+  const timeToReadMultiplier = 1;
   const minTimeToRead = 1;
   return Math.ceil(remarkTimeToRead * timeToReadMultiplier) || minTimeToRead;
 };
