@@ -214,10 +214,10 @@ export const projects: Project[] = [
     archived: true,
     cover: { srcPath: 'projects/aggregatus/cover-1.png' },
     summary: [
-      'Service that helps you to aggregate information of the same meaning but from the different websites and make it searchable, filterable and sortable as if it all was from the one website',
+      'Service that helps you to aggregate information of the same meaning but from the different websites and makes it searchable, filterable, and sortable as if it all was from the one website',
     ],
     description: [
-      'Aggregatus is a service that helps you to aggregate information of the same meaning but from different websites and make it searchable, filterable, and sortable as if it all was from the one website.',
+      'Aggregatus is a service that helps you to aggregate information of the same meaning but from different websites, and makes it searchable, filterable, and sortable as if it all was from the one website.',
       'I\'ve launched this project in my spare time to fill the possible gaps in aggregation SaaS tools and also to learn new technologies.',
     ],
     tags: [
