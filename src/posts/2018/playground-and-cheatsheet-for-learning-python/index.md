@@ -3,7 +3,7 @@ title: "New Playground and Cheatsheet for Learning Python"
 
 summary: "Collection of Python scripts that are split by topics and contain code examples with explanations, different use cases"
 
-cover: assets/01-cover.png
+cover: assets/02-cover.png
 
 date: 2018-08-29
 
