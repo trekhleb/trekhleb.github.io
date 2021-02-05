@@ -151,4 +151,4 @@ And we’re done. The hook _usePosition()_ may be consumed and it incapsulates o
 
 ### Afterword
 
-You may find a [demo](https://trekhleb.github.io/use-position/) and more detailed implementation of [usePosition() hook on GitHub](https://github.com/trekhleb/use-position). I hope this example was informative for you. Happy coding!
+You may find a [demo](https://trekhleb.dev/use-position/) and more detailed implementation of [usePosition() hook on GitHub](https://github.com/trekhleb/use-position). I hope this example was informative for you. Happy coding!

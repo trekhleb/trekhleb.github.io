@@ -15,7 +15,7 @@ I've trained a character-level LSTM _(Long short-term memory)_ RNN _(Recurrent N
 
 Here you may find more examples of what I ended up with:
 
-- 🎨 [Cooking recipes generator demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) - to try the model interactively right in your browser.
+- 🎨 [Cooking recipes generator demo](https://trekhleb.dev/machine-learning-experiments/#/experiments/RecipeGenerationRNN) - to try the model interactively right in your browser.
 - 🏋🏻‍ [LSTM model training process](https://github.com/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) - to see how the model was trained.
 - [🤖 Interactive Machine Learning Experiments](https://github.com/trekhleb/machine-learning-experiments) repository - to see more experiments with "Objects detection", "Sketch Recognition", "Image Classification" etc.
 
@@ -2064,7 +2064,7 @@ _<small>➔ output:</small>_
 
 ## Interactive model demo
 
-You may use 🎨 [Cooking recipes generator demo](https://trekhleb.github.io/machine-learning-experiments/#/experiments/RecipeGenerationRNN) to play around with this model, input text, and temperature parameters to generate some random recipes right in your browser.
+You may use 🎨 [Cooking recipes generator demo](https://trekhleb.dev/machine-learning-experiments/#/experiments/RecipeGenerationRNN) to play around with this model, input text, and temperature parameters to generate some random recipes right in your browser.
 
 ![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
 

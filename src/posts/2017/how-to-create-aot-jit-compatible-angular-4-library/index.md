@@ -359,7 +359,7 @@ Additionally, to main library building functionality the [angular-library-seed](
 - **Test coverage** report via [Istanbul](https://github.com/gotwarlost/istanbul).
 - **Linting** with [TSLint](https://palantir.github.io/tslint/) and [Codelyzer](https://github.com/mgechev/codelyzer) for static code analysis.
 - **Exploring your build** via [Sourcemap Explorer](https://www.npmjs.com/package/source-map-explorer) that shows you a treemap visualization to help you debug where all the code is coming from.
-- **Documentation generation** via [Compodoc](https://github.com/compodoc/compodoc). Take a look at [documentation example](https://trekhleb.github.io/angular-library-seed/).
+- **Documentation generation** via [Compodoc](https://github.com/compodoc/compodoc). Take a look at [documentation example](https://trekhleb.dev/angular-library-seed/).
 - **Documentation hosting** via [GitHub Pages](https://pages.github.com/).
 - **Continuous integration** with [Travis CI](https://travis-ci.org/).
 - **Code coverage** badge via [Codecov](https://codecov.io/) as a reminder to cover code with tests.

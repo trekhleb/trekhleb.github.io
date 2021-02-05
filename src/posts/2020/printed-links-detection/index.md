@@ -19,7 +19,7 @@ We will use [TensorFlow 2 Object Detection API](https://github.com/tensorflow/mo
 
 The text of each link (right continuation of `https://` bounding box) will be recognized by using [Tesseract](https://tesseract.projectnaptha.com/) library. The recognition part will not be covered in this article, but you may find the complete code example of the application in [links-detector repository](https://github.com/trekhleb/links-detector).
 
-> 🚀 [Launch Links Detector demo](https://trekhleb.github.io/links-detector/) from your smartphone to see the final result.
+> 🚀 [Launch Links Detector demo](https://trekhleb.dev/links-detector/) from your smartphone to see the final result.
 
 > 📝 [Open links-detector repository](https://github.com/trekhleb/links-detector) on GitHub to see the complete source code of the application.
 
@@ -1944,7 +1944,7 @@ const model = await tf.loadGraphModel(modelURL);
 
 In this article, we started to solve the issue with printed links detection. We ended up creating the custom object detector to recognize the `https://` prefixes on text images (i.e. on smartphone camera stream images). We have also converted the model to a `tfjs_graph_model` to be able to re-use it on the client-side.
 
-You may 🚀 [launch Links Detector demo](https://trekhleb.github.io/links-detector/) from your smartphone to see the final result and to try how the model performs on your books or magazines.
+You may 🚀 [launch Links Detector demo](https://trekhleb.dev/links-detector/) from your smartphone to see the final result and to try how the model performs on your books or magazines.
 
 Here is how the final solution looks like:
 
