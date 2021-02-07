@@ -22,12 +22,32 @@
 <h2>🤷🏻‍️ The Problem</h2>
 <p>I work as a software engineer and in my own time, I learn Machine Learning as a hobby. But this is not the problem yet.</p>
 <p>I bought a printed book about Machine Learning recently and while I was reading through the first several chapters I've encountered many printed links in the text that looked like <code class="language-text">https://tensorflow.org/</code> or <code class="language-text">https://some-url.com/which/may/be/even/longer?and_with_params=true</code>.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/02-printed-links.jpg" alt="Printed Links"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 43.2%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAIDBP/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAAHSgErR/8QAFhABAQEAAAAAAAAAAAAAAAAAACEg/9oACAEBAAEFAlXH/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAGxAAAgEFAAAAAAAAAAAAAAAAAAFBEBExUXH/2gAIAQEAAT8hV90PoggeT//aAAwDAQACAAMAAAAQQN//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAEBAAIDAAAAAAAAAAAAAAABABAhQYGh/9oACAEBAAE/EEgT1OnL3IMY4n//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Printed Links"
+        title="Printed Links"
+        src="/static/0c4381cbec209c0614c9a8e89dc64425/a2510/0.jpg"
+        srcset="/static/0c4381cbec209c0614c9a8e89dc64425/0479a/0.jpg 250w,
+/static/0c4381cbec209c0614c9a8e89dc64425/41099/0.jpg 500w,
+/static/0c4381cbec209c0614c9a8e89dc64425/a2510/0.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>I saw all these links, but I couldn't click on them since they were printed (thanks, cap!). To visit these links I needed to start typing them character by character in the browser's address bar, which was pretty annoying and error-prone.</p>
 <h2>💡 Possible Solution</h2>
 <p>So, I was thinking, what if, similarly to QR-code detection, we will try to "teach" the smartphone to <em>(1)</em> <em>detect</em> and <em>(2)</em> <em>recognize</em> printed links for us and to make them <em>clickable</em>? This way you would do just one click instead of multiple keystrokes. The operational complexity of "clicking" the printed links goes from <code class="language-text">O(N)</code> to <code class="language-text">O(1)</code>.</p>
 <p>This is how the final workflow will look like:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/03-links-detector-demo.gif" alt="Links Detector Demo"></p>
+<p><img src="/posts-assets/2dc300f4cc152c8b14200c25eba77a02/1.gif" alt="Links Detector Demo"></p>
 <h2>📝 Solution Requirements</h2>
 <p>As I've mentioned earlier I'm just studying Machine Learning as a hobby. Thus, the purpose of this article is more about <em>learning</em> how to work with TensorFlow 2 Object Detection API rather than coming up with a production-ready application.</p>
 <p>With that being said, I simplified the solution requirements to the following:</p>
@@ -48,7 +68,27 @@
 <li>Do link detection and recognition on the back-end and send the response back to the client.</li>
 <li>Client draws the detection boxes with the clickable links.</li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/04-frontend-backend.jpg" alt="Model on the back-end"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 76.4%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAPABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe4zg4x//8QAFxAAAwEAAAAAAAAAAAAAAAAAEBEhQv/aAAgBAQABBQLQVQ//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/AT//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/AT//xAAWEAEBAQAAAAAAAAAAAAAAAAAQETH/2gAIAQEABj8C1r//xAAaEAADAQADAAAAAAAAAAAAAAAAARExQWFx/9oACAEBAAE/IY12cFRo6QVH6JOaf//aAAwDAQACAAMAAAAQsw//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAaEAEAAwEBAQAAAAAAAAAAAAABABEhMUFh/9oACAEBAAE/EAFWloyWyjGCARseM1TnldlwNeiishyGT5P/2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Model on the back-end"
+        title="Model on the back-end"
+        src="/static/b1008fc4187f646645a88963ab5d842e/a2510/2.jpg"
+        srcset="/static/b1008fc4187f646645a88963ab5d842e/0479a/2.jpg 250w,
+/static/b1008fc4187f646645a88963ab5d842e/41099/2.jpg 500w,
+/static/b1008fc4187f646645a88963ab5d842e/a2510/2.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p><strong>Pros:</strong></p>
 <ul>
 <li>💚 The detection performance is not limited by the client's device. We may speed the detection up by scaling the service horizontally (adding more instances) and vertically (adding more cores/GPUs).</li>
@@ -69,7 +109,27 @@
 <li>Do link detection and recognition on the client-side (without sending anything to the back-end).</li>
 <li>Client draws the detection boxes with the clickable links.</li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/05-frontend-only.jpg" alt="Model on the front-end"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 104.4%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAVABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAAAAf/aAAwDAQACEAMQAAAB7ldc41FRULA//8QAGhAAAgIDAAAAAAAAAAAAAAAAARACERIiMf/aAAgBAQABBQKXBeSB2VL/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ah//xAAZEAADAAMAAAAAAAAAAAAAAAABEBEAMUH/2gAIAQEAAT8hvTOyxksUMjav/9oADAMBAAIAAwAAABAsCHz/xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAwEBPxAh/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAGhABAAIDAQAAAAAAAAAAAAAAARARACFBMf/aAAgBAQABPxBgF7XwMYZsHSVIoVA7ROtqLH//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Model on the front-end"
+        title="Model on the front-end"
+        src="/static/9d35d51a8edae4727238f9dc487ab5e1/a2510/3.jpg"
+        srcset="/static/9d35d51a8edae4727238f9dc487ab5e1/0479a/3.jpg 250w,
+/static/9d35d51a8edae4727238f9dc487ab5e1/41099/3.jpg 500w,
+/static/9d35d51a8edae4727238f9dc487ab5e1/a2510/3.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p><strong>Pros:</strong></p>
 <ul>
 <li>💚 System is less complex. We don't need to set up the servers, build the API, and introduce an additional Python stack to the system.</li>
@@ -88,7 +148,27 @@
 <p>Since the purpose of the project was more about learning and not coming up with a production-ready solution <em>I decided to go with the second option of serving the model from the client side</em>. This made the whole project much cheaper (actually with GitHub it was free to host it), and I could focus more on Machine Learning than on the autoscaling back-end infrastructure.</p>
 <h3>Lower level breakdown</h3>
 <p>Ok, so we've decided to go with the serverless solution. Now we have an image from the camera stream as an input that looks something like this:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/06-printed-links-clean.jpg" alt="Printed Links Input"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBP/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHrmbGmAgUL/8QAGRAAAgMBAAAAAAAAAAAAAAAAABEBECAh/9oACAEBAAEFAq7lyM//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/AR//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/AR//xAAUEAEAAAAAAAAAAAAAAAAAAAAw/9oACAEBAAY/Ah//xAAcEAACAQUBAAAAAAAAAAAAAAAAAREQITFRYZH/2gAIAQEAAT8hl7JfSBmngrLLOxLZ/9oADAMBAAIAAwAAABDE13z/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAeEAEAAgEEAwAAAAAAAAAAAAABABEhMWFxkUFR0f/aAAgBAQABPxBtaVX7ja5jl7hYUHXxMjubSy825lgTsiDh61E34J//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Printed Links Input"
+        title="Printed Links Input"
+        src="/static/ad6a433499d46bf50b63d69734154c37/a2510/4.jpg"
+        srcset="/static/ad6a433499d46bf50b63d69734154c37/0479a/4.jpg 250w,
+/static/ad6a433499d46bf50b63d69734154c37/41099/4.jpg 500w,
+/static/ad6a433499d46bf50b63d69734154c37/a2510/4.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>We need to solve two sub-tasks for this image:</p>
 <ol>
 <li>Links <strong>detection</strong> (finding the position and bounding boxes of the links)</li>
@@ -96,7 +176,27 @@
 </ol>
 <h4>Option 1: Tesseract based solution</h4>
 <p>The first and the most obvious approach would be to solve the <em>Optical Character Recognition</em> (<a href="https://en.wikipedia.org/wiki/Optical_character_recognition">OCR</a>) task by recognizing the whole text of the image by using, let's say, <a href="https://github.com/naptha/tesseract.js">Tesseract.js</a> library. It returns the bounding boxes of the paragraphs, text lines, and text blocks along with the recognized text.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/07-printed-links-boxes.jpg" alt="Recognized text with bounding boxes"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 99.6%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBP/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHqydltAnQoH//EABkQAAIDAQAAAAAAAAAAAAAAAAARARAgIf/aAAgBAQABBQKu5cjP/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPwEf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPwEf/8QAFBABAAAAAAAAAAAAAAAAAAAAMP/aAAgBAQAGPwIf/8QAGhAAAgMBAQAAAAAAAAAAAAAAAAERITEQYf/aAAgBAQABPyGyyPRvU2lrFNpI/9oADAMBAAIAAwAAABDA2EH/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAcEAEBAQACAwEAAAAAAAAAAAABEQAhkTFBYXH/2gAIAQEAAT8QWmWXLTy4nydtWksvrVH6YbfD+upjuy0Z9zo3/9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Recognized text with bounding boxes"
+        title="Recognized text with bounding boxes"
+        src="/static/a2b20844e61c8aff72a78bd9777f23ce/a2510/5.jpg"
+        srcset="/static/a2b20844e61c8aff72a78bd9777f23ce/0479a/5.jpg 250w,
+/static/a2b20844e61c8aff72a78bd9777f23ce/41099/5.jpg 500w,
+/static/a2b20844e61c8aff72a78bd9777f23ce/a2510/5.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>We may try then to extract the links from the recognized text lines or text blocks with a regular expression like <a href="https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url">this one</a> (example is on TypeScript):</p>
 <div class="gatsby-highlight" data-language="typescript"><pre class="language-typescript"><code class="language-typescript"><span class="token keyword">const</span> <span class="token constant">URL_REG_EXP</span> <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,4}\b([-a-zA-Z0-9@:%_+.~#?&amp;/=]*)</span><span class="token regex-delimiter">/</span><span class="token regex-flags">gi</span></span><span class="token punctuation">;</span>
 
@@ -125,7 +225,27 @@
 <p>💡 So what if we will use another object detection model to help us find all occurrences of the <code class="language-text">https://</code> substrings (every secure link has this prefix, doesn't it) in the image? Then, having these <code class="language-text">https://</code> bounding boxes in the text we may extract the right-side continuation of them and send them to the Tesseract for text recognition.</p>
 </blockquote>
 <p>Take a look at the picture below:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/08-tesseract-vs-tensorflow.jpg" alt="Tesseract and TensorFlow based solution"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 55.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHXtchDD//EABkQAAEFAAAAAAAAAAAAAAAAAAEAERIgIf/aAAgBAQABBQLZF0Kf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFRABAQAAAAAAAAAAAAAAAAAAIEH/2gAIAQEABj8Cq//EABgQAAIDAAAAAAAAAAAAAAAAABARADGB/9oACAEBAAE/IczBWI//2gAMAwEAAgADAAAAELzP/8QAFREBAQAAAAAAAAAAAAAAAAAAEDH/2gAIAQMBAT8Qh//EABYRAQEBAAAAAAAAAAAAAAAAAAEQEf/aAAgBAgEBPxBdn//EABwQAAIBBQEAAAAAAAAAAAAAAAERABAhMUFRgf/aAAgBAQABPxA6/GUnDssjtXEZ287hAkvvYMU//9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Tesseract and TensorFlow based solution"
+        title="Tesseract and TensorFlow based solution"
+        src="/static/6ef7e472afd39bfe0d1b7508449d6144/a2510/6.jpg"
+        srcset="/static/6ef7e472afd39bfe0d1b7508449d6144/0479a/6.jpg 250w,
+/static/6ef7e472afd39bfe0d1b7508449d6144/41099/6.jpg 500w,
+/static/6ef7e472afd39bfe0d1b7508449d6144/a2510/6.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>You may notice that Tesseract needs to do <strong>much less</strong> work in case if it would have some hints about where are the links might be located (see the number of blue boxes on both pictures).</p>
 <p>So the question now is which object detection model we should choose and how to re-train it to support the detection of the custom <code class="language-text">https://</code> objects.</p>
 <blockquote>
@@ -145,7 +265,27 @@
 <p>We may choose the existing model from <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md">TensorFlow 2 Detection Model Zoo</a> which provides a collection of detection models pre-trained on the <a href="https://cocodataset.org/#home">COCO 2017 dataset</a>. Now it contains <code class="language-text">~40</code> model variations to choose from.</p>
 <p>To re-train and fine-tune the model on the custom dataset we will use a <a href="https://github.com/tensorflow/models/tree/master/research/object_detection">TensorFlow 2 Object Detection API</a>. The TensorFlow Object Detection API is an open-source framework built on top of <a href="https://www.tensorflow.org/">TensorFlow</a> that makes it easy to construct, train, and deploy object detection models.</p>
 <p>If you follow the <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md">Model Zoo</a> link you will find the <em>detection speed</em> and <em>accuracy</em> for each model.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/09-model-zoo.jpg" alt="Model Zoo"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 96.80000000000001%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAATABQDASIAAhEBAxEB/8QAGAABAQEBAQAAAAAAAAAAAAAAAAECAwX/xAAVAQEBAAAAAAAAAAAAAAAAAAABAP/aAAwDAQACEAMQAAAB9uzUFTz2JQP/xAAXEAEBAQEAAAAAAAAAAAAAAAAAAREg/9oACAEBAAEFAmInX//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEABj8CH//EABgQAQEBAQEAAAAAAAAAAAAAAAEAQTEQ/9oACAEBAAE/IdkPTx1MWzG3/9oADAMBAAIAAwAAABA8D0D/xAAVEQEBAAAAAAAAAAAAAAAAAAABEP/aAAgBAwEBPxAhP//EABURAQEAAAAAAAAAAAAAAAAAAAEQ/9oACAECAQE/EGM//8QAHBABAAICAwEAAAAAAAAAAAAAAQARITFxkbGB/9oACAEBAAE/ELUNtjGLBcZlqeWZZ5m3XsJTg2wa+pt17NeTP//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Model Zoo"
+        title="Model Zoo"
+        src="/static/f01df6492b87597aa9333c853eaa333b/a2510/7.jpg"
+        srcset="/static/f01df6492b87597aa9333c853eaa333b/0479a/7.jpg 250w,
+/static/f01df6492b87597aa9333c853eaa333b/41099/7.jpg 500w,
+/static/f01df6492b87597aa9333c853eaa333b/a2510/7.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p><em>Image source: <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md">TensorFlow Model Zoo</a> repository</em></p>
 <p>Of course, we would want to find the right balance between the detection <strong>speed</strong> and <strong>accuracy</strong> while picking the model. But what might be even more important in our case is the <strong>size</strong> of the model since it will be loaded to the client-side.</p>
 <p>The size of the archived model might vary drastically from <code class="language-text">~20Mb</code> to <code class="language-text">~1Gb</code>. Here are several examples:</p>
@@ -263,12 +403,54 @@ model_dir <span class="token operator">=</span> download_tf_model<span class="to
 <p><em>output →</em></p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">/content/cache/datasets/ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8</code></pre></div>
 <p>Here is how the folder structure looks so far:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/10-cache-folder.jpg" alt="Cache Folder"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 972px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 80%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAQABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAgAF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB22EKo//EABcQAAMBAAAAAAAAAAAAAAAAAAEQIQL/2gAIAQEAAQUCMeq//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAHRAAAQQCAwAAAAAAAAAAAAAAAQAQESExQVGR8f/aAAgBAQABPyG2sFAk+NwWhO56b//aAAwDAQACAAMAAAAQo8//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAcEAEAAgMAAwAAAAAAAAAAAAABABExQVEQYZH/2gAIAQEAAT8QTevQ9mAT68IQGxlNRgLW5hBs3P/Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Cache Folder"
+        title="Cache Folder"
+        src="/static/ba6e6aef4124664efef1f1af4f1f9c95/95c6e/8.jpg"
+        srcset="/static/ba6e6aef4124664efef1f1af4f1f9c95/0479a/8.jpg 250w,
+/static/ba6e6aef4124664efef1f1af4f1f9c95/41099/8.jpg 500w,
+/static/ba6e6aef4124664efef1f1af4f1f9c95/95c6e/8.jpg 972w"
+        sizes="(max-width: 972px) 100vw, 972px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>The <code class="language-text">checkpoint</code> folder contains the snapshot of the pre-trained model.</p>
 <p>The <code class="language-text">pipeline.config</code> file contains the detection settings of the model. We'll come back to this file later when we will need to fine-tune the model.</p>
 <h2>🏄🏻‍️ Trying the Model (Doing the Inference)</h2>
 <p>For now, the model can detect the object of <a href="https://cocodataset.org/#explore">90 COCO dataset classes</a> like a <code class="language-text">car</code>, <code class="language-text">bird</code>, <code class="language-text">hot dog</code> etc.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/11-coco-classes.jpg" alt="COCO classes"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 22.799999999999997%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAFABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAIF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB06Cwf//EABkQAAMAAwAAAAAAAAAAAAAAAAABAhESE//aAAgBAQABBQKo1FGXyP/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABgQAAIDAAAAAAAAAAAAAAAAAAARASGB/9oACAEBAAY/AmzCpP/EABgQAQEBAQEAAAAAAAAAAAAAAAERADFB/9oACAEBAAE/IZoS3AAr60HQ3//aAAwDAQACAAMAAAAQ8A//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAEDAQE/ED//xAAUEQEAAAAAAAAAAAAAAAAAAAAQ/9oACAECAQE/ED//xAAbEAEAAgIDAAAAAAAAAAAAAAABABEhQTFR4f/aAAgBAQABPxA7ya2vBS17KktOLuYQJvdvc//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="COCO classes"
+        title="COCO classes"
+        src="/static/43edaafc7d30b56f3421efff4cac6d42/a2510/9.jpg"
+        srcset="/static/43edaafc7d30b56f3421efff4cac6d42/0479a/9.jpg 250w,
+/static/43edaafc7d30b56f3421efff4cac6d42/41099/9.jpg 500w,
+/static/43edaafc7d30b56f3421efff4cac6d42/a2510/9.jpg 1000w,
+/static/43edaafc7d30b56f3421efff4cac6d42/c58a3/9.jpg 1500w,
+/static/43edaafc7d30b56f3421efff4cac6d42/d14d4/9.jpg 1562w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p><em>Image source: <a href="https://cocodataset.org/#explore">COCO dataset</a> website</em></p>
 <p>Let's see how the model performs on some general images that contain the objects of these classes.</p>
 <h3>Loading COCO labels</h3>
@@ -363,11 +545,51 @@ inference_detect_fn <span class="token operator">=</span> detection_fn_from_chec
 <p>This <code class="language-text">inference_detect_fn</code> function will accept an image and will return the detected objects' info.</p>
 <h3>Loading the images for inference</h3>
 <p>Let's try to detect the object on this image:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/12-inference-01.jpg" alt="General Object Inference"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 640px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAQDAv/EABcBAQEBAQAAAAAAAAAAAAAAAAECAAP/2gAMAwEAAhADEAAAAc9eNQ7Ts0zFFAjr/8QAHRAAAgIBBQAAAAAAAAAAAAAAAQIAEhETFCEiMf/aAAgBAQABBQICajLNw8VWzTueSPLFnoJ//8QAGBEAAgMAAAAAAAAAAAAAAAAAAAEQETH/2gAIAQMBAT8BKFsf/8QAFREBAQAAAAAAAAAAAAAAAAAAEiD/2gAIAQIBAT8BMf/EAB0QAQABAwUAAAAAAAAAAAAAAAEAEBFBAiExQlH/2gAIAQEABj8Cd0ljWzEPJfrmqPFP/8QAHRABAAMAAQUAAAAAAAAAAAAAAQARITEQUWFx0f/aAAgBAQABPyEUt4gXCjiHFQr+JSM744EwcnJRGukObDhPdP/aAAwDAQACAAMAAAAQlNdA/8QAFhEBAQEAAAAAAAAAAAAAAAAAEQAQ/9oACAEDAQE/EHQX/8QAGBEBAAMBAAAAAAAAAAAAAAAAAAERMVH/2gAIAQIBAT8QKnqcW//EAB4QAAICAgIDAAAAAAAAAAAAAAERADEhQVFxYYGx/9oACAEBAAE/EBcmOCQLuMy7x/OoSDDbuo7DvFnMxjCNJ6txg2JI8QXmTfMpccNCEuw6M//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="General Object Inference"
+        title="General Object Inference"
+        src="/static/9e7ca505789722a51d11eeede2b2d3c3/c08c5/10.jpg"
+        srcset="/static/9e7ca505789722a51d11eeede2b2d3c3/0479a/10.jpg 250w,
+/static/9e7ca505789722a51d11eeede2b2d3c3/41099/10.jpg 500w,
+/static/9e7ca505789722a51d11eeede2b2d3c3/c08c5/10.jpg 640w"
+        sizes="(max-width: 640px) 100vw, 640px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p><em>Image source: <a href="https://www.instagram.com/oleksii_trekhleb/?hl=en">oleksii_trekhleb</a> Instagram</em></p>
 <p>To do that let's save the image to the <code class="language-text">inference/test/</code> folder of our project. If you're using Google Colab you may create this folder and upload the image manually.</p>
 <p>Here is how the folder structure looks so far:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/14-inference-folders.jpg" alt="Folder structure"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 602px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 61.6%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAe3uUoP/xAAZEAACAwEAAAAAAAAAAAAAAAAQEQABAjH/2gAIAQEAAQUC5p0FEP/EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABQQAQAAAAAAAAAAAAAAAAAAACD/2gAIAQEABj8CX//EABoQAQACAwEAAAAAAAAAAAAAAAEAEBEhYVH/2gAIAQEAAT8hV4M7U5O1mHlf/9oADAMBAAIAAwAAABAzz//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EABwQAQEAAgIDAAAAAAAAAAAAAAERACEQMVFhgf/aAAgBAQABPxBNXbTx1iBZ+bwaCk9YN0A0NQ1gaIBOP//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Folder structure"
+        title="Folder structure"
+        src="/static/17fdcc432317dd5e59a939360936b0b0/e49d1/11.jpg"
+        srcset="/static/17fdcc432317dd5e59a939360936b0b0/0479a/11.jpg 250w,
+/static/17fdcc432317dd5e59a939360936b0b0/41099/11.jpg 500w,
+/static/17fdcc432317dd5e59a939360936b0b0/e49d1/11.jpg 602w"
+        sizes="(max-width: 602px) 100vw, 602px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token operator">%</span>matplotlib inline
 
@@ -474,9 +696,49 @@ visualize_detections<span class="token punctuation">(</span>
     category_index<span class="token operator">=</span>coco_category_index<span class="token punctuation">,</span>
 <span class="token punctuation">)</span></code></pre></div>
 <p>Here is the output:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/14-inference-results-01.jpg" alt="Inference result"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 709px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 99.2%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGQABAAIDAAAAAAAAAAAAAAAAAAECAwQF/8QAFgEBAQEAAAAAAAAAAAAAAAAAAQID/9oADAMBAAIQAxAAAAGU3klrl6eES4nT/8QAHBAAAQQDAQAAAAAAAAAAAAAAAgABEhMRFCEz/9oACAEBAAEFAi9LCBbBohKyPX68GzDL0iv/xAAWEQADAAAAAAAAAAAAAAAAAAAAEBH/2gAIAQMBAT8BI//EABURAQEAAAAAAAAAAAAAAAAAABEg/9oACAECAQE/ASP/xAAdEAACAQQDAAAAAAAAAAAAAAAAAUECEBEhIjFR/9oACAEBAAY/Aq+TWzCrZA/Mia0psztkn//EABwQAQADAAIDAAAAAAAAAAAAAAEAESExQVGR4f/aAAgBAQABPyHfZnGwEKUcJM+PSYNLO44AHtKI1G7t1iVurx1L/qf/2gAMAwEAAgADAAAAEDzHwP/EABYRAQEBAAAAAAAAAAAAAAAAABABMf/aAAgBAwEBPxATT//EABkRAQACAwAAAAAAAAAAAAAAAAABETFRYf/aAAgBAgEBPxDlU7Thb//EAB4QAQADAAICAwAAAAAAAAAAAAEAESExQWFxgZHR/9oACAEBAAE/ECjQiAELfFdZLp8aW/iDC7q3f7FOVIo6X7ghQ2yz67Y+w1TjI9lqrvmH7ThcpXio6mH/2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Inference result"
+        title="Inference result"
+        src="/static/9312de3c7465a05f9ddd12eca3d9d385/bd958/12.jpg"
+        srcset="/static/9312de3c7465a05f9ddd12eca3d9d385/0479a/12.jpg 250w,
+/static/9312de3c7465a05f9ddd12eca3d9d385/41099/12.jpg 500w,
+/static/9312de3c7465a05f9ddd12eca3d9d385/bd958/12.jpg 709w"
+        sizes="(max-width: 709px) 100vw, 709px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>If we will do the detection for the text image here is what we will see:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/15-inference-results-02.jpg" alt="Inference result for text image"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 709px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 99.2%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAIBBP/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHujMikDqkNB//EABwQAAICAgMAAAAAAAAAAAAAAAABAhIDERAhMv/aAAgBAQABBQKTdts7JeuHjW6FD//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABcQAAMBAAAAAAAAAAAAAAAAAAABMRD/2gAIAQEABj8CevXSsrP/xAAcEAACAgIDAAAAAAAAAAAAAAAAAREhEHExYZH/2gAIAQEAAT8hobfJ2M3fpJ7y8MOmzGiCAf/aAAwDAQACAAMAAAAQLBDD/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAIBABAAICAQQDAAAAAAAAAAAAAQARIUFxYYGR0aGxwf/aAAgBAQABPxAgCLbY3v3sXfsRiYoMxzKGnHSN3n5lcZRwm3iIY856jd+56n//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Inference result for text image"
+        title="Inference result for text image"
+        src="/static/372fe51fcd25300ff07e0bba1d94b846/bd958/13.jpg"
+        srcset="/static/372fe51fcd25300ff07e0bba1d94b846/0479a/13.jpg 250w,
+/static/372fe51fcd25300ff07e0bba1d94b846/41099/13.jpg 500w,
+/static/372fe51fcd25300ff07e0bba1d94b846/bd958/13.jpg 709w"
+        sizes="(max-width: 709px) 100vw, 709px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>The model couldn't detect anything on this image. This is what we're going to change, we want to teach the model to "see" the <code class="language-text">https://</code> prefixes on this image.</p>
 <h2>📝 Preparing the Custom Dataset</h2>
 <p>To "teach" the <code class="language-text">ssd_mobilenet_v2_fpnlite_640x640_coco17_tpu-8</code> model to detect the custom objects which are <em>not</em> a part of a COCO dataset we need to do the fine-tune training on a new custom dataset.</p>
@@ -485,7 +747,27 @@ visualize_detections<span class="token punctuation">(</span>
 <li>The image itself (i.e. the image of the book page)</li>
 <li>The boundary boxes that show where exactly on the image the custom objects are located.</li>
 </ol>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/16-detection-boxes.jpg" alt="Bounding Boxes"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 52.400000000000006%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3VoB/8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQABBQJf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAGRAAAgMBAAAAAAAAAAAAAAAAAAERIFFh/9oACAEBAAE/IXpPRU//2gAMAwEAAgADAAAAEHDP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGhABAAIDAQAAAAAAAAAAAAAAAQARECExcf/aAAgBAQABPxCw7NXyptVdRWdHyAQMf//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Bounding Boxes"
+        title="Bounding Boxes"
+        src="/static/be25b47e961629a02f8ed3a656535b42/a2510/14.jpg"
+        srcset="/static/be25b47e961629a02f8ed3a656535b42/0479a/14.jpg 250w,
+/static/be25b47e961629a02f8ed3a656535b42/41099/14.jpg 500w,
+/static/be25b47e961629a02f8ed3a656535b42/a2510/14.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>In the example above each box has <code class="language-text">left-top</code> and <code class="language-text">right-bottom</code> coordinates in <em>absolute</em> values (in pixels). However, there are also different formats of writing the location of the bounding boxes exists. For example, we may locate the bounding box by setting the coordinate of its <code class="language-text">center point</code> and its <code class="language-text">width</code> and <code class="language-text">height</code>. We might also use <em>relative</em> values (percentage of the width and height of the image) for setting up the coordinates. But you've got the idea, the network needs to know what the image is and where on the image the objects are located.</p>
 <p>Now, how can we get the custom dataset for training? We have three options here:</p>
 <ol>
@@ -522,7 +804,27 @@ visualize_detections<span class="token punctuation">(</span>
 <p>Since the article has a learning purpose and since we're not trying to win an object detection competition let's go with this option for now and try to create a dataset by ourselves.</p>
 <h3>Preprocessing the data</h3>
 <p>So, I've ended up shooting <code class="language-text">125</code> images of the book pages that contain one or more <code class="language-text">https://</code> links on them.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/17-dataset-raw.jpg" alt="Raw Dataset"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 60.4%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAMABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHWViETD//EABcQAQEBAQAAAAAAAAAAAAAAABEhAEH/2gAIAQEAAQUCITpiF//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8BP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABkQAAMBAQEAAAAAAAAAAAAAAAABMSECQf/aAAgBAQAGPwJZ16TqDxlZXB6z/8QAHBAAAgICAwAAAAAAAAAAAAAAAAERUSFBMWGB/9oACAEBAAE/IUgBpOqQu9Fwoex5qmz2Fn//2gAMAwEAAgADAAAAEMMP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAHRABAAEFAQEBAAAAAAAAAAAAAREAITFBUXGBwf/aAAgBAQABPxBoBEWOp7+Ungcbice9pmr7e6bGKUNY/qkS005Wc+0ybJKMCxX/2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Raw Dataset"
+        title="Raw Dataset"
+        src="/static/5ef08870a8d0193042c9da2c8aa8eb0c/a2510/15.jpg"
+        srcset="/static/5ef08870a8d0193042c9da2c8aa8eb0c/0479a/15.jpg 250w,
+/static/5ef08870a8d0193042c9da2c8aa8eb0c/41099/15.jpg 500w,
+/static/5ef08870a8d0193042c9da2c8aa8eb0c/a2510/15.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>I put all these images in the <code class="language-text">dataset/printed_links/raw</code> folder.</p>
 <p>Next, I'm going to preprocess the images by doing the following:</p>
 <ul>
@@ -678,7 +980,27 @@ preprocess_pipeline<span class="token punctuation">(</span>
     <span class="token punctuation">]</span>
 <span class="token punctuation">)</span></code></pre></div>
 <p>As a result, all processed images were saved to the <code class="language-text">dataset/printed_links/processed</code> folder.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/18-dataset-processed.jpg" alt="Dataset Processed"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 52%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAEF/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAwDAQACEAMQAAAB3KBR/8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQABBQJf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQAGPwJf/8QAFBABAAAAAAAAAAAAAAAAAAAAIP/aAAgBAQABPyFf/9oADAMBAAIAAwAAABCzD//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQMBAT8QP//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8QP//EAB0QAQABBQADAAAAAAAAAAAAAAEAESExQVFhscH/2gAIAQEAAT8QwY13zEPe4BVr3soUxr7EL27AKtp//9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Dataset Processed"
+        title="Dataset Processed"
+        src="/static/d573633530a534c4c87aeb4d0bc0f2d6/a2510/16.jpg"
+        srcset="/static/d573633530a534c4c87aeb4d0bc0f2d6/0479a/16.jpg 250w,
+/static/d573633530a534c4c87aeb4d0bc0f2d6/41099/16.jpg 500w,
+/static/d573633530a534c4c87aeb4d0bc0f2d6/a2510/16.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>You may preview the images like this:</p>
 <div class="gatsby-highlight" data-language="python"><pre class="language-python"><code class="language-python"><span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
 <span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
@@ -708,10 +1030,50 @@ preview_images<span class="token punctuation">(</span><span class="token string"
 <p>Once you have LabelImg tool installed you may launch it for the <code class="language-text">dataset/printed_links/processed</code> folder from the root of your project like this:</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">labelImg dataset/printed_links/processed</code></pre></div>
 <p>Then you'll need to label all the images from the <code class="language-text">dataset/printed_links/processed</code> folder and save annotations as XML files to <code class="language-text">dataset/printed_links/labels/xml/</code> folder.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/18-labeling.jpg" alt="Labeling"></p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/19-labeling-process.gif" alt="Labeling Process"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 49.199999999999996%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAKABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAECBf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhADEAAAAde0hkB//8QAFhABAQEAAAAAAAAAAAAAAAAAEAEx/9oACAEBAAEFAmYf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAFhAAAwAAAAAAAAAAAAAAAAAAECAx/9oACAEBAAY/AhU//8QAHBAAAQMFAAAAAAAAAAAAAAAAAAERICExQaHx/9oACAEBAAE/IUwPS+h05gf/2gAMAwEAAgADAAAAEIMP/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGxAAAwEAAwEAAAAAAAAAAAAAAAERIUFRYZH/2gAIAQEAAT8QfI9v03LVKeoY8witzRlfZ//Z'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Labeling"
+        title="Labeling"
+        src="/static/84c3f7d93cf84fce45d6093732c6ef01/a2510/17.jpg"
+        srcset="/static/84c3f7d93cf84fce45d6093732c6ef01/0479a/17.jpg 250w,
+/static/84c3f7d93cf84fce45d6093732c6ef01/41099/17.jpg 500w,
+/static/84c3f7d93cf84fce45d6093732c6ef01/a2510/17.jpg 1000w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
+<p><img src="/posts-assets/1a60a56a4a04291057f8b04ae1d6aed2/18.gif" alt="Labeling Process"></p>
 <p>After the labeling we should have an XML file with bounding boxes data for each image:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/20-labels-folder.jpg" alt="Labels folder structure"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 622px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 86.4%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAARABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECBf/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/aAAwDAQACEAMQAAAB5hbnIFDIP//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEAAQUCH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABQQAQAAAAAAAAAAAAAAAAAAADD/2gAIAQEABj8CH//EABoQAQEAAgMAAAAAAAAAAAAAAAEAEVEQITH/2gAIAQEAAT8hLDpsMPcruzHs8f/aAAwDAQACAAMAAAAQhx99/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAwEBPxAf/8QAFBEBAAAAAAAAAAAAAAAAAAAAIP/aAAgBAgEBPxAf/8QAHRAAAgIBBQAAAAAAAAAAAAAAAAERMRAhUWGBkf/aAAgBAQABPxBG1EMa7V0cDGQ1ZEt6S3ZQUx//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Labels folder structure"
+        title="Labels folder structure"
+        src="/static/bfa1a524d91a647ee2ecfcd419d1be74/5e4ef/19.jpg"
+        srcset="/static/bfa1a524d91a647ee2ecfcd419d1be74/0479a/19.jpg 250w,
+/static/bfa1a524d91a647ee2ecfcd419d1be74/41099/19.jpg 500w,
+/static/bfa1a524d91a647ee2ecfcd419d1be74/5e4ef/19.jpg 622w"
+        sizes="(max-width: 622px) 100vw, 622px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <h3>Splitting the dataset into train, test, and validation subsets</h3>
 <p>To identify the model's <a href="https://en.wikipedia.org/wiki/Overfitting">overfitting or underfitting</a> issue we need to split the dataset into <code class="language-text">train</code> and <code class="language-text">test</code> dataset. Let's say <code class="language-text">80%</code> of our images will be used to train the model and <code class="language-text">20%</code> of the images will be used to check how well the model generalizes to the images that it didn't see before.</p>
 <blockquote>
@@ -1068,11 +1430,31 @@ visualize_tfrecords<span class="token punctuation">(</span>
     print_num<span class="token operator">=</span><span class="token number">3</span>
 <span class="token punctuation">)</span></code></pre></div>
 <p>As a result, we should see several images with bounding boxes drawn on top of each image.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/23-tfrecords-preview.jpg" alt="TFRecord Preview"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 962px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 98%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAQADAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHvtdCBiAH/xAAaEAACAgMAAAAAAAAAAAAAAAAAAQIQESEx/9oACAEBAAEFAqRwyRtaP//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABcQAAMBAAAAAAAAAAAAAAAAAAEQcSD/2gAIAQEABj8CRrNx/8QAHBAAAwACAwEAAAAAAAAAAAAAAAERMVEQIXGB/9oACAEBAAE/IVxmFnZ5HpSwa6+GdLZ//9oADAMBAAIAAwAAABBzDwD/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAeEAEAAgEEAwAAAAAAAAAAAAABABEhMUFxsVFhkf/aAAgBAQABPxACaEo8R36V0Rq1qVzzLVdvksPTLoiUFd4OVu6DdBtngn//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="TFRecord Preview"
+        title="TFRecord Preview"
+        src="/static/ae63de06652048e7989d778b786dfec0/82d6d/20.jpg"
+        srcset="/static/ae63de06652048e7989d778b786dfec0/0479a/20.jpg 250w,
+/static/ae63de06652048e7989d778b786dfec0/41099/20.jpg 500w,
+/static/ae63de06652048e7989d778b786dfec0/82d6d/20.jpg 962w"
+        sizes="(max-width: 962px) 100vw, 962px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <h2>📈 Setting Up TensorBoard</h2>
 <p>Before starting the training process we need to launch a <a href="https://www.tensorflow.org/tensorboard">TensorBoard</a>.</p>
 <p>TensorBoard will allow us to monitor the training process and see if the model is actually learning something or should we better stop the training and adjust training parameters. It will also help us to analyze what objects and at what location the model is detecting.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/24-tensorboard.gif" alt="TensorBoard"></p>
+<p><img src="/posts-assets/d5ee9f7aee1b94550125340243d5ccf5/21.gif" alt="TensorBoard"></p>
 <p><em>Image source: <a href="https://www.tensorflow.org/tensorboard">TensorBoard homepage</a></em></p>
 <p>The cool part about TensorBoard is that we may run it directly in Google Colab. However, if you're running the notebook in your local installation of Jupyter you may also <a href="https://github.com/tensorflow/tensorboard/blob/master/README.md">install it as Python package</a> and launch it from the terminal.</p>
 <p>First, let's create a <code class="language-text">./logs</code> folder where all training logs will be written:</p>
@@ -1082,7 +1464,29 @@ visualize_tfrecords<span class="token punctuation">(</span>
 <p>And finally we may launch a TensorBoard to monitor the <code class="language-text">./logs</code> folder:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">%tensorboard --logdir ./logs</code></pre></div>
 <p>As a result, you should see the empty TensorBoard panel:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/25-tensorboard-launch.jpg" alt="Empty TensorBoard Panel"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 54.400000000000006%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAGAAAAwEBAAAAAAAAAAAAAAAAAAEDAgX/xAAWAQEBAQAAAAAAAAAAAAAAAAAAAQL/2gAMAwEAAhADEAAAAeyqPNyUD//EABgQAAMBAQAAAAAAAAAAAAAAAAABEgIQ/9oACAEBAAEFAnkkgff/xAAWEQADAAAAAAAAAAAAAAAAAAAAARH/2gAIAQMBAT8BrKz/xAAXEQADAQAAAAAAAAAAAAAAAAAAARES/9oACAECAQE/AcoiP//EABkQAAIDAQAAAAAAAAAAAAAAAAGRACAxMv/aAAgBAQAGPwLS50XNLp//xAAZEAEBAQADAAAAAAAAAAAAAAABABEQIUH/2gAIAQEAAT8hPdkFmAt5g64//9oADAMBAAIAAwAAABD87//EABURAQEAAAAAAAAAAAAAAAAAAABh/9oACAEDAQE/ELLP/8QAFREBAQAAAAAAAAAAAAAAAAAAAGH/2gAIAQIBAT8Qgk//xAAcEAEAAgIDAQAAAAAAAAAAAAABABEhMRBRccH/2gAIAQEAAT8QPhrdCAjX1QDb6pll3CbN37x//9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Empty TensorBoard Panel"
+        title="Empty TensorBoard Panel"
+        src="/static/95e5581c409416c73ade13bd383b8274/a2510/22.jpg"
+        srcset="/static/95e5581c409416c73ade13bd383b8274/0479a/22.jpg 250w,
+/static/95e5581c409416c73ade13bd383b8274/41099/22.jpg 500w,
+/static/95e5581c409416c73ade13bd383b8274/a2510/22.jpg 1000w,
+/static/95e5581c409416c73ade13bd383b8274/c58a3/22.jpg 1500w,
+/static/95e5581c409416c73ade13bd383b8274/5ed7a/22.jpg 1832w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>After the model training is be started you may get back to this panel and see the training process progress.</p>
 <h2>🏋🏻‍️ Model Training</h2>
 <h3>Configuring the Detection Pipeline</h3>
@@ -1364,7 +1768,30 @@ python ./models/research/object_detection/model_main_tf2.py <span class="token p
   --checkpoint_every_n<span class="token operator">=</span><span class="token variable">$CHECKPOINT_EVERY_N</span> <span class="token punctuation">\</span>
   --alsologtostderr</code></pre></div>
 <p>While the model is training (it may take around<code class="language-text">~10 minutes</code> for <code class="language-text">1000</code> iterations in <a href="https://colab.research.google.com/notebooks/gpu.ipynb">GoogleColab GPU</a> runtime) you should be able to observe the training progress in TensorBoard. The <code class="language-text">localization</code> and <code class="language-text">classification</code> losses should decrease which means that the model is doing a good job in localizing and classifying new custom objects.</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/26-tensorboard-training.jpg" alt="Training Process"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 46.800000000000004%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAJABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAgABBf/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAAHtakJlR//EABcQAAMBAAAAAAAAAAAAAAAAAAABEiD/2gAIAQEAAQUClEolY//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAEDAQE/Aar/xAAWEQEBAQAAAAAAAAAAAAAAAAAAEQH/2gAIAQIBAT8BmI//xAAXEAADAQAAAAAAAAAAAAAAAAAAATEg/9oACAEBAAY/AoiIix//xAAZEAACAwEAAAAAAAAAAAAAAAAA8QEQQeH/2gAIAQEAAT8hjjC4TG3/AP/aAAwDAQACAAMAAAAQ4B//xAAWEQADAAAAAAAAAAAAAAAAAAAAEVH/2gAIAQMBAT8QajU//8QAFxEBAAMAAAAAAAAAAAAAAAAAABFRYf/aAAgBAgEBPxDBCn//xAAcEAACAQUBAAAAAAAAAAAAAAAAAREQITFxofH/2gAIAQEAAT8QjXm0E2VxnmRYUZ//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Training Process"
+        title="Training Process"
+        src="/static/f0ee38bedbfe135b3b118411cdb68c50/a2510/23.jpg"
+        srcset="/static/f0ee38bedbfe135b3b118411cdb68c50/0479a/23.jpg 250w,
+/static/f0ee38bedbfe135b3b118411cdb68c50/41099/23.jpg 500w,
+/static/f0ee38bedbfe135b3b118411cdb68c50/a2510/23.jpg 1000w,
+/static/f0ee38bedbfe135b3b118411cdb68c50/c58a3/23.jpg 1500w,
+/static/f0ee38bedbfe135b3b118411cdb68c50/3acf0/23.jpg 2000w,
+/static/f0ee38bedbfe135b3b118411cdb68c50/8b3ab/23.jpg 2390w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>Also during the training, the new model checkpoints (parameters that the model has learned during the training) will be saved to the <code class="language-text">logs</code> folder.</p>
 <p>The <code class="language-text">logs</code> folder structure now looks like this:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">logs
@@ -1386,7 +1813,30 @@ python ./models/research/object_detection/model_main_tf2.py <span class="token p
   --pipeline_config_path<span class="token operator">=</span><span class="token variable">$PIPELINE_CONFIG_PATH</span> <span class="token punctuation">\</span>
   --checkpoint_dir<span class="token operator">=</span><span class="token variable">$MODEL_DIR</span> <span class="token punctuation">\</span></code></pre></div>
 <p>After launching the script you should be able to see several side-by-side images with detections boxes:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/27-tensorboard-evaluation.jpg" alt="Model Evaluation"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAIABQDASIAAhEBAxEB/8QAFwABAAMAAAAAAAAAAAAAAAAAAAECBf/EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHZklsD/8QAFxAAAwEAAAAAAAAAAAAAAAAAAAISAf/aAAgBAQABBQKVJUnD/8QAFhEAAwAAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/Aays/8QAFhEAAwAAAAAAAAAAAAAAAAAAAAER/9oACAECAQE/AYiI/8QAFRABAQAAAAAAAAAAAAAAAAAAADH/2gAIAQEABj8CiI//xAAZEAACAwEAAAAAAAAAAAAAAAAAASExQWH/2gAIAQEAAT8hgoJmTmP/2gAMAwEAAgADAAAAEHAP/8QAFREBAQAAAAAAAAAAAAAAAAAAAGH/2gAIAQMBAT8Qoo//xAAVEQEBAAAAAAAAAAAAAAAAAAAAYf/aAAgBAgEBPxCSD//EABoQAAMAAwEAAAAAAAAAAAAAAAABESFRYZH/2gAIAQEAAT8QszQ3Zh4a/A//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Model Evaluation"
+        title="Model Evaluation"
+        src="/static/4e770b2825aa52724dd190abec9b4384/a2510/24.jpg"
+        srcset="/static/4e770b2825aa52724dd190abec9b4384/0479a/24.jpg 250w,
+/static/4e770b2825aa52724dd190abec9b4384/41099/24.jpg 500w,
+/static/4e770b2825aa52724dd190abec9b4384/a2510/24.jpg 1000w,
+/static/4e770b2825aa52724dd190abec9b4384/c58a3/24.jpg 1500w,
+/static/4e770b2825aa52724dd190abec9b4384/3acf0/24.jpg 2000w,
+/static/4e770b2825aa52724dd190abec9b4384/56873/24.jpg 2332w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <h2>🗜 Exporting the Model</h2>
 <p>Once the training process is complete we should save the trained model for further usage. To export the model we will use the <a href="https://github.com/tensorflow/models/blob/master/research/object_detection/exporter_main_v2.py">exporter<em>main</em>v2.py</a> script from Object Detection API. It prepares an object detection TensorFlow graph for inference using model configuration and a trained checkpoint. The script outputs associated checkpoint files, a SavedModel, and a copy of the model config:</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">%%bash
@@ -1528,7 +1978,27 @@ test_detection<span class="token punctuation">(</span>
     detect_fn<span class="token operator">=</span>exported_detect_fn
 <span class="token punctuation">)</span></code></pre></div>
 <p>As a result, you should see <code class="language-text">10</code> images from the test dataset and highlighted <code class="language-text">https:</code> prefixes that were detected by the model:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/28-testing-the-model.jpg" alt="Testing the model on a test dataset"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 976px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 98%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAGAABAAMBAAAAAAAAAAAAAAAAAAECAwX/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAHvspJUGlQgH//EABgQAAMBAQAAAAAAAAAAAAAAAAABERAC/9oACAEBAAEFAsQ85IQkP//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQMBAT8BH//EABQRAQAAAAAAAAAAAAAAAAAAACD/2gAIAQIBAT8BH//EABcQAAMBAAAAAAAAAAAAAAAAAAEQIHH/2gAIAQEABj8CRZ2P/8QAHBAAAgICAwAAAAAAAAAAAAAAAAERIUFhcZGh/9oACAEBAAE/ISh75FOydMYnIj4K2M2f/9oADAMBAAIAAwAAABAgwAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAEDAQE/EB//xAAUEQEAAAAAAAAAAAAAAAAAAAAg/9oACAECAQE/EB//xAAeEAEAAwACAgMAAAAAAAAAAAABABEhMXFBUZHB8f/aAAgBAQABPxAqtqX7EB1uvqQBs2073KJfwTbl+CCgVdY0cvlBYbStfU//2Q=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Testing the model on a test dataset"
+        title="Testing the model on a test dataset"
+        src="/static/61aef315a3caa1f60ef57bf4df5c450f/03073/25.jpg"
+        srcset="/static/61aef315a3caa1f60ef57bf4df5c450f/0479a/25.jpg 250w,
+/static/61aef315a3caa1f60ef57bf4df5c450f/41099/25.jpg 500w,
+/static/61aef315a3caa1f60ef57bf4df5c450f/03073/25.jpg 976w"
+        sizes="(max-width: 976px) 100vw, 976px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>The fact that the model is able to detect custom objects (in our case the <code class="language-text">https://</code> prefixes) on the images it hasn't seen before is a good sign and something that we wanted to achieve.</p>
 <h2>🗜 Converting the Model for Web</h2>
 <p>As you remember from the beginning of this article, our goal was to use the custom object detection model in the browser. Luckily, there is a <a href="https://www.tensorflow.org/js">TensorFlow.js</a> JavaScript version of the TensorFlow library exists. In JavaScript, we can't work with our saved model directly. Instead, we need to convert it to <a href="https://www.tensorflow.org/js/tutorials/conversion/import_saved_model">tfjs<em>graph</em>model</a> format.</p>
@@ -1579,7 +2049,7 @@ Exported WEB model size:  13 MB</code></pre></div>
 <p>In this article, we started to solve the issue with printed links detection. We ended up creating the custom object detector to recognize the <code class="language-text">https://</code> prefixes on text images (i.e. on smartphone camera stream images). We have also converted the model to a <code class="language-text">tfjs_graph_model</code> to be able to re-use it on the client-side.</p>
 <p>You may 🚀 <a href="https://trekhleb.dev/links-detector/">launch Links Detector demo</a> from your smartphone to see the final result and to try how the model performs on your books or magazines.</p>
 <p>Here is how the final solution looks like:</p>
-<p><img src="https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/03-links-detector-demo.gif" alt="Links Detector Demo"></p>
+<p><img src="/posts-assets/2dc300f4cc152c8b14200c25eba77a02/26.gif" alt="Links Detector Demo"></p>
 <p>You may also 📝 <a href="https://github.com/trekhleb/links-detector">browse the links-detector repository</a> on GitHub to see the complete source code of the UI part of the application.</p>
 <blockquote>
 <p>⚠️ Currently the application is in <em>experimental</em> <em>Alpha</em> stage and has <a href="https://github.com/trekhleb/links-detector/issues?q=is%3Aopen+is%3Aissue+label%3Aenhancement">many issues and limitations</a>. So don't raise your expectations level too high until these issues are resolved 🤷🏻‍.</p>

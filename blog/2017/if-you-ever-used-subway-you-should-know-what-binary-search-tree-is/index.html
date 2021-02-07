@@ -31,12 +31,75 @@
 <p><img src="https://dev-to-uploads.s3.amazonaws.com/i/2z9py072vh2moc0nnpyb.png" alt="BST"></p>
 <p>What do you normally do? You make one turn (decision) after another each time deciding what is the shortest path to the existing <code class="language-text">#8</code>.</p>
 <p>Eventually, the distance to exit <code class="language-text">#8</code> is the most valuable criteria you’re using to make correct decisions during each turn. Thus let’s mark all turns and exists with a number that represents the distance to desired exit <code class="language-text">#8</code> from it. For example, if you’re in the middle of the station that it would take 13 “steps” for you to get to exit <code class="language-text">#8</code>. Also if you’re already at exit <code class="language-text">#8</code> it would mean that you’re zero-steps far from it. And so on for all other turns and exists.</p>
-<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/fniuf8zstvhjgkqpl65i.png" alt="BST"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 43.6%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABbUlEQVQoz1VRbU+DMBDe///gL/BXGD8YY4y6OTM3N+yAbrzJqCBQoGUbY0PaSkFRL5fm0rvnnufuBkIwzmshuOiN1YIxGXAmXQY/Wf6nTIhBByvLQxwGwbtXlgWJ8PzhyfIDbbb4cN+bLFo7lmG7QWQv9ePh2HcZVKeSpNg2VzpQzJVW7LeU5pPhGMwVZbZALmqK/A2CS229Mk0VlkXZYlswjgJlOnEMqL3ODajiOJRCDgWy7D0llJApdNJ8S7f5h+dVVfVPNmM1VAFUFQ0skjhs52/A+xGAxI/SEJ9djgEKApIB26tOx562m1mQLDHhsqrahJAbasTHtk1zUuxynKW7nO4otdCmKPb8e3G8Azfcn1kSc844k7Q+Cm4vrh9Gk9H9o/oMmh9Tt4Y3w0egn19d32nw5c1iPZjLe/CfQGxxarwAhPGbYfmmI6VFEVobcZrp7sZLEieOetkNW92O2nl72997yqbt++/CnX0BBd/4UXEe+joAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="BST"
+        title="BST"
+        src="/static/2b35f2cabf575b172b1fa8d301af010d/00d43/0.png"
+        srcset="/static/2b35f2cabf575b172b1fa8d301af010d/63868/0.png 250w,
+/static/2b35f2cabf575b172b1fa8d301af010d/0b533/0.png 500w,
+/static/2b35f2cabf575b172b1fa8d301af010d/00d43/0.png 1000w,
+/static/2b35f2cabf575b172b1fa8d301af010d/2cefc/0.png 1400w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>Actually, this is something your brain automatically does. Every time you make a turn you know the shortest path. These numbers are just a way to make this process understandable not only for the human brain but for the computer as well.</p>
 <p>OK, now let’s clean that drawing up a little and remove the subway scheme.</p>
-<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/rngph4y9rhyszvyfgdeo.png" alt="BST"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABP0lEQVQY02WR226CQBCGff8X6m1rTI01FUEOAhYEYcEgKsLCsscOnmrSyVxsZvfb+eefkVJCKamuwTinlKp/QWnf92RIjOtjyR9vRkC2PXHT/IzxKs4q3HbVybOs0Pf8tf35/n5GqLlcTGPpe45nrpylVh+KO4wO5djw3ha2neTwvxKiKcu1oUdBYGiLItnVpyN0llJ0XbvPM2CkEHe4I522iYAETIQx1S1RN3CRp8lk/AEyk3irfc/bttmGgetYr+OAbM4kk6SjhkNmS1EcbheXqoqjLRw4ZzAtNCekyzPEGGsxfsCSgWeCkt7d8GwPpXK30+df8Y8/nYwhg40PRdexbdNcW2YUBiBqQOXQGaxjN88hoHjOkD6bFihJkzhHaYvrYRGMCvG3l6dsgHsl+0GC5K+be4QEi67FZ94N+wWZWMR1u3fLHAAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="BST"
+        title="BST"
+        src="/static/0a63d1efde2cc8fe3b9b747dd72ee9b5/00d43/1.png"
+        srcset="/static/0a63d1efde2cc8fe3b9b747dd72ee9b5/63868/1.png 250w,
+/static/0a63d1efde2cc8fe3b9b747dd72ee9b5/0b533/1.png 500w,
+/static/0a63d1efde2cc8fe3b9b747dd72ee9b5/00d43/1.png 1000w,
+/static/0a63d1efde2cc8fe3b9b747dd72ee9b5/2cefc/1.png 1400w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>Now let’s clean it up even more and remove useless duplicates to simplify things.</p>
-<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/o21mqzp8m13pxpwhvn7a.png" alt="BST"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 46.800000000000004%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAJCAIAAAC9o5sfAAAACXBIWXMAAAsTAAALEwEAmpwYAAABLUlEQVQoz3WP0VLDIBBF+/+/4hc4vvjgONVpa5tONDG1tklsTQwQaAkECAjEZqpT94G5LJzde0fGdMZore1pVNcJKa0grFkVuxSUkB6FUuafGnnYkVzIrEKU8X0Nl/nGkjWj4TpBuDZ+/EXYDca02ZYAYDx5i4J0/YEqeDzYfhLHwXNIOb/Iu82Y0ijf20tF0G34NNskxv8LFvOi+GSc3T+MWyEG3p36BNuc0gVzjaZlTLRWHAjJs1QpSTDO0ix8jRFCf/b3tjtPdifhaj6bUkq98whBiCCYBItDQwlv7pKXkuAelmeY7gfbqMQ/f5VFHEVCiFUclRBc3Vwv8+17VXIpBlidrxWinT6OGWtcCkpBVSmlcI06rSHBOwSEkoNtMaz1nUGYM/GrtP4x+A3VjgYY8FtWLgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="BST"
+        title="BST"
+        src="/static/3317cad93d25df432f2fa9364210c360/00d43/2.png"
+        srcset="/static/3317cad93d25df432f2fa9364210c360/63868/2.png 250w,
+/static/3317cad93d25df432f2fa9364210c360/0b533/2.png 500w,
+/static/3317cad93d25df432f2fa9364210c360/00d43/2.png 1000w,
+/static/3317cad93d25df432f2fa9364210c360/2cefc/2.png 1400w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>Voila! We’ve got <strong>Binary Search Tree</strong> (<a href="https://en.wikipedia.org/wiki/Binary_search_tree"><strong>BST</strong></a>) we’re using each time during our subway trips!</p>
 <p>How you’re using BST?</p>
 <ul>
