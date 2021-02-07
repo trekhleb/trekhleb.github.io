@@ -94,7 +94,7 @@ async function main() {
 
       const allowedExtensions = ['png', 'gif', 'jpg', 'jpeg'];
       const imgExtension = imgUrl.split('.').pop().toLowerCase();
-      if (imgExtension in allowedExtensions) {
+      if (allowedExtensions.includes(imgExtension)) {
         const assetsFolder = 'assets';
         const imgName = `${imageIdx}.${imgExtension}`;
         const imgPath = path.join(path.dirname(mdFilePath), assetsFolder, imgName);
