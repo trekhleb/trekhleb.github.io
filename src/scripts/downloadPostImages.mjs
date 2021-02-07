@@ -92,20 +92,24 @@ async function main() {
       const imgUrl = matches[1];
       logInfo(`\nFound external image: ${imgUrl}`);
 
-      const assetsFolder = 'assets';
-      const imgExtension = imgUrl.split('.').pop();
-      const imgName = `${imageIdx}.${imgExtension}`;
-      const imgPath = path.join(path.dirname(mdFilePath), assetsFolder, imgName);
-      const result = await downloadFile(imgUrl, imgPath);
-      if (result instanceof Error) {
-        logError(result);
+      const allowedExtensions = ['png', 'gif', 'jpg', 'jpeg'];
+      const imgExtension = imgUrl.split('.').pop().toLowerCase();
+      if (imgExtension in allowedExtensions) {
+        const assetsFolder = 'assets';
+        const imgName = `${imageIdx}.${imgExtension}`;
+        const imgPath = path.join(path.dirname(mdFilePath), assetsFolder, imgName);
+        const result = await downloadFile(imgUrl, imgPath);
+        if (result instanceof Error) {
+          logError(result);
+        } else {
+          logInfo(`File downloaded to ${imgPath}`);
+        }
+
+        logInfo('Updating the content of *.md file');
+        mdContentUpdated = mdContentUpdated.replace(imgUrl, `${assetsFolder}/${imgName}`);
       } else {
-        logInfo(`File downloaded to ${imgPath}`);
+        logError(new Error(`Not supported image extension for the file ${imgUrl}`));
       }
-
-      logInfo('Updating the content of *.md file');
-      mdContentUpdated = mdContentUpdated.replace(imgUrl, `${assetsFolder}/${imgName}`);
-
       imageIdx += 1;
       matches = externalImageRegex.exec(mdContent.toString());
     }
