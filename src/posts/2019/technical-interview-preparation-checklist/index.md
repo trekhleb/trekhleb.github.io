@@ -220,10 +220,6 @@ Try to have 1–2 questions prepared for the end for your interviewer.
 - [Programming Interviews Exposed](https://books.google.com.ua/books/about/Programming_Interviews_Exposed.html?id=9_by-rpCSSUC&hl=en&redir_esc=y)
 - [Programming Pearls](https://books.google.com.ua/books/about/Programming_Pearls_2_E.html?id=vyhrriC6qcEC&hl=en&redir_esc=y)
 
-_You may also check [JavaScript Algorithms](https://www.newline.co/javascript-algorithms) book_
-
-[![JavaScript Algorithms Book](https://dev-to-uploads.s3.amazonaws.com/i/5xrq63qlky9dg41rq7cg.png)](https://www.newline.co/javascript-algorithms)
-
 **Courses**
 
 - [Algorithms (part 1)](https://www.coursera.org/learn/algorithms-part1)
