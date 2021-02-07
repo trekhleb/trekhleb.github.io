@@ -31,7 +31,7 @@ a.k.a [OCP](https://en.wikipedia.org/wiki/Open/closed_principle)
 
 Software entities should be open for EXTENSION, but closed for MODIFICATION. Allow behavior to be extended without modifying the source code.
 
-![Open/Closed Principle](https://dev-to-uploads.s3.amazonaws.com/i/fv3xpd9kkfgntqby9eg6.png)
+![Open/Closed Principle](assets/0.png)
 
 ## L — Liskov Substitution Principle
 
@@ -39,7 +39,7 @@ a.k.a. [LSP](https://en.wikipedia.org/wiki/Liskov_substitution_principle)
 
 Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.
 
-![Liskov Substitution Principle](https://dev-to-uploads.s3.amazonaws.com/i/7wdzib8lqfq9bcstfqu3.png)
+![Liskov Substitution Principle](assets/1.png)
 
 ## I — Interface Segregation Principle
 
@@ -47,7 +47,7 @@ a.k.a. [ISP](https://en.wikipedia.org/wiki/Interface_segregation_principle)
 
 Many client-specific interfaces are better than one general-purpose interface. No client should be forced to depend on methods it does not use.
 
-![Interface Segregation Principle](https://dev-to-uploads.s3.amazonaws.com/i/rnwds5cv5qcodlam1wc6.png)
+![Interface Segregation Principle](assets/2.png)
 
 ## D — Dependency Inversion Principle
 
@@ -58,7 +58,7 @@ One should depend upon abstractions, not concretions.
 - High-level modules should not depend on low-level modules. Both should depend on abstractions.
 - Abstractions should not depend on details. Details should depend on abstractions.
 
-![Dependency Inversion Principle](https://dev-to-uploads.s3.amazonaws.com/i/wugaxuqznqow3wzgp8hr.png)
+![Dependency Inversion Principle](assets/3.png)
 
 The plug doesn’t care which type of wire it uses, it just needs wires that conduct electricity.
 

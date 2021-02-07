@@ -21,17 +21,17 @@ What do you normally do? You make one turn (decision) after another each time de
 
 Eventually, the distance to exit `#8` is the most valuable criteria you’re using to make correct decisions during each turn. Thus let’s mark all turns and exists with a number that represents the distance to desired exit `#8` from it. For example, if you’re in the middle of the station that it would take 13 “steps” for you to get to exit `#8`. Also if you’re already at exit `#8` it would mean that you’re zero-steps far from it. And so on for all other turns and exists.
 
-![BST](https://dev-to-uploads.s3.amazonaws.com/i/fniuf8zstvhjgkqpl65i.png)
+![BST](assets/0.png)
 
 Actually, this is something your brain automatically does. Every time you make a turn you know the shortest path. These numbers are just a way to make this process understandable not only for the human brain but for the computer as well.
 
 OK, now let’s clean that drawing up a little and remove the subway scheme.
 
-![BST](https://dev-to-uploads.s3.amazonaws.com/i/rngph4y9rhyszvyfgdeo.png)
+![BST](assets/1.png)
 
 Now let’s clean it up even more and remove useless duplicates to simplify things.
 
-![BST](https://dev-to-uploads.s3.amazonaws.com/i/o21mqzp8m13pxpwhvn7a.png)
+![BST](assets/2.png)
 
 Voila! We’ve got **Binary Search Tree** ([**BST**](https://en.wikipedia.org/wiki/Binary_search_tree)) we’re using each time during our subway trips!
 

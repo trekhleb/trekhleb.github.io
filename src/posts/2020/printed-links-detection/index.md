@@ -37,7 +37,7 @@ I work as a software engineer and in my own time, I learn Machine Learning as a 
 
 I bought a printed book about Machine Learning recently and while I was reading through the first several chapters I've encountered many printed links in the text that looked like `https://tensorflow.org/` or `https://some-url.com/which/may/be/even/longer?and_with_params=true`.
 
-![Printed Links](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/02-printed-links.jpg)
+![Printed Links](assets/0.jpg)
 
 I saw all these links, but I couldn't click on them since they were printed (thanks, cap!). To visit these links I needed to start typing them character by character in the browser's address bar, which was pretty annoying and error-prone.
 
@@ -47,7 +47,7 @@ So, I was thinking, what if, similarly to QR-code detection, we will try to "tea
 
 This is how the final workflow will look like:
 
-![Links Detector Demo](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/03-links-detector-demo.gif)
+![Links Detector Demo](assets/1.gif)
 
 ## 📝 Solution Requirements
 
@@ -75,7 +75,7 @@ Let's see how we could approach the problem on a high level.
 3. Do link detection and recognition on the back-end and send the response back to the client.
 4. Client draws the detection boxes with the clickable links.
 
-![Model on the back-end](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/04-frontend-backend.jpg)
+![Model on the back-end](assets/2.jpg)
 
 **Pros:**
 
@@ -98,7 +98,7 @@ Let's see how we could approach the problem on a high level.
 2. Do link detection and recognition on the client-side (without sending anything to the back-end).
 3. Client draws the detection boxes with the clickable links.
 
-![Model on the front-end](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/05-frontend-only.jpg)
+![Model on the front-end](assets/3.jpg)
 
 **Pros:**
 
@@ -122,7 +122,7 @@ Since the purpose of the project was more about learning and not coming up with 
 
 Ok, so we've decided to go with the serverless solution. Now we have an image from the camera stream as an input that looks something like this:
 
-![Printed Links Input](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/06-printed-links-clean.jpg)
+![Printed Links Input](assets/4.jpg)
 
 We need to solve two sub-tasks for this image:
 
@@ -133,7 +133,7 @@ We need to solve two sub-tasks for this image:
 
 The first and the most obvious approach would be to solve the _Optical Character Recognition_ ([OCR](https://en.wikipedia.org/wiki/Optical_character_recognition)) task by recognizing the whole text of the image by using, let's say, [Tesseract.js](https://github.com/naptha/tesseract.js) library. It returns the bounding boxes of the paragraphs, text lines, and text blocks along with the recognized text.
 
-![Recognized text with bounding boxes](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/07-printed-links-boxes.jpg)
+![Recognized text with bounding boxes](assets/5.jpg)
 
 We may try then to extract the links from the recognized text lines or text blocks with a regular expression like [this one](https://stackoverflow.com/questions/3809401/what-is-a-good-regular-expression-to-match-a-url) (example is on TypeScript):
 
@@ -171,7 +171,7 @@ The "adviser" algorithm that will take place before the Tesseract should work wi
 
 Take a look at the picture below:
 
-![Tesseract and TensorFlow based solution](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/08-tesseract-vs-tensorflow.jpg)
+![Tesseract and TensorFlow based solution](assets/6.jpg)
 
 You may notice that Tesseract needs to do **much less** work in case if it would have some hints about where are the links might be located (see the number of blue boxes on both pictures).
 
@@ -197,7 +197,7 @@ To re-train and fine-tune the model on the custom dataset we will use a [TensorF
 
 If you follow the [Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) link you will find the _detection speed_ and _accuracy_ for each model.
 
-![Model Zoo](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/09-model-zoo.jpg)
+![Model Zoo](assets/7.jpg)
 
 *Image source: [TensorFlow Model Zoo](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md) repository*
 
@@ -355,7 +355,7 @@ _output →_
 
 Here is how the folder structure looks so far:
 
-![Cache Folder](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/10-cache-folder.jpg)
+![Cache Folder](assets/8.jpg)
 
 The `checkpoint` folder contains the snapshot of the pre-trained model.
 
@@ -365,7 +365,7 @@ The `pipeline.config` file contains the detection settings of the model. We'll c
 
 For now, the model can detect the object of [90 COCO dataset classes](https://cocodataset.org/#explore) like a `car`, `bird`, `hot dog` etc.
 
-![COCO classes](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/11-coco-classes.jpg)
+![COCO classes](assets/9.jpg)
 
 *Image source: [COCO dataset](https://cocodataset.org/#explore) website*
 
@@ -480,7 +480,7 @@ This `inference_detect_fn` function will accept an image and will return the det
 
 Let's try to detect the object on this image:
 
-![General Object Inference](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/12-inference-01.jpg)
+![General Object Inference](assets/10.jpg)
 
 *Image source: [oleksii_trekhleb](https://www.instagram.com/oleksii_trekhleb/?hl=en) Instagram*
 
@@ -488,7 +488,7 @@ To do that let's save the image to the `inference/test/` folder of our project. 
 
 Here is how the folder structure looks so far:
 
-![Folder structure](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/14-inference-folders.jpg)
+![Folder structure](assets/11.jpg)
 
 ```python
 import matplotlib.pyplot as plt
@@ -629,11 +629,11 @@ visualize_detections(
 
 Here is the output:
 
-![Inference result](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/14-inference-results-01.jpg)
+![Inference result](assets/12.jpg)
 
 If we will do the detection for the text image here is what we will see:
 
-![Inference result for text image](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/15-inference-results-02.jpg)
+![Inference result for text image](assets/13.jpg)
 
 The model couldn't detect anything on this image. This is what we're going to change, we want to teach the model to "see" the `https://` prefixes on this image.
 
@@ -646,7 +646,7 @@ The datasets for object detection consist of two parts:
 1. The image itself (i.e. the image of the book page)
 2. The boundary boxes that show where exactly on the image the custom objects are located.
 
-![Bounding Boxes](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/16-detection-boxes.jpg)
+![Bounding Boxes](assets/14.jpg)
 
 In the example above each box has `left-top` and `right-bottom` coordinates in _absolute_ values (in pixels). However, there are also different formats of writing the location of the bounding boxes exists. For example, we may locate the bounding box by setting the coordinate of its `center point` and its `width` and `height`. We might also use _relative_ values (percentage of the width and height of the image) for setting up the coordinates. But you've got the idea, the network needs to know what the image is and where on the image the objects are located.
 
@@ -703,7 +703,7 @@ Since the article has a learning purpose and since we're not trying to win an ob
 
 So, I've ended up shooting `125` images of the book pages that contain one or more `https://` links on them.
 
-![Raw Dataset](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/17-dataset-raw.jpg)
+![Raw Dataset](assets/15.jpg)
 
 I put all these images in the `dataset/printed_links/raw` folder.
 
@@ -867,7 +867,7 @@ preprocess_pipeline(
 
 As a result, all processed images were saved to the `dataset/printed_links/processed` folder.
 
-![Dataset Processed](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/18-dataset-processed.jpg)
+![Dataset Processed](assets/16.jpg)
 
 You may preview the images like this:
 
@@ -908,13 +908,13 @@ labelImg dataset/printed_links/processed
 
 Then you'll need to label all the images from the `dataset/printed_links/processed` folder and save annotations as XML files to `dataset/printed_links/labels/xml/` folder.
 
-![Labeling](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/18-labeling.jpg)
+![Labeling](assets/17.jpg)
 
-![Labeling Process](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/19-labeling-process.gif)
+![Labeling Process](assets/18.gif)
 
 After the labeling we should have an XML file with bounding boxes data for each image:
 
-![Labels folder structure](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/20-labels-folder.jpg)
+![Labels folder structure](assets/19.jpg)
 
 ### Splitting the dataset into train, test, and validation subsets
 
@@ -1317,7 +1317,7 @@ visualize_tfrecords(
 
 As a result, we should see several images with bounding boxes drawn on top of each image.
 
-![TFRecord Preview](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/23-tfrecords-preview.jpg)
+![TFRecord Preview](assets/20.jpg)
 
 ## 📈 Setting Up TensorBoard
 
@@ -1325,7 +1325,7 @@ Before starting the training process we need to launch a [TensorBoard](https://w
 
 TensorBoard will allow us to monitor the training process and see if the model is actually learning something or should we better stop the training and adjust training parameters. It will also help us to analyze what objects and at what location the model is detecting.
 
-![TensorBoard](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/24-tensorboard.gif)
+![TensorBoard](assets/21.gif)
 
 *Image source: [TensorBoard homepage](https://www.tensorflow.org/tensorboard)*
 
@@ -1351,7 +1351,7 @@ And finally we may launch a TensorBoard to monitor the `./logs` folder:
 
 As a result, you should see the empty TensorBoard panel:
 
-![Empty TensorBoard Panel](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/25-tensorboard-launch.jpg)
+![Empty TensorBoard Panel](assets/22.jpg)
 
 After the model training is be started you may get back to this panel and see the training process progress.
 
@@ -1653,7 +1653,7 @@ python ./models/research/object_detection/model_main_tf2.py \
 
 While the model is training (it may take around`~10 minutes` for `1000` iterations in [GoogleColab GPU](https://colab.research.google.com/notebooks/gpu.ipynb) runtime) you should be able to observe the training progress in TensorBoard. The `localization` and `classification` losses should decrease which means that the model is doing a good job in localizing and classifying new custom objects.
 
-![Training Process](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/26-tensorboard-training.jpg)
+![Training Process](assets/23.jpg)
 
 Also during the training, the new model checkpoints (parameters that the model has learned during the training) will be saved to the `logs` folder.
 
@@ -1688,7 +1688,7 @@ python ./models/research/object_detection/model_main_tf2.py \
 
 After launching the script you should be able to see several side-by-side images with detections boxes:
 
-![Model Evaluation](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/27-tensorboard-evaluation.jpg)
+![Model Evaluation](assets/24.jpg)
 
 ## 🗜 Exporting the Model
 
@@ -1864,7 +1864,7 @@ test_detection(
 
 As a result, you should see `10` images from the test dataset and highlighted `https:` prefixes that were detected by the model:
 
-![Testing the model on a test dataset](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/28-testing-the-model.jpg)
+![Testing the model on a test dataset](assets/25.jpg)
 
 The fact that the model is able to detect custom objects (in our case the `https://` prefixes) on the images it hasn't seen before is a good sign and something that we wanted to achieve.
 
@@ -1948,7 +1948,7 @@ You may 🚀 [launch Links Detector demo](https://trekhleb.dev/links-detector/) 
 
 Here is how the final solution looks like:
 
-![Links Detector Demo](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/03-links-detector-demo.gif)
+![Links Detector Demo](assets/26.gif)
 
 You may also 📝 [browse the links-detector repository](https://github.com/trekhleb/links-detector) on GitHub to see the complete source code of the UI part of the application.
 

@@ -29,19 +29,19 @@ It may sound complicated so let's think about it from another angle.
 
 Imagine you have a smoothie. DFT then will allow you to split the smoothie into its ingredients! Imagine that you provide the bottle of smoothie as input for DFT function, and it splits it out to three smaller bottles of pure carrot, apple, and orange juices! This is what DFT does - it splits the whole input into its ingredients.
 
-![](https://thepracticaldev.s3.amazonaws.com/i/dc0pjetcru31jbspub7h.png)
+![](assets/0.png)
 
 ### Paints Example
 
 Or imagine that you want to paint the fence, and you've mixed several paints up so that it started to be of homogenous color. DFT function then will be able to split your mixed paint into several pure colors that will together form that initial color! Isn't it sound like magic, is it?
 
-![](https://thepracticaldev.s3.amazonaws.com/i/o953c923pngcxtqga433.jpg)
+![](assets/1.jpg)
 
 ### The Algorithm
 
 All algorithm beauty and complexity is hidden in the following formula:
 
-![](https://thepracticaldev.s3.amazonaws.com/i/1loz2byyp5i8397r473d.png)
+![](assets/2.png)
 
 You may find the direct and simple implementation of this formula in [JavaScript Algorithms repository](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/math/fourier-transform). This is just a simple and not really efficient (*O(n^2)*) implementation of the transform. But the purpose of those functions is just to scratch the surface of such a complex, deep, and magic topic as Fourier Transform.
 

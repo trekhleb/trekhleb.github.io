@@ -35,19 +35,19 @@ The dashboard is still raw, but it provides the basic functionality of displayin
 
 For example here is how Global dynamics of confirmed/recovered/deaths use-cases looks like as for March 23rd:
 
-![Global data](https://dev-to-uploads.s3.amazonaws.com/i/2tya281ddr1r58jxccqg.png)
+![Global data](assets/0.png)
 
 Here we may see positive dynamics for China (Hubei):
 
-![China - Hubei statistics](https://dev-to-uploads.s3.amazonaws.com/i/9608wk8rjdbhc5giqg5k.png)
+![China - Hubei statistics](assets/1.png)
 
 We may also compare Italy to Spain:
 
-![Italy and Spain statistics](https://dev-to-uploads.s3.amazonaws.com/i/mufxvl59na07hw2p0tem.png)
+![Italy and Spain statistics](assets/2.png)
 
 The regions are displayed in sortable, searchable, and clickable data-table:
 
-![Data table](https://dev-to-uploads.s3.amazonaws.com/i/kdv7pzpsjwxzg5s20rd4.png)
+![Data table](assets/3.png)
 
 ### Known issues
 

@@ -96,7 +96,7 @@ On a high level, **Recurrent Neural Network (RNN)** is a class of deep neural ne
 
 > _Image source: [Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)_
 
-![Basic architectures of GRU and LSTM cells](https://miro.medium.com/max/1400/1*yBXV9o5q7L_CvY7quJt3WQ.png)
+![Basic architectures of GRU and LSTM cells](assets/1.png)
 
 > _Image source: [Towards Data Science](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)_
 
@@ -562,7 +562,7 @@ plt.show()
 
 _<small>➔ output:</small>_
 
-![Recipes lengths 1](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/02-recipes-length.png)
+![Recipes lengths 1](assets/2.png)
 
 Most of the recipes have length less than `5000` characters. Let's zoom in to see more detailed picture:
 
@@ -573,7 +573,7 @@ plt.show()
 
 _<small>➔ output:</small>_
 
-![Recipes lengths 2](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/03-recipes-length.png)
+![Recipes lengths 2](assets/3.png)
 
 Looks like a limit of `2000` characters for the recipes will cover most of the cases. We may try to train RNN with this maximum recipe length limit.
 
@@ -1269,11 +1269,11 @@ tf.keras.utils.plot_model(
 
 _<small>➔ output:</small>_
 
-![Model architecture](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/04-model.png)
+![Model architecture](assets/4.png)
 
 For each character the model looks up the embedding, runs the LSTM one time-step with the embedding as input, and applies the dense layer to generate logits predicting the log-likelihood of the next character:
 
-![Model architecture](https://www.tensorflow.org/tutorials/text/images/text_generation_training.png)
+![Model architecture](assets/5.png)
 
 > Image source: [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) notebook.
 
@@ -1584,7 +1584,7 @@ render_training_history(history)
 
 _<small>➔ output:</small>_
 
-![Model training progress (first 10 epochs)](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/05-training.png)
+![Model training progress (first 10 epochs)](assets/6.png)
 
 ℹ️ _On the chart above only first 10 epochs are presented._
 
@@ -1658,7 +1658,7 @@ To use our trained model for recipe generation we need to implement a so-called 
 - Then, it uses a categorical distribution to calculate the index of the predicted character. It uses this predicted character as the next input to the model.
 - The RNN state returned by the model is fed back into the model so that it now has more context, instead of only one character. After predicting the next character, the modified RNN states are again fed back into the model, which is how it learns as it gets more context from the previously predicted characters.
 
-![Prediction loop](https://www.tensorflow.org/tutorials/text/images/text_generation_sampling.png)
+![Prediction loop](assets/7.png)
 
 > Image source: [Text generation with an RNN](https://www.tensorflow.org/tutorials/text/text_generation) notebook.
 
@@ -2066,7 +2066,7 @@ _<small>➔ output:</small>_
 
 You may use 🎨 [Cooking recipes generator demo](https://trekhleb.dev/machine-learning-experiments/#/experiments/RecipeGenerationRNN) to play around with this model, input text, and temperature parameters to generate some random recipes right in your browser.
 
-![Recipe generator demo](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/00-demo.gif)
+![Recipe generator demo](assets/8.gif)
 
 ## Things to improve
 

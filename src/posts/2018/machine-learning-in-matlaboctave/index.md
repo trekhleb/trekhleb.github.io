@@ -77,6 +77,6 @@ _Usage examples: as a substitute of all other algorithms in general, image recog
 
 Each machine learning algorithm folder described above contains a demo.m file that users might launch from Octave console or from MatLab. The demo scripts will output some useful information to the console and visualize the results of the work of the related algorithms.
 
-![](https://thepracticaldev.s3.amazonaws.com/i/gtjqutpt3bq68dc73vmq.png)
+![](assets/0.png)
 
 I hope this repository will be useful for you and will help you to do one extra step towards machine learning. Happy coding!

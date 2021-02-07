@@ -19,7 +19,7 @@ This article is my attempt to summarise common technical interview process steps
 
 ### Interview Process By Time
 
-![Interview Process By Time](https://dev-to-uploads.s3.amazonaws.com/i/yqw2e8jo4yz2oqbny9nw.png)
+![Interview Process By Time](assets/0.png)
 
 The common technical interview process consists of three main steps:
 
@@ -29,7 +29,7 @@ The common technical interview process consists of three main steps:
 
 ### Interview Process By Meaning
 
-![Interview Process By Meaning](https://dev-to-uploads.s3.amazonaws.com/i/6kyljq2ueh0a3st5x84j.png)
+![Interview Process By Meaning](assets/1.png)
 
 All interview steps are mainly consists of three following building blocks:
 
@@ -43,7 +43,7 @@ Let’s move on and touch every of these 6 aspects of the interview process.
 
 ## [Interview By Time] Introductory Call
 
-![Introductory Call](https://dev-to-uploads.s3.amazonaws.com/i/r77vqnoi67zhir500bgq.png)
+![Introductory Call](assets/2.png)
 
 Recruiter will introduce himself and give you more details about the company and projects you might be working on. You’ll be asked to introduce you and explain what was your responsibility on the previous projects.
 
@@ -78,7 +78,7 @@ _ℹ️ ️️Read more about how to prepare to **behavioural interview** below 
 
 ## [Interview By Time] Technical Phone Interview
 
-![Technical Phone Interview](https://dev-to-uploads.s3.amazonaws.com/i/7lfvoiioxkkd8u8tljbw.png)
+![Technical Phone Interview](assets/3.png)
 
 During the phone interview you’ll have a coding exercise (or task to develop something online).
 
@@ -108,7 +108,7 @@ _ℹ️ ️️Read more about how to prepare to **problem solving** interview be
 
 ## [Interview By Time] On-Site Interview
 
-![On-Site Interview](https://dev-to-uploads.s3.amazonaws.com/i/6r7ahiqfpniv47bb45zq.png)
+![On-Site Interview](assets/4.png)
 
 For the on-site, you generally have 4 to 5 interviews — at least 2 strictly focused on coding, 1 on design, and 1 on conversation/coding. So basically all three building blocks described at the beginning of the chapter will be included.
 
@@ -120,9 +120,9 @@ _ℹ️ Read more about how to prepare to **problem solving**, **system design**
 
 ## [Interview By Meaning] Problem Solving Interview
 
-![Problem Solving Interview](https://dev-to-uploads.s3.amazonaws.com/i/s4w752rjsrcysismnc93.png)
+![Problem Solving Interview](assets/5.png)
 
-![](https://media.giphy.com/media/3oKIPyetUBwn9afCHS/giphy.gif)
+![](assets/6.gif)
 
 **General tips:**
 
@@ -259,9 +259,9 @@ Try to have 1–2 questions prepared for the end for your interviewer.
 
 ## [Interview By Meaning] System Design
 
-![System Design](https://dev-to-uploads.s3.amazonaws.com/i/ybmpamq158jahssdekor.png)
+![System Design](assets/7.png)
 
-![](https://media.giphy.com/media/kluzPOxBzGk4U/giphy.gif)
+![](assets/8.gif)
 
 You will need to design a system or a product, the problem will be a broad and ambiguous one where you will need to create something, end-to-end, that will scale. You should not assume anything. You should pin down the requirements, the recruiters are looking for you to drive conversation throughout the interview. Be very vocal, say this is what you’re doing/why/ your reasons. It should be your design, not half yours and half the interviewers. Try to cover both breadth and depth, you will need to talk about both high level concepts and details associated.
 
@@ -418,9 +418,9 @@ Think also about **caching**: both on the client and server? What data will you 
 
 ## [Interview By Meaning] Behavioural Interview
 
-![Behavioural Interview](https://dev-to-uploads.s3.amazonaws.com/i/p7lffhzrnxfbzk0oe2tj.png)
+![Behavioural Interview](assets/9.png)
 
-![](https://media.giphy.com/media/3oKIPsIMrKyV6od65q/giphy.gif)
+![](assets/10.gif)
 
 Many people make the mistake of not preparing for this interview.
 A good starting point here might be to meditate on [Amazon Leadership Principles](https://www.amazon.jobs/en-gb/principles) and come up with some concrete situation from your professional past as an example to each principle. Explain yours experience examples in a clear manner. Using the [STAR](https://en.wikipedia.org/wiki/Situation,_task,_action,_result) technique will help you.
