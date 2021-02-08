@@ -65,7 +65,7 @@ Ultimately we want to teach our NanoNeuron to imitate this function (to learn th
 
 This is how the Celsius to Fahrenheit conversion function looks like:
 
-![Celsius to Fahrenheit conversion](https://github.com/trekhleb/nano-neuron/blob/master/assets/07-converter.png?raw=true)
+![Celsius to Fahrenheit conversion](assets/05.png)
 
 ### Generating data-sets
 
@@ -109,7 +109,7 @@ function generateDataSets() {
 
 We need to have some metric that will show us how close our model's prediction is to correct values. The calculation of the cost (the mistake) between the correct output value of `y` and `prediction`, that our NanoNeuron created, will be made using the following formula:
 
-![Prediction Cost](https://github.com/trekhleb/nano-neuron/blob/master/assets/02_cost_function.png?raw=true)
+![Prediction Cost](assets/06.png)
 
 This is a simple difference between two values. The closer the values are to each other, the smaller the difference. We're using a power of `2` here just to get rid of negative numbers so that `(1 - 2) ^ 2` would be the same as `(2 - 1) ^ 2`. Division by `2` is happening just to simplify further the backward propagation formula (see below).
 
@@ -129,7 +129,7 @@ We just let our NanoNeuron say its opinion, at this point, by just allowing it t
 
 The average cost will be calculated using the following formula:
 
-![Average Cost](https://github.com/trekhleb/nano-neuron/blob/master/assets/03_average_cost_function.png?raw=true)
+![Average Cost](assets/07.png)
 
 Where `m` is a number of training examples (in our case: `100`).
 
@@ -173,9 +173,9 @@ For example, on the plot above, you can see that if we're at the point of `(x=2,
 
 The derivatives of our `averageCost` function for parameters `w` and `b` looks like this:
 
-![dW](https://github.com/trekhleb/nano-neuron/blob/master/assets/04_dw.png?raw=true)
+![dW](assets/08.png)
 
-![dB](https://github.com/trekhleb/nano-neuron/blob/master/assets/04_db.png?raw=true)
+![dB](assets/09.png)
 
 Where `m` is a number of training examples (in our case: `100`).
 
@@ -215,11 +215,11 @@ The analogy with the teacher would be that the harder s/he pushes our "nano-kid"
 
 Here is how we're going to update our model's `w` and `b` params:
 
-![w](https://github.com/trekhleb/nano-neuron/blob/master/assets/05_w.png?raw=true)
+![w](assets/10.png)
 
-![b](https://github.com/trekhleb/nano-neuron/blob/master/assets/05_b.png?raw=true)
+![b](assets/11.png)
 
-And here is our trainer function:
+Here is our trainer function:
 
 ```javascript
 function trainModel({model, epochs, alpha, xTrain, yTrain}) {
@@ -279,7 +279,7 @@ console.log('Cost after the training:', trainingCostHistory[epochs - 1]); // i.e
 
 This is how the training cost changes over the epochs. On the `x` axes is the epoch number x1000.
 
-![Training process](https://github.com/trekhleb/nano-neuron/blob/master/assets/06-training-process.png?raw=true)
+![Training process](assets/12.png)
 
 Let's take a look at NanoNeuron parameters to see what it has learned. We expect that NanoNeuron parameters `w` and `b` to be similar to ones we have in the `celsiusToFahrenheit()` function (`w = 1.8` and `b = 32`) since our NanoNeuron tried to imitate it.
 

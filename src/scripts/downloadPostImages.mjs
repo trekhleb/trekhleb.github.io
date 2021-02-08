@@ -82,11 +82,17 @@ async function main() {
     const mdContent = await fs.promises.readFile(mdFilePath);
     const externalImageRegex = /!\[.*]\((http.*)\)/ig;
     if (!externalImageRegex.test(mdContent.toString())) {
-      logInfo('no external images found');
+      logInfo('No external images found');
       continue;
     }
+
     let matches = externalImageRegex.exec(mdContent.toString());
-    let imageIdx = 0;
+    if (matches === null) {
+      logInfo('No external images parsed');
+      continue;
+    }
+
+    let imageIdx = 50;
     let mdContentUpdated = mdContent.toString();
     while (matches !== null) {
       const imgUrl = matches[1];
@@ -113,8 +119,12 @@ async function main() {
       imageIdx += 1;
       matches = externalImageRegex.exec(mdContent.toString());
     }
-    logInfo('Updating the *.md file');
-    await fs.promises.writeFile(mdFilePath, mdContentUpdated);
+    if (mdContentUpdated !== mdContent.toString()) {
+      logInfo('Updating and saving the *.md file');
+      await fs.promises.writeFile(mdFilePath, mdContentUpdated);
+    } else {
+      logInfo('The *.md file is not changed');
+    }
   }
 }
 
