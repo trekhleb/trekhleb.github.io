@@ -24,6 +24,9 @@ export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover_childIm
 }
 
 export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover {
+  /**
+   * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
+   */
   childImageSharp: BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover_childImageSharp | null;
 }
 

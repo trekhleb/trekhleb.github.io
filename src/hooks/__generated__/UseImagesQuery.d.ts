@@ -23,6 +23,9 @@ export interface UseImagesQuery_allFile_nodes {
   base: string;
   name: string;
   relativePath: string;
+  /**
+   * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
+   */
   childImageSharp: UseImagesQuery_allFile_nodes_childImageSharp | null;
 }
 
