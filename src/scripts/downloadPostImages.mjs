@@ -92,7 +92,7 @@ async function main() {
       const imgUrl = matches[1];
       logInfo(`\nFound external image: ${imgUrl}`);
 
-      const allowedExtensions = ['png', 'gif', 'jpg', 'jpeg'];
+      const allowedExtensions = ['png', 'gif', 'jpg', 'jpeg', 'svg'];
       const imgExtension = imgUrl.split('.').pop().toLowerCase();
       if (allowedExtensions.includes(imgExtension)) {
         const assetsFolder = 'assets';

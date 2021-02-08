@@ -165,7 +165,7 @@ Derivatives are a big and separate topic that we will not cover in this article.
 
 One thing about derivatives that will help you to understand how backward propagation works is that the derivative, by its meaning, is a tangent line to the function curve that points toward the direction of the function minimum.
 
-![Derivative slope](https://www.mathsisfun.com/calculus/images/slope-x2-2.svg)
+![Derivative slope](assets/2.svg)
 
 _Image source: [MathIsFun](https://www.mathsisfun.com/calculus/derivatives-introduction.html)_
 

@@ -92,7 +92,7 @@ It is assumed that you're already familiar with concepts of [Recurrent Neural Ne
 
 On a high level, **Recurrent Neural Network (RNN)** is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc. The key feature of RNNs is that they are stateful, and they have an internal memory in which some context for the sequence may be stored. For example if the first word of the sequence was `He` the RNN might suggest the next word to `speaks` instead of just `speak` (to form a `He speaks` phrase) because the prior knowledge about the first word `He` is already inside the internal memory.
 
-![Recurrent Neural Network](https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg)
+![Recurrent Neural Network](assets/0.svg)
 
 > _Image source: [Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)_
 
