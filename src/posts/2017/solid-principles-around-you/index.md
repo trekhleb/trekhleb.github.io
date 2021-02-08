@@ -23,7 +23,7 @@ a.k.a [SRP](https://en.wikipedia.org/wiki/Single_responsibility_principle)
 
 A class should have only a single responsibility. Only one potential change in the software’s specification should be able to affect the specification of the class.
 
-![Single Responsibility Principle](https://dev-to-uploads.s3.amazonaws.com/i/xabfs57cezxegih8uh2f.png)
+![Single Responsibility Principle](assets/05.png)
 
 ## O — Open/Closed Principle
 

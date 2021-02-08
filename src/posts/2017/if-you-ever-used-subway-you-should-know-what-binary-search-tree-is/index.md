@@ -13,9 +13,9 @@ date: 2017-07-13
 
 > In computer science, binary search trees ([BST](https://en.wikipedia.org/wiki/Binary_search_tree)), sometimes called ordered or sorted binary trees, are a particular type of container… **bla… bla… bla…** Stop! Binary Search Trees are brilliant and they save a lot of our search time making things much faster than they could be. But before we get to its official definition just imagine that you’ve been already using Binary Search Trees along with a subway…
 
-Imagine you’re in the middle of a simplified subway station with eight exits and you need to get to the eighth one.
+Imagine you’re in the middle of a simplified subway station with eight exits, and you need to get to the eighth one.
 
-![BST](https://dev-to-uploads.s3.amazonaws.com/i/2z9py072vh2moc0nnpyb.png)
+![BST](assets/03.png)
 
 What do you normally do? You make one turn (decision) after another each time deciding what is the shortest path to the existing `#8`.
 

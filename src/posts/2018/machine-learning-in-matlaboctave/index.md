@@ -17,9 +17,9 @@ Recently I’ve created **[Machine Learning in Octave](https://github.com/trekhl
 
 The purpose of this repository was not to implement machine learning algorithms using 3rd party libraries or Octave/MatLab “one-liners” but rather to practice and to better understand the mathematics behind each algorithm. In most cases, the explanations are based on this great machine learning course.
 
-This was my attempt to learn some of the machine learning topics (that are described on the “mind map” below) for myself. And since this subject might be interesting for others I’ve decided to structure it a little bit and make it public.
+This was my attempt to learn some of the machine learning topics (that are described on the “mind map” below) for myself. Since this subject might be interesting for others I’ve decided to structure it a little bit and make it public.
 
-![](https://thepracticaldev.s3.amazonaws.com/i/wqg36do0ks3kcp871yud.png)
+![machine learning](assets/02.png)
 
 The source of the following machine learning topics map is [this wonderful blog post](https://vas3k.ru/blog/machine_learning/).
 

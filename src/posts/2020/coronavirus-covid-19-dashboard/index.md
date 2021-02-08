@@ -21,7 +21,7 @@ Basically, I personally had a question like _"What about the Netherlands/Ukraine
 
 Here is how the main function looks like:
 
-![Coronavirus (COVID-19) Dashboard Demo](https://dev-to-uploads.s3.amazonaws.com/i/27ju0ku5lxgc4uf76lv9.gif)
+![Coronavirus (COVID-19) Dashboard Demo](assets/04.gif)
 
 ### Data source and tech-stack
 

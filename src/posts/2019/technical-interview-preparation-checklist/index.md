@@ -15,7 +15,7 @@ This article is my attempt to summarise common technical interview process steps
 
 ## Interview Process Overview
 
-![Tech Interview Process](https://dev-to-uploads.s3.amazonaws.com/i/a4a6bnghfi8o6ofgkz4s.png)
+![Tech Interview Process](assets/11.png)
 
 ### Interview Process By Time
 

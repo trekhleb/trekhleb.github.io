@@ -9,7 +9,7 @@ date: 2020-12-01
 
 ---
 
-![Links Detector Cover](https://raw.githubusercontent.com/trekhleb/links-detector/master/articles/printed_links_detection/assets/01-banner.png)
+![Links Detector Cover](assets/27.png)
 
 ## 📃 TL;DR
 

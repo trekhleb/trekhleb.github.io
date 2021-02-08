@@ -21,7 +21,7 @@ Even though [Discrete Fourier Transform](https://en.wikipedia.org/wiki/Discrete_
 
 *This algorithm allows you to split the input signal that is spread in time into the number of frequencies of certain length, amplitudes, and phases so that all those frequencies together will form the original signal*. So it actually converts the domain of *time* into the domain of *frequencies* and backward.
 
-![](https://thepracticaldev.s3.amazonaws.com/i/v1p6fhprekoheceqafw1.png)
+![](assets/03.png)
 
 It may sound complicated so let's think about it from another angle.
 

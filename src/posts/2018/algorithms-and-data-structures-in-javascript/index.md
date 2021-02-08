@@ -22,7 +22,7 @@ You also may find some practical information just in the root README file that m
 - **data structures operations complexity** - how fast are searches, reads, or insertions for different data-structures
 - **comparative table of sorting algorithms complexity** - to help you choose the proper sorting algorithm in your situation
 
-![Big O graphs](https://thepracticaldev.s3.amazonaws.com/i/whmiuox9wmrf1szrlg1a.png)
+![Big O graphs](assets/02.png)
 
 All **code is 100% covered with tests**. This is done not only to keep code working correctly but also to give you an illustration of how each algorithm or data structure works, what basic operations they have (let’s say polling for the heap), and what are the edge cases (what to do if the graph is directed).
 

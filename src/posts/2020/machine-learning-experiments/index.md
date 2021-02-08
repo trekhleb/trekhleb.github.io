@@ -26,7 +26,7 @@ Although the models may be a little dumb (remember, these are just experiments, 
 
 I've trained the models on _Python_ using _TensorFlow 2_ with _Keras_ support  and then consumed them for a demo in a browser using _React_ and _JavaScript_ version of _Tensorflow_.
 
-![Interactive Machine Learning Experiments](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/repository-cover.png)
+![Interactive Machine Learning Experiments](assets/13.png)
 
 ## Models performance
 

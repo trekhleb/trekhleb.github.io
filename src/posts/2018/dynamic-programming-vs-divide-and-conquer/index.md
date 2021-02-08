@@ -9,7 +9,7 @@ date: 2018-06-15
 
 ---
 
-![Dynamic Programming vs Divide-and-Conquer](https://res.cloudinary.com/practicaldev/image/fetch/s--rLr-QxiB--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://cdn-images-1.medium.com/max/2000/1%2AaRgXjJ6gv8sR59cu3sM64A.png)
+![Dynamic Programming vs Divide-and-Conquer](assets/09.png)
 
 ## TL;DR
 

@@ -80,7 +80,7 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 ▪︎ Meanwhile, heat 4 to 4 inches vegetable oil in the skillet over medium-high heat. Add the olive oil, garlic, 1/2 teaspoon salt and 1/2 teaspoon pepper and cook, stirring often, until cooked through, a
 ```
 
-![Cook real recipes, not with generated ones](https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/01-cover.jpg)
+![Cook real recipes, not with generated ones](assets/09.jpg)
 
 ⚠️ _The recipes in this article are generated just for fun and for learning purposes. The recipes are **not** for actual cooking! If you want some real recipes you may check 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/) Instagram channel._
 
