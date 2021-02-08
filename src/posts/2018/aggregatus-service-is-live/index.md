@@ -29,7 +29,7 @@ You may check several examples of how those collections may look like by visitin
 
 ## See how it works in action
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9_3hk3dTqR4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/9_3hk3dTqR4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 > The project is still in alpha stage of testing. This means that its features may be unstable. But also it means that a lot of new features are on their way. You also may take part in testing the project and [reporting new bugs and ideas](https://aggregatus.io/contact).
 
