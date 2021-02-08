@@ -113,7 +113,7 @@ The mother of all demo apps" — Exemplary full-stack Medium.com clone powered b
 *★ 51.5k*
 
 ## #25 [chartjs/Chart.js](https://github.com/chartjs/Chart.js)
-Simple HTML5 Charts using the <canvas> tag
+Simple HTML5 Charts using the `canvas` tag
 *★ 51.3k*
 
 ## #26 [expressjs/express](https://github.com/expressjs/express)

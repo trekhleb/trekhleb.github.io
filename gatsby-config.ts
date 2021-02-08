@@ -50,6 +50,15 @@ const gatsbyConfig: GatsbyConfig = {
       resolve: 'gatsby-transformer-remark',
       options: {
         plugins: [
+          // Should be placed after `gatsby-remark-autolink-headers`.
+          // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              isIconAfterHeader: true,
+            },
+          },
+
           // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-images/
           {
             resolve: 'gatsby-remark-images',

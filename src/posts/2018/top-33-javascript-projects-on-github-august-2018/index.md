@@ -116,7 +116,7 @@ Parse, validate, manipulate, and display dates in javascript.
 *★ 38.3k*
 
 ## #26 [resume/resume.github.com](https://github.com/resume/resume.github.com)
-Resumes generated using the GitHub informations.
+Resumes generated using the GitHub information.
 *★ 37.3k*
 
 ## #27 [justjavac/free-programming-books-zh_CN](https://github.com/justjavac/free-programming-books-zh_CN)
