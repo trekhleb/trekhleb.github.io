@@ -27,8 +27,29 @@
 <blockquote>
 <p>In computer science, binary search trees (<a href="https://en.wikipedia.org/wiki/Binary_search_tree">BST</a>), sometimes called ordered or sorted binary trees, are a particular type of container… <strong>bla… bla… bla…</strong> Stop! Binary Search Trees are brilliant and they save a lot of our search time making things much faster than they could be. But before we get to its official definition just imagine that you’ve been already using Binary Search Trees along with a subway…</p>
 </blockquote>
-<p>Imagine you’re in the middle of a simplified subway station with eight exits and you need to get to the eighth one.</p>
-<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/2z9py072vh2moc0nnpyb.png" alt="BST"></p>
+<p>Imagine you’re in the middle of a simplified subway station with eight exits, and you need to get to the eighth one.</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 42%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAIAAAB2/0i6AAAACXBIWXMAAAsTAAALEwEAmpwYAAABLElEQVQY021Q2W7CMBDk/3+sUh9aUdpgggNBIWCI7fiI7Rw+uoEK0aqjkbVazax3dpFSSCk6Z2L0CSrW2ut1GHrLWH+ooDMwZsllnKaB0qRUesIC9JIz9Lksi225w72ze5y3nNbHA2cNKLQU5FxrJU/VIf3GwnQqW74XeYZR9rV8wzmaxgHM59OxE62uKiM4mJVop3EMMbSdokr8mL0fqrLY5Qh4rqsYI3SNVjnKnBDk5dXkxRZvOKchBN7psiHC6HSTzWuH4PNsJVs2Z/ZTMrbTal9sRV3DCh0hNcZUMO+cbZo/meFOEaLCjJhi6vsLQtcLYbQ5rhEoHGOb1UcjOF5nYZzmD1J8mMONgBDjXEjZwqnglXLO5r3XWllnhZIP2x/znfGJ4Rbs3vwf35onyOrDcAmRAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="BST"
+        title="BST"
+        src="/static/19a3db139951e6861df585095a7a2479/00d43/03.png"
+        srcset="/static/19a3db139951e6861df585095a7a2479/63868/03.png 250w,
+/static/19a3db139951e6861df585095a7a2479/0b533/03.png 500w,
+/static/19a3db139951e6861df585095a7a2479/00d43/03.png 1000w,
+/static/19a3db139951e6861df585095a7a2479/2cefc/03.png 1400w"
+        sizes="(max-width: 1000px) 100vw, 1000px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>What do you normally do? You make one turn (decision) after another each time deciding what is the shortest path to the existing <code class="language-text">#8</code>.</p>
 <p>Eventually, the distance to exit <code class="language-text">#8</code> is the most valuable criteria you’re using to make correct decisions during each turn. Thus let’s mark all turns and exists with a number that represents the distance to desired exit <code class="language-text">#8</code> from it. For example, if you’re in the middle of the station that it would take 13 “steps” for you to get to exit <code class="language-text">#8</code>. Also if you’re already at exit <code class="language-text">#8</code> it would mean that you’re zero-steps far from it. And so on for all other turns and exists.</p>
 <p><span

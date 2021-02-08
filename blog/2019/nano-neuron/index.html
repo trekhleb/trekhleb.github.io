@@ -50,7 +50,26 @@ These parameters are something that NanoNeuron is going to "learn" during the tr
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
 <p>Ultimately we want to teach our NanoNeuron to imitate this function (to learn that <code class="language-text">w = 1.8</code> and <code class="language-text">b = 32</code>) without knowing these parameters in advance.</p>
 <p>This is how the Celsius to Fahrenheit conversion function looks like:</p>
-<p><img src="https://github.com/trekhleb/nano-neuron/blob/master/assets/07-converter.png?raw=true" alt="Celsius to Fahrenheit conversion"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 300px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 94.8%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAATCAYAAACQjC21AAAACXBIWXMAABYlAAAWJQFJUiTwAAABQUlEQVQ4y51U2Y7DIAzM//9kXyo13UQQcm+AeMdoiQjkoLVkgQwezHigoAtb13Ub+753c43RDMNuPbSCbswnDeNIq7W0SJGsZQP6hLZtSTQNma4jM02nYNmAE0BkXZNWTUJFNmCcpF4vsstyWV12hWaeSZXlbXWngHHSr5TUKbXFPqswAjPoroFURvDowT4CDBN41OhuA6/RlDv+EsD4qk7EqHAxxknnK8AN1IlYbmvDxes4BEyqQ0Xc3fjphYBHfBYh0c4RtFrT0shdEgMmew/8UDYaElkBGtoILnOsYG689/Dy+ST1LmmATLgqjnNDSgibQf1eniscXFXVLl5YkO/doJs/jwcZPDGL8jnG15jBpRDCzf1eH2dJhfHdlS2L9/83oYjs7CuH3WWZsFyOBB52OYzH8w2Qf+H4Jz4DvJLNHz9X3659Daf4AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Celsius to Fahrenheit conversion"
+        title="Celsius to Fahrenheit conversion"
+        src="/static/68b0d68bcc7be00ec9526867b2fcecf3/5a46d/05.png"
+        srcset="/static/68b0d68bcc7be00ec9526867b2fcecf3/63868/05.png 250w,
+/static/68b0d68bcc7be00ec9526867b2fcecf3/5a46d/05.png 300w"
+        sizes="(max-width: 300px) 100vw, 300px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <h3>Generating data-sets</h3>
 <p>Before the training we need to generate <strong>training</strong> and <strong>test data-sets</strong> based on the <code class="language-text">celsiusToFahrenheit()</code> function. Data-sets consist of pairs of input values and correctly labeled output values.</p>
 <blockquote>
@@ -85,7 +104,26 @@ These parameters are something that NanoNeuron is going to "learn" during the tr
 <span class="token punctuation">}</span></code></pre></div>
 <h3>The cost (the error) of prediction</h3>
 <p>We need to have some metric that will show us how close our model's prediction is to correct values. The calculation of the cost (the mistake) between the correct output value of <code class="language-text">y</code> and <code class="language-text">prediction</code>, that our NanoNeuron created, will be made using the following formula:</p>
-<p><img src="https://github.com/trekhleb/nano-neuron/blob/master/assets/02_cost_function.png?raw=true" alt="Prediction Cost"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 361px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 11.6%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAIAAADXZGvcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAVklEQVQI1yWMSQ4AIQgE/f8HfYEJoI4xromXqSgHKLob3HcrhGBmMUZVTSmhzDlrrXvvMQar3RIRXDK4OWcHMVC5pMPYpZS1FlbvHX4fXwBurZ1zvPc/fZFvBKr0K3wAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Prediction Cost"
+        title="Prediction Cost"
+        src="/static/8d8e50ac12d03614e65975f7b5d36931/39d76/06.png"
+        srcset="/static/8d8e50ac12d03614e65975f7b5d36931/63868/06.png 250w,
+/static/8d8e50ac12d03614e65975f7b5d36931/39d76/06.png 361w"
+        sizes="(max-width: 361px) 100vw, 361px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>This is a simple difference between two values. The closer the values are to each other, the smaller the difference. We're using a power of <code class="language-text">2</code> here just to get rid of negative numbers so that <code class="language-text">(1 - 2) ^ 2</code> would be the same as <code class="language-text">(2 - 1) ^ 2</code>. Division by <code class="language-text">2</code> is happening just to simplify further the backward propagation formula (see below).</p>
 <p>The cost function in this case will be as simple as:</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">predictionCost</span><span class="token punctuation">(</span><span class="token parameter">y<span class="token punctuation">,</span> prediction</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -95,7 +133,26 @@ These parameters are something that NanoNeuron is going to "learn" during the tr
 <p>To do forward propagation means to do a prediction for all training examples from <code class="language-text">xTrain</code> and <code class="language-text">yTrain</code> data-sets and to calculate the average cost of those predictions along the way.</p>
 <p>We just let our NanoNeuron say its opinion, at this point, by just allowing it to guess how to convert the temperature. It might be stupidly wrong here. The average cost will show us how wrong our model is right now. This cost value is really important since changing the NanoNeuron parameters <code class="language-text">w</code> and <code class="language-text">b</code>, and by doing the forward propagation again; we will be able to evaluate if our NanoNeuron became smarter or not after these parameters change.</p>
 <p>The average cost will be calculated using the following formula:</p>
-<p><img src="https://github.com/trekhleb/nano-neuron/blob/master/assets/03_average_cost_function.png?raw=true" alt="Average Cost"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 347px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 16.400000000000002%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAcUlEQVQI101NOQ4EIQzj//8DARLHFAgaEHQgmMxapFkXVuLEtvj+MOd8LzCvtVprUkowVoh773MOEeHEbyKEkHMGa62fixjjGAOeUgr0Wqv3nh+cc8YYzCkla63gDESilhu4ufeOUKUUslhHJ1/pApYfq1GpYGCykPsAAAAASUVORK5CYII='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Average Cost"
+        title="Average Cost"
+        src="/static/575db3e0a0c872b29582147e41231344/39e45/07.png"
+        srcset="/static/575db3e0a0c872b29582147e41231344/63868/07.png 250w,
+/static/575db3e0a0c872b29582147e41231344/39e45/07.png 347w"
+        sizes="(max-width: 347px) 100vw, 347px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>Where <code class="language-text">m</code> is a number of training examples (in our case: <code class="language-text">100</code>).</p>
 <p>Here is how we may implement it in code:</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">forwardPropagation</span><span class="token punctuation">(</span><span class="token parameter">model<span class="token punctuation">,</span> xTrain<span class="token punctuation">,</span> yTrain</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -118,12 +175,50 @@ These parameters are something that NanoNeuron is going to "learn" during the tr
 <p>Remember, finding the minimum of a cost function is the ultimate goal of the training process. If we find such values for <code class="language-text">w</code> and <code class="language-text">b</code> such that our average cost function will be small, it would mean that the NanoNeuron model does really good and precise predictions.</p>
 <p>Derivatives are a big and separate topic that we will not cover in this article. <a href="https://www.mathsisfun.com/calculus/derivatives-introduction.html">MathIsFun</a> is a good resource to get a basic understanding of it.</p>
 <p>One thing about derivatives that will help you to understand how backward propagation works is that the derivative, by its meaning, is a tangent line to the function curve that points toward the direction of the function minimum.</p>
-<p><img src="https://www.mathsisfun.com/calculus/images/slope-x2-2.svg" alt="Derivative slope"></p>
+<p><img src="/posts-assets/bb9a55828c3188edf7d48ed286135117/2.svg" alt="Derivative slope"></p>
 <p><em>Image source: <a href="https://www.mathsisfun.com/calculus/derivatives-introduction.html">MathIsFun</a></em></p>
 <p>For example, on the plot above, you can see that if we're at the point of <code class="language-text">(x=2, y=4)</code> then the slope tells us to go <code class="language-text">left</code> and <code class="language-text">down</code> to get to the function minimum. Also notice that the bigger the slope, the faster we should move to the minimum.</p>
 <p>The derivatives of our <code class="language-text">averageCost</code> function for parameters <code class="language-text">w</code> and <code class="language-text">b</code> looks like this:</p>
-<p><img src="https://github.com/trekhleb/nano-neuron/blob/master/assets/04_dw.png?raw=true" alt="dW"></p>
-<p><img src="https://github.com/trekhleb/nano-neuron/blob/master/assets/04_db.png?raw=true" alt="dB"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 406px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 13.999999999999998%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAfklEQVQI1yWNywrEIBAE8/8/aA4hYFAJmugGRfEVttj10NR094xLSul5nhCC9/6+bzTGiCmEuK4LeN/383vWWhyAQs6ZaDHGnOeplNq2DZZSOueI13XVWuP03o/jgCmQwlzhP3T536ZRSgFaa2itdd93NhnHGIwoHRQHmHOiX6ogqFvELuj1AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="dW"
+        title="dW"
+        src="/static/4ccbdaba120c399c1528e2bc38cf0efd/e33ef/08.png"
+        srcset="/static/4ccbdaba120c399c1528e2bc38cf0efd/63868/08.png 250w,
+/static/4ccbdaba120c399c1528e2bc38cf0efd/e33ef/08.png 406w"
+        sizes="(max-width: 406px) 100vw, 406px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 354px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 16%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAeElEQVQI1yVOOQpFIRDz/pezs3HBBZ5ipYjg7g/fKUImGZIhKaW11r33nAMcY8w5997gIQTG2HPf4AYuFBDcEM65lNJ7b4wBB1prtdallO8/WJHSWhNCOOeAcIEQiVIq54xU5PXekYfU1xZjpJTWWtEGEe4rfIgff7OUqZa8yNd5AAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="dB"
+        title="dB"
+        src="/static/e020cb125449849009a9f565a32ff46f/8f50f/09.png"
+        srcset="/static/e020cb125449849009a9f565a32ff46f/63868/09.png 250w,
+/static/e020cb125449849009a9f565a32ff46f/8f50f/09.png 354w"
+        sizes="(max-width: 354px) 100vw, 354px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>Where <code class="language-text">m</code> is a number of training examples (in our case: <code class="language-text">100</code>).</p>
 <p><em>You may read more about derivative rules and how to get a derivative of complex functions <a href="https://www.mathsisfun.com/calculus/derivatives-rules.html">here</a>.</em></p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">backwardPropagation</span><span class="token punctuation">(</span><span class="token parameter">predictions<span class="token punctuation">,</span> xTrain<span class="token punctuation">,</span> yTrain</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -152,9 +247,45 @@ These parameters are something that NanoNeuron is going to "learn" during the tr
 <p>A few words about the learning rate <code class="language-text">alpha</code>. This is just a multiplier for <code class="language-text">dW</code> and <code class="language-text">dB</code> values we have calculated during the backward propagation. So, derivative pointed us toward the direction we need to take to find a minimum of the cost function (<code class="language-text">dW</code> and <code class="language-text">dB</code> sign) and it also showed us how fast we need to go in that direction (absolute values of <code class="language-text">dW</code> and <code class="language-text">dB</code>). Now we need to multiply those step sizes to <code class="language-text">alpha</code> just to adjust our movement to the minimum faster or slower. Sometimes if we use big values for <code class="language-text">alpha</code>, we might simply jump over the minimum and never find it.</p>
 <p>The analogy with the teacher would be that the harder s/he pushes our "nano-kid" the faster our "nano-kid" will learn but if the teacher pushes too hard, the "kid" will have a nervous breakdown and won't be able to learn anything 🤯.</p>
 <p>Here is how we're going to update our model's <code class="language-text">w</code> and <code class="language-text">b</code> params:</p>
-<p><img src="https://github.com/trekhleb/nano-neuron/blob/master/assets/05_w.png?raw=true" alt="w"></p>
-<p><img src="https://github.com/trekhleb/nano-neuron/blob/master/assets/05_b.png?raw=true" alt="b"></p>
-<p>And here is our trainer function:</p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 199px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 9.045226130653267%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAIAAADXZGvcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAcklEQVQI1yXLOwrEIBRA0ex/Jy7AwgVY2SgplChYGPEHQhBREWEeTHOrc68Y45zzeZ6cc0rpvu+9t7V2jCGEYIwppTDGUsoQAgCoc44QghC6Wmvgaq1rLfiNMeec931771przjmlFDTMpZTv+0D+f+/9DyEQabiIEkjuAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="w"
+        title="w"
+        src="/static/c7bdb884f2a940d62332246cdbcb44bc/3d64b/10.png"
+        srcset="/static/c7bdb884f2a940d62332246cdbcb44bc/3d64b/10.png 199w"
+        sizes="(max-width: 199px) 100vw, 199px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 180px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 10%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAIAAADXZGvcAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAcklEQVQI1x2LOwoFIRRDZ/97cQV2U4hYCX4KQQfBN2ohIoqi1VxeihBOkgtjvPd+nuf3F2Os9x5jzDlTSqWUhBAISqm1ljFmzimEuO8bIXTBDWitFWhrLaUEXkp539c5ByPOeQhBa33OgXaM4b231sLxA8B3aLbaCB5yAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="b"
+        title="b"
+        src="/static/b576220ab6515d44255ef56699077bab/e9ff0/11.png"
+        srcset="/static/b576220ab6515d44255ef56699077bab/e9ff0/11.png 180w"
+        sizes="(max-width: 180px) 100vw, 180px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
+<p>Here is our trainer function:</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">trainModel</span><span class="token punctuation">(</span><span class="token parameter"><span class="token punctuation">{</span>model<span class="token punctuation">,</span> epochs<span class="token punctuation">,</span> alpha<span class="token punctuation">,</span> xTrain<span class="token punctuation">,</span> yTrain<span class="token punctuation">}</span></span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">// The is the history array of how NanoNeuron learns.</span>
   <span class="token keyword">const</span> costHistory <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
@@ -191,7 +322,26 @@ These parameters are something that NanoNeuron is going to "learn" during the tr
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Cost before the training:'</span><span class="token punctuation">,</span> trainingCostHistory<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// i.e. -> 4694.3335043</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Cost after the training:'</span><span class="token punctuation">,</span> trainingCostHistory<span class="token punctuation">[</span>epochs <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// i.e. -> 0.0000024</span></code></pre></div>
 <p>This is how the training cost changes over the epochs. On the <code class="language-text">x</code> axes is the epoch number x1000.</p>
-<p><img src="https://github.com/trekhleb/nano-neuron/blob/master/assets/06-training-process.png?raw=true" alt="Training process"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 59.199999999999996%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAABDklEQVQoz62TW0+EMBCF+f8/ygdffPDFKEY3u64YYIPLpUgv0BvHThPw0QhOctopdL4eGEgQwjsP9sXAVE9LzPMctSUSGoZhQN3U0E6vwK0RgeM4gjEG48wK2+xwKeSCY5j4/zgkgJQSyqjg0u5zSINzDlII8ElAW7OrMRHYdR2apoEMDpVW+4He++BQhi4b1Lz9AeLv0PUdivDIfvbI2SXeoJwOinPQ4vg3JQuZgBRZl+NwPW3vsrUWxhj0fQ/KqUF3b/e4eb3FQ57i8HmKKoJzo03cS/uWOq31uiYlSim0bYuiKEA5OXXGIj0+4/E9xbE+4+nygvM1w0eWgXMePzH6GaqqQlmWmKYp1tH1b6Car77ZWq1WAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Training process"
+        title="Training process"
+        src="/static/191860d6f0cd8cf7d24127f04f779462/e17e5/12.png"
+        srcset="/static/191860d6f0cd8cf7d24127f04f779462/63868/12.png 250w,
+/static/191860d6f0cd8cf7d24127f04f779462/e17e5/12.png 400w"
+        sizes="(max-width: 400px) 100vw, 400px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>Let's take a look at NanoNeuron parameters to see what it has learned. We expect that NanoNeuron parameters <code class="language-text">w</code> and <code class="language-text">b</code> to be similar to ones we have in the <code class="language-text">celsiusToFahrenheit()</code> function (<code class="language-text">w = 1.8</code> and <code class="language-text">b = 32</code>) since our NanoNeuron tried to imitate it.</p>
 <div class="gatsby-highlight" data-language="javascript"><pre class="language-javascript"><code class="language-javascript">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'NanoNeuron parameters:'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>w<span class="token operator">:</span> nanoNeuron<span class="token punctuation">.</span>w<span class="token punctuation">,</span> b<span class="token operator">:</span> nanoNeuron<span class="token punctuation">.</span>b<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// i.e. -> {w: 1.8, b: 31.99}</span></code></pre></div>
 <p>Evaluate the model accuracy for the test data-set to see how well our NanoNeuron deals with new unknown data predictions. The cost of predictions on test sets is expected to be close to the training cost. This would mean that our NanoNeuron performs well on known and unknown data.</p>

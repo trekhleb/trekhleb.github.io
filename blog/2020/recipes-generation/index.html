@@ -57,13 +57,33 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 ▪︎ Stir the olive oil, garlic, thyme and 1 teaspoon salt in a saucepan; bring to a simmer over medium heat. Remove from the heat. Add the basil and toast the soup for 2 minutes.
 ▪︎ Meanwhile, heat 4 to 4 inches vegetable oil in the skillet over medium-high heat. Add the olive oil, garlic, 1/2 teaspoon salt and 1/2 teaspoon pepper and cook, stirring often, until cooked through, a</code></pre></div>
-<p><img src="https://raw.githubusercontent.com/trekhleb/machine-learning-experiments/master/assets/images/recipes_generation/01-cover.jpg" alt="Cook real recipes, not with generated ones"></p>
+<p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 946px; "
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 100%; position: relative; bottom: 0; left: 0; background-image: url('data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAUABQDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAMCAf/EABYBAQEBAAAAAAAAAAAAAAAAAAEDAP/aAAwDAQACEAMQAAABrlaVossduOwJv//EABoQAQEAAwEBAAAAAAAAAAAAAAECABIhMkH/2gAIAQEAAQUCjgQKUzj11NfRHM1Jz7//xAAVEQEBAAAAAAAAAAAAAAAAAAAQAf/aAAgBAwEBPwEp/8QAFhEBAQEAAAAAAAAAAAAAAAAAEAIx/9oACAECAQE/AScP/8QAHxAAAgECBwAAAAAAAAAAAAAAABEBAhIQISIxMkFR/9oACAEBAAY/AlJya6JFTU0VW6Z9Im02MsP/xAAcEAEAAgMBAQEAAAAAAAAAAAABABEhMUFhUXH/2gAIAQEAAT8hv9TdktQAKYQHvWEyCBTtwPAQtDBGFqUdgf3kc4ZXvsdp/9oADAMBAAIAAwAAABDzPwL/xAAXEQADAQAAAAAAAAAAAAAAAAABEBEx/9oACAEDAQE/EKJVtf/EABgRAQADAQAAAAAAAAAAAAAAAAEAEBEx/9oACAECAQE/EExyYlD2f//EABwQAQEAAgMBAQAAAAAAAAAAAAERADEhUWFBcf/aAAgBAQABPxBtIEzkXu84RQhDVHue5BLy2aPMAEiJ+idkdZX27IPfMMoUDzb7kNlOIu3zATuhVPovWakIM0Z//9k='); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="Cook real recipes, not with generated ones"
+        title="Cook real recipes, not with generated ones"
+        src="/static/bd0d3256b5e96aafe4d1ee2392dd3b59/56d85/09.jpg"
+        srcset="/static/bd0d3256b5e96aafe4d1ee2392dd3b59/0479a/09.jpg 250w,
+/static/bd0d3256b5e96aafe4d1ee2392dd3b59/41099/09.jpg 500w,
+/static/bd0d3256b5e96aafe4d1ee2392dd3b59/56d85/09.jpg 946w"
+        sizes="(max-width: 946px) 100vw, 946px"
+        style="width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;"
+        loading="lazy"
+      />
+    </span></p>
 <p>⚠️ <em>The recipes in this article are generated just for fun and for learning purposes. The recipes are <strong>not</strong> for actual cooking! If you want some real recipes you may check 🥦 [home</em>full<em>of</em>recipes](<a href="https://www.instagram.com/home_full_of_recipes/">https://www.instagram.com/home_full_of_recipes/</a>) Instagram channel._</p>
 <h2>Prior knowledge</h2>
 <p>It is assumed that you're already familiar with concepts of <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Recurrent Neural Networks (RNNs)</a> and with <a href="https://en.wikipedia.org/wiki/Long_short-term_memory">Long short-term memory (LSTM)</a> architecture in particular.</p>
 <p>ℹ️ In case if these concepts are new to you I would highly recommend taking a <a href="https://www.coursera.org/specializations/deep-learning">Deep Learning Specialization</a> on Coursera by <em>Andrew Ng</em>. It also might be beneficial to go through the <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">Unreasonable Effectiveness of Recurrent Neural Networks</a> article by <em>Andrej Karpathy</em>.</p>
 <p>On a high level, <strong>Recurrent Neural Network (RNN)</strong> is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc. The key feature of RNNs is that they are stateful, and they have an internal memory in which some context for the sequence may be stored. For example if the first word of the sequence was <code class="language-text">He</code> the RNN might suggest the next word to <code class="language-text">speaks</code> instead of just <code class="language-text">speak</code> (to form a <code class="language-text">He speaks</code> phrase) because the prior knowledge about the first word <code class="language-text">He</code> is already inside the internal memory.</p>
-<p><img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Recurrent_neural_network_unfold.svg" alt="Recurrent Neural Network"></p>
+<p><img src="/posts-assets/79e174934c03239fc046bf55357ce7bd/0.svg" alt="Recurrent Neural Network"></p>
 <blockquote>
 <p><em>Image source: [Wikipedia](<a href="https://en.wikipedia.org/wiki/Recurrent">https://en.wikipedia.org/wiki/Recurrent</a></em>neural<em>network)</em></p>
 </blockquote>

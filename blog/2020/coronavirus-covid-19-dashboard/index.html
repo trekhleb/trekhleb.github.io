@@ -27,7 +27,7 @@
 <p>The reason for creating a new dashboard was to complement the well-known <a href="https://www.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">JHU Dashboard</a> (which is made by Johns Hopkins CSSE) with the feature of seeing the charts with the number of COVID-19 <code class="language-text">confirmed</code> / <code class="language-text">recovered</code>/ <code class="language-text">deaths</code> use-cases per country.</p>
 <p>Basically, I personally had a question like <em>"What about the Netherlands/Ukraine?"</em>, <em>"Is the virus spread (growth factor) slowing down?"</em>, <em>"How I can compare the recovered/deaths dynamics per-country?"</em>, <em>"Which countries are doing the proper things to slow down the growth-factor"</em>.</p>
 <p>Here is how the main function looks like:</p>
-<p><img src="https://dev-to-uploads.s3.amazonaws.com/i/27ju0ku5lxgc4uf76lv9.gif" alt="Coronavirus (COVID-19) Dashboard Demo"></p>
+<p><img src="/posts-assets/f58a75d39d140ed02b0be7adebecdb8d/04.gif" alt="Coronavirus (COVID-19) Dashboard Demo"></p>
 <h3>Data source and tech-stack</h3>
 <p>The dashboard is using <a href="https://github.com/CSSEGISandData/COVID-19">COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE</a> as a data source.</p>
 <p>Front-end wise I've tried to make it as simple as possible, therefore the dashboard is using a pure <a href="https://reactjs.org/">React.js</a> (without <code class="language-text">JSX</code> transpiler or <code class="language-text">CreateReactApp</code> starter). To display the data I've used <a href="https://www.chartjs.org/">Charts.js</a> to draw the chart and <a href="https://bootstrap-table.com/">Bootstrap Table</a> to display a sortable, searchable, and clickable data table.</p>
