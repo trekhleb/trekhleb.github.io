@@ -16,3 +16,8 @@
   padding: 2px 5px 1px 5px;
   font-weight: normal;
 }
+
+/* Align images in blog post to the center of the page */
+.prose p>img {
+  margin: auto;
+}
