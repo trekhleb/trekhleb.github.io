@@ -64,7 +64,7 @@
 <p><img src="/posts-assets/4cdea1757c71da83958f357939b859e2/02-demo.gif" alt="Cooking recipes generator demo"></p>
 <h2 id="what-our-model-will-eventually-learn" style="position:relative;">What our model will eventually learn<a href="#what-our-model-will-eventually-learn" aria-label="what our model will eventually learn permalink" class="anchor after"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>For a couple of hours of training our character-level RNN model will learn basic concepts of English grammar and punctuation (I wish I could learn English that fast!). It will also learn how to generate different parts of recipes such as <em>📗 [RECIPE NAME]</em>, <em>🥕 [RECIPE INGREDIENTS]</em> and <em>📝 [RECIPE INSTRUCTIONS]</em>. Sometimes recipe name, ingredients and instructions will be pretty interesting, sometimes stupid, sometimes fun.</p>
-<p>Here are couple of generated recipes examples:</p>
+<p>Here is a couple of generated recipes examples:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">📗 [NAME]
 
 Orange Club Tea Sandwich Cookies
@@ -130,14 +130,14 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
         loading="lazy"
       />
     </span></p>
-<p>⚠️ <em>The recipes in this article are generated just for fun and for learning purposes. The recipes are <strong>not</strong> for actual cooking! If you want some real recipes you may check 🥦 [home</em>full<em>of</em>recipes](<a href="https://www.instagram.com/home_full_of_recipes/">https://www.instagram.com/home_full_of_recipes/</a>) Instagram channel._</p>
+<p>⚠️ *The recipes in this article are generated just for fun and for learning purposes. The recipes are <strong>not</strong> for actual cooking! If you want some real recipes you may check 🥦 <a href="https://www.instagram.com/home_full_of_recipes/">home<em>full</em>of_recipes</a> Instagram channel.*</p>
 <h2 id="prior-knowledge" style="position:relative;">Prior knowledge<a href="#prior-knowledge" aria-label="prior knowledge permalink" class="anchor after"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h2>
 <p>It is assumed that you're already familiar with concepts of <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Recurrent Neural Networks (RNNs)</a> and with <a href="https://en.wikipedia.org/wiki/Long_short-term_memory">Long short-term memory (LSTM)</a> architecture in particular.</p>
 <p>ℹ️ In case if these concepts are new to you I would highly recommend taking a <a href="https://www.coursera.org/specializations/deep-learning">Deep Learning Specialization</a> on Coursera by <em>Andrew Ng</em>. It also might be beneficial to go through the <a href="http://karpathy.github.io/2015/05/21/rnn-effectiveness/">Unreasonable Effectiveness of Recurrent Neural Networks</a> article by <em>Andrej Karpathy</em>.</p>
 <p>On a high level, <strong>Recurrent Neural Network (RNN)</strong> is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc. The key feature of RNNs is that they are stateful, and they have an internal memory in which some context for the sequence may be stored. For example if the first word of the sequence was <code class="language-text">He</code> the RNN might suggest the next word to <code class="language-text">speaks</code> instead of just <code class="language-text">speak</code> (to form a <code class="language-text">He speaks</code> phrase) because the prior knowledge about the first word <code class="language-text">He</code> is already inside the internal memory.</p>
 <p><img src="/posts-assets/79e174934c03239fc046bf55357ce7bd/0.svg" alt="Recurrent Neural Network"></p>
 <blockquote>
-<p><em>Image source: [Wikipedia](<a href="https://en.wikipedia.org/wiki/Recurrent">https://en.wikipedia.org/wiki/Recurrent</a></em>neural<em>network)</em></p>
+<p><em>Image source: <a href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Wikipedia</a></em></p>
 </blockquote>
 <p><span
       class="gatsby-resp-image-wrapper"
