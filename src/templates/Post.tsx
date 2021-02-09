@@ -19,7 +19,21 @@ export const query = graphql`
       }
       frontmatter {
         title
+        summary
         date(formatString: "DD MMMM, YYYY")
+        cover {
+          childImageSharp {
+            fluid(
+              fit: COVER,
+              cropFocus: CENTER,
+              grayscale: false,
+              quality: 90,
+              maxWidth: 1000
+            ) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }

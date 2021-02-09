@@ -1,9 +1,9 @@
 import React from 'react';
 
 import PageLayout from '../layouts/PageLayout';
-import ScreenTitle from '../shared/ScreenTitle';
 import type { Profile as ProfileType } from '../../types/Profile';
 import Profile from '../elements/Profile';
+import SEO from '../shared/SEO';
 
 type AboutScreenProps = {
   profile: ProfileType,
@@ -14,7 +14,10 @@ const AboutScreen = (props: AboutScreenProps): React.ReactElement => {
 
   return (
     <PageLayout>
-      <ScreenTitle title="About" />
+      <SEO
+        title="About"
+        description={`${profile.firstName} ${profile.lastName}. ${profile.position}. ${profile.summary}`}
+      />
       <Profile profile={profile} />
     </PageLayout>
   );

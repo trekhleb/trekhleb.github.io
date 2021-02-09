@@ -3,10 +3,10 @@ import React from 'react';
 import { Project as ProjectType } from '../../types/Project';
 import ProjectsList from '../elements/ProjectsList';
 import PageLayout from '../layouts/PageLayout';
-import ScreenTitle from '../shared/ScreenTitle';
 import PageHeader from '../shared/PageHeader';
 import Badge from '../shared/Badge';
 import Row from '../shared/Row';
+import SEO from '../shared/SEO';
 
 type ProjectsScreenProps = {
   projects: ProjectType[],
@@ -19,7 +19,10 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
 
   return (
     <PageLayout>
-      <ScreenTitle title="Projects" />
+      <SEO
+        title="Projects"
+        description="Projects and experiments that help people learn"
+      />
       <Row>
         <PageHeader>Projects</PageHeader>
         <Badge className="ml-3 self-start">{projectsNum}</Badge>
