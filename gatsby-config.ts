@@ -68,6 +68,12 @@ const gatsbyConfig: GatsbyConfig = {
             },
           },
 
+          // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-images-zoom/
+          {
+            resolve: 'gatsby-remark-images-zoom',
+            options: {},
+          },
+
           // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/
           {
             resolve: 'gatsby-remark-prismjs',

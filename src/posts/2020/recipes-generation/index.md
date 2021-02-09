@@ -82,7 +82,7 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 ![Cook real recipes, not with generated ones](assets/09.jpg)
 
-⚠️ *The recipes in this article are generated just for fun and for learning purposes. The recipes are **not** for actual cooking! If you want some real recipes you may check 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/) Instagram channel.*
+⚠️ The recipes in this article are generated just for fun and for learning purposes. The recipes are **not** for actual cooking! If you want some real recipes you may check 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/) Instagram channel.
 
 ## Prior knowledge
 
