@@ -11,7 +11,7 @@ date: 2020-06-18
 
 ## TL;DR
 
-I've trained a character-level LSTM _(Long short-term memory)_ RNN _(Recurrent Neural Network)_ on _~100k_ recipes dataset using TensorFlow, and it suggested me to cook _"Cream Soda with Onions"_, _"Puff Pastry Strawberry Soup"_, _"Zucchini flavor Tea"_ and _"Salmon Mousse of Beef and Stilton Salad with Jalapenos"_ .
+I've trained a character-level LSTM *(Long short-term memory)* RNN *(Recurrent Neural Network)* on *~100k* recipes dataset using TensorFlow, and it suggested me to cook *"Cream Soda with Onions"*, *"Puff Pastry Strawberry Soup"*, *"Zucchini flavor Tea"* and *"Salmon Mousse of Beef and Stilton Salad with Jalapenos"* .
 
 Here you may find more examples of what I ended up with:
 
@@ -25,9 +25,9 @@ This article contains details of how the LSTM model was actually trained on Pyth
 
 ## What our model will eventually learn
 
-For a couple of hours of training our character-level RNN model will learn basic concepts of English grammar and punctuation (I wish I could learn English that fast!). It will also learn how to generate different parts of recipes such as _📗 [RECIPE NAME]_, _🥕 [RECIPE INGREDIENTS]_ and _📝 [RECIPE INSTRUCTIONS]_. Sometimes recipe name, ingredients and instructions will be pretty interesting, sometimes stupid, sometimes fun.
+For a couple of hours of training our character-level RNN model will learn basic concepts of English grammar and punctuation (I wish I could learn English that fast!). It will also learn how to generate different parts of recipes such as *📗 [RECIPE NAME]*, *🥕 [RECIPE INGREDIENTS]* and *📝 [RECIPE INSTRUCTIONS]*. Sometimes recipe name, ingredients and instructions will be pretty interesting, sometimes stupid, sometimes fun.
 
-Here are couple of generated recipes examples:
+Here is a couple of generated recipes examples:
 
 ```text
 📗 [NAME]
@@ -82,25 +82,25 @@ Mushrooms with Lentil Stewed Shallots and Tomatoes
 
 ![Cook real recipes, not with generated ones](assets/09.jpg)
 
-⚠️ _The recipes in this article are generated just for fun and for learning purposes. The recipes are **not** for actual cooking! If you want some real recipes you may check 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/) Instagram channel._
+⚠️ *The recipes in this article are generated just for fun and for learning purposes. The recipes are **not** for actual cooking! If you want some real recipes you may check 🥦 [home_full_of_recipes](https://www.instagram.com/home_full_of_recipes/) Instagram channel.*
 
 ## Prior knowledge
 
 It is assumed that you're already familiar with concepts of [Recurrent Neural Networks (RNNs)](https://en.wikipedia.org/wiki/Recurrent_neural_network) and with [Long short-term memory (LSTM)](https://en.wikipedia.org/wiki/Long_short-term_memory) architecture in particular.
 
-ℹ️ In case if these concepts are new to you I would highly recommend taking a [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) on Coursera by _Andrew Ng_. It also might be beneficial to go through the [Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) article by _Andrej Karpathy_.
+ℹ️ In case if these concepts are new to you I would highly recommend taking a [Deep Learning Specialization](https://www.coursera.org/specializations/deep-learning) on Coursera by *Andrew Ng*. It also might be beneficial to go through the [Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) article by *Andrej Karpathy*.
 
 On a high level, **Recurrent Neural Network (RNN)** is a class of deep neural networks, most commonly applied to sequence-based data like speech, voice, text or music. They are used for machine translation, speech recognition, voice synthesis etc. The key feature of RNNs is that they are stateful, and they have an internal memory in which some context for the sequence may be stored. For example if the first word of the sequence was `He` the RNN might suggest the next word to `speaks` instead of just `speak` (to form a `He speaks` phrase) because the prior knowledge about the first word `He` is already inside the internal memory.
 
 ![Recurrent Neural Network](assets/0.svg)
 
-> _Image source: [Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)_
+> *Image source: [Wikipedia](https://en.wikipedia.org/wiki/Recurrent_neural_network)*
 
 ![Basic architectures of GRU and LSTM cells](assets/1.png)
 
-> _Image source: [Towards Data Science](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)_
+> *Image source: [Towards Data Science](https://towardsdatascience.com/illustrated-guide-to-lstms-and-gru-s-a-step-by-step-explanation-44e9eb85bf21)*
 
-Exciting part is that RNN (and LSTM in particular) could memorize not only _word-to-word_ dependencies but also _character-to-character_ dependencies! It doesn't really matter what sequence consists of: it might be words it might be characters. What is important is that they form a time-distributed sequence. For example, we have a sequence of characters `['H', 'e']`. If we ask LSTM what may go next it may suggest a `<stop_word>` (meaning, that the sequence that forms word `He` is already complete, and we may stop), or it may also suggest a character `l` (meaning, that it tries to build a `Hello` sequence for us). This type of RNNs are called **character-level RNNs** (as opposed to **word-level RNNs**).
+Exciting part is that RNN (and LSTM in particular) could memorize not only *word-to-word* dependencies but also *character-to-character* dependencies! It doesn't really matter what sequence consists of: it might be words it might be characters. What is important is that they form a time-distributed sequence. For example, we have a sequence of characters `['H', 'e']`. If we ask LSTM what may go next it may suggest a `<stop_word>` (meaning, that the sequence that forms word `He` is already complete, and we may stop), or it may also suggest a character `l` (meaning, that it tries to build a `Hello` sequence for us). This type of RNNs are called **character-level RNNs** (as opposed to **word-level RNNs**).
 
 In this tutorial we will rely on this memorization feature of RNN networks, and we will use a character-level version of LSTM to generate cooking recipes.
 
@@ -110,10 +110,10 @@ Let's go through several available datasets and explore their pros and cons. One
 
 Here are several cooking recipes datasets I've found:
 
-- 🤷 [Recipe Ingredients Dataset](https://www.kaggle.com/kaggle/recipe-ingredients-dataset/home) _(doesn't have ingredients proportions)_
-- 🤷 [Recipe1M+](http://pic2recipe.csail.mit.edu/) _(a lot of recipes but requires registration to download)_
-- 🤷 [Epicurious - Recipes with Rating and Nutrition](https://www.kaggle.com/hugodarwood/epirecipes?select=full_format_recipes.json) _(~20k recipes only, it would be nice to find more)_
-- 👍🏻 [Recipe box](https://eightportions.com/datasets/Recipes/) _(~125,000 recipes with ingredients proportions, good)_
+- 🤷 [Recipe Ingredients Dataset](https://www.kaggle.com/kaggle/recipe-ingredients-dataset/home) *(doesn't have ingredients proportions)*
+- 🤷 [Recipe1M+](http://pic2recipe.csail.mit.edu/) *(a lot of recipes but requires registration to download)*
+- 🤷 [Epicurious - Recipes with Rating and Nutrition](https://www.kaggle.com/hugodarwood/epirecipes?select=full_format_recipes.json) *(~20k recipes only, it would be nice to find more)*
+- 👍🏻 [Recipe box](https://eightportions.com/datasets/Recipes/) *(~125,000 recipes with ingredients proportions, good)*
 
 Let's try to use the "Recipe box" dataset. The number of recipes looks big enough, also it contains both ingredients and cooking instructions. It is interesting to see if RNN will be able to learn a connection between ingredients and instructions.
 
@@ -121,8 +121,8 @@ Let's try to use the "Recipe box" dataset. The number of recipes looks big enoug
 
 There are several options you may follow to experiment with the code in this tutorial:
 
-1. You may experiment by using [GoogleColab right in your browser](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) _(no local setup is needed)_.
-2. You may experiment by using [Jupyter notebook in Binder right in your browser](https://mybinder.org/v2/gh/trekhleb/machine-learning-experiments/master?filepath=experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) _(no local setup is needed)_.
+1. You may experiment by using [GoogleColab right in your browser](https://colab.research.google.com/github/trekhleb/machine-learning-experiments/blob/master/experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) *(no local setup is needed)*.
+2. You may experiment by using [Jupyter notebook in Binder right in your browser](https://mybinder.org/v2/gh/trekhleb/machine-learning-experiments/master?filepath=experiments/recipe_generation_rnn/recipe_generation_rnn.ipynb) *(no local setup is needed)*.
 3. You may [setup a Jupyter notebook locally](https://github.com/trekhleb/machine-learning-experiments#how-to-use-this-repository-locally).
 
 I would suggest going with GoogleColab option since it doesn't require any local setup for you (you may experiment right in your browser), and it also provides a powerful GPU support for training that will make the model to train faster. You will be able to experiment with training parameters as well.
@@ -145,7 +145,7 @@ import pathlib
 import os
 ```
 
-First, let's make sure our environment is properly set up and that we're using a _2nd_ version of Tensorflow.
+First, let's make sure our environment is properly set up and that we're using a *2nd* version of Tensorflow.
 
 ```python
 print('Python version:', platform.python_version())
@@ -216,7 +216,7 @@ _<small>➔ output:</small>_
 > -rw-r--r--  1   93702755 May 20 06:46 recipes_raw_nosource_fn.json
 > ```
 
-As you may see, the dataset consists of _3_ files. We need to merge information from those _3_ files into one dataset later.
+As you may see, the dataset consists of *3* files. We need to merge information from those *3* files into one dataset later.
 
 Let's load datasets data from `json` files and preview examples from them.
 
@@ -340,7 +340,7 @@ _<small>➔ output:</small>_
 
 ### Filtering out incomplete examples
 
-It is possible that some recipes don't have some required fields (_name_, _ingredients_ or _instructions_). We need to clean our dataset from those incomplete examples.
+It is possible that some recipes don't have some required fields (*name*, *ingredients* or *instructions*). We need to clean our dataset from those incomplete examples.
 
 The following function will help us filter out recipes which don't have either title or ingredients or instructions:
 
@@ -549,7 +549,7 @@ _<small>➔ output:</small>_
 
 ### Filtering out large recipes
 
-Recipes have different lengths. We need to have one _hard-coded sequence length_ limit before feeding recipe sequences to RNN. We need to find out what recipe length will cover most of the recipe use-cases and at the same time we want to keep it as small as possible to speed up the training process.
+Recipes have different lengths. We need to have one *hard-coded sequence length* limit before feeding recipe sequences to RNN. We need to find out what recipe length will cover most of the recipe use-cases and at the same time we want to keep it as small as possible to speed up the training process.
 
 ```python
 recipes_lengths = []
@@ -626,13 +626,13 @@ Finally, we ended up with `~100k` recipes. Each recipe has `2000` characters len
 
 Recurrent neural network doesn't understand characters or words. It understands numbers instead. Therefore, we need to convert recipe texts to numbers.
 
-In this experiment we're going to use a **character-level** language model based on multi-layer LSTM (Long Short-Term Memory) network (as opposed to **word-level** language model). It means that instead of creating unique indices for words we will create unique indices for characters. By doing that we let the network predict the next _character_ instead of the next _word_ in a sequence.
+In this experiment we're going to use a **character-level** language model based on multi-layer LSTM (Long Short-Term Memory) network (as opposed to **word-level** language model). It means that instead of creating unique indices for words we will create unique indices for characters. By doing that we let the network predict the next *character* instead of the next *word* in a sequence.
 
-ℹ️ You may find more details about character-level RNNs explanation in the [Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) article by _Andrej Karpathy_:
+ℹ️ You may find more details about character-level RNNs explanation in the [Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/) article by *Andrej Karpathy*:
 
 To create a vocabulary out of recipes texts we will use [tf.keras.preprocessing.text.Tokenizer](https://www.tensorflow.org/api_docs/python/tf/keras/preprocessing/text/Tokenizer).
 
-We also need to come with some unique character that will be treated as a _stop-character_ and will indicate the end of a recipe. We need it for recipe generation afterwards since without this stop-character we won't know where the end of a recipe that we're generating is.
+We also need to come with some unique character that will be treated as a *stop-character* and will indicate the end of a recipe. We need it for recipe generation afterwards since without this stop-character we won't know where the end of a recipe that we're generating is.
 
 ```python
 STOP_SIGN = '␣'
@@ -1586,7 +1586,7 @@ _<small>➔ output:</small>_
 
 ![Model training progress (first 10 epochs)](assets/6.png)
 
-ℹ️ _On the chart above only first 10 epochs are presented._
+ℹ️ *On the chart above only first 10 epochs are presented.*
 
 We can see from the chart that model performance is getting better during the training. It means that the model learns to predict next characters in a way that the final sequence looks similar to some real recipe texts.
 
