@@ -19,6 +19,7 @@ const PostScreen = (props: PostScreenProps): React.ReactElement => {
         titleMode={titleModeSuffix}
         description={post.markdownRemark?.frontmatter?.summary || ''}
         image={post.markdownRemark?.frontmatter?.cover?.childImageSharp?.fluid?.src || ''}
+        isArticle
       />
       <Post post={post} />
     </PageLayout>
