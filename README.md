@@ -41,7 +41,7 @@ Use [react-icons.github.io](https://react-icons.github.io/react-icons) to search
 
 ### Styling components
 
-Use [tailwindcss.com](https://tailwindcss.com) to search for available classes.
+Use [tailwindcss.com](https://tailwindcss.com) to search for available CSS classes.
 
 ### Custom Domain Support
 
