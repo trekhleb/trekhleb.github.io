@@ -1,8 +1,8 @@
 import React from 'react';
-import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
+import { GoCommentDiscussion } from '@react-icons/all-files/go/GoCommentDiscussion';
 
 import HyperLink from './HyperLink';
-import { issuesURL } from '../../constants/links';
+import { discussionsURL } from '../../constants/links';
 import { Link } from '../../types/Link';
 import Row from './Row';
 import SocialLinks from './SocialLinks';
@@ -16,7 +16,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
   const { className = '' } = props;
 
   const issuesLink: Link = {
-    url: issuesURL,
+    url: discussionsURL,
   };
 
   return (
@@ -26,7 +26,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
           <HyperLink
             link={issuesLink}
             className="text-xs"
-            startEnhancer={(<FaGithub size={20} />)}
+            startEnhancer={(<GoCommentDiscussion size={20} />)}
           >
             Feedback
           </HyperLink>
