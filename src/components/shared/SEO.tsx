@@ -60,7 +60,6 @@ const SEO = (props: SEOProps): React.ReactElement => {
       <meta name="description" content={description} />
       <meta name="image" content={bannerURL} />
 
-      <meta property="og:site_name" content="freeCodeCamp.org" />
       <meta property="og:title" content={extendedTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={pageURL} />
