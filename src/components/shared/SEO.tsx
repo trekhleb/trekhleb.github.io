@@ -37,18 +37,18 @@ const SEO = (props: SEOProps): React.ReactElement => {
     image = siteImage,
   } = props;
 
-  const titleTemplate = titleMode === titleModePrefix
-    ? `${windowNamePrefix} ${windowNameSeparator} %s`
-    : `%s ${windowNameSeparator} ${windowNamePrefix}`;
+  const extendedTitle = titleMode === titleModePrefix
+    ? `${windowNamePrefix} ${windowNameSeparator} ${title}`
+    : `${title} ${windowNameSeparator} ${windowNamePrefix}`;
 
   const bannerURL = `${url}${image}`;
 
   return (
-    <Helmet title={title} titleTemplate={titleTemplate}>
+    <Helmet title={extendedTitle}>
       <meta name="description" content={description} />
       <meta name="image" content={image} />
 
-      <meta property="og:title" content={title} />
+      <meta property="og:title" content={extendedTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={url} />
       <meta property="og:image" content={bannerURL} />
@@ -56,7 +56,7 @@ const SEO = (props: SEOProps): React.ReactElement => {
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={twitterUsername} />
-      <meta name="twitter:title" content={title} />
+      <meta name="twitter:title" content={extendedTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={bannerURL} />
     </Helmet>
