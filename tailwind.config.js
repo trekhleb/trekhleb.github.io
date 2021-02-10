@@ -6,8 +6,8 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   // Don't purge, since Tailwind can't recognise conditional classes.
-  // purge: ['./src/**/*.{js,jsx,ts,tsx}'],
-  purge: [],
+  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
+  // purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
