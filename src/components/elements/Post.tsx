@@ -3,7 +3,6 @@ import { FiCalendar } from '@react-icons/all-files/fi/FiCalendar';
 import { FiClock } from '@react-icons/all-files/fi/FiClock';
 
 import { PostTemplateQuery } from '../../templates/__generated__/PostTemplateQuery';
-import { blogPostColor } from '../../constants/style';
 import PageHeader from '../shared/PageHeader';
 import Row from '../shared/Row';
 import { timeToReadFromRemark } from '../../utils/time';
@@ -33,7 +32,7 @@ const Post = (props: PostProps): React.ReactElement | null => {
   // @see: https://github.com/tailwindlabs/tailwindcss-typography
   return (
     <div className="flex flex-col items-center">
-      <article className={`w-full prose prose-sm sm:prose overflow-hidden ${blogPostColor}`} style={{ maxWidth: '860px' }}>
+      <article className="w-full prose prose-sm sm:prose overflow-hidden prose-red" style={{ maxWidth: '860px' }}>
         <PageHeader>{post.markdownRemark?.frontmatter?.title || ''}</PageHeader>
         <Row>
           {dateElement}

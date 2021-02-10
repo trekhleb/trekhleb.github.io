@@ -2,7 +2,6 @@ import { Link } from 'gatsby';
 import React from 'react';
 
 import type { Link as LinkType } from '../../types/Link';
-import { activeLinkColor } from '../../constants/style';
 
 export type HyperLinkProps = {
   link: LinkType,
@@ -32,7 +31,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     return null;
   }
 
-  const hoverClasses = hoverClassName || `hover:${activeLinkColor}`;
+  const hoverClasses = hoverClassName || 'hover:text-red-600';
 
   const commonClasses = formatted
     ? `transition duration-200 ease-in-out flex flex-row items-center ${hoverClasses}`
