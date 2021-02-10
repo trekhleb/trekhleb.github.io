@@ -3,7 +3,7 @@ import React from 'react';
 import PageLayout from '../layouts/PageLayout';
 import { PostTemplateQuery } from '../../templates/__generated__/PostTemplateQuery';
 import Post from '../elements/Post';
-import SEO, { titleModeSuffix } from '../shared/SEO';
+import SEO, { ogTypeArticle, titleModeSuffix } from '../shared/SEO';
 
 type PostScreenProps = {
   post: PostTemplateQuery;
@@ -19,7 +19,7 @@ const PostScreen = (props: PostScreenProps): React.ReactElement => {
         titleMode={titleModeSuffix}
         description={post.markdownRemark?.frontmatter?.summary || ''}
         image={post.markdownRemark?.frontmatter?.cover?.childImageSharp?.fluid?.src || ''}
-        isArticle
+        type={ogTypeArticle}
       />
       <Post post={post} />
     </PageLayout>

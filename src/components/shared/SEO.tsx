@@ -13,16 +13,23 @@ type TitleMode = 'prefix' | 'suffix';
 export const titleModePrefix: TitleMode = 'prefix';
 export const titleModeSuffix: TitleMode = 'suffix';
 
+// @see: https://ogp.me/
+type ogType = 'article' | 'website' | 'profile';
+
+export const ogTypeArticle: ogType = 'article';
+export const ogTypeWebsite: ogType = 'website';
+export const ogTypeProfile: ogType = 'profile';
+
 type SEOProps = {
   title: string,
   description: string,
-  isArticle?: boolean,
   image?: string,
   twitterUsername?: string,
   // No trailing slash allowed!
   // @see: https://www.gatsbyjs.com/docs/add-seo-component/
-  url?: string,
+  baseURL?: string,
   titleMode?: TitleMode,
+  type?: ogType,
 };
 
 // @see: https://www.gatsbyjs.com/docs/add-seo-component/
@@ -30,35 +37,42 @@ const SEO = (props: SEOProps): React.ReactElement => {
   const {
     title,
     description,
-    url = siteURL,
-    isArticle = false,
+    baseURL = siteURL,
     twitterUsername = twitterUser,
     titleMode = titleModePrefix,
     image = siteImage,
+    type = ogTypeWebsite,
   } = props;
 
   const extendedTitle = titleMode === titleModePrefix
     ? `${windowNamePrefix} ${windowNameSeparator} ${title}`
     : `${title} ${windowNameSeparator} ${windowNamePrefix}`;
 
-  const bannerURL = `${url}${image}`;
+  const bannerURL = `${baseURL}${image}`;
 
+  /* global location */
+  // eslint-disable-next-line no-restricted-globals
+  const pageURL = `${baseURL}${location.pathname}`;
+
+  // @see: https://ogp.me/
   return (
     <Helmet title={extendedTitle}>
       <meta name="description" content={description} />
-      <meta name="image" content={image} />
+      <meta name="image" content={bannerURL} />
 
+      <meta property="og:site_name" content="freeCodeCamp.org" />
       <meta property="og:title" content={extendedTitle} />
       <meta property="og:description" content={description} />
-      <meta property="og:url" content={url} />
+      <meta property="og:url" content={pageURL} />
       <meta property="og:image" content={bannerURL} />
-      {(isArticle ? true : null) && <meta property="og:type" content="article" />}
+      <meta property="og:type" content={type} />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:creator" content={twitterUsername} />
       <meta name="twitter:title" content={extendedTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={bannerURL} />
+      <meta name="twitter:url" content={pageURL} />
     </Helmet>
   );
 };
