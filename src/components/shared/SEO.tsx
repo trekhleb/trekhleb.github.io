@@ -1,4 +1,5 @@
 import React from 'react';
+import { useLocation } from '@reach/router';
 import { Helmet } from 'react-helmet';
 
 import {
@@ -44,15 +45,15 @@ const SEO = (props: SEOProps): React.ReactElement => {
     type = ogTypeWebsite,
   } = props;
 
+  const { pathname } = useLocation();
+
   const extendedTitle = titleMode === titleModePrefix
     ? `${windowNamePrefix} ${windowNameSeparator} ${title}`
     : `${title} ${windowNameSeparator} ${windowNamePrefix}`;
 
   const bannerURL = `${baseURL}${image}`;
 
-  /* global location */
-  // eslint-disable-next-line no-restricted-globals
-  const pageURL = `${baseURL}${location.pathname}`;
+  const pageURL = `${baseURL}${pathname}`;
 
   // @see: https://ogp.me/
   return (
