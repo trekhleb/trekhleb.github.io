@@ -93,6 +93,8 @@ async function main(): Promise<void> {
 
   logInfo(`Found ${ghProjects.length} GitHub projects to query`);
 
+  // For unauthenticated requests, the rate limit allows for up to 60 requests per hour.
+  // @see: https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting
   try {
     logInfo('\nChecking rate limits');
     const rateLimits: GitHubRateLimits = await fetchGitHubRateLimits();
