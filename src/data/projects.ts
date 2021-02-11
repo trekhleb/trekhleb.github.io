@@ -27,6 +27,10 @@ export const projects: Project[] = [
       { name: 'Computer Vision' },
       { name: 'Object Detection' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'links-detector',
+    },
   },
   {
     name: '🤖 Interactive Machine Learning Experiments',
@@ -50,6 +54,10 @@ export const projects: Project[] = [
       { name: 'JavaScript' },
       { name: 'React' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'machine-learning-experiments',
+    },
   },
   {
     name: '📈 Coronavirus (COVID-19) Dashboard',
@@ -68,6 +76,10 @@ export const projects: Project[] = [
       { name: 'COVID-19' },
       { name: 'React' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'covid-19',
+    },
   },
   {
     name: '🤖 NanoNeuron',
@@ -88,6 +100,10 @@ export const projects: Project[] = [
       { name: 'JavaScript' },
       { name: 'Algorithms' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'nano-neuron',
+    },
   },
   {
     name: '🌍 usePosition: React hook for fetching and following a browser geolocation',
@@ -108,6 +124,10 @@ export const projects: Project[] = [
       { name: 'Geolocation' },
       { name: 'React Hooks' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'use-position',
+    },
   },
   {
     name: '📘 JavaScript Algorithms Book',
@@ -148,6 +168,10 @@ export const projects: Project[] = [
       { name: 'Python' },
       { name: 'Jupyter Notebook' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'homemade-machine-learning',
+    },
   },
   {
     name: '📝 JavaScript Algorithms and Data-Structures',
@@ -168,6 +192,10 @@ export const projects: Project[] = [
       { name: 'Algorithms' },
       { name: 'Data Structures' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'javascript-algorithms',
+    },
   },
   {
     name: '🤖 Machine Learning in MatLab/Octave',
@@ -188,6 +216,10 @@ export const projects: Project[] = [
       { name: 'MatLab' },
       { name: 'Octave' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'machine-learning-octave',
+    },
   },
   {
     name: '📚 Playground and cheatsheet for learning Python',
@@ -205,6 +237,10 @@ export const projects: Project[] = [
     tags: [
       { name: 'Python' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'learn-python',
+    },
   },
   {
     name: '➡️ Aggregatus | Data Aggregation Service',
@@ -249,6 +285,10 @@ export const projects: Project[] = [
       { name: 'WebPack' },
       { name: 'Angular' },
     ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'angular-library-seed',
+    },
   },
   {
     name: '📕 AllBible.info',

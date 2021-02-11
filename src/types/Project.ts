@@ -2,6 +2,7 @@ import { Tag } from './Tag';
 import { DateString } from './Date';
 import { Image } from './Image';
 import { Link } from './Link';
+import { GitHubRepo } from './GitHubRepo';
 
 export type Project = {
   name?: string,
@@ -15,4 +16,5 @@ export type Project = {
   endDate?: DateString,
   tags?: Tag[],
   archived?: boolean,
+  gitHubRepo?: GitHubRepo,
 };
