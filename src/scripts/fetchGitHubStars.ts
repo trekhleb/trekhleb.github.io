@@ -145,7 +145,7 @@ async function main(): Promise<void> {
   }
 }
 
-logInfo('START\n');
+logInfo('START fetching GitHub stars\n');
 main()
-  .then(() => logInfo('\nEND'))
+  .then(() => logInfo('\nSTOP fetching GitHub stars'))
   .catch(logError);

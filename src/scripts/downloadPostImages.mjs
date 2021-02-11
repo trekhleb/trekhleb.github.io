@@ -128,7 +128,7 @@ async function main() {
   }
 }
 
-logInfo('START\n');
+logInfo('START downloading post images\n');
 main()
-  .then(() => logInfo('\nEND'))
+  .then(() => logInfo('\nSTOP downloading post images'))
   .catch(logError);
