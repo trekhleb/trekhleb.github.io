@@ -8,6 +8,8 @@ import { Project } from '../types/Project';
 import { getGitHubProjectID } from '../utils/project';
 import { GitHubStars } from '../types/GitHubStars';
 
+const gitHubAPIBasePath = 'https://api.github.com';
+
 const starsJSONPath = path.resolve(__dirname, '..', 'data', '__generated__', 'projectStars.json');
 
 function logError(err: Error): void {
@@ -24,12 +26,39 @@ function saveStars(projectStars: GitHubStars, starsPath: string): void {
   fs.writeFileSync(starsPath, starsData);
 }
 
+type GitHubRateLimits = {
+  resources: {
+    core: {
+      limit: number,
+      remaining: number,
+      reset: number,
+      used: number,
+    },
+  },
+};
+
+// @see: https://api.github.com/
+// @see: https://api.github.com/rate_limit
+async function fetchGitHubRateLimits(): Promise<GitHubRateLimits> {
+  return new Promise((resolve, reject) => {
+    const requestURL = `${gitHubAPIBasePath}/rate_limit`;
+    fetch(requestURL)
+      .then((resp) => resp.json())
+      .then((limits: GitHubRateLimits) => {
+        resolve(limits);
+      })
+      .catch((err) => reject(err));
+  });
+}
+
 type GitHubProject = {
   full_name?: string,
   stargazers_count?: number,
   message?: string,
 };
 
+// @see: https://api.github.com/
+// @see: https://api.github.com/repos/trekhleb/nano-neuron
 async function fetchGitHubProject(project: Project): Promise<GitHubProject> {
   return new Promise((resolve, reject) => {
     const owner = project?.gitHubRepo?.owner;
@@ -40,7 +69,7 @@ async function fetchGitHubProject(project: Project): Promise<GitHubProject> {
       return;
     }
 
-    const requestURL = `https://api.github.com/repos/${owner}/${repo}`;
+    const requestURL = `${gitHubAPIBasePath}/repos/${owner}/${repo}`;
     fetch(requestURL)
       .then((resp) => resp.json())
       .then((repository: GitHubProject) => {
@@ -63,6 +92,20 @@ async function main(): Promise<void> {
   }
 
   logInfo(`Found ${ghProjects.length} GitHub projects to query`);
+
+  try {
+    logInfo('\nChecking rate limits');
+    const rateLimits: GitHubRateLimits = await fetchGitHubRateLimits();
+    logInfo(`Limit: ${rateLimits.resources.core.limit}`);
+    logInfo(`Remaining: ${rateLimits.resources.core.remaining}`);
+    if (rateLimits.resources.core.remaining < ghProjects.length) {
+      logInfo('Skipping stars fetching since rate limit is smaller than number of projects to fetch');
+      return;
+    }
+  } catch (err) {
+    logError(err.message);
+    return;
+  }
 
   const projectStars: GitHubStars = {};
 
