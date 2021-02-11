@@ -13,6 +13,9 @@ import CardTitle from '../shared/CardTitle';
 import CardActions from '../shared/CardActions';
 import ButtonLink from '../shared/ButtonLink';
 import Archived from '../shared/Archived';
+import Stars from '../shared/Stars';
+import Row from '../shared/Row';
+import { getHitHubProjectStars } from '../../utils/project';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -37,9 +40,18 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     <DateRange
       startDate={project.startDate}
       endDate={project.endDate}
-      className="text-xs text-gray-500 font-light mb-3"
+      className="text-xs text-gray-500 font-light"
     />
   );
+
+  const projectStars = getHitHubProjectStars(project);
+  const stars = typeof projectStars === 'number' ? (
+    <Stars
+      stars={projectStars}
+      link={project.srcURL}
+      className="text-xs text-gray-500 font-light"
+    />
+  ) : null;
 
   /* eslint-disable react/no-array-index-key */
   const projectSummaryLines = project.summary ? project.summary.map(
@@ -103,7 +115,14 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         <CardTitle link={defaultProjectUrl}>
           {project.name}
         </CardTitle>
-        {projectDates}
+        <Row className="mb-3 justify-between">
+          <div>
+            {projectDates}
+          </div>
+          <div>
+            {stars}
+          </div>
+        </Row>
         {projectSummary}
         {projectTags}
       </CardContent>

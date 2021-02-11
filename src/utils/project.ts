@@ -1,4 +1,6 @@
 import { Project } from '../types/Project';
+import projectStars from '../data/__generated__/projectStars.json';
+import { GitHubStars } from '../types/GitHubStars';
 
 export function getGitHubProjectID(project: Project): string | null {
   if (
@@ -10,4 +12,16 @@ export function getGitHubProjectID(project: Project): string | null {
     return null;
   }
   return `${project.gitHubRepo.owner}/${project.gitHubRepo.repo}`;
+}
+
+export function getHitHubProjectStars(project: Project): number | null {
+  const projectID: string | null = getGitHubProjectID(project);
+  if (!projectID || !projectStars) {
+    return null;
+  }
+  const projectStarsTyped: GitHubStars = projectStars;
+  if (!(projectID in projectStarsTyped)) {
+    return null;
+  }
+  return projectStarsTyped[projectID]?.stars || null;
 }
