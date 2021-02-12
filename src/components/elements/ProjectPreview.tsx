@@ -16,6 +16,7 @@ import Archived from '../shared/Archived';
 import Stars from '../shared/Stars';
 import Row from '../shared/Row';
 import { getHitHubProjectStars } from '../../utils/project';
+import { Link } from '../../types/Link';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -45,10 +46,14 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   );
 
   const projectStars = getHitHubProjectStars(project);
+  const projectStarsLink: Link = {
+    url: project?.srcURL?.url,
+    caption: 'Stars on GitHub',
+  };
   const stars = typeof projectStars === 'number' ? (
     <Stars
       stars={projectStars}
-      link={project.srcURL}
+      link={projectStarsLink}
       className="text-xs text-gray-500 font-light"
     />
   ) : null;
