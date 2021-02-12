@@ -174,6 +174,27 @@ export const projects: Project[] = [
     },
   },
   {
+    name: '📣 Promote Your Next Startup',
+    srcURL: { url: 'https://github.com/trekhleb/promote-your-next-startup' },
+    startDate: '2018-06-11',
+    cover: { srcPath: 'projects/promote-your-next-startup/cover-01.jpg' },
+    summary: [
+      'Curated list of the free web-resources you may want to use to promote your next startup',
+    ],
+    description: [
+      'Curated list of the free web-resources you may want to use to promote your next startup',
+    ],
+    tags: [
+      { name: 'Promotion' },
+      { name: 'Links' },
+      { name: 'Startup' },
+    ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'promote-your-next-startup',
+    },
+  },
+  {
     name: '📝 JavaScript Algorithms and Data-Structures',
     srcURL: { url: 'https://github.com/trekhleb/javascript-algorithms' },
     startDate: '2018-02-01',

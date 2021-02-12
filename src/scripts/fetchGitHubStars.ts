@@ -22,7 +22,8 @@ function logInfo(message: any): void {
 }
 
 function saveStars(projectStars: GitHubStars, starsPath: string): void {
-  const starsData = JSON.stringify(projectStars);
+  const jsonSpace = 2;
+  const starsData = JSON.stringify(projectStars, null, jsonSpace);
   fs.writeFileSync(starsPath, starsData);
 }
 
