@@ -14,7 +14,7 @@ export function getGitHubProjectID(project: Project): string | null {
   return `${project.gitHubRepo.owner}/${project.gitHubRepo.repo}`;
 }
 
-export function getHitHubProjectStars(project: Project): number | null {
+export function getGitHubProjectStars(project: Project): number | null {
   const projectID: string | null = getGitHubProjectID(project);
   if (!projectID || !projectStars) {
     return null;
@@ -24,4 +24,11 @@ export function getHitHubProjectStars(project: Project): number | null {
     return null;
   }
   return projectStarsTyped[projectID]?.stars || null;
+}
+
+export function getTotalGetHubProjectStars(projects: Project[]): number | null {
+  return projects.reduce((totalStars: number, project: Project) => {
+    const currentProjectStars = getGitHubProjectStars(project) || 0;
+    return totalStars + currentProjectStars;
+  }, 0);
 }

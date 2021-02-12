@@ -3,6 +3,7 @@ import { FiStar } from '@react-icons/all-files/fi/FiStar';
 import Row from './Row';
 import HyperLink from './HyperLink';
 import { Link as LinkType } from '../../types/Link';
+import { numberToConciseString } from '../../utils/numbers';
 
 type StarsProps = {
   link?: LinkType,
@@ -21,7 +22,7 @@ const Stars = (props: StarsProps): React.ReactElement | null => {
     <>
       <FiStar size={14} />
       <div className="ml-1 text-xs font-light font-bold">
-        {stars}
+        {numberToConciseString(stars)}
       </div>
     </>
   );

@@ -12,7 +12,8 @@ import ProjectFilters, {
   sortByStartDateDesc,
   SortOption,
 } from '../elements/ProjectFilters';
-import { getHitHubProjectStars } from '../../utils/project';
+import { getGitHubProjectStars, getTotalGetHubProjectStars } from '../../utils/project';
+import Stars from '../shared/Stars';
 
 type ProjectsScreenProps = {
   projects: ProjectType[],
@@ -45,8 +46,8 @@ const projectSorters: ProjectSorters = {
   },
   [sortByStarsDesc]: {
     sort: (a: ProjectType, b: ProjectType): number => {
-      const aStars = getHitHubProjectStars(a) || 0;
-      const bStars = getHitHubProjectStars(b) || 0;
+      const aStars = getGitHubProjectStars(a) || 0;
+      const bStars = getGitHubProjectStars(b) || 0;
       if (aStars === bStars) {
         return 0;
       }
@@ -79,8 +80,14 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
         <PageHeader>Projects</PageHeader>
         <Badge className="ml-3 self-start">{projectsNum}</Badge>
       </Row>
-      <Row className="mb-6">
+      <Row className="mb-6 justify-between">
         <ProjectFilters onSort={setSortBy} sortBy={sortBy} />
+        <Row className="ml-3">
+          <div className="text-sm text-gray-500 mr-1">
+            Total stars:
+          </div>
+          <Stars stars={getTotalGetHubProjectStars(projects)} />
+        </Row>
       </Row>
       <ProjectsList projects={filteredProjects} />
     </PageLayout>

@@ -15,7 +15,7 @@ import ButtonLink from '../shared/ButtonLink';
 import Archived from '../shared/Archived';
 import Stars from '../shared/Stars';
 import Row from '../shared/Row';
-import { getHitHubProjectStars } from '../../utils/project';
+import { getGitHubProjectStars } from '../../utils/project';
 import { Link } from '../../types/Link';
 
 type ProjectPreviewProps = {
@@ -45,7 +45,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     />
   );
 
-  const projectStars = getHitHubProjectStars(project);
+  const projectStars = getGitHubProjectStars(project);
   const projectStarsLink: Link = {
     url: project?.srcURL?.url,
     caption: 'Stars on GitHub',
