@@ -60,6 +60,28 @@ export const projects: Project[] = [
     },
   },
   {
+    name: '💩 State-of-the-Art Shitcode Principles',
+    srcURL: { url: 'https://github.com/trekhleb/state-of-the-art-shitcode' },
+    cover: { srcPath: 'projects/state-of-the-art-shitcode/cover.png' },
+    startDate: '2020-02-28',
+    summary: [
+      'Curated list of state-of-the-art shitcode principles your project should follow to call it a proper shitcode',
+    ],
+    description: [
+      'Curated list of state-of-the-art shitcode principles your project should follow to call it a proper shitcode',
+    ],
+    tags: [
+      { name: 'JavaScript' },
+      { name: 'StyleGuide' },
+      { name: 'Coding' },
+      { name: 'BestPractices' },
+    ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'state-of-the-art-shitcode',
+    },
+  },
+  {
     name: '📈 Coronavirus (COVID-19) Dashboard',
     srcURL: { url: 'https://github.com/trekhleb/covid-19/' },
     demoURL: { url: 'https://trekhleb.dev/covid-19/' },
