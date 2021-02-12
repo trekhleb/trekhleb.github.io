@@ -20,7 +20,7 @@ const Stars = (props: StarsProps): React.ReactElement | null => {
   const starsElements = (
     <>
       <FiStar size={14} />
-      <div className="ml-1 text-xs font-light">
+      <div className="ml-1 text-xs font-light font-bold">
         {stars}
       </div>
     </>
