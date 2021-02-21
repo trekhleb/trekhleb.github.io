@@ -7,11 +7,11 @@
 // GraphQL query operation: PostTemplateQuery
 // ====================================================
 
-export interface PostTemplateQuery_markdownRemark_fields {
+export interface PostTemplateQuery_mdx_fields {
   slug: string | null;
 }
 
-export interface PostTemplateQuery_markdownRemark_frontmatter_cover_childImageSharp_fluid {
+export interface PostTemplateQuery_mdx_frontmatter_cover_childImageSharp_fluid {
   base64: string | null;
   aspectRatio: number;
   src: string;
@@ -19,35 +19,34 @@ export interface PostTemplateQuery_markdownRemark_frontmatter_cover_childImageSh
   sizes: string;
 }
 
-export interface PostTemplateQuery_markdownRemark_frontmatter_cover_childImageSharp {
-  fluid: PostTemplateQuery_markdownRemark_frontmatter_cover_childImageSharp_fluid | null;
+export interface PostTemplateQuery_mdx_frontmatter_cover_childImageSharp {
+  fluid: PostTemplateQuery_mdx_frontmatter_cover_childImageSharp_fluid | null;
 }
 
-export interface PostTemplateQuery_markdownRemark_frontmatter_cover {
+export interface PostTemplateQuery_mdx_frontmatter_cover {
   /**
    * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
    */
-  childImageSharp: PostTemplateQuery_markdownRemark_frontmatter_cover_childImageSharp | null;
+  childImageSharp: PostTemplateQuery_mdx_frontmatter_cover_childImageSharp | null;
 }
 
-export interface PostTemplateQuery_markdownRemark_frontmatter {
-  title: string | null;
+export interface PostTemplateQuery_mdx_frontmatter {
+  title: string;
   summary: string | null;
   date: any | null;
-  cover: PostTemplateQuery_markdownRemark_frontmatter_cover | null;
+  cover: PostTemplateQuery_mdx_frontmatter_cover | null;
 }
 
-export interface PostTemplateQuery_markdownRemark {
+export interface PostTemplateQuery_mdx {
   id: string;
   timeToRead: number | null;
-  html: string | null;
-  excerpt: string | null;
-  fields: PostTemplateQuery_markdownRemark_fields | null;
-  frontmatter: PostTemplateQuery_markdownRemark_frontmatter | null;
+  body: string;
+  fields: PostTemplateQuery_mdx_fields | null;
+  frontmatter: PostTemplateQuery_mdx_frontmatter | null;
 }
 
 export interface PostTemplateQuery {
-  markdownRemark: PostTemplateQuery_markdownRemark | null;
+  mdx: PostTemplateQuery_mdx | null;
 }
 
 export interface PostTemplateQueryVariables {

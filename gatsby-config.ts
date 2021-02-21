@@ -45,20 +45,12 @@ const gatsbyConfig: GatsbyConfig = {
       },
     },
 
-    // @see: https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/
+    // @see: https://www.gatsbyjs.com/plugins/gatsby-plugin-mdx/
     {
-      resolve: 'gatsby-transformer-remark',
+      resolve: 'gatsby-plugin-mdx',
       options: {
+        extensions: ['.md', '.mdx'],
         plugins: [
-          // Should be placed after `gatsby-remark-autolink-headers`.
-          // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/
-          {
-            resolve: 'gatsby-remark-autolink-headers',
-            options: {
-              isIconAfterHeader: true,
-            },
-          },
-
           // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-images/
           {
             resolve: 'gatsby-remark-images',
@@ -72,6 +64,25 @@ const gatsbyConfig: GatsbyConfig = {
           {
             resolve: 'gatsby-remark-images-zoom',
             options: {},
+          },
+        ],
+        gatsbyRemarkPlugins: [
+          // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/
+          {
+            resolve: 'gatsby-remark-autolink-headers',
+            options: {
+              isIconAfterHeader: true,
+              className: 'gatsby-remark-autolink-header-anchor',
+            },
+          },
+
+          // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-images/
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 1000,
+              linkImagesToOriginal: false,
+            },
           },
 
           // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-prismjs/

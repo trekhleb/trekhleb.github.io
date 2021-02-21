@@ -21,3 +21,25 @@
 .prose p>img {
   margin: auto;
 }
+
+/*
+ Fixing the issue with the anchor link from the "gatsby-remark-autolink-headers" plugin
+ being always visible after migrating from "gatsby-transformer-remark" to "gatsby-plugin-mdx"
+*/
+.prose h1>a.gatsby-remark-autolink-header-anchor,
+.prose h2>a.gatsby-remark-autolink-header-anchor,
+.prose h3>a.gatsby-remark-autolink-header-anchor,
+.prose h4>a.gatsby-remark-autolink-header-anchor,
+.prose h5>a.gatsby-remark-autolink-header-anchor {
+  visibility: hidden;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.prose h1:hover>a.gatsby-remark-autolink-header-anchor,
+.prose h2:hover>a.gatsby-remark-autolink-header-anchor,
+.prose h3:hover>a.gatsby-remark-autolink-header-anchor,
+.prose h4:hover>a.gatsby-remark-autolink-header-anchor,
+.prose h5:hover>a.gatsby-remark-autolink-header-anchor {
+  visibility: visible;
+}

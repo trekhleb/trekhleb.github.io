@@ -8,7 +8,7 @@ export function onCreateNode(args: CreateNodeArgs): void {
   // Create a slug field for markdown post nodes.
   const { actions, node, getNode } = args;
   const { createNodeField } = actions;
-  if (node.internal.type === 'MarkdownRemark') {
+  if (node.internal.type === 'Mdx') {
     const slug = createFilePath({ node, getNode });
     createNodeField({
       node,
@@ -20,7 +20,7 @@ export function onCreateNode(args: CreateNodeArgs): void {
 
 type CreatePostPagesQuery = {
   data?: {
-    allMarkdownRemark?: {
+    allMdx?: {
       nodes?: any[],
     },
   },
@@ -31,7 +31,7 @@ export async function createPages(args: CreatePagesArgs): Promise<void> {
   const { createPage } = actions;
   const result: CreatePostPagesQuery = await graphql(`
     query CreatePostPagesQuery {
-      allMarkdownRemark {
+      allMdx {
         nodes {
           fields {
             slug
@@ -40,7 +40,7 @@ export async function createPages(args: CreatePagesArgs): Promise<void> {
       }
     }
   `);
-  (result?.data?.allMarkdownRemark?.nodes || []).forEach((node) => {
+  (result?.data?.allMdx?.nodes || []).forEach((node) => {
     createPage({
       path: node.fields.slug,
       component: path.resolve('./src/templates/Post.tsx'),

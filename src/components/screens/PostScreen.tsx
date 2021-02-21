@@ -15,10 +15,10 @@ const PostScreen = (props: PostScreenProps): React.ReactElement => {
   return (
     <PageLayout>
       <SEO
-        title={post.markdownRemark?.frontmatter?.title || ''}
+        title={post.mdx?.frontmatter?.title || ''}
         titleMode={titleModeSuffix}
-        description={post.markdownRemark?.frontmatter?.summary || ''}
-        image={post.markdownRemark?.frontmatter?.cover?.childImageSharp?.fluid?.src || ''}
+        description={post.mdx?.frontmatter?.summary || ''}
+        image={post.mdx?.frontmatter?.cover?.childImageSharp?.fluid?.src || ''}
         type={ogTypeArticle}
       />
       <Post post={post} />

@@ -7,11 +7,11 @@
 // GraphQL query operation: BlogPageQuery
 // ====================================================
 
-export interface BlogPageQuery_allMarkdownRemark_nodes_fields {
+export interface BlogPageQuery_allMdx_nodes_fields {
   slug: string | null;
 }
 
-export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover_childImageSharp_fluid {
+export interface BlogPageQuery_allMdx_nodes_frontmatter_cover_childImageSharp_fluid {
   base64: string | null;
   aspectRatio: number;
   src: string;
@@ -19,36 +19,36 @@ export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover_childIm
   sizes: string;
 }
 
-export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover_childImageSharp {
-  fluid: BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover_childImageSharp_fluid | null;
+export interface BlogPageQuery_allMdx_nodes_frontmatter_cover_childImageSharp {
+  fluid: BlogPageQuery_allMdx_nodes_frontmatter_cover_childImageSharp_fluid | null;
 }
 
-export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover {
+export interface BlogPageQuery_allMdx_nodes_frontmatter_cover {
   /**
    * Returns the first child node of type ImageSharp or null if there are no children of given type on this node
    */
-  childImageSharp: BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover_childImageSharp | null;
+  childImageSharp: BlogPageQuery_allMdx_nodes_frontmatter_cover_childImageSharp | null;
 }
 
-export interface BlogPageQuery_allMarkdownRemark_nodes_frontmatter {
-  title: string | null;
+export interface BlogPageQuery_allMdx_nodes_frontmatter {
+  title: string;
   summary: string | null;
   date: any | null;
-  cover: BlogPageQuery_allMarkdownRemark_nodes_frontmatter_cover | null;
+  cover: BlogPageQuery_allMdx_nodes_frontmatter_cover | null;
 }
 
-export interface BlogPageQuery_allMarkdownRemark_nodes {
+export interface BlogPageQuery_allMdx_nodes {
   id: string;
   timeToRead: number | null;
-  fields: BlogPageQuery_allMarkdownRemark_nodes_fields | null;
-  frontmatter: BlogPageQuery_allMarkdownRemark_nodes_frontmatter | null;
+  fields: BlogPageQuery_allMdx_nodes_fields | null;
+  frontmatter: BlogPageQuery_allMdx_nodes_frontmatter | null;
 }
 
-export interface BlogPageQuery_allMarkdownRemark {
+export interface BlogPageQuery_allMdx {
   totalCount: number;
-  nodes: BlogPageQuery_allMarkdownRemark_nodes[];
+  nodes: BlogPageQuery_allMdx_nodes[];
 }
 
 export interface BlogPageQuery {
-  allMarkdownRemark: BlogPageQuery_allMarkdownRemark;
+  allMdx: BlogPageQuery_allMdx;
 }

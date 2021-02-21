@@ -3,7 +3,7 @@ title: "This is how social media could ruin your happiness"
 
 summary: "The recipe for how you can ruin your happiness and start feeling miserable using social media"
 
-cover: assets/01-cover.png
+cover: assets/01-cover-02.png
 
 date: 2020-06-11
 

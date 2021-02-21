@@ -2,7 +2,7 @@ import React from 'react';
 import { FiCalendar } from '@react-icons/all-files/fi/FiCalendar';
 import { FiClock } from '@react-icons/all-files/fi/FiClock';
 
-import { BlogPageQuery_allMarkdownRemark_nodes } from '../../pages/__generated__/BlogPageQuery';
+import { BlogPageQuery_allMdx_nodes } from '../../pages/__generated__/BlogPageQuery';
 import Card, { cardModeRow } from '../shared/Card';
 import CardContent, { cardContentModeRow } from '../shared/CardContent';
 import type { Link as LinkType } from '../../types/Link';
@@ -13,7 +13,7 @@ import Row from '../shared/Row';
 import { timeToReadFromRemark } from '../../utils/time';
 
 type PostPreviewProps = {
-  post: BlogPageQuery_allMarkdownRemark_nodes,
+  post: BlogPageQuery_allMdx_nodes,
 };
 
 const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {

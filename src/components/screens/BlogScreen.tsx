@@ -15,7 +15,7 @@ type BlogScreenProps = {
 const BlogScreen = (props: BlogScreenProps): React.ReactElement => {
   const { posts } = props;
 
-  const postsNum = posts.allMarkdownRemark.totalCount;
+  const postsNum = posts.allMdx.totalCount;
 
   return (
     <PageLayout>

@@ -10,7 +10,7 @@ interface BlogProps extends PageProps {
 
 export const query = graphql`
   query BlogPageQuery {
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
       totalCount
       nodes {
         id

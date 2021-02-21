@@ -2,7 +2,7 @@ import React from 'react';
 
 import Cards, { cardModeList } from '../shared/Cards';
 import PostPreview from './PostPreview';
-import { BlogPageQuery, BlogPageQuery_allMarkdownRemark_nodes } from '../../pages/__generated__/BlogPageQuery';
+import { BlogPageQuery, BlogPageQuery_allMdx_nodes } from '../../pages/__generated__/BlogPageQuery';
 
 type PostsListProps = {
   posts: BlogPageQuery,
@@ -11,8 +11,8 @@ type PostsListProps = {
 const PostsList = (props: PostsListProps): React.ReactElement => {
   const { posts } = props;
 
-  const postsElements = posts.allMarkdownRemark.nodes.map(
-    (node: BlogPageQuery_allMarkdownRemark_nodes) => {
+  const postsElements = posts.allMdx.nodes.map(
+    (node: BlogPageQuery_allMdx_nodes) => {
       return <PostPreview post={node} key={node.id} />;
     },
   );
