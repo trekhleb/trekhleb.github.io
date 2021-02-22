@@ -17,4 +17,5 @@ export type Project = {
   tags?: Tag[],
   archived?: boolean,
   gitHubRepo?: GitHubRepo,
+  links?: Link[],
 };

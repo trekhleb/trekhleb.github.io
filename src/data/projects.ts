@@ -309,6 +309,12 @@ export const projects: Project[] = [
       { name: 'Splash' },
       { name: 'Docker Swarm' },
     ],
+    links: [
+      {
+        url: 'https://trekhleb.dev/blog/2018/aggregatus-service-is-live/',
+        caption: 'About the service',
+      },
+    ],
   },
   {
     name: '🌾 Angular-library-seed',
