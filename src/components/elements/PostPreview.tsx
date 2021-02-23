@@ -28,7 +28,7 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
   ) : null;
 
   const postSummary = post?.frontmatter?.summary ? (
-    <div className="mb-3 font-light">
+    <div className="font-light">
       {post?.frontmatter?.summary}
     </div>
   ) : null;
@@ -56,11 +56,11 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
         <CardTitle link={postLink}>
           {post?.frontmatter?.title}
         </CardTitle>
-        {postSummary}
-        <Row className="text-xs text-gray-500">
+        <Row className="text-xs text-gray-500 mb-3">
           {dateElement}
           {timeToRead}
         </Row>
+        {postSummary}
       </CardContent>
     </Card>
   );
