@@ -29,7 +29,7 @@ const CardMedia = (props: CardMediaProps): React.ReactElement | null => {
   const commonClasses = `transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-105 h-48 bg-cover bg-gray-200 overflow-hidden block ${className} ${linkClasses}`;
 
   const classes = mode === cardMediaModeRow
-    ? `${commonClasses} sm:h-full sm:w-2/5 lg:w-1/4`
+    ? `${commonClasses} sm:h-auto sm:w-2/5 lg:w-1/4`
     : `${commonClasses} mb-2`;
 
   const wrappedChildren = link && link.url ? (
