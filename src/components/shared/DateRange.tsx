@@ -1,5 +1,8 @@
 import React from 'react';
+import { FiCalendar } from '@react-icons/all-files/fi/FiCalendar';
+
 import { DateString } from '../../types/Date';
+import Row from './Row';
 
 export type DateRangeProps = {
   startDate?: DateString | null,
@@ -43,9 +46,14 @@ const DateRange = (props: DateRangeProps): React.ReactElement | null => {
 
   return (
     <div className={className}>
-      {startDateString}
-      {dateSeparator}
-      {endDateString}
+      <Row>
+        <FiCalendar className="mr-1" />
+        <div>
+          {startDateString}
+          {dateSeparator}
+          {endDateString}
+        </div>
+      </Row>
     </div>
   );
 };

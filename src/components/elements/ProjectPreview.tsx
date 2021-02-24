@@ -43,7 +43,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     <DateRange
       startDate={project.startDate}
       endDate={project.endDate}
-      className="text-xs text-gray-500 font-light"
+      className="text-xs text-gray-500"
     />
   );
 
