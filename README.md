@@ -12,11 +12,13 @@ The website is built on [Gatsby](https://www.gatsbyjs.com/). See the [Gatsby che
 
 ### Running the project locally
 
-To run project locally in development mode on [http://localhost:8000](http://localhost:8000):
+To run the project locally in development mode on [http://localhost:8000](http://localhost:8000):
 
 ```bash
 npm run develop
 ```
+
+View GraphiQL, an in-browser IDE, to explore your site's data and schema on [http://localhost:8000/___graphql](https://localhost:8000/___graphql)
 
 To build the production version of the project:
 
