@@ -25,7 +25,6 @@ class ErrorBoundary extends React.Component<Props, State> {
   }
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-    console.log('+++++ componentDidCatch');
     // You can also log the error to an error reporting service.
     console.error(error, errorInfo);
     this.setState({ hasError: true });
@@ -34,8 +33,6 @@ class ErrorBoundary extends React.Component<Props, State> {
   render() {
     const { children } = this.props;
     const { hasError } = this.state;
-
-    console.log('+++++', {hasError});
 
     if (hasError) {
       // You can render any custom fallback UI
