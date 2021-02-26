@@ -1,0 +1,7 @@
+input:checked ~ .toggle__dot {
+  transform: translateX(100%);
+}
+
+input:checked ~ .toggle__line {
+  background-color: #48bb78;
+}
