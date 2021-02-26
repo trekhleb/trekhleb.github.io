@@ -7,6 +7,7 @@ import { PostTemplateQuery } from '../../templates/__generated__/PostTemplateQue
 import PageHeader from '../shared/PageHeader';
 import Row from '../shared/Row';
 import { timeToReadFromRemark } from '../../utils/time';
+import ErrorBoundary from '../shared/ErrorBoundary';
 
 type PostProps = {
   post: PostTemplateQuery,
@@ -39,7 +40,9 @@ const Post = (props: PostProps): React.ReactElement | null => {
           {dateElement}
           {timeToRead}
         </Row>
-        <MDXRenderer>{post.mdx?.body || ''}</MDXRenderer>
+        <ErrorBoundary>
+          <MDXRenderer>{post.mdx?.body || ''}</MDXRenderer>
+        </ErrorBoundary>
       </article>
     </div>
   );
