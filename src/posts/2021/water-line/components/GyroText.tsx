@@ -24,8 +24,8 @@ const GyroText = (): React.ReactElement | null => {
     <div>
       <OrientationSwitcher
         onToggle={onToggle}
-        labelOff="Turn gyro text on"
-        labelOn="Turn gyro text off"
+        labelOff="Turn the gyro-text ON"
+        labelOn="Turn the gyro-text OFF"
       />
       <div className="mt-6 p-6" style={textContainerStyles}>
         <div className="mb-3 p-6 bg-yellow-200" style={cssTransformInverse}>
