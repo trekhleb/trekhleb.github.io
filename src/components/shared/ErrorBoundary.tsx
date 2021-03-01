@@ -17,7 +17,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     };
   }
 
-  static getDerivedStateFromError(error: Error): State {
+  static getDerivedStateFromError(): State {
     // Update state so the next render will show the fallback UI.
     return {
       hasError: true,
@@ -26,11 +26,12 @@ class ErrorBoundary extends React.Component<Props, State> {
 
   componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
     // You can also log the error to an error reporting service.
+    // eslint-disable-next-line no-console
     console.error(error, errorInfo);
     this.setState({ hasError: true });
   }
 
-  render() {
+  render(): React.ReactNode {
     const { children } = this.props;
     const { hasError } = this.state;
 
