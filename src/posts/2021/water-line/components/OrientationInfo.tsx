@@ -6,11 +6,8 @@ const OrientationInfo = (): React.ReactElement | null => {
   const { orientation, requestAccess, revokeAccess } = useDeviceOrientation();
 
   const onToggle = (toggleState: boolean): void => {
-    if (toggleState) {
-      requestAccess();
-    } else {
-      revokeAccess();
-    }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const result = toggleState ? requestAccess() : revokeAccess();
   };
 
   const orientationInfo = (
