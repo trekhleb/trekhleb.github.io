@@ -19,8 +19,8 @@ const GyroCube = (): React.ReactElement | null => {
     <div className="post--2021--water-line--gyro-cube">
       <OrientationSwitcher
         onToggle={onToggle}
-        labelOff="Turn the gyro-cube ON"
-        labelOn="Turn the gyro-cube OFF"
+        labelOff="Turn the Gyro-Cube ON"
+        labelOn="Turn the Gyro-Cube OFF"
       />
 
       <div className="gyro-cube-container">
