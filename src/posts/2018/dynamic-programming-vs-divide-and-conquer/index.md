@@ -76,7 +76,7 @@ The main idea you should grasp here is that because our divide and conquer probl
 
 Since we’re now familiar with DP prerequisites and its methodologies we’re ready to put all that was mentioned above into one picture.
 
-![Dynamic programming and divide and conquer paradigms dependency](assets/02-dp.jpeg)
+![Dynamic programming and divide and conquer paradigms dependency](assets/02-dp.png)
 
 <center><i>
 Dynamic programming and divide and conquer paradigms dependency
@@ -92,7 +92,7 @@ Let’s go and try to solve some problems using DP and DC approaches to make thi
 
 Here is a visualization of the binary search algorithm where 4 is the target value.
 
-![Binary search algorithm logic](assets/03-binary-search.jpeg)
+![Binary search algorithm logic](assets/03-binary-search.png)
 
 <center><i>
 Binary search algorithm logic
@@ -100,7 +100,7 @@ Binary search algorithm logic
 
 Let’s draw the same logic but in form of decision tree.
 
-![Binary search algorithm decision tree](assets/04-bs-decision-tree.jpeg)
+![Binary search algorithm decision tree](assets/04-bs-decision-tree.png)
 
 <center><i>
 Binary search algorithm decision tree
@@ -175,7 +175,7 @@ So we can already see here a recursive nature of the solution: minimum edit dist
 
 To explain this further let’s draw the following matrix.
 
-![Simple example of finding minimum edit distance between ME and MY strings](assets/05-levinshtein-matrix.jpeg)
+![Simple example of finding minimum edit distance between ME and MY strings](assets/05-levinshtein-matrix.png)
 
 <center><i>
 Simple example of finding minimum edit distance between ME and MY strings
@@ -195,7 +195,7 @@ The good news is that according to the formula you only need three adjacent cell
 
 So, once again you may clearly see the recursive nature of the problem.
 
-![Recursive nature of minimum edit distance problem](assets/06-recursive-nature.jpeg)
+![Recursive nature of minimum edit distance problem](assets/06-recursive-nature.png)
 
 <center><i>
 Recursive nature of minimum edit distance problem
@@ -203,7 +203,7 @@ Recursive nature of minimum edit distance problem
 
 Ok we’ve just found out that we’re dealing with divide and conquer problem here. But can we apply dynamic programming approach to it? Does this problem satisfies our **overlapping sub-problems** and **optimal substructure** restrictions? **Yes**. Let’s see it from decision graph.
 
-![Decision graph for minimum edit distance with overlapping sub-problems](assets/07-decision-graph.jpeg)
+![Decision graph for minimum edit distance with overlapping sub-problems](assets/07-decision-graph.png)
 
 <center><i>
 Decision graph for minimum edit distance with overlapping sub-problems
@@ -215,7 +215,7 @@ Also, you may notice that each cell number in the matrix is being calculated bas
 
 Applying these principles further we may solve more complicated cases like with Saturday→Sunday transformation.
 
-![Minimum edit distance to convert Saturday to Sunday](assets/08-minimum-edit-distance.jpeg)
+![Minimum edit distance to convert Saturday to Sunday](assets/08-minimum-edit-distance.png)
 
 <center><i>
 Minimum edit distance to convert Saturday to Sunday
