@@ -1,15 +1,25 @@
 import React from 'react';
 
-const SubscriptionForm = (): React.ReactElement => {
+type SubscriptionFormProps = {
+  withHeader?: boolean,
+};
+
+const SubscriptionForm = (props: SubscriptionFormProps): React.ReactElement => {
+  const { withHeader = true } = props;
+
   const formAction = 'https://dev.us1.list-manage.com/subscribe/post?u=7714f14ff32085c685da2cfaa&amp;id=53ffa81463';
 
   const inputClass = 'border py-2 px-3 mb-3 rounded border-gray-300 border-solid appearance-none';
 
+  const header = withHeader ? (
+    <h1 className="text-grey-darkest uppercase font-bold text-xl mb-3">
+      Subscribe to the Newsletter
+    </h1>
+  ) : null;
+
   return (
     <div className="bg-white rounded-md shadow-md p-8">
-      <h1 className="text-grey-darkest uppercase font-bold text-xl mb-3">
-        Subscribe to the Newsletter
-      </h1>
+      {header}
 
       <p className="text-sm mb-3">
         Get my latest posts and project updates by email
