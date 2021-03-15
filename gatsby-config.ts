@@ -1,5 +1,6 @@
 import { GatsbyConfig } from 'gatsby';
 import { GOOGLE_ANALYTICS_ID } from './src/config/analytics';
+import { rssPath } from './src/constants/links';
 import {
   metaFieldDescription,
   metaFieldSiteUrl,
@@ -183,7 +184,7 @@ const gatsbyConfig: GatsbyConfig = {
                 }
               }
             `,
-            output: '/rss.xml',
+            output: rssPath,
             title: 'Trekhleb.dev RSS Feed',
           },
         ],

@@ -1,9 +1,10 @@
 import React from 'react';
 import { GoCommentDiscussion } from '@react-icons/all-files/go/GoCommentDiscussion';
 import { AiOutlineMail } from '@react-icons/all-files/ai/AiOutlineMail';
+import { FiRss } from '@react-icons/all-files/fi/FiRss';
 
 import HyperLink from './HyperLink';
-import { discussionsURL } from '../../constants/links';
+import { discussionsURL, rssPath } from '../../constants/links';
 import { Link } from '../../types/Link';
 import Row from './Row';
 import SocialLinks from './SocialLinks';
@@ -24,6 +25,10 @@ const Footer = (props: FooterProps): React.ReactElement => {
     url: '/subscribe',
   };
 
+  const rssLink: Link = {
+    url: rssPath,
+  };
+
   return (
     <footer className={`${className}`}>
       <Row responsive>
@@ -38,10 +43,18 @@ const Footer = (props: FooterProps): React.ReactElement => {
 
           <HyperLink
             link={issuesLink}
-            className="text-xs"
+            className="text-xs mr-5"
             startEnhancer={(<GoCommentDiscussion size={20} />)}
           >
             Feedback
+          </HyperLink>
+
+          <HyperLink
+            link={rssLink}
+            className="text-xs"
+            startEnhancer={(<FiRss size={20} />)}
+          >
+            RSS
           </HyperLink>
         </Row>
 
