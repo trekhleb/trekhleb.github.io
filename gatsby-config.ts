@@ -1,6 +1,11 @@
 import { GatsbyConfig } from 'gatsby';
-import { siteMetadata } from './src/data/siteMetadata';
 import { GOOGLE_ANALYTICS_ID } from './src/config/analytics';
+import {
+  metaFieldDescription,
+  metaFieldSiteUrl,
+  metaFieldTitle,
+  siteMetadata,
+} from './src/data/siteMetadata';
 
 const gatsbyConfig: GatsbyConfig = {
   siteMetadata,
@@ -111,7 +116,7 @@ const gatsbyConfig: GatsbyConfig = {
               ignoreFileExtensions: ['png', 'jpg', 'jpeg', 'tiff', 'tif', 'webp'],
               // Save files like `02-demo.gif`
               // to `public/posts-assets/2a0039f3a61f4510f41678438e4c863a/02-demo.gif`
-              destinationDir: (f: {name: string, hash: string}): string => `posts-assets/${f.hash}/${f.name}`,
+              destinationDir: (f: { name: string, hash: string }): string => `posts-assets/${f.hash}/${f.name}`,
             },
           },
         ],
@@ -125,6 +130,62 @@ const gatsbyConfig: GatsbyConfig = {
         // You can add multiple tracking ids and a page-view event will be fired for all of them.
         trackingIds: [
           GOOGLE_ANALYTICS_ID,
+        ],
+      },
+    },
+
+    // @see: https://www.gatsbyjs.com/docs/how-to/adding-common-features/adding-an-rss-feed/
+    {
+      resolve: 'gatsby-plugin-feed',
+      options: {
+        query: `
+          {
+            site {
+              siteMetadata {
+                ${metaFieldTitle}
+                ${metaFieldDescription}
+                ${metaFieldSiteUrl}
+                site_url: ${metaFieldSiteUrl}
+              }
+            }
+          }
+        `,
+        feeds: [
+          {
+            serialize: ({ query: { site, allMdx } }: any): any => {
+              return allMdx.edges.map((edge: any): any => {
+                const url = site.siteMetadata[metaFieldSiteUrl] + edge.node.fields.slug;
+                return {
+                  ...edge.node.frontmatter,
+                  description: edge.node.frontmatter.summary,
+                  date: edge.node.frontmatter.date,
+                  url,
+                  guid: url,
+                  custom_elements: [{ 'content:encoded': edge.node.frontmatter.summary }],
+                };
+              });
+            },
+            query: `
+              {
+                allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+                  edges {
+                    node {
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        title
+                        date
+                        summary
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+            output: '/rss.xml',
+            title: 'Trekhleb.dev RSS Feed',
+          },
         ],
       },
     },

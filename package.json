@@ -42,6 +42,7 @@
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.8.0",
     "gatsby-plugin-codegen": "^1.2.14",
+    "gatsby-plugin-feed": "^3.0.0",
     "gatsby-plugin-google-gtag": "^2.6.0",
     "gatsby-plugin-mdx": "^1.10.0",
     "gatsby-plugin-postcss": "^3.4.0",
