@@ -3,7 +3,7 @@ import React from 'react';
 const SubscriptionForm = (): React.ReactElement => {
   const formAction = 'https://dev.us1.list-manage.com/subscribe/post?u=7714f14ff32085c685da2cfaa&amp;id=53ffa81463';
 
-  const inputClass = 'border py-2 px-3 mb-3 rounded';
+  const inputClass = 'border py-2 px-3 mb-3 rounded border-gray-300 border-solid appearance-none';
 
   return (
     <div className="bg-white rounded-md shadow-md p-8">
