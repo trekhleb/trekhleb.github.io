@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SubscribeThankYouScreen from '../../components/screens/SubscribeThankYouScreen';
+import SubscribeThankYouScreen from '../../../components/screens/SubscribeThankYouScreen';
 
 const Index = (): React.ReactElement => {
   return (
