@@ -1,4 +1,6 @@
 export const siteURL = 'https://trekhleb.dev';
+export const defaultSiteTitle = 'Trekhleb.dev';
+export const defaultSiteDescription = 'Personal blog and projects by Oleksii Trekhleb';
 export const brandName = 'Trekhleb';
 export const windowNamePrefix = brandName;
 export const windowNameSeparator = '|';
