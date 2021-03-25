@@ -2,7 +2,10 @@
 // @see: https://avikdas.com/2019/05/14/real-world-dynamic-programming-seam-carving.html
 // @see: https://stackoverflow.com/questions/5867723/javascript-image-manipulation-pixel-by-pixel
 
-import { Color, getPixel } from './imageUtils';
+import { Color, getPixel, Coordinate } from './imageUtils';
+
+export type Seam = Coordinate[][];
+export type EnergyMap = number[][];
 
 const getPixelEnergy = (
   leftPixel: Color | null,
@@ -26,7 +29,7 @@ const getPixelEnergy = (
   return Math.sqrt(energyLeft + energyRight);
 };
 
-export const getEnergyMap = (img: ImageData): number[][] => {
+export const getEnergyMap = (img: ImageData): EnergyMap => {
   const energyMap: number[][] = new Array(img.height)
     .fill(null)
     .map(() => {
@@ -43,4 +46,12 @@ export const getEnergyMap = (img: ImageData): number[][] => {
   }
 
   return energyMap;
+};
+
+const findSeam = (img: ImageData): Seam => {
+
+};
+
+const deleteSeam = (img: ImageData, seam: Seam): ImageData => {
+
 };

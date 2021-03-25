@@ -1,8 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import { setPixel } from './imageUtils';
+import { EnergyMap as EnergyMapType } from './imageResizer';
 
 type EnergyMapProps = {
-  energyMap: number[][] | null,
+  energyMap: EnergyMapType | null,
   className?: string,
 };
 
@@ -14,7 +15,7 @@ const normalizeEnergy = (
   return Math.floor((energy / maxEnergy) * maxNormalizedEnergy);
 };
 
-const getMaxEnergy = (energyMap: number[][]): number => {
+const getMaxEnergy = (energyMap: EnergyMapType): number => {
   const height = energyMap.length;
   const width = energyMap[0].length;
 
@@ -29,7 +30,7 @@ const getMaxEnergy = (energyMap: number[][]): number => {
 };
 
 const normalizeEnergyMap = (
-  energyMap: number[][],
+  energyMap: EnergyMapType,
   maxNormalizedEnergy = 255,
 ): number[][] => {
   const height = energyMap.length;

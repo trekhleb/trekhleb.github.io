@@ -5,14 +5,14 @@ import React, {
   useState,
 } from 'react';
 
-import { getEnergyMap } from './imageResizer';
+import { getEnergyMap, EnergyMap as EnergyMapType } from './imageResizer';
 import EnergyMap from './EnergyMap';
 import { getPixel, setPixel } from './imageUtils';
 
 import testImg from '../assets/test.jpg';
 
 const Resizer = (): React.ReactElement => {
-  const [energyMap, setEnergyMap] = useState<number[][] | null>(null);
+  const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
 
   const testImgRef = useRef<HTMLImageElement>(null);
   const resultCanvasRef = useRef<HTMLCanvasElement>(null);
