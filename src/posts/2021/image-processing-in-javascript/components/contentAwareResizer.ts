@@ -7,6 +7,14 @@ import { Color, getPixel, Coordinate } from './imageUtils';
 export type Seam = Coordinate[][];
 export type EnergyMap = number[][];
 
+export type OnIterationParams = {
+  iteration: number,
+  img: ImageData,
+  energyMap: EnergyMap,
+  seam: Seam,
+};
+export type OnIteration = (params: OnIterationParams) => void;
+
 const getPixelEnergy = (
   leftPixel: Color | null,
   middlePixel: Color,
@@ -29,7 +37,7 @@ const getPixelEnergy = (
   return Math.sqrt(energyLeft + energyRight);
 };
 
-export const getEnergyMap = (img: ImageData): EnergyMap => {
+const getEnergyMap = (img: ImageData): EnergyMap => {
   const energyMap: number[][] = new Array(img.height)
     .fill(null)
     .map(() => {
@@ -48,10 +56,32 @@ export const getEnergyMap = (img: ImageData): EnergyMap => {
   return energyMap;
 };
 
-const findSeam = (img: ImageData): Seam => {
-
+const findSeam = (img: ImageData, energyMap: EnergyMap): Seam => {
 };
 
-const deleteSeam = (img: ImageData, seam: Seam): ImageData => {
+const deleteSeam = (img: ImageData, seam: Seam): void => {
+};
 
+export const resizeWidth = (
+  img: ImageData,
+  toWidth: number,
+  onIteration?: OnIteration,
+): void => {
+  const { width } = img;
+  if (toWidth >= width) {
+    throw new Error('Upsizing is not supported');
+  }
+  for (let iteration = 0; iteration < (width - toWidth); iteration += 1) {
+    const energyMap: EnergyMap = getEnergyMap(img);
+    const seam: Seam = findSeam(img, energyMap);
+    deleteSeam(img, seam);
+    if (onIteration) {
+      onIteration({
+        iteration,
+        img,
+        energyMap,
+        seam,
+      });
+    }
+  }
 };

@@ -5,9 +5,8 @@ import React, {
   useState,
 } from 'react';
 
-import { getEnergyMap, EnergyMap as EnergyMapType } from './imageResizer';
+import { resizeWidth, EnergyMap as EnergyMapType, OnIterationParams } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
-import { getPixel, setPixel } from './imageUtils';
 
 import testImg from '../assets/test.jpg';
 
@@ -17,7 +16,25 @@ const Resizer = (): React.ReactElement => {
   const testImgRef = useRef<HTMLImageElement>(null);
   const resultCanvasRef = useRef<HTMLCanvasElement>(null);
 
-  const processImage = (): void => {
+  const onResizeIteration = (params: OnIterationParams): void => {
+    const {
+      iteration,
+      img,
+      seam,
+      energyMap: nrgMap,
+    } = params;
+
+    setEnergyMap(nrgMap);
+
+    console.log({
+      iteration,
+      img,
+      seam,
+      nrgMap,
+    });
+  };
+
+  const resizeImage = (): void => {
     const image: HTMLImageElement | null = testImgRef.current;
     const resultCanvas: HTMLCanvasElement | null = resultCanvasRef.current;
     if (!resultCanvas || !image) {
@@ -34,29 +51,20 @@ const Resizer = (): React.ReactElement => {
     ctx.drawImage(image, 0, 0, resultCanvas.width, resultCanvas.height);
     const imgData: ImageData = ctx.getImageData(0, 0, resultCanvas.width, resultCanvas.height);
 
-    const nrgMap = getEnergyMap(imgData);
-    setEnergyMap(nrgMap);
-
-    for (let x = 0; x < imgData.width; x += 1) {
-      for (let y = 0; y < imgData.height; y += 1) {
-        const [r, g, b, a] = getPixel(imgData, [x, y]);
-        const avg = (r + g + b) / 3;
-        setPixel(imgData, [x, y], [avg, avg, avg, a]);
-      }
-    }
+    resizeWidth(imgData, image.width - 1, onResizeIteration);
 
     ctx.putImageData(imgData, 0, 0);
   };
 
-  const processImageCallback = useCallback(processImage, []);
+  const resizeImageCallback = useCallback(resizeImage, []);
 
   useEffect(() => {
     const image: HTMLImageElement | null = testImgRef.current;
     if (!image) {
       return;
     }
-    image.addEventListener('load', processImageCallback);
-  }, [processImageCallback]);
+    image.addEventListener('load', resizeImageCallback);
+  }, [resizeImageCallback]);
 
   return (
     <>
