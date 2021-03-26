@@ -12,11 +12,13 @@ type AboutScreenProps = {
 const AboutScreen = (props: AboutScreenProps): React.ReactElement => {
   const { profile } = props;
 
+  const summary: string = profile.summary && profile.summary.length ? profile.summary[0] : '';
+
   return (
     <PageLayout>
       <SEO
-        title="About"
-        description={`${profile.firstName} ${profile.lastName}. ${profile.position}. ${profile.summary}`}
+        title={`${profile.position}. ${summary}`}
+        description={`${profile.firstName} ${profile.lastName}. ${profile.position}. ${summary}`}
       />
       <Profile profile={profile} />
     </PageLayout>
