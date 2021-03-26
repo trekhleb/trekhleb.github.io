@@ -4,7 +4,7 @@
 
 My personal [website](https://trekhleb.dev) with a list of my projects that help people learn and blog posts about life, web-development, and machine-learning.
 
-![trekhleb.dev](static/static-assets/images/site-meta-image-01.png)
+![trekhleb.dev](https://trekhleb.dev/static-assets/images/site-meta-image-01.png)
 
 ## Development
 
