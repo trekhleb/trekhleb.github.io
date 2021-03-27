@@ -59,6 +59,8 @@ const ImageResizer = (): React.ReactElement => {
       return;
     }
 
+    canvas.width = img.width;
+    canvas.height = img.height;
     ctx.putImageData(img, 0, 0);
   };
 
