@@ -161,17 +161,22 @@ export const resizeImageWidth = (props: ResizeImageWidthProps): void => {
   if (toWidth >= width) {
     throw new Error('Upsizing is not supported');
   }
-  for (let iteration = 0; iteration < (width - toWidth); iteration += 1) {
+  const iterationsNum = width - toWidth;
+  for (let iteration = 0; iteration < iterationsNum; iteration += 1) {
     const energyMap: EnergyMap = getEnergyMap(img);
     const seam: Seam = findSeam(img, energyMap);
     deleteSeam(img, seam);
+    const callbackParams: OnIterationParams = {
+      iteration,
+      img,
+      energyMap,
+      seam,
+    };
     if (onIteration) {
-      onIteration({
-        iteration,
-        img,
-        energyMap,
-        seam,
-      });
+      onIteration(callbackParams);
+    }
+    if (onDone && iteration === (iterationsNum - 1)) {
+      onDone(callbackParams);
     }
   }
 };

@@ -50,10 +50,21 @@ const ImageResizer = (): React.ReactElement => {
       nrgMap,
     });
 
-    // ctx.putImageData(img, 0, 0);
+    const canvas: HTMLCanvasElement | null = canvasRef.current;
+    if (!canvas) {
+      return;
+    }
+    const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
+    if (!ctx) {
+      return;
+    }
+
+    ctx.putImageData(img, 0, 0);
   };
 
-  const onResizeDone = (params: OnIterationParams): void => {};
+  const onResizeDone = (params: OnIterationParams): void => {
+
+  };
 
   useEffect(() => {
     // Get canvas and image references.
@@ -85,14 +96,16 @@ const ImageResizer = (): React.ReactElement => {
   }, []);
 
   const seamsCanvas = imgSize && seams ? (
-    <Seams seams={seams} width={imgSize.w} height={imgSize.h} />
+    <div style={{ marginTop: `-${imgSize.h}px` }}>
+      <Seams seams={seams} width={imgSize.w} height={imgSize.h} />
+    </div>
   ) : null;
 
   return (
     <>
-      <img src={testImg} alt="Test source" ref={imgRef} />
-      <EnergyMap energyMap={energyMap} className="mb-3" />
-      <canvas ref={canvasRef} />
+      <img src={testImg} alt="Test source" ref={imgRef} className="hidden" />
+      <canvas ref={canvasRef} className="mb-3" />
+      <EnergyMap energyMap={energyMap} />
       {seamsCanvas}
     </>
   );
