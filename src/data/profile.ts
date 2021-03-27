@@ -6,7 +6,7 @@ export const profile: Profile = {
   lastName: 'Trekhleb',
   position: 'Software Engineer @ Uber',
   summary: [
-    'Author of 90k ★️ javascript-algorithms repo on GitHub',
+    'Author of 100k ★️ javascript-algorithms repo on GitHub',
   ],
   avatar: {
     srcPath: 'profile/avatar_500x500.jpg',
