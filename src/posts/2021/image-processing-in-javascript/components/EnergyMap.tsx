@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { setPixel } from './imageUtils';
-import { EnergyMap as EnergyMapType } from './imageResizer';
+import { EnergyMap as EnergyMapType } from './contentAwareResizer';
 
 type EnergyMapProps = {
   energyMap: EnergyMapType | null,

@@ -14,6 +14,7 @@ export type OnIterationParams = {
   seam: Seam,
 };
 export type OnIteration = (params: OnIterationParams) => void;
+export type OnDone = (params: OnIterationParams) => void;
 
 const getPixelEnergy = (
   leftPixel: Color | null,
@@ -62,11 +63,20 @@ const findSeam = (img: ImageData, energyMap: EnergyMap): Seam => {
 const deleteSeam = (img: ImageData, seam: Seam): void => {
 };
 
-export const resizeWidth = (
+type ResizeImageWidthProps = {
   img: ImageData,
   toWidth: number,
   onIteration?: OnIteration,
-): void => {
+  onDone?: OnDone,
+};
+
+export const resizeImageWidth = (props: ResizeImageWidthProps): void => {
+  const {
+    img,
+    toWidth,
+    onIteration,
+    onDone,
+  } = props;
   const { width } = img;
   if (toWidth >= width) {
     throw new Error('Upsizing is not supported');
