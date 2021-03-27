@@ -4,10 +4,11 @@ import ErrorBoundary from './ErrorBoundary';
 type InteractivePostAreaProps = {
   children: React.ReactNode,
   title?: string | null,
+  className?: string,
 };
 
 const InteractivePostArea = (props: InteractivePostAreaProps): React.ReactElement | null => {
-  const { children, title } = props;
+  const { children, title, className = '' } = props;
 
   if (!children) {
     return null;
@@ -22,7 +23,7 @@ const InteractivePostArea = (props: InteractivePostAreaProps): React.ReactElemen
   return (
     <ErrorBoundary>
       {titleElement}
-      <div className="p-6 border border-dashed border-gray-300 rounded-md overflow-hidden">
+      <div className={`p-6 border border-dashed border-gray-300 rounded-md overflow-hidden ${className}`}>
         {children}
       </div>
     </ErrorBoundary>
