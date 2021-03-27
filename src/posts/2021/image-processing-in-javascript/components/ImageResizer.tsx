@@ -13,7 +13,7 @@ import {
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
 
-import testImg from '../assets/test.jpg';
+import testImg from '../assets/test-small.jpg';
 
 type ImageSize = {
   w: number,
@@ -92,7 +92,7 @@ const ImageResizer = (): React.ReactElement => {
     <>
       <img src={testImg} alt="Test source" ref={imgRef} />
       <EnergyMap energyMap={energyMap} className="mb-3" />
-      <canvas ref={canvasRef} style={{ width: '100%' }} />
+      <canvas ref={canvasRef} />
       {seamsCanvas}
     </>
   );

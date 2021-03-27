@@ -4,8 +4,14 @@
 
 import { Color, getPixel, Coordinate } from './imageUtils';
 
-export type Seam = Coordinate[][];
+export type Seam = Coordinate[];
 export type EnergyMap = number[][];
+
+type SeamMeta = {
+  energy: number,
+  coordinate: Coordinate,
+  minPreviousCoordinate: Coordinate | null,
+};
 
 export type OnIterationParams = {
   iteration: number,
@@ -58,6 +64,80 @@ const getEnergyMap = (img: ImageData): EnergyMap => {
 };
 
 const findSeam = (img: ImageData, energyMap: EnergyMap): Seam => {
+  const seamsMap: (SeamMeta | null)[][] = new Array(img.height)
+    .fill(null)
+    .map(() => {
+      return new Array(img.width).fill(null);
+    });
+
+  // Calculate the seams map.
+  for (let y = 0; y < img.height; y += 1) {
+    for (let x = 0; x < img.width; x += 1) {
+      if (y === 0) {
+        // First row.
+        seamsMap[y][x] = {
+          energy: energyMap[y][x],
+          coordinate: [x, y],
+          minPreviousCoordinate: null,
+        };
+      } else {
+        // Non-first rows.
+
+        // Find top adjacent cell with minimum energy.
+        let minPrevEnergy = Infinity;
+        let minPrevX: number = x;
+        for (let i = (x - 1); i <= (x + 1); i += 1) {
+          if (i >= 0 && i < img.width && seamsMap[y - 1][i] !== null) {
+            if (seamsMap[y - 1][i].energy < minPrevEnergy) {
+              minPrevEnergy = seamsMap[y - 1][i].energy;
+              minPrevX = i;
+            }
+          }
+        }
+
+        // Update the current cell.
+        seamsMap[y][x] = {
+          energy: minPrevEnergy + energyMap[y][x],
+          coordinate: [x, y],
+          minPreviousCoordinate: [minPrevX, y - 1],
+        };
+      }
+    }
+  }
+
+  // Find where the minimum energy seam ends.
+  let lastMinCoordinate: Coordinate | null = null;
+  let minSeamEnergy = Infinity;
+  const y = img.height - 1;
+  for (let x = 0; x < img.width; x += 1) {
+    if (seamsMap[y][x].energy < minSeamEnergy) {
+      minSeamEnergy = seamsMap[y][x].energy;
+      lastMinCoordinate = [x, y];
+    }
+  }
+
+  // Find the minimal energy seam.
+  const seam: Seam = [];
+  if (!lastMinCoordinate) {
+    return seam;
+  }
+
+  const lastMinX: number = lastMinCoordinate[0];
+  const lastMinY: number = lastMinCoordinate[1];
+  let currentSeam = seamsMap[lastMinY][lastMinX];
+  while (currentSeam) {
+    seam.push(currentSeam.coordinate);
+    const prevMinCoordinates = currentSeam.minPreviousCoordinate;
+    if (!prevMinCoordinates) {
+      currentSeam = null;
+    } else {
+      const prevMinX: number = prevMinCoordinates[0];
+      const prevMinY: number = prevMinCoordinates[1];
+      currentSeam = seamsMap[prevMinY][prevMinX];
+    }
+  }
+
+  return seam;
 };
 
 const deleteSeam = (img: ImageData, seam: Seam): void => {

@@ -92,7 +92,7 @@ const EnergyMap = (props: EnergyMapProps): React.ReactElement => {
   }, [energyMap]);
 
   return (
-    <canvas ref={canvasRef} style={{ width: '100%' }} className={className} />
+    <canvas ref={canvasRef} className={className} />
   );
 };
 
