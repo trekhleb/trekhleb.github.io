@@ -2,7 +2,12 @@
 // @see: https://avikdas.com/2019/05/14/real-world-dynamic-programming-seam-carving.html
 // @see: https://stackoverflow.com/questions/5867723/javascript-image-manipulation-pixel-by-pixel
 
-import { Color, getPixel, Coordinate, setPixel } from './imageUtils';
+import {
+  Color,
+  getPixel,
+  Coordinate,
+  setPixel,
+} from './imageUtils';
 
 export type Seam = Coordinate[];
 export type EnergyMap = number[][];
