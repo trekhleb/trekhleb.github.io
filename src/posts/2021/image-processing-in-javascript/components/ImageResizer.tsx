@@ -2,6 +2,7 @@ import React, {
   useRef,
   useEffect,
   useState,
+  useCallback,
 } from 'react';
 
 import {
@@ -28,7 +29,7 @@ const ImageResizer = (): React.ReactElement => {
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const onResizeIteration = (params: OnIterationParams): void => {
+  const onResizeIteration = async (params: OnIterationParams): Promise<void> => {
     const {
       iteration,
       img,
@@ -64,9 +65,7 @@ const ImageResizer = (): React.ReactElement => {
     ctx.putImageData(img, 0, 0);
   };
 
-  const onResizeDone = (params: OnIterationParams): void => {
-
-  };
+  const onResizeDone = (): void => {};
 
   useEffect(() => {
     // Get canvas and image references.
@@ -88,12 +87,12 @@ const ImageResizer = (): React.ReactElement => {
       const imgData: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
       // Launch the resizing loop on image load event.
+      const toWidth = img.height;
       resizeImageWidth({
         img: imgData,
-        toWidth: img.width - 1,
+        toWidth,
         onIteration: onResizeIteration,
-        onDone: onResizeDone,
-      });
+      }).then(onResizeDone);
     });
   }, []);
 
@@ -105,7 +104,7 @@ const ImageResizer = (): React.ReactElement => {
 
   return (
     <>
-      <img src={testImg} alt="Test source" ref={imgRef} className="hidden" />
+      <img src={testImg} alt="Test source" ref={imgRef} />
       <canvas ref={canvasRef} className="mb-3" />
       <EnergyMap energyMap={energyMap} />
       {seamsCanvas}

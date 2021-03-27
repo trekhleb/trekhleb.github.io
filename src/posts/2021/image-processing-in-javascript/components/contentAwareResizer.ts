@@ -2,7 +2,7 @@
 // @see: https://avikdas.com/2019/05/14/real-world-dynamic-programming-seam-carving.html
 // @see: https://stackoverflow.com/questions/5867723/javascript-image-manipulation-pixel-by-pixel
 
-import { Color, getPixel, Coordinate } from './imageUtils';
+import { Color, getPixel, Coordinate, setPixel } from './imageUtils';
 
 export type Seam = Coordinate[];
 export type EnergyMap = number[][];
@@ -19,26 +19,28 @@ export type OnIterationParams = {
   energyMap: EnergyMap,
   seam: Seam,
 };
-export type OnIteration = (params: OnIterationParams) => void;
-export type OnDone = (params: OnIterationParams) => void;
+export type OnIteration = (params: OnIterationParams) => Promise<void>;
 
 const getPixelEnergy = (
   leftPixel: Color | null,
   middlePixel: Color,
   rightPixel: Color | null,
 ): number => {
-  const [mR, mG, mB] = middlePixel;
+  const [mR, mG, mB, mA] = middlePixel;
+
+  // Imitates deleted pixels by using transparent pixels.
+  const alphaPenalty = 3 * (255 - mA) ** 2;
 
   let energyLeft = 0;
   if (leftPixel) {
     const [lR, lG, lB] = leftPixel;
-    energyLeft = (lR - mR) ** 2 + (lG - mG) ** 2 + (lB - mB) ** 2;
+    energyLeft = (lR - mR) ** 2 + (lG - mG) ** 2 + (lB - mB) ** 2 + alphaPenalty;
   }
 
   let energyRight = 0;
   if (rightPixel) {
     const [rR, rG, rB] = rightPixel;
-    energyRight = (rR - mR) ** 2 + (rG - mG) ** 2 + (rB - mB) ** 2;
+    energyRight = (rR - mR) ** 2 + (rG - mG) ** 2 + (rB - mB) ** 2 + alphaPenalty;
   }
 
   return Math.sqrt(energyLeft + energyRight);
@@ -140,22 +142,32 @@ const findSeam = (img: ImageData, energyMap: EnergyMap): Seam => {
   return seam;
 };
 
-const deleteSeam = (img: ImageData, seam: Seam): void => {
+const deleteSeam = (img: ImageData, seam: Seam, iteration: number): void => {
+  // Shift pixels in a row.
+  seam.forEach(([seamX, seamY]: Coordinate) => {
+    for (let x = seamX; x < (img.width - 1); x += 1) {
+      const nextPixel = getPixel(img, [x + 1, seamY]);
+      setPixel(img, [x, seamY], nextPixel);
+    }
+  });
+
+  // Delete the last row.
+  for (let y = 0; y < img.height; y += 1) {
+    setPixel(img, [img.width - 1 - iteration, y], [0, 0, 0, 0]);
+  }
 };
 
 type ResizeImageWidthProps = {
   img: ImageData,
   toWidth: number,
   onIteration?: OnIteration,
-  onDone?: OnDone,
 };
 
-export const resizeImageWidth = (props: ResizeImageWidthProps): void => {
+export const resizeImageWidth = async (props: ResizeImageWidthProps): Promise<void> => {
   const {
     img,
     toWidth,
     onIteration,
-    onDone,
   } = props;
   const { width } = img;
   if (toWidth >= width) {
@@ -163,20 +175,18 @@ export const resizeImageWidth = (props: ResizeImageWidthProps): void => {
   }
   const iterationsNum = width - toWidth;
   for (let iteration = 0; iteration < iterationsNum; iteration += 1) {
+
     const energyMap: EnergyMap = getEnergyMap(img);
     const seam: Seam = findSeam(img, energyMap);
-    deleteSeam(img, seam);
-    const callbackParams: OnIterationParams = {
-      iteration,
-      img,
-      energyMap,
-      seam,
-    };
+    deleteSeam(img, seam, iteration);
+
     if (onIteration) {
-      onIteration(callbackParams);
-    }
-    if (onDone && iteration === (iterationsNum - 1)) {
-      onDone(callbackParams);
+      await onIteration({
+        iteration,
+        img,
+        energyMap,
+        seam,
+      });
     }
   }
 };
