@@ -4,8 +4,8 @@
 
 import {
   Color,
-  getPixel,
   Coordinate,
+  getPixel,
   setPixel,
 } from './imageUtils';
 
@@ -18,13 +18,10 @@ type SeamMeta = {
   minPreviousCoordinate: Coordinate | null,
 };
 
-export type OnIterationParams = {
-  iteration: number,
-  img: ImageData,
+export type ResizeImageWidthByPixel = {
   energyMap: EnergyMap,
   seam: Seam,
 };
-export type OnIteration = (params: OnIterationParams) => Promise<void>;
 
 const getPixelEnergy = (
   leftPixel: Color | null,
@@ -33,7 +30,7 @@ const getPixelEnergy = (
 ): number => {
   const [mR, mG, mB, mA] = middlePixel;
 
-  // Imitates deleted pixels by using transparent pixels.
+  // Imitates deleted pixels by using transparency.
   const alphaPenalty = 3 * (255 - mA) ** 2;
 
   let energyLeft = 0;
@@ -147,7 +144,7 @@ const findSeam = (img: ImageData, energyMap: EnergyMap): Seam => {
   return seam;
 };
 
-const deleteSeam = (img: ImageData, seam: Seam, iteration: number): void => {
+const deleteSeam = (img: ImageData, seam: Seam): void => {
   // Shift pixels in a row.
   seam.forEach(([seamX, seamY]: Coordinate) => {
     for (let x = seamX; x < (img.width - 1); x += 1) {
@@ -156,42 +153,15 @@ const deleteSeam = (img: ImageData, seam: Seam, iteration: number): void => {
     }
   });
 
-  // Delete the last row.
+  // Imitate deleting the pixels by using transparency.
   for (let y = 0; y < img.height; y += 1) {
-    setPixel(img, [img.width - 1 - iteration, y], [0, 0, 0, 0]);
+    setPixel(img, [img.width - 1, y], [0, 0, 0, 0]);
   }
 };
 
-type ResizeImageWidthProps = {
-  img: ImageData,
-  toWidth: number,
-  onIteration?: OnIteration,
-};
-
-export const resizeImageWidth = async (props: ResizeImageWidthProps): Promise<void> => {
-  const {
-    img,
-    toWidth,
-    onIteration,
-  } = props;
-  const { width } = img;
-  if (toWidth >= width) {
-    throw new Error('Upsizing is not supported');
-  }
-  const iterationsNum = width - toWidth;
-  for (let iteration = 0; iteration < iterationsNum; iteration += 1) {
-
-    const energyMap: EnergyMap = getEnergyMap(img);
-    const seam: Seam = findSeam(img, energyMap);
-    deleteSeam(img, seam, iteration);
-
-    if (onIteration) {
-      await onIteration({
-        iteration,
-        img,
-        energyMap,
-        seam,
-      });
-    }
-  }
+export const resizeImageWidthByPixel = (img: ImageData): ResizeImageWidthByPixel => {
+  const energyMap: EnergyMap = getEnergyMap(img);
+  const seam: Seam = findSeam(img, energyMap);
+  deleteSeam(img, seam);
+  return { energyMap, seam };
 };

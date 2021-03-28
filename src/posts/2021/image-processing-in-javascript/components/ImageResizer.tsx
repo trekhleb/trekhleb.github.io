@@ -6,9 +6,8 @@ import React, {
 } from 'react';
 
 import {
-  resizeImageWidth,
+  resizeImageWidthByPixel,
   EnergyMap as EnergyMapType,
-  OnIterationParams,
   Seam,
 } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
@@ -26,31 +25,12 @@ const ImageResizer = (): React.ReactElement => {
   const [imgSize, setImgSize] = useState<ImageSize | null>(null);
   const [seams, setSeams] = useState<Seam[] | null>(null);
 
+  const [iteration, setIteration] = useState<number>(0);
+
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
-  const onResizeIteration = async (params: OnIterationParams): Promise<void> => {
-    const {
-      iteration,
-      img,
-      seam,
-      energyMap: nrgMap,
-    } = params;
-
-    setEnergyMap(nrgMap);
-    setSeams([seam]);
-    setImgSize({
-      w: img.width,
-      h: img.height,
-    });
-
-    console.log({
-      iteration,
-      img,
-      seam,
-      nrgMap,
-    });
-
+  const onResizeIteration = (): void => {
     const canvas: HTMLCanvasElement | null = canvasRef.current;
     if (!canvas) {
       return;
@@ -59,42 +39,65 @@ const ImageResizer = (): React.ReactElement => {
     if (!ctx) {
       return;
     }
+    const imgData: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.putImageData(img, 0, 0);
+    const { seam, energyMap: nrgMap } = resizeImageWidthByPixel(imgData);
+
+    canvas.width = imgData.width - 1;
+    canvas.height = imgData.height;
+    ctx.putImageData(imgData, 0, 0, 0, 0, imgData.width - 1, imgData.height);
+
+    setEnergyMap(nrgMap);
+    setSeams([seam]);
+    setImgSize({
+      w: imgData.width,
+      h: imgData.height,
+    });
+
+    setIteration(iteration - 1);
   };
 
-  const onResizeDone = (): void => {};
+  const onResizeIterationCallback = useCallback(onResizeIteration, [onResizeIteration]);
 
-  useEffect(() => {
-    // Get canvas and image references.
+  const onResize = (): void => {
     const img: HTMLImageElement | null = imgRef.current;
+    if (!img) {
+      return;
+    }
     const canvas: HTMLCanvasElement | null = canvasRef.current;
-    if (!canvas || !img) {
+    if (!canvas) {
       return;
     }
     const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
     if (!ctx) {
       return;
     }
+    canvas.width = img.width;
+    canvas.height = img.height;
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-    img.addEventListener('load', () => {
-      // Initial draw on the canvas.
-      canvas.width = img.width;
-      canvas.height = img.height;
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      const imgData: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    // Making a square image.
+    const toWidth = Math.min(img.width, img.height);
+    const numIterationsNeeded = canvas.width - toWidth;
+    setIteration(numIterationsNeeded);
+  };
 
-      // Launch the resizing loop on image load event.
-      const toWidth = img.height;
-      resizeImageWidth({
-        img: imgData,
-        toWidth,
-        onIteration: onResizeIteration,
-      }).then(onResizeDone);
-    });
-  }, []);
+  const onResizeCallback = useCallback(onResize, [onResize]);
+
+  useEffect(() => {
+    const img: HTMLImageElement | null = imgRef.current;
+    if (!img) {
+      return;
+    }
+    img.addEventListener('load', onResizeCallback);
+  }, [onResizeCallback]);
+
+  useEffect(() => {
+    if (!iteration) {
+      return;
+    }
+    onResizeIterationCallback();
+  }, [iteration, onResizeIterationCallback]);
 
   const seamsCanvas = imgSize && seams ? (
     <div style={{ marginTop: `-${imgSize.h}px` }}>
@@ -103,12 +106,12 @@ const ImageResizer = (): React.ReactElement => {
   ) : null;
 
   return (
-    <>
+    <div>
       <img src={testImg} alt="Test source" ref={imgRef} />
       <canvas ref={canvasRef} className="mb-3" />
       <EnergyMap energyMap={energyMap} />
       {seamsCanvas}
-    </>
+    </div>
   );
 };
 
