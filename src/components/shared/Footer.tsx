@@ -1,5 +1,5 @@
 import React from 'react';
-import { GoCommentDiscussion } from '@react-icons/all-files/go/GoCommentDiscussion';
+import { FiGithub } from '@react-icons/all-files/fi/FiGithub';
 import { AiOutlineMail } from '@react-icons/all-files/ai/AiOutlineMail';
 import { FiRss } from '@react-icons/all-files/fi/FiRss';
 
@@ -44,7 +44,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
           <HyperLink
             link={issuesLink}
             className="text-xs mr-5"
-            startEnhancer={(<GoCommentDiscussion size={20} />)}
+            startEnhancer={(<FiGithub size={20} />)}
           >
             Feedback
           </HyperLink>
