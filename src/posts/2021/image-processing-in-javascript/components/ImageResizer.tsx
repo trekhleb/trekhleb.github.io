@@ -142,7 +142,7 @@ const ImageResizer = (): React.ReactElement => {
   );
 
   const debugImage = (
-    <div className={iteration ? '' : 'hidden'}>
+    <div className={`mb-6 ${iteration ? '' : 'hidden'}`}>
       <canvas ref={canvasRef} />
       {seamsCanvas}
     </div>
