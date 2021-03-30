@@ -13,7 +13,7 @@ import {
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
 
-import testImg from '../assets/test-small.jpg';
+import testImg from '../assets/test.jpg';
 
 type ImageSize = {
   w: number,
@@ -21,14 +21,30 @@ type ImageSize = {
 };
 
 const ImageResizer = (): React.ReactElement => {
+  const [resizedImgSrc, setResizedImgSrc] = useState<string | null>(null);
   const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
   const [imgSize, setImgSize] = useState<ImageSize | null>(null);
   const [seams, setSeams] = useState<Seam[] | null>(null);
-
+  const [startTime, setStartTime] = useState<number | null>(null);
+  const [runTime, setRunTime] = useState<number | null>(null);
   const [iteration, setIteration] = useState<number>(0);
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const onFinish = (): void => {
+    if (!canvasRef.current) {
+      return;
+    }
+    const imageType = 'image/png';
+    canvasRef.current.toBlob((blob: Blob | null): void => {
+      if (!blob) {
+        return;
+      }
+      const imgUrl = URL.createObjectURL(blob);
+      setResizedImgSrc(imgUrl);
+    }, imageType);
+  };
 
   const onResizeIteration = (): void => {
     const canvas: HTMLCanvasElement | null = canvasRef.current;
@@ -54,6 +70,10 @@ const ImageResizer = (): React.ReactElement => {
       h: imgData.height,
     });
 
+    if ((iteration - 1) === 0) {
+      onFinish();
+    }
+
     setIteration(iteration - 1);
   };
 
@@ -72,6 +92,7 @@ const ImageResizer = (): React.ReactElement => {
     if (!ctx) {
       return;
     }
+    ctx.imageSmoothingEnabled = false;
     canvas.width = img.width;
     canvas.height = img.height;
     ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
@@ -80,21 +101,29 @@ const ImageResizer = (): React.ReactElement => {
     const toWidth = Math.min(img.width, img.height);
     const numIterationsNeeded = canvas.width - toWidth;
     setIteration(numIterationsNeeded);
+    setStartTime(Date.now());
   };
 
   const onResizeCallback = useCallback(onResize, [onResize]);
 
-  useEffect(() => {
-    const img: HTMLImageElement | null = imgRef.current;
-    if (!img) {
-      return;
-    }
-    img.addEventListener('load', onResizeCallback);
-  }, [onResizeCallback]);
+  const onStartClick = (): void => {
+    onResizeCallback();
+  };
+
+  // useEffect(() => {
+  //   const img: HTMLImageElement | null = imgRef.current;
+  //   if (!img) {
+  //     return;
+  //   }
+  //   img.addEventListener('load', onResizeCallback);
+  // }, [onResizeCallback]);
 
   useEffect(() => {
     if (!iteration) {
       return;
+    }
+    if (startTime) {
+      setRunTime((Date.now() - startTime) / 1000);
     }
     onResizeIterationCallback();
   }, [iteration, onResizeIterationCallback]);
@@ -105,12 +134,25 @@ const ImageResizer = (): React.ReactElement => {
     </div>
   ) : null;
 
+  const timer = runTime ? (
+    <div>
+      {runTime ? `Runtime: ${runTime}s` : null}
+    </div>
+  ) : null;
+
+  const resultImage = resizedImgSrc ? (
+    <img src={resizedImgSrc} alt="Resized" />
+  ) : null;
+
   return (
     <div>
       <img src={testImg} alt="Test source" ref={imgRef} />
+      <button onClick={onStartClick}>Resize</button>
       <canvas ref={canvasRef} className="mb-3" />
       <EnergyMap energyMap={energyMap} />
       {seamsCanvas}
+      {timer}
+      {resultImage}
     </div>
   );
 };
