@@ -134,20 +134,37 @@ const ImageResizer = (): React.ReactElement => {
     </div>
   ) : null;
 
+  const originalImage = (
+    <img src={testImg} alt="Test source" ref={imgRef} />
+  );
+
+  const debugImage = (
+    <div className={iteration ? '' : 'hidden'}>
+      <canvas ref={canvasRef} />
+      {seamsCanvas}
+    </div>
+  );
+
   const resultImage = resizedImgSrc ? (
     <img src={resizedImgSrc} alt="Resized" />
   ) : null;
 
-  return (
-    <div>
-      <img src={testImg} alt="Test source" ref={imgRef} />
-      <button type="button" onClick={onResize}>Resize</button>
-      <canvas ref={canvasRef} className="mb-3" />
+  const debugEnergyMap = (
+    <>
       <EnergyMap energyMap={energyMap} />
       {seamsCanvas}
       {timer}
+    </>
+  );
+
+  return (
+    <>
+      <button type="button" onClick={onResize}>Resize</button>
+      {originalImage}
+      {debugImage}
       {resultImage}
-    </div>
+      {debugEnergyMap}
+    </>
   );
 };
 
