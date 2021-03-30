@@ -45,7 +45,7 @@ const getPixelEnergy = (
     energyRight = (rR - mR) ** 2 + (rG - mG) ** 2 + (rB - mB) ** 2 + alphaPenalty;
   }
 
-  return Math.sqrt(energyLeft + energyRight);
+  return energyLeft + energyRight;
 };
 
 const getEnergyMap = (img: ImageData): EnergyMap => {
