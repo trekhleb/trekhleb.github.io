@@ -147,7 +147,7 @@ const ImageResizer = (): React.ReactElement => {
   return (
     <div>
       <img src={testImg} alt="Test source" ref={imgRef} />
-      <button onClick={onStartClick}>Resize</button>
+      <button type="button" onClick={onStartClick}>Resize</button>
       <canvas ref={canvasRef} className="mb-3" />
       <EnergyMap energyMap={energyMap} />
       {seamsCanvas}
