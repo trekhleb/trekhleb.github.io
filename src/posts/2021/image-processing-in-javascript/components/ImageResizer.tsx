@@ -92,6 +92,9 @@ const ImageResizer = (): React.ReactElement => {
     if (!ctx) {
       return;
     }
+
+    setResizedImgSrc(null);
+
     ctx.imageSmoothingEnabled = false;
     canvas.width = img.width;
     canvas.height = img.height;
