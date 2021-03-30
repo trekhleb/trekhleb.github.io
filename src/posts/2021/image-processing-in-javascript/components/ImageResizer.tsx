@@ -104,12 +104,6 @@ const ImageResizer = (): React.ReactElement => {
     setStartTime(Date.now());
   };
 
-  const onResizeCallback = useCallback(onResize, [onResize]);
-
-  const onStartClick = (): void => {
-    onResizeCallback();
-  };
-
   // useEffect(() => {
   //   const img: HTMLImageElement | null = imgRef.current;
   //   if (!img) {
@@ -147,7 +141,7 @@ const ImageResizer = (): React.ReactElement => {
   return (
     <div>
       <img src={testImg} alt="Test source" ref={imgRef} />
-      <button type="button" onClick={onStartClick}>Resize</button>
+      <button type="button" onClick={onResize}>Resize</button>
       <canvas ref={canvasRef} className="mb-3" />
       <EnergyMap energyMap={energyMap} />
       {seamsCanvas}
