@@ -52,10 +52,10 @@ const getEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
 
   for (let y = 0; y < h; y += 1) {
     for (let x = 0; x < w; x += 1) {
-      const leftPixel = (x - 1) >= 0 ? getPixel(img, [x - 1, y]) : null;
-      const middlePixel = getPixel(img, [x, y]);
-      const rightPixel = (x + 1) < w ? getPixel(img, [x + 1, y]) : null;
-      energyMap[y][x] = getPixelEnergy(leftPixel, middlePixel, rightPixel);
+      const left = (x - 1) >= 0 ? getPixel(img, [x - 1, y]) : null;
+      const middle = getPixel(img, [x, y]);
+      const right = (x + 1) < w ? getPixel(img, [x + 1, y]) : null;
+      energyMap[y][x] = getPixelEnergy(left, middle, right);
     }
   }
 
