@@ -11,3 +11,9 @@ export const timeToReadFromRemark = (
   const minTimeToRead = 1;
   return Math.ceil(remarkTimeToRead * timeToReadMultiplier) || minTimeToRead;
 };
+
+export const wait = async (ms: number): Promise<void> => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+};
