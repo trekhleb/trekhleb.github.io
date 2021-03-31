@@ -25,26 +25,22 @@ export type OnIterationArgs = {
   energyMap: EnergyMap,
 };
 
-const getPixelEnergy = (
-  leftPixel: Color | null,
-  middlePixel: Color,
-  rightPixel: Color | null,
-): number => {
-  const [mR, mG, mB] = middlePixel;
+const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null): number => {
+  const [mR, mG, mB] = middle;
 
-  let energyLeft = 0;
-  if (leftPixel) {
-    const [lR, lG, lB] = leftPixel;
-    energyLeft = (lR - mR) ** 2 + (lG - mG) ** 2 + (lB - mB) ** 2;
+  let lEnergy = 0;
+  if (left) {
+    const [lR, lG, lB] = left;
+    lEnergy = (lR - mR) ** 2 + (lG - mG) ** 2 + (lB - mB) ** 2;
   }
 
-  let energyRight = 0;
-  if (rightPixel) {
-    const [rR, rG, rB] = rightPixel;
-    energyRight = (rR - mR) ** 2 + (rG - mG) ** 2 + (rB - mB) ** 2;
+  let rEnergy = 0;
+  if (right) {
+    const [rR, rG, rB] = right;
+    rEnergy = (rR - mR) ** 2 + (rG - mG) ** 2 + (rB - mB) ** 2;
   }
 
-  return energyLeft + energyRight;
+  return lEnergy + rEnergy;
 };
 
 const getEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
