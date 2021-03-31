@@ -1,14 +1,10 @@
-import React, {
-  useRef,
-  useEffect,
-  useState,
-  useCallback,
-} from 'react';
+import React, { useRef, useState } from 'react';
 
 import {
-  resizeImageWidthByPixel,
   EnergyMap as EnergyMapType,
   Seam,
+  OnIterationArgs,
+  resizeImageWidth,
 } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
@@ -25,9 +21,6 @@ const ImageResizer = (): React.ReactElement => {
   const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
   const [imgSize, setImgSize] = useState<ImageSize | null>(null);
   const [seams, setSeams] = useState<Seam[] | null>(null);
-  const [startTime, setStartTime] = useState<number | null>(null);
-  const [runTime, setRunTime] = useState<number | null>(null);
-  const [iteration, setIteration] = useState<number>(0);
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -46,7 +39,15 @@ const ImageResizer = (): React.ReactElement => {
     }, imageType);
   };
 
-  const onResizeIteration = (): void => {
+  const onIteration = async (args: OnIterationArgs): Promise<void> => {
+    const {
+      seam,
+      img,
+      energyMap: nrgMap,
+      width,
+      height,
+    } = args;
+
     const canvas: HTMLCanvasElement | null = canvasRef.current;
     if (!canvas) {
       return;
@@ -55,33 +56,22 @@ const ImageResizer = (): React.ReactElement => {
     if (!ctx) {
       return;
     }
-    const imgData: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-    const { seam, energyMap: nrgMap } = resizeImageWidthByPixel(imgData);
-
-    canvas.width = imgData.width - 1;
-    canvas.height = imgData.height;
-    ctx.putImageData(imgData, 0, 0, 0, 0, imgData.width - 1, imgData.height);
+    canvas.width = width;
+    canvas.height = height;
+    ctx.putImageData(img, 0, 0, 0, 0, width, height);
 
     setEnergyMap(nrgMap);
     setSeams([seam]);
     setImgSize({
-      w: imgData.width,
-      h: imgData.height,
+      w: width,
+      h: height,
     });
-
-    if ((iteration - 1) === 0) {
-      onFinish();
-    }
-
-    setIteration(iteration - 1);
   };
 
-  const onResizeIterationCallback = useCallback(onResizeIteration, [onResizeIteration]);
-
   const onResize = (): void => {
-    const img: HTMLImageElement | null = imgRef.current;
-    if (!img) {
+    const srcImg: HTMLImageElement | null = imgRef.current;
+    if (!srcImg) {
       return;
     }
     const canvas: HTMLCanvasElement | null = canvasRef.current;
@@ -96,44 +86,23 @@ const ImageResizer = (): React.ReactElement => {
     setResizedImgSrc(null);
 
     ctx.imageSmoothingEnabled = false;
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    canvas.width = srcImg.width;
+    canvas.height = srcImg.height;
+    ctx.drawImage(srcImg, 0, 0, canvas.width, canvas.height);
+
+    const img: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
     // Making a square image.
     const toWidth = Math.min(img.width, img.height);
-    const numIterationsNeeded = canvas.width - toWidth;
-    setIteration(numIterationsNeeded);
-    setStartTime(Date.now());
+    // const toWidth = img.width - 50;
+    resizeImageWidth({ img, toWidth, onIteration }).then(() => {
+      onFinish();
+    });
   };
-
-  // useEffect(() => {
-  //   const img: HTMLImageElement | null = imgRef.current;
-  //   if (!img) {
-  //     return;
-  //   }
-  //   img.addEventListener('load', onResizeCallback);
-  // }, [onResizeCallback]);
-
-  useEffect(() => {
-    if (!iteration) {
-      return;
-    }
-    if (startTime) {
-      setRunTime((Date.now() - startTime) / 1000);
-    }
-    onResizeIterationCallback();
-  }, [iteration, onResizeIterationCallback]);
 
   const seamsCanvas = imgSize && seams ? (
     <div style={{ marginTop: `-${imgSize.h}px` }}>
       <Seams seams={seams} width={imgSize.w} height={imgSize.h} />
-    </div>
-  ) : null;
-
-  const timer = runTime ? (
-    <div>
-      {runTime ? `Runtime: ${runTime}s` : null}
     </div>
   ) : null;
 
@@ -142,7 +111,7 @@ const ImageResizer = (): React.ReactElement => {
   );
 
   const debugImage = (
-    <div className={`mb-8 ${iteration ? '' : 'hidden'}`}>
+    <div>
       <canvas ref={canvasRef} />
       {seamsCanvas}
     </div>
@@ -156,7 +125,6 @@ const ImageResizer = (): React.ReactElement => {
     <div>
       <EnergyMap energyMap={energyMap} />
       {seamsCanvas}
-      {timer}
     </div>
   );
 
