@@ -16,11 +16,12 @@ type SeamMeta = {
   minPreviousCoordinate: Coordinate | null,
 };
 
+export type ImageSize = { w: number, h: number };
+
 export type OnIterationArgs = {
   seam: Seam,
   img: ImageData,
-  width: number,
-  height: number,
+  size: ImageSize,
   energyMap: EnergyMap,
 };
 
@@ -46,18 +47,18 @@ const getPixelEnergy = (
   return energyLeft + energyRight;
 };
 
-const getEnergyMap = (img: ImageData, width: number, height: number): EnergyMap => {
-  const energyMap: number[][] = new Array(height)
+const getEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
+  const energyMap: number[][] = new Array(h)
     .fill(null)
     .map(() => {
-      return new Array(width).fill(Infinity);
+      return new Array(w).fill(Infinity);
     });
 
-  for (let y = 0; y < height; y += 1) {
-    for (let x = 0; x < width; x += 1) {
+  for (let y = 0; y < h; y += 1) {
+    for (let x = 0; x < w; x += 1) {
       const leftPixel = (x - 1) >= 0 ? getPixel(img, [x - 1, y]) : null;
       const middlePixel = getPixel(img, [x, y]);
-      const rightPixel = (x + 1) < width ? getPixel(img, [x + 1, y]) : null;
+      const rightPixel = (x + 1) < w ? getPixel(img, [x + 1, y]) : null;
       energyMap[y][x] = getPixelEnergy(leftPixel, middlePixel, rightPixel);
     }
   }
@@ -145,10 +146,9 @@ const findSeam = (energyMap: EnergyMap): Seam => {
   return seam;
 };
 
-const deleteSeam = (img: ImageData, seam: Seam, width: number, height: number): void => {
-  // Shift pixels in a row.
+const deleteSeam = (img: ImageData, seam: Seam, { w }: ImageSize): void => {
   seam.forEach(([seamX, seamY]: Coordinate) => {
-    for (let x = seamX; x < (width - 1); x += 1) {
+    for (let x = seamX; x < (w - 1); x += 1) {
       const nextPixel = getPixel(img, [x + 1, seamY]);
       setPixel(img, [x, seamY], nextPixel);
     }
@@ -174,23 +174,23 @@ export const resizeImageWidth = async (args: ResizeImageWidthArgs): Promise<void
     throw new Error('Upsizing is not supported');
   }
 
-  let { width, height } = img;
+  let w = img.width;
+  const h = img.height;
 
   for (let i = 0; i < pxToRemove; i += 1) {
-    const energyMap: EnergyMap = getEnergyMap(img, width, height);
+    const energyMap: EnergyMap = getEnergyMap(img, { w, h });
     const seam: Seam = findSeam(energyMap);
-    deleteSeam(img, seam, width, height);
+    deleteSeam(img, seam, { w, h });
 
     await onIteration({
       energyMap,
       seam,
       img,
-      width,
-      height,
+      size: { w, h },
     });
     await wait(1);
 
-    width -= 1;
+    w -= 1;
   }
 
   console.timeEnd('resizeImageWidth');

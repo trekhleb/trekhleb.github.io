@@ -5,16 +5,12 @@ import {
   Seam,
   OnIterationArgs,
   resizeImageWidth,
+  ImageSize,
 } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
 
 import testImg from '../assets/test.jpg';
-
-type ImageSize = {
-  w: number,
-  h: number,
-};
 
 const ImageResizer = (): React.ReactElement => {
   const [resizedImgSrc, setResizedImgSrc] = useState<string | null>(null);
@@ -44,8 +40,7 @@ const ImageResizer = (): React.ReactElement => {
       seam,
       img,
       energyMap: nrgMap,
-      width,
-      height,
+      size: { w, h },
     } = args;
 
     const canvas: HTMLCanvasElement | null = canvasRef.current;
@@ -57,16 +52,13 @@ const ImageResizer = (): React.ReactElement => {
       return;
     }
 
-    canvas.width = width;
-    canvas.height = height;
-    ctx.putImageData(img, 0, 0, 0, 0, width, height);
+    canvas.width = w;
+    canvas.height = h;
+    ctx.putImageData(img, 0, 0, 0, 0, w, h);
 
     setEnergyMap(nrgMap);
     setSeams([seam]);
-    setImgSize({
-      w: width,
-      h: height,
-    });
+    setImgSize({ w, h });
   };
 
   const onResize = (): void => {
