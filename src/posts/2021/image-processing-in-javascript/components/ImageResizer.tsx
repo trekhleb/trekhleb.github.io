@@ -153,11 +153,11 @@ const ImageResizer = (): React.ReactElement => {
   ) : null;
 
   const debugEnergyMap = (
-    <>
+    <div>
       <EnergyMap energyMap={energyMap} />
       {seamsCanvas}
       {timer}
-    </>
+    </div>
   );
 
   return (
