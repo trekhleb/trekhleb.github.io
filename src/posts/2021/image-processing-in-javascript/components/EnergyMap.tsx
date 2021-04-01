@@ -4,6 +4,8 @@ import { EnergyMap as EnergyMapType } from './contentAwareResizer';
 
 type EnergyMapProps = {
   energyMap: EnergyMapType | null,
+  width: number,
+  height: number,
   className?: string,
 };
 
@@ -15,10 +17,11 @@ const normalizeEnergy = (
   return Math.floor((energy / maxEnergy) * maxNormalizedEnergy);
 };
 
-const getMaxEnergy = (energyMap: EnergyMapType): number => {
-  const height = energyMap.length;
-  const width = energyMap[0].length;
-
+const getMaxEnergy = (
+  energyMap: EnergyMapType,
+  width: number,
+  height: number,
+): number => {
   let maxEnergy = 0;
   for (let y = 0; y < height; y += 1) {
     for (let x = 0; x < width; x += 1) {
@@ -31,12 +34,11 @@ const getMaxEnergy = (energyMap: EnergyMapType): number => {
 
 const normalizeEnergyMap = (
   energyMap: EnergyMapType,
+  width: number,
+  height: number,
   maxNormalizedEnergy = 255,
 ): number[][] => {
-  const height = energyMap.length;
-  const width = energyMap[0].length;
-
-  const maxEnergy = getMaxEnergy(energyMap);
+  const maxEnergy = getMaxEnergy(energyMap, width, height);
 
   const normalizedMap = new Array(height)
     .fill(null)
@@ -54,7 +56,12 @@ const normalizeEnergyMap = (
 };
 
 const EnergyMap = (props: EnergyMapProps): React.ReactElement => {
-  const { energyMap, className } = props;
+  const {
+    energyMap,
+    className,
+    width,
+    height,
+  } = props;
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -71,25 +78,22 @@ const EnergyMap = (props: EnergyMapProps): React.ReactElement => {
       return;
     }
 
-    const height = energyMap.length;
-    const width = energyMap[0].length;
-
     energyCanvas.width = width;
     energyCanvas.height = height;
 
     const imgData: ImageData = energyCtx.getImageData(0, 0, width, height);
 
-    const normalizedEnergyMap = normalizeEnergyMap(energyMap);
+    const normalizedEnergyMap = normalizeEnergyMap(energyMap, width, height);
 
     for (let y = 0; y < height; y += 1) {
       for (let x = 0; x < width; x += 1) {
         const norm = normalizedEnergyMap[y][x];
-        setPixel(imgData, [x, y], [norm, norm, norm, 255]);
+        setPixel(imgData, { x, y }, [norm, norm, norm, 255]);
       }
     }
 
     energyCtx.putImageData(imgData, 0, 0);
-  }, [energyMap]);
+  }, [energyMap, width, height]);
 
   return (
     <canvas ref={canvasRef} className={className} />
