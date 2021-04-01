@@ -12,7 +12,14 @@ import Seams from './Seams';
 
 import testImg from '../assets/test.jpg';
 
-const ImageResizer = (): React.ReactElement => {
+type ImageResizerProps = {
+  withSeam?: boolean,
+  withEnergyMap?: boolean,
+};
+
+const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
+  const { withEnergyMap = false, withSeam = false } = props;
+
   const [resizedImgSrc, setResizedImgSrc] = useState<string | null>(null);
   const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
   const [imgSize, setImgSize] = useState<ImageSize | null>(null);
@@ -86,45 +93,52 @@ const ImageResizer = (): React.ReactElement => {
 
     // Making a square image.
     const toWidth = Math.min(img.width, img.height);
-    // const toWidth = img.width - 50;
     resizeImageWidth({ img, toWidth, onIteration }).then(() => {
       onFinish();
     });
   };
 
-  const seamsCanvas = imgSize && seams ? (
+  const seamsCanvas = withSeam && imgSize && seams ? (
     <div style={{ marginTop: `-${imgSize.h}px` }}>
       <Seams seams={seams} width={imgSize.w} height={imgSize.h} />
     </div>
   ) : null;
 
   const originalImage = (
-    <img src={testImg} alt="Test source" ref={imgRef} />
+    <div className="mb-6">
+      <div>Original image</div>
+      <img src={testImg} alt="Original" ref={imgRef} style={{ margin: 0 }} />
+    </div>
   );
 
-  const debugImage = (
-    <div>
+  const workingImage = (
+    <div className={`${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
+      <div>Resized image</div>
       <canvas ref={canvasRef} />
       {seamsCanvas}
     </div>
   );
 
-  const resultImage = resizedImgSrc ? (
-    <img src={resizedImgSrc} alt="Resized" />
+  const resultImage = imgSize && resizedImgSrc ? (
+    <div>
+      <div>Resized image</div>
+      <img src={resizedImgSrc} width={imgSize.w} height={imgSize.h} alt="Resized" style={{ margin: 0 }} />
+    </div>
   ) : null;
 
-  const debugEnergyMap = (
-    <div>
-      <EnergyMap energyMap={energyMap} />
+  const debugEnergyMap = withEnergyMap && imgSize ? (
+    <div className="mt-6">
+      <div>Energy map</div>
+      <EnergyMap energyMap={energyMap} width={imgSize.w} height={imgSize.h} />
       {seamsCanvas}
     </div>
-  );
+  ) : null;
 
   return (
     <>
       <button type="button" onClick={onResize}>Resize</button>
       {originalImage}
-      {debugImage}
+      {workingImage}
       {resultImage}
       {debugEnergyMap}
     </>
