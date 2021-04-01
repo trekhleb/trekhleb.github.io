@@ -11,6 +11,7 @@ import EnergyMap from './EnergyMap';
 import Seams from './Seams';
 
 import testImg from '../assets/test.jpg';
+import Button from '../../../../components/shared/Button';
 
 type ImageResizerProps = {
   withSeam?: boolean,
@@ -24,6 +25,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
   const [imgSize, setImgSize] = useState<ImageSize | null>(null);
   const [seams, setSeams] = useState<Seam[] | null>(null);
+  const [isResizing, setIsResizing] = useState<boolean>(false);
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -39,6 +41,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
       }
       const imgUrl = URL.createObjectURL(blob);
       setResizedImgSrc(imgUrl);
+      setIsResizing(false);
     }, imageType);
   };
 
@@ -82,6 +85,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
       return;
     }
 
+    setIsResizing(true);
     setResizedImgSrc(null);
 
     ctx.imageSmoothingEnabled = false;
@@ -136,7 +140,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   return (
     <>
-      <button type="button" onClick={onResize}>Resize</button>
+      <Button onClick={onResize} disabled={isResizing}>Resize</Button>
       {originalImage}
       {workingImage}
       {resultImage}

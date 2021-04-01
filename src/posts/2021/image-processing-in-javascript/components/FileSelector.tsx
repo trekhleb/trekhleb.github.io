@@ -25,7 +25,7 @@ const FileSelector = (props: FileSelectorProps): React.ReactElement => {
       className="bg-black hover:bg-gray-800 text-white rounded transition-all duration-300 inline-block"
       type="button"
     >
-      <label className="cursor-pointer py-2 px-4 flex">
+      <label className="cursor-pointer py-2 px-3 flex uppercase font-medium text-sm tracking-wider">
         <input
           type="file"
           accept={accept}
