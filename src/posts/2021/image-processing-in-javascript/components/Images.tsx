@@ -15,7 +15,9 @@ const Images = (): React.ReactElement => {
         onSelect={onFilesSelect}
         accept="image/png,image/jpeg"
         multiple
-      />
+      >
+        Choose images
+      </FileSelector>
       <ImageList images={selectedImages} />
     </>
   );

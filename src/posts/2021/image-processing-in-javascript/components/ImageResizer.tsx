@@ -12,6 +12,7 @@ import EnergyMap from './EnergyMap';
 import Seams from './Seams';
 import testImg from '../assets/test.jpg';
 import Button from '../../../../components/shared/Button';
+import FileSelector from './FileSelector';
 
 type ImageResizerProps = {
   withSeam?: boolean,
@@ -21,6 +22,7 @@ type ImageResizerProps = {
 const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const { withEnergyMap = false, withSeam = false } = props;
 
+  const [selectedImages, setSelectedImages] = useState<FileList | null>(null);
   const [resizedImgSrc, setResizedImgSrc] = useState<string | null>(null);
   const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
   const [imgSize, setImgSize] = useState<ImageSize | null>(null);
@@ -29,6 +31,10 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const onFileSelect = (files: FileList | null): void => {
+    setSelectedImages(files);
+  };
 
   const onFinish = (): void => {
     if (!canvasRef.current) {
@@ -140,14 +146,24 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   return (
     <>
-      <div className="mb-3">
-        <Button
-          onClick={onResize}
-          disabled={isResizing}
-          startEnhancer={<ImShrink2 size={14} />}
-        >
-          Resize
-        </Button>
+      <div className="mb-3 flex flex-row justify-start items-center">
+        <div className="mr-2">
+          <FileSelector
+            onSelect={onFileSelect}
+            accept="image/png,image/jpeg"
+          >
+            Choose image
+          </FileSelector>
+        </div>
+        <div>
+          <Button
+            onClick={onResize}
+            disabled={isResizing}
+            startEnhancer={<ImShrink2 size={14} />}
+          >
+            Resize
+          </Button>
+        </div>
       </div>
       {originalImage}
       {workingImage}
