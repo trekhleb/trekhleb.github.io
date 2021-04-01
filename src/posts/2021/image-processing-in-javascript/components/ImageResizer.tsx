@@ -1,4 +1,5 @@
 import React, { useRef, useState } from 'react';
+import { ImShrink2 } from '@react-icons/all-files/im/ImShrink2';
 
 import {
   EnergyMap as EnergyMapType,
@@ -9,7 +10,6 @@ import {
 } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
-
 import testImg from '../assets/test.jpg';
 import Button from '../../../../components/shared/Button';
 
@@ -140,7 +140,15 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   return (
     <>
-      <Button onClick={onResize} disabled={isResizing}>Resize</Button>
+      <div className="mb-3">
+        <Button
+          onClick={onResize}
+          disabled={isResizing}
+          startEnhancer={<ImShrink2 size={14} />}
+        >
+          Resize
+        </Button>
+      </div>
       {originalImage}
       {workingImage}
       {resultImage}
