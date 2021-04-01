@@ -20,8 +20,8 @@ const Button = (props: ButtonProps): React.ReactElement => {
     startEnhancer = null,
   } = props;
 
-  const disabledClasses = disabled ? 'cursor-not-allowed bg-gray-500 hover:bg-gray-500 hover:text-white' : '';
-  const defaultClasses = 'hover:bg-white hover:text-black py-2 px-3 rounded shadow-sm border border-solid border-white hover:border-gray-300 bg-black text-white transition duration-200 ease-in-out flex flex-row items-center uppercase font-medium text-sm tracking-wider';
+  const disabledClasses = disabled ? 'cursor-not-allowed bg-white text-gray-500 hover:bg-white hover:text-gray-500 border-gray-300' : '';
+  const defaultClasses = 'hover:bg-white hover:text-black py-2 px-3 rounded shadow-sm border border-solid border-white hover:border-gray-300 bg-black text-white transition duration-200 ease-in-out flex flex-row items-center uppercase font-medium text-xs tracking-wider';
   const classes = `${defaultClasses} ${disabledClasses} ${className}`;
 
   const separator = startEnhancer ? (
