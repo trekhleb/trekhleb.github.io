@@ -13,7 +13,7 @@ export type EnergyMap = number[][];
 type SeamMeta = {
   energy: number,
   coordinate: Coordinate,
-  minPreviousCoordinate: Coordinate | null,
+  previous: Coordinate | null,
 };
 
 export type ImageSize = { w: number, h: number };
@@ -51,7 +51,7 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
   return lEnergy + rEnergy;
 };
 
-const getEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
+const calculateEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
   const energyMap: number[][] = matrix<number>(w, h, Infinity);
 
   for (let y = 0; y < h; y += 1) {
@@ -66,52 +66,49 @@ const getEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
   return energyMap;
 };
 
-const findSeam = (energyMap: EnergyMap): Seam => {
+const findLowEnergySeam = (energyMap: EnergyMap): Seam => {
   const w = energyMap[0].length;
   const h = energyMap.length;
 
   const seamsMap: (SeamMeta | null)[][] = matrix<SeamMeta | null>(w, h, null);
 
-  // Calculate the seams map.
-  for (let y = 0; y < h; y += 1) {
+  // Populate the first row of the map.
+  for (let x = 0; x < w; x += 1) {
+    const y = 0;
+    seamsMap[y][x] = {
+      energy: energyMap[y][x],
+      coordinate: [x, y],
+      previous: null,
+    };
+  }
+
+  // Populate the rest of the rows.
+  for (let y = 1; y < h; y += 1) {
     for (let x = 0; x < w; x += 1) {
-      if (y === 0) {
-        // First row.
-        seamsMap[y][x] = {
-          energy: energyMap[y][x],
-          coordinate: [x, y],
-          minPreviousCoordinate: null,
-        };
-      } else {
-        // Non-first rows.
-
-        // Find top adjacent cell with minimum energy.
-        let minPrevEnergy = Infinity;
-        let minPrevX: number = x;
-        for (let i = (x - 1); i <= (x + 1); i += 1) {
-          if (i >= 0 && i < w && seamsMap[y - 1][i] !== null) {
-            if (seamsMap[y - 1][i].energy < minPrevEnergy) {
-              minPrevEnergy = seamsMap[y - 1][i].energy;
-              minPrevX = i;
-            }
-          }
+      // Find top adjacent cell with minimum energy.
+      let minPrevEnergy = Infinity;
+      let minPrevX: number = x;
+      for (let i = (x - 1); i <= (x + 1); i += 1) {
+        if (i >= 0 && i < w && seamsMap[y - 1][i].energy < minPrevEnergy) {
+          minPrevEnergy = seamsMap[y - 1][i].energy;
+          minPrevX = i;
         }
-
-        // Update the current cell.
-        seamsMap[y][x] = {
-          energy: minPrevEnergy + energyMap[y][x],
-          coordinate: [x, y],
-          minPreviousCoordinate: [minPrevX, y - 1],
-        };
       }
+
+      // Update the current cell.
+      seamsMap[y][x] = {
+        energy: minPrevEnergy + energyMap[y][x],
+        coordinate: [x, y],
+        previous: [minPrevX, y - 1],
+      };
     }
   }
 
   // Find where the minimum energy seam ends.
   let lastMinCoordinate: Coordinate | null = null;
   let minSeamEnergy = Infinity;
-  const y = h - 1;
   for (let x = 0; x < w; x += 1) {
+    const y = h - 1;
     if (seamsMap[y][x].energy < minSeamEnergy) {
       minSeamEnergy = seamsMap[y][x].energy;
       lastMinCoordinate = [x, y];
@@ -126,10 +123,11 @@ const findSeam = (energyMap: EnergyMap): Seam => {
 
   const lastMinX: number = lastMinCoordinate[0];
   const lastMinY: number = lastMinCoordinate[1];
+
   let currentSeam = seamsMap[lastMinY][lastMinX];
   while (currentSeam) {
     seam.push(currentSeam.coordinate);
-    const prevMinCoordinates = currentSeam.minPreviousCoordinate;
+    const prevMinCoordinates = currentSeam.previous;
     if (!prevMinCoordinates) {
       currentSeam = null;
     } else {
@@ -170,23 +168,18 @@ export const resizeImageWidth = async (args: ResizeImageWidthArgs): Promise<void
     throw new Error('Upsizing is not supported');
   }
 
-  let w = img.width;
-  const h = img.height;
+  const size: ImageSize = { w: img.width, h: img.height };
 
   for (let i = 0; i < pxToRemove; i += 1) {
-    const energyMap: EnergyMap = getEnergyMap(img, { w, h });
-    const seam: Seam = findSeam(energyMap);
-    deleteSeam(img, seam, { w, h });
+    const energyMap: EnergyMap = calculateEnergyMap(img, size);
+    const seam: Seam = findLowEnergySeam(energyMap);
+    deleteSeam(img, seam, size);
 
-    await onIteration({
-      energyMap,
-      seam,
-      img,
-      size: { w, h },
-    });
+    await onIteration({ energyMap, seam, img, size });
+
+    size.w -= 1;
+
     await wait(1);
-
-    w -= 1;
   }
 
   console.timeEnd('resizeImageWidth');
