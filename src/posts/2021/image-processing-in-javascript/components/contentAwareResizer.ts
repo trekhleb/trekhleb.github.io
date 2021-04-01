@@ -25,6 +25,14 @@ export type OnIterationArgs = {
   energyMap: EnergyMap,
 };
 
+const matrix = <T>(w: number, h: number, filler: T): T[][] => {
+  return new Array(h)
+    .fill(null)
+    .map(() => {
+      return new Array(w).fill(filler);
+    });
+};
+
 const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null): number => {
   const [mR, mG, mB] = middle;
 
@@ -44,11 +52,7 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
 };
 
 const getEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
-  const energyMap: number[][] = new Array(h)
-    .fill(null)
-    .map(() => {
-      return new Array(w).fill(Infinity);
-    });
+  const energyMap: number[][] = matrix<number>(w, h, Infinity);
 
   for (let y = 0; y < h; y += 1) {
     for (let x = 0; x < w; x += 1) {
@@ -63,18 +67,14 @@ const getEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
 };
 
 const findSeam = (energyMap: EnergyMap): Seam => {
-  const width = energyMap[0].length;
-  const height = energyMap.length;
+  const w = energyMap[0].length;
+  const h = energyMap.length;
 
-  const seamsMap: (SeamMeta | null)[][] = new Array(height)
-    .fill(null)
-    .map(() => {
-      return new Array(width).fill(null);
-    });
+  const seamsMap: (SeamMeta | null)[][] = matrix<SeamMeta | null>(w, h, null);
 
   // Calculate the seams map.
-  for (let y = 0; y < height; y += 1) {
-    for (let x = 0; x < width; x += 1) {
+  for (let y = 0; y < h; y += 1) {
+    for (let x = 0; x < w; x += 1) {
       if (y === 0) {
         // First row.
         seamsMap[y][x] = {
@@ -89,7 +89,7 @@ const findSeam = (energyMap: EnergyMap): Seam => {
         let minPrevEnergy = Infinity;
         let minPrevX: number = x;
         for (let i = (x - 1); i <= (x + 1); i += 1) {
-          if (i >= 0 && i < width && seamsMap[y - 1][i] !== null) {
+          if (i >= 0 && i < w && seamsMap[y - 1][i] !== null) {
             if (seamsMap[y - 1][i].energy < minPrevEnergy) {
               minPrevEnergy = seamsMap[y - 1][i].energy;
               minPrevX = i;
@@ -110,8 +110,8 @@ const findSeam = (energyMap: EnergyMap): Seam => {
   // Find where the minimum energy seam ends.
   let lastMinCoordinate: Coordinate | null = null;
   let minSeamEnergy = Infinity;
-  const y = height - 1;
-  for (let x = 0; x < width; x += 1) {
+  const y = h - 1;
+  for (let x = 0; x < w; x += 1) {
     if (seamsMap[y][x].energy < minSeamEnergy) {
       minSeamEnergy = seamsMap[y][x].energy;
       lastMinCoordinate = [x, y];
