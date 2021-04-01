@@ -10,7 +10,7 @@ import {
 } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
-import testImg from '../assets/test.jpg';
+import defaultImgSrc from '../assets/test.jpg';
 import Button from '../../../../components/shared/Button';
 import FileSelector from './FileSelector';
 
@@ -22,7 +22,7 @@ type ImageResizerProps = {
 const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const { withEnergyMap = false, withSeam = false } = props;
 
-  const [selectedImages, setSelectedImages] = useState<FileList | null>(null);
+  const [imageSrc, setImageSrc] = useState<string>(defaultImgSrc);
   const [resizedImgSrc, setResizedImgSrc] = useState<string | null>(null);
   const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
   const [imgSize, setImgSize] = useState<ImageSize | null>(null);
@@ -33,7 +33,11 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const onFileSelect = (files: FileList | null): void => {
-    setSelectedImages(files);
+    if (!files || !files.length) {
+      return;
+    }
+    const imageURL = URL.createObjectURL(files[0]);
+    setImageSrc(imageURL);
   };
 
   const onFinish = (): void => {
@@ -115,14 +119,14 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   ) : null;
 
   const originalImage = (
-    <div className="mb-6">
+    <div>
       <div>Original image</div>
-      <img src={testImg} alt="Original" ref={imgRef} style={{ margin: 0 }} />
+      <img src={imageSrc} alt="Original" ref={imgRef} style={{ margin: 0 }} />
     </div>
   );
 
   const workingImage = (
-    <div className={`${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
+    <div className={`mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
       <div>Resized image</div>
       <canvas ref={canvasRef} />
       {seamsCanvas}
@@ -130,14 +134,14 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   );
 
   const resultImage = imgSize && resizedImgSrc ? (
-    <div>
+    <div className="mb-6">
       <div>Resized image</div>
       <img src={resizedImgSrc} width={imgSize.w} height={imgSize.h} alt="Resized" style={{ margin: 0 }} />
     </div>
   ) : null;
 
   const debugEnergyMap = withEnergyMap && imgSize ? (
-    <div className="mt-6">
+    <div className="mb-6">
       <div>Energy map</div>
       <EnergyMap energyMap={energyMap} width={imgSize.w} height={imgSize.h} />
       {seamsCanvas}
@@ -165,10 +169,10 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
           </Button>
         </div>
       </div>
-      {originalImage}
       {workingImage}
       {resultImage}
       {debugEnergyMap}
+      {originalImage}
     </>
   );
 };
