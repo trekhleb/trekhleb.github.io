@@ -32,10 +32,17 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
+  const onReset = (): void => {
+    setResizedImgSrc(null);
+    setSeams(null);
+    setEnergyMap(null);
+  };
+
   const onFileSelect = (files: FileList | null): void => {
     if (!files || !files.length) {
       return;
     }
+    onReset();
     const imageURL = URL.createObjectURL(files[0]);
     setImageSrc(imageURL);
   };
@@ -95,8 +102,9 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
       return;
     }
 
+    onReset();
+
     setIsResizing(true);
-    setResizedImgSrc(null);
 
     ctx.imageSmoothingEnabled = false;
     canvas.width = srcImg.width;
