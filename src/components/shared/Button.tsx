@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 
 export type ButtonProps = {
   children: React.ReactNode,
@@ -7,6 +7,7 @@ export type ButtonProps = {
   disabled?: boolean,
   title?: string | undefined,
   startEnhancer?: React.ReactNode,
+  style?: CSSProperties,
 };
 
 const Button = (props: ButtonProps): React.ReactElement => {
@@ -18,6 +19,7 @@ const Button = (props: ButtonProps): React.ReactElement => {
     disabled = false,
     title = undefined,
     startEnhancer = null,
+    style = {},
   } = props;
 
   const disabledClasses = disabled ? 'cursor-not-allowed bg-white text-gray-500 hover:bg-white hover:text-gray-500 border-gray-300' : '';
@@ -35,6 +37,7 @@ const Button = (props: ButtonProps): React.ReactElement => {
       type="button"
       disabled={disabled}
       title={title}
+      style={style}
     >
       {startEnhancer}
       {separator}
