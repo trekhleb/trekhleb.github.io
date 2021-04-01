@@ -1,4 +1,4 @@
-/* eslint-disable no-await-in-loop */
+/* eslint-disable no-await-in-loop, no-param-reassign */
 import {
   Color,
   Coordinate,
@@ -51,25 +51,41 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
   return lEnergy + rEnergy;
 };
 
+const getPixelEnergyXY = (img: ImageData, { w }: ImageSize, { x, y }: Coordinate): number => {
+  const left = (x - 1) >= 0 ? getPixel(img, { x: x - 1, y }) : null;
+  const middle = getPixel(img, { x, y });
+  const right = (x + 1) < w ? getPixel(img, { x: x + 1, y }) : null;
+  return getPixelEnergy(left, middle, right);
+};
+
 const calculateEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
   const energyMap: number[][] = matrix<number>(w, h, Infinity);
-
   for (let y = 0; y < h; y += 1) {
     for (let x = 0; x < w; x += 1) {
-      const left = (x - 1) >= 0 ? getPixel(img, [x - 1, y]) : null;
-      const middle = getPixel(img, [x, y]);
-      const right = (x + 1) < w ? getPixel(img, [x + 1, y]) : null;
-      energyMap[y][x] = getPixelEnergy(left, middle, right);
+      energyMap[y][x] = getPixelEnergyXY(img, { w, h }, { x, y });
     }
   }
-
   return energyMap;
 };
 
-const findLowEnergySeam = (energyMap: EnergyMap): Seam => {
-  const w = energyMap[0].length;
-  const h = energyMap.length;
+const reCalculateEnergyMap = (
+  img: ImageData,
+  { w, h }: ImageSize,
+  energyMap: EnergyMap,
+  seam: Seam,
+): EnergyMap => {
+  seam.forEach(({ x: seamX, y: seamY }: Coordinate) => {
+    // Deleting the seam from the energy map.
+    for (let x = seamX; x < (w - 1); x += 1) {
+      energyMap[seamY][x] = energyMap[seamY][x + 1];
+    }
+    // Recalculating the energy pixels around the deleted seam.
+    energyMap[seamY][seamX] = getPixelEnergyXY(img, { w, h }, { x: seamX, y: seamY });
+  });
+  return energyMap;
+};
 
+const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
   const seamsMap: (SeamMeta | null)[][] = matrix<SeamMeta | null>(w, h, null);
 
   // Populate the first row of the map.
@@ -77,7 +93,7 @@ const findLowEnergySeam = (energyMap: EnergyMap): Seam => {
     const y = 0;
     seamsMap[y][x] = {
       energy: energyMap[y][x],
-      coordinate: [x, y],
+      coordinate: { x, y },
       previous: null,
     };
   }
@@ -89,7 +105,9 @@ const findLowEnergySeam = (energyMap: EnergyMap): Seam => {
       let minPrevEnergy = Infinity;
       let minPrevX: number = x;
       for (let i = (x - 1); i <= (x + 1); i += 1) {
+        // @ts-ignore
         if (i >= 0 && i < w && seamsMap[y - 1][i].energy < minPrevEnergy) {
+          // @ts-ignore
           minPrevEnergy = seamsMap[y - 1][i].energy;
           minPrevX = i;
         }
@@ -98,8 +116,8 @@ const findLowEnergySeam = (energyMap: EnergyMap): Seam => {
       // Update the current cell.
       seamsMap[y][x] = {
         energy: minPrevEnergy + energyMap[y][x],
-        coordinate: [x, y],
-        previous: [minPrevX, y - 1],
+        coordinate: { x, y },
+        previous: { x: minPrevX, y: y - 1 },
       };
     }
   }
@@ -109,9 +127,11 @@ const findLowEnergySeam = (energyMap: EnergyMap): Seam => {
   let minSeamEnergy = Infinity;
   for (let x = 0; x < w; x += 1) {
     const y = h - 1;
+    // @ts-ignore
     if (seamsMap[y][x].energy < minSeamEnergy) {
+      // @ts-ignore
       minSeamEnergy = seamsMap[y][x].energy;
-      lastMinCoordinate = [x, y];
+      lastMinCoordinate = { x, y };
     }
   }
 
@@ -121,8 +141,7 @@ const findLowEnergySeam = (energyMap: EnergyMap): Seam => {
     return seam;
   }
 
-  const lastMinX: number = lastMinCoordinate[0];
-  const lastMinY: number = lastMinCoordinate[1];
+  const { x: lastMinX, y: lastMinY } = lastMinCoordinate;
 
   let currentSeam = seamsMap[lastMinY][lastMinX];
   while (currentSeam) {
@@ -131,8 +150,7 @@ const findLowEnergySeam = (energyMap: EnergyMap): Seam => {
     if (!prevMinCoordinates) {
       currentSeam = null;
     } else {
-      const prevMinX: number = prevMinCoordinates[0];
-      const prevMinY: number = prevMinCoordinates[1];
+      const { x: prevMinX, y: prevMinY } = prevMinCoordinates;
       currentSeam = seamsMap[prevMinY][prevMinX];
     }
   }
@@ -141,10 +159,10 @@ const findLowEnergySeam = (energyMap: EnergyMap): Seam => {
 };
 
 const deleteSeam = (img: ImageData, seam: Seam, { w }: ImageSize): void => {
-  seam.forEach(([seamX, seamY]: Coordinate) => {
+  seam.forEach(({ x: seamX, y: seamY }: Coordinate) => {
     for (let x = seamX; x < (w - 1); x += 1) {
-      const nextPixel = getPixel(img, [x + 1, seamY]);
-      setPixel(img, [x, seamY], nextPixel);
+      const nextPixel = getPixel(img, { x: x + 1, y: seamY });
+      setPixel(img, { x, y: seamY }, nextPixel);
     }
   });
 };
@@ -156,12 +174,7 @@ type ResizeImageWidthArgs = {
 };
 
 export const resizeImageWidth = async (args: ResizeImageWidthArgs): Promise<void> => {
-  const {
-    img,
-    toWidth,
-    onIteration = (): Promise<void> => Promise.resolve(),
-  } = args;
-  console.time('resizeImageWidth');
+  const { img, toWidth, onIteration } = args;
 
   const pxToRemove = img.width - toWidth;
   if (pxToRemove < 0) {
@@ -169,18 +182,25 @@ export const resizeImageWidth = async (args: ResizeImageWidthArgs): Promise<void
   }
 
   const size: ImageSize = { w: img.width, h: img.height };
+  let energyMap: EnergyMap | null = null;
+  let seam: Seam | null = null;
 
   for (let i = 0; i < pxToRemove; i += 1) {
-    const energyMap: EnergyMap = calculateEnergyMap(img, size);
-    const seam: Seam = findLowEnergySeam(energyMap);
+    energyMap = energyMap && seam
+      ? reCalculateEnergyMap(img, size, energyMap, seam)
+      : calculateEnergyMap(img, size);
+
+    seam = findLowEnergySeam(energyMap, size);
+
     deleteSeam(img, seam, size);
 
-    await onIteration({ energyMap, seam, img, size });
+    if (onIteration) {
+      // eslint-disable-next-line object-curly-newline
+      await onIteration({ energyMap, seam, img, size });
+    }
 
     size.w -= 1;
 
     await wait(1);
   }
-
-  console.timeEnd('resizeImageWidth');
 };
