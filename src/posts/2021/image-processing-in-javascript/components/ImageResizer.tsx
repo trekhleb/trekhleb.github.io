@@ -44,6 +44,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const [isResizing, setIsResizing] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
   const [toWidthScale, setToWidthScale] = useState<number>(defaultScale);
+  const [toWidthScaleString, setToWidthScaleString] = useState<string | null | undefined>(`${defaultScale}`);
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -72,6 +73,13 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const onSizeChange = (size: string | null | undefined): void => {
     const radix = 10;
     const scale = Math.max(Math.min(parseInt(size || '0', radix), maxScale), minScale);
+
+    if (size) {
+      setToWidthScaleString(`${scale}`);
+    } else {
+      setToWidthScaleString(size);
+    }
+
     setToWidthScale(scale);
   };
 
@@ -136,9 +144,9 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
     let w = useNaturalSize ? srcImg.naturalWidth : srcImg.width;
     let h = useNaturalSize ? srcImg.naturalHeight : srcImg.height;
+    const ratio = w / h;
 
     if (w > maxWidthLimit) {
-      const ratio = w / h;
       w = maxWidthLimit;
       h = Math.floor(w / ratio);
     }
@@ -250,7 +258,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         <div>
           <Button
             onClick={onResize}
-            disabled={isResizing}
+            disabled={isResizing || !toWidthScaleString}
             startEnhancer={<ImShrink2 size={14} />}
           >
             Resize
@@ -268,7 +276,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
             min={minScale}
             max={maxScale}
             className="w-14 mr-1"
-            value={toWidthScale}
+            value={toWidthScaleString}
           />
           <div className="text-xs">%</div>
         </div>
