@@ -15,6 +15,10 @@ import Button from '../../../../components/shared/Button';
 import FileSelector from './FileSelector';
 import Checkbox from '../../../../components/shared/Checkbox';
 import Progress from '../../../../components/shared/Progress';
+import Input from '../../../../components/shared/Input';
+
+const minScale = 1;
+const maxScale = 99;
 
 type ImageResizerProps = {
   withSeam?: boolean,
@@ -35,7 +39,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const [seams, setSeams] = useState<Seam[] | null>(null);
   const [isResizing, setIsResizing] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
-  const [resizeToWidth, setResizeToWidth] = useState<number>(0);
+  const [toWidthScale, setToWidthScale] = useState<number>(50);
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -59,6 +63,12 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     onReset();
     const imageURL = URL.createObjectURL(files[0]);
     setImageSrc(imageURL);
+  };
+
+  const onSizeChange = (size: string | null | undefined): void => {
+    const radix = 10;
+    const scale = Math.max(Math.min(parseInt(size || '0', radix), maxScale), minScale);
+    setToWidthScale(scale);
   };
 
   const onFinish = (): void => {
@@ -135,9 +145,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
     const img: ImageData = ctx.getImageData(0, 0, w, h);
 
-    // Making a square image.
-    const toWidth = Math.min(w, h);
-    setResizeToWidth(toWidth);
+    const toWidth = Math.floor((toWidthScale * w) / 100);
     resizeImageWidth({ img, toWidth, onIteration }).then(() => {
       onFinish();
     });
@@ -180,41 +188,59 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   ) : null;
 
   const resizerControls = (
-    <div className="flex flex-col sm:flex-row justify-start items-start">
+    <div className="flex flex-col justify-start items-start mb-1">
 
-      <div className="mr-2 mb-2">
-        <FileSelector
-          onSelect={onFileSelect}
-          disabled={isResizing}
-          accept="image/png,image/jpeg"
-        >
-          Choose image
-        </FileSelector>
+      <div className="mb-3 flex flex-row">
+        <div className="mr-2">
+          <FileSelector
+            onSelect={onFileSelect}
+            disabled={isResizing}
+            accept="image/png,image/jpeg"
+          >
+            Choose image
+          </FileSelector>
+        </div>
+
+        <div>
+          <Button
+            onClick={onResize}
+            disabled={isResizing}
+            startEnhancer={<ImShrink2 size={14} />}
+          >
+            Resize
+          </Button>
+        </div>
       </div>
 
-      <div className="mr-4 mb-2">
-        <Button
-          onClick={onResize}
-          disabled={isResizing}
-          startEnhancer={<ImShrink2 size={14} />}
-        >
-          Resize
-        </Button>
-      </div>
+      <div className="flex flex-col sm:flex-row">
+        <div className="mb-2 mr-6 flex flex-row items-center">
+          <div className="text-xs mr-1">Resize to width</div>
+          <Input
+            onChange={onSizeChange}
+            disabled={isResizing}
+            type="number"
+            min={minScale}
+            max={maxScale}
+            className="w-14 mr-1"
+            value={toWidthScale}
+          />
+          <div className="text-xs">%</div>
+        </div>
 
-      <div className="mb-2">
-        <Checkbox disabled={isResizing} onChange={onUseOriginalSizeChange}>
+        <div className="mb-2">
+          <Checkbox disabled={isResizing} onChange={onUseOriginalSizeChange}>
           <span className="text-xs">
             Preserve original size <span className="text-gray-400">(takes longer)</span>
           </span>
-        </Checkbox>
+          </Checkbox>
+        </div>
       </div>
 
     </div>
   );
 
   const progressBar = (
-    <div className="mb-3">
+    <div className="mb-6">
       <Progress progress={progress} />
     </div>
   );

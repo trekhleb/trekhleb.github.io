@@ -33,7 +33,6 @@ const Checkbox = (props: CheckboxProps): React.ReactElement => {
     <label className={classes}>
       <input
         type="checkbox"
-        className="form-checkbox"
         disabled={disabled}
         onChange={onCheckboxChange}
         ref={checkboxRef}
