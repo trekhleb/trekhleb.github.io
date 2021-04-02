@@ -13,6 +13,7 @@ import Seams from './Seams';
 import defaultImgSrc from '../assets/test.jpg';
 import Button from '../../../../components/shared/Button';
 import FileSelector from './FileSelector';
+import Checkbox from '../../../../components/shared/Checkbox';
 
 type ImageResizerProps = {
   withSeam?: boolean,
@@ -35,6 +36,10 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+
+  const onUseOriginalSizeChange = (state: boolean): void => {
+    setUseNaturalSize(state);
+  };
 
   const onReset = (): void => {
     setResizedImgSrc(null);
@@ -172,13 +177,14 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
       <div className="mr-2">
         <FileSelector
           onSelect={onFileSelect}
+          disabled={isResizing}
           accept="image/png,image/jpeg"
         >
           Choose image
         </FileSelector>
       </div>
 
-      <div>
+      <div className="mr-4">
         <Button
           onClick={onResize}
           disabled={isResizing}
@@ -186,6 +192,14 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         >
           Resize
         </Button>
+      </div>
+
+      <div>
+        <Checkbox disabled={isResizing} onChange={onUseOriginalSizeChange}>
+          <span className="text-xs">
+            Preserve original size
+          </span>
+        </Checkbox>
       </div>
 
     </div>

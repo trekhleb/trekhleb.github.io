@@ -8,6 +8,7 @@ type FileSelectorProps = {
   capture?: 'user' | 'environment',
   multiple?: boolean,
   children: React.ReactNode,
+  disabled?: boolean,
 };
 
 const FileSelector = (props: FileSelectorProps): React.ReactElement => {
@@ -16,6 +17,7 @@ const FileSelector = (props: FileSelectorProps): React.ReactElement => {
     accept,
     capture,
     multiple = false,
+    disabled = false,
     children,
   } = props;
 
@@ -30,9 +32,11 @@ const FileSelector = (props: FileSelectorProps): React.ReactElement => {
     </div>
   );
 
+  const disabledClasses = disabled ? 'cursor-not-allowed' : '';
+
   return (
-    <Button style={{ padding: 0 }}>
-      <label className="cursor-pointer py-2 px-3 flex uppercase font-medium text-xs tracking-wider">
+    <Button style={{ padding: 0 }} disabled={disabled}>
+      <label className={`cursor-pointer py-2 px-3 flex uppercase font-medium text-xs tracking-wider ${disabledClasses}`}>
         <input
           type="file"
           accept={accept}
@@ -40,6 +44,7 @@ const FileSelector = (props: FileSelectorProps): React.ReactElement => {
           onChange={onChange}
           multiple={multiple}
           className="hidden"
+          disabled={disabled}
         />
         {icon}
         {children}
