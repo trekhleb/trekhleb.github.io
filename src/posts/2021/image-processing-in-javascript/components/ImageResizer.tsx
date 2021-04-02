@@ -20,8 +20,12 @@ type ImageResizerProps = {
 };
 
 const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
-  const { withEnergyMap = false, withSeam = false } = props;
+  const {
+    withSeam = false,
+    withEnergyMap = false,
+  } = props;
 
+  const [useNaturalSize, setUseNaturalSize] = useState<boolean>(false);
   const [imageSrc, setImageSrc] = useState<string>(defaultImgSrc);
   const [resizedImgSrc, setResizedImgSrc] = useState<string | null>(null);
   const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
@@ -75,13 +79,15 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     if (!canvas) {
       return;
     }
+
+    canvas.width = w;
+    canvas.height = h;
+
     const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
     if (!ctx) {
       return;
     }
 
-    canvas.width = w;
-    canvas.height = h;
     ctx.putImageData(img, 0, 0, 0, 0, w, h);
 
     setEnergyMap(nrgMap);
@@ -98,24 +104,27 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     if (!canvas) {
       return;
     }
+
+    onReset();
+    setIsResizing(true);
+
+    const w = useNaturalSize ? srcImg.naturalWidth : srcImg.width;
+    const h = useNaturalSize ? srcImg.naturalHeight : srcImg.height;
+
+    canvas.width = w;
+    canvas.height = h;
+
     const ctx: CanvasRenderingContext2D | null = canvas.getContext('2d');
     if (!ctx) {
       return;
     }
 
-    onReset();
+    ctx.drawImage(srcImg, 0, 0, w, h);
 
-    setIsResizing(true);
-
-    ctx.imageSmoothingEnabled = false;
-    canvas.width = srcImg.width;
-    canvas.height = srcImg.height;
-    ctx.drawImage(srcImg, 0, 0, canvas.width, canvas.height);
-
-    const img: ImageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const img: ImageData = ctx.getImageData(0, 0, w, h);
 
     // Making a square image.
-    const toWidth = Math.min(img.width, img.height);
+    const toWidth = Math.min(w, h);
     resizeImageWidth({ img, toWidth, onIteration }).then(() => {
       onFinish();
     });
@@ -135,7 +144,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   );
 
   const workingImage = (
-    <div className={`mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
+    <div className={`overflow-scroll mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
       <div>Resized image</div>
       <canvas ref={canvasRef} />
       {seamsCanvas}
@@ -157,27 +166,34 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     </div>
   ) : null;
 
+  const resizerControls = (
+    <div className="mb-3 flex flex-row justify-start items-center">
+
+      <div className="mr-2">
+        <FileSelector
+          onSelect={onFileSelect}
+          accept="image/png,image/jpeg"
+        >
+          Choose image
+        </FileSelector>
+      </div>
+
+      <div>
+        <Button
+          onClick={onResize}
+          disabled={isResizing}
+          startEnhancer={<ImShrink2 size={14} />}
+        >
+          Resize
+        </Button>
+      </div>
+
+    </div>
+  );
+
   return (
     <>
-      <div className="mb-3 flex flex-row justify-start items-center">
-        <div className="mr-2">
-          <FileSelector
-            onSelect={onFileSelect}
-            accept="image/png,image/jpeg"
-          >
-            Choose image
-          </FileSelector>
-        </div>
-        <div>
-          <Button
-            onClick={onResize}
-            disabled={isResizing}
-            startEnhancer={<ImShrink2 size={14} />}
-          >
-            Resize
-          </Button>
-        </div>
-      </div>
+      {resizerControls}
       {workingImage}
       {resultImage}
       {debugEnergyMap}
