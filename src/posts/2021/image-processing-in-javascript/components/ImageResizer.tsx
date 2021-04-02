@@ -35,6 +35,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const onReset = (): void => {
     setResizedImgSrc(null);
     setSeams(null);
+    setImgSize(null);
     setEnergyMap(null);
   };
 
