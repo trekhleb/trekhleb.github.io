@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ImShrink2 } from '@react-icons/all-files/im/ImShrink2';
 
 import {
@@ -17,6 +17,7 @@ import Checkbox from '../../../../components/shared/Checkbox';
 import Progress from '../../../../components/shared/Progress';
 import Input from '../../../../components/shared/Input';
 
+const defaultScale = 70;
 const minScale = 1;
 const maxScale = 99;
 
@@ -35,11 +36,12 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const [imageSrc, setImageSrc] = useState<string>(defaultImgSrc);
   const [resizedImgSrc, setResizedImgSrc] = useState<string | null>(null);
   const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
-  const [imgSize, setImgSize] = useState<ImageSize | null>(null);
+  const [originalImgSize, setOriginalImgSize] = useState<ImageSize | null>(null);
+  const [workingImgSize, setWorkingImgSize] = useState<ImageSize | null>(null);
   const [seams, setSeams] = useState<Seam[] | null>(null);
   const [isResizing, setIsResizing] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
-  const [toWidthScale, setToWidthScale] = useState<number>(50);
+  const [toWidthScale, setToWidthScale] = useState<number>(defaultScale);
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -51,7 +53,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const onReset = (): void => {
     setResizedImgSrc(null);
     setSeams(null);
-    setImgSize(null);
+    setWorkingImgSize(null);
     setEnergyMap(null);
     setProgress(0);
   };
@@ -113,7 +115,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
     setEnergyMap(nrgMap);
     setSeams([seam]);
-    setImgSize({ w, h });
+    setWorkingImgSize({ w, h });
     setProgress(step / steps);
   };
 
@@ -151,38 +153,72 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     });
   };
 
-  const seamsCanvas = withSeam && imgSize && seams ? (
-    <div style={{ marginTop: `-${imgSize.h}px` }}>
-      <Seams seams={seams} width={imgSize.w} height={imgSize.h} />
+  useEffect(() => {
+    const srcImg: HTMLImageElement | null = imgRef.current;
+    if (!srcImg) {
+      return;
+    }
+    srcImg.addEventListener('load', () => {
+      if (!imgRef.current) {
+        return;
+      }
+      setOriginalImgSize({
+        w: imgRef.current.width,
+        h: imgRef.current.height,
+      });
+    });
+  }, []);
+
+  const seamsCanvas = withSeam && workingImgSize && seams ? (
+    <div style={{ marginTop: `-${workingImgSize.h}px` }}>
+      <Seams seams={seams} width={workingImgSize.w} height={workingImgSize.h} />
     </div>
+  ) : null;
+
+  const originalImageSizeText = originalImgSize ? (
+    <sup className="text-xs text-gray-400">
+      {`${originalImgSize.w} x ${originalImgSize.h} px`}
+    </sup>
   ) : null;
 
   const originalImage = (
     <div>
-      <div>Original image</div>
+      <div>Original image {originalImageSizeText}</div>
       <img src={imageSrc} alt="Original" ref={imgRef} style={{ margin: 0 }} />
     </div>
   );
 
+  const workingImageSizeText = workingImgSize ? (
+    <sup className="text-xs text-gray-400">
+      {`${workingImgSize.w} x ${workingImgSize.h} px`}
+    </sup>
+  ) : null;
+
   const workingImage = (
     <div className={`overflow-scroll mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
-      <div>Resized image</div>
+      <div>Resized image {workingImageSizeText}</div>
       <canvas ref={canvasRef} />
       {seamsCanvas}
     </div>
   );
 
-  const resultImage = imgSize && resizedImgSrc ? (
+  const resultImageSizeText = workingImgSize ? (
+    <sup className="text-xs text-gray-400">
+      {`${workingImgSize.w} x ${workingImgSize.h} px`}
+    </sup>
+  ) : null;
+
+  const resultImage = workingImgSize && resizedImgSrc ? (
     <div className="mb-6">
-      <div>Resized image</div>
-      <img src={resizedImgSrc} width={imgSize.w} height={imgSize.h} alt="Resized" style={{ margin: 0 }} />
+      <div>Resized image {resultImageSizeText}</div>
+      <img src={resizedImgSrc} width={workingImgSize.w} height={workingImgSize.h} alt="Resized" style={{ margin: 0 }} />
     </div>
   ) : null;
 
-  const debugEnergyMap = withEnergyMap && imgSize ? (
+  const debugEnergyMap = withEnergyMap && workingImgSize ? (
     <div className="mb-6">
       <div>Energy map</div>
-      <EnergyMap energyMap={energyMap} width={imgSize.w} height={imgSize.h} />
+      <EnergyMap energyMap={energyMap} width={workingImgSize.w} height={workingImgSize.h} />
       {seamsCanvas}
     </div>
   ) : null;
@@ -230,7 +266,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         <div className="mb-2">
           <Checkbox disabled={isResizing} onChange={onUseOriginalSizeChange}>
           <span className="text-xs">
-            Preserve original size <span className="text-gray-400">(takes longer)</span>
+            Preserve quality <span className="text-gray-400">(takes longer)</span>
           </span>
           </Checkbox>
         </div>
