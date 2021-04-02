@@ -14,6 +14,7 @@ import defaultImgSrc from '../assets/test.jpg';
 import Button from '../../../../components/shared/Button';
 import FileSelector from './FileSelector';
 import Checkbox from '../../../../components/shared/Checkbox';
+import Progress from '../../../../components/shared/Progress';
 
 type ImageResizerProps = {
   withSeam?: boolean,
@@ -33,6 +34,8 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const [imgSize, setImgSize] = useState<ImageSize | null>(null);
   const [seams, setSeams] = useState<Seam[] | null>(null);
   const [isResizing, setIsResizing] = useState<boolean>(false);
+  const [progress, setProgress] = useState<number>(0);
+  const [resizeToWidth, setResizeToWidth] = useState<number>(0);
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -46,6 +49,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     setSeams(null);
     setImgSize(null);
     setEnergyMap(null);
+    setProgress(0);
   };
 
   const onFileSelect = (files: FileList | null): void => {
@@ -78,6 +82,8 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
       img,
       energyMap: nrgMap,
       size: { w, h },
+      step,
+      steps,
     } = args;
 
     const canvas: HTMLCanvasElement | null = canvasRef.current;
@@ -98,6 +104,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     setEnergyMap(nrgMap);
     setSeams([seam]);
     setImgSize({ w, h });
+    setProgress(step / steps);
   };
 
   const onResize = (): void => {
@@ -130,6 +137,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
     // Making a square image.
     const toWidth = Math.min(w, h);
+    setResizeToWidth(toWidth);
     resizeImageWidth({ img, toWidth, onIteration }).then(() => {
       onFinish();
     });
@@ -172,9 +180,9 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   ) : null;
 
   const resizerControls = (
-    <div className="mb-3 flex flex-row justify-start items-center">
+    <div className="flex flex-col sm:flex-row justify-start items-start">
 
-      <div className="mr-2">
+      <div className="mr-2 mb-3">
         <FileSelector
           onSelect={onFileSelect}
           disabled={isResizing}
@@ -184,7 +192,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         </FileSelector>
       </div>
 
-      <div className="mr-4">
+      <div className="mr-4 mb-3">
         <Button
           onClick={onResize}
           disabled={isResizing}
@@ -194,10 +202,10 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         </Button>
       </div>
 
-      <div>
+      <div className="mb-3">
         <Checkbox disabled={isResizing} onChange={onUseOriginalSizeChange}>
           <span className="text-xs">
-            Preserve original size
+            Preserve original size <span className="text-gray-400">(takes longer)</span>
           </span>
         </Checkbox>
       </div>
@@ -205,9 +213,16 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     </div>
   );
 
+  const progressBar = (
+    <div className="mb-3">
+      <Progress progress={progress} />
+    </div>
+  );
+
   return (
     <>
       {resizerControls}
+      {progressBar}
       {workingImage}
       {resultImage}
       {debugEnergyMap}

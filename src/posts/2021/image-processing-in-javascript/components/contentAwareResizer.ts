@@ -23,6 +23,8 @@ export type OnIterationArgs = {
   img: ImageData,
   size: ImageSize,
   energyMap: EnergyMap,
+  step: number,
+  steps: number,
 };
 
 const matrix = <T>(w: number, h: number, filler: T): T[][] => {
@@ -195,8 +197,14 @@ export const resizeImageWidth = async (args: ResizeImageWidthArgs): Promise<void
     deleteSeam(img, seam, size);
 
     if (onIteration) {
-      // eslint-disable-next-line object-curly-newline
-      await onIteration({ energyMap, seam, img, size });
+      await onIteration({
+        energyMap,
+        seam,
+        img,
+        size,
+        step: i,
+        steps: pxToRemove,
+      });
     }
 
     size.w -= 1;
