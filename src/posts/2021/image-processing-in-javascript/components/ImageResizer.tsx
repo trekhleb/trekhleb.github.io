@@ -199,7 +199,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   const originalImage = (
     <div>
-      <div>Original image {originalImageSizeText}</div>
+      <div><b>Original image</b> {originalImageSizeText}</div>
       <img src={imageSrc} alt="Original" ref={imgRef} style={{ margin: 0 }} />
     </div>
   );
@@ -212,7 +212,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   const workingImage = (
     <div className={`mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
-      <div>Resized image {workingImageSizeText}</div>
+      <div><b>Resized image</b> {workingImageSizeText}</div>
       <div className="overflow-scroll">
         <canvas ref={canvasRef} />
         {seamsCanvas}
@@ -228,14 +228,14 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   const resultImage = workingImgSize && resizedImgSrc ? (
     <div className="mb-6">
-      <div>Resized image {resultImageSizeText}</div>
+      <div><b>Resized image</b> {resultImageSizeText}</div>
       <img src={resizedImgSrc} width={workingImgSize.w} height={workingImgSize.h} alt="Resized" style={{ margin: 0 }} />
     </div>
   ) : null;
 
   const debugEnergyMap = withEnergyMap && workingImgSize ? (
     <div className="mb-6">
-      <div>Energy map</div>
+      <div><b>Energy map</b></div>
       <EnergyMap energyMap={energyMap} width={workingImgSize.w} height={workingImgSize.h} />
       {seamsCanvas}
     </div>
