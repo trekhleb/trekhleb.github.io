@@ -17,7 +17,7 @@ import Checkbox from '../../../../components/shared/Checkbox';
 import Progress from '../../../../components/shared/Progress';
 import Input from '../../../../components/shared/Input';
 
-const defaultScale = 70;
+const defaultScale = 60;
 const minScale = 1;
 const maxScale = 99;
 
