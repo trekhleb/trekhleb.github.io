@@ -21,6 +21,8 @@ const defaultScale = 70;
 const minScale = 1;
 const maxScale = 99;
 
+const maxWidthLimit = 1000;
+
 type ImageResizerProps = {
   withSeam?: boolean,
   withEnergyMap?: boolean,
@@ -132,8 +134,14 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     onReset();
     setIsResizing(true);
 
-    const w = useNaturalSize ? srcImg.naturalWidth : srcImg.width;
-    const h = useNaturalSize ? srcImg.naturalHeight : srcImg.height;
+    let w = useNaturalSize ? srcImg.naturalWidth : srcImg.width;
+    let h = useNaturalSize ? srcImg.naturalHeight : srcImg.height;
+
+    if (w > maxWidthLimit) {
+      const ratio = w / h;
+      w = maxWidthLimit;
+      h = Math.floor(w / ratio);
+    }
 
     canvas.width = w;
     canvas.height = h;
@@ -163,8 +171,8 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         return;
       }
       setOriginalImgSize({
-        w: imgRef.current.width,
-        h: imgRef.current.height,
+        w: imgRef.current.naturalWidth,
+        h: imgRef.current.naturalHeight,
       });
     });
   }, []);
@@ -195,10 +203,12 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   ) : null;
 
   const workingImage = (
-    <div className={`overflow-scroll mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
+    <div className={`mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
       <div>Resized image {workingImageSizeText}</div>
-      <canvas ref={canvasRef} />
-      {seamsCanvas}
+      <div className="overflow-scroll">
+        <canvas ref={canvasRef} />
+        {seamsCanvas}
+      </div>
     </div>
   );
 
@@ -250,7 +260,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
       <div className="flex flex-col sm:flex-row">
         <div className="mb-2 mr-6 flex flex-row items-center">
-          <div className="text-xs mr-1">Resize to width</div>
+          <div className="text-xs mr-1">Resize to width of</div>
           <Input
             onChange={onSizeChange}
             disabled={isResizing}
