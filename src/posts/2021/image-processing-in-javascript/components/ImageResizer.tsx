@@ -182,7 +182,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const resizerControls = (
     <div className="flex flex-col sm:flex-row justify-start items-start">
 
-      <div className="mr-2 mb-3">
+      <div className="mr-2 mb-2">
         <FileSelector
           onSelect={onFileSelect}
           disabled={isResizing}
@@ -192,7 +192,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         </FileSelector>
       </div>
 
-      <div className="mr-4 mb-3">
+      <div className="mr-4 mb-2">
         <Button
           onClick={onResize}
           disabled={isResizing}
@@ -202,7 +202,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         </Button>
       </div>
 
-      <div className="mb-3">
+      <div className="mb-2">
         <Checkbox disabled={isResizing} onChange={onUseOriginalSizeChange}>
           <span className="text-xs">
             Preserve original size <span className="text-gray-400">(takes longer)</span>
