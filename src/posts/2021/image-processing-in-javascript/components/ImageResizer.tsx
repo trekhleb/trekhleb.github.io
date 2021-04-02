@@ -10,7 +10,7 @@ import {
 } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
-import defaultImgSrc from '../assets/test.jpg';
+import defaultImgSrc from '../assets/02-default-test-image.jpg';
 import Button from '../../../../components/shared/Button';
 import FileSelector from './FileSelector';
 import Checkbox from '../../../../components/shared/Checkbox';
