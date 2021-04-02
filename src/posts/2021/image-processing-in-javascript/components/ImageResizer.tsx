@@ -39,6 +39,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const [resizedImgSrc, setResizedImgSrc] = useState<string | null>(null);
   const [energyMap, setEnergyMap] = useState<EnergyMapType | null>(null);
   const [originalImgSize, setOriginalImgSize] = useState<ImageSize | null>(null);
+  const [originalImgViewSize, setOriginalImgViewSize] = useState<ImageSize | null>(null);
   const [workingImgSize, setWorkingImgSize] = useState<ImageSize | null>(null);
   const [seams, setSeams] = useState<Seam[] | null>(null);
   const [isResizing, setIsResizing] = useState<boolean>(false);
@@ -59,6 +60,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     setWorkingImgSize(null);
     setEnergyMap(null);
     setProgress(0);
+    setOriginalImgViewSize(null);
   };
 
   const onFileSelect = (files: FileList | null): void => {
@@ -146,6 +148,11 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     let h = useNaturalSize ? srcImg.naturalHeight : srcImg.height;
     const ratio = w / h;
 
+    setOriginalImgViewSize({
+      w: srcImg.width,
+      h: srcImg.height,
+    });
+
     if (w > maxWidthLimit) {
       w = maxWidthLimit;
       h = Math.floor(w / ratio);
@@ -204,6 +211,10 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     </div>
   );
 
+  const workingImageScrollableText = (
+    workingImgSize?.w && originalImgViewSize?.w && workingImgSize.w > originalImgViewSize.w
+  ) ? <span className="text-xs text-gray-400 ml-4">↔︎ scrollable</span> : null;
+
   const workingImageSizeText = workingImgSize ? (
     <sup className="text-xs text-gray-400">
       {`${workingImgSize.w} x ${workingImgSize.h} px`}
@@ -212,7 +223,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   const workingImage = (
     <div className={`mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
-      <div><b>Resized image</b> {workingImageSizeText}</div>
+      <div><b>Resized image</b> {workingImageSizeText} {workingImageScrollableText}</div>
       <div className="overflow-scroll">
         <canvas ref={canvasRef} />
         {seamsCanvas}
