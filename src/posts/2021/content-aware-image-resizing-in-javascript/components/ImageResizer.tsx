@@ -10,17 +10,17 @@ import {
 } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
-import defaultImgSrc from '../assets/02-default-test-image.jpg';
+import defaultImgSrc from '../assets/02.jpg';
 import Button from '../../../../components/shared/Button';
 import FileSelector from './FileSelector';
 import Checkbox from '../../../../components/shared/Checkbox';
 import Progress from '../../../../components/shared/Progress';
 import Input from '../../../../components/shared/Input';
 
-const defaultScale = 60;
+const defaultScale = 50;
 const minScale = 1;
 const maxScale = 99;
-const maxWidthLimit = 1000;
+const maxWidthLimit = 1500;
 
 type ImageResizerProps = {
   withSeam?: boolean,
@@ -32,6 +32,11 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     withSeam = false,
     withEnergyMap = false,
   } = props;
+
+  const [imgAuthor, setImgAuthor] = useState<string | null>('ian dooley');
+  const [imgAuthorURL, setImgAuthorURL] = useState<string | null>(
+    'https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'
+  );
 
   const [useNaturalSize, setUseNaturalSize] = useState<boolean>(false);
   const [imageSrc, setImageSrc] = useState<string>(defaultImgSrc);
@@ -66,6 +71,8 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     if (!files || !files.length) {
       return;
     }
+    setImgAuthor(null);
+    setImgAuthorURL(null);
     onReset();
     const imageURL = URL.createObjectURL(files[0]);
     setImageSrc(imageURL);
@@ -191,6 +198,22 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     });
   }, []);
 
+  const imgAuthorLink = imgAuthor && imgAuthorURL ? (
+    <div className="text-xs text-gray-400 mt-2 flex justify-center items-center font-light">
+      <div className="mr-1">
+        Photo by
+      </div>
+      <a
+        href={imgAuthorURL}
+        style={{ color: '#aaa', fontWeight: 300 }}
+        target="_blank"
+        rel="noreferrer"
+      >
+        {imgAuthor}
+      </a>
+    </div>
+  ) : null;
+
   const seamsCanvas = withSeam && workingImgSize && seams ? (
     <div style={{ marginTop: `-${workingImgSize.h}px` }}>
       <Seams seams={seams} width={workingImgSize.w} height={workingImgSize.h} />
@@ -207,6 +230,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     <div>
       <div><b>Original image</b> {originalImageSizeText}</div>
       <img src={imageSrc} alt="Original" ref={imgRef} style={{ margin: 0 }} />
+      {imgAuthorLink}
     </div>
   );
 
