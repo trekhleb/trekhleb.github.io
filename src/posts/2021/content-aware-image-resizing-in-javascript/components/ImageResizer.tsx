@@ -20,7 +20,6 @@ import Input from '../../../../components/shared/Input';
 const defaultScale = 60;
 const minScale = 1;
 const maxScale = 99;
-
 const maxWidthLimit = 1000;
 
 type ImageResizerProps = {
@@ -295,7 +294,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         <div className="mb-2">
           <Checkbox disabled={isResizing} onChange={onUseOriginalSizeChange}>
           <span className="text-xs">
-            Preserve quality <span className="text-gray-400">(takes longer)</span>
+            Higher quality <span className="text-gray-400">(takes longer)</span>
           </span>
           </Checkbox>
         </div>
