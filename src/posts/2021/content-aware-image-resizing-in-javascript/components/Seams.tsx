@@ -35,7 +35,7 @@ const Seams = (props: SeamProps): React.ReactElement => {
     seamsCanvas.width = width;
     seamsCanvas.height = height;
 
-    seamsCtx.fillStyle = 'rgba(255, 0, 0, 1)';
+    seamsCtx.fillStyle = 'rgba(255, 255, 255, 1)';
     seams[0].forEach(({ x, y }: Coordinate) => {
       seamsCtx.fillRect(x, y, 1, 1);
     });
