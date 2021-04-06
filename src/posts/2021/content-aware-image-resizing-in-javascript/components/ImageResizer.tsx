@@ -5,8 +5,8 @@ import {
   EnergyMap as EnergyMapType,
   Seam,
   OnIterationArgs,
-  resizeImageWidth,
   ImageSize,
+  resizeImage,
 } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
@@ -16,11 +16,14 @@ import FileSelector from './FileSelector';
 import Checkbox from '../../../../components/shared/Checkbox';
 import Progress from '../../../../components/shared/Progress';
 import Input from '../../../../components/shared/Input';
+import FadeIn from '../../../../components/shared/FadeIn';
 
-const defaultScale = 50;
+const defaultWidthScale = 50;
+const defaultHeightScale = 70;
 const minScale = 1;
-const maxScale = 99;
+const maxScale = 100;
 const maxWidthLimit = 1500;
+const maxHeightLimit = 1500;
 
 type ImageResizerProps = {
   withSeam?: boolean,
@@ -48,8 +51,10 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const [seams, setSeams] = useState<Seam[] | null>(null);
   const [isResizing, setIsResizing] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
-  const [toWidthScale, setToWidthScale] = useState<number>(defaultScale);
-  const [toWidthScaleString, setToWidthScaleString] = useState<string | null | undefined>(`${defaultScale}`);
+  const [toWidthScale, setToWidthScale] = useState<number>(defaultWidthScale);
+  const [toWidthScaleString, setToWidthScaleString] = useState<string | null | undefined>(`${defaultWidthScale}`);
+  const [toHeightScale, setToHeightScale] = useState<number>(defaultHeightScale);
+  const [toHeightScaleString, setToHeightScaleString] = useState<string | null | undefined>(`${defaultHeightScale}`);
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -78,17 +83,26 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     setImageSrc(imageURL);
   };
 
-  const onSizeChange = (size: string | null | undefined): void => {
+  const onWidthSizeChange = (size: string | null | undefined): void => {
     const radix = 10;
     const scale = Math.max(Math.min(parseInt(size || '0', radix), maxScale), minScale);
-
     if (size) {
       setToWidthScaleString(`${scale}`);
     } else {
       setToWidthScaleString(size);
     }
-
     setToWidthScale(scale);
+  };
+
+  const onHeightSizeChange = (size: string | null | undefined): void => {
+    const radix = 10;
+    const scale = Math.max(Math.min(parseInt(size || '0', radix), maxScale), minScale);
+    if (size) {
+      setToHeightScaleString(`${scale}`);
+    } else {
+      setToHeightScaleString(size);
+    }
+    setToHeightScale(scale);
   };
 
   const onFinish = (): void => {
@@ -164,6 +178,11 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
       h = Math.floor(w / ratio);
     }
 
+    if (h > maxHeightLimit) {
+      h = maxHeightLimit;
+      w = Math.floor(h * ratio);
+    }
+
     canvas.width = w;
     canvas.height = h;
 
@@ -177,7 +196,9 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     const img: ImageData = ctx.getImageData(0, 0, w, h);
 
     const toWidth = Math.floor((toWidthScale * w) / 100);
-    resizeImageWidth({ img, toWidth, onIteration }).then(() => {
+    const toHeight = Math.floor((toHeightScale * h) / 100);
+
+    resizeImage({ img, toWidth, toHeight, onIteration }).then(() => {
       onFinish();
     });
   };
@@ -227,11 +248,11 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   ) : null;
 
   const originalImage = (
-    <div>
+    <FadeIn>
       <div><b>Original image</b> {originalImageSizeText}</div>
       <img src={imageSrc} alt="Original" ref={imgRef} style={{ margin: 0 }} />
       {imgAuthorLink}
-    </div>
+    </FadeIn>
   );
 
   const workingImageScrollableText = (
@@ -245,13 +266,13 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   ) : null;
 
   const workingImage = (
-    <div className={`mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
+    <FadeIn className={`mb-6 ${resizedImgSrc || !energyMap ? 'hidden' : ''}`}>
       <div><b>Resized image</b> {workingImageSizeText} {workingImageScrollableText}</div>
       <div className="overflow-scroll">
         <canvas ref={canvasRef} />
         {seamsCanvas}
       </div>
-    </div>
+    </FadeIn>
   );
 
   const resultImageSizeText = workingImgSize ? (
@@ -261,18 +282,18 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   ) : null;
 
   const resultImage = workingImgSize && resizedImgSrc ? (
-    <div className="mb-6">
+    <FadeIn className="mb-6">
       <div><b>Resized image</b> {resultImageSizeText}</div>
       <img src={resizedImgSrc} width={workingImgSize.w} height={workingImgSize.h} alt="Resized" style={{ margin: 0 }} />
-    </div>
+    </FadeIn>
   ) : null;
 
   const debugEnergyMap = withEnergyMap && workingImgSize ? (
-    <div className="mb-6">
+    <FadeIn className="mb-6">
       <div><b>Energy map</b></div>
       <EnergyMap energyMap={energyMap} width={workingImgSize.w} height={workingImgSize.h} />
       {seamsCanvas}
-    </div>
+    </FadeIn>
   ) : null;
 
   const resizerControls = (
@@ -302,17 +323,29 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
       <div className="flex flex-col sm:flex-row">
         <div className="mb-2 mr-6 flex flex-row items-center">
-          <div className="text-xs mr-1">Resize to width of</div>
+          <div className="text-xs mr-1">To width</div>
           <Input
-            onChange={onSizeChange}
+            onChange={onWidthSizeChange}
             disabled={isResizing}
             type="number"
             min={minScale}
             max={maxScale}
-            className="w-14 mr-1"
+            className="w-14 text-center"
             value={toWidthScaleString}
           />
-          <div className="text-xs">%</div>
+          <div className="text-xs ml-1 mr-4">%</div>
+
+          <div className="text-xs mr-1">To height</div>
+          <Input
+            onChange={onHeightSizeChange}
+            disabled={isResizing}
+            type="number"
+            min={minScale}
+            max={maxScale}
+            className="w-14 text-center"
+            value={toHeightScaleString}
+          />
+          <div className="text-xs ml-1">%</div>
         </div>
 
         <div className="mb-2">
