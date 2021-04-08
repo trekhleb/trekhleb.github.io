@@ -29,6 +29,7 @@ const Checkbox = (props: CheckboxProps): React.ReactElement => {
     onChange(checkboxRef.current.checked);
   };
 
+  /* eslint-disable jsx-a11y/label-has-associated-control */
   return (
     <label className={classes}>
       <input

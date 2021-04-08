@@ -45,7 +45,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
   const [imgAuthor, setImgAuthor] = useState<string | null>('ian dooley');
   const [imgAuthorURL, setImgAuthorURL] = useState<string | null>(
-    'https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'
+    'https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
   );
 
   const [useNaturalSize, setUseNaturalSize] = useState<boolean>(false);
@@ -61,9 +61,9 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const [maskImgData, setMaskImgData] = useState<ImageData | null>(null);
   const [maskRevision, setMaskRevision] = useState<number>(0);
   const [toWidthScale, setToWidthScale] = useState<number>(defaultWidthScale);
-  const [toWidthScaleString, setToWidthScaleString] = useState<string | null | undefined>(`${defaultWidthScale}`);
+  const [toWidthScaleString, setToWidthScaleString] = useState<string | undefined>(`${defaultWidthScale}`);
   const [toHeightScale, setToHeightScale] = useState<number>(defaultHeightScale);
-  const [toHeightScaleString, setToHeightScaleString] = useState<string | null | undefined>(`${defaultHeightScale}`);
+  const [toHeightScaleString, setToHeightScaleString] = useState<string | undefined>(`${defaultHeightScale}`);
 
   const imgRef = useRef<HTMLImageElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -92,7 +92,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     setImageSrc(imageURL);
   };
 
-  const onWidthSizeChange = (size: string | null | undefined): void => {
+  const onWidthSizeChange = (size: string | undefined): void => {
     const radix = 10;
     const scale = Math.max(Math.min(parseInt(size || '0', radix), maxScale), minScale);
     if (size) {
@@ -103,7 +103,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     setToWidthScale(scale);
   };
 
-  const onHeightSizeChange = (size: string | null | undefined): void => {
+  const onHeightSizeChange = (size: string | undefined): void => {
     const radix = 10;
     const scale = Math.max(Math.min(parseInt(size || '0', radix), maxScale), minScale);
     if (size) {
@@ -154,10 +154,12 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
     for (let y = 0; y < img.height; y += 1) {
       for (let x = 0; x < img.width; x += 1) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [mR, mG, mB, mA] = getPixel(
           maskImgData,
           imgXYtoMaskXY({ x, y }),
         );
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const [iR, iG, iB, iA] = getPixel(img, { x, y });
         if (mA) {
           setPixel(img, { x, y }, [iR, iG, iB, ALPHA_DELETE_THRESHOLD]);

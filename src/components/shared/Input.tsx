@@ -4,7 +4,7 @@ export type InputProps = {
   onChange?: (value: string) => void,
   className?: string,
   disabled?: boolean,
-  value?: any,
+  value?: string | ReadonlyArray<string> | number,
 };
 
 const Input = (props: InputProps): React.ReactElement => {

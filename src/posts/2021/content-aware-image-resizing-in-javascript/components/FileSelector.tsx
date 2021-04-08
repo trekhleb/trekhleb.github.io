@@ -34,6 +34,7 @@ const FileSelector = (props: FileSelectorProps): React.ReactElement => {
 
   const disabledClasses = disabled ? 'cursor-not-allowed' : '';
 
+  /* eslint-disable jsx-a11y/label-has-associated-control */
   return (
     <Button style={{ padding: 0 }} disabled={disabled}>
       <label className={`cursor-pointer py-2 px-3 flex uppercase font-medium text-xs tracking-wider ${disabledClasses}`}>
