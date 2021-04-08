@@ -151,12 +151,13 @@ const deleteSeam = (img: ImageData, seam: Seam, { w }: ImageSize): void => {
 type ResizeAxisArgs = {
   img: ImageData,
   toSize: number,
-  size: ImageSize,
   onIteration?: (args: OnIterationArgs) => Promise<void>,
 };
 
 const resizeImageWidth = async (args: ResizeAxisArgs): Promise<void> => {
-  const { img, toSize, onIteration, size } = args;
+  const { img, toSize, onIteration } = args;
+
+  const size: ImageSize = { w: img.width, h: img.height };
 
   const pxToRemove = img.width - toSize;
   if (pxToRemove < 0) {
