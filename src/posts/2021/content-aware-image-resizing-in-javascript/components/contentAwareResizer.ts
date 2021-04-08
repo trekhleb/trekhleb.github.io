@@ -1,4 +1,4 @@
-/* eslint-disable no-await-in-loop, no-param-reassign */
+/* eslint-disable no-await-in-loop, no-param-reassign, object-curly-newline */
 import {
   Color,
   Coordinate,
@@ -27,6 +27,22 @@ export type OnIterationArgs = {
   steps: number,
 };
 
+// If pixel's alpha is lower than the threshold this pixel is going to have
+// the lowest energy and thus is a candidate for deletion.
+export const ALPHA_DELETE_THRESHOLD = 244;
+
+export const MAX_WIDTH_LIMIT = 1500;
+export const MAX_HEIGHT_LIMIT = 1500;
+
+const getPixelDeleteEnergy = (): number => {
+  const numColors = 3;
+  const maxColorDistance = 255;
+  const numNeighbors = 2;
+  const multiplier = 2;
+  const maxSeamSize = Math.max(MAX_WIDTH_LIMIT, MAX_HEIGHT_LIMIT);
+  return -1 * multiplier * numNeighbors * maxSeamSize * numColors * (maxColorDistance ** 2);
+};
+
 const matrix = <T>(w: number, h: number, filler: T): T[][] => {
   return new Array(h)
     .fill(null)
@@ -36,7 +52,7 @@ const matrix = <T>(w: number, h: number, filler: T): T[][] => {
 };
 
 const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null): number => {
-  const [mR, mG, mB] = middle;
+  const [mR, mG, mB, mA] = middle;
 
   let lEnergy = 0;
   if (left) {
@@ -50,7 +66,7 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
     rEnergy = (rR - mR) ** 2 + (rG - mG) ** 2 + (rB - mB) ** 2;
   }
 
-  return lEnergy + rEnergy;
+  return mA > ALPHA_DELETE_THRESHOLD ? (lEnergy + rEnergy) : getPixelDeleteEnergy();
 };
 
 const getPixelEnergyH = (img: ImageData, { w }: ImageSize, { x, y }: Coordinate): number => {

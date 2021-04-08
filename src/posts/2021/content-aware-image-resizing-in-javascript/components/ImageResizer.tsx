@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ImShrink2 } from '@react-icons/all-files/im/ImShrink2';
+import { AiOutlineClear } from '@react-icons/all-files/ai/AiOutlineClear';
+import { FaRegHandPointer } from '@react-icons/all-files/fa/FaRegHandPointer';
 
 import {
   EnergyMap as EnergyMapType,
@@ -7,23 +9,28 @@ import {
   OnIterationArgs,
   ImageSize,
   resizeImage,
+  ALPHA_DELETE_THRESHOLD,
+  MAX_WIDTH_LIMIT,
+  MAX_HEIGHT_LIMIT,
 } from './contentAwareResizer';
 import EnergyMap from './EnergyMap';
 import Seams from './Seams';
 import defaultImgSrc from '../assets/02.jpg';
-import Button from '../../../../components/shared/Button';
+import Button, { BUTTON_KIND_SECONDARY } from '../../../../components/shared/Button';
 import FileSelector from './FileSelector';
 import Checkbox from '../../../../components/shared/Checkbox';
 import Progress from '../../../../components/shared/Progress';
 import Input from '../../../../components/shared/Input';
 import FadeIn from '../../../../components/shared/FadeIn';
+import Mask from './Mask';
+import { Coordinate, getPixel, setPixel } from './imageUtils';
 
 const defaultWidthScale = 50;
 const defaultHeightScale = 70;
 const minScale = 1;
 const maxScale = 100;
-const maxWidthLimit = 1500;
-const maxHeightLimit = 1500;
+const maxWidthLimit = MAX_WIDTH_LIMIT;
+const maxHeightLimit = MAX_HEIGHT_LIMIT;
 
 type ImageResizerProps = {
   withSeam?: boolean,
@@ -51,6 +58,8 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const [seams, setSeams] = useState<Seam[] | null>(null);
   const [isResizing, setIsResizing] = useState<boolean>(false);
   const [progress, setProgress] = useState<number>(0);
+  const [maskImgData, setMaskImgData] = useState<ImageData | null>(null);
+  const [maskRevision, setMaskRevision] = useState<number>(0);
   const [toWidthScale, setToWidthScale] = useState<number>(defaultWidthScale);
   const [toWidthScaleString, setToWidthScaleString] = useState<string | null | undefined>(`${defaultWidthScale}`);
   const [toHeightScale, setToHeightScale] = useState<number>(defaultHeightScale);
@@ -118,6 +127,43 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
       setResizedImgSrc(imgUrl);
       setIsResizing(false);
     }, imageType);
+  };
+
+  const onClearMask = (): void => {
+    setMaskRevision(maskRevision + 1);
+  };
+
+  const onMaskDrawEnd = (imgData: ImageData): void => {
+    setMaskImgData(imgData);
+  };
+
+  const applyMask = (img: ImageData): void => {
+    if (!maskImgData) {
+      return;
+    }
+
+    const wRatio = maskImgData.width / img.width;
+    const hRatio = maskImgData.height / img.height;
+
+    const imgXYtoMaskXY = ({ x: imgX, y: imgY }: Coordinate): Coordinate => {
+      return {
+        x: Math.floor(imgX * wRatio),
+        y: Math.floor(imgY * hRatio),
+      };
+    };
+
+    for (let y = 0; y < img.height; y += 1) {
+      for (let x = 0; x < img.width; x += 1) {
+        const [mR, mG, mB, mA] = getPixel(
+          maskImgData,
+          imgXYtoMaskXY({ x, y }),
+        );
+        const [iR, iG, iB, iA] = getPixel(img, { x, y });
+        if (mA) {
+          setPixel(img, { x, y }, [iR, iG, iB, ALPHA_DELETE_THRESHOLD]);
+        }
+      }
+    }
   };
 
   const onIteration = async (args: OnIterationArgs): Promise<void> => {
@@ -195,10 +241,17 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
     const img: ImageData = ctx.getImageData(0, 0, w, h);
 
+    applyMask(img);
+
     const toWidth = Math.floor((toWidthScale * w) / 100);
     const toHeight = Math.floor((toHeightScale * h) / 100);
 
-    resizeImage({ img, toWidth, toHeight, onIteration }).then(() => {
+    resizeImage({
+      img,
+      toWidth,
+      toHeight,
+      onIteration,
+    }).then(() => {
       onFinish();
     });
   };
@@ -215,6 +268,10 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
       setOriginalImgSize({
         w: imgRef.current.naturalWidth,
         h: imgRef.current.naturalHeight,
+      });
+      setOriginalImgViewSize({
+        w: imgRef.current.width,
+        h: imgRef.current.height,
       });
     });
   }, []);
@@ -242,15 +299,60 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   ) : null;
 
   const originalImageSizeText = originalImgSize ? (
-    <sup className="text-xs text-gray-400">
+    <sup className="text-xs text-gray-400 whitespace-nowrap">
       {`${originalImgSize.w} x ${originalImgSize.h} px`}
     </sup>
   ) : null;
 
+  const maskControls = (
+    <div>
+      <Button
+        onClick={onClearMask}
+        disabled={isResizing || !maskImgData}
+        kind={BUTTON_KIND_SECONDARY}
+        title="Clear mask"
+      >
+        <AiOutlineClear size={14} />
+      </Button>
+    </div>
+  );
+
+  const mask = originalImgViewSize ? (
+    <div className="flex flex-col" style={{ marginTop: `-${originalImgViewSize.h}px` }}>
+      <Mask
+        width={originalImgViewSize.w}
+        height={originalImgViewSize.h}
+        disabled={isResizing}
+        onDrawEnd={onMaskDrawEnd}
+        revision={maskRevision}
+      />
+      <div className="flex flex-row justify-end" style={{ marginTop: '-36px', zIndex: 100 }}>
+        <div className="mr-1">
+          {maskControls}
+        </div>
+      </div>
+    </div>
+  ) : null;
+
   const originalImage = (
     <FadeIn>
-      <div><b>Original image</b> {originalImageSizeText}</div>
+      <div className="flex flex-row justify-center items-center mb-1 sm:mb-0">
+        <div className="flex-1 sm:flex sm:flex-row sm:items-center">
+          <div className="sm:flex-1">
+            <b>Original image</b> {originalImageSizeText}
+          </div>
+          <div className="text-xs text-gray-400 flex flex-row items-center justify-self-end">
+            <div className="mr-1">
+              <FaRegHandPointer size={12} />
+            </div>
+            <div>
+              Mask to remove
+            </div>
+          </div>
+        </div>
+      </div>
       <img src={imageSrc} alt="Original" ref={imgRef} style={{ margin: 0 }} />
+      {mask}
       {imgAuthorLink}
     </FadeIn>
   );
@@ -260,7 +362,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   ) ? <span className="text-xs text-gray-400 ml-4">↔︎ scrollable</span> : null;
 
   const workingImageSizeText = workingImgSize ? (
-    <sup className="text-xs text-gray-400">
+    <sup className="text-xs text-gray-400 whitespace-nowrap">
       {`${workingImgSize.w} x ${workingImgSize.h} px`}
     </sup>
   ) : null;
@@ -276,7 +378,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   );
 
   const resultImageSizeText = workingImgSize ? (
-    <sup className="text-xs text-gray-400">
+    <sup className="text-xs text-gray-400 whitespace-nowrap">
       {`${workingImgSize.w} x ${workingImgSize.h} px`}
     </sup>
   ) : null;
@@ -323,10 +425,11 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
       <div className="flex flex-col sm:flex-row">
         <div className="mb-2 mr-6 flex flex-row items-center">
-          <div className="text-xs mr-1">To width</div>
+          <div className="text-xs mr-1">Width</div>
           <Input
             onChange={onWidthSizeChange}
             disabled={isResizing}
+            // @ts-ignore
             type="number"
             min={minScale}
             max={maxScale}
@@ -335,10 +438,11 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
           />
           <div className="text-xs ml-1 mr-4">%</div>
 
-          <div className="text-xs mr-1">To height</div>
+          <div className="text-xs mr-1">Height</div>
           <Input
             onChange={onHeightSizeChange}
             disabled={isResizing}
+            // @ts-ignore
             type="number"
             min={minScale}
             max={maxScale}
@@ -350,9 +454,9 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
         <div className="mb-2">
           <Checkbox disabled={isResizing} onChange={onUseOriginalSizeChange}>
-          <span className="text-xs">
-            Higher quality <span className="text-gray-400">(takes longer)</span>
-          </span>
+            <span className="text-xs">
+              Higher quality <span className="text-gray-400">(takes longer)</span>
+            </span>
           </Checkbox>
         </div>
       </div>
