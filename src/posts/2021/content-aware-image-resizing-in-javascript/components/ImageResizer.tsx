@@ -276,6 +276,22 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     });
   }, []);
 
+  useEffect(() => {
+    function updateSize(): void {
+      if (!imgRef.current) {
+        return;
+      }
+      setOriginalImgViewSize({
+        w: imgRef.current.width,
+        h: imgRef.current.height,
+      });
+    }
+    window.addEventListener('resize', updateSize);
+    return (): void => {
+      window.removeEventListener('resize', updateSize);
+    };
+  }, []);
+
   const imgAuthorLink = imgAuthor && imgAuthorURL ? (
     <div className="text-xs text-gray-400 mt-2 flex justify-center items-center font-light">
       <div className="mr-1">
