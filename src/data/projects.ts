@@ -2,6 +2,31 @@ import { Project } from '../types/Project';
 
 export const projects: Project[] = [
   {
+    name: '🌅 JS Image Carver',
+    srcURL: { url: 'https://github.com/trekhleb/js-image-carver' },
+    demoURL: { url: 'https://trekhleb.dev/js-image-carver' },
+    cover: { srcPath: 'projects/js-image-carver/cover.png' },
+    startDate: '2021-04-01',
+    endDate: '2021-04-30',
+    summary: [
+      'Content-aware image resizer based on Seam Carving algorithm. Also performs objects removal',
+    ],
+    description: [
+      'Content-aware image resizer based on Seam Carving algorithm',
+    ],
+    tags: [
+      { name: 'JavaScript' },
+      { name: 'TypeScript' },
+      { name: 'Algorithms' },
+      { name: 'Seam Carving' },
+      { name: 'Image Processing' },
+    ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'js-image-carver',
+    },
+  },
+  {
     name: '📖 👆🏻 Printed Links Detector',
     srcURL: { url: 'https://github.com/trekhleb/links-detector' },
     demoURL: { url: 'https://trekhleb.dev/links-detector/' },
@@ -9,10 +34,10 @@ export const projects: Project[] = [
     startDate: '2020-10-01',
     endDate: '2020-12-01',
     summary: [
-      'Links Detector makes printed links clickable via your smartphone camera. No need to type a link in, just scan and click on it.',
+      'Links Detector makes printed links clickable via your smartphone camera. No need to type a link in, just scan and click on it',
     ],
     description: [
-      'Links Detector makes printed links clickable via your smartphone camera. No need to type a link in, just scan and click on it.',
+      'Links Detector makes printed links clickable via your smartphone camera. No need to type a link in, just scan and click on it',
     ],
     tags: [
       { name: 'ML' },
