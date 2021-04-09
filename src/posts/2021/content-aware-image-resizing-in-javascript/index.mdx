@@ -1,7 +1,7 @@
 ---
 title: "Content-aware image resizing in JavaScript"
 
-summary: "JavaScript implementation of so-called Seam Carving algorithm for the content aware image resizing. Dynamic programming approach is applied to implement this simple and elegant algorithm."
+summary: "JavaScript implementation of so-called Seam Carving algorithm for the content-aware image resizing. Dynamic programming approach is applied to optimize the resizing time."
 
 cover: assets/01-cover-02.jpg
 
@@ -12,7 +12,7 @@ date: 2021-03-30
 import ImageResizer from './components/ImageResizer';
 import InteractivePostArea from '../../../components/shared/InteractivePostArea';
 
-![Content-aware image resizing in JavaScript](./assets/01-cover-02.png)
+![Content-aware image resizing in JavaScript](assets/01-cover-02.png)
 
 <div className="text-xs text-gray-400 mt-2 flex justify-center items-center font-light">
   <div className="mr-1">
@@ -29,6 +29,28 @@ import InteractivePostArea from '../../../components/shared/InteractivePostArea'
 </div>
 
 ## TL;DR
+
+### Content-aware image resizing
+
+*Content-aware image resizing* might be applied when it comes to changing the image proportions (i.e. reducing the width while keeping the height) and when losing some parts of the image is not desirable. Doing the straightforward image scaling in this case would distort the objects in it. To preserve the objects proportions while changing the image proportions we may use the [Seam Carving algorithm](https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf) by Shai Avidan and Ariel Shamir.
+
+![Content-aware image resizing](assets/01-resizing-options.png)
+
+The idea behind the Seam Carving algorithm is to find the *seam* (continuous sequence of pixels) with the lowest contribution to the image content and then *carve* (remove) it. This process repeats over and over again until we get the required image width or height. In the example below you may see that the hot air balloon pixels contributes more to the content of the image than the sky pixels. Thus, the sky pixels are being removed first.
+
+![JS IMAGE CARVER DEMO](assets/10-demo-01.gif)
+
+Finding the seam with the lowest energy is pretty computationally expensive task (especially for large images). To make the seam search faster the *dynamic programming* approach might be applied (we will go through the implementation details below).
+
+### Objects removal
+
+The importance of each pixel (its so-called energy) is being calculated based on its color (`R`, `G`, `B`) difference between two neighbor pixels. Now, if we set the pixel energy to some really low level artificially (i.e. by drawing a mask on top of them), the Seam Carving algorithm would perform an **object removal** for us for free.
+
+![JS IMAGE CARVER OBJECT REMOVAL DEMO](assets/10-demo-02.gif)
+
+### JS Image Carver demo
+
+You may [launch the JS IMAGE CARVER](https://trekhleb.dev/js-image-carver) as a standalone web-application and play around with the resizing of your custom images. Or you may just try its embed version below right away!
 
 <InteractivePostArea title="Content Aware Image Resizer">
   <ImageResizer withSeam />
