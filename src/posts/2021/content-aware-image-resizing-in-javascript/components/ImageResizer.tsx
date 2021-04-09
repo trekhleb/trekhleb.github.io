@@ -35,12 +35,14 @@ const maxHeightLimit = MAX_HEIGHT_LIMIT;
 type ImageResizerProps = {
   withSeam?: boolean,
   withEnergyMap?: boolean,
+  withCredentials?: boolean,
 };
 
 const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
   const {
     withSeam = false,
     withEnergyMap = false,
+    withCredentials = false,
   } = props;
 
   const [imgAuthor, setImgAuthor] = useState<string | null>('Ian Dooley');
@@ -294,7 +296,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     };
   }, []);
 
-  const imgAuthorLink = imgAuthor && imgAuthorURL ? (
+  const imgAuthorLink = withCredentials && imgAuthor && imgAuthorURL ? (
     <div className="text-xs text-gray-400 mt-2 flex justify-center items-center font-light">
       <div className="mr-1">
         Photo by

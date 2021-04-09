@@ -150,16 +150,16 @@ const deleteSeam = (img: ImageData, seam: Seam, { w }: ImageSize): void => {
 
 type ResizeAxisArgs = {
   img: ImageData,
-  toSize: number,
+  toWidth: number,
   onIteration?: (args: OnIterationArgs) => Promise<void>,
 };
 
-const resizeImageWidth = async (args: ResizeAxisArgs): Promise<void> => {
-  const { img, toSize, onIteration } = args;
+export const resizeImageWidth = async (args: ResizeAxisArgs): Promise<void> => {
+  const { img, toWidth, onIteration } = args;
 
   const size: ImageSize = { w: img.width, h: img.height };
 
-  const pxToRemove = img.width - toSize;
+  const pxToRemove = img.width - toWidth;
   if (pxToRemove < 0) {
     throw new Error('Upsizing is not supported');
   }
