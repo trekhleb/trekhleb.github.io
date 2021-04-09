@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ImShrink2 } from '@react-icons/all-files/im/ImShrink2';
-import { AiOutlineClear } from '@react-icons/all-files/ai/AiOutlineClear';
 import { FaRegHandPointer } from '@react-icons/all-files/fa/FaRegHandPointer';
+import { MdLayersClear } from '@react-icons/all-files/md/MdLayersClear';
 
 import {
   EnergyMap as EnergyMapType,
@@ -43,7 +43,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
     withEnergyMap = false,
   } = props;
 
-  const [imgAuthor, setImgAuthor] = useState<string | null>('ian dooley');
+  const [imgAuthor, setImgAuthor] = useState<string | null>('Ian Dooley');
   const [imgAuthorURL, setImgAuthorURL] = useState<string | null>(
     'https://unsplash.com/@sadswim?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText',
   );
@@ -329,8 +329,10 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         disabled={isResizing || !maskImgData}
         kind={BUTTON_KIND_SECONDARY}
         title="Clear mask"
+        className="rounded-full"
+        style={{ padding: '8px 8px', border: 0, outline: 'none' }}
       >
-        <AiOutlineClear size={14} />
+        <MdLayersClear size={16} />
       </Button>
     </div>
   );
