@@ -30,9 +30,19 @@ import InteractivePostArea from '../../../components/shared/InteractivePostArea'
 
 ## TL;DR
 
-### Content-aware image resizing
+There are many great articles written about the *Seam Carving algorithm* already, but I couldn't resist a temptation to explore this elegant, powerful and *yet simple* algorithm on my own, and to write about my personal experience with it. Another point that drew my attention (as a creator of [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms) repo) was the fact that *Dynamic Programming (DP)* approach might be smoothly applied to solve it. And if you're like me and still on your "learning algorithms" journey, this algorithmic solution may enrich your personal DP arsenal.
 
-*Content-aware image resizing* might be applied when it comes to changing the image proportions (i.e. reducing the width while keeping the height) and when losing some parts of the image is not desirable. Doing the straightforward image scaling in this case would distort the objects in it. To preserve the objects proportions while changing the image proportions we may use the [Seam Carving algorithm](https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf) by Shai Avidan and Ariel Shamir.
+So, with this article I want to do three things:
+
+1. Provide you with an interactive **content-aware resizer** so that you could play around with resizing of your own images
+2. Explain the idea behind the **Seam Carving algorithm**
+3. Explain the **dynamic programming approach** that implements the algorithm
+
+### TL;DR: Content-aware image resizing
+
+*Content-aware image resizing* might be applied when it comes to changing the image proportions (i.e. reducing the width while keeping the height) and when losing some parts of the image is not desirable. Doing the straightforward image scaling in this case would distort the objects in it. To preserve the objects proportions while changing the image proportions we may use the [Seam Carving algorithm](https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf) that was introduced by *Shai Avidan* and *Ariel Shamir*.
+
+In the example below you may see how the original image width was reduced by 50% using content-aware resizing (left image) and straightforward scaling (right image). In this particular case the left image looks more natural since proportions of the balloons were preserved.
 
 ![Content-aware image resizing](assets/01-resizing-options.png)
 
@@ -69,3 +79,5 @@ The same goes for the ocean waves. Algorithm preserved the waves structure witho
 ![Resizing demo with more complex backgrounds](assets/11-demo-02.png)
 
 But also we need to keep in mind that the Seam Carving algorithm is not a silver bullet, and it may fail to resize the images where most of the pixels are edges (looks important to the algorithm). In this case it starts distorting even the important parts of the image.
+
+![Example when algorithm does not work as expected](assets/12-demo-01.png)
