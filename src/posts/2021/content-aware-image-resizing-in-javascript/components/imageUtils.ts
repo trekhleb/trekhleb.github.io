@@ -1,4 +1,10 @@
-export type Color = [r: number, g: number, b: number, a: number] | Uint8ClampedArray;
+// Type that describes the image pixel's RGBA color.
+export type Color = [
+  r: number, // Red
+  g: number, // Green
+  b: number, // Blue
+  a: number, // Alpha (transparency)
+] | Uint8ClampedArray;
 
 export type Coordinate = { x: number, y: number };
 

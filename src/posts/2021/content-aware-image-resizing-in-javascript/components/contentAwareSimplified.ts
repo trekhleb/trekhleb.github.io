@@ -16,6 +16,7 @@ type SeamMeta = {
   previous: Coordinate | null,
 };
 
+// Type that describes the image size (width and height)
 export type ImageSize = { w: number, h: number };
 
 export type OnIterationArgs = {
@@ -27,6 +28,8 @@ export type OnIterationArgs = {
   steps: number,
 };
 
+// Helper function that creates a matrix (2D array) of specific
+// size (w x h) and fills it with specified value.
 const matrix = <T>(w: number, h: number, filler: T): T[][] => {
   return new Array(h)
     .fill(null)
@@ -36,20 +39,24 @@ const matrix = <T>(w: number, h: number, filler: T): T[][] => {
 };
 
 const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null): number => {
+  // Middle pixel is the pixel we're calculating the energy for.
   const [mR, mG, mB] = middle;
 
+  // Energy from the left pixel (if it exists).
   let lEnergy = 0;
   if (left) {
     const [lR, lG, lB] = left;
     lEnergy = (lR - mR) ** 2 + (lG - mG) ** 2 + (lB - mB) ** 2;
   }
 
+  // Energy from the right pixel (if it exists).
   let rEnergy = 0;
   if (right) {
     const [rR, rG, rB] = right;
     rEnergy = (rR - mR) ** 2 + (rG - mG) ** 2 + (rB - mB) ** 2;
   }
 
+  // Resulting pixel energy.
   return lEnergy + rEnergy;
 };
 
