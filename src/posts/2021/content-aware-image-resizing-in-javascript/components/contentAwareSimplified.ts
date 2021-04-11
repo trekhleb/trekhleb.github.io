@@ -7,16 +7,18 @@ import {
 } from './imageUtils';
 import { wait } from '../../../../utils/time';
 
+// The seam is a sequence of pixels (coordinates).
 export type Seam = Coordinate[];
 
 // Energy map is a 2D array that has the same width and height
 // as the image the map is being calculated for.
 export type EnergyMap = number[][];
 
-type SeamMeta = {
-  energy: number,
-  coordinate: Coordinate,
-  previous: Coordinate | null,
+// The metadata for the pixels in the seam.
+type SeamPixelMeta = {
+  energy: number, // The energy of the pixel.
+  coordinate: Coordinate, // The coordinate of the pixel.
+  previous: Coordinate | null, // The previous pixel in a seam.
 };
 
 // Type that describes the image size (width and height)
@@ -83,13 +85,19 @@ const calculateEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
   return energyMap;
 };
 
+// Finds the seam (the sequence of pixels from top to bottom) that has the
+// lowest resulting energy using the Dynamic Programming approach.
 const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
-  const seamsMap: (SeamMeta | null)[][] = matrix<SeamMeta | null>(w, h, null);
+  // The 2D array of the size of w and h, where each pixel contains the
+  // seam metadata (pixel energy, pixel coordinate and previous pixel from
+  // the lowest energy seam at this point).
+  const seamPixelsMap: (SeamPixelMeta | null)[][] = matrix<SeamPixelMeta | null>(w, h, null);
 
-  // Populate the first row of the map.
+  // Populate the first row of the map by just copying the energies
+  // from the energy map.
   for (let x = 0; x < w; x += 1) {
     const y = 0;
-    seamsMap[y][x] = {
+    seamPixelsMap[y][x] = {
       energy: energyMap[y][x],
       coordinate: { x, y },
       previous: null,
@@ -99,20 +107,24 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
   // Populate the rest of the rows.
   for (let y = 1; y < h; y += 1) {
     for (let x = 0; x < w; x += 1) {
-      // Find top adjacent cell with minimum energy.
+      // Find the top adjacent cell with minimum energy.
+      // This cell would be the tail of a seam with lowest energy at this point.
+      // It doesn't mean that this seam (path) has lowest energy globally.
+      // Instead, it means that we found a path with the lowest energy that may lead
+      // us to the current pixel with the coordinates x and y.
       let minPrevEnergy = Infinity;
       let minPrevX: number = x;
       for (let i = (x - 1); i <= (x + 1); i += 1) {
         // @ts-ignore
-        if (i >= 0 && i < w && seamsMap[y - 1][i].energy < minPrevEnergy) {
+        if (i >= 0 && i < w && seamPixelsMap[y - 1][i].energy < minPrevEnergy) {
           // @ts-ignore
-          minPrevEnergy = seamsMap[y - 1][i].energy;
+          minPrevEnergy = seamPixelsMap[y - 1][i].energy;
           minPrevX = i;
         }
       }
 
       // Update the current cell.
-      seamsMap[y][x] = {
+      seamPixelsMap[y][x] = {
         energy: minPrevEnergy + energyMap[y][x],
         coordinate: { x, y },
         previous: { x: minPrevX, y: y - 1 },
@@ -121,19 +133,23 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
   }
 
   // Find where the minimum energy seam ends.
+  // We need to find the tail of the lowest energy seam to start
+  // traversing it from its tail to its head (from the bottom to the top).
   let lastMinCoordinate: Coordinate | null = null;
   let minSeamEnergy = Infinity;
   for (let x = 0; x < w; x += 1) {
     const y = h - 1;
     // @ts-ignore
-    if (seamsMap[y][x].energy < minSeamEnergy) {
+    if (seamPixelsMap[y][x].energy < minSeamEnergy) {
       // @ts-ignore
-      minSeamEnergy = seamsMap[y][x].energy;
+      minSeamEnergy = seamPixelsMap[y][x].energy;
       lastMinCoordinate = { x, y };
     }
   }
 
-  // Find the minimal energy seam.
+  // Find the lowest energy energy seam.
+  // Once we know where the tail is we may traverse and assemble the lowest
+  // energy seam based on the "previous" value of the seam pixel metadata.
   const seam: Seam = [];
   if (!lastMinCoordinate) {
     return seam;
@@ -141,7 +157,8 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
 
   const { x: lastMinX, y: lastMinY } = lastMinCoordinate;
 
-  let currentSeam = seamsMap[lastMinY][lastMinX];
+  // Adding new pixel to the seam path one by one until we reach the top.
+  let currentSeam = seamPixelsMap[lastMinY][lastMinX];
   while (currentSeam) {
     seam.push(currentSeam.coordinate);
     const prevMinCoordinates = currentSeam.previous;
@@ -149,7 +166,7 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
       currentSeam = null;
     } else {
       const { x: prevMinX, y: prevMinY } = prevMinCoordinates;
-      currentSeam = seamsMap[prevMinY][prevMinX];
+      currentSeam = seamPixelsMap[prevMinY][prevMinX];
     }
   }
 
