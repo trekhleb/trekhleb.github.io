@@ -8,6 +8,9 @@ import {
 import { wait } from '../../../../utils/time';
 
 export type Seam = Coordinate[];
+
+// Energy map is a 2D array that has the same width and height
+// as the image the map is being calculated for.
 export type EnergyMap = number[][];
 
 type SeamMeta = {
@@ -38,6 +41,7 @@ const matrix = <T>(w: number, h: number, filler: T): T[][] => {
     });
 };
 
+// Calculates the energy of a pixel.
 const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null): number => {
   // Middle pixel is the pixel we're calculating the energy for.
   const [mR, mG, mB] = middle;
@@ -60,12 +64,18 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
   return lEnergy + rEnergy;
 };
 
+// Calculates the energy of each pixel of the image.
 const calculateEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
+  // Create an empty energy map where each pixel has infinitely high energy.
+  // We will update the energy of each pixel.
   const energyMap: number[][] = matrix<number>(w, h, Infinity);
   for (let y = 0; y < h; y += 1) {
     for (let x = 0; x < w; x += 1) {
+      // Left pixel might not exist if we're on the very left edge of the image.
       const left = (x - 1) >= 0 ? getPixel(img, { x: x - 1, y }) : null;
+      // The color of the middle pixel that we're calculating the energy for.
       const middle = getPixel(img, { x, y });
+      // Right pixel might not exist if we're on the very right edge of the image.
       const right = (x + 1) < w ? getPixel(img, { x: x + 1, y }) : null;
       energyMap[y][x] = getPixelEnergy(left, middle, right);
     }
