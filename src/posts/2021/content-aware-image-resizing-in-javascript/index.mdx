@@ -30,7 +30,7 @@ import InteractivePostArea from '../../../components/shared/InteractivePostArea'
 
 ## TL;DR
 
-There are many great articles written about the *Seam Carving algorithm* already, but I couldn't resist a temptation to explore this elegant, powerful and *yet simple* algorithm on my own, and to write about my personal experience with it. Another point that drew my attention (as a creator of [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms) repo) was the fact that *Dynamic Programming (DP)* approach might be smoothly applied to solve it. And if you're like me and still on your "learning algorithms" journey, this algorithmic solution may enrich your personal DP arsenal.
+There are many great articles written about the *Seam Carving algorithm* already, but I couldn't resist a temptation to explore this elegant, powerful and *yet simple* algorithm on my own, and to write about my personal experience with it. Another point that drew my attention (as a creator of [javascript-algorithms](https://github.com/trekhleb/javascript-algorithms) repo) was the fact that *Dynamic Programming (DP)* approach might be smoothly applied to solve it. And, if you're like me and still on your "learning algorithms" journey, this algorithmic solution may enrich your personal DP arsenal.
 
 So, with this article I want to do three things:
 
@@ -83,6 +83,38 @@ But also we need to keep in mind that the Seam Carving algorithm is not a silver
 ![Example when algorithm does not work as expected](assets/12-demo-01.png)
 
 ## How Seam Carving algorithms works
+
+Imagine we have a picture of size `1000 x 600 px` and we want to change its size to `600 x 600 px` to make it a square (let's say it better fits the Instagram feed). While shrinking the image, we also don't want to lose some important parts of the content (i.e. we want to preserve the fact that the car's wheels have a circle shape and not an ellipse one).
+
+To do so, we may find the *continuous sequence of pixels (the seam)*, that goes from top to bottom and has the lowest contribution to the content of the image and then remove it. The seam removal will shrink the image by 1 pixel. We will then repeat these steps until the image will become square.
+
+The question is how to define *the importance of the pixel* and its contribution to the content (in the original paper the authors are using the term *energy* for the importance). One of the ways to do it is to treat all the pixels that form the edges as important ones. In case if a pixel is a part of the edge its color would have a greater difference between the neighbors (left and right pixels) than the pixel that isn't a part of the edge. Assuming that the color of a pixel is represented by *4* numbers (`R` - red, `G` - green, `B` - blue, `A` - alpha) we may use the following formula to calculate the difference:
+
+![Pixel energy formula](assets/20-energy-formula.png)
+
+Where:
+
+- `mEnergy` - *Energy* (importance) of the *middle* pixel
+- `lR` - *Red* channel value for the *left* pixel
+- `mR` - *Red* channel value for the *middle* pixel
+- `rR` - *Red* channel value for the *right* pixel
+- `lG` - *Green* channel value for the *left* pixel
+- and so on...
+
+In the formula above we're omitting the alpha (transparency) channel for now, assuming that there is no transparent pixels in the image.
+
+For example, if we would have the following three pixels in a row:
+
+- Left pixel is <span style={{color: 'rgb(235, 0, 0)'}}>red</span>: `rgb(235, 0, 0)`
+- Middle pixel is <span style={{color: 'rgb(0, 245, 0)'}}>green</span>: `rgb(0, 245, 0)`
+- Right pixel is <span style={{color: 'rgb(0, 0, 255)'}}>blue</span>: `rgb(0, 0, 255)`
+
+The middle pixel energy would equal to:
+
+```
+mEnergy = sqrt((235 - 0)^2 + (0 - 245)^2 + (0 - 0)^2 + (0 - 0)^2 + (0 - 245)^2 + (0 - 255)^2) = 490.2
+```
+
 
 ### Content-aware width resizing
 
@@ -199,7 +231,7 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
   }
 
   // Resulting pixel energy.
-  return lEnergy + rEnergy;
+  return Math.sqrt(lEnergy + rEnergy);
 };
 ```
 

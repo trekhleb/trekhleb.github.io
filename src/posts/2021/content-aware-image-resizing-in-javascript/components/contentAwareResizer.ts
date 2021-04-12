@@ -66,7 +66,7 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
     rEnergy = (rR - mR) ** 2 + (rG - mG) ** 2 + (rB - mB) ** 2;
   }
 
-  return mA > ALPHA_DELETE_THRESHOLD ? (lEnergy + rEnergy) : getPixelDeleteEnergy();
+  return mA > ALPHA_DELETE_THRESHOLD ? Math.sqrt(lEnergy + rEnergy) : getPixelDeleteEnergy();
 };
 
 const getPixelEnergyH = (img: ImageData, { w }: ImageSize, { x, y }: Coordinate): number => {

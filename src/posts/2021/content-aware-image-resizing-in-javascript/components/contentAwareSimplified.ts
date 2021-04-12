@@ -5,7 +5,6 @@ import {
   getPixel,
   setPixel,
 } from './imageUtils';
-import { wait } from '../../../../utils/time';
 
 // The seam is a sequence of pixels (coordinates).
 export type Seam = Coordinate[];
@@ -64,7 +63,7 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
   }
 
   // Resulting pixel energy.
-  return lEnergy + rEnergy;
+  return Math.sqrt(lEnergy + rEnergy);
 };
 
 // Calculates the energy of each pixel of the image.
