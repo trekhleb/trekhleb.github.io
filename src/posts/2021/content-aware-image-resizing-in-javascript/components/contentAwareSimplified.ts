@@ -24,11 +24,12 @@ type SeamPixelMeta = {
 // Type that describes the image size (width and height)
 export type ImageSize = { w: number, h: number };
 
+// Arguments that are being passed to the onIteration() callback.
 export type OnIterationArgs = {
-  seam: Seam,
-  img: ImageData,
-  size: ImageSize,
-  energyMap: EnergyMap,
+  seam: Seam, // The current lowest energy seam.
+  img: ImageData, // The current version of the image data.
+  size: ImageSize, // The current image size.
+  energyMap: EnergyMap, // The energy map.
   step: number,
   steps: number,
 };
@@ -184,45 +185,52 @@ const deleteSeam = (img: ImageData, seam: Seam, { w }: ImageSize): void => {
   });
 };
 
-type ResizeAxisArgs = {
-  img: ImageData,
-  toWidth: number,
-  onIteration?: (args: OnIterationArgs) => Promise<void>,
+type ResizeImageWidthArgs = {
+  img: ImageData, // Image data we want to resize.
+  toWidth: number, // Final image width we want the image to shrink to.
 };
 
-export const resizeImageWidth = async (args: ResizeAxisArgs): Promise<void> => {
-  const { img, toWidth, onIteration } = args;
+type ResizeImageWidthResult = {
+  img: ImageData, // Resized image data.
+  size: ImageSize, // Resized image size (w x h).
+};
 
+// Performs the content-aware image width resizing
+// using the seam carving method.
+export const resizeImageWidth = async (
+  { img, toWidth }: ResizeImageWidthArgs,
+): Promise<ResizeImageWidthResult> => {
+  // For performance reasons we want to avoid changing the img data array size.
+  // Instead we'll just keep the record of the resized image width and height separately.
   const size: ImageSize = { w: img.width, h: img.height };
 
+  // Calculating the number of pixels to remove.
   const pxToRemove = img.width - toWidth;
   if (pxToRemove < 0) {
-    throw new Error('Upsizing is not supported');
+    throw new Error('Upsizing is not supported for now');
   }
 
   let energyMap: EnergyMap | null = null;
   let seam: Seam | null = null;
 
+  // Removing the lowest energy seams one by one.
   for (let i = 0; i < pxToRemove; i += 1) {
+    // 1. Calculate the energy map for the current version of the image.
     energyMap = calculateEnergyMap(img, size);
 
+    // 2. Find the seam with the lowest energy based on the energy map.
     seam = findLowEnergySeam(energyMap, size);
 
+    // 3. Delete the seam with the lowest energy seam from the image.
     deleteSeam(img, seam, size);
 
-    if (onIteration) {
-      await onIteration({
-        energyMap,
-        seam,
-        img,
-        size,
-        step: i,
-        steps: pxToRemove,
-      });
-    }
-
+    // Reduce the image width, and continue iterations.
     size.w -= 1;
-
-    await wait(1);
   }
+
+  // Returning the resized image and its final size.
+  // The img is actually a reference to the ImageData, so technically
+  // the caller of the function already has this pointer. But let's
+  // still return it for better code readability.
+  return { img, size };
 };
