@@ -95,10 +95,10 @@ The question is how to define *the importance of the pixel* and its contribution
 Where:
 
 - `mEnergy` - *Energy* (importance) of the *middle* pixel
-- `lR` - *Red* channel value for the *left* pixel
-- `mR` - *Red* channel value for the *middle* pixel
-- `rR` - *Red* channel value for the *right* pixel
-- `lG` - *Green* channel value for the *left* pixel
+- `lR` - *Red* channel value for the *left* pixel (`[0..255]`)
+- `mR` - *Red* channel value for the *middle* pixel (`[0..255]`)
+- `rR` - *Red* channel value for the *right* pixel (`[0..255]`)
+- `lG` - *Green* channel value for the *left* pixel (`[0..255]`)
 - and so on...
 
 In the formula above we're omitting the alpha (transparency) channel for now, assuming that there is no transparent pixels in the image.
