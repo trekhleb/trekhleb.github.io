@@ -173,6 +173,8 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
   return seam;
 };
 
+// Deletes the seam from the image data.
+// We delete the pixel in each row and then shift the rest of the row pixels to the left.
 const deleteSeam = (img: ImageData, seam: Seam, { w }: ImageSize): void => {
   seam.forEach(({ x: seamX, y: seamY }: Coordinate) => {
     for (let x = seamX; x < (w - 1); x += 1) {
