@@ -84,17 +84,20 @@ But also we need to keep in mind that the Seam Carving algorithm is not a silver
 
 ## How Seam Carving algorithms works
 
-Imagine we have a picture of size `1000 x 600 px` and we want to change its size to `600 x 600 px` to make it a square (let's say it better fits the Instagram feed). While shrinking the image, we also don't want to lose some important parts of the content (i.e. we want to preserve the fact that the car's wheels have a circle shape and not an ellipse one).
+Imagine we have a `1000 x 500 px` picture, and we want to change its size to `500 x 500 px` to make it square (let's say the square ratio would better fit the Instagram feed). There might be several requirements to the resizing process in this case:
 
-To do so, we may find the *continuous sequence of pixels (the seam)*, that goes from top to bottom and has the lowest contribution to the content of the image and then remove it. The seam removal will shrink the image by 1 pixel. We will then repeat these steps until the image will become square.
+- Preserve the important parts of the image (i.e. if there were 5 trees before the resizing we want to have 5 trees after resizing as well).
+- Preserve the proportions of the important parts of the image (i.e. circle should not be squeezed to the ellipse)
 
-The question is how to define *the importance of the pixel* and its contribution to the content (in the original paper the authors are using the term *energy* for the importance). One of the ways to do it is to treat all the pixels that form the edges as important ones. In case if a pixel is a part of the edge its color would have a greater difference between the neighbors (left and right pixels) than the pixel that isn't a part of the edge. Assuming that the color of a pixel is represented by *4* numbers (`R` - red, `G` - green, `B` - blue, `A` - alpha) we may use the following formula to calculate the difference:
+To avoid changing the important parts of the image we may find the *continuous sequence of pixels (the seam)*, that goes from top to bottom and has the lowest contribution to the content of the image and then remove it. The seam removal will shrink the image by 1 pixel. We will then repeat these steps until the image will get the desirable width.
+
+The question is how to define *the importance of the pixel* and its contribution to the content (in the original paper the authors are using the term *energy* for the importance). One of the ways to do it is to treat all the pixels that form the edges as important ones. In case if a pixel is a part of the edge its color would have a greater difference between the neighbors (left and right pixels) than the pixel that isn't a part of the edge. Assuming that the color of a pixel is represented by *4* numbers (`R` - red, `G` - green, `B` - blue, `A` - alpha) we may use the following formula to calculate the color difference (pixel energy):
 
 ![Pixel energy formula](assets/20-energy-formula.png)
 
 Where:
 
-- `mEnergy` - *Energy* (importance) of the *middle* pixel
+- `mEnergy` - *Energy* (importance) of the *middle* pixel (`[0..626]` if rounded)
 - `lR` - *Red* channel value for the *left* pixel (`[0..255]`)
 - `mR` - *Red* channel value for the *middle* pixel (`[0..255]`)
 - `rR` - *Red* channel value for the *right* pixel (`[0..255]`)
@@ -103,18 +106,19 @@ Where:
 
 In the formula above we're omitting the alpha (transparency) channel for now, assuming that there is no transparent pixels in the image.
 
-For example, if we would have the following three pixels in a row:
+> For example, if we would have the following three pixels in a row:
+>
+> - Left pixel is <span style={{color: 'rgb(235, 0, 0)'}}>red</span>: `rgb(235, 0, 0)`
+> - Middle pixel is <span style={{color: 'rgb(0, 245, 0)'}}>green</span>: `rgb(0, 245, 0)`
+> - Right pixel is <span style={{color: 'rgb(0, 0, 255)'}}>blue</span>: `rgb(0, 0, 255)`
+>
+> The middle pixel energy would equal to:
+>
+> ```
+> mEnergy = sqrt((235 - 0)^2 + (0 - 245)^2 + (0 - 0)^2 + (0 - 0)^2 + (0 - 245)^2 + (0 - 255)^2) = 490.2
+> ```
 
-- Left pixel is <span style={{color: 'rgb(235, 0, 0)'}}>red</span>: `rgb(235, 0, 0)`
-- Middle pixel is <span style={{color: 'rgb(0, 245, 0)'}}>green</span>: `rgb(0, 245, 0)`
-- Right pixel is <span style={{color: 'rgb(0, 0, 255)'}}>blue</span>: `rgb(0, 0, 255)`
-
-The middle pixel energy would equal to:
-
-```
-mEnergy = sqrt((235 - 0)^2 + (0 - 245)^2 + (0 - 0)^2 + (0 - 0)^2 + (0 - 245)^2 + (0 - 255)^2) = 490.2
-```
-
+Now, since we know how to find the energy of one pixel, we can calculate, so called, **energy map** which will contain the energies of each pixel of the image. The energy map on each resizing step has the same size as the image. For example, on the first step of resizing we will have a `1000 x 500 px` image and `1000 x 500` energy map.
 
 ### Content-aware width resizing
 
