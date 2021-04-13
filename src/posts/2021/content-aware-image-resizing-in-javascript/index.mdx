@@ -118,7 +118,7 @@ In the formula above we're omitting the alpha (transparency) channel for now, as
 > mEnergy = sqrt((235 - 0)^2 + (0 - 245)^2 + (0 - 0)^2 + (0 - 0)^2 + (0 - 245)^2 + (0 - 255)^2) = 490.2
 > ```
 
-Now, since we know how to find the energy of one pixel, we can calculate, so called, **energy map** which will contain the energies of each pixel of the image. The energy map on each resizing step has the same size as the image. For example, on the first step of resizing we will have a `1000 x 500 px` image and `1000 x 500` energy map.
+Now, since we know how to find the energy of one pixel, we can calculate, so called, **energy map** which will contain the energies of each pixel of the image. On each resizing step the energy map has the same size as the image. For example, on the first resizing step we will have a `1000 x 500 px` image and `1000 x 500` energy map.
 
 ### Content-aware width resizing
 
