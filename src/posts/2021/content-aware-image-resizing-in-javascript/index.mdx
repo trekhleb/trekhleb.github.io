@@ -89,9 +89,9 @@ Imagine we have a `1000 x 500 px` picture, and we want to change its size to `50
 - Preserve the important parts of the image (i.e. if there were 5 trees before the resizing we want to have 5 trees after resizing as well).
 - Preserve the proportions of the important parts of the image (i.e. circle should not be squeezed to the ellipse)
 
-To avoid changing the important parts of the image we may find the *continuous sequence of pixels (the seam)*, that goes from top to bottom and has the lowest contribution to the content of the image and then remove it. The seam removal will shrink the image by 1 pixel. We will then repeat these steps until the image will get the desirable width.
+To avoid changing the important parts of the image we may find the *continuous sequence of pixels (the seam)*, that goes from top to bottom and has *the lowest contribution to the content* of the image and then remove it. The seam removal will shrink the image by 1 pixel. We will then repeat this step until the image will get the desirable width.
 
-The question is how to define *the importance of the pixel* and its contribution to the content (in the original paper the authors are using the term *energy* for the importance). One of the ways to do it is to treat all the pixels that form the edges as important ones. In case if a pixel is a part of the edge its color would have a greater difference between the neighbors (left and right pixels) than the pixel that isn't a part of the edge. Assuming that the color of a pixel is represented by *4* numbers (`R` - red, `G` - green, `B` - blue, `A` - alpha) we may use the following formula to calculate the color difference (pixel energy):
+The question is how to define *the importance of the pixel* and its contribution to the content (in the original paper the authors are using the term **energy of the pixel**). One of the ways to do it is to treat all the pixels that form the edges as important ones. In case if a pixel is a part of the edge its color would have a greater difference between the neighbors (left and right pixels) than the pixel that isn't a part of the edge. Assuming that the color of a pixel is represented by *4* numbers (`R` - red, `G` - green, `B` - blue, `A` - alpha) we may use the following formula to calculate the color difference (pixel energy):
 
 ![Pixel energy formula](assets/20-energy-formula.png)
 
@@ -118,7 +118,11 @@ In the formula above we're omitting the alpha (transparency) channel for now, as
 > mEnergy = sqrt((235 - 0)^2 + (0 - 245)^2 + (0 - 0)^2 + (0 - 0)^2 + (0 - 245)^2 + (0 - 255)^2) = 490.2
 > ```
 
-Now, since we know how to find the energy of one pixel, we can calculate, so called, **energy map** which will contain the energies of each pixel of the image. On each resizing step the energy map has the same size as the image. For example, on the first resizing step we will have a `1000 x 500 px` image and `1000 x 500` energy map.
+Now, since we know how to find the energy of one pixel, we can calculate, so called, **energy map** which will contain the energies of each pixel of the image. On each resizing step the energy map should be re-calculated (at least partially, more about it below) and would have the same size as the image.
+
+For example, on the 1st resizing step we will have a `1000 x 500` image and a `1000 x 500` energy map. On the 2nd resizing step we will remove the seam from the image and re-calculate the energy map based on the new shrunk image. Thus, we will get a `999 x 500` image and a `999 x 500` energy map.
+
+The higher the energy of the pixel the more likely it is important for the image content, and the less likely that we need to remove it.
 
 ### Content-aware width resizing
 

@@ -10,6 +10,11 @@
   content: "" !important;
 }
 
+/* Remove the boldness from the quotes */
+.prose blockquote {
+  font-weight: normal !important;
+}
+
 /* Adding more side space to the inline code blocks */
 .prose p code.language-text,
 .prose li code.language-text {
