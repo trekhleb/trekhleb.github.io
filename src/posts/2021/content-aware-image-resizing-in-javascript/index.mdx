@@ -126,11 +126,13 @@ Now, since we know how to find the energy of one pixel, we can calculate, so cal
 
 For example, on the 1st resizing step we will have a `1000 x 500` image and a `1000 x 500` energy map. On the 2nd resizing step we will remove the seam from the image and re-calculate the energy map based on the new shrunk image. Thus, we will get a `999 x 500` image and a `999 x 500` energy map.
 
-The higher the energy of the pixel the more likely it is important for the image content, and the less likely that we need to remove it.
+The higher the energy of the pixel the more likely it is a part of an edge, and it is important for the image content, and the less likely that we need to remove it.
+
+To visualize the energy map we may assign a brighter color to the pixels with the higher energy and darker colors to the pixels with the lower energy. Here is an artificial example of how the random part of the energy map might look like. You may see the bright line which represents the edge and which we want to preserve during the resizing.
 
 ![Energy map sketch](assets/30-energy-map-padding.png)
 
-Energy map
+Here is a real example of the energy map for the demo image you saw above (with hot air balloons).
 
 ![Energy map sketch](assets/40-energy-map.png)
 
