@@ -87,11 +87,11 @@ But also we need to keep in mind that the Seam Carving algorithm is not a silver
 Imagine we have a `1000 x 500 px` picture, and we want to change its size to `500 x 500 px` to make it square (let's say the square ratio would better fit the Instagram feed). There might be several requirements to the resizing process in this case:
 
 - Preserve the important parts of the image (i.e. if there were 5 trees before the resizing we want to have 5 trees after resizing as well).
-- Preserve the proportions of the important parts of the image (i.e. circle should not be squeezed to the ellipse)
+- Preserve the proportions of the important parts of the image (i.e. circle car wheels should not be squeezed to the ellipse wheels)
 
 To avoid changing the important parts of the image we may find the *continuous sequence of pixels (the seam)*, that goes from top to bottom and has *the lowest contribution to the content* of the image and then remove it. The seam removal will shrink the image by 1 pixel. We will then repeat this step until the image will get the desirable width.
 
-The question is how to define *the importance of the pixel* and its contribution to the content (in the original paper the authors are using the term **energy of the pixel**). One of the ways to do it is to treat all the pixels that form the edges as important ones. In case if a pixel is a part of the edge its color would have a greater difference between the neighbors (left and right pixels) than the pixel that isn't a part of the edge. Assuming that the color of a pixel is represented by *4* numbers (`R` - red, `G` - green, `B` - blue, `A` - alpha) we may use the following formula to calculate the color difference (pixel energy):
+The question is how to define *the importance of the pixel* and its contribution to the content (in the original paper the authors are using the term **energy of the pixel**). One of the ways to do it is to treat all the pixels that form the edges as important ones. In case if a pixel is a part of the edge its color would have a greater difference between the neighbors (left and right pixels) than the pixel that isn't a part of the edge. Assuming that the color of a pixel is represented by *4* numbers (`R` - red, `G` - green, `B` - blue, `A` - alpha) we may use the following formula to calculate the color difference (the pixel energy):
 
 ![Pixel energy formula](assets/20-energy-formula.png)
 
