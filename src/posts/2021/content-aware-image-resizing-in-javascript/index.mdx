@@ -244,6 +244,8 @@ Let's break down each step ony be one and implement the `calculateEnergyMap()`, 
 
 ### Calculating the pixel's energy
 
+Here we just apply the color difference formula described above. For the left and right borders (when there is no left or right neighbors) we simply ignore the neighbors and don't take them account during the energy calculation.
+
 ```typescript
 // Calculates the energy of a pixel.
 const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null): number => {
