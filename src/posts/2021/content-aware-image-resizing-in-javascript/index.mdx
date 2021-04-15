@@ -132,7 +132,11 @@ The widget below renders the energy map during resizing. You may play around wit
   <ImageResizer withSeam withEnergyMap />
 </InteractivePostArea>
 
-We may use the energy map to find a seam with the lowest energy. To do so, we need to find a path (the continuous sequence of pixels) so that the sum of energies of all pixels would be the lowest one.
+We may use the energy map to find the seams (one after another) with the lowest energy and by this to decide which pixels should be ultimately deleted.
+
+![Searching the seam](assets/41-seam-search.png)
+
+Finding the seam with the lowest energy is not a trivial task and requires to explore many possible pixel combinations before making the decision. We will apply the dynamic programming approach to speed it up.
 
 On the example below you may see the energy map with the first lowest energy seam that was found for it.
 
