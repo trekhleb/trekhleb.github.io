@@ -240,6 +240,15 @@ export const resizeImageWidth = (
 };
 ```
 
+The image that needs to be resized is being passed to the function in [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) format. You may draw the image on the canvas and then extract the ImageData from canvas like this:
+
+```javascript
+const ctx = canvas.getContext('2d');
+const imgData = ctx.getImageData(0, 0, imgWidth, imgHeight);
+```
+
+> The way of uploading and drawing images in JavaScript is out of scope for this article, but you may find the complete source-code of how it may be done using React in [js-image-carver repo](https://github.com/trekhleb/js-image-carver).
+
 Let's break down each step ony be one and implement the `calculateEnergyMap()`, `findLowEnergySeam()` and `deleteSeam()` functions.
 
 ### Calculating the pixel's energy
