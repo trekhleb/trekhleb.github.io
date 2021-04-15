@@ -247,13 +247,13 @@ const ctx = canvas.getContext('2d');
 const imgData = ctx.getImageData(0, 0, imgWidth, imgHeight);
 ```
 
-> The way of uploading and drawing images in JavaScript is out of scope for this article, but you may find the complete source-code of how it may be done using React in [js-image-carver repo](https://github.com/trekhleb/js-image-carver).
+> The way of uploading and drawing images in JavaScript is out of scope for this article, but you may find the complete source-code of how it may be done using React in [js-image-carver](https://github.com/trekhleb/js-image-carver) repo.
 
 Let's break down each step ony be one and implement the `calculateEnergyMap()`, `findLowEnergySeam()` and `deleteSeam()` functions.
 
 ### Calculating the pixel's energy
 
-Here we just apply the color difference formula described above. For the left and right borders (when there is no left or right neighbors) we simply ignore the neighbors and don't take them account during the energy calculation.
+Here we apply the color difference formula described above. For the left and right borders (when there is no left or right neighbors) we ignore the neighbors and don't take them account during the energy calculation.
 
 ```typescript
 // Calculates the energy of a pixel.
@@ -282,6 +282,8 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
 
 ### Calculating the energy map
 
+The image we're working with is in the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) format. It means that all the pixels (and their colors) are stored in flat (*1D*) [Uint8ClampedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) array. For readability purposes let's introduce the couple of helper functions that will allow us to work with the Uint8ClampedArray array as with a *2D* matrix instead.
+
 ```typescript
 // Helper function that returns the color of the pixel.
 const getPixel = (img: ImageData, { x, y }: Coordinate): Color => {
@@ -303,6 +305,8 @@ const setPixel = (img: ImageData, { x, y }: Coordinate, color: Color): void => {
   img.data.set(color, i * cellsPerColor);
 };
 ```
+
+To calculate the energy map we go through each image pixel and call the previously described `getPixelEnergy()` function against it.
 
 ```typescript
 // Helper function that creates a matrix (2D array) of specific
@@ -334,6 +338,8 @@ const calculateEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
   return energyMap;
 };
 ```
+
+> The energy map is going to be recalculated on every resize iteration. It means that it will be recalculated, let's say, 500 times if we need to shrink the image by 500 pixels which is not optimal. To speed up the energy map calculation on the 2nd, 3rd and further steps, we may re-calculate the energy only for those pixels that are placed around the seam that is going to be removed. For simplicity reasons this optimization is omitted here, but you may find the example source-code in [js-image-carver](https://github.com/trekhleb/js-image-carver) repo.
 
 ### Finding the seam with the lowest energy (Dynamic Programming approach)
 
