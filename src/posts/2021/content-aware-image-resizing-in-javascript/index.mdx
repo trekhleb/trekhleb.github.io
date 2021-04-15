@@ -147,13 +147,17 @@ In the examples above we were reducing the width of the image. The similar appro
 - start using *top* and *bottom* pixel neighbors (instead of *left* and *right* ones) to calculate the pixel energy
 - when searching for a seam we need to move from *left* to *right* (instead of from *up* to *bottom*)
 
-### Content-aware width resizing
+## Implementation in TypeScript
 
 > You may find the source code, and the functions mentioned below in the [js-image-carver](https://github.com/trekhleb/js-image-carver) repository.
 
-For simplicity reasons let's implement the seam carving algorithm only for the image *width* reduction. The image *height* reduction might be implemented in the same way, but we would use the different axis for it (i.e. `Y` instead of `X`). You may think about the height reduction as if you would just rotate the image 90° clock-wise and then applied the width reduction to it.
+To implement the algorithm we will be using TypeScript. If you want a JavaScript version, you may ignore (remove) type definitions and their usages.
 
-First, let's define some types that we're going to use while implementing the algorithm.
+For simplicity reasons let's implement the seam carving algorithm only for the image *width* reduction.
+
+### Content-aware width resizing (the entry function)
+
+First, let's define some common types that we're going to use while implementing the algorithm.
 
 ```typescript
 // Type that describes the image size (width and height).
@@ -196,11 +200,10 @@ type ResizeImageWidthResult = {
   size: ImageSize, // Resized image size (w x h).
 };
 
-// Performs the content-aware image width resizing
-// using the seam carving method.
-export const resizeImageWidth = async (
+// Performs the content-aware image width resizing using the seam carving method.
+export const resizeImageWidth = (
   { img, toWidth }: ResizeImageWidthArgs,
-): Promise<ResizeImageWidthResult> => {
+): ResizeImageWidthResult => {
   // For performance reasons we want to avoid changing the img data array size.
   // Instead we'll just keep the record of the resized image width and height separately.
   const size: ImageSize = { w: img.width, h: img.height };
