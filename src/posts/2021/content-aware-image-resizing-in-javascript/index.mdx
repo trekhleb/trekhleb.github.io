@@ -343,6 +343,30 @@ const calculateEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
 
 ### Finding the seam with the lowest energy (Dynamic Programming approach)
 
+> I've already went through some Dynamic Programming basics in [Dynamic Programming vs Divide-and-Conquer](https://trekhleb.dev/blog/2018/dynamic-programming-vs-divide-and-conquer/) article before. There is a DP example based on the minimum edit distance problem. You might want to check it out to give some more context.
+
+The issue we need to solve now is to find the path (the seam) on the energy map that goes from top to bottom and has the minimum sum of pixel energies.
+
+#### The naive approach
+
+The naive approach would be to check all possible paths one after another.
+
+![The naive approach](assets/50-naive-approach.png)
+
+Going from top to bottom, for each pixel we have 3 options (↙︎ go down-left, ↓ go down, ↘︎ go down-right). This gives us the time complexity of `O(3^n)` which looks slow.
+
+#### The greedy approach
+
+We may also try to choose the next pixel as a pixel with the lowest energy, hoping that resulting seam energy will be the smallest one.
+
+![The greedy approach](assets/51-greedy-approach.png)
+
+This approach gives not the worst solution, but it cannot guarantee that we will find the best available solution. On the image above you may see how greedy approach chose `5` instead of `10` at first and missed the chain of optimal pixels.
+
+The good part about this approach is that it is fast, and it has time complexity of `O(n)`. In this case the cost of the speed is low quality of resizing.
+
+#### The dynamic programming approach
+
 ```typescript
 // The metadata for the pixels in the seam.
 type SeamPixelMeta = {
