@@ -462,6 +462,10 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
 
 ### Removing the seam with the lowest energy
 
+Once we found the lowest energy seam, we need to remove the pixels that form it from the image. All the pixels to the right of the seam need to be shifted by `1px` to the left.
+
+![Deleting the seam](assets/60-deleting.png)
+
 ```typescript
 // Deletes the seam from the image data.
 // We delete the pixel in each row and then shift the rest of the row pixels to the left.
@@ -474,6 +478,8 @@ const deleteSeam = (img: ImageData, seam: Seam, { w }: ImageSize): void => {
   });
 };
 ```
+
+
 
 ## Objects removal
 
