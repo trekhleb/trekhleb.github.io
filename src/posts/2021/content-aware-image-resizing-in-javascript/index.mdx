@@ -124,15 +124,17 @@ To visualize the energy map we may assign a brighter colors to the pixels with t
 
 Here is a real example of the energy map for the demo image you saw above (with hot air balloons).
 
-![Energy map sketch](assets/40-energy-map.png)
+![Energy map example](assets/40-energy-map.png)
 
-We may use the energy map to find a seam with the lowest energy. To do so, we need to find a path (the continuous sequence of pixels) so that the sum of energies of all pixels would be the lowest one.
-
-![Energy map example](assets/40-energy-map-with-seam.png)
+The widget below renders the energy map during resizing. You may play around with your custom images and see how the energy map would look like.
 
 <InteractivePostArea title="Content Aware Image Resizer with Energy Map">
   <ImageResizer withSeam withEnergyMap />
 </InteractivePostArea>
+
+We may use the energy map to find a seam with the lowest energy. To do so, we need to find a path (the continuous sequence of pixels) so that the sum of energies of all pixels would be the lowest one.
+
+![Energy map example with seam](assets/40-energy-map-with-seam.png)
 
 ### Content-aware width resizing
 
