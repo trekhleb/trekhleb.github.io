@@ -462,9 +462,9 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
 
 ### Removing the seam with the lowest energy
 
-Once we found the lowest energy seam, we need to remove the pixels that form it from the image. All the pixels to the right of the seam need to be shifted by `1px` to the left.
+Once we found the lowest energy seam, we need to remove the pixels that form it from the image. The removal is happening by shifting the pixels to the right of the seam by `1px` to the left. For performance reasons we don't actually delete the last columns. Instead, the rendering component will just ignore the part of the image that lays beyond the resized image width.
 
-![Deleting the seam](assets/60-deleting.png)
+![Deleting the seam](assets/60-deleting-example.png)
 
 ```typescript
 // Deletes the seam from the image data.
@@ -478,8 +478,6 @@ const deleteSeam = (img: ImageData, seam: Seam, { w }: ImageSize): void => {
   });
 };
 ```
-
-
 
 ## Objects removal
 
