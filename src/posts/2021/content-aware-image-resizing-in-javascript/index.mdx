@@ -142,6 +142,11 @@ On the example below you may see the energy map with the first lowest energy sea
 
 ![Energy map example with seam](assets/40-energy-map-with-seam.png)
 
+In the examples above we were reducing the width of the image. The similar approach may be taken to reduce the image height. We need to "rotate" the approach though:
+
+- start using *top* and *bottom* pixel neighbors (instead of *left* and *right* ones) to calculate the pixel energy
+- when searching for a seam we need to move from *left* to *right* (instead of from *up* to *bottom*)
+
 ### Content-aware width resizing
 
 > You may find the source code, and the functions mentioned below in the [js-image-carver](https://github.com/trekhleb/js-image-carver) repository.
