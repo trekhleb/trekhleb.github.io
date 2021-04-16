@@ -373,9 +373,30 @@ You might have noticed that in the naive approach we summed up the same pixel en
 
 In the example above you see that for the first two seams we are re-using the energy of the shorter seam (which has the energy of `235`). Instead of doing just one operation `235 + 70` to calculate the energy of the 2nd seam we're doing four operations `(5 + 0 + 80 + 150) + 70`.
 
-This fact that we're re-using the energy of the previous seam to calculate the current seam's energy might be applied recursively to all the shorter seams up to the very top 1st row seam. When we have such overlapping sub-problems, [it is a sign](https://trekhleb.dev/blog/2018/dynamic-programming-vs-divide-and-conquer/) that the general problem *might* be optimized by dynamic programming approach.
+> This fact that we're re-using the energy of the previous seam to calculate the current seam's energy might be applied recursively to all the shorter seams up to the very top 1st row seam. When we have such overlapping sub-problems, [it is a sign](https://trekhleb.dev/blog/2018/dynamic-programming-vs-divide-and-conquer/) that the general problem *might* be optimized by dynamic programming approach.
 
-So, what if we will save the energy of the current seam in the table to make it re-usable for calculating the next seams?
+So, we may **save the energy of the current seam** at particular pixel in additional `seamsEnergies` table to make it re-usable for calculating the next seams faster (the `seamsEnergies` table will have the same size as the energy map and the image itself).
+
+Let's also keep in mind that for one particular pixel on the image (i.e. the bottom left one) we may have *several* values of the previous seams energies.
+
+![What seam to choose](assets/53-dp-what-to-choose.png)
+
+Since we're looking for a seam with the lowest resulting energy possible it makes sense to pick the previous seam with the lowest resulting energy as well.
+
+![Seams energies example](assets/56-dp-seams-energies-example.png)
+
+In general, we have three possible previous seems to choose from:
+
+![Three options to choose from](assets/55-dp-three-options.png)
+
+You may think about it this way:
+
+- The cell `[1][x]`: contains the lowest possible energy of the seam that starts somewhere on the row `[0][?]` and ends up at cell `[1][x]`
+- **The current cell** `[2][3]`: contains the lowest possible energy of the seam that starts somewhere on the row `[0][?]` and ends up at cell `[2][3]`. To calculate it we need to sum up the energy of the current pixel `[2][3]` (from the energy map) with the `min(seam_energy_1_2, seam_energy_1_3, seam_energy_1_4)`
+
+If we fill the `seamsEnergies` table completely, then the minimum number in the lowest row would be the lowest possible seam energy.
+
+Let's try to fill several cells of this table to see how it works.
 
 ```typescript
 // The metadata for the pixels in the seam.
@@ -391,13 +412,13 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
   // The 2D array of the size of w and h, where each pixel contains the
   // seam metadata (pixel energy, pixel coordinate and previous pixel from
   // the lowest energy seam at this point).
-  const seamPixelsMap: (SeamPixelMeta | null)[][] = matrix<SeamPixelMeta | null>(w, h, null);
+  const seamsEnergies: (SeamPixelMeta | null)[][] = matrix<SeamPixelMeta | null>(w, h, null);
 
   // Populate the first row of the map by just copying the energies
   // from the energy map.
   for (let x = 0; x < w; x += 1) {
     const y = 0;
-    seamPixelsMap[y][x] = {
+    seamsEnergies[y][x] = {
       energy: energyMap[y][x],
       coordinate: { x, y },
       previous: null,
@@ -415,14 +436,14 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
       let minPrevEnergy = Infinity;
       let minPrevX: number = x;
       for (let i = (x - 1); i <= (x + 1); i += 1) {
-        if (i >= 0 && i < w && seamPixelsMap[y - 1][i].energy < minPrevEnergy) {
-          minPrevEnergy = seamPixelsMap[y - 1][i].energy;
+        if (i >= 0 && i < w && seamsEnergies[y - 1][i].energy < minPrevEnergy) {
+          minPrevEnergy = seamsEnergies[y - 1][i].energy;
           minPrevX = i;
         }
       }
 
       // Update the current cell.
-      seamPixelsMap[y][x] = {
+      seamsEnergies[y][x] = {
         energy: minPrevEnergy + energyMap[y][x],
         coordinate: { x, y },
         previous: { x: minPrevX, y: y - 1 },
@@ -437,8 +458,8 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
   let minSeamEnergy = Infinity;
   for (let x = 0; x < w; x += 1) {
     const y = h - 1;
-    if (seamPixelsMap[y][x].energy < minSeamEnergy) {
-      minSeamEnergy = seamPixelsMap[y][x].energy;
+    if (seamsEnergies[y][x].energy < minSeamEnergy) {
+      minSeamEnergy = seamsEnergies[y][x].energy;
       lastMinCoordinate = { x, y };
     }
   }
@@ -454,7 +475,7 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
   const { x: lastMinX, y: lastMinY } = lastMinCoordinate;
 
   // Adding new pixel to the seam path one by one until we reach the top.
-  let currentSeam = seamPixelsMap[lastMinY][lastMinX];
+  let currentSeam = seamsEnergies[lastMinY][lastMinX];
   while (currentSeam) {
     seam.push(currentSeam.coordinate);
     const prevMinCoordinates = currentSeam.previous;
@@ -462,7 +483,7 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
       currentSeam = null;
     } else {
       const { x: prevMinX, y: prevMinY } = prevMinCoordinates;
-      currentSeam = seamPixelsMap[prevMinY][prevMinX];
+      currentSeam = seamsEnergies[prevMinY][prevMinX];
     }
   }
 
