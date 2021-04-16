@@ -36,13 +36,13 @@ So, with this article I want to do three things:
 
 1. Provide you with an interactive **content-aware resizer** so that you could play around with resizing of your own images
 2. Explain the idea behind the **Seam Carving algorithm**
-3. Explain the **dynamic programming approach** that implements the algorithm (we'll be using TypeScript for it)
+3. Explain the **dynamic programming approach** to implement the algorithm (we'll be using TypeScript for it)
 
 ### Content-aware image resizing
 
 *Content-aware image resizing* might be applied when it comes to changing the image proportions (i.e. reducing the width while keeping the height) and when losing some parts of the image is not desirable. Doing the straightforward image scaling in this case would distort the objects in it. To preserve the objects proportions while changing the image proportions we may use the [Seam Carving algorithm](https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf) that was introduced by *Shai Avidan* and *Ariel Shamir*.
 
-In the example below you may see how the original image width was reduced by 50% using content-aware resizing (left image) and straightforward scaling (right image). In this particular case the left image looks more natural since proportions of the balloons were preserved.
+In the example below you may see how the original image width was reduced by 50% using *content-aware resizing* (left image) and *straightforward scaling* (right image). In this particular case the left image looks more natural since proportions of the balloons were preserved.
 
 ![Content-aware image resizing](assets/01-resizing-options.png)
 
@@ -60,7 +60,7 @@ The importance of each pixel (so-called pixel's energy) is being calculated base
 
 ### JS IMAGE CARVER demo
 
-I've created the [JS IMAGE CARVER](https://trekhleb.dev/js-image-carver) web-app (the [source-code is on GitHub](https://github.com/trekhleb/js-image-carver)) that you may use to play around with resizing of your custom images. You may also try its embed version below right away! This widget uses the Seam Carving algorithm that we're going to explore in this article.
+I've created the [JS IMAGE CARVER](https://trekhleb.dev/js-image-carver) web-app (and also [open-sourced it on GitHub](https://github.com/trekhleb/js-image-carver)) that you may use to play around with resizing of your custom images. You may also try its embed version below right away! This widget uses the Seam Carving algorithm that we're going to explore in this article.
 
 <InteractivePostArea title="Content Aware Image Resizer">
   <ImageResizer withSeam />
@@ -86,10 +86,10 @@ We need to keep in mind that the Seam Carving algorithm is not a silver bullet, 
 
 Imagine we have a `1000 x 500 px` picture, and we want to change its size to `500 x 500 px` to make it square (let's say the square ratio would better fit the Instagram feed). We might want to set up several **requirements to the resizing process** in this case:
 
-- Preserve the important parts of the image (i.e. if there were 5 trees before the resizing we want to have 5 trees after resizing as well).
-- Preserve the proportions of the important parts of the image (i.e. circle car wheels should not be squeezed to the ellipse wheels)
+- *Preserve the important parts of the image* (i.e. if there were 5 trees before the resizing we want to have 5 trees after resizing as well).
+- *Preserve the proportions* of the important parts of the image (i.e. circle car wheels should not be squeezed to the ellipse wheels)
 
-To avoid changing the important parts of the image we may find the **continuous sequence of pixels (the seam)**, that goes from top to bottom and has *the lowest contribution to the content* of the image and then remove it. The seam removal will shrink the image by 1 pixel. We will then repeat this step until the image will get the desirable width.
+To avoid changing the important parts of the image we may find the **continuous sequence of pixels (the seam)**, that goes from top to bottom and has *the lowest contribution to the content* of the image (avoids important parts) and then remove it. The seam removal will shrink the image by 1 pixel. We will then repeat this step until the image will get the desirable width.
 
 The question is how to define *the importance of the pixel* and its contribution to the content (in the original paper the authors are using the term **energy of the pixel**). One of the ways to do it is to treat all the pixels that form the edges as important ones. In case if a pixel is a part of the edge its color would have a greater difference between the neighbors (left and right pixels) than the pixel that isn't a part of the edge.
 
@@ -132,7 +132,7 @@ The widget below renders the energy map during resizing. You may play around wit
   <ImageResizer withSeam withEnergyMap />
 </InteractivePostArea>
 
-We may use the energy map to find the seams (one after another) with the lowest energy and by this to decide which pixels should be ultimately deleted.
+We may use the energy map to find the seams (one after another) with the lowest energy and by doing this to decide which pixels should be ultimately deleted.
 
 ![Searching the seam](assets/41-seam-search.png)
 
