@@ -371,7 +371,11 @@ You might have noticed that in the naive approach we summed up the same pixel en
 
 ![Repeated problems](assets/52-dp-repeated-problems.png)
 
-When we have such overlapping sub-problems, [it is a sign](https://trekhleb.dev/blog/2018/dynamic-programming-vs-divide-and-conquer/) that the general problem *might* be optimized by dynamic programming approach.
+In the example above you see that for the first two seams we are re-using the energy of the shorter seam (which has the energy of `235`). Instead of doing just one operation `235 + 70` to calculate the energy of the 2nd seam we're doing four operations `(5 + 0 + 80 + 150) + 70`.
+
+This fact that we're re-using the energy of the previous seam to calculate the current seam's energy might be applied recursively to all the shorter seams up to the very top 1st row seam. When we have such overlapping sub-problems, [it is a sign](https://trekhleb.dev/blog/2018/dynamic-programming-vs-divide-and-conquer/) that the general problem *might* be optimized by dynamic programming approach.
+
+So, what if we will save the energy of the current seam in the table to make it re-usable for calculating the next seams?
 
 ```typescript
 // The metadata for the pixels in the seam.
