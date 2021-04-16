@@ -353,7 +353,7 @@ The naive approach would be to check all possible paths one after another.
 
 ![The naive approach](assets/50-naive-approach.png)
 
-Going from top to bottom, for each pixel, we have 3 options (↙︎ go down-left, ↓ go down, ↘︎ go down-right). This gives us the time complexity of `O(3^n)` which looks slow.
+Going from top to bottom, for each pixel, we have 3 options (↙︎ go down-left, ↓ go down, ↘︎ go down-right). This gives us the time complexity of `O(w * 3^h)` or simply `O(3^h)`, where `w` and `h` are the width and the height of the image. This approach looks slow.
 
 #### The greedy approach
 
@@ -363,7 +363,7 @@ We may also try to choose the next pixel as a pixel with the lowest energy, hopi
 
 This approach gives not the worst solution, but it cannot guarantee that we will find the best available solution. On the image above you may see how the greedy approach chose `5` instead of `10` at first and missed the chain of optimal pixels.
 
-The good part about this approach is that it is fast, and it has a time complexity of `O(n)`. In this case, the cost of the speed is the low quality of resizing.
+The good part about this approach is that it is fast, and it has a time complexity of `O(w + h)`, where `w` and `h` are the width and the height of the image. In this case, the cost of the speed is the low quality of resizing. We need to find a minimum value in the first row (traversing `w` cells) and then we explore only 3 neighbor pixels for each row (traversing `h` rows).
 
 #### The dynamic programming approach
 
@@ -401,6 +401,8 @@ Let's try to fill several cells of this table to see how it works.
 ![Seams energies map traversal](assets/57-dp-seams-energies-traversal.png)
 
 After filling out the `seamsEnergies` table we may see that the lowest energy pixel has an energy of `50`. For convenience, during the `seamsEnergies` generation for each pixel, we may save not only the energy of the seam but also the coordinates of the previous lowest energy seam. This will give us the possibility to reconstruct the seam path from the bottom to the top easily.
+
+The time complexity of DP approach would be `O(w * h)`, where `w` and `h` are the width and the height of the image. We need to calculate energies for *every* pixel of the image.
 
 Here is an example of how this logic might be implemented:
 
@@ -537,6 +539,3 @@ Another interesting area of experimentation might be to make the algorithm work 
 > Those are the plans for the future, but for now, I hope that the example with image downsizing was interesting and useful for you. I also hope that you've got the idea of using dynamic programming to implement it.
 >
 > So, good luck with your own experiments!
-
-
-
