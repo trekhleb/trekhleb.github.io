@@ -60,7 +60,7 @@ The importance of each pixel (so-called pixel's energy) is being calculated base
 
 ### JS IMAGE CARVER demo
 
-I've created the [JS IMAGE CARVER](https://trekhleb.dev/js-image-carver) web-app that you may use to play around with resizing of your custom images. You may also try its embed version below right away! This widget uses the Seam Carving algorithm that we're going to explore in this article.
+I've created the [JS IMAGE CARVER](https://trekhleb.dev/js-image-carver) web-app (the [source-code is on GitHub](https://github.com/trekhleb/js-image-carver)) that you may use to play around with resizing of your custom images. You may also try its embed version below right away! This widget uses the Seam Carving algorithm that we're going to explore in this article.
 
 <InteractivePostArea title="Content Aware Image Resizer">
   <ImageResizer withSeam />
@@ -489,6 +489,17 @@ Here is how the algorithm works for objects removal.
 
 ![JS IMAGE CARVER OBJECT REMOVAL DEMO](assets/10-demo-02.gif)
 
-## Known issues and future plans
+## Issues and what's next
+
+The [JS IMAGE CARVER](https://github.com/trekhleb/js-image-carver) web-app is far from being a production ready resizer of course. Its main purpose was to experiment with the Seam Carving algorithm interactively. So the plan for the future is to continue experimentation.
+
+The [original paper](https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf) describes how the Seam Carving algorithm might be used not only for the downscaling, but also for the **upscaling of the images**. The upscaling, in turn, might be used to **upscale the image back to its original state after the objects' removal**.
+
+Another interesting area of experimentation might be to make the algorithm work in a **real time**.
+
+> Those are the plans for the future, but for now, I hope that the example with image downsizing was interesting and useful for you. I also hope that you've got the idea of using the dynamic programming to implement it.
+>
+>So, good luck with your own experiments!
+
 
 
