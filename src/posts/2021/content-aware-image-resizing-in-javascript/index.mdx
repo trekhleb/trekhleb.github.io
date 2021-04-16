@@ -398,6 +398,10 @@ If we fill the `seamsEnergies` table completely, then the minimum number in the 
 
 Let's try to fill several cells of this table to see how it works.
 
+![Seams energies map traversal](assets/57-dp-seams-energies-traversal.png)
+
+After filling out the `seamsEnergies` table we may see that the lowest energy pixel has an energy of `50`. For convenience, during the `seamsEnergies` generation for each pixel we may save not only the energy of the seam but also a coordinates of the previous lowest energy seam. This will give us a possibility to reconstruct the seam path easily.
+
 ```typescript
 // The metadata for the pixels in the seam.
 type SeamPixelMeta = {
