@@ -282,7 +282,7 @@ const getPixelEnergy = (left: Color | null, middle: Color, right: Color | null):
 
 ### Calculating the energy map
 
-The image we're working with is in the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) format. It means that all the pixels (and their colors) are stored in flat (*1D*) [Uint8ClampedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) array. For readability purposes let's introduce the couple of helper functions that will allow us to work with the Uint8ClampedArray array as with a *2D* matrix instead.
+The image we're working with has the [ImageData](https://developer.mozilla.org/en-US/docs/Web/API/ImageData) format. It means that all the pixels (and their colors) are stored in flat (*1D*) [Uint8ClampedArray](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Uint8ClampedArray) array. For readability purposes let's introduce the couple of helper functions that will allow us to work with the Uint8ClampedArray array as with a *2D* matrix instead.
 
 ```typescript
 // Helper function that returns the color of the pixel.
@@ -343,7 +343,7 @@ const calculateEnergyMap = (img: ImageData, { w, h }: ImageSize): EnergyMap => {
 
 ### Finding the seam with the lowest energy (Dynamic Programming approach)
 
-> I've already went through some Dynamic Programming basics in [Dynamic Programming vs Divide-and-Conquer](https://trekhleb.dev/blog/2018/dynamic-programming-vs-divide-and-conquer/) article before. There is a DP example based on the minimum edit distance problem. You might want to check it out to give some more context.
+> I've already went through some Dynamic Programming basics in [Dynamic Programming vs Divide-and-Conquer](https://trekhleb.dev/blog/2018/dynamic-programming-vs-divide-and-conquer/) article before. There is a DP example based on the minimum edit distance problem. You might want to check it out to get some more context.
 
 The issue we need to solve now is to find the path (the seam) on the energy map that goes from top to bottom and has the minimum sum of pixel energies.
 
@@ -381,7 +381,7 @@ Let's also keep in mind that for one particular pixel on the image (i.e. the bot
 
 ![What seam to choose](assets/53-dp-what-to-choose.png)
 
-Since we're looking for a seam with the lowest resulting energy possible it makes sense to pick the previous seam with the lowest resulting energy as well.
+Since we're looking for a seam with the lowest resulting energy it would makes sense to pick the previous seam with the lowest resulting energy as well.
 
 ![Seams energies example](assets/56-dp-seams-energies-example.png)
 
@@ -400,7 +400,7 @@ Let's try to fill several cells of this table to see how it works.
 
 ![Seams energies map traversal](assets/57-dp-seams-energies-traversal.png)
 
-After filling out the `seamsEnergies` table we may see that the lowest energy pixel has an energy of `50`. For convenience, during the `seamsEnergies` generation for each pixel we may save not only the energy of the seam but also a coordinates of the previous lowest energy seam. This will give us a possibility to reconstruct the seam path easily.
+After filling out the `seamsEnergies` table we may see that the lowest energy pixel has an energy of `50`. For convenience, during the `seamsEnergies` generation for each pixel we may save not only the energy of the seam but also coordinates of the previous lowest energy seam. This will give us a possibility to reconstruct the seam path from bottom to the top easily.
 
 Here is an example of how this logic might be implemented:
 
@@ -530,7 +530,7 @@ Here is how the algorithm works for objects removal.
 
 The [JS IMAGE CARVER](https://github.com/trekhleb/js-image-carver) web-app is far from being a production ready resizer of course. Its main purpose was to experiment with the Seam Carving algorithm interactively. So the plan for the future is to continue experimentation.
 
-The [original paper](https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf) describes how the Seam Carving algorithm might be used not only for the downscaling, but also for the **upscaling of the images**. The upscaling, in turn, might be used to **upscale the image back to its original state after the objects' removal**.
+The [original paper](https://perso.crans.org/frenoy/matlab2012/seamcarving.pdf) describes how the Seam Carving algorithm might be used not only for the downscaling, but also for the **upscaling of the images**. The upscaling, in turn, might be used to **upscale the image back to its original width after the objects' removal**.
 
 Another interesting area of experimentation might be to make the algorithm work in a **real time**.
 
