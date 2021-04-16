@@ -402,6 +402,8 @@ Let's try to fill several cells of this table to see how it works.
 
 After filling out the `seamsEnergies` table we may see that the lowest energy pixel has an energy of `50`. For convenience, during the `seamsEnergies` generation for each pixel we may save not only the energy of the seam but also a coordinates of the previous lowest energy seam. This will give us a possibility to reconstruct the seam path easily.
 
+Here is an example of how this logic might be implemented:
+
 ```typescript
 // The metadata for the pixels in the seam.
 type SeamPixelMeta = {
@@ -534,7 +536,7 @@ Another interesting area of experimentation might be to make the algorithm work 
 
 > Those are the plans for the future, but for now, I hope that the example with image downsizing was interesting and useful for you. I also hope that you've got the idea of using the dynamic programming to implement it.
 >
->So, good luck with your own experiments!
+> So, good luck with your own experiments!
 
 
 
