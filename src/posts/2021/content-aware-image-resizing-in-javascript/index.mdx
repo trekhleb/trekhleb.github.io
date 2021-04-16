@@ -462,7 +462,7 @@ const findLowEnergySeam = (energyMap: EnergyMap, { w, h }: ImageSize): Seam => {
 
 ### Removing the seam with the lowest energy
 
-Once we found the lowest energy seam, we need to remove the pixels that form it from the image. The removal is happening by shifting the pixels to the right of the seam by `1px` to the left. For performance reasons we don't actually delete the last columns. Instead, the rendering component will just ignore the part of the image that lays beyond the resized image width.
+Once we found the lowest energy seam, we need to remove (to carve) the pixels that form it from the image. The removal is happening by shifting the pixels to the right of the seam by `1px` to the left. For performance reasons we don't actually delete the last columns. Instead, the rendering component will just ignore the part of the image that lays beyond the resized image width.
 
 ![Deleting the seam](assets/60-deleting-example.png)
 
@@ -481,4 +481,14 @@ const deleteSeam = (img: ImageData, seam: Seam, { w }: ImageSize): void => {
 
 ## Objects removal
 
-## What is next
+The Seam Carving algorithm tries to remove the seams which consist of low energy pixels first. We could leverage this fact and by assigning a low energy to some pixels manually (i.e. by drawing on the image and masking out some areas of it) we could make the Seam Carving algorithm to do *objects removal* for us for free.
+
+Currently, in `getPixelEnergy()` function we were using only the `R`, `G`, `B` color channels to calculate the pixel's energy. But there is also the `A` (alpha, transparency) parameter of the color that we didn't use yet. We may use the transparency channel to tell the algorithm that transparent pixels are the pixels we want to remove. You may check the [source-code of the energy function](https://github.com/trekhleb/js-image-carver/blob/main/src/utils/contentAwareResizer.ts#L54) that takes transparency into account.
+
+Here is how the algorithm works for objects removal.
+
+![JS IMAGE CARVER OBJECT REMOVAL DEMO](assets/10-demo-02.gif)
+
+## Known issues and future plans
+
+
