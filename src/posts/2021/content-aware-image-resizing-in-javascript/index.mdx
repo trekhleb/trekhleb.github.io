@@ -367,6 +367,12 @@ The good part about this approach is that it is fast, and it has time complexity
 
 #### The dynamic programming approach
 
+You might have noticed that in the naive approach we summed up the same pixel energies over and over again while calculating the resulting seams' energy.
+
+![Repeated problems](assets/52-dp-repeated-problems.png)
+
+When we have such overlapping sub-problems, [it is a sign](https://trekhleb.dev/blog/2018/dynamic-programming-vs-divide-and-conquer/) that the general problem *might* be optimized by dynamic programming approach.
+
 ```typescript
 // The metadata for the pixels in the seam.
 type SeamPixelMeta = {
