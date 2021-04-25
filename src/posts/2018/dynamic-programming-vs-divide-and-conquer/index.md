@@ -15,6 +15,8 @@ date: 2018-06-15
 
 In this article I’m trying to explain the difference/similarities between dynamic programing and divide and conquer approaches based on two examples: [binary search](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/search/binary-search) and [minimum edit distance](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/string/levenshtein-distance) (Levenshtein distance).
 
+> Also, in the [Content-aware image resizing in JavaScript](https://trekhleb.dev/blog/2021/content-aware-image-resizing-in-javascript/) article I went through another powerful but yet simple example of dynamic programming for the Seam Carving algorithm. You might want to check it out as well. 
+
 ## The Problem
 
 When I [started to learn algorithms](https://github.com/trekhleb/javascript-algorithms) it was hard for me to understand the main idea of dynamic programming (**DP**) and how it is different from divide-and-conquer (**DC**) approach. When it gets to comparing those two paradigms usually Fibonacci function comes to the rescue as great [example](https://stackoverflow.com/questions/13538459/difference-between-divide-and-conquer-algo-and-dynamic-programming). But when we’re trying to solve the **same** problem using both DP and DC approaches to explain each of them, it feels for me like we may **lose valuable detail** that might help to catch the difference faster. These detail tells us that each technique serves best for **different** types of problems.
