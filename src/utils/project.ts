@@ -1,4 +1,4 @@
-import { Project } from '../types/Project';
+import { Project, Projects } from '../types/Project';
 import projectStars from '../data/__generated__/projectStars.json';
 import { GitHubStars } from '../types/GitHubStars';
 
@@ -26,8 +26,12 @@ export function getGitHubProjectStars(project: Project): number | null {
   return projectStarsTyped[projectID]?.stars || null;
 }
 
-export function getTotalGetHubProjectStars(projects: Project[]): number | null {
-  return projects.reduce((totalStars: number, project: Project) => {
+export function projectMapToArray(projects: Projects): Project[] {
+  return Object.values<Project>(projects);
+}
+
+export function getTotalGetHubProjectStars(projects: Projects): number | null {
+  return projectMapToArray(projects).reduce((totalStars: number, project: Project) => {
     const currentProjectStars = getGitHubProjectStars(project) || 0;
     return totalStars + currentProjectStars;
   }, 0);

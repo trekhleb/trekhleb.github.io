@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import { Project as ProjectType } from '../../types/Project';
+import { Project as ProjectType, Projects as ProjectsType } from '../../types/Project';
 import ProjectsList from '../elements/ProjectsList';
 import PageLayout from '../layouts/PageLayout';
 import PageHeader from '../shared/PageHeader';
@@ -12,11 +12,11 @@ import ProjectFilters, {
   sortByStartDateDesc,
   SortOption,
 } from '../elements/ProjectFilters';
-import { getGitHubProjectStars, getTotalGetHubProjectStars } from '../../utils/project';
+import { getGitHubProjectStars, getTotalGetHubProjectStars, projectMapToArray } from '../../utils/project';
 import Stars from '../shared/Stars';
 
 type ProjectsScreenProps = {
-  projects: ProjectType[],
+  projects: ProjectsType,
 };
 
 type ProjectSorter = {
@@ -60,7 +60,9 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
   const { projects } = props;
 
   const [sortBy, setSortBy] = useState<SortOption>(sortByStartDateDesc);
-  const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>(projects);
+  const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>(
+    projectMapToArray(projects),
+  );
 
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {

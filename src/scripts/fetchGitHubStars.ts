@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 
 import { projects } from '../data/projects';
 import { Project } from '../types/Project';
-import { getGitHubProjectID } from '../utils/project';
+import { getGitHubProjectID, projectMapToArray } from '../utils/project';
 import { GitHubStars } from '../types/GitHubStars';
 
 const gitHubAPIBasePath = 'https://api.github.com';
@@ -84,7 +84,7 @@ async function fetchGitHubProject(project: Project): Promise<GitHubProject> {
 }
 
 async function main(): Promise<void> {
-  const ghProjects = projects
+  const ghProjects = projectMapToArray(projects)
     .filter((project: Project) => project?.gitHubRepo?.owner && project?.gitHubRepo?.repo);
 
   if (!ghProjects || !ghProjects.length) {

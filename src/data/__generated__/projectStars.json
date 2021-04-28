@@ -1,54 +1,54 @@
 {
   "trekhleb/js-image-carver": {
-    "stars": 0,
-    "updatedAt": 1618585743288
+    "stars": 804,
+    "updatedAt": 1619594840952
   },
   "trekhleb/links-detector": {
-    "stars": 111,
-    "updatedAt": 1618585743535
+    "stars": 123,
+    "updatedAt": 1619594841451
   },
   "trekhleb/machine-learning-experiments": {
-    "stars": 887,
-    "updatedAt": 1618585743740
+    "stars": 902,
+    "updatedAt": 1619594841821
   },
   "trekhleb/state-of-the-art-shitcode": {
-    "stars": 1669,
-    "updatedAt": 1618585744106
+    "stars": 1729,
+    "updatedAt": 1619594842423
   },
   "trekhleb/covid-19": {
-    "stars": 245,
-    "updatedAt": 1618585744334
+    "stars": 247,
+    "updatedAt": 1619594843155
   },
   "trekhleb/nano-neuron": {
-    "stars": 1899,
-    "updatedAt": 1618585744555
+    "stars": 1911,
+    "updatedAt": 1619594843986
   },
   "trekhleb/use-position": {
-    "stars": 230,
-    "updatedAt": 1618585744795
+    "stars": 235,
+    "updatedAt": 1619594844395
   },
   "trekhleb/homemade-machine-learning": {
-    "stars": 17372,
-    "updatedAt": 1618585745147
+    "stars": 17427,
+    "updatedAt": 1619594844892
   },
   "trekhleb/promote-your-next-startup": {
-    "stars": 416,
-    "updatedAt": 1618585745586
+    "stars": 427,
+    "updatedAt": 1619594845134
   },
   "trekhleb/javascript-algorithms": {
-    "stars": 103442,
-    "updatedAt": 1618585745828
+    "stars": 104779,
+    "updatedAt": 1619594846445
   },
   "trekhleb/machine-learning-octave": {
-    "stars": 651,
-    "updatedAt": 1618585746193
+    "stars": 652,
+    "updatedAt": 1619594846698
   },
   "trekhleb/learn-python": {
-    "stars": 7132,
-    "updatedAt": 1618585746592
+    "stars": 7282,
+    "updatedAt": 1619594846967
   },
   "trekhleb/angular-library-seed": {
     "stars": 196,
-    "updatedAt": 1618585746830
+    "updatedAt": 1619594847413
   }
 }
