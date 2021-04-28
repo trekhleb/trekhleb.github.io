@@ -4,7 +4,11 @@ import { Image } from './Image';
 import { Link } from './Link';
 import { GitHubRepo } from './GitHubRepo';
 
+export type ProjectID = string;
+
 export type Project = {
+  // Project ID must be the same as the project key in the projects map.
+  id: ProjectID,
   name?: string,
   summary?: string[],
   // Relative to the src/images folder path to the image (i.e. projects/links-detector-cover.png)
@@ -19,6 +23,4 @@ export type Project = {
   links?: Link[],
 };
 
-export type Projects = {
-  [projectID: string]: Project,
-};
+export type Projects = Record<ProjectID, Project>;

@@ -2,6 +2,7 @@ import { Projects } from '../types/Project';
 
 export const projects: Projects = {
   'js-image-carver': {
+    id: 'js-image-carver',
     name: '🌅 JS Image Carver',
     srcURL: { url: 'https://github.com/trekhleb/js-image-carver' },
     demoURL: { url: 'https://trekhleb.dev/js-image-carver' },
@@ -24,6 +25,7 @@ export const projects: Projects = {
     },
   },
   'links-detector': {
+    id: 'links-detector',
     name: '📖 👆🏻 Printed Links Detector',
     srcURL: { url: 'https://github.com/trekhleb/links-detector' },
     demoURL: { url: 'https://trekhleb.dev/links-detector/' },
@@ -52,6 +54,7 @@ export const projects: Projects = {
     },
   },
   'machine-learning-experiments': {
+    id: 'machine-learning-experiments',
     name: '🤖 Interactive Machine Learning Experiments',
     srcURL: { url: 'https://github.com/trekhleb/machine-learning-experiments' },
     demoURL: { url: 'https://trekhleb.dev/machine-learning-experiments/' },
@@ -76,6 +79,7 @@ export const projects: Projects = {
     },
   },
   'state-of-the-art-shitcode': {
+    id: 'state-of-the-art-shitcode',
     name: '💩 State-of-the-Art Shitcode Principles',
     srcURL: { url: 'https://github.com/trekhleb/state-of-the-art-shitcode' },
     cover: { srcPath: 'projects/state-of-the-art-shitcode/cover.png' },
@@ -95,6 +99,7 @@ export const projects: Projects = {
     },
   },
   'covid-dashboard': {
+    id: 'covid-dashboard',
     name: '📈 Coronavirus (COVID-19) Dashboard',
     srcURL: { url: 'https://github.com/trekhleb/covid-19/' },
     demoURL: { url: 'https://trekhleb.dev/covid-19/' },
@@ -114,6 +119,7 @@ export const projects: Projects = {
     },
   },
   'nano-neuron': {
+    id: 'nano-neuron',
     name: '🤖 NanoNeuron',
     srcURL: { url: 'https://github.com/trekhleb/nano-neuron' },
     cover: { srcPath: 'projects/nano-neuron/cover.png' },
@@ -135,6 +141,7 @@ export const projects: Projects = {
     },
   },
   'use-position': {
+    id: 'use-position',
     name: '🌍 usePosition: React hook for fetching and following a browser geolocation',
     srcURL: { url: 'https://github.com/trekhleb/use-position' },
     demoURL: { url: 'https://trekhleb.dev/use-position' },
@@ -156,6 +163,7 @@ export const projects: Projects = {
     },
   },
   'javascript-algorithms-book': {
+    id: 'javascript-algorithms-book',
     name: '📘 JavaScript Algorithms Book',
     demoURL: { url: 'https://www.newline.co/javascript-algorithms' },
     cover: { srcPath: 'projects/javascript-algorithms-book/cover-1.png' },
@@ -171,6 +179,7 @@ export const projects: Projects = {
     ],
   },
   'homemade-machine-learning': {
+    id: 'homemade-machine-learning',
     name: '🤖 Homemade Machine Learning',
     srcURL: { url: 'https://github.com/trekhleb/homemade-machine-learning' },
     startDate: '2018-12-01',
@@ -193,6 +202,7 @@ export const projects: Projects = {
     },
   },
   'promote-your-next-startup': {
+    id: 'promote-your-next-startup',
     name: '📣 Promote Your Next Startup',
     srcURL: { url: 'https://github.com/trekhleb/promote-your-next-startup' },
     startDate: '2018-06-11',
@@ -211,6 +221,7 @@ export const projects: Projects = {
     },
   },
   'javascript-algorithms': {
+    id: 'javascript-algorithms',
     name: '📝 JavaScript Algorithms and Data-Structures',
     srcURL: { url: 'https://github.com/trekhleb/javascript-algorithms' },
     startDate: '2018-02-01',
@@ -230,6 +241,7 @@ export const projects: Projects = {
     },
   },
   'machine-learning-octave': {
+    id: 'machine-learning-octave',
     name: '🤖 Machine Learning in MatLab/Octave',
     srcURL: { url: 'https://github.com/trekhleb/machine-learning-octave' },
     startDate: '2018-10-01',
@@ -251,6 +263,7 @@ export const projects: Projects = {
     },
   },
   'learn-python': {
+    id: 'learn-python',
     name: '📚 Playground and cheatsheet for learning Python',
     srcURL: { url: 'https://github.com/trekhleb/learn-python' },
     startDate: '2018-08-01',
@@ -268,6 +281,7 @@ export const projects: Projects = {
     },
   },
   aggregatus: {
+    id: 'aggregatus',
     name: '➡️ Aggregatus | Data Aggregation Service',
     demoURL: { url: 'https://aggregatus.io/' },
     startDate: '2017-01-01',
@@ -295,6 +309,7 @@ export const projects: Projects = {
     ],
   },
   'angular-library-seed': {
+    id: 'angular-library-seed',
     name: '🌾 Angular-library-seed',
     srcURL: { url: 'https://github.com/trekhleb/angular-library-seed' },
     cover: { srcPath: 'projects/angular-library-seed/cover.png' },
@@ -314,6 +329,7 @@ export const projects: Projects = {
     },
   },
   allbible: {
+    id: 'allbible',
     name: '📕 AllBible.info',
     demoURL: { url: 'https://allbible.info/' },
     startDate: '2010-02-01',
@@ -330,6 +346,7 @@ export const projects: Projects = {
     ],
   },
   'hook-and-thread': {
+    id: 'hook-and-thread',
     name: '🧶 Hook&Thread',
     demoURL: { url: 'http://hook-and-thread.com/' },
     cover: { srcPath: 'projects/hook-and-thread/cover-2.png' },
@@ -347,6 +364,7 @@ export const projects: Projects = {
     ],
   },
   siteprom: {
+    id: 'siteprom',
     name: '🕸 SiteProm Web Studio',
     demoURL: { url: 'http://site-prom.com/' },
     cover: { srcPath: 'projects/siteprom/cover-1.png' },
