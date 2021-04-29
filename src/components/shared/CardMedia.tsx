@@ -30,7 +30,7 @@ const CardMedia = (props: CardMediaProps): React.ReactElement | null => {
 
   const classes = mode === cardMediaModeRow
     ? `${commonClasses} sm:h-auto sm:w-2/5 lg:w-1/4`
-    : `${commonClasses} mb-2`;
+    : `${commonClasses}`;
 
   const wrappedChildren = link && link.url ? (
     <HyperLink link={link} formatted={false}>

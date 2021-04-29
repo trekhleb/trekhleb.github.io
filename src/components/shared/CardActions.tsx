@@ -3,19 +3,18 @@ import Row from './Row';
 
 type CardActionsProps = {
   children: React.ReactNode,
+  className?: string,
 };
 
 const CardActions = (props: CardActionsProps): React.ReactElement | null => {
-  const { children } = props;
+  const { children, className = 'px-6 pb-6' } = props;
 
   if (!children) {
     return null;
   }
 
-  const commonClasses = 'px-6 pb-6';
-
   return (
-    <div className={commonClasses}>
+    <div className={className}>
       <Row>
         {children}
       </Row>

@@ -7,10 +7,11 @@ import { useFluidCover } from '../../hooks/useFluidCover';
 type FluidImageProps = {
   image?: Image | null | undefined,
   fluidImage?: FluidImageType | null | undefined,
+  className?: string,
 };
 
 const FluidImage = (props: FluidImageProps): React.ReactElement | null => {
-  const { image, fluidImage: fluidImageProvided } = props;
+  const { image, fluidImage: fluidImageProvided, className = '' } = props;
 
   const fluidImageFetched = useFluidCover({ imagePath: image?.srcPath });
   const fluidImage = fluidImageProvided || fluidImageFetched;
@@ -28,6 +29,7 @@ const FluidImage = (props: FluidImageProps): React.ReactElement | null => {
       alt={image?.caption || ''}
       title={image?.caption || ''}
       durationFadeIn={500}
+      className={className}
       fadeIn
     />
   );
