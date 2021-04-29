@@ -3,6 +3,7 @@ import { DateString } from './Date';
 import { Image } from './Image';
 import { Link } from './Link';
 import { GitHubRepo } from './GitHubRepo';
+import { Achievement } from './Achievement';
 
 export type ProjectID = string;
 
@@ -21,6 +22,7 @@ export type Project = {
   archived?: boolean,
   gitHubRepo?: GitHubRepo,
   links?: Link[],
+  achievements?: Achievement[],
 };
 
 export type Projects = Record<ProjectID, Project>;

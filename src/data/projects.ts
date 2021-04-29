@@ -200,6 +200,24 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'homemade-machine-learning',
     },
+    achievements: [
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/00-hacker-news.png' },
+      },
+      {
+        title: 'Listed on GitHub Explore page',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/01-github-explore.png' },
+      },
+      {
+        title: 'GitHub trending devs of the day',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/02-github-trending-devs-day.png' },
+      },
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/03-github-trending-repo-day.png' },
+      },
+    ],
   },
   'promote-your-next-startup': {
     id: 'promote-your-next-startup',
