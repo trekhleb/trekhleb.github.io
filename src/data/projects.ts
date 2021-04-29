@@ -24,6 +24,26 @@ export const projects: Projects = {
       repo: 'js-image-carver',
     },
   },
+  'trekhleb-dev': {
+    id: 'trekhleb-dev',
+    name: '🧬 Trekhleb.dev',
+    srcURL: { url: 'https://github.com/trekhleb/trekhleb.github.io' },
+    demoURL: { url: 'https://trekhleb.dev' },
+    cover: { srcPath: 'projects/trekhleb-dev/cover.png' },
+    startDate: '2020-12-30',
+    summary: [
+      'My personal website with a list of my projects that help people learn and blog posts about life, web-development, and machine-learning',
+    ],
+    tags: [
+      { name: 'Gatsby' },
+      { name: 'TypeScript' },
+      { name: 'Blog' },
+    ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'trekhleb.github.io',
+    },
+  },
   'links-detector': {
     id: 'links-detector',
     name: '📖 👆🏻 Printed Links Detector',
