@@ -22,7 +22,12 @@ const classes = {
 };
 
 const H = (props: HProps): React.ReactElement | null => {
-  const { children, level, className = '' } = props;
+  const {
+    children,
+    level,
+    className = '',
+    ...rest
+  } = props;
 
   if (!children) {
     return null;
@@ -31,15 +36,15 @@ const H = (props: HProps): React.ReactElement | null => {
   const classNames = `${classes[level]} ${className}`;
 
   if (level === hLevel.h1) {
-    return <h1 className={classNames}>{children}</h1>;
+    return <h1 className={classNames} {...rest}>{children}</h1>;
   }
 
   if (level === hLevel.h2) {
-    return <h2 className={classNames}>{children}</h2>;
+    return <h2 className={classNames} {...rest}>{children}</h2>;
   }
 
   if (level === hLevel.h3) {
-    return <h3 className={classNames}>{children}</h3>;
+    return <h3 className={classNames} {...rest}>{children}</h3>;
   }
 
   return null;
