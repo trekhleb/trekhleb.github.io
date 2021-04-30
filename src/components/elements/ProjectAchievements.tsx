@@ -18,11 +18,12 @@ const ProjectAchievements = (props: ProjectAchievementsProps): React.ReactElemen
     return null;
   }
 
-  const achievementsItems = achievements.map((achievement: Achievement) => {
+  const achievementsItems = achievements.map((achievement: Achievement, idx: number) => {
     return (
       <ProjectAchievement
         achievement={achievement}
-        key={achievement.title}
+        // eslint-disable-next-line react/no-array-index-key
+        key={idx}
       />
     );
   });

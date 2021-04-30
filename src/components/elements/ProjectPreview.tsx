@@ -2,6 +2,7 @@ import React from 'react';
 import { IoPlay } from '@react-icons/all-files/io5/IoPlay';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { BiInfoCircle } from '@react-icons/all-files/bi/BiInfoCircle';
+import { GiArcheryTarget } from '@react-icons/all-files/gi/GiArcheryTarget';
 
 import { Project as ProjectType } from '../../types/Project';
 import DateRange from '../shared/DateRange';
@@ -16,9 +17,10 @@ import ButtonLink from '../shared/ButtonLink';
 import Archived from '../shared/Archived';
 import Stars from '../shared/Stars';
 import Row from '../shared/Row';
-import { getGitHubProjectStars } from '../../utils/project';
+import { getGitHubProjectStars, getProjectAchievementsLink } from '../../utils/project';
 import { Link } from '../../types/Link';
 import HyperLink from '../shared/HyperLink';
+import Badge from '../shared/Badge';
 
 type ProjectPreviewProps = {
   project: ProjectType | null,
@@ -129,6 +131,21 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     })
     : null;
 
+  const achievementsLink = project?.achievements && project.achievements.length ? (
+    <Row className="mt-3">
+      <HyperLink
+        link={getProjectAchievementsLink(project.id)}
+        className="text-sm underline"
+        startEnhancer={(<GiArcheryTarget size={14} />)}
+      >
+        Achievements
+      </HyperLink>
+      <Badge className="ml-2">
+        <small>{project.achievements.length}</small>
+      </Badge>
+    </Row>
+  ) : null;
+
   const externalLinks = extraLinksList ? (
     <ul className="mt-3">
       {extraLinksList}
@@ -154,6 +171,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         </Row>
         {projectSummary}
         {projectTags}
+        {achievementsLink}
         {externalLinks}
       </CardContent>
       {actions}

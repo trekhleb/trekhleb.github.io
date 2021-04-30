@@ -223,19 +223,28 @@ export const projects: Projects = {
     achievements: [
       {
         title: 'Listed on Hacker News front page',
-        image: { srcPath: 'projects/homemade-machine-learning/achievements/00-hacker-news.png' },
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/00-hacker-news-2019-11-02.png' },
       },
       {
         title: 'Listed on GitHub Explore page',
-        image: { srcPath: 'projects/homemade-machine-learning/achievements/01-github-explore.png' },
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/01-github-explore-2019-11-02.png' },
       },
       {
         title: 'GitHub trending devs of the day',
-        image: { srcPath: 'projects/homemade-machine-learning/achievements/02-github-trending-devs-day.png' },
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/02-github-trending-devs-day-2019-11-02.png' },
       },
       {
         title: 'Trending repository of the day on GitHub',
-        image: { srcPath: 'projects/homemade-machine-learning/achievements/03-github-trending-repo-day.png' },
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/03-github-trending-repo-day-2019-11-02.png' },
+      },
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/05-github-trending-week-2019-05-09.png' },
+        date: '2019-05-09',
+      },
+      {
+        title: 'Trending repository of the week on GitHub',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/06-github-trending-week-2019-11-02.png' },
       },
     ],
   },
