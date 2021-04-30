@@ -23,6 +23,18 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'js-image-carver',
     },
+    achievements: [
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/js-image-carver/achievements/00-hacker-news-2021-04-17.png' },
+        date: '2021-04-17',
+      },
+      {
+        title: '#3 product of the day on Product Hunt',
+        image: { srcPath: 'projects/js-image-carver/achievements/01-product-hunt-third-product-of-the-day-2021-04-19.png' },
+        date: '2021-04-19',
+      },
+    ],
   },
   'trekhleb-dev': {
     id: 'trekhleb-dev',
@@ -49,6 +61,11 @@ export const projects: Projects = {
         image: { srcPath: 'projects/trekhleb-dev/achievements/00-hacker-news-2021-04-25.jpg' },
         date: '2021-04-25',
         link: { url: 'https://news.ycombinator.com/front?day=2021-04-25', caption: 'Hacker News archive' },
+      },
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/00-hacker-news-2021-04-17.png' },
+        date: '2021-04-17',
       },
       {
         title: 'Listed on Hacker News front page',
