@@ -13,6 +13,7 @@ type HProps = {
   children: React.ReactNode,
   level: HLevelValues,
   className?: string,
+  id?: string,
 };
 
 const classes = {
