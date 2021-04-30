@@ -1,6 +1,8 @@
 import { Project, ProjectID, Projects } from '../types/Project';
 import projectStars from '../data/__generated__/projectStars.json';
 import { GitHubStars } from '../types/GitHubStars';
+import { Link } from '../types/Link';
+import { routes } from '../constants/routes';
 
 export function getGitHubProjectID(project: Project): string | null {
   if (
@@ -41,4 +43,10 @@ export function getTotalGetHubProjectStars(projects: Projects): number | null {
     const currentProjectStars = getGitHubProjectStars(project) || 0;
     return totalStars + currentProjectStars;
   }, 0);
+}
+
+export function getProjectAchievementsLink(projectID: ProjectID): Link {
+  return {
+    url: `${routes.projects.path}/${projectID}#achievements`,
+  };
 }

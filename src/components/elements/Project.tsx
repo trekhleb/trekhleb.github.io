@@ -16,6 +16,7 @@ import Row from '../shared/Row';
 import { getGitHubProjectStars } from '../../utils/project';
 import { Link } from '../../types/Link';
 import HyperLink from '../shared/HyperLink';
+import ProjectAchievements from './ProjectAchievements';
 
 type ProjectProps = {
   project: ProjectType | null,
@@ -97,6 +98,16 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
     <FluidImage image={project.cover} />
   ) : null;
 
+  const projectCoverCard = (
+    <div className="mb-6">
+      <Card>
+        <CardMedia link={defaultProjectUrl} className="h-96">
+          {projectCover}
+        </CardMedia>
+      </Card>
+    </div>
+  );
+
   const archivedStamp = project?.archived ? (
     <Row className="py-6">
       <Archived />
@@ -143,21 +154,22 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
     </Row>
   );
 
+  const projectAchievements = (
+    <ProjectAchievements
+      achievements={project?.achievements}
+    />
+  );
+
   return (
     <>
-      <div className="mb-6">
-        <Card>
-          <CardMedia link={defaultProjectUrl} className="h-96">
-            {projectCover}
-          </CardMedia>
-        </Card>
-      </div>
+      {projectCoverCard}
       {projectDatesAndStars}
       {projectSummary}
       {projectTags}
       {externalLinks}
       {actions}
       {archivedStamp}
+      {projectAchievements}
     </>
   );
 };
