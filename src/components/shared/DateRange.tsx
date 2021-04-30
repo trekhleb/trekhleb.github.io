@@ -8,6 +8,7 @@ export type DateRangeProps = {
   startDate?: DateString | null,
   endDate?: DateString | null,
   className?: string,
+  withDay?: boolean,
 };
 
 const months = [
@@ -25,24 +26,30 @@ const months = [
   'Dec',
 ];
 
-const dateToString = (date: Date): string => {
+const dateToString = (date: Date, withDay = false): string => {
   const month = months[date.getMonth()];
+  const day = withDay ? ` ${date.getDay()}, ` : ' ';
   const year = date.getFullYear();
-  return `${month} ${year}`;
+  return `${month}${day}${year}`;
 };
 
 const DateRange = (props: DateRangeProps): React.ReactElement | null => {
-  const { startDate, endDate, className = '' } = props;
+  const {
+    startDate,
+    endDate,
+    className = '',
+    withDay = false,
+  } = props;
 
   if (!startDate && !endDate) {
     return null;
   }
 
-  const startDateString = startDate ? dateToString(new Date(startDate)) : null;
+  const startDateString = startDate ? dateToString(new Date(startDate), withDay) : null;
 
   const dateSeparator = startDate && endDate ? ' → ' : null;
 
-  const endDateString = endDate ? dateToString(new Date(endDate)) : null;
+  const endDateString = endDate ? dateToString(new Date(endDate), withDay) : null;
 
   return (
     <div className={className}>

@@ -29,6 +29,7 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
       <DateRange
         startDate={achievement.date}
         className="text-xs text-gray-500"
+        withDay
       />
     </div>
   ) : null;
