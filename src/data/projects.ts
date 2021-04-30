@@ -291,11 +291,48 @@ export const projects: Projects = {
         title: 'Listed on Hacker News front page',
         image: { srcPath: 'projects/javascript-algorithms/achievements/00-hacker-news-2018-07-20.png' },
         date: '2018-07-20',
-        link: { url: 'https://news.ycombinator.com/front?day=2018-07-20', caption: 'Hacker News Archive' },
+        link: { url: 'https://news.ycombinator.com/front?day=2018-07-20', caption: 'Hacker News archive' },
+      },
+      {
+        title: 'Ranked as #6 of top JavaScript repositories on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/00-top-js-repos-on-github-2021-04-30.png' },
+        date: '2021-04-30',
+        link: {
+          url: 'https://github.com/search?l=&o=desc&q=stars%3A%3E0+language%3AJavaScript&s=stars&type=Repositories',
+          caption: 'GitHub search query example',
+        },
       },
       {
         title: 'Trending repository of the day on GitHub',
         image: { srcPath: 'projects/javascript-algorithms/achievements/01-github-trending-day.png' },
+      },
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/02-github-trending-day-2020-11-19.png' },
+        date: '2020-11-19',
+      },
+      {
+        title: 'Trending repository of the month on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/03-github-trending-month.png' },
+      },
+      {
+        title: 'Trending repository of the week on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/04-github-trending-week-2020-12-13.png' },
+        date: '2020-12-13',
+      },
+      {
+        title: 'Trending developer of the day on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/05-github-trending-dev-day.png' },
+      },
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/06-github-trending-day-2021-03-29.png' },
+        date: '2021-03-29',
+      },
+      {
+        title: 'Trending repository of the week on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/07-github-trending-week-2021-04-04.png' },
+        date: '2021-04-04',
       },
     ],
   },
