@@ -28,7 +28,7 @@ const months = [
 
 const dateToString = (date: Date, withDay = false): string => {
   const month = months[date.getMonth()];
-  const day = withDay ? ` ${date.getDay()}, ` : ' ';
+  const day = withDay ? ` ${date.getDate()}, ` : ' ';
   const year = date.getFullYear();
   return `${month}${day}${year}`;
 };
