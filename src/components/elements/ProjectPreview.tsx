@@ -28,6 +28,8 @@ type ProjectPreviewProps = {
 
 const tagsPerProject = 3;
 
+const withAchievements = true;
+
 const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null => {
   const { project } = props;
 
@@ -131,20 +133,24 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     })
     : null;
 
-  const achievementsLink = project?.achievements && project.achievements.length ? (
-    <Row className="mt-3">
-      <HyperLink
-        link={getProjectAchievementsLink(project.id)}
-        className="text-sm underline"
-        startEnhancer={(<GiArcheryTarget size={14} />)}
-      >
-        Achievements
-      </HyperLink>
-      <Badge className="ml-2">
-        <small>{project.achievements.length}</small>
-      </Badge>
-    </Row>
-  ) : null;
+  const achievementsLink = withAchievements
+    && project?.achievements
+    && project.achievements.length
+    ? (
+      <Row className="mt-3">
+        <HyperLink
+          link={getProjectAchievementsLink(project.id)}
+          className="text-sm underline"
+          startEnhancer={(<GiArcheryTarget size={14} />)}
+        >
+          Achievements
+        </HyperLink>
+        <Badge className="ml-2">
+          <small>{project.achievements.length}</small>
+        </Badge>
+      </Row>
+    )
+    : null;
 
   const externalLinks = extraLinksList ? (
     <ul className="mt-3">

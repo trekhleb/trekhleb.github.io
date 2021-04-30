@@ -286,6 +286,18 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'javascript-algorithms',
     },
+    achievements: [
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/00-hacker-news-2018-07-20.png' },
+        date: '2018-07-20',
+        link: { url: 'https://news.ycombinator.com/front?day=2018-07-20', caption: 'Hacker News Archive' },
+      },
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/01-github-trending-day.png' },
+      },
+    ],
   },
   'machine-learning-octave': {
     id: 'machine-learning-octave',
