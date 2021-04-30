@@ -405,6 +405,22 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'learn-python',
     },
+    achievements: [
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/learn-python/achievements/00-github-trending-day.png' },
+      },
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/learn-python/achievements/01-github-trending-day-2020-11-21.png' },
+        date: '2020-11-21',
+      },
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/learn-python/achievements/02-github-trending-day-2020-11-23.png' },
+        date: '2020-11-23',
+      },
+    ],
   },
   aggregatus: {
     id: 'aggregatus',
