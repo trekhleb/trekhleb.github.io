@@ -43,6 +43,19 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'trekhleb.github.io',
     },
+    achievements: [
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/00-hacker-news-2021-04-25.jpg' },
+        date: '2021-04-25',
+        link: { url: 'https://news.ycombinator.com/front?day=2021-04-25', caption: 'Hacker News archive' },
+      },
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/00-hacker-news-2021-03-07.png' },
+        date: '2021-03-07',
+      },
+    ],
   },
   'links-detector': {
     id: 'links-detector',
