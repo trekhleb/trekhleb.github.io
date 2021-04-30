@@ -2,7 +2,7 @@ import React from 'react';
 import { IoPlay } from '@react-icons/all-files/io5/IoPlay';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { BiInfoCircle } from '@react-icons/all-files/bi/BiInfoCircle';
-import { GiArcheryTarget } from '@react-icons/all-files/gi/GiArcheryTarget';
+import { GiAchievement } from '@react-icons/all-files/gi/GiAchievement';
 
 import { Project as ProjectType } from '../../types/Project';
 import DateRange from '../shared/DateRange';
@@ -141,7 +141,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         <HyperLink
           link={getProjectAchievementsLink(project.id)}
           className="text-sm underline"
-          startEnhancer={(<GiArcheryTarget size={14} />)}
+          startEnhancer={(<GiAchievement size={18} />)}
         >
           Achievements
         </HyperLink>
