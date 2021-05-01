@@ -189,6 +189,23 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'nano-neuron',
     },
+    achievements: [
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/nano-neuron/achievements/00-hacker-news-2019-12-06.png' },
+        date: '2019-12-06',
+        link: { url: 'https://news.ycombinator.com/front?day=2019-12-06', caption: 'Hacker News archive' },
+      },
+      {
+        title: 'Listed in the Hot list of JavaScript subreddit',
+        image: { srcPath: 'projects/nano-neuron/achievements/01-reddit-javascript-hot-2021-02-14.png' },
+        date: '2021-02-14',
+        link: {
+          url: 'https://www.reddit.com/r/javascript/comments/ljl416/nanoneuron_7_simple_js_functions_that_explain_how/',
+          caption: 'Reddit post',
+        },
+      },
+    ],
   },
   'use-position': {
     id: 'use-position',
