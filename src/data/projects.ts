@@ -131,6 +131,32 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'machine-learning-experiments',
     },
+    achievements: [
+      {
+        title: 'Listed on Hacker News 2nd page',
+        image: { srcPath: 'projects/machine-learning-experiments/achievements/00-hacker-news-2nd-2020-06-22.png' },
+        date: '2020-06-22',
+        link: { url: 'https://news.ycombinator.com/front?day=2020-06-22&p=2', caption: 'Hacker News archive' },
+      },
+      {
+        title: 'Featured on Towards Data Science frontpage',
+        image: { srcPath: 'projects/machine-learning-experiments/achievements/01-towards-data-science-front-2020-06-20.png' },
+        date: '2020-06-20',
+        link: {
+          url: 'https://towardsdatascience.com/generating-cooking-recipes-using-tensorflow-and-lstm-recurrent-neural-network-a7bf242acad3',
+          caption: 'Publication',
+        },
+      },
+      {
+        title: 'Most shared article of the week on KDnuggets',
+        image: { srcPath: 'projects/machine-learning-experiments/achievements/02-kdnuggets-most-shared-2020-06-01.png' },
+        date: '2020-06-01',
+        link: {
+          url: 'https://www.kdnuggets.com/2020/05/interactive-machine-learning-experiments.html',
+          caption: 'Publication',
+        },
+      },
+    ],
   },
   'state-of-the-art-shitcode': {
     id: 'state-of-the-art-shitcode',
