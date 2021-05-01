@@ -274,6 +274,18 @@ export const projects: Projects = {
       { name: 'Algorithms' },
       { name: 'Book' },
     ],
+    achievements: [
+      {
+        title: 'The book is published on GumRoad',
+        image: { srcPath: 'projects/javascript-algorithms-book/achievements/00-published-on-gumroad.png' },
+        link: { url: 'https://gumroad.com/l/javascript-algorithms-full', caption: 'The book page' },
+      },
+      {
+        title: 'The book is published on NewLine',
+        image: { srcPath: 'projects/javascript-algorithms-book/achievements/01-published-on-newline.png' },
+        link: { url: 'https://www.newline.co/javascript-algorithms', caption: 'The book page' },
+      },
+    ],
   },
   'homemade-machine-learning': {
     id: 'homemade-machine-learning',
