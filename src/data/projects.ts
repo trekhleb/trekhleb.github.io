@@ -26,13 +26,15 @@ export const projects: Projects = {
     achievements: [
       {
         title: 'Listed on Hacker News front page',
-        image: { srcPath: 'projects/js-image-carver/achievements/00-hacker-news-2021-04-17.png' },
-        date: '2021-04-17',
+        image: { srcPath: 'projects/js-image-carver/achievements/00-hacker-news-2021-04-16.png' },
+        date: '2021-04-16',
+        link: { url: 'https://news.ycombinator.com/front?day=2021-04-16', caption: 'Hacker News archive' },
       },
       {
         title: '#3 product of the day on Product Hunt',
         image: { srcPath: 'projects/js-image-carver/achievements/01-product-hunt-third-product-of-the-day-2021-04-19.png' },
         date: '2021-04-19',
+        link: { url: 'https://www.producthunt.com/posts/js-image-carver', caption: 'Product page' },
       },
     ],
   },
