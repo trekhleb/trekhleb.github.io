@@ -124,6 +124,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
           <HyperLink
             link={extraLink}
             className="text-sm underline"
+            separatorClassName="w-1"
             startEnhancer={(<BiInfoCircle size={14} />)}
           >
             {extraLink?.caption || 'Read more'}
@@ -141,6 +142,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         <HyperLink
           link={getProjectAchievementsLink(project.id)}
           className="text-sm underline"
+          separatorClassName="w-1"
           startEnhancer={(<GiAchievement size={18} />)}
         >
           Achievements

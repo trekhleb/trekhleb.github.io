@@ -8,6 +8,7 @@ export type HyperLinkProps = {
   children: React.ReactNode,
   className?: string,
   activeClassName?: string,
+  separatorClassName?: string,
   hoverClassName?: string | null | undefined,
   startEnhancer?: React.ReactNode,
   formatted?: boolean,
@@ -20,6 +21,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     children,
     className = '',
     activeClassName = '',
+    separatorClassName = 'w-2',
     hoverClassName = null,
     startEnhancer = null,
     formatted = true,
@@ -43,7 +45,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
   const isHash = link.url.startsWith('#');
 
   const separator = startEnhancer ? (
-    <span className="w-2" />
+    <span className={separatorClassName} />
   ) : null;
 
   const externalLink = (
