@@ -66,13 +66,15 @@ export const projects: Projects = {
       },
       {
         title: 'Listed on Hacker News front page',
-        image: { srcPath: 'projects/trekhleb-dev/achievements/00-hacker-news-2021-04-17.png' },
-        date: '2021-04-17',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/00-hacker-news-2021-04-16.png' },
+        date: '2021-04-16',
+        link: { url: 'https://news.ycombinator.com/front?day=2021-04-16', caption: 'Hacker News archive' },
       },
       {
         title: 'Listed on Hacker News front page',
         image: { srcPath: 'projects/trekhleb-dev/achievements/00-hacker-news-2021-03-07.png' },
         date: '2021-03-07',
+        link: { url: 'https://news.ycombinator.com/item?id=26327532', caption: 'HN Post' },
       },
     ],
   },
