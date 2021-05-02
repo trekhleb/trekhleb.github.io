@@ -64,6 +64,18 @@ jobs:
       - name: Install dependencies
         run: npm i
 
+      - name: Cache Gatsby cache folder
+        uses: actions/cache@v2
+        with:
+          path: .cache
+          key: gatsby-cache-folder
+
+      - name: Cache Gatsby public folder
+        uses: actions/cache@v2
+        with:
+          path: public
+          key: gatsby-public-folder
+
       - name: Deploy
         run: |
           git config --global user.name $user_name
