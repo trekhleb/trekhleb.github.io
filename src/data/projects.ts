@@ -423,6 +423,11 @@ export const projects: Projects = {
         image: { srcPath: 'projects/javascript-algorithms/achievements/07-github-trending-week-2021-04-04.png' },
         date: '2021-04-04',
       },
+      {
+        title: '2nd trending repository of the day on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/08-github-trending-day-2021-07-14.png' },
+        date: '2021-07-14',
+      },
     ],
   },
   'machine-learning-octave': {
