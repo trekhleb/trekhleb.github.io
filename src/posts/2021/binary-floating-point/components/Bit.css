@@ -1,0 +1,4 @@
+.post--2021--binary-floating-point--bit-button:hover {
+  box-shadow: 0 0 5px 1px rgba(0,0,0,0.2);
+  transition: box-shadow 0.2s ease-in-out;
+}

@@ -1,0 +1,95 @@
+---
+title: "Binary representation of floating point numbers"
+
+summary: "Interactive example of how the floating point numbers like -27.156 are stored in binary format in a computer's memory"
+
+cover: assets/01-cover-02.jpg
+
+date: 2021-07-15
+
+---
+
+import InteractivePostArea from '../../../components/shared/InteractivePostArea';
+import Formula from './components/Formula';
+
+![Binary representation of floating point numbers](assets/01-cover-02.jpg)
+
+<center>
+  <small>
+    Jolly photo by <a href="https://unsplash.com/@daniellanner?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Daniel Lanner</a>
+  </small>
+</center>
+
+Have you ever wondered how computers store the floating point numbers like `3.1415` (𝝿) or `9.109 × 10⁻³¹` (the mass of the electron in kg) in the memory which is limited by a finite number of ones and zeroes (aka bits)?
+
+It seems pretty straightforward for integers (i.e. `17`). Let's say we have 16 bits (2 bytes) to store the number. In 16 bits we may store the integers in a range of `[0, 65535]`:
+
+```text
+(0000000000000000)₂ = 0
+
+(0000000000010001)₂ =
+    (1 × 2⁴) +
+    (0 × 2³) +
+    (0 × 2²) +
+    (0 × 2¹) +
+    (1 × 2⁰) = (17)₁₀
+
+(1111111111111111)₂ =
+    (1 × 2¹⁵) +
+    (1 × 2¹⁴) +
+    (1 × 2¹³) +
+    (1 × 2¹²) +
+    (1 × 2¹¹) +
+    (1 × 2¹⁰) +
+    (1 × 2⁹) +
+    (1 × 2⁸) +
+    (1 × 2⁷) +
+    (1 × 2⁶) +
+    (1 × 2⁵) +
+    (1 × 2⁴) +
+    (1 × 2³) +
+    (1 × 2²) +
+    (1 × 2¹) +
+    (1 × 2⁰) = (65535)₁₀
+```
+
+If we need signed integers we may use [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) and share the range of `[0, 65535]` with negative numbers. In this case our 16 bits would represent the numbers in a range of `[-32768, +32767]`.
+
+As you might have noticed, this approach won't allow you to represent the numbers like `-27.15625`.
+
+We're not the first ones who have noticed this issue though. Around ≈36 years ago some smart folks overcame this limitation by introducing the [IEEE 754](https://en.wikipedia.org/wiki/IEEE_754) standard for floating-point arithmetic.
+
+The main idea is to store
+
+![Scientific number notation](assets/03-scientific-notation.png)
+
+![Half-precision floating point number format explained in one picture](assets/02-half-precision-floating-point-number-explained.png)
+
+| Floating-point format | Total bits | Sign bits | Exponent bits | Significand bits |
+| :-------------------- | :--------: | :-------: | :-----------: | :--------------: |
+| Half precision        | 16         | 1         | 5             | 10               |
+| Single precision      | 32         | 1         | 8             | 23               |
+| Double precision      | 64         | 1         | 11            | 52               |
+
+<InteractivePostArea title="Half-precision (16 bits) floating point format">
+  <Formula />
+</InteractivePostArea>
+
+## References
+
+Check out the following resources to get deeper understanding of the binary representation of floating point numbers.
+
+Articles:
+- [Here is what you need to know about JavaScript’s Number type](https://indepth.dev/posts/1139/here-is-what-you-need-to-know-about-javascripts-number-type)
+
+Interactive tools:
+- [Float Toy](http://evanw.github.io/float-toy/)
+- [IEEE754 Visualization](https://bartaz.github.io/ieee754-visualization/)
+- [Float Exposed](https://float.exposed/)
+
+Specifications:
+- [IEEE Standard for Floating-Point Arithmetic (IEEE 754)](https://en.wikipedia.org/wiki/IEEE_754)
+- [Half-precision floating-point format](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)
+- [Single-precision floating-point format](https://en.wikipedia.org/wiki/Single-precision_floating-point_format)
+- [Double-precision floating-point format](https://en.wikipedia.org/wiki/Double-precision_floating-point_format)
+- [Biased exponent](https://en.wikipedia.org/wiki/Exponent_bias)
