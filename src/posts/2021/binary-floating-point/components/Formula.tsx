@@ -146,7 +146,7 @@ const Formula = (props: FormulaProps): React.ReactElement => {
           { /* eslint-disable-next-line */ }
           bias = 2<sup>k-1</sup> - 1 = 2<sup>{precision.exponentBitsCount}-1</sup> - 1 = {exponentBias}
         </div>
-        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap'  }}>
+        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
           <div>exponent</div>
           <div>{space}={space}</div>
           {exponentFormula}
