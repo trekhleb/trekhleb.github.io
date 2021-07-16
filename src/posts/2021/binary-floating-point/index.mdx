@@ -1,5 +1,5 @@
 ---
-title: "Binary representation of floating point numbers"
+title: "Binary representation of floating-point numbers"
 
 summary: "Interactive example of how the floating point numbers like -27.156 are stored in binary format in a computer's memory"
 
@@ -20,7 +20,7 @@ import Formula from './components/Formula';
   </small>
 </center>
 
-Have you ever wondered how computers store the floating point numbers like `3.1415` (𝝿) or `9.109 × 10⁻³¹` (the mass of the electron in kg) in the memory which is limited by a finite number of ones and zeroes (aka bits)?
+Have you ever wondered how computers store the floating-point numbers like `3.1415` (𝝿) or `9.109 × 10⁻³¹` (the mass of the electron in kg) in the memory which is limited by a finite number of ones and zeroes (aka bits)?
 
 It seems pretty straightforward for integers (i.e. `17`). Let's say we have 16 bits (2 bytes) to store the number. In 16 bits we may store the integers in a range of `[0, 65535]`:
 
@@ -53,7 +53,7 @@ It seems pretty straightforward for integers (i.e. `17`). Let's say we have 16 b
     (1 × 2⁰) = (65535)₁₀
 ```
 
-If we need signed integers we may use [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) and shift the range of `[0, 65535]` towards the negative numbers. In this case our 16 bits would represent the numbers in a range of `[-32768, +32767]`.
+If we need a signed integer we may use [two's complement](https://en.wikipedia.org/wiki/Two%27s_complement) and shift the range of `[0, 65535]` towards the negative numbers. In this case, our 16 bits would represent the numbers in a range of `[-32768, +32767]`.
 
 As you might have noticed, this approach won't allow you to represent the numbers like `-27.15625` (numbers after the decimal point are just being ignored).
 
@@ -71,9 +71,9 @@ As you may see from the image, the number representation might be split into thr
 - **fraction (aka significand)** - the valuable digits (the meaning, the payload) of the number
 - **exponent** - controls how far and in which direction to move the decimal point in the fraction
 
-The **base** part we may omit by just agreeing on what it will be equal to. In our case we'll be using `2` as a base.
+The **base** part we may omit by just agreeing on what it will be equal to. In our case, we'll be using `2` as a base.
 
-Now, instead of using all 16 bits (or 32 bits, or 64 bits) to store the fraction of the number, we may share the bits and store a sign, an exponent and a fraction at the same time. Depending on the number of bits that we're going to use to store the number we end up with the following splits:
+Instead of using all 16 bits (or 32 bits, or 64 bits) to store the fraction of the number, we may share the bits and store a sign, exponent, and fraction at the same time. Depending on the number of bits that we're going to use to store the number we end up with the following splits:
 
 
 | Floating-point format | Total bits | Sign bits | Exponent bits | Fraction bits | Base |
@@ -82,7 +82,7 @@ Now, instead of using all 16 bits (or 32 bits, or 64 bits) to store the fraction
 | [Single-precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format)      | 32         | 1         | 8             | 23               | 2    |
 | [Double-precision](https://en.wikipedia.org/wiki/Double-precision_floating-point_format)      | 64         | 1         | 11            | 52               | 2    |
 
-With this approach the number of bits for the fraction has been reduced (i.e. for the 16-bits number it was reduced from 16 bits to 10 bits). It means that the fraction might take a narrower range of values now (loosing some precision). However, since we also have an exponent part, it will actually increase the ultimate number range and also allow us to describe the numbers between 0 and 1 (if the exponent is negative).
+With this approach, the number of bits for the fraction has been reduced (i.e. for the 16-bits number it was reduced from 16 bits to 10 bits). It means that the fraction might take a narrower range of values now (losing some precision). However, since we also have an exponent part, it will actually increase the ultimate number range and also allow us to describe the numbers between 0 and 1 (if the exponent is negative).
 
 > For example, a signed 32-bit integer variable has a maximum value of 2³¹ − 1 = 2,147,483,647, whereas an IEEE 754 32-bit base-2 floating-point variable has a maximum value of ≈ 3.4028235 × 10³⁸.
 
@@ -94,7 +94,7 @@ exponent_bias = 2 ^ (k−1) − 1
 k - number of exponent bits
 ```
 
-I've tried to describe the logic behind the converting of floating point number from a binary format back to the decimal format on the image below. Hopefully it will give you a better understanding of how the IEEE 754 standard works. The 16-bits number is being used here for simplicity, but the same approach works for 32-bits and 64-bits numbers as well.
+I've tried to describe the logic behind the converting of floating-point numbers from a binary format back to the decimal format on the image below. Hopefully, it will give you a better understanding of how the IEEE 754 standard works. The 16-bits number is being used here for simplicity, but the same approach works for 32-bits and 64-bits numbers as well.
 
 ![Half-precision floating point number format explained in one picture](assets/02-half-precision-floating-point-number-explained.png)
 
@@ -106,7 +106,7 @@ Here is also the interactive tool to give you better intuition of how the conver
 
 > Several corner cases were omitted in the examples above for simplicity of presentation (i.e. `-0`, `-∞`, `+∞` and `NaN` (not a number) values)
 
-Here is the number ranges that different floating point formats supports:
+Here is the number ranges that different floating-point formats support:
 
 | Floating-point format | Exp min | Exp max | Range            | Min positive |
 | :-------------------- | :------ | :------ | :--------------- | :----------- |
@@ -115,9 +115,9 @@ Here is the number ranges that different floating point formats supports:
 
 ## Code examples
 
-In [javascript-algorithms repository](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/math/binary-floating-point) I've added a source code of binary-to-decimal converters that were used in the interactive example above.
+In the [javascript-algorithms repository](https://github.com/trekhleb/javascript-algorithms/tree/master/src/algorithms/math/binary-floating-point), I've added a source code of binary-to-decimal converters that were used in the interactive example above.
 
-For example here is how you may get the binary representation of the floating point numbers in JavaScript:
+For example here is how you may get the binary representation of the floating-point numbers in JavaScript:
 
 ```javascript
 const singlePrecisionBytesLength = 4; // 32 bits
@@ -184,7 +184,7 @@ floatAs32BinaryString(1.875); // -> "00111111111100000000000000000000"
 
 ## References
 
-You might also want to check out the following resources to get deeper understanding of the binary representation of floating point numbers:
+You might also want to check out the following resources to get a deeper understanding of the binary representation of floating-point numbers:
 
 - [Here is what you need to know about JavaScript’s Number type](https://indepth.dev/posts/1139/here-is-what-you-need-to-know-about-javascripts-number-type)
 - [Float Toy](http://evanw.github.io/float-toy/)
