@@ -428,6 +428,12 @@ export const projects: Projects = {
         image: { srcPath: 'projects/javascript-algorithms/achievements/08-github-trending-day-2021-07-14.png' },
         date: '2021-07-14',
       },
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/09-hacker-news-2021-07-26.png' },
+        date: '2021-07-26',
+        link: { url: 'https://news.ycombinator.com/front?day=2021-07-26', caption: 'Hacker News archive' },
+      },
     ],
   },
   'machine-learning-octave': {
