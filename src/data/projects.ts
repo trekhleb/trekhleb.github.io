@@ -378,6 +378,12 @@ export const projects: Projects = {
     achievements: [
       {
         title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/00-hacker-news-2018-05-23.png' },
+        date: '2018-05-23',
+        link: { url: 'https://news.ycombinator.com/front?day=2018-05-23', caption: 'Hacker News archive' },
+      },
+      {
+        title: 'Listed on Hacker News front page',
         image: { srcPath: 'projects/javascript-algorithms/achievements/00-hacker-news-2018-07-20.png' },
         date: '2018-07-20',
         link: { url: 'https://news.ycombinator.com/front?day=2018-07-20', caption: 'Hacker News archive' },
