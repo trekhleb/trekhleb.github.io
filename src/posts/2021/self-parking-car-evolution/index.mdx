@@ -1,14 +1,38 @@
 ---
-title: "Self-parking Car Evolution"
+title: "Self-Parking Car Evolution"
 
-summary: "Training the car to do self-parking using a genetic algorithm"
+summary: "Training the car to do self-parking using a genetic algorithm (and 500 lines of code)"
 
-cover: assets/01-cover-01.jpg
+cover: assets/01-cover-00.jpg
 
 date: 2021-09-13
 
 ---
 
-![Self-parking car evolution](assets/01-cover-01.jpg)
+![Self-Parking car evolution](assets/01-cover-01.jpg)
 
-TODO
+## TL;DR
+
+In this article we'll train the car to do self-parking using a [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm).
+
+We'll create **the first generation** of cars with random genomes that will behave something like this:
+
+![The 1st generation of cars with random genomes](assets/02-cars-before-01.gif)
+
+**On the ≈40th generation** the cars start learning what the self-parking is and start getting closer to the parking spot (although hitting the other cars along the way):
+
+![The 40th generation start learning how to park](assets/03-car-after-01.gif)
+
+Another example with a bit more challenging starting point:
+
+![More challenging starting point for self-parking](assets/03-car-after-03.gif)
+
+You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the evolution process directly in you browser. The simulator gives you the following opportunities:
+
+- You may [train the cars from scratch](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) and adjust genetic parameters by yourself
+- You may [see the trained (almost) self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
+- You may also [try to park the car manualy](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/).
+
+ℹ️ We're going to use a genetic algorithm to evolve cars genomes. However, this article only touches on the basics of the algorithm and is by no means a complete guide to the genetic algorithm topic.
+
+Having that said, let's deep dive into more details...
