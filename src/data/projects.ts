@@ -6,7 +6,7 @@ export const projects: Projects = {
     name: '🧬 Self-Parking Car Evolution',
     srcURL: { url: 'https://github.com/trekhleb/self-parking-car-evolution' },
     demoURL: { url: 'https://trekhleb.dev/self-parking-car-evolution' },
-    cover: { srcPath: 'projects/self-parking-car-evolution/cover.jpg' },
+    cover: { srcPath: 'projects/self-parking-car-evolution/cover-00.jpg' },
     startDate: '2021-05-13',
     endDate: '2021-09-15',
     summary: [
