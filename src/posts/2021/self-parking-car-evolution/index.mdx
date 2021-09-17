@@ -31,13 +31,23 @@ You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.
 
 - You may [train the cars from scratch](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) and adjust genetic parameters by yourself
 - You may [see the trained (almost) self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
-- You may also [try to park the car manualy](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/).
+- You may also [try to park the car manually](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/).
 
 ℹ️ We're going to use a genetic algorithm to evolve cars genomes. However, this article only touches on the basics of the algorithm and is by no means a complete guide to the genetic algorithm topic.
 
 Having that said, let's deep dive into more details...
 
 ## Giving the eyes to the car
+
+Before our car will learn how to do self-parking, it needs to be able to "see" the surroundings. Let's give it the `8` "eyes" in a form of distance sensors:
+
+- Each sensor can detect the obstacle in a distance range from `0-4m` (meters).
+- Each sensor "reports" the latest information about the obstacles it "sees" to the car every `100ms`.
+- Whenever the sensor doesn't "see" any obstacles it "reports" the value of `0`. On the contrary, if the value of the sensor is small but not zero (i.e. `0.01m`) it would mean that the obstacle is really close.
+
+![Car sensors with distances](assets/04-sensors-01.jpg)
+
+You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how the sensors work.
 
 ## Giving the brain to the car
 
