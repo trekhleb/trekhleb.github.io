@@ -1,11 +1,11 @@
 ---
-title: "Self-Parking Car Evolution"
+title: "Self-Parking Car in 500 Lines of Code"
 
-summary: "Training the car to do self-parking using a genetic algorithm (and 500 lines of code)"
+summary: "Training the car to do self-parking using a genetic algorithm"
 
 cover: assets/01-cover-00.jpg
 
-date: 2021-09-16
+date: 2021-09-18
 
 ---
 
@@ -33,9 +33,20 @@ You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.
 - You may [see the trained (almost) self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
 - You may also [try to park the car manually](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/).
 
+The genetic algorithm for this project is implemented in TypeScript. The full genetic source code will be shown in this article. You may also find the final code examples in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution).
+
 ℹ️ We're going to use a genetic algorithm to evolve cars genomes. However, this article only touches on the basics of the algorithm and is by no means a complete guide to the genetic algorithm topic.
 
 Having that said, let's deep dive into more details...
+
+## Giving the muscles to the car
+
+To be able to move, the car would need "muscles". Let's give the car two types of muscles:
+
+1. **Engine** - allows to move back and forth
+2. **Steering wheel rotator** - allows to turn left and right while moving
+
+You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how the sensors work.
 
 ## Giving the eyes to the car
 
@@ -46,10 +57,6 @@ Before our car will learn how to do self-parking, it needs to be able to "see" t
 - Whenever the sensor doesn't "see" any obstacles it "reports" the value of `0`. On the contrary, if the value of the sensor is small but not zero (i.e. `0.01m`) it would mean that the obstacle is really close.
 
 ![Car sensors with distances](assets/04-sensors-01.jpg)
-
-You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how the sensors work.
-
-![Car sensors in action](assets/04-sensors-02.gif)
 
 ## Giving the brain to the car
 
