@@ -17,7 +17,10 @@
 
 /* Adding more side space to the inline code blocks */
 .prose p code.language-text,
-.prose li code.language-text {
+.prose li code.language-text,
+.prose th code.language-text,
+.prose tr code.language-text,
+.prose td code.language-text {
   padding: 2px 5px 1px 5px;
   font-weight: normal;
 }
