@@ -1,5 +1,5 @@
 ---
-title: "Self-Parking Car in 500 Lines of Code"
+title: "Self-Parking Car in <500 Lines of Code"
 
 summary: "Training the car to do self-parking using a genetic algorithm"
 
@@ -15,11 +15,11 @@ date: 2021-09-18
 
 In this article we'll train the car to do self-parking using a [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm).
 
-We'll create **the first generation** of cars with random genomes that will behave something like this:
+We'll create **the 1st generation** of cars with random genomes that will behave something like this:
 
 ![The 1st generation of cars with random genomes](assets/02-cars-before-01.gif)
 
-**On the ≈40th generation** the cars start learning what the self-parking is and start getting closer to the parking spot (although hitting the other cars along the way):
+**On the ≈40th generation** the cars start learning what the self-parking is and start getting closer to the parking spot:
 
 ![The 40th generation start learning how to park](assets/03-car-after-01.gif)
 
@@ -27,15 +27,17 @@ Another example with a bit more challenging starting point:
 
 ![More challenging starting point for self-parking](assets/03-car-after-03.gif)
 
+> Yeah-yeah, the cars are hitting some other cars along the way, bit this is only the 40th generation since the creation of the world for them, so be merciful and give them some space to grow :D
+
 You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the evolution process directly in you browser. The simulator gives you the following opportunities:
 
 - You may [train the cars from scratch](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) and adjust genetic parameters by yourself
 - You may [see the trained (almost) self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
 - You may also [try to park the car manually](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/).
 
-The genetic algorithm for this project is implemented in TypeScript. The full genetic source code will be shown in this article. You may also find the final code examples in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution).
+The genetic algorithm for this project is implemented in TypeScript. The full genetic source code will be shown in this article, but you may also find the final code examples in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution).
 
-ℹ️ We're going to use a genetic algorithm to evolve cars genomes. However, this article only touches on the basics of the algorithm and is by no means a complete guide to the genetic algorithm topic.
+> ℹ️ We're going to use a genetic algorithm for particular task of evolving cars genomes. However, this article only touches on the basics of the algorithm and is by no means a complete guide to the genetic algorithm topic.
 
 Having that said, let's deep dive into more details...
 
@@ -43,21 +45,27 @@ Having that said, let's deep dive into more details...
 
 To be able to move, the car would need "muscles". Let's give the car two types of muscles:
 
-1. **Engine** - allows to move back and forth
-2. **Steering wheel rotator** - allows to turn left and right while moving
+1. **Engine muscle** - allows to move *back* and *forth*
+2. **Steering wheel muscle** - allows to turn *left* and *right* while moving
 
-You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how the sensors work.
+Here is an example of what movements these two muscles might achieve for the car:
+
+![Car movements achieved by car muscles](assets/03-car-muscles-01.gif)
+
+You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how car's "muscles" work.
 
 ## Giving the eyes to the car
 
-Before our car will learn how to do self-parking, it needs to be able to "see" the surroundings. Let's give it the `8` "eyes" in a form of distance sensors:
+Before our car will learn how to do self-parking using its muscles, it needs to be able to "see" the surroundings. Let's give it the `8` "eyes" in a form of distance sensors:
 
-- Each sensor can detect the obstacle in a distance range from `0-4m` (meters).
-- Each sensor "reports" the latest information about the obstacles it "sees" to the car every `100ms`.
+- Each sensor can detect the obstacle in a distance range of `0-4m` (meters).
+- Each sensor "reports" the latest information about the obstacles it "sees" to the car's "brain" every `100ms`.
 - Whenever the sensor doesn't "see" any obstacles it "reports" the value of `0`. On the contrary, if the value of the sensor is small but not zero (i.e. `0.01m`) it would mean that the obstacle is really close.
 
 ![Car sensors with distances](assets/04-sensors-01.jpg)
 
 ## Giving the brain to the car
+
+At this moment, our car can "see" and "move", but there is no "coordinator" for it, that would transform the signals from the "eyes" to the proper movements of the "muscles" - we need to give the car a "brain".
 
 ## Evolving the car's brain
