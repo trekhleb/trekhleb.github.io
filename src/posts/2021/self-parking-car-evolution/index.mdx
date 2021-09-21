@@ -55,35 +55,37 @@ Here is what we're going to do:
 
 To be able to move, the car would need "muscles". Let's give the car two types of muscles:
 
-1. **Engine muscle** - allows the car to move *↓ back*, *↑ forth*, or *◎ stand steel* (neutral)
+1. **Engine muscle** - allows the car to move *↓ back*, *↑ forth*, or *◎ stand steel* (neutral gear)
 2. **Steering wheel muscle** - allows the car to turn *← left*, *→ right*, or *◎ go straight* while moving
 
-With these two muscles the car is able to perform the movements like these:
+With these two muscles the car is able to perform the following movements:
 
 ![Car movements achieved by car muscles](assets/03-car-muscles-01.gif)
 
-> You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how the car muscles work.
+In our case, the muscles are receivers of the signals that comes from the brain once every `100ms` (milliseconds). Based on the value of the brain's signal the muscles acts differently. We'll cover the "brain" part below, but for now, let's say that our brain may send only 3 possible signals to each muscle: `-1`, `0`, or `+1`.
 
-In our case, the muscles are receivers of the signals that comes from the brain once every `100ms`. Based on the value of the brain's signal the muscles acts differently. We'll cover the "brain" part below, but for now, let's say that our brain may send a signal that is just a `float` number in a range of `[0...1]` (i.e. `0`, or `0.945`, etc.).
-
-For example, the brain may send the signal with the value of `0.992` (close to `1`) to the engine muscle and it will start moving the car forward. At the same time, if the brain will send the signal of `0.0002` (close to `0`) to the steering wheel muscle, it will turn the car to the left.
+For example, the brain may send the signal with the value of `+1` to the engine muscle and it will start moving the car forward. The signal `-1` to the engine moves the car backward. At the same time, if the brain will send the signal of `-1` to the steering wheel muscle, it will turn the car to the left.
 
 Here is how the brain signal values map to the muscle actions in our case:
 
-| Muscle \ `Signal`  | `≈ 0`      | `≈ 0.5`     | `≈ 1`      |
-| :----------------- | :--------- | :---------- | :--------- |
-| **Engine**         | ↑ Forward  | ◎ Neutral   | ↓ Backward |
-| **Steering wheel** | ← Left     | ◎ Straight  | → Right    |
+| Muscle             | `Signal = -1` | `Signal = 0` | `Signal = +1` |
+| :----------------- | :------------ | :----------- | :------------ |
+| **Engine**         | ↓ Backward    | ◎ Neutral    | ↑ Forward     |
+| **Steering wheel** | ← Left        | ◎ Straight   | → Right       |
+
+> You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how car muscles work. Every time you press one of the `WASD` buttons (or use a joystick) you send these `-1`, `0` or `+1` signals to the engine and steering wheel muscles.
 
 ## Giving the eyes to the car
 
-Before our car will learn how to do self-parking using its muscles, it needs to be able to "see" the surroundings. Let's give it the `8` "eyes" in a form of distance sensors:
+Before our car will learn how to do self-parking using its muscles, it needs to be able to "see" the surroundings. Let's give it the `8` eyes in a form of distance sensors:
 
 - Each sensor can detect the obstacle in a distance range of `0-4m` (meters).
-- Each sensor "reports" the latest information about the obstacles it "sees" to the car's "brain" every `100ms`.
-- Whenever the sensor doesn't "see" any obstacles it "reports" the value of `0`. On the contrary, if the value of the sensor is small but not zero (i.e. `0.01m`) it would mean that the obstacle is really close.
+- Each sensor reports the latest information about the obstacles it "sees" to the car's "brain" every `100ms`.
+- Whenever the sensor doesn't see any obstacles it reports the value of `0`. On the contrary, if the value of the sensor is small but not zero (i.e. `0.01m`) it would mean that the obstacle is really close.
 
 ![Car sensors with distances](assets/04-sensors-01.jpg)
+
+> You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and see how the color of each sensor changes based on how close the obstacle is.
 
 ## Giving the brain to the car
 
