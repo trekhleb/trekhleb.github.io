@@ -81,3 +81,225 @@ Before our car will learn how to do self-parking using its muscles, it needs to 
 At this moment, our car can "see" and "move", but there is no "coordinator" for it, that would transform the signals from the "eyes" to the proper movements of the "muscles" - we need to give the car a "brain".
 
 ## Evolving the car's brain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Draft: weightedRandom
+
+```typescript
+// Picks the random item based on its weight.
+// The items with higher weight will be picked more often.
+const weightedRandom = <T>(items: T[], weights: number[]): { item: T, index: number } => {
+  if (items.length !== weights.length) {
+    throw new Error('Items and weights must be of the same size');
+  }
+
+  // Preparing the cumulative weights array.
+  // For example:
+  // - weights = [1, 4, 3]
+  // - cumulativeWeights = [1, 5, 8]
+  const cumulativeWeights: number[] = [];
+  for (let i = 0; i < weights.length; i += 1) {
+    cumulativeWeights[i] = weights[i] + (cumulativeWeights[i - 1] || 0);
+  }
+
+  // Getting the random number in a range [0...sum(weights)]
+  // For example:
+  // - weights = [1, 4, 3]
+  // - maxCumulativeWeight = 8
+  // - range for the random number is [0...8]
+  const maxCumulativeWeight = cumulativeWeights[cumulativeWeights.length - 1];
+  const randomNumber = maxCumulativeWeight * Math.random();
+
+  // Picking the random item based on its weight.
+  // The items with higher weight will be picked more often.
+  for (let i = 0; i < items.length; i += 1) {
+    if (cumulativeWeights[i] >= randomNumber) {
+      return {
+        item: items[i],
+        index: i,
+      };
+    }
+  }
+  return {
+    item: items[items.length - 1],
+    index: items.length - 1,
+  };
+};
+```
+
+## Draft: Genetic Algorithm
+
+Create car genome:
+
+```typescript
+type Gene = 0 | 1;
+
+type Genome = Gene[];
+
+function createGenome(length: number): Genome {
+  return new Array(length)
+    .fill(null)
+    .map(() => (Math.random() < 0.5 ? 0 : 1));
+}
+```
+
+Create generation:
+
+```typescript
+type Generation = Genome[];
+
+type GenerationParams = {
+  generationSize: number,
+  genomeLength: number,
+};
+
+function createGeneration(params: GenerationParams): Generation {
+  const { generationSize, genomeLength } = params;
+  return new Array(generationSize)
+    .fill(null)
+    .map(() => createGenome(genomeLength));
+}
+```
+
+Mutate:
+
+```typescript
+// The number between 0 and 1.
+type Probability = number;
+
+// @see: https://en.wikipedia.org/wiki/Mutation_(genetic_algorithm)
+function mutate(genome: Genome, mutationProbability: Probability): Genome {
+  // Conceive children.
+  for (let geneIndex = 0; geneIndex < genome.length; geneIndex += 1) {
+    const gene: Gene = genome[geneIndex];
+    const mutatedGene: Gene = gene === 0 ? 1 : 0;
+    genome[geneIndex] = Math.random() < mutationProbability ? mutatedGene : gene;
+  }
+  return genome;
+}
+```
+
+Selection:
+
+```typescript
+// The number between 0 and 100.
+type Percentage = number;
+
+type SelectionOptions = {
+  mutationProbability: Probability,
+  longLivingChampionsPercentage: Percentage,
+};
+
+type FitnessFunction = (genome: Genome) => number;
+
+// @see: https://en.wikipedia.org/wiki/Selection_(genetic_algorithm)
+function select(
+  generation: Generation,
+  fitness: FitnessFunction,
+  options: SelectionOptions,
+) {
+  const {
+    mutationProbability,
+    longLivingChampionsPercentage,
+  } = options;
+
+  const newGeneration: Generation = [];
+
+  const oldGeneration = [...generation];
+  // First one - the fittest one.
+  oldGeneration.sort((genomeA: Genome, genomeB: Genome): number => {
+    const fitnessA = fitness(genomeA);
+    const fitnessB = fitness(genomeB);
+    if (fitnessA < fitnessB) {
+      return 1;
+    }
+    if (fitnessA > fitnessB) {
+      return -1;
+    }
+    return 0;
+  });
+
+  // Let long-liver champions continue living in the new generation.
+  const longLiversCount = Math.floor(longLivingChampionsPercentage * oldGeneration.length / 100);
+  if (longLiversCount) {
+    oldGeneration.slice(0, longLiversCount).forEach((longLivingGenome: Genome) => {
+      newGeneration.push(longLivingGenome);
+    });
+  }
+
+  // Get the data about he fitness of each individuum.
+  const fitnessPerOldGenome: number[] = oldGeneration.map((genome: Genome) => fitness(genome));
+
+  // Populate the next generation until it becomes the same size as a old generation.
+  while (newGeneration.length < generation.length) {
+    // Select random father and mother from the population.
+    // The fittest individuums have higher chances to be selected.
+    let father: Genome | null = null;
+    let fatherGenomeIndex: number | null = null;
+    let mother: Genome | null = null;
+    let matherGenomeIndex: number | null = null;
+
+    // To produce children the father and mother need each other.
+    // It must be two different individuums.
+    while (!father || !mother || fatherGenomeIndex === matherGenomeIndex) {
+      const {
+        item: randomFather,
+        index: randomFatherGenomeIndex,
+      } = weightedRandom<Genome>(generation, fitnessPerOldGenome);
+
+      const {
+        item: randomMother,
+        index: randomMotherGenomeIndex,
+      } = weightedRandom<Genome>(generation, fitnessPerOldGenome);
+
+      father = randomFather;
+      fatherGenomeIndex = randomFatherGenomeIndex;
+
+      mother = randomMother;
+      matherGenomeIndex = randomMotherGenomeIndex;
+    }
+
+    // Let father and mother produce two children.
+    const [firstChild, secondChild] = mate(father, mother, mutationProbability);
+
+    newGeneration.push(firstChild);
+
+    // Depending on the number of long-living champions it is possible that
+    // there will be the place for only one child, sorry.
+    if (newGeneration.length < generation.length) {
+      newGeneration.push(secondChild);
+    }
+  }
+
+  return newGeneration;
+}
+```
+
+## Draft: Euclidean distance
+
+```typescript
+type NumVec3 = [number, number, number];
+
+// Calculates the XZ distance between two points in space.
+// The vertical Y distance is not being taken into account.
+const euclideanDistance = (from: NumVec3, to: NumVec3) => {
+  const fromX = from[0];
+  const fromZ = from[2];
+  const toX = to[0];
+  const toZ = to[2];
+  return Math.sqrt((fromX - toX) ** 2 + (fromZ - toZ) ** 2);
+};
+```
