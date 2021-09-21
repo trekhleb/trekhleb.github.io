@@ -38,9 +38,18 @@ You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.
 
 The genetic algorithm for this project is implemented in TypeScript. The full genetic source code will be shown in this article, but you may also find the final code examples in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution).
 
-> ℹ️ We're going to use a genetic algorithm for particular task of evolving cars genomes. However, this article only touches on the basics of the algorithm and is by no means a complete guide to the genetic algorithm topic.
+> We're going to use a genetic algorithm for particular task of evolving cars genomes. However, this article only touches on the basics of the algorithm and is by no means a complete guide to the genetic algorithm topic.
 
 Having that said, let's deep dive into more details...
+
+## The Plan
+
+Here is what we're going to do:
+
+1. 💪🏻 Give the **muscles** (engine, steering wheel) to the car so that it could move towards the parking lot.
+2. 👀 Give the **eyes** (sensors) to the car so that they could see the obstacles around.
+3. 🧠 Give the **brain** to the car that will control the muscles (movements) based on what car sees (obstacles via sensors). The brain is simply a pure function `movements = f(sensors)`.
+4. 🧬 **Evolve/teach the brain** to do the right moves based on the sensors input. This is where we will apply a genetic algorithm. Generation after generation our brain function `movements = f(sensors)` will learn how to move the car towards the parking lot.
 
 ## Giving the muscles to the car
 
