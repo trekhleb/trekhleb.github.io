@@ -89,7 +89,27 @@ Before our car will learn how to do self-parking using its muscles, it needs to 
 
 ## Giving the brain to the car
 
-At this moment, our car can "see" and "move", but there is no "coordinator" for it, that would transform the signals from the "eyes" to the proper movements of the "muscles" - we need to give the car a "brain".
+At this moment, our car can "see" and "move", but there is no "coordinator", that would transform the signals from the "eyes" to the proper movements of the "muscles". We need to give the car a "brain".
+
+**Brain input**
+
+As an input from the sensors the brain will get `8` float numbers in range of `[0...4]`. For example:
+
+```javascript
+// Brain input as an array of sensor distances.
+const sensors = [s1, s2, s3, s4, s5, s6, s7]; // i.e. [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
+```
+
+**Brain output**
+
+Brain should produce two integer numbers as an output:
+
+- one number as a signal for the engine: `engineSignal`
+- one number as signal for the steering wheel: `wheelSignal`
+
+Each number might take one of three values: `-1`, `0`, or `+1` (i.e. `engineSignal = 0` and `wheelSignal = 1`).
+
+**Brain formulas/functions**
 
 ## Evolving the car's brain
 
