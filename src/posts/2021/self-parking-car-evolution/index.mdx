@@ -91,291 +91,63 @@ Before our car will learn how to do self-parking using its muscles, it needs to 
 
 At this moment, our car can "see" and "move", but there is no "coordinator", that would transform the signals from the "eyes" to the proper movements of the "muscles". We need to give the car a "brain".
 
-**Brain input**
+### Brain input
 
-As an input from the sensors the brain will get `8` float numbers in range of `[0...4]`. For example:
+As an input from the sensors, every `100ms` the brain will be getting `8` float numbers, each one in range of `[0...4]`. For example, the input might look like this:
 
 ```typescript
-// Brain input as an array of sensor distances.
-const sensors = [s1, s2, s3, s4, s5, s6, s7]; // i.e. [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
+const sensors = [s0, s1, s2, s3, s4, s5, s6, s7];
+// i.e. 🧠 ← [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
 ```
 
-**Brain output**
+### Brain output
 
-Brain should produce two integer numbers as an output:
+Every `100ms` the brain should produce two integers as an output:
 
-- one number as a signal for the engine: `engineSignal`
-- one number as signal for the steering wheel: `wheelSignal`
+1. One number as a signal for the engine: `engineSignal`
+2. One number as signal for the steering wheel: `wheelSignal`
 
-Each number might take one of three values: `-1`, `0`, or `+1` (i.e. `engineSignal = 0` and `wheelSignal = 1`).
+Each number might take one of three values: `-1`, `0`, or `+1`. For example:
 
-**Brain formulas/functions**
+```typescript
+// i.e. { engineSignal: 0, wheelSignal: -1 } ← 🧠
+```
+
+### Brain formulas/functions
 
 Keeping in mind the brain's input and output mentioned above we may say that the brain is just a function:
 
 ```typescript
 const { engineSignal, wheelSignal } = brainFunction(sensors);
+// i.e. { engineSignal: 0, wheelSignal: -1 } ← 🧠 ← [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
 ```
 
 The main question is what kind of function the `brainFunction()` is.
 
-To make the car smarter and its movements more sophisticated we could go with a [Multilayer Perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron). The name is a bit scary but this is a simple Neural Network with a basic architecture (think about it as of a big formula with many parameters/coefficients).
+To make the car smarter and its movements to be more sophisticated we could go with a [Multilayer Perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron). The name is a bit scary but this is a simple Neural Network with a basic architecture (think about it as of a big formula with many parameters/coefficients).
 
 > I've covered Multilayer Perceptrons with a bit more details in my [homemade-machine-learning](https://github.com/trekhleb/homemade-machine-learning#-multilayer-perceptron-mlp), [machine-learning-experiments](https://github.com/trekhleb/machine-learning-experiments#multilayer-perceptron-mlp-or-simple-neural-network-nn), and [nano-neuron](https://github.com/trekhleb/nano-neuron) projects. You may even challenge that simple network [to recognize your written digits](https://trekhleb.dev/machine-learning-experiments/#/experiments/DigitsRecognitionMLP).
 
-However, to avoid the introduction of a whole new Neural Network concept here, we'll go with a much simpler approach and we'll use two simple formulas for the car's brain:
+However, to avoid the introduction of a whole new concept of Neural Networks, we'll go with a much simpler approach and we'll use two simple formulas for the car's brain:
 
 ```typescript
 const engineSignal = engineBrainFunction(sensors);
 const wheelSignal = wheelBrainFunction(sensors);
 ```
 
-Where `engineBrainFunction` and `wheelBrainFunction` are simple linear equations:
+Where `engineBrainFunction` and `wheelBrainFunction` are functions that implement simple linear equations:
 
 ```typescript
 // engineBrainFunction equation
-engineSignal = e0 + (e1 * s1) + (e2 * s2) + ... + (e8 * s8)
+engineSignal = ((e0 * s0) + (e1 * s1) + ... + (e7 * s7)) + e8
 
 // wheelBrainFunction equation
-wheelSignal = w0 + (w1 * s1) + (w2 * w2) + ... + (w8 * w8)
+wheelSignal = ((w0 * s0) + (w1 * w1) + ... + (w7 * w7)) + w8
 
 // Where:
-// [s1, s2, ..., s8] - are sensor values
-// [e0, e1, e2, ..., e8] - are engine formula coefficients
-// [w0, w1, w2, ..., w8] - are wheel formula coefficients
+// [s0, s1, ..., s7] - are 8 sensor values
+// [e0, e1, e2, ..., e8] - are 9 engine formula coefficients
+// [w0, w1, w2, ..., w8] - are 9 wheel formula coefficients
 ```
 
 ## Evolving the car's brain
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Draft: weightedRandom
-
-```typescript
-// Picks the random item based on its weight.
-// The items with higher weight will be picked more often.
-const weightedRandom = <T>(items: T[], weights: number[]): { item: T, index: number } => {
-  if (items.length !== weights.length) {
-    throw new Error('Items and weights must be of the same size');
-  }
-
-  // Preparing the cumulative weights array.
-  // For example:
-  // - weights = [1, 4, 3]
-  // - cumulativeWeights = [1, 5, 8]
-  const cumulativeWeights: number[] = [];
-  for (let i = 0; i < weights.length; i += 1) {
-    cumulativeWeights[i] = weights[i] + (cumulativeWeights[i - 1] || 0);
-  }
-
-  // Getting the random number in a range [0...sum(weights)]
-  // For example:
-  // - weights = [1, 4, 3]
-  // - maxCumulativeWeight = 8
-  // - range for the random number is [0...8]
-  const maxCumulativeWeight = cumulativeWeights[cumulativeWeights.length - 1];
-  const randomNumber = maxCumulativeWeight * Math.random();
-
-  // Picking the random item based on its weight.
-  // The items with higher weight will be picked more often.
-  for (let i = 0; i < items.length; i += 1) {
-    if (cumulativeWeights[i] >= randomNumber) {
-      return {
-        item: items[i],
-        index: i,
-      };
-    }
-  }
-  return {
-    item: items[items.length - 1],
-    index: items.length - 1,
-  };
-};
-```
-
-## Draft: Genetic Algorithm
-
-Create car genome:
-
-```typescript
-type Gene = 0 | 1;
-
-type Genome = Gene[];
-
-function createGenome(length: number): Genome {
-  return new Array(length)
-    .fill(null)
-    .map(() => (Math.random() < 0.5 ? 0 : 1));
-}
-```
-
-Create generation:
-
-```typescript
-type Generation = Genome[];
-
-type GenerationParams = {
-  generationSize: number,
-  genomeLength: number,
-};
-
-function createGeneration(params: GenerationParams): Generation {
-  const { generationSize, genomeLength } = params;
-  return new Array(generationSize)
-    .fill(null)
-    .map(() => createGenome(genomeLength));
-}
-```
-
-Mutate:
-
-```typescript
-// The number between 0 and 1.
-type Probability = number;
-
-// @see: https://en.wikipedia.org/wiki/Mutation_(genetic_algorithm)
-function mutate(genome: Genome, mutationProbability: Probability): Genome {
-  // Conceive children.
-  for (let geneIndex = 0; geneIndex < genome.length; geneIndex += 1) {
-    const gene: Gene = genome[geneIndex];
-    const mutatedGene: Gene = gene === 0 ? 1 : 0;
-    genome[geneIndex] = Math.random() < mutationProbability ? mutatedGene : gene;
-  }
-  return genome;
-}
-```
-
-Selection:
-
-```typescript
-// The number between 0 and 100.
-type Percentage = number;
-
-type SelectionOptions = {
-  mutationProbability: Probability,
-  longLivingChampionsPercentage: Percentage,
-};
-
-type FitnessFunction = (genome: Genome) => number;
-
-// @see: https://en.wikipedia.org/wiki/Selection_(genetic_algorithm)
-function select(
-  generation: Generation,
-  fitness: FitnessFunction,
-  options: SelectionOptions,
-) {
-  const {
-    mutationProbability,
-    longLivingChampionsPercentage,
-  } = options;
-
-  const newGeneration: Generation = [];
-
-  const oldGeneration = [...generation];
-  // First one - the fittest one.
-  oldGeneration.sort((genomeA: Genome, genomeB: Genome): number => {
-    const fitnessA = fitness(genomeA);
-    const fitnessB = fitness(genomeB);
-    if (fitnessA < fitnessB) {
-      return 1;
-    }
-    if (fitnessA > fitnessB) {
-      return -1;
-    }
-    return 0;
-  });
-
-  // Let long-liver champions continue living in the new generation.
-  const longLiversCount = Math.floor(longLivingChampionsPercentage * oldGeneration.length / 100);
-  if (longLiversCount) {
-    oldGeneration.slice(0, longLiversCount).forEach((longLivingGenome: Genome) => {
-      newGeneration.push(longLivingGenome);
-    });
-  }
-
-  // Get the data about he fitness of each individuum.
-  const fitnessPerOldGenome: number[] = oldGeneration.map((genome: Genome) => fitness(genome));
-
-  // Populate the next generation until it becomes the same size as a old generation.
-  while (newGeneration.length < generation.length) {
-    // Select random father and mother from the population.
-    // The fittest individuums have higher chances to be selected.
-    let father: Genome | null = null;
-    let fatherGenomeIndex: number | null = null;
-    let mother: Genome | null = null;
-    let matherGenomeIndex: number | null = null;
-
-    // To produce children the father and mother need each other.
-    // It must be two different individuums.
-    while (!father || !mother || fatherGenomeIndex === matherGenomeIndex) {
-      const {
-        item: randomFather,
-        index: randomFatherGenomeIndex,
-      } = weightedRandom<Genome>(generation, fitnessPerOldGenome);
-
-      const {
-        item: randomMother,
-        index: randomMotherGenomeIndex,
-      } = weightedRandom<Genome>(generation, fitnessPerOldGenome);
-
-      father = randomFather;
-      fatherGenomeIndex = randomFatherGenomeIndex;
-
-      mother = randomMother;
-      matherGenomeIndex = randomMotherGenomeIndex;
-    }
-
-    // Let father and mother produce two children.
-    const [firstChild, secondChild] = mate(father, mother, mutationProbability);
-
-    newGeneration.push(firstChild);
-
-    // Depending on the number of long-living champions it is possible that
-    // there will be the place for only one child, sorry.
-    if (newGeneration.length < generation.length) {
-      newGeneration.push(secondChild);
-    }
-  }
-
-  return newGeneration;
-}
-```
-
-## Draft: Euclidean distance
-
-```typescript
-type NumVec3 = [number, number, number];
-
-// Calculates the XZ distance between two points in space.
-// The vertical Y distance is not being taken into account.
-const euclideanDistance = (from: NumVec3, to: NumVec3) => {
-  const fromX = from[0];
-  const fromZ = from[2];
-  const toX = to[0];
-  const toZ = to[2];
-  return Math.sqrt((fromX - toX) ** 2 + (fromZ - toZ) ** 2);
-};
-```
