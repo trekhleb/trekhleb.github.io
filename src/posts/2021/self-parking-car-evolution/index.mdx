@@ -64,6 +64,10 @@ With these two muscles the car is able to perform the following movements:
 
 In our case, the muscles are receivers of the signals that comes from the brain once every `100ms` (milliseconds). Based on the value of the brain's signal the muscles acts differently. We'll cover the "brain" part below, but for now, let's say that our brain may send only 3 possible signals to each muscle: `-1`, `0`, or `+1`.
 
+```typescript
+type MuscleSignal = -1 | 0 | 1;
+```
+
 For example, the brain may send the signal with the value of `+1` to the engine muscle and it will start moving the car forward. The signal `-1` to the engine moves the car backward. At the same time, if the brain will send the signal of `-1` to the steering wheel muscle, it will turn the car to the left.
 
 Here is how the brain signal values map to the muscle actions in our case:
@@ -87,6 +91,10 @@ Before our car will learn how to do self-parking using its muscles, it needs to 
 
 > You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and see how the color of each sensor changes based on how close the obstacle is.
 
+```typescript
+type Sensors = number[];
+```
+
 ## Giving the brain to the car
 
 At this moment, our car can "see" and "move", but there is no "coordinator", that would transform the signals from the "eyes" to the proper movements of the "muscles". We need to give the car a "brain".
@@ -96,7 +104,7 @@ At this moment, our car can "see" and "move", but there is no "coordinator", tha
 As an input from the sensors, every `100ms` the brain will be getting `8` float numbers, each one in range of `[0...4]`. For example, the input might look like this:
 
 ```typescript
-const sensors = [s0, s1, s2, s3, s4, s5, s6, s7];
+const brainInput: Sensors = [s0, s1, s2, s3, s4, s5, s6, s7];
 // i.e. 🧠 ← [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
 ```
 
@@ -107,47 +115,69 @@ Every `100ms` the brain should produce two integers as an output:
 1. One number as a signal for the engine: `engineSignal`
 2. One number as signal for the steering wheel: `wheelSignal`
 
-Each number might take one of three values: `-1`, `0`, or `+1`. For example:
-
-```typescript
-// i.e. { engineSignal: 0, wheelSignal: -1 } ← 🧠
-```
+Each number should be of a type `MuscleSignal` and might take one of three values: `-1`, `0`, or `+1`.
 
 ### Brain formulas/functions
 
 Keeping in mind the brain's input and output mentioned above we may say that the brain is just a function:
 
 ```typescript
-const { engineSignal, wheelSignal } = brainFunction(sensors);
+const brainInput: Sensors = [s0, s1, s2, s3, s4, s5, s6, s7];
+const { engineSignal, wheelSignal } = brainFunction(brainInput);
 // i.e. { engineSignal: 0, wheelSignal: -1 } ← 🧠 ← [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
 ```
 
-The main question is what kind of function the `brainFunction()` is.
+The main question now is what kind of function the `brainFunction()` is.
 
-To make the car smarter and its movements to be more sophisticated we could go with a [Multilayer Perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron). The name is a bit scary but this is a simple Neural Network with a basic architecture (think about it as of a big formula with many parameters/coefficients).
+To make the car smarter and its movements to be more sophisticated we could go with a [Multilayer Perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron). The name is a bit scary but this is a simple Neural Network with a basic architecture (think of it as of a big formula with many parameters/coefficients).
 
 > I've covered Multilayer Perceptrons with a bit more details in my [homemade-machine-learning](https://github.com/trekhleb/homemade-machine-learning#-multilayer-perceptron-mlp), [machine-learning-experiments](https://github.com/trekhleb/machine-learning-experiments#multilayer-perceptron-mlp-or-simple-neural-network-nn), and [nano-neuron](https://github.com/trekhleb/nano-neuron) projects. You may even challenge that simple network [to recognize your written digits](https://trekhleb.dev/machine-learning-experiments/#/experiments/DigitsRecognitionMLP).
 
-However, to avoid the introduction of a whole new concept of Neural Networks, we'll go with a much simpler approach and we'll use two simple formulas for the car's brain:
+However, to avoid the introduction of a whole new concept of Neural Networks, we'll go with a much simpler approach and we'll use two **Linear Polynomials** with multiple variables (to be precise, with exactly `8` variables, since we have `8` sensors) which will look something like this:
 
 ```typescript
-const engineSignal = engineBrainFunction(sensors);
-const wheelSignal = wheelBrainFunction(sensors);
+engineSignal ← (e0 * s0) + (e1 * s1) + ... + (e7 * s7) + e8
+wheelSignal ← (w0 * s0) + (w1 * s1) + ... + (w7 * s7) + w8
 ```
 
-Where `engineBrainFunction` and `wheelBrainFunction` are functions that implement simple linear equations:
+Where:
+
+- `[s0, s1, ..., s7]` - the `8` variables (`8` sensor values)
+- `[e0, e1, ..., e8]` - the `9` coefficients for the engine polynomial
+- `[w0, w1, ..., w8]` - the `9` coefficients for the steering wheel polynomial
+
+The cost of using the simpler function for the brain will be that the car won't be able to learn some sophisticated moves and also won't be able to generalize well and to adopt well to the unknown surroundings. But for our particular parking lot and for the sake of demonstrating the work of a genetic algorithm it should still be enough.
+
+> When we say that the car will evolve and learn how to do the self-parking, we mean that the car will figure out the "good-enough" values for these `18` coefficients (`9 + 9`), that will help it to do the parking.
+
+> The values of these `[e0, e1, ..., e8]` and `[w0, w1, ..., w8]` coefficients will be the core and the essence of the car. These `18` numbers will define unique car's abilities and behavior. It is like a genome or a DNA for the human.
+
+We may implement the generic polynomial function in the following way:
 
 ```typescript
-// engineBrainFunction equation
-engineSignal = ((e0 * s0) + (e1 * s1) + ... + (e7 * s7)) + e8
+type Coefficients = number[];
 
-// wheelBrainFunction equation
-wheelSignal = ((w0 * s0) + (w1 * w1) + ... + (w7 * w7)) + w8
+const linearPolynomial = (coefficients: Coefficients, variables: number[]): number => {
+  if (coefficients.length !== (variables.length + 1)) {
+    throw new Error('Incompatible number of polynomial coefficients and variables');
+  }
+  let result = 0;
+  coefficients.forEach((coefficient: number, coefficientIndex: number) => {
+    if (coefficientIndex < variables.length) {
+      result += coefficient * variables[coefficientIndex];
+    } else {
+      result += coefficient
+    }
+  });
+  return result;
+};
+```
 
-// Where:
-// [s0, s1, ..., s7] - are 8 sensor values
-// [e0, e1, e2, ..., e8] - are 9 engine formula coefficients
-// [w0, w1, w2, ..., w8] - are 9 wheel formula coefficients
+The car's "brain" in this case will consist of two polynomials and will look like this:
+
+```typescript
+const engineSignal: MuscleSignal = linearPolynomial(engineCoefficients, sensors);
+const wheelSignal: MuscleSignal = linearPolynomial(wheelCoefficients, sensors);
 ```
 
 ## Evolving the car's brain
