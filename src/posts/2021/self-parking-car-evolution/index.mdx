@@ -95,7 +95,7 @@ At this moment, our car can "see" and "move", but there is no "coordinator", tha
 
 As an input from the sensors the brain will get `8` float numbers in range of `[0...4]`. For example:
 
-```javascript
+```typescript
 // Brain input as an array of sensor distances.
 const sensors = [s1, s2, s3, s4, s5, s6, s7]; // i.e. [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
 ```
@@ -110,6 +110,40 @@ Brain should produce two integer numbers as an output:
 Each number might take one of three values: `-1`, `0`, or `+1` (i.e. `engineSignal = 0` and `wheelSignal = 1`).
 
 **Brain formulas/functions**
+
+Keeping in mind the brain's input and output mentioned above we may say that the brain is just a function:
+
+```typescript
+const { engineSignal, wheelSignal } = brainFunction(sensors);
+```
+
+The main question is what kind of function the `brainFunction()` is.
+
+To make the car smarter and its movements more sophisticated we could go with a [Multilayer Perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron). The name is a bit scary but this is a simple Neural Network with a basic architecture (think about it as of a big formula with many parameters/coefficients).
+
+> I've covered Multilayer Perceptrons with a bit more details in my [homemade-machine-learning](https://github.com/trekhleb/homemade-machine-learning#-multilayer-perceptron-mlp), [machine-learning-experiments](https://github.com/trekhleb/machine-learning-experiments#multilayer-perceptron-mlp-or-simple-neural-network-nn), and [nano-neuron](https://github.com/trekhleb/nano-neuron) projects. You may even challenge that simple network [to recognize your written digits](https://trekhleb.dev/machine-learning-experiments/#/experiments/DigitsRecognitionMLP).
+
+However, to avoid the introduction of a whole new Neural Network concept here, we'll go with a much simpler approach and we'll use two simple formulas for the car's brain:
+
+```typescript
+const engineSignal = engineBrainFunction(sensors);
+const wheelSignal = wheelBrainFunction(sensors);
+```
+
+Where `engineBrainFunction` and `wheelBrainFunction` are simple linear equations:
+
+```typescript
+// engineBrainFunction equation
+engineSignal = e0 + (e1 * s1) + (e2 * s2) + ... + (e8 * s8)
+
+// wheelBrainFunction equation
+wheelSignal = w0 + (w1 * s1) + (w2 * w2) + ... + (w8 * w8)
+
+// Where:
+// [s1, s2, ..., s8] - are sensor values
+// [e0, e1, e2, ..., e8] - are engine formula coefficients
+// [w0, w1, w2, ..., w8] - are wheel formula coefficients
+```
 
 ## Evolving the car's brain
 
