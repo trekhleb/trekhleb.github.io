@@ -193,7 +193,7 @@ Let's get back to the `brainToMuscleSignal()` and implement it. The output of a 
 1. Convert the float of a wide range (i.e. `0.456` or `3673.45` or `-280`) to the float in a range of `(0...1)` (i.e. `0.05` or `0.86`)
 2. Convert the float in a range of `(0...1)` to one of three integer values of `-1`, `0`, or `+1`.  Floats that are close to `0` will be converted to `-1`, floats that are close to `0.5` will be converted to `0`, and floats that are close to `1` will be converted to `1`.
 
-To do the first part of the conversion we need to introduce a [Sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function):
+To do the first part of the conversion we need to introduce a [Sigmoid Function](https://en.wikipedia.org/wiki/Sigmoid_function) which implements the following formula:
 
 ![Sigmoid formula](assets/05-sigmoid-01.svg)
 
