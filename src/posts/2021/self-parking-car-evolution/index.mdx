@@ -104,7 +104,7 @@ At this moment, our car can "see" and "move", but there is no "coordinator", tha
 As an input from the sensors, every `100ms` the brain will be getting `8` float numbers, each one in range of `[0...4]`. For example, the input might look like this:
 
 ```typescript
-const brainInput: Sensors = [s0, s1, s2, s3, s4, s5, s6, s7];
+const sensors: Sensors = [s0, s1, s2, s3, s4, s5, s6, s7];
 // i.e. 🧠 ← [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
 ```
 
@@ -122,10 +122,13 @@ Each number should be of a type `MuscleSignal` and might take one of three value
 Keeping in mind the brain's input and output mentioned above we may say that the brain is just a function:
 
 ```typescript
-const brainInput: Sensors = [s0, s1, s2, s3, s4, s5, s6, s7];
-const { engineSignal, wheelSignal } = brainFunction(brainInput);
+const { engineSignal, wheelSignal } = brainToMuscleSignal(
+  brainFunction(sensors)
+);
 // i.e. { engineSignal: 0, wheelSignal: -1 } ← 🧠 ← [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
 ```
+
+Where `brainToMuscleSignal()` is just a function that converts raw brain signals (any float number) to muscle signals (to  `-1`, `0`, or `+1` number) so that muscles could understand it. We'll implement this converter function below.
 
 The main question now is what kind of function the `brainFunction()` is.
 
@@ -176,8 +179,53 @@ const linearPolynomial = (coefficients: Coefficients, variables: number[]): numb
 The car's "brain" in this case will consist of two polynomials and will look like this:
 
 ```typescript
-const engineSignal: MuscleSignal = linearPolynomial(engineCoefficients, sensors);
-const wheelSignal: MuscleSignal = linearPolynomial(wheelCoefficients, sensors);
+const engineSignal: MuscleSignal = brainToMuscleSignal(
+  linearPolynomial(engineCoefficients, sensors)
+);
+
+const wheelSignal: MuscleSignal = brainToMuscleSignal(
+  linearPolynomial(wheelCoefficients, sensors)
+);
+```
+
+Let's get back to the `brainToMuscleSignal()` and implement it. The output of a `linearPolynomial()` function is a float number (i.e. `0.456` or `3673.45` or `-280`). The `brainToMuscleSignal()` function need to convert the wide range of floats to three particular integers, and it will do it in two steps:
+
+1. Convert the float of a wide range (i.e. `0.456` or `3673.45` or `-280`) to the float in a range of `(0...1)` (i.e. `0.05` or `0.86`)
+2. Convert the float in a range of `(0...1)` to one of three integer values of `-1`, `0`, or `+1`.  Floats that are close to `0` will be converted to `-1`, floats that are close to `0.5` will be converted to `0`, and floats that are close to `1` will be converted to `1`.
+
+To do the first part of the conversion we need to introduce a [Sigmoid](https://en.wikipedia.org/wiki/Sigmoid_function):
+
+![Sigmoid formula](assets/05-sigmoid-01.svg)
+
+It converts the wide range of floats (the `x` axis) to a limited range of `(0...1)` (the `y` axis). This is exactly what we need.
+
+![Sigmoid graph](assets/05-sigmoid-02.png)
+
+The implementation of two conversion steps mentioned above would look like this then:
+
+```typescript
+const sigmoid = (x: number): number => {
+  return 1 / (1 + Math.E ** -x);
+};
+
+const sigmoidToMuscleSignal = (
+  sigmoidValue: number,
+  // Value between 0 and 0.5:  [0 ... (0.5 - margin) ... 0.5 ... (0.5 + margin) ... 1]
+  aroundZeroMargin: number = 0.4,
+): MuscleSignal => {
+  if (sigmoidValue < (0.5 - aroundZeroMargin)) {
+    return -1;
+  }
+  if (sigmoidValue > (0.5 + aroundZeroMargin)) {
+    return 1;
+  }
+  return 0;
+};
+
+const brainToMuscleSignal = (rawBrainSignal: number): MuscleSignal => {
+  const normalizedBrainSignal = sigmoid(rawBrainSignal);
+  return sigmoidToMuscleSignal(normalizedBrainSignal);
+}
 ```
 
 ## Evolving the car's brain
