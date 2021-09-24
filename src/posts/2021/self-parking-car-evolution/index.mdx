@@ -68,7 +68,7 @@ In our case, the muscles are receivers of the signals that comes from the brain 
 type MuscleSignal = -1 | 0 | 1;
 ```
 
-For example, the brain may send the signal with the value of `+1` to the engine muscle and it will start moving the car forward. The signal `-1` to the engine moves the car backward. At the same time, if the brain will send the signal of `-1` to the steering wheel muscle, it will turn the car to the left.
+For example, the brain may send the signal with the value of `+1` to the engine muscle and it will start moving the car forward. The signal `-1` to the engine moves the car backward. At the same time, if the brain will send the signal of `-1` to the steering wheel muscle, it will turn the car to the left, etc.
 
 Here is how the brain signal values map to the muscle actions in our case:
 
@@ -128,7 +128,7 @@ const { engineSignal, wheelSignal } = brainToMuscleSignal(
 // i.e. { engineSignal: 0, wheelSignal: -1 } ← 🧠 ← [0, 0.5, 4, 0.002, 0, 3.76, 0, 1.245]
 ```
 
-Where `brainToMuscleSignal()` is just a function that converts raw brain signals (any float number) to muscle signals (to  `-1`, `0`, or `+1` number) so that muscles could understand it. We'll implement this converter function below.
+Where `brainToMuscleSignal()` is a function that converts raw brain signals (any float number) to muscle signals (to  `-1`, `0`, or `+1` number) so that muscles could understand it. We'll implement this converter function below.
 
 The main question now is what kind of function the `brainFunction()` is.
 
@@ -136,30 +136,32 @@ To make the car smarter and its movements to be more sophisticated we could go w
 
 > I've covered Multilayer Perceptrons with a bit more details in my [homemade-machine-learning](https://github.com/trekhleb/homemade-machine-learning#-multilayer-perceptron-mlp), [machine-learning-experiments](https://github.com/trekhleb/machine-learning-experiments#multilayer-perceptron-mlp-or-simple-neural-network-nn), and [nano-neuron](https://github.com/trekhleb/nano-neuron) projects. You may even challenge that simple network [to recognize your written digits](https://trekhleb.dev/machine-learning-experiments/#/experiments/DigitsRecognitionMLP).
 
-However, to avoid the introduction of a whole new concept of Neural Networks, we'll go with a much simpler approach and we'll use two **Linear Polynomials** with multiple variables (to be precise, with exactly `8` variables, since we have `8` sensors) which will look something like this:
+However, to avoid the introduction of a whole new concept of Neural Networks, we'll go with a much simpler approach and we'll use two **Linear Polynomials** with multiple variables (to be more precise, each polynomial will have exactly `8` variables, since we have `8` sensors) which will look something like this:
 
 ```typescript
-engineSignal ← (e0 * s0) + (e1 * s1) + ... + (e7 * s7) + e8
-wheelSignal ← (w0 * s0) + (w1 * s1) + ... + (w7 * s7) + w8
+const engineSignal = brainToMuscleSignal(
+  (e0 * s0) + (e1 * s1) + ... + (e7 * s7) + e8 // <- brainFunction(...)
+)
+
+const wheelSignal = brainToMuscleSignal(
+  (w0 * s0) + (w1 * s1) + ... + (w7 * s7) + w8 // <- brainFunction(...)
+)
 ```
 
 Where:
 
-- `[s0, s1, ..., s7]` - the `8` variables (`8` sensor values)
-- `[e0, e1, ..., e8]` - the `9` coefficients for the engine polynomial
-- `[w0, w1, ..., w8]` - the `9` coefficients for the steering wheel polynomial
+- `[s0, s1, ..., s7]` - the `8` variables (`8` sensor values). These ones are dynamic.
+- `[e0, e1, ..., e8]` - the `9` coefficients for the engine polynomial. These ones the car will need to learn, and they will be static.
+- `[w0, w1, ..., w8]` - the `9` coefficients for the steering wheel polynomial. These ones the car will need to learn, and they will be static
 
 The cost of using the simpler function for the brain will be that the car won't be able to learn some sophisticated moves and also won't be able to generalize well and to adopt well to the unknown surroundings. But for our particular parking lot and for the sake of demonstrating the work of a genetic algorithm it should still be enough.
-
-> When we say that the car will evolve and learn how to do the self-parking, we mean that the car will figure out the "good-enough" values for these `18` coefficients (`9 + 9`), that will help it to do the parking.
-
-> The values of these `[e0, e1, ..., e8]` and `[w0, w1, ..., w8]` coefficients will be the core and the essence of the car. These `18` numbers will define unique car's abilities and behavior. It is like a genome or a DNA for the human.
 
 We may implement the generic polynomial function in the following way:
 
 ```typescript
 type Coefficients = number[];
 
+// Calculates the value of a linear polynomial based on the coefficients and variables.
 const linearPolynomial = (coefficients: Coefficients, variables: number[]): number => {
   if (coefficients.length !== (variables.length + 1)) {
     throw new Error('Incompatible number of polynomial coefficients and variables');
@@ -169,6 +171,7 @@ const linearPolynomial = (coefficients: Coefficients, variables: number[]): numb
     if (coefficientIndex < variables.length) {
       result += coefficient * variables[coefficientIndex];
     } else {
+      // The last coefficient needs to be added up without multiplication.
       result += coefficient
     }
   });
@@ -176,7 +179,7 @@ const linearPolynomial = (coefficients: Coefficients, variables: number[]): numb
 };
 ```
 
-The car's "brain" in this case will consist of two polynomials and will look like this:
+The car's brain in this case will consist of two polynomials and will look like this:
 
 ```typescript
 const engineSignal: MuscleSignal = brainToMuscleSignal(
@@ -188,44 +191,56 @@ const wheelSignal: MuscleSignal = brainToMuscleSignal(
 );
 ```
 
-Let's get back to the `brainToMuscleSignal()` and implement it. The output of a `linearPolynomial()` function is a float number (i.e. `0.456` or `3673.45` or `-280`). The `brainToMuscleSignal()` function need to convert the wide range of floats to three particular integers, and it will do it in two steps:
+The output of a `linearPolynomial()` function is a float number (i.e. `0.456` or `3673.45` or `-280`). The `brainToMuscleSignal()` function need to convert the wide range of floats to three particular integers, and it will do it in two steps:
 
 1. Convert the float of a wide range (i.e. `0.456` or `3673.45` or `-280`) to the float in a range of `(0...1)` (i.e. `0.05` or `0.86`)
-2. Convert the float in a range of `(0...1)` to one of three integer values of `-1`, `0`, or `+1`.  Floats that are close to `0` will be converted to `-1`, floats that are close to `0.5` will be converted to `0`, and floats that are close to `1` will be converted to `1`.
+2. Convert the float in a range of `(0...1)` to one of three integer values of `-1`, `0`, or `+1`. For example, the floats that are close to `0` will be converted to `-1`, the floats that are close to `0.5` will be converted to `0`, and the floats that are close to `1` will be converted to `1`.
 
 To do the first part of the conversion we need to introduce a [Sigmoid Function](https://en.wikipedia.org/wiki/Sigmoid_function) which implements the following formula:
 
 ![Sigmoid formula](assets/05-sigmoid-01.svg)
 
-It converts the wide range of floats (the `x` axis) to a limited range of `(0...1)` (the `y` axis). This is exactly what we need.
+It converts the wide range of floats (the `x` axis) to float numbers with a limited range of `(0...1)` (the `y` axis). This is exactly what we need.
 
 ![Sigmoid graph](assets/05-sigmoid-02.png)
 
-The implementation of two conversion steps mentioned above would look like this then:
+Here is how the conversion steps would look on the Sigmoid graph.
+
+![Conversion steps on the graph](assets/05-sigmoid-03.png)
+
+The implementation of two conversion steps mentioned above would look like this:
 
 ```typescript
+// Calculates the sigmoid value for a given number.
 const sigmoid = (x: number): number => {
   return 1 / (1 + Math.E ** -x);
 };
 
-const sigmoidToMuscleSignal = (
-  sigmoidValue: number,
-  // Value between 0 and 0.5:  [0 ... (0.5 - margin) ... 0.5 ... (0.5 + margin) ... 1]
-  aroundZeroMargin: number = 0.4,
-): MuscleSignal => {
-  if (sigmoidValue < (0.5 - aroundZeroMargin)) {
+// Converts sigmoid value (0...1) to the muscle signals (-1, 0, +1)
+// The margin parameter is a value between 0 and 0.5:
+// [0 ... (0.5 - margin) ... 0.5 ... (0.5 + margin) ... 1]
+const sigmoidToMuscleSignal = (sigmoidValue: number, margin: number = 0.4): MuscleSignal => {
+  if (sigmoidValue < (0.5 - margin)) {
     return -1;
   }
-  if (sigmoidValue > (0.5 + aroundZeroMargin)) {
+  if (sigmoidValue > (0.5 + margin)) {
     return 1;
   }
   return 0;
 };
 
+// Converts raw brain signal to the muscle signal.
 const brainToMuscleSignal = (rawBrainSignal: number): MuscleSignal => {
   const normalizedBrainSignal = sigmoid(rawBrainSignal);
   return sigmoidToMuscleSignal(normalizedBrainSignal);
 }
 ```
 
+### Brain summary
+
+> ☝🏻 The main conclusion from the "Eyes", "Muscles" and "Brain" sections above should be this: the coefficients `[e0, e1, ..., e8]` and `[w0, w1, ..., w8]` define the behavior of the car. In the following section these `18` numbers will be stitched together and will form unique car's Genome (or car's DNA).
+
 ## Evolving the car's brain
+
+When we say that the car will evolve and learn how to do the self-parking, we mean that the car will figure out the "good-enough" values for these `18` coefficients, that will help it to do the parking based on the surroundings.
+
