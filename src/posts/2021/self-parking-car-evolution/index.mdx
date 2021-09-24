@@ -139,12 +139,12 @@ To make the car smarter and its movements to be more sophisticated we could go w
 However, to avoid the introduction of a whole new concept of Neural Networks, we'll go with a much simpler approach and we'll use two **Linear Polynomials** with multiple variables (to be more precise, each polynomial will have exactly `8` variables, since we have `8` sensors) which will look something like this:
 
 ```typescript
-const engineSignal = brainToMuscleSignal(
-  (e0 * s0) + (e1 * s1) + ... + (e7 * s7) + e8 // <- brainFunction(...)
+engineSignal = brainToMuscleSignal(
+  (e0 * s0) + (e1 * s1) + ... + (e7 * s7) + e8 // <- brainFunction
 )
 
-const wheelSignal = brainToMuscleSignal(
-  (w0 * s0) + (w1 * s1) + ... + (w7 * s7) + w8 // <- brainFunction(...)
+wheelSignal = brainToMuscleSignal(
+  (w0 * s0) + (w1 * s1) + ... + (w7 * s7) + w8 // <- brainFunction
 )
 ```
 
@@ -191,7 +191,7 @@ const wheelSignal: MuscleSignal = brainToMuscleSignal(
 );
 ```
 
-The output of a `linearPolynomial()` function is a float number (i.e. `0.456` or `3673.45` or `-280`). The `brainToMuscleSignal()` function need to convert the wide range of floats to three particular integers, and it will do it in two steps:
+The output of a `linearPolynomial()` function is a float number. The `brainToMuscleSignal()` function need to convert the wide range of floats to three particular integers, and it will do it in two steps:
 
 1. Convert the float of a wide range (i.e. `0.456` or `3673.45` or `-280`) to the float in a range of `(0...1)` (i.e. `0.05` or `0.86`)
 2. Convert the float in a range of `(0...1)` to one of three integer values of `-1`, `0`, or `+1`. For example, the floats that are close to `0` will be converted to `-1`, the floats that are close to `0.5` will be converted to `0`, and the floats that are close to `1` will be converted to `1`.
@@ -272,10 +272,34 @@ type Gene = 0 | 1;
 
 type Genome = Gene[];
 
-const genome: Genome = [0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0];
+const genome: Genome = [
+  // Engine coefficients.
+  0, 1, 0, 1, 1, 0, 0, 0, 1, 1, // <- 17.5
+  0, 0, 0, 1, 0, 1, 1, 1, 0, 0, // <- 0.059
+  1, 1, 1, 0, 0, 0, 1, 1, 1, 0, // <- -46
+  0, 1, 0, 1, 1, 1, 0, 0, 1, 0, // <- 25
+  0, 1, 1, 1, 0, 0, 0, 1, 1, 1, // <- 156
+  1, 0, 0, 1, 1, 0, 1, 1, 0, 0, // <- -0.085
+  1, 0, 1, 0, 0, 1, 0, 1, 0, 1, // <- -0.207
+  1, 0, 1, 1, 0, 0, 0, 0, 1, 1, // <- -0.546
+  0, 0, 0, 1, 1, 0, 0, 1, 0, 0, // <- 0.071
+
+  // Wheels coefficients.
+  1, 1, 1, 0, 0, 1, 1, 0, 1, 0, // <- -58
+  0, 1, 1, 0, 0, 0, 1, 0, 0, 1, // <- 41
+  0, 0, 0, 0, 0, 0, 1, 0, 1, 0, // <- 0.011
+  0, 1, 1, 1, 0, 1, 1, 1, 1, 1, // <- 252
+  1, 1, 0, 0, 0, 1, 1, 0, 0, 0, // <- -3.5
+  1, 0, 0, 0, 1, 0, 0, 1, 0, 0, // <- -0.017
+  0, 0, 1, 1, 1, 1, 0, 0, 0, 1, // <- 1.532
+  1, 1, 1, 1, 1, 0, 1, 1, 0, 1, // <- -360
+  0, 0, 1, 0, 0, 0, 1, 0, 0, 0, // <- 0.157
+];
 ```
 
-Here is a source code that performs the conversion from binary to decimal format for the floating point numbers:
+Oh my! The binary genome looks so cryptic. But can you imagine, that these `180` zeroes and ones alone define how the car behaves on the parking lot! It's like you hacked someone's DNA and know what each gene means exactly. Amazing!
+
+Here is the source code that performs the conversion from binary to decimal format for the floating point numbers:
 
 ```typescript
 type Bit = 0 | 1;
@@ -344,7 +368,23 @@ export function bitsToFloat10(bits: Bits): number {
 
 ### Car genome summary
 
-> ☝🏻 So, finally, we've got to the point when the problem of making the car to be a self-parking car is broken down to the problem of finding the best combination of `180` ones and zeros (basically, finding the "good-enough" genome).
+> ☝🏻 So, finally, we've got to the point when the problem of making the car to be a self-parking car is broken down to the problem of finding the best combination of `180` ones and zeros (basically, finding the "good-enough" genome). Sounds simple, doesn't it?
+
+**Naive approach**
+
+We could approach the problem of finding the "good-enough" genome in a naive way and try out all possible combinations of genes:
+
+1. `[0, ..., 0, 0]`, and then...
+2. `[0, ..., 0, 1]`, and then...
+3. `[0, ..., 1, 0]`, and then...
+4. `[0, ..., 1, 1]`, and then...
+5. ...
+
+But, let's do some math. With `180` bits and with each bit being equal either to `0` or to `1` we would have `2^180` (or `1.53 * 10^54`) possible combinations. Let's say we would need to give `15s` to each car to see if it will park successfully or not. Let's also say that we may run a simulation for `10` cars at once. Then we would need `15 * (1.53 * 10^54) / 10 = 2.29 * 10^54 [seconds]` which is `7.36 * 10^46 [years]`. Pretty long waiting time. Just as a side thought, it is only `2.021 * 10^3 [years]` have passed after Christ was born.
+
+**Genetic approach**
+
+We need a faster algorithm to find the optimal value of the genome. This is when the **Genetic Algorithm** comes to the rescue. We might not find the best value of the genome, but there is a chance that we may find the optimal value of it. And, what is more importantly, we don't need to wait that long. With the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) I was able to find a pretty good genomes within `24 [hours]`.
 
 ## Genetic algorithm basics
 
