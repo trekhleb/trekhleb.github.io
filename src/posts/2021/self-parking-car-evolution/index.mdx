@@ -236,11 +236,119 @@ const brainToMuscleSignal = (rawBrainSignal: number): MuscleSignal => {
 }
 ```
 
-### Brain summary
+## Car's genome (DNA)
 
-> ☝🏻 The main conclusion from the "Eyes", "Muscles" and "Brain" sections above should be this: the coefficients `[e0, e1, ..., e8]` and `[w0, w1, ..., w8]` define the behavior of the car. In the following section these `18` numbers will be stitched together and will form unique car's Genome (or car's DNA).
+> ☝🏻 The main conclusion from the "Eyes", "Muscles" and "Brain" sections above should be this: the coefficients `[e0, e1, ..., e8]` and `[w0, w1, ..., w8]` define the behavior of the car. These `18` numbers together form the unique car's Genome (or car's DNA).
 
-## Evolving the car's brain
+### Car genome in a decimal form
+
+Let's join the `[e0, e1, ..., e8]` and `[w0, w1, ..., w8]` brain coefficients together to form a car's genome in a decimal form:
+
+```typescript
+// Car genome as a list of decimal numbers (coefficients).
+const carGenomeBase10 = [e0, e1, ..., e8, w0, w1, ..., w8];
+
+// i.e. carGenomeBase10 = [17.5, 0.059, -46, 25, 156, -0.085, -0.207, -0.546, 0.071, -58, 41, 0.011, 252, -3.5, -0.017, 1.532, -360, 0.157]
+```
+
+### Car genome in a binary form
+
+Let's move one step deeper (to the genes level) and convert the decimal numbers of the car's genome to the binary format (to the plain `1`s and `0`s).
+
+> I've described in the details the process of converting the floating point numbers to the binary numbers in the [Binary representation of the floating-point numbers](https://trekhleb.dev/blog/2021/binary-floating-point/) article. You might want to check it out if the code in this section is not clear.
+
+Here is a quick example of how the floating point number may be converted to the `16 bits` binary number (again, feel free to [read this first](https://trekhleb.dev/blog/2021/binary-floating-point/) if the example is confusing):
+
+![Example of floating to binary numbers conversion](assets/06-floating-point-conversion-01.png)
+
+In our case, to reduce the genome length, we will convert each floating coefficient to the non-standard `10 bits` binary number (`1` sign bit, `4` exponent bits, `5` fraction bits).
+
+We have `18` coefficients in total, every coefficient will be converted to `10` bits number. It means that the car's genome will be an array of `0`s and `1`s with a length of `18 * 10 = 180 bits`.
+
+For example, for the genome in a decimal format that was mentioned above, its binary representation would look like this:
+
+```typescript
+type Gene = 0 | 1;
+
+type Genome = Gene[];
+
+const genome: Genome = [0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0];
+```
+
+Here is a source code that performs the conversion from binary to decimal format for the floating point numbers:
+
+```typescript
+type Bit = 0 | 1;
+
+type Bits = Bit[];
+
+type PrecisionConfig = {
+  signBitsCount: number,
+  exponentBitsCount: number,
+  fractionBitsCount: number,
+  totalBitsCount: number,
+};
+
+export type PrecisionConfigs = {
+  custom: PrecisionConfig,
+};
+
+export const precisionConfigs: PrecisionConfigs = {
+  // Custom-made 10-bits precision for faster evolution progress.
+  custom: {
+    signBitsCount: 1,
+    exponentBitsCount: 4,
+    fractionBitsCount: 5,
+    totalBitsCount: 10,
+  },
+};
+
+// Converts the binary representation of the floating point number to decimal float number.
+function bitsToFloat(bits: Bits, precisionConfig: PrecisionConfig): number {
+  const { signBitsCount, exponentBitsCount } = precisionConfig;
+
+  // Figuring out the sign.
+  const sign = (-1) ** bits[0]; // -1^1 = -1, -1^0 = 1
+
+  // Calculating the exponent value.
+  const exponentBias = 2 ** (exponentBitsCount - 1) - 1;
+  const exponentBits = bits.slice(signBitsCount, signBitsCount + exponentBitsCount);
+  const exponentUnbiased = exponentBits.reduce(
+    (exponentSoFar: number, currentBit: Bit, bitIndex: number) => {
+      const bitPowerOfTwo = 2 ** (exponentBitsCount - bitIndex - 1);
+      return exponentSoFar + currentBit * bitPowerOfTwo;
+    },
+    0,
+  );
+  const exponent = exponentUnbiased - exponentBias;
+
+  // Calculating the fraction value.
+  const fractionBits = bits.slice(signBitsCount + exponentBitsCount);
+  const fraction = fractionBits.reduce(
+    (fractionSoFar: number, currentBit: Bit, bitIndex: number) => {
+      const bitPowerOfTwo = 2 ** -(bitIndex + 1);
+      return fractionSoFar + currentBit * bitPowerOfTwo;
+    },
+    0,
+  );
+
+  // Putting all parts together to calculate the final number.
+  return sign * (2 ** exponent) * (1 + fraction);
+}
+
+// Converts the 8-bit binary representation of the floating point number to decimal float number.
+export function bitsToFloat10(bits: Bits): number {
+  return bitsToFloat(bits, precisionConfigs.custom);
+}
+```
+
+### Car genome summary
+
+> ☝🏻 So, finally, we've got to the point when the problem of making the car to be a self-parking car is broken down to the problem of finding the best combination of `180` ones and zeros (finding the "good-enough" genome).
+
+## Genetic algorithm basics
+
+## Evolving the car's brain using a Genetic Algorithm
 
 When we say that the car will evolve and learn how to do the self-parking, we mean that the car will figure out the "good-enough" values for these `18` coefficients, that will help it to do the parking based on the surroundings.
 
