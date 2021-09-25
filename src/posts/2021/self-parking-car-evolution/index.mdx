@@ -813,4 +813,78 @@ You may see the `fitness` and the `loss` values for a specific genome and for a 
 
 ![Evolution simulator dashboard](assets/09-fitness-function.png)
 
-## Putting the genetic functions together
+## Launching the evolution
+
+Now, let's create the world, make the time going, generation evolving, and the cars learning how to park:
+
+```typescript
+// Configurable evolution setup.
+const GENERATION_SIZE = 1000;
+const LONG_LIVING_CHAMPIONS_PERCENTAGE = 6;
+const MUTATION_PROBABILITY = 0.04;
+const MAX_GENERATIONS_NUM = 40;
+
+// Fitness function.
+const carFitnessFunction = (genome: Genome): number => {
+  // To make the fitness function work we need a simulation of the car behavior in a virtual 3D world.
+  // The simulator calculates the fitness values of every car and stores them in the fitnessValues map.
+  // Here we will just fetch the pre-calculated fitness value for the car.
+  const genomeKey = genome.join('');
+  return fitnessValues(genomeKey);
+};
+
+// Creating the very first generation of cars.
+let generationIndex = 0;
+let generation: Generation = createGeneration({
+  generationSize: GENERATION_SIZE,
+  genomeLength: GENOME_LENGTH,
+});
+
+while(generationIndex < MAX_GENERATIONS_NUM) {
+  // SIMULATION IS NEEDED HERE to simulate each car in the virtual world
+  // and to calculate the fitness values.
+  // @see: https://trekhleb.dev/self-parking-car-evolution
+
+  // Create the next generation based on the fitness values of the current generations.
+  // Mating and mutation will happen inside the select() function.
+  generation = select(
+    generation,
+    carFitnessFunction,
+    {
+      mutationProbability: MUTATION_PROBABILITY,
+      longLivingChampionsPercentage: LONG_LIVING_CHAMPIONS_PERCENTAGE,
+    },
+  );
+
+  generationIndex += 1;
+}
+
+// After selection the generation array is sorted by the fitness values in a descending order.
+// Therefore, after 40 generations the fittest car will be the first car in the generation array.
+```
+
+> As you've notice, we need to simulate the cars in the virtual 3D world, to calculate the fitness values. You might want to launch the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the code above in action.
+
+**The 1st generation** of cars with random genomes will behave something like this:
+
+![The 1st generation of cars with random genomes](assets/02-cars-before-01.gif)
+
+**On the ≈40th generation** the cars start learning what the self-parking is and start getting closer to the parking spot:
+
+![The 40th generation start learning how to park](assets/03-car-after-01.gif)
+
+Another example with a bit more challenging starting point:
+
+![More challenging starting point for self-parking](assets/03-car-after-03.gif)
+
+The cars are hitting some other cars along the way, bit this is only the 40th generation since the creation of the world for them, so you may give them some more time to learn.
+
+What is important is that from generation to generation we may see how the loss values are getting down.
+
+![Loss history](assets/10-loss-history-01.png)
+
+
+
+![Loss history](assets/10-loss-history-02.png)
+
+
