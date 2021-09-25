@@ -370,6 +370,77 @@ function bitsToFloat10(bits: Bits): number {
 }
 ```
 
+### Genome driver brain function
+
+Previously our brain function was working with the decimal form of `engineCoefficients` and `wheelCoefficients` polynomial coefficients directly. However, these coefficients are now encoded in binary form of a genome. Let's add a `decodeGenome()` function that will extract coefficients from the genome and let's rewrite our brain functions:
+
+```typescript
+// Car has 16 distance sensors.
+const CAR_SENSORS_NUM = 8;
+
+// Additional formula coefficient that is not connected to a sensor.
+const BIAS_UNITS = 1;
+
+// How many genes we need to encode each numeric parameter for the formulas.
+const GENES_PER_NUMBER = precisionConfigs.custom.totalBitsCount;
+
+// Based on 8 distance sensors we need to provide two formulas that would define car's behavior:
+// 1. Engine formula (input: 8 sensors; output: -1 (backward), 0 (neutral), +1 (forward))
+// 2. Wheels formula (input: 8 sensors; output: -1 (left), 0 (straight), +1 (right))
+const ENGINE_FORMULA_GENES_NUM = (CAR_SENSORS_NUM + BIAS_UNITS) * GENES_PER_NUMBER;
+const WHEELS_FORMULA_GENES_NUM = (CAR_SENSORS_NUM + BIAS_UNITS) * GENES_PER_NUMBER;
+
+// The length of the binary genome of the car.
+const GENOME_LENGTH = ENGINE_FORMULA_GENES_NUM + WHEELS_FORMULA_GENES_NUM;
+
+type DecodedGenome = {
+  engineFormulaCoefficients: Coefficients,
+  wheelsFormulaCoefficients: Coefficients,
+}
+
+const genomeToNumbers = (genome: Genome, genesPerNumber: number): number[] => {
+  if (genome.length % genesPerNumber !== 0) {
+    throw new Error('Wrong number of genes in the numbers genome');
+  }
+  const numbers: number[] = [];
+  for (let numberIndex = 0; numberIndex < genome.length; numberIndex += genesPerNumber) {
+    const number: number = bitsToFloat10(genome.slice(numberIndex, numberIndex + genesPerNumber));
+    numbers.push(number);
+  }
+  return numbers;
+};
+
+const decodeGenome = (genome: Genome): DecodedGenome => {
+  const engineGenes: Gene[] = genome.slice(0, ENGINE_FORMULA_GENES_NUM);
+  const wheelsGenes: Gene[] = genome.slice(
+    ENGINE_FORMULA_GENES_NUM,
+    ENGINE_FORMULA_GENES_NUM + WHEELS_FORMULA_GENES_NUM,
+  );
+
+  const engineFormulaCoefficients: Coefficients = genomeToNumbers(engineGenes, GENES_PER_NUMBER);
+  const wheelsFormulaCoefficients: Coefficients = genomeToNumbers(wheelsGenes, GENES_PER_NUMBER);
+
+  return {
+    engineFormulaCoefficients,
+    wheelsFormulaCoefficients,
+  };
+};
+
+// Update brain function for the engine muscle.
+export const getEngineMuscleSignal = (genome: Genome, sensors: Sensors): MuscleSignal => {
+  const {engineFormulaCoefficients: coefficients} = decodeGenome(genome);
+  const rawBrainSignal = linearPolynomial(coefficients, sensors);
+  return brainToMuscleSignal(rawBrainSignal);
+};
+
+// Update brain function for the wheels muscle.
+export const getWheelsMuscleSignal = (genome: Genome, sensors: Sensors): MuscleSignal => {
+  const {wheelsFormulaCoefficients: coefficients} = decodeGenome(genome);
+  const rawBrainSignal = linearPolynomial(coefficients, sensors);
+  return brainToMuscleSignal(rawBrainSignal);
+};
+```
+
 ## Self-driving car problem statement
 
 > ☝🏻 So, finally, we've got to the point when the problem of making the car to be a self-parking car is broken down to the problem of finding the best combination of `180` ones and zeros (finding the "good-enough" car's genome). Sounds simple, doesn't it?
