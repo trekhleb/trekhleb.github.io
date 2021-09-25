@@ -664,11 +664,9 @@ function select(
 }
 ```
 
-## Putting the genetic functions together
-
 ### Fitness function
 
-Let's start with implementing the fitness function for the cars. The fitness of the car will be defined by the distance from the car to the parking lot. The higher the distance, the the lower the fitness.
+The fitness of the car will be defined by the distance from the car to the parking lot. The higher the distance, the the lower the fitness.
 
 The final distance we will calculate as an average distance from `4` car wheels to the correspondent `4` corners of the parking spot. This distance we will call the `loss` which is inversely proportional to the `fitness`.
 
@@ -743,3 +741,5 @@ const carFitness = (params: GeometricParams): number => {
 You may see the `fitness` and the `loss` values for a specific genome and for a current car position on the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) dashboard:
 
 ![Evolution simulator dashboard](assets/09-fitness-function.png)
+
+## Putting the genetic functions together
