@@ -660,5 +660,82 @@ function select(
 }
 ```
 
-### Putting all genetic functions together
+## Putting the genetic functions together
 
+### Fitness function
+
+Let's start with implementing the fitness function for the cars. The fitness of the car will be defined by the distance from the car to the parking lot. The higher the distance, the the lower the fitness.
+
+The final distance we will calculate as an average distance from `4` car wheels to the correspondent `4` corners of the parking spot. This distance we will call the `loss` which is inversely proportional to the `fitness`.
+
+![The distance from the car to the parking lot](assets/08-distance-to-parkin-lot.png)
+
+The distance between two points in space will be calculated based on the [Pythagorean theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem) like this:
+
+```typescript
+type NumVec3 = [number, number, number];
+
+// Calculates the XZ distance between two points in space.
+// The vertical Y distance is not being taken into account.
+const euclideanDistance = (from: NumVec3, to: NumVec3) => {
+  const fromX = from[0];
+  const fromZ = from[2];
+  const toX = to[0];
+  const toZ = to[2];
+  return Math.sqrt((fromX - toX) ** 2 + (fromZ - toZ) ** 2);
+};
+```
+
+The distance (the `loss`) between the car and the parking lot will be calculated like this:
+
+```typescript
+type RectanglePoints = {
+  fl: NumVec3, // Front-left
+  fr: NumVec3, // Front-right
+  bl: NumVec3, // Back-left
+  br: NumVec3, // Back-right
+};
+
+type GeometricParams = {
+  wheelsPosition: RectanglePoints,
+  parkingLotCorners: RectanglePoints,
+};
+
+const carLoss = (params: GeometricParams): number => {
+  const { wheelsPosition, parkingLotCorners } = params;
+
+  const {
+    fl: flWheel,
+    fr: frWheel,
+    br: brWheel,
+    bl: blWheel,
+  } = wheelsPosition;
+
+  const {
+    fl: flCorner,
+    fr: frCorner,
+    br: brCorner,
+    bl: blCorner,
+  } = parkingLotCorners;
+
+  const flDistance = euclideanDistance(flWheel, flCorner);
+  const frDistance = euclideanDistance(frWheel, frCorner);
+  const brDistance = euclideanDistance(brWheel, brCorner);
+  const blDistance = euclideanDistance(blWheel, blCorner);
+
+  return (flDistance + frDistance + brDistance + blDistance) / 4;
+};
+```
+
+Since the `fitness` should be inversely proportional to the `loss` we'll calculate it like this:
+
+```typescript
+const carFitness = (params: GeometricParams): number => {
+  const loss = carLoss(params);
+  return 1 / (loss + 1);
+};
+```
+
+You may see the `fitness` and the `loss` values for a specific genome and for a current car position on the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) dashboard:
+
+![Evolution simulator dashboard](assets/09-fitness-function.png)
