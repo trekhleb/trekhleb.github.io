@@ -370,7 +370,7 @@ function bitsToFloat10(bits: Bits): number {
 }
 ```
 
-### Genome driver brain function
+### Brain function working with binary genome
 
 Previously our brain function was working with the decimal form of `engineCoefficients` and `wheelCoefficients` polynomial coefficients directly. However, these coefficients are now encoded in binary form of a genome. Let's add a `decodeGenome()` function that will extract coefficients from the genome and let's rewrite our brain functions:
 
