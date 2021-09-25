@@ -313,11 +313,11 @@ type PrecisionConfig = {
   totalBitsCount: number,
 };
 
-export type PrecisionConfigs = {
+type PrecisionConfigs = {
   custom: PrecisionConfig,
 };
 
-export const precisionConfigs: PrecisionConfigs = {
+const precisionConfigs: PrecisionConfigs = {
   // Custom-made 10-bits precision for faster evolution progress.
   custom: {
     signBitsCount: 1,
@@ -361,7 +361,7 @@ function bitsToFloat(bits: Bits, precisionConfig: PrecisionConfig): number {
 }
 
 // Converts the 8-bit binary representation of the floating point number to decimal float number.
-export function bitsToFloat10(bits: Bits): number {
+function bitsToFloat10(bits: Bits): number {
   return bitsToFloat(bits, precisionConfigs.custom);
 }
 ```
@@ -429,7 +429,7 @@ function createGenome(length: number): Genome {
     .map(() => (Math.random() < 0.5 ? 0 : 1));
 }
 
-export function createGeneration(params: GenerationParams): Generation {
+function createGeneration(params: GenerationParams): Generation {
   const { generationSize, genomeLength } = params;
   return new Array(generationSize)
     .fill(null)
@@ -460,6 +460,22 @@ function mutate(genome: Genome, mutationProbability: Probability): Genome {
 
 ### Functions for the MATE step
 
+The `mate()` function will accept the `father` and the `mother` genomes and will produce two children. We will imitate the real-world scenario and also do the mutation during the mating.
+
+Each bit of the child genome will be defined based on the values of the correspondent bit of the father's or mother's genomes. There is a `50/50%` probability that the child will inherit the bit of the father or the mother. For example, let's say we have a genomes of length `4` (for simplicity reasons):
+
+```text
+Father's genome: [0, 0, 1, 1]
+Mother's genome: [0, 1, 0, 1]
+                  ↓  ↓  ↓  ↓
+Possible kid #1: [0, 1, 1, 1]
+Possible kid #2: [0, 0, 1, 1]
+```
+
+In the example above the mutation were not taken into account.
+
+Here is the function implementation:
+
 ```typescript
 // Performs Uniform Crossover: each bit is chosen from either parent with equal probability.
 // @see: https://en.wikipedia.org/wiki/Crossover_(genetic_algorithm)
@@ -489,5 +505,155 @@ function mate(
     mutate(firstChild, mutationProbability),
     mutate(secondChild, mutationProbability),
   ];
+}
+```
+
+### Functions for the SELECT step
+
+To select the fittest individuums for further mating we need a way to find out the fitness of each genome. To do this we will use a so called fitness function.
+
+The fitness function is always related to the particular task that we try to solve, and it is not generic. In our case, the fitness function will measure the distance between the car and the parking spot. The closer the car to the parking spot, the fitter it is. We will implement the fitness function a bit later, but for now, let's introduce the interface for it:
+
+```typescript
+type FitnessFunction = (genome: Genome) => number;
+```
+
+Now, let's say we have fitness values for each individuum in population. Let's also say that we sorted all individuums by their fitness values so that the first individuums are the strongest ones. How should we select the fathers and the mothers from this array? We need to do the selection in a way, that the higher the fitness value of the individuum, the higher the chances of this individuum to be selected for mating. The `weightedRandom()` function will help us with this.
+
+```typescript
+// Picks the random item based on its weight.
+// The items with a higher weight will be picked more often.
+const weightedRandom = <T>(items: T[], weights: number[]): { item: T, index: number } => {
+  if (items.length !== weights.length) {
+    throw new Error('Items and weights must be of the same size');
+  }
+
+  // Preparing the cumulative weights array.
+  // For example:
+  // - weights = [1, 4, 3]
+  // - cumulativeWeights = [1, 5, 8]
+  const cumulativeWeights: number[] = [];
+  for (let i = 0; i < weights.length; i += 1) {
+    cumulativeWeights[i] = weights[i] + (cumulativeWeights[i - 1] || 0);
+  }
+
+  // Getting the random number in a range [0...sum(weights)]
+  // For example:
+  // - weights = [1, 4, 3]
+  // - maxCumulativeWeight = 8
+  // - range for the random number is [0...8]
+  const maxCumulativeWeight = cumulativeWeights[cumulativeWeights.length - 1];
+  const randomNumber = maxCumulativeWeight * Math.random();
+
+  // Picking the random item based on its weight.
+  // The items with higher weight will be picked more often.
+  for (let i = 0; i < items.length; i += 1) {
+    if (cumulativeWeights[i] >= randomNumber) {
+      return {
+        item: items[i],
+        index: i,
+      };
+    }
+  }
+  return {
+    item: items[items.length - 1],
+    index: items.length - 1,
+  };
+};
+```
+
+To avoid loosing the best individuums (let's call them champions) during the mating process we may also introduce a so called `longLivingChampionsPercentage` parameter. For example if the `longLivingChampionsPercentage = 10`, then `10%` of best cars from the previous population will be carried over to the new generation. You may think about it as there are some long-living individuums that can live a long life and see their children and even grandchildren.
+
+Here is the actual implementation of the `select()` function:
+
+```typescript
+// The number between 0 and 100.
+type Percentage = number;
+
+type SelectionOptions = {
+  mutationProbability: Probability,
+  longLivingChampionsPercentage: Percentage,
+};
+
+// @see: https://en.wikipedia.org/wiki/Selection_(genetic_algorithm)
+function select(
+  generation: Generation,
+  fitness: FitnessFunction,
+  options: SelectionOptions,
+) {
+  const {
+    mutationProbability,
+    longLivingChampionsPercentage,
+  } = options;
+
+  const newGeneration: Generation = [];
+
+  const oldGeneration = [...generation];
+  // First one - the fittest one.
+  oldGeneration.sort((genomeA: Genome, genomeB: Genome): number => {
+    const fitnessA = fitness(genomeA);
+    const fitnessB = fitness(genomeB);
+    if (fitnessA < fitnessB) {
+      return 1;
+    }
+    if (fitnessA > fitnessB) {
+      return -1;
+    }
+    return 0;
+  });
+
+  // Let long-liver champions continue living in the new generation.
+  const longLiversCount = Math.floor(longLivingChampionsPercentage * oldGeneration.length / 100);
+  if (longLiversCount) {
+    oldGeneration.slice(0, longLiversCount).forEach((longLivingGenome: Genome) => {
+      newGeneration.push(longLivingGenome);
+    });
+  }
+
+  // Get the data about he fitness of each individuum.
+  const fitnessPerOldGenome: number[] = oldGeneration.map((genome: Genome) => fitness(genome));
+
+  // Populate the next generation until it becomes the same size as a old generation.
+  while (newGeneration.length < generation.length) {
+    // Select random father and mother from the population.
+    // The fittest individuums have higher chances to be selected.
+    let father: Genome | null = null;
+    let fatherGenomeIndex: number | null = null;
+    let mother: Genome | null = null;
+    let matherGenomeIndex: number | null = null;
+
+    // To produce children the father and mother need each other.
+    // It must be two different individuums.
+    while (!father || !mother || fatherGenomeIndex === matherGenomeIndex) {
+      const {
+        item: randomFather,
+        index: randomFatherGenomeIndex,
+      } = weightedRandom<Genome>(generation, fitnessPerOldGenome);
+
+      const {
+        item: randomMother,
+        index: randomMotherGenomeIndex,
+      } = weightedRandom<Genome>(generation, fitnessPerOldGenome);
+
+      father = randomFather;
+      fatherGenomeIndex = randomFatherGenomeIndex;
+
+      mother = randomMother;
+      matherGenomeIndex = randomMotherGenomeIndex;
+    }
+
+    // Let father and mother produce two children.
+    const [firstChild, secondChild] = mate(father, mother, mutationProbability);
+
+    newGeneration.push(firstChild);
+
+    // Depending on the number of long-living champions it is possible that
+    // there will be the place for only one child, sorry.
+    if (newGeneration.length < generation.length) {
+      newGeneration.push(secondChild);
+    }
+  }
+
+  return newGeneration;
 }
 ```
