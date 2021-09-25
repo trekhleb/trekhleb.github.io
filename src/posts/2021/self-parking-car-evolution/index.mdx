@@ -400,6 +400,8 @@ We're not going to cover a genetic algorithm in all details, but on a high level
 4. **MUTATE** - during the mating process some genes may randomly mutate (`1`s and `0`s in child genome may flip). This may bring a wider variety of children genomes and, thus, a wider variety of children cars behavior. Imagine that the 1st bit was accidentally set to `0` for all `~1000` cars. The only way to try the car with the 1st bit being set to `1` is through the random mutations. At the same time, extensive mutations may ruin the healthy genomes.
 5. Go to "Step 2" unless the number of generations has reached the limit (i.e. `100` generations have passed) or unless the top performing individuums have reached the expected fitness function value (i.e. the best car has approached the parking lot closer than `1 meter`). Otherwise, quit.
 
+![Genetic algorithm flow](assets/07-genetic-algorithm-flow-01.png)
+
 ## Evolving the car's brain using a Genetic Algorithm
 
 When we say that the car will evolve and learn how to do the self-parking, we mean that the car will figure out the "good-enough" values for these `18` coefficients, that will help it to do the parking based on the surroundings.
