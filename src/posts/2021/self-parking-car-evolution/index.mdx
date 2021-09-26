@@ -815,10 +815,12 @@ You may see the `fitness` and the `loss` values for a specific genome and for a 
 
 ## Launching the evolution
 
-Now, let's create the world, make the time going, generation evolving, and the cars learning how to park:
+Lets put everything together. We're going to launch the evolution loop, make the time going, the generation evolving, and the cars learning how to park.
+
+To get the fitness values of each car we would need a simulation of the cars behavior running in a virtual 3D world. You may check the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the code below in action:
 
 ```typescript
-// Configurable evolution setup.
+// Evolution setup. Configurable via Evolution Simulator.
 const GENERATION_SIZE = 1000;
 const LONG_LIVING_CHAMPIONS_PERCENTAGE = 6;
 const MUTATION_PROBABILITY = 0.04;
@@ -826,7 +828,8 @@ const MAX_GENERATIONS_NUM = 40;
 
 // Fitness function.
 const carFitnessFunction = (genome: Genome): number => {
-  // To make the fitness function work we need a simulation of the car behavior in a virtual 3D world.
+  // SIMULATION IS NEEDED HERE to pre-calculate the fitness values.
+
   // The simulator calculates the fitness values of every car and stores them in the fitnessValues map.
   // Here we will just fetch the pre-calculated fitness value for the car.
   const genomeKey = genome.join('');
@@ -841,9 +844,7 @@ let generation: Generation = createGeneration({
 });
 
 while(generationIndex < MAX_GENERATIONS_NUM) {
-  // SIMULATION IS NEEDED HERE to simulate each car in the virtual world
-  // and to calculate the fitness values.
-  // @see: https://trekhleb.dev/self-parking-car-evolution
+  // SIMULATION IS NEEDED HERE to pre-calculate the fitness values.
 
   // Create the next generation based on the fitness values of the current generations.
   // Mating and mutation will happen inside the select() function.
@@ -858,12 +859,9 @@ while(generationIndex < MAX_GENERATIONS_NUM) {
 
   generationIndex += 1;
 }
-
-// After selection the generation array is sorted by the fitness values in a descending order.
-// Therefore, after 40 generations the fittest car will be the first car in the generation array.
 ```
 
-> As you've notice, we need to simulate the cars in the virtual 3D world, to calculate the fitness values. You might want to launch the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the code above in action.
+After running the `select()` function, the generation array is sorted by the fitness values in a descending order. Therefore, after 40 generations the fittest car will be the first car in the generation array (`generation[0]`).
 
 **The 1st generation** of cars with random genomes will behave something like this:
 
