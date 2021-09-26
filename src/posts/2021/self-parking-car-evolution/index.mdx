@@ -817,7 +817,7 @@ You may see the `fitness` and the `loss` values for a specific genome and for a 
 
 Lets put everything together. We're going to launch the evolution loop, make the time going, the generation evolving, and the cars learning how to park.
 
-To get the fitness values of each car we would need a simulation of the cars behavior running in a virtual 3D world. You may check the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the code below in action:
+To get the fitness values of each car we would need to run a simulation of the cars behavior in a virtual 3D world. The [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) does exactly this - it runs the code below in the simulator:
 
 ```typescript
 // Evolution setup. Configurable via Evolution Simulator.
@@ -840,14 +840,13 @@ const carFitnessFunction = (genome: Genome): number => {
 let generationIndex = 0;
 let generation: Generation = createGeneration({
   generationSize: GENERATION_SIZE,
-  genomeLength: GENOME_LENGTH,
+  genomeLength: GENOME_LENGTH, // <- 180 genes
 });
 
 while(generationIndex < MAX_GENERATIONS_NUM) {
   // SIMULATION IS NEEDED HERE to pre-calculate the fitness values.
 
-  // Create the next generation based on the fitness values of the current generations.
-  // Mating and mutation will happen inside the select() function.
+  // Running the selection, mating and mutating of the current generation.
   generation = select(
     generation,
     carFitnessFunction,
@@ -861,7 +860,7 @@ while(generationIndex < MAX_GENERATIONS_NUM) {
 }
 ```
 
-After running the `select()` function, the generation array is sorted by the fitness values in a descending order. Therefore, after 40 generations the fittest car will be the first car in the generation array (`generation[0]`).
+After running the `select()` function, the generation array is sorted by the fitness values in a descending order. Therefore, the fittest car will be the first car in the generation array (`generation[0]`).
 
 **The 1st generation** of cars with random genomes will behave something like this:
 
@@ -877,12 +876,20 @@ Another example with a bit more challenging starting point:
 
 The cars are hitting some other cars along the way, bit this is only the 40th generation since the creation of the world for them, so you may give them some more time to learn.
 
-What is important is that from generation to generation we may see how the loss values are getting down.
+What is important is that from generation to generation we may see how the loss values are getting down. The `P50 Avg Loss` shows the average loss value (the distance from the parking lot) of the `50%` of the most fittest cars. The `Min Loss` shows the loss value of the most fittest car in each generation.
 
 ![Loss history](assets/10-loss-history-01.png)
 
+You may see that on the `35th` generation the `50%` of most fittest cars are learning to get closer to the parking lot - from `5.5m` away from the parking lot on the 0th generation, to `3.5m` on the 35th generation. The trend for the `Min Loss` values is less obvious (from `1m` to `0.5m` with some noise), but from the animations above you may clearly see that cars have learned some parking behavior.
 
+## Conclusion
 
-![Loss history](assets/10-loss-history-02.png)
+In this article we've broken down the abstract task of making the self-parking car to the straightforward task of finding the optimal combination of `180` ones and zeroes (finding the optimal car genome).
 
+Then we've applied the genetic algorithm to find the optimal car genome. It allowed us to get the pretty good results in several hours of simulation (instead of many years of running the naive approach).
 
+You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the evolution process directly in you browser. The simulator gives you the following opportunities:
+
+- You may [train the cars from scratch](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) and adjust genetic parameters by yourself
+- You may [see the trained self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
+- You may also [try to park the car manually](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/).
