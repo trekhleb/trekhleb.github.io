@@ -817,10 +817,10 @@ You may see the `fitness` and the `loss` values for a specific genome and for a 
 
 Lets put the evolution functions together. We're going to launch the evolution loop, make the time going, the generation evolving, and the cars learning how to park.
 
-To get the fitness values of each car we would need to run a simulation of the cars behavior in a virtual 3D world. The [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) does exactly that - it runs the code below in the simulator:
+To get the fitness values of each car we need to run a simulation of the cars behavior in a virtual 3D world. The [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) does exactly that - it runs the code below in the simulator:
 
 ```typescript
-// Evolution setup.
+// Evolution setup example.
 // Configurable via the Evolution Simulator.
 const GENERATION_SIZE = 1000;
 const LONG_LIVING_CHAMPIONS_PERCENTAGE = 6;
@@ -829,9 +829,8 @@ const MAX_GENERATIONS_NUM = 40;
 
 // Fitness function.
 const carFitnessFunction = (genome: Genome): number => {
-  // SIMULATION IS NEEDED HERE to pre-calculate the fitness values.
-
-  // The simulator calculates the fitness values of every car and stores them in the fitnessValues map.
+  // The evolution simulator calculates and stores the fitness values
+  // for each car in the fitnessValues map.
   // Here we will just fetch the pre-calculated fitness value for the car.
   const genomeKey = genome.join('');
   return fitnessValues(genomeKey);
@@ -861,13 +860,13 @@ while(generationIndex < MAX_GENERATIONS_NUM) {
 }
 ```
 
-After running the `select()` function, the generation array is sorted by the fitness values in a descending order. Therefore, the fittest car will be the first car in the `generation` array.
+After running the `select()` function, the `generation` array is sorted by the fitness values in a descending order. Therefore, the fittest car will be the first car in the array.
 
 **The 1st generation** of cars with random genomes will behave something like this:
 
 ![The 1st generation of cars with random genomes](assets/02-cars-before-01.gif)
 
-**On the ≈40th generation** the cars start learning what the self-parking is and start getting closer to the parking spot:
+**On the ≈40th generation** the cars start learning what the self-parking is and start getting closer to the parking lot:
 
 ![The 40th generation start learning how to park](assets/03-car-after-01.gif)
 
@@ -877,20 +876,20 @@ Another example with a bit more challenging starting point:
 
 The cars are hitting some other cars along the way, bit this is only the 40th generation since the creation of the world for them, so you may give them some more time to learn.
 
-What is important is that from generation to generation we may see how the loss values are getting down. The `P50 Avg Loss` shows the average loss value (the distance from the parking lot) of the `50%` of the most fittest cars. The `Min Loss` shows the loss value of the most fittest car in each generation.
+From generation to generation we may see how the loss values are going down. The `P50 Avg Loss` shows the average loss value (average distance from the car to the parking lot) of the `50%` of the most fittest cars. The `Min Loss` shows the loss value of the most fittest car in each generation.
 
 ![Loss history](assets/10-loss-history-02.png)
 
-You may see that on the `35th` generation the `50%` of most fittest cars are learning to get closer to the parking lot - from `5.5m` away from the parking lot on the 0th generation, to `3.5m` on the 35th generation. The trend for the `Min Loss` values is less obvious (from `1m` to `0.5m` with some noise), but from the animations above you may clearly see that cars have learned some parking behavior.
+You may see that on the `35th` generation the `50%` of most fittest cars are learning to get closer to the parking lot - from `5.5m` away from the parking lot (on the 0th generation), to `3.5m` (on the 35th generation). The trend for the `Min Loss` values is less obvious (from `1m` to `0.5m` with some noise signals), but from the animations above you may clearly see that cars have learned some parking behavior.
 
 ## Conclusion
 
 In this article we've broken down the abstract task of making the self-parking car to the straightforward task of finding the optimal combination of `180` ones and zeroes (finding the optimal car genome).
 
-Then we've applied the genetic algorithm to find the optimal car genome. It allowed us to get the pretty good results in several hours of simulation (instead of many years of running the naive approach).
+Then we've applied the genetic algorithm to find the optimal car genome. It allowed us to get pretty good results in several hours of simulation (instead of many years of running the naive approach).
 
 You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the evolution process directly in you browser. The simulator gives you the following opportunities:
 
 - You may [train the cars from scratch](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) and adjust genetic parameters by yourself
 - You may [see the trained self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
-- You may also [try to park the car manually](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/).
+- You may also [try to park the car manually](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/)
