@@ -817,10 +817,11 @@ You may see the `fitness` and the `loss` values for a specific genome and for a 
 
 Lets put everything together. We're going to launch the evolution loop, make the time going, the generation evolving, and the cars learning how to park.
 
-To get the fitness values of each car we would need to run a simulation of the cars behavior in a virtual 3D world. The [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) does exactly this - it runs the code below in the simulator:
+To get the fitness values of each car we would need to run a simulation of the cars behavior in a virtual 3D world. The [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) does exactly that - it runs the code below in the simulator:
 
 ```typescript
-// Evolution setup. Configurable via Evolution Simulator.
+// Evolution setup.
+// Configurable via the Evolution Simulator.
 const GENERATION_SIZE = 1000;
 const LONG_LIVING_CHAMPIONS_PERCENTAGE = 6;
 const MUTATION_PROBABILITY = 0.04;
@@ -860,7 +861,7 @@ while(generationIndex < MAX_GENERATIONS_NUM) {
 }
 ```
 
-After running the `select()` function, the generation array is sorted by the fitness values in a descending order. Therefore, the fittest car will be the first car in the generation array (`generation[0]`).
+After running the `select()` function, the generation array is sorted by the fitness values in a descending order. Therefore, the fittest car will be the first car in the `generation` array.
 
 **The 1st generation** of cars with random genomes will behave something like this:
 
