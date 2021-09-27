@@ -14,7 +14,7 @@ date: 2021-09-28
 
 ## TL;DR
 
-In this article we'll train the car to do self-parking using a [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm).
+In this article, we'll train the car to do self-parking using a [genetic algorithm](https://en.wikipedia.org/wiki/Genetic_algorithm).
 
 We'll create **the 1st generation** of cars with random genomes that will behave something like this:
 
@@ -30,7 +30,7 @@ Another example with a bit more challenging starting point:
 
 > Yeah-yeah, the cars are hitting some other cars along the way, and also are not perfectly fitting the parking spot, but this is only the 40th generation since the creation of the world for them, so be merciful and give the cars some space to grow :D
 
-You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the evolution process directly in you browser. The simulator gives you the following opportunities:
+You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the evolution process directly in your browser. The simulator gives you the following opportunities:
 
 - You may [train the cars from scratch](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) and adjust genetic parameters by yourself
 - You may [see the trained self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
@@ -38,19 +38,19 @@ You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.
 
 The genetic algorithm for this project is implemented in TypeScript. The full genetic source code will be shown in this article, but you may also find the final code examples in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution).
 
-> We're going to use a genetic algorithm for particular task of evolving cars genomes. However, this article only touches on the basics of the algorithm and is by no means a complete guide to the genetic algorithm topic.
+> We're going to use a genetic algorithm for the particular task of evolving cars' genomes. However, this article only touches on the basics of the algorithm and is by no means a complete guide to the genetic algorithm topic.
 
 Having that said, let's deep dive into more details...
 
 ## The Plan
 
-Step-by-step we're going to brake down a high-level task of creating the self-parking car to the straightforward low-level optimization problem of finding the optimal combination of `180` bits (finding the optimal car genome).
+Step-by-step we're going to break down a high-level task of creating the self-parking car to the straightforward low-level optimization problem of finding the optimal combination of `180` bits (finding the optimal car genome).
 
 Here is what we're going to do:
 
 1. 💪🏻 Give the **muscles** (engine, steering wheel) to the car so that it could move towards the parking spot.
 2. 👀 Give the **eyes** (sensors) to the car so that it could see the obstacles around.
-3. 🧠 Give the **brain** to the car that will control the muscles (movements) based on what car sees (obstacles via sensors). The brain will be simply a pure function `movements = f(sensors)`.
+3. 🧠 Give the **brain** to the car that will control the muscles (movements) based on what the car sees (obstacles via sensors). The brain will be simply a pure function `movements = f(sensors)`.
 4. 🧬 **Evolve the brain** to do the right moves based on the sensors input. This is where we will apply a genetic algorithm. Generation after generation our brain function `movements = f(sensors)` will learn how to move the car towards the parking spot.
 
 ## Giving the muscles to the car
@@ -64,7 +64,7 @@ With these two muscles the car is able to perform the following movements:
 
 ![Car movements achieved by car muscles](assets/03-car-muscles-01.gif)
 
-In our case, the muscles are receivers of the signals that comes from the brain once every `100ms` (milliseconds). Based on the value of the brain's signal the muscles acts differently. We'll cover the "brain" part below, but for now, let's say that our brain may send only 3 possible signals to each muscle: `-1`, `0`, or `+1`.
+In our case, the muscles are receivers of the signals that come from the brain once every `100ms` (milliseconds). Based on the value of the brain's signal the muscles act differently. We'll cover the "brain" part below, but for now, let's say that our brain may send only 3 possible signals to each muscle: `-1`, `0`, or `+1`.
 
 ```typescript
 type MuscleSignal = -1 | 0 | 1;
@@ -79,7 +79,7 @@ Here is how the brain signal values map to the muscle actions in our case:
 | **Engine**         | ↓ Backward    | ◎ Neutral    | ↑ Forward     |
 | **Steering wheel** | ← Left        | ◎ Straight   | → Right       |
 
-> You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how car muscles work. Every time you press one of the `WASD` keyboard keys (or use a touch-screen joystick) you send these `-1`, `0` or `+1` signals to the engine and steering wheel muscles.
+> You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how the car muscles work. Every time you press one of the `WASD` keyboard keys (or use a touch-screen joystick) you send these `-1`, `0`, or `+1` signals to the engine and steering wheel muscles.
 
 ## Giving the eyes to the car
 
@@ -115,9 +115,9 @@ const sensors: Sensors = [s0, s1, s2, s3, s4, s5, s6, s7];
 Every `100ms` the brain should produce two integers as an output:
 
 1. One number as a signal for the engine: `engineSignal`
-2. One number as signal for the steering wheel: `wheelSignal`
+2. One number as a signal for the steering wheel: `wheelSignal`
 
-Each number should be of a type `MuscleSignal` and might take one of three values: `-1`, `0`, or `+1`.
+Each number should be of the type `MuscleSignal` and might take one of three values: `-1`, `0`, or `+1`.
 
 ### Brain formulas/functions
 
@@ -134,7 +134,7 @@ Where `brainToMuscleSignal()` is a function that converts raw brain signals (any
 
 The main question now is what kind of a function the `brainFunction()` is.
 
-To make the car smarter and its movements to be more sophisticated we could go with a [Multilayer Perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron). The name is a bit scary but this is a simple Neural Network with a basic architecture (think of it as of a big formula with many parameters/coefficients).
+To make the car smarter and its movements to be more sophisticated we could go with a [Multilayer Perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron). The name is a bit scary but this is a simple Neural Network with a basic architecture (think of it as a big formula with many parameters/coefficients).
 
 > I've covered Multilayer Perceptrons with a bit more details in my [homemade-machine-learning](https://github.com/trekhleb/homemade-machine-learning#-multilayer-perceptron-mlp), [machine-learning-experiments](https://github.com/trekhleb/machine-learning-experiments#multilayer-perceptron-mlp-or-simple-neural-network-nn), and [nano-neuron](https://github.com/trekhleb/nano-neuron) projects. You may even challenge that simple network [to recognize your written digits](https://trekhleb.dev/machine-learning-experiments/#/experiments/DigitsRecognitionMLP).
 
@@ -156,7 +156,7 @@ Where:
 - `[e0, e1, ..., e8]` - the `9` coefficients for the engine polynomial. These ones the car will need to learn, and they will be static.
 - `[w0, w1, ..., w8]` - the `9` coefficients for the steering wheel polynomial. These ones the car will need to learn, and they will be static
 
-The cost of using the simpler function for the brain will be that the car won't be able to learn some sophisticated moves and also won't be able to generalize well and to adopt well to the unknown surroundings. But for our particular parking lot and for the sake of demonstrating the work of a genetic algorithm it should still be enough.
+The cost of using the simpler function for the brain will be that the car won't be able to learn some sophisticated moves and also won't be able to generalize well and adapt well to unknown surroundings. But for our particular parking lot and for the sake of demonstrating the work of a genetic algorithm it should still be enough.
 
 We may implement the generic polynomial function in the following way:
 
@@ -240,7 +240,7 @@ const brainToMuscleSignal = (rawBrainSignal: number): MuscleSignal => {
 
 ## Car's genome (DNA)
 
-> ☝🏻 The main conclusion from the "Eyes", "Muscles" and "Brain" sections above should be this: the coefficients `[e0, e1, ..., e8]` and `[w0, w1, ..., w8]` define the behavior of the car. These `18` numbers together form the unique car's Genome (or car's DNA).
+> ☝🏻 The main conclusion from the "Eyes", "Muscles" and "Brain" sections above should be this: the coefficients `[e0, e1, ..., e8]` and `[w0, w1, ..., w8]` defines the behavior of the car. These `18` numbers together form the unique car's Genome (or car's DNA).
 
 ### Car genome in a decimal form
 
@@ -255,11 +255,11 @@ const carGenomeBase10 = [e0, e1, ..., e8, w0, w1, ..., w8];
 
 ### Car genome in a binary form
 
-Let's move one step deeper (to the genes level) and convert the decimal numbers of the car's genome to the binary format (to the plain `1`s and `0`s).
+Let's move one step deeper (to the level of the genes) and convert the decimal numbers of the car's genome to the binary format (to the plain `1`s and `0`s).
 
-> I've described in the details the process of converting the floating point numbers to the binary numbers in the [Binary representation of the floating-point numbers](https://trekhleb.dev/blog/2021/binary-floating-point/) article. You might want to check it out if the code in this section is not clear.
+> I've described in the detail the process of converting the floating-point numbers to binary numbers in the [Binary representation of the floating-point numbers](https://trekhleb.dev/blog/2021/binary-floating-point/) article. You might want to check it out if the code in this section is not clear.
 
-Here is a quick example of how the floating point number may be converted to the `16 bits` binary number (again, feel free to [read this first](https://trekhleb.dev/blog/2021/binary-floating-point/) if the example is confusing):
+Here is a quick example of how the floating-point number may be converted to the `16 bits` binary number (again, feel free to [read this first](https://trekhleb.dev/blog/2021/binary-floating-point/) if the example is confusing):
 
 ![Example of floating to binary numbers conversion](assets/06-floating-point-conversion-01.png)
 
@@ -299,13 +299,13 @@ const genome: Genome = [
 ];
 ```
 
-Oh my! The binary genome looks so cryptic. But can you imagine, that these `180` zeroes and ones alone define how the car behaves on the parking lot! It's like you hacked someone's DNA and know what each gene means exactly. Amazing!
+Oh my! The binary genome looks so cryptic. But can you imagine, that these `180` zeroes and ones alone define how the car behaves in the parking lot! It's like you hacked someone's DNA and know what each gene means exactly. Amazing!
 
 By the way, you may see the exact values of genomes and coefficients for the best performing car on the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) dashboard:
 
 ![Car genomes and coefficients examples](assets/06-genome-examples.png)
 
-Here is the source code that performs the conversion from binary to decimal format for the floating point numbers (the brain will need it to decode the genome and to produce the muscle signals based on the genome data):
+Here is the source code that performs the conversion from binary to decimal format for the floating-point numbers (the brain will need it to decode the genome and to produce the muscle signals based on the genome data):
 
 ```typescript
 type Bit = 0 | 1;
