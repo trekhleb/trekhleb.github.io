@@ -748,6 +748,8 @@ The final distance we will calculate as an average distance from `4` car wheels 
 
 ![The distance from the car to the parking spot](assets/08-distance-to-parkin-lot.png)
 
+Calculating the distance between each wheel and each corner separately (instead of just calculating the distance from car center ot the parking spot center) will make the car to preserve the proper orientation relatively to the parking spot.
+
 The distance between two points in space will be calculated based on the [Pythagorean theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem) like this:
 
 ```typescript
@@ -912,9 +914,10 @@ There are still some **unresolved issues** with the code and the simulator:
 - The car's brain is oversimplified and it uses linear equation instead of, let's say, neural networks. It makes the car not adoptable to the new surroundings or to the new parking lot types.
 - We don't decrease the car's fitness value when the car is hitting the other car. Therefore the car doesn't "feel" any guilt in creating the road accident.
 - The evolution simulator is not stable. It means that for the same car genome it may produce different fitness values, which makes the evolution less efficient.
-- The evolution simulator is also very heavy in terms of performance, which slows down the evolution progress, since we can't train,let's say, 1000 car at once.
-- and more...
+- The evolution simulator is also very heavy in terms of performance, which slows down the evolution progress, since we can't train, let's say, 1000 car at once.
+- Also the Evolution Simulator requires the browser tab to be open and active in order to perform the simulation.
+- and [more](https://github.com/trekhleb/self-parking-car-evolution/issues)...
 
-However, the purpose of this article was to have some fun learning how the genetic algorithm works and not to build a production-ready self-parking Tesla of course. So, even with the issues mentioned above, I hope you've had a good time going through the article.
+However, the purpose of this article was to have some fun while learning how the genetic algorithm works and not to build a production-ready self-parking Tesla. So, even with the issues mentioned above, I hope you've had a good time going through the article.
 
 ![Fin](assets/11-fin.png)
