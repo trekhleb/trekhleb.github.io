@@ -28,7 +28,7 @@ Another example with a bit more challenging starting point:
 
 ![More challenging starting point for self-parking](assets/03-car-after-03.gif)
 
-> Yeah-yeah, the cars are hitting some other cars along the way, bit this is only the 40th generation since the creation of the world for them, so be merciful and give them some space to grow :D
+> Yeah-yeah, the cars are hitting some other cars along the way, and also are not perfectly fitting the parking lot, but this is only the 40th generation since the creation of the world for them, so be merciful and give the cars some space to grow :D
 
 You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the evolution process directly in you browser. The simulator gives you the following opportunities:
 
@@ -828,25 +828,26 @@ const MUTATION_PROBABILITY = 0.04;
 const MAX_GENERATIONS_NUM = 40;
 
 // Fitness function.
+// It is like an annual doctor's checkup for the cars.
 const carFitnessFunction = (genome: Genome): number => {
-  // The evolution simulator calculates and stores the fitness values
-  // for each car in the fitnessValues map.
-  // Here we will just fetch the pre-calculated fitness value for the car.
+  // The evolution simulator calculates and stores the fitness values for each car in the fitnessValues map.
+  // Here we will just fetch the pre-calculated fitness value for the car in current generation.
   const genomeKey = genome.join('');
-  return fitnessValues(genomeKey);
+  return fitnessValues[genomeKey];
 };
 
-// Creating the very first generation of cars.
+// Creating the "world" with the very first cars generation.
 let generationIndex = 0;
 let generation: Generation = createGeneration({
   generationSize: GENERATION_SIZE,
   genomeLength: GENOME_LENGTH, // <- 180 genes
 });
 
+// Starting the "time".
 while(generationIndex < MAX_GENERATIONS_NUM) {
   // SIMULATION IS NEEDED HERE to pre-calculate the fitness values.
 
-  // Running the selection, mating and mutating of the current generation.
+  // Selecting, mating, and mutating the current generation.
   generation = select(
     generation,
     carFitnessFunction,
@@ -856,11 +857,15 @@ while(generationIndex < MAX_GENERATIONS_NUM) {
     },
   );
 
+  // Make the "time" go by.
   generationIndex += 1;
 }
+
+// Here we may check the fittest individuum of the latest generation.
+const fittestCar = generation[0];
 ```
 
-After running the `select()` function, the `generation` array is sorted by the fitness values in a descending order. Therefore, the fittest car will be the first car in the array.
+After running the `select()` function, the `generation` array is sorted by the fitness values in a descending order. Therefore, the fittest car will always be the first car in the array.
 
 **The 1st generation** of cars with random genomes will behave something like this:
 
@@ -874,17 +879,17 @@ Another example with a bit more challenging starting point:
 
 ![More challenging starting point for self-parking](assets/03-car-after-03.gif)
 
-The cars are hitting some other cars along the way, bit this is only the 40th generation since the creation of the world for them, so you may give the cars some more time to learn.
+The cars are hitting some other cars along the way, and also are not perfectly fitting the parking lot, but this is only the 40th generation since the creation of the world for them, so you may give the cars some more time to learn.
 
-From generation to generation we may see how the loss values are going down. The `P50 Avg Loss` shows the average loss value (average distance from the cars to the parking lot) of the `50%` most fittest cars. The `Min Loss` shows the loss value of one most fittest car in each generation.
+From generation to generation we may see how the loss values are going down (which means that fitness values are going up). The `P50 Avg Loss` shows the average loss value (average distance from the cars to the parking lot) of the `50%` of most fittest cars. The `Min Loss` shows the loss value of the fittest car in each generation.
 
-![Loss history](assets/10-loss-history-02.png)
+![Loss history](assets/10-loss-history-00.png)
 
-You may see that in average the `50%` of the most fittest cars of the generation are learning to get closer to the parking lot (from `5.5m` away from the parking lot to `3.5m` in 35 generations). The trend for the `Min Loss` values is less obvious (from `1m` to `0.5m` with some noise signals), but from the animations above you may clearly see that cars have learned basic parking moves.
+You may see that in average the `50%` of the most fittest cars of the generation are learning to get closer to the parking lot (from `5.5m` away from the parking lot to `3.5m` in 35 generations). The trend for the `Min Loss` values is less obvious (from `1m` to `0.5m` with some noise signals), however from the animations above you may see that cars have learned some basic parking moves.
 
 ## Conclusion
 
-In this article we've broken down the abstract task of making the self-parking car to the straightforward task of finding the optimal combination of `180` ones and zeroes (finding the optimal car genome).
+In this article we've broken down a high-level task of creating the self-parking car to the straightforward low-level task of finding the optimal combination of `180` ones and zeroes (finding the optimal car genome).
 
 Then we've applied the genetic algorithm to find the optimal car genome. It allowed us to get pretty good results in several hours of simulation (instead of many years of running the naive approach).
 
@@ -894,4 +899,4 @@ You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.
 - You may [see the trained self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
 - You may also [try to park the car manually](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/)
 
-The full genetic source code that was shown in this article may also be found in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution).
+The full genetic source code that was shown in this article may also be found in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution). If you are one of those folks who will actually count and check the number of lines to make sure there are less than 500 of them (excluding tests), please feel free to check the code [here](https://github.com/trekhleb/self-parking-car-evolution/tree/master/src/libs) 🥸
