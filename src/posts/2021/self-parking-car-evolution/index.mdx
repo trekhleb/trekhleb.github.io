@@ -521,7 +521,7 @@ function createGeneration(params: GenerationParams): Generation {
 
 The `mutate()` function will mutate some genes randomly based on the `mutationProbability` value.
 
-For example, if the `mutationProbability = 0.1` then there is a `10%` chance for each genome to be mutated. Let's say if we would have a genome of length `10` that looks like `[0, 0, 0, 0, 0, 0 ,0 ,0 ,0 ,0]`, then after the mutation there will be a chance that 1 gene will be mutated and we may get a genome that might looks like `[0, 0, 0, 1, 0, 0 ,0 ,0 ,0 ,0]`.
+For example, if the `mutationProbability = 0.1` then there is a `10%` chance for each genome to be mutated. Let's say if we would have a genome of length `10` that looks like `[0, 0, 0, 0, 0, 0 ,0 ,0 ,0 ,0]`, then after the mutation there will be a chance that 1 gene will be mutated and we may get a genome that might look like `[0, 0, 0, 1, 0, 0 ,0 ,0 ,0 ,0]`.
 
 ```typescript
 // The number between 0 and 1.
