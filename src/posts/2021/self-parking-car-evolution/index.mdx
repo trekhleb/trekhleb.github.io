@@ -305,7 +305,7 @@ By the way, you may see the exact values of genomes and coefficients for the bes
 
 ![Car genomes and coefficients examples](assets/06-genome-examples.png)
 
-Here is the source code that performs the conversion from binary to decimal format for the floating point numbers:
+Here is the source code that performs the conversion from binary to decimal format for the floating point numbers (the brain will need it to decode the genome and to produce the muscle signals based on the genome data):
 
 ```typescript
 type Bit = 0 | 1;
@@ -400,6 +400,7 @@ type DecodedGenome = {
   wheelsFormulaCoefficients: Coefficients,
 }
 
+// Converts the genome from a binary form to the decimal form.
 const genomeToNumbers = (genome: Genome, genesPerNumber: number): number[] => {
   if (genome.length % genesPerNumber !== 0) {
     throw new Error('Wrong number of genes in the numbers genome');
@@ -412,6 +413,8 @@ const genomeToNumbers = (genome: Genome, genesPerNumber: number): number[] => {
   return numbers;
 };
 
+// Converts the genome from a binary form to the decimal form
+// and splits the genome into two sets of coefficients (one set for each muscle).
 const decodeGenome = (genome: Genome): DecodedGenome => {
   const engineGenes: Gene[] = genome.slice(0, ENGINE_FORMULA_GENES_NUM);
   const wheelsGenes: Gene[] = genome.slice(
@@ -445,7 +448,7 @@ export const getWheelsMuscleSignal = (genome: Genome, sensors: Sensors): MuscleS
 
 ## Self-driving car problem statement
 
-> ☝🏻 So, finally, we've got to the point when the problem of making the car to be a self-parking car is broken down to the problem of finding the best combination of `180` ones and zeros (finding the "good-enough" car's genome). Sounds simple, doesn't it?
+> ☝🏻 So, finally, we've got to the point when the high-level problem of making the car to be a self-parking car is broken down to the straightforward optimization problem of finding the optimal combination of `180` ones and zeros (finding the "good-enough" car's genome). Sounds simple, doesn't it?
 
 ### Naive approach
 
@@ -461,7 +464,7 @@ But, let's do some math. With `180` bits and with each bit being equal either to
 
 ### Genetic approach
 
-We need a faster algorithm to find the optimal value of the genome. This is when the genetic algorithm comes to the rescue. We might not find the best value of the genome, but there is a chance that we may find the optimal value of it. And, what is more importantly, we don't need to wait that long. With the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) I was able to find a pretty good genomes within `24 [hours]`.
+We need a faster algorithm to find the optimal value of the genome. This is where the genetic algorithm comes to the rescue. We might not find the best value of the genome, but there is a chance that we may find the optimal value of it. And, what is more importantly, we don't need to wait that long. With the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) I was able to find a pretty good genomes within `24 [hours]`.
 
 ## Genetic algorithm basics
 
