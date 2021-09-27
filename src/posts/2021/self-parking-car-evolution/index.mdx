@@ -60,7 +60,7 @@ To be able to move, the car would need "muscles". Let's give the car two types o
 1. **Engine muscle** - allows the car to move *↓ back*, *↑ forth*, or *◎ stand steel* (neutral gear)
 2. **Steering wheel muscle** - allows the car to turn *← left*, *→ right*, or *◎ go straight* while moving
 
-With these two muscles the car is able to perform the following movements:
+With these two muscles the car can perform the following movements:
 
 ![Car movements achieved by car muscles](assets/03-car-muscles-01.gif)
 
@@ -87,7 +87,7 @@ Before our car will learn how to do self-parking using its muscles, it needs to 
 
 - Each sensor can detect the obstacle in a distance range of `0-4m` (meters).
 - Each sensor reports the latest information about the obstacles it "sees" to the car's "brain" every `100ms`.
-- Whenever the sensor doesn't see any obstacles it reports the value of `0`. On the contrary, if the value of the sensor is small but not zero (i.e. `0.01m`) it would mean that the obstacle is really close.
+- Whenever the sensor doesn't see any obstacles it reports the value of `0`. On the contrary, if the value of the sensor is small but not zero (i.e. `0.01m`) it would mean that the obstacle is close.
 
 ![Car sensors with distances](assets/04-sensors-01.jpg)
 
@@ -152,9 +152,9 @@ wheelSignal = brainToMuscleSignal(
 
 Where:
 
-- `[s0, s1, ..., s7]` - the `8` variables, which are the `8` sensor values. These ones are dynamic.
-- `[e0, e1, ..., e8]` - the `9` coefficients for the engine polynomial. These ones the car will need to learn, and they will be static.
-- `[w0, w1, ..., w8]` - the `9` coefficients for the steering wheel polynomial. These ones the car will need to learn, and they will be static
+- `[s0, s1, ..., s7]` - the `8` variables, which are the `8` sensor values. These are dynamic.
+- `[e0, e1, ..., e8]` - the `9` coefficients for the engine polynomial. These the car will need to learn, and they will be static.
+- `[w0, w1, ..., w8]` - the `9` coefficients for the steering wheel polynomial. These the car will need to learn, and they will be static
 
 The cost of using the simpler function for the brain will be that the car won't be able to learn some sophisticated moves and also won't be able to generalize well and adapt well to unknown surroundings. But for our particular parking lot and for the sake of demonstrating the work of a genetic algorithm it should still be enough.
 
@@ -476,7 +476,7 @@ We're not going to cover a genetic algorithm in all details, but on a high level
 
 1. **CREATE** – the very first generation of cars [can't come out of nothing](https://en.wikipedia.org/wiki/Laws_of_thermodynamics), so we will generate a set of random car genomes (set of binary arrays with the length of `180`) at the very beginning. For example, we may create `~1000` cars. With a bigger population the chances to find the optimal solution (and to find it faster) increase.
 2. **SELECT** - we will need to select the fittest individuums out of the current generation for further mating (see the next step). The fitness of each individuum will be defined based on the fitness function, which in our case, will show how close the car approached the target parking spot. The closer the car to the parking spot, the fitter it is.
-3. **MATE** – simply saying we will allow the selected *"♂ father-cars"* to have *"sex"* with the selected *"♀ mother-cars"* so that their genomes could mix together in a `~50/50` proportion and produce *"♂♀ children-cars"* genomes. The idea is that the children cars might get better (or worse) in self-parking, by taking the best (or the worst) bits from their parents.
+3. **MATE** – simply saying we will allow the selected *"♂ father-cars"* to have *"sex"* with the selected *"♀ mother-cars"* so that their genomes could mix in a `~50/50` proportion and produce *"♂♀ children-cars"* genomes. The idea is that the children cars might get better (or worse) in self-parking, by taking the best (or the worst) bits from their parents.
 4. **MUTATE** - during the mating process some genes may randomly mutate (`1`s and `0`s in child genome may flip). This may bring a wider variety of children genomes and, thus, a wider variety of children cars behavior. Imagine that the 1st bit was accidentally set to `0` for all `~1000` cars. The only way to try the car with the 1st bit being set to `1` is through the random mutations. At the same time, extensive mutations may ruin healthy genomes.
 5. Go to "Step 2" unless the number of generations has reached the limit (i.e. `100` generations have passed) or unless the top-performing individuums have reached the expected fitness function value (i.e. the best car has approached the parking spot closer than `1 meter`). Otherwise, quit.
 
@@ -915,7 +915,7 @@ There are still some **unresolved issues** with the code and the simulator:
 - We don't decrease the car's fitness value when the car is hitting the other car. Therefore the car doesn't "feel" any guilt in creating the road accident.
 - The evolution simulator is not stable. It means that the same car genome may produce different fitness values, which makes the evolution less efficient.
 - The evolution simulator is also very heavy in terms of performance, which slows down the evolution progress since we can't train, let's say, 1000 cars at once.
-- Also the Evolution Simulator requires the browser tab to be open and active in order to perform the simulation.
+- Also the Evolution Simulator requires the browser tab to be open and active to perform the simulation.
 - and [more](https://github.com/trekhleb/self-parking-car-evolution/issues)...
 
 However, the purpose of this article was to have some fun while learning how the genetic algorithm works and not to build a production-ready self-parking Teslas. So, even with the issues mentioned above, I hope you've had a good time going through the article.
