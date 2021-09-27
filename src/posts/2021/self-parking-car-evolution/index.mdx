@@ -28,7 +28,7 @@ Another example with a bit more challenging starting point:
 
 ![More challenging starting point for self-parking](assets/03-car-after-03.gif)
 
-> Yeah-yeah, the cars are hitting some other cars along the way, and also are not perfectly fitting the parking lot, but this is only the 40th generation since the creation of the world for them, so be merciful and give the cars some space to grow :D
+> Yeah-yeah, the cars are hitting some other cars along the way, and also are not perfectly fitting the parking spot, but this is only the 40th generation since the creation of the world for them, so be merciful and give the cars some space to grow :D
 
 You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) to see the evolution process directly in you browser. The simulator gives you the following opportunities:
 
@@ -46,10 +46,10 @@ Having that said, let's deep dive into more details...
 
 Here is what we're going to do:
 
-1. 💪🏻 Give the **muscles** (engine, steering wheel) to the car so that it could move towards the parking lot.
+1. 💪🏻 Give the **muscles** (engine, steering wheel) to the car so that it could move towards the parking spot.
 2. 👀 Give the **eyes** (sensors) to the car so that they could see the obstacles around.
 3. 🧠 Give the **brain** to the car that will control the muscles (movements) based on what car sees (obstacles via sensors). The brain is simply a pure function `movements = f(sensors)`.
-4. 🧬 **Evolve/teach the brain** to do the right moves based on the sensors input. This is where we will apply a genetic algorithm. Generation after generation our brain function `movements = f(sensors)` will learn how to move the car towards the parking lot.
+4. 🧬 **Evolve/teach the brain** to do the right moves based on the sensors input. This is where we will apply a genetic algorithm. Generation after generation our brain function `movements = f(sensors)` will learn how to move the car towards the parking spot.
 
 ## Giving the muscles to the car
 
@@ -473,7 +473,7 @@ We're not going to cover a genetic algorithm in all details, but on a high level
 2. **SELECT** - we will need to select the fittest individuums out of the current generation for further mating (see the next step). The fitness of each individuum will be defined based on the fitness function, which in our case, will show how close the car approached the target parking spot. The closer the car to the parking spot, the fitter it is.
 3. **MATE** – simply saying we will allow the selected *"♂ father-cars"* to have *"sex"* with the selected *"♀ mother-cars"* so that their genomes could mix together in a `~50/50` proportion and produce *"♂♀ children-cars"* genomes. The idea is that the children cars might get better (or worse) in self-parking, by taking the best (or the worst) bits from their parents.
 4. **MUTATE** - during the mating process some genes may randomly mutate (`1`s and `0`s in child genome may flip). This may bring a wider variety of children genomes and, thus, a wider variety of children cars behavior. Imagine that the 1st bit was accidentally set to `0` for all `~1000` cars. The only way to try the car with the 1st bit being set to `1` is through the random mutations. At the same time, extensive mutations may ruin the healthy genomes.
-5. Go to "Step 2" unless the number of generations has reached the limit (i.e. `100` generations have passed) or unless the top performing individuums have reached the expected fitness function value (i.e. the best car has approached the parking lot closer than `1 meter`). Otherwise, quit.
+5. Go to "Step 2" unless the number of generations has reached the limit (i.e. `100` generations have passed) or unless the top performing individuums have reached the expected fitness function value (i.e. the best car has approached the parking spot closer than `1 meter`). Otherwise, quit.
 
 ![Genetic algorithm flow](assets/07-genetic-algorithm-flow-01.png)
 
@@ -737,11 +737,11 @@ function select(
 
 ### Fitness function
 
-The fitness of the car will be defined by the distance from the car to the parking lot. The higher the distance, the the lower the fitness.
+The fitness of the car will be defined by the distance from the car to the parking spot. The higher the distance, the the lower the fitness.
 
 The final distance we will calculate as an average distance from `4` car wheels to the correspondent `4` corners of the parking spot. This distance we will call the `loss` which is inversely proportional to the `fitness`.
 
-![The distance from the car to the parking lot](assets/08-distance-to-parkin-lot.png)
+![The distance from the car to the parking spot](assets/08-distance-to-parkin-lot.png)
 
 The distance between two points in space will be calculated based on the [Pythagorean theorem](https://en.wikipedia.org/wiki/Pythagorean_theorem) like this:
 
@@ -759,7 +759,7 @@ const euclideanDistance = (from: NumVec3, to: NumVec3) => {
 };
 ```
 
-The distance (the `loss`) between the car and the parking lot will be calculated like this:
+The distance (the `loss`) between the car and the parking spot will be calculated like this:
 
 ```typescript
 type RectanglePoints = {
@@ -871,7 +871,7 @@ After running the `select()` function, the `generation` array is sorted by the f
 
 ![The 1st generation of cars with random genomes](assets/02-cars-before-01.gif)
 
-**On the ≈40th generation** the cars start learning what the self-parking is and start getting closer to the parking lot:
+**On the ≈40th generation** the cars start learning what the self-parking is and start getting closer to the parking spot:
 
 ![The 40th generation start learning how to park](assets/03-car-after-01.gif)
 
@@ -879,13 +879,13 @@ Another example with a bit more challenging starting point:
 
 ![More challenging starting point for self-parking](assets/03-car-after-03.gif)
 
-The cars are hitting some other cars along the way, and also are not perfectly fitting the parking lot, but this is only the 40th generation since the creation of the world for them, so you may give the cars some more time to learn.
+The cars are hitting some other cars along the way, and also are not perfectly fitting the parking spot, but this is only the 40th generation since the creation of the world for them, so you may give the cars some more time to learn.
 
-From generation to generation we may see how the loss values are going down (which means that fitness values are going up). The `P50 Avg Loss` shows the average loss value (average distance from the cars to the parking lot) of the `50%` of most fittest cars. The `Min Loss` shows the loss value of the fittest car in each generation.
+From generation to generation we may see how the loss values are going down (which means that fitness values are going up). The `P50 Avg Loss` shows the average loss value (average distance from the cars to the parking spot) of the `50%` of most fittest cars. The `Min Loss` shows the loss value of the fittest car in each generation.
 
 ![Loss history](assets/10-loss-history-00.png)
 
-You may see that in average the `50%` of the most fittest cars of the generation are learning to get closer to the parking lot (from `5.5m` away from the parking lot to `3.5m` in 35 generations). The trend for the `Min Loss` values is less obvious (from `1m` to `0.5m` with some noise signals), however from the animations above you may see that cars have learned some basic parking moves.
+You may see that in average the `50%` of the most fittest cars of the generation are learning to get closer to the parking spot (from `5.5m` away from the parking spot to `3.5m` in 35 generations). The trend for the `Min Loss` values is less obvious (from `1m` to `0.5m` with some noise signals), however from the animations above you may see that cars have learned some basic parking moves.
 
 ## Conclusion
 
@@ -899,4 +899,16 @@ You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.
 - You may [see the trained self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
 - You may also [try to park the car manually](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/)
 
-The full genetic source code that was shown in this article may also be found in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution). If you are one of those folks who will actually count and check the number of lines to make sure there are less than 500 of them (excluding tests), please feel free to check the code [here](https://github.com/trekhleb/self-parking-car-evolution/tree/master/src/libs) 🥸
+The full genetic source code that was shown in this article may also be found in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution). If you are one of those folks who will actually count and check the number of lines to make sure there are less than 500 of them (excluding tests), please feel free to check the code [here](https://github.com/trekhleb/self-parking-car-evolution/tree/master/src/libs) 🥸.
+
+There are still some **unresolved issues** with the code and the simulator:
+
+- The car's brain is oversimplified and it uses linear equation instead of, let's say, neural networks. It makes the car not adoptable to the new surroundings or to the new parking lot types.
+- We don't decrease the car's fitness value when the car is hitting the other car. Therefore the car doesn't "feel" any guilt in creating the road accident.
+- The evolution simulator is not stable. It means that for the same car genome it may produce different fitness values, which makes the evolution less efficient.
+- The evolution simulator is also very heavy in terms of performance, which slows down the evolution progress, since we can't train,let's say, 1000 car at once.
+- and more...
+
+However, the purpose of this article was to have some fun learning how the genetic algorithm works and not to build a production-ready self-parking Tesla of course. So, even with the issues mentioned above, I hope you've had a good time going through the article.
+
+![Fin](assets/11-fin.png)
