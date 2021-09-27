@@ -810,6 +810,7 @@ Since the `fitness` should be inversely proportional to the `loss` we'll calcula
 ```typescript
 const carFitness = (params: GeometricParams): number => {
   const loss = carLoss(params);
+  // Adding +1 to avoid a division by zero.
   return 1 / (loss + 1);
 };
 ```
