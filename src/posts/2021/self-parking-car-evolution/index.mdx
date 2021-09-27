@@ -815,9 +815,9 @@ You may see the `fitness` and the `loss` values for a specific genome and for a 
 
 ## Launching the evolution
 
-Lets put the evolution functions together. We're going to launch the evolution loop, make the time going, the generation evolving, and the cars learning how to park.
+Lets put the evolution functions together. We're going to "create the world", launch the evolution loop, make the time going, the generation evolving, and the cars learning how to park.
 
-To get the fitness values of each car we need to run a simulation of the cars behavior in a virtual 3D world. The [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) does exactly that - it runs the code below in the simulator:
+To get the fitness values of each car we need to run a simulation of the cars behavior in a virtual 3D world. The [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) does exactly that - it runs the code below in the simulator, which is [made with Three.js](https://github.com/trekhleb/self-parking-car-evolution):
 
 ```typescript
 // Evolution setup example.
@@ -893,3 +893,5 @@ You may launch the 🚕 [Self-parking Car Evolution Simulator](https://trekhleb.
 - You may [train the cars from scratch](https://trekhleb.dev/self-parking-car-evolution?parking=evolution#/) and adjust genetic parameters by yourself
 - You may [see the trained self-parking cars in action](https://trekhleb.dev/self-parking-car-evolution?parking=automatic#/)
 - You may also [try to park the car manually](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/)
+
+The full genetic source code that was shown in this article may also be found in the [Evolution Simulator repository](https://github.com/trekhleb/self-parking-car-evolution).
