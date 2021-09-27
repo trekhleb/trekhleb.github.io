@@ -44,12 +44,14 @@ Having that said, let's deep dive into more details...
 
 ## The Plan
 
+Step-by-step we're going to brake down a high-level task of creating the self-parking car to the straightforward low-level optimization problem of finding the optimal combination of `180` bits (finding the optimal car genome).
+
 Here is what we're going to do:
 
 1. 💪🏻 Give the **muscles** (engine, steering wheel) to the car so that it could move towards the parking spot.
-2. 👀 Give the **eyes** (sensors) to the car so that they could see the obstacles around.
-3. 🧠 Give the **brain** to the car that will control the muscles (movements) based on what car sees (obstacles via sensors). The brain is simply a pure function `movements = f(sensors)`.
-4. 🧬 **Evolve/teach the brain** to do the right moves based on the sensors input. This is where we will apply a genetic algorithm. Generation after generation our brain function `movements = f(sensors)` will learn how to move the car towards the parking spot.
+2. 👀 Give the **eyes** (sensors) to the car so that it could see the obstacles around.
+3. 🧠 Give the **brain** to the car that will control the muscles (movements) based on what car sees (obstacles via sensors). The brain will be simply a pure function `movements = f(sensors)`.
+4. 🧬 **Evolve the brain** to do the right moves based on the sensors input. This is where we will apply a genetic algorithm. Generation after generation our brain function `movements = f(sensors)` will learn how to move the car towards the parking spot.
 
 ## Giving the muscles to the car
 
