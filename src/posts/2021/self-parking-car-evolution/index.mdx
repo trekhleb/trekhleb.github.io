@@ -642,9 +642,9 @@ const weightedRandom = <T>(items: T[], weights: number[]): { item: T, index: num
 };
 ```
 
-The usage of this function is pretty straightforward. Let's say you really like bananas and want to eat them `10` times more often than strawberry. Then you may call `const fruit = weightedRandom(['banana', 'strawberry'], [10, 1])`, and in `≈10%` of cases the `fruit` variable we be equal to `banana`, and only sometimes it will be equal to `strawberry`.
+The usage of this function is pretty straightforward. Let's say you really like bananas and want to eat them more often than strawberry. Then you may call `const fruit = weightedRandom(['banana', 'strawberry'], [9, 1])`, and in `≈9` out of `10` cases the `fruit` variable will be equal to `banana`, and only in `≈1` out of `10` times it will be equal to `strawberry`.
 
-To avoid loosing the best individuums (let's call them champions) during the mating process we may also introduce a so called `longLivingChampionsPercentage` parameter. For example if the `longLivingChampionsPercentage = 10`, then `10%` of best cars from the previous population will be carried over to the new generation. You may think about it as there are some long-living individuums that can live a long life and see their children and even grandchildren.
+To avoid loosing the best individuums (let's call them champions) during the mating process we may also introduce a so called `longLivingChampionsPercentage` parameter. For example if the `longLivingChampionsPercentage = 10`, then `10%` of the best cars from the previous population will be carried over to the new generation. You may think about it as there are some long-living individuums that can live a long life and see their children and even grandchildren.
 
 Here is the actual implementation of the `select()` function:
 
