@@ -132,7 +132,7 @@ const { engineSignal, wheelSignal } = brainToMuscleSignal(
 
 Where `brainToMuscleSignal()` is a function that converts raw brain signals (any float number) to muscle signals (to  `-1`, `0`, or `+1` number) so that muscles could understand it. We'll implement this converter function below.
 
-The main question now is what kind of function the `brainFunction()` is.
+The main question now is what kind of a function the `brainFunction()` is.
 
 To make the car smarter and its movements to be more sophisticated we could go with a [Multilayer Perceptron](https://en.wikipedia.org/wiki/Multilayer_perceptron). The name is a bit scary but this is a simple Neural Network with a basic architecture (think of it as of a big formula with many parameters/coefficients).
 
@@ -152,7 +152,7 @@ wheelSignal = brainToMuscleSignal(
 
 Where:
 
-- `[s0, s1, ..., s7]` - the `8` variables (`8` sensor values). These ones are dynamic.
+- `[s0, s1, ..., s7]` - the `8` variables, which are the `8` sensor values. These ones are dynamic.
 - `[e0, e1, ..., e8]` - the `9` coefficients for the engine polynomial. These ones the car will need to learn, and they will be static.
 - `[w0, w1, ..., w8]` - the `9` coefficients for the steering wheel polynomial. These ones the car will need to learn, and they will be static
 
