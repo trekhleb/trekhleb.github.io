@@ -333,7 +333,7 @@ const precisionConfigs: PrecisionConfigs = {
   },
 };
 
-// Converts the binary representation of the floating point number to decimal float number.
+// Converts the binary representation of the floating-point number to decimal float number.
 function bitsToFloat(bits: Bits, precisionConfig: PrecisionConfig): number {
   const { signBitsCount, exponentBitsCount } = precisionConfig;
 
@@ -366,7 +366,7 @@ function bitsToFloat(bits: Bits, precisionConfig: PrecisionConfig): number {
   return sign * (2 ** exponent) * (1 + fraction);
 }
 
-// Converts the 8-bit binary representation of the floating point number to decimal float number.
+// Converts the 8-bit binary representation of the floating-point number to decimal float number.
 function bitsToFloat10(bits: Bits): number {
   return bitsToFloat(bits, precisionConfigs.custom);
 }
@@ -374,7 +374,7 @@ function bitsToFloat10(bits: Bits): number {
 
 ### Brain function working with binary genome
 
-Previously our brain function was working with the decimal form of `engineCoefficients` and `wheelCoefficients` polynomial coefficients directly. However, these coefficients are now encoded in binary form of a genome. Let's add a `decodeGenome()` function that will extract coefficients from the genome and let's rewrite our brain functions:
+Previously our brain function was working with the decimal form of `engineCoefficients` and `wheelCoefficients` polynomial coefficients directly. However, these coefficients are now encoded in the binary form of a genome. Let's add a `decodeGenome()` function that will extract coefficients from the genome and let's rewrite our brain functions:
 
 ```typescript
 // Car has 16 distance sensors.
@@ -383,7 +383,7 @@ const CAR_SENSORS_NUM = 8;
 // Additional formula coefficient that is not connected to a sensor.
 const BIAS_UNITS = 1;
 
-// How many genes we need to encode each numeric parameter for the formulas.
+// How many genes do we need to encode each numeric parameter for the formulas.
 const GENES_PER_NUMBER = precisionConfigs.custom.totalBitsCount;
 
 // Based on 8 distance sensors we need to provide two formulas that would define car's behavior:
@@ -448,11 +448,11 @@ export const getWheelsMuscleSignal = (genome: Genome, sensors: Sensors): MuscleS
 
 ## Self-driving car problem statement
 
-> ☝🏻 So, finally, we've got to the point when the high-level problem of making the car to be a self-parking car is broken down to the straightforward optimization problem of finding the optimal combination of `180` ones and zeros (finding the "good-enough" car's genome). Sounds simple, doesn't it?
+> ☝🏻 So, finally, we've got to the point when the high-level problem of making the car to be a self-parking car is broken down to the straightforward optimization problem of finding the optimal combination of `180` ones and zeros (finding the "good enough" car's genome). Sounds simple, doesn't it?
 
 ### Naive approach
 
-We could approach the problem of finding the "good-enough" genome in a naive way and try out all possible combinations of genes:
+We could approach the problem of finding the "good enough" genome in a naive way and try out all possible combinations of genes:
 
 1. `[0, ..., 0, 0]`, and then...
 2. `[0, ..., 0, 1]`, and then...
@@ -460,25 +460,25 @@ We could approach the problem of finding the "good-enough" genome in a naive way
 4. `[0, ..., 1, 1]`, and then...
 5. ...
 
-But, let's do some math. With `180` bits and with each bit being equal either to `0` or to `1` we would have `2^180` (or `1.53 * 10^54`) possible combinations. Let's say we would need to give `15s` to each car to see if it will park successfully or not. Let's also say that we may run a simulation for `10` cars at once. Then we would need `15 * (1.53 * 10^54) / 10 = 2.29 * 10^54 [seconds]` which is `7.36 * 10^46 [years]`. Pretty long waiting time. Just as a side thought, it is only `2.021 * 10^3 [years]` have passed after Christ was born.
+But, let's do some math. With `180` bits and with each bit being equal either to `0` or to `1` we would have `2^180` (or `1.53 * 10^54`) possible combinations. Let's say we would need to give `15s` to each car to see if it will park successfully or not. Let's also say that we may run a simulation for `10` cars at once. Then we would need `15 * (1.53 * 10^54) / 10 = 2.29 * 10^54 [seconds]` which is `7.36 * 10^46 [years]`. Pretty long waiting time. Just as a side thought, it is only `2.021 * 10^3 [years]` that have passed after Christ was born.
 
 ### Genetic approach
 
-We need a faster algorithm to find the optimal value of the genome. This is where the genetic algorithm comes to the rescue. We might not find the best value of the genome, but there is a chance that we may find the optimal value of it. And, what is more importantly, we don't need to wait that long. With the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) I was able to find a pretty good genomes within `24 [hours]`.
+We need a faster algorithm to find the optimal value of the genome. This is where the genetic algorithm comes to the rescue. We might not find the best value of the genome, but there is a chance that we may find the optimal value of it. And, what is, more importantly, we don't need to wait that long. With the [Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution) I was able to find a pretty good genome within `24 [hours]`.
 
 ## Genetic algorithm basics
 
 A [genetic algorithms](https://en.wikipedia.org/wiki/Genetic_algorithm) (GA) inspired by the process of natural selection, and are commonly used to generate high-quality solutions to optimization problems by relying on biologically inspired operators such as *crossover*, *mutation* and *selection*.
 
-The problem of finding the "good-enough" combination of genes for the car looks like an optimization problem, so there is a good chance that GA will help us here.
+The problem of finding the "good enough" combination of genes for the car looks like an optimization problem, so there is a good chance that GA will help us here.
 
 We're not going to cover a genetic algorithm in all details, but on a high level here are the basic steps that we will need to do:
 
 1. **CREATE** – the very first generation of cars [can't come out of nothing](https://en.wikipedia.org/wiki/Laws_of_thermodynamics), so we will generate a set of random car genomes (set of binary arrays with the length of `180`) at the very beginning. For example, we may create `~1000` cars. With a bigger population the chances to find the optimal solution (and to find it faster) increase.
 2. **SELECT** - we will need to select the fittest individuums out of the current generation for further mating (see the next step). The fitness of each individuum will be defined based on the fitness function, which in our case, will show how close the car approached the target parking spot. The closer the car to the parking spot, the fitter it is.
 3. **MATE** – simply saying we will allow the selected *"♂ father-cars"* to have *"sex"* with the selected *"♀ mother-cars"* so that their genomes could mix together in a `~50/50` proportion and produce *"♂♀ children-cars"* genomes. The idea is that the children cars might get better (or worse) in self-parking, by taking the best (or the worst) bits from their parents.
-4. **MUTATE** - during the mating process some genes may randomly mutate (`1`s and `0`s in child genome may flip). This may bring a wider variety of children genomes and, thus, a wider variety of children cars behavior. Imagine that the 1st bit was accidentally set to `0` for all `~1000` cars. The only way to try the car with the 1st bit being set to `1` is through the random mutations. At the same time, extensive mutations may ruin the healthy genomes.
-5. Go to "Step 2" unless the number of generations has reached the limit (i.e. `100` generations have passed) or unless the top performing individuums have reached the expected fitness function value (i.e. the best car has approached the parking spot closer than `1 meter`). Otherwise, quit.
+4. **MUTATE** - during the mating process some genes may randomly mutate (`1`s and `0`s in child genome may flip). This may bring a wider variety of children genomes and, thus, a wider variety of children cars behavior. Imagine that the 1st bit was accidentally set to `0` for all `~1000` cars. The only way to try the car with the 1st bit being set to `1` is through the random mutations. At the same time, extensive mutations may ruin healthy genomes.
+5. Go to "Step 2" unless the number of generations has reached the limit (i.e. `100` generations have passed) or unless the top-performing individuums have reached the expected fitness function value (i.e. the best car has approached the parking spot closer than `1 meter`). Otherwise, quit.
 
 ![Genetic algorithm flow](assets/07-genetic-algorithm-flow-01.png)
 
