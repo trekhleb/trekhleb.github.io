@@ -1,58 +1,62 @@
 {
+  "trekhleb/self-parking-car-evolution": {
+    "stars": 0,
+    "updatedAt": 1632836461011
+  },
   "trekhleb/js-image-carver": {
-    "stars": 1163,
-    "updatedAt": 1631513402836
+    "stars": 1176,
+    "updatedAt": 1632836461310
   },
   "trekhleb/trekhleb.github.io": {
-    "stars": 47,
-    "updatedAt": 1631513403140
+    "stars": 49,
+    "updatedAt": 1632836461605
   },
   "trekhleb/links-detector": {
     "stars": 147,
-    "updatedAt": 1631513403425
+    "updatedAt": 1632836461942
   },
   "trekhleb/machine-learning-experiments": {
-    "stars": 1056,
-    "updatedAt": 1631513403658
+    "stars": 1069,
+    "updatedAt": 1632836462743
   },
   "trekhleb/state-of-the-art-shitcode": {
-    "stars": 2006,
-    "updatedAt": 1631513403870
+    "stars": 2034,
+    "updatedAt": 1632836463109
   },
   "trekhleb/covid-19": {
     "stars": 256,
-    "updatedAt": 1631513404244
+    "updatedAt": 1632836463657
   },
   "trekhleb/nano-neuron": {
-    "stars": 1990,
-    "updatedAt": 1631513404469
+    "stars": 1998,
+    "updatedAt": 1632836463985
   },
   "trekhleb/use-position": {
-    "stars": 248,
-    "updatedAt": 1631513404702
+    "stars": 249,
+    "updatedAt": 1632836464313
   },
   "trekhleb/homemade-machine-learning": {
-    "stars": 18290,
-    "updatedAt": 1631513404998
+    "stars": 18358,
+    "updatedAt": 1632836464658
   },
   "trekhleb/promote-your-next-startup": {
-    "stars": 457,
-    "updatedAt": 1631513405205
+    "stars": 462,
+    "updatedAt": 1632836464973
   },
   "trekhleb/javascript-algorithms": {
-    "stars": 118606,
-    "updatedAt": 1631513405437
+    "stars": 120532,
+    "updatedAt": 1632836465271
   },
   "trekhleb/machine-learning-octave": {
-    "stars": 685,
-    "updatedAt": 1631513405687
+    "stars": 689,
+    "updatedAt": 1632836465565
   },
   "trekhleb/learn-python": {
-    "stars": 10762,
-    "updatedAt": 1631513405891
+    "stars": 10842,
+    "updatedAt": 1632836465885
   },
   "trekhleb/angular-library-seed": {
     "stars": 200,
-    "updatedAt": 1631513406116
+    "updatedAt": 1632836466178
   }
 }
