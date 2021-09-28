@@ -23,6 +23,14 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'self-parking-car-evolution',
     },
+    achievements: [
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/self-parking-car-evolution/achievements/00-hacker-news-2021-09-28.png' },
+        date: '2021-09-28',
+        link: { url: 'https://news.ycombinator.com/front?day=2021-09-28', caption: 'Hacker News archive' },
+      },
+    ],
   },
   'js-image-carver': {
     id: 'js-image-carver',
