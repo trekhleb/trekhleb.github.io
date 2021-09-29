@@ -30,6 +30,12 @@ export const projects: Projects = {
         date: '2021-09-28',
         link: { url: 'https://news.ycombinator.com/front?day=2021-09-28', caption: 'Hacker News archive' },
       },
+      {
+        title: 'Javascript SubReddit: Top 3 of the hot list',
+        image: { srcPath: 'projects/self-parking-car-evolution/achievements/01-reddit-javascript-hot-list-2021-09-29.png' },
+        date: '2021-09-29',
+        link: { url: 'https://www.reddit.com/r/javascript/comments/px71z7/selfparking_car_in_500_lines_of_code_trekhleb/', caption: 'Reddit post' },
+      },
     ],
   },
   'js-image-carver': {
