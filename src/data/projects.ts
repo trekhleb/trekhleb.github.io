@@ -38,7 +38,7 @@ export const projects: Projects = {
       },
       {
         title: 'Listed in JavaScript Weekly',
-        image: { srcPath: 'projects/self-parking-car-evolution/achievements/03-javascript-weekly-newsletter-2021-10-01.png' },
+        image: { srcPath: 'projects/self-parking-car-evolution/achievements/04-javascript-weekly-newsletter-2021-10-01.png' },
         date: '2021-10-01',
         link: { url: 'https://javascriptweekly.com/issues/558', caption: 'JavaScript Weekly Newsletter' },
       },
