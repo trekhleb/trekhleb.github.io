@@ -119,6 +119,12 @@ export const projects: Projects = {
         date: '2021-03-07',
         link: { url: 'https://news.ycombinator.com/item?id=26327532', caption: 'HN Post' },
       },
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/01-hacker-news-2021-10-09.jpg' },
+        date: '2021-10-09',
+        link: { url: 'https://news.ycombinator.com/front?day=2021-10-09', caption: 'Hacker News archive' },
+      },
     ],
   },
   'links-detector': {
