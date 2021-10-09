@@ -398,6 +398,14 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'promote-your-next-startup',
     },
+    achievements: [
+      {
+        title: 'Listed on Hacker News',
+        image: { srcPath: 'projects/promote-your-next-startup/achievements/00-hacker-news-2021-10-09.png' },
+        date: '2021-10-09',
+        link: { url: 'https://news.ycombinator.com/front?day=2021-10-09', caption: 'Hacker News archive' },
+      },
+    ],
   },
   'javascript-algorithms': {
     id: 'javascript-algorithms',
