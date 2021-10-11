@@ -411,6 +411,11 @@ export const projects: Projects = {
         date: '2021-10-09',
         link: { url: 'https://news.ycombinator.com/front?day=2021-10-09', caption: 'Hacker News archive' },
       },
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/promote-your-next-startup/achievements/01-github-trending-of-the-day-2021-10-11.png' },
+        date: '2021-10-11',
+      },
     ],
   },
   'javascript-algorithms': {
