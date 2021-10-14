@@ -10,10 +10,11 @@ import SEO from '../shared/SEO';
 import ProjectFilters, {
   sortByStarsDesc, sortByStartDateAsc,
   sortByStartDateDesc,
-  SortOption,
+  SortOption, supportedSortOptions,
 } from '../elements/ProjectFilters';
 import { getGitHubProjectStars, getTotalGetHubProjectStars, projectMapToArray } from '../../utils/project';
 import Stars from '../shared/Stars';
+import { getStringSearchParam, setSearchParam } from '../../utils/url';
 
 type ProjectsScreenProps = {
   projects: ProjectsType,
@@ -25,6 +26,8 @@ type ProjectSorter = {
 };
 
 type ProjectSorters = Record<SortOption, ProjectSorter>;
+
+const SORT_PARAM_NAME = 'sort';
 
 // @ts-ignore
 const projectSorters: ProjectSorters = {
@@ -56,13 +59,28 @@ const projectSorters: ProjectSorters = {
   },
 };
 
+const getDefaultSortOption = (): SortOption => {
+  const defaultOption = sortByStartDateDesc;
+  // @ts-ignore
+  const sortFromURL: SortOption = getStringSearchParam(SORT_PARAM_NAME, defaultOption);
+  if (supportedSortOptions.includes(sortFromURL)) {
+    return sortFromURL;
+  }
+  return defaultOption;
+};
+
 const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
   const { projects } = props;
 
-  const [sortBy, setSortBy] = useState<SortOption>(sortByStartDateDesc);
+  const [sortBy, setSortBy] = useState<SortOption>(getDefaultSortOption());
   const [filteredProjects, setFilteredProjects] = useState<ProjectType[]>(
     projectMapToArray(projects),
   );
+
+  const onSort = (newSortOption: SortOption): void => {
+    setSearchParam(SORT_PARAM_NAME, newSortOption);
+    setSortBy(newSortOption);
+  };
 
   /* eslint-disable react-hooks/exhaustive-deps */
   useEffect(() => {
@@ -83,7 +101,7 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
         <Badge className="ml-3 self-start">{projectsNum}</Badge>
       </Row>
       <Row className="mb-6 justify-between">
-        <ProjectFilters onSort={setSortBy} sortBy={sortBy} />
+        <ProjectFilters onSort={onSort} sortBy={sortBy} />
         <Row className="ml-3">
           <div className="text-sm text-gray-500 mr-1">
             Total stars:

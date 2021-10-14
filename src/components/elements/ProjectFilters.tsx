@@ -27,6 +27,11 @@ const sorters: Sorters = {
   },
 };
 
+export const supportedSortOptions: SortOption[] = Object
+  .keys(sorters)
+  // @ts-ignore
+  .filter((sortOption: SortOption) => !sorters[sortOption].hidden);
+
 type ProjectFiltersProps = {
   sortBy: SortOption,
   onSort: (sortKey: SortOption) => void,
