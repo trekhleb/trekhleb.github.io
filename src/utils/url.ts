@@ -1,5 +1,8 @@
+// If it is server-side-rendering, we don't have an access to document.
+const isSSR = typeof document === 'undefined';
+
 const getSearchParams = (): URLSearchParams => {
-  const searchQuery = document.location.search.substring(1);
+  const searchQuery = isSSR ? '' : document.location.search.substring(1);
   return new URLSearchParams(searchQuery);
 };
 
@@ -9,6 +12,9 @@ export const getSearchParam = (name: string): string | null => {
 };
 
 export const setSearchParam = (name: string, value: string): void => {
+  if (isSSR) {
+    return;
+  }
   const searchParams = getSearchParams();
   searchParams.set(name, value);
   const relativeURL = `?${searchParams.toString()}${document.location.hash}`;
@@ -16,6 +22,9 @@ export const setSearchParam = (name: string, value: string): void => {
 };
 
 export const deleteSearchParam = (name: string): void => {
+  if (isSSR) {
+    return;
+  }
   const searchParams = getSearchParams();
   searchParams.delete(name);
   const relativeURL = `?${searchParams.toString()}${document.location.hash}`;
