@@ -1,5 +1,4 @@
-// If it is server-side-rendering, we don't have an access to document.
-const isSSR = typeof document === 'undefined';
+import { isSSR } from './ssr';
 
 const getSearchParams = (): URLSearchParams => {
   const searchQuery = isSSR ? '' : document.location.search.substring(1);
