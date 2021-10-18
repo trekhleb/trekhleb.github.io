@@ -502,6 +502,11 @@ export const projects: Projects = {
         date: '2021-07-26',
         link: { url: 'https://news.ycombinator.com/front?day=2021-07-26', caption: 'Hacker News archive' },
       },
+      {
+        title: '3nd trending repository of the day on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/10-github-trending-day-2021-10-18.png' },
+        date: '2021-10-18',
+      },
     ],
   },
   'machine-learning-octave': {
