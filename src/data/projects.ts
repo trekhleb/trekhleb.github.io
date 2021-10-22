@@ -507,6 +507,12 @@ export const projects: Projects = {
         image: { srcPath: 'projects/javascript-algorithms/achievements/10-github-trending-day-2021-10-18.png' },
         date: '2021-10-18',
       },
+      {
+        title: 'Listed on Hacker News front page',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/11-hacker-news-2021-10-22.png' },
+        date: '2021-10-22',
+        link: { url: 'https://news.ycombinator.com/front?day=2021-10-22', caption: 'Hacker News archive' },
+      },
     ],
   },
   'machine-learning-octave': {
