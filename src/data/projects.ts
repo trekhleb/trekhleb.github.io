@@ -307,6 +307,14 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'use-position',
     },
+    achievements: [
+      {
+        title: '1000+ weekly installs on NPM',
+        image: { srcPath: 'projects/use-position/achievements/01-npm-stats-2021-10-26.png' },
+        date: '2021-10-26',
+        link: { url: 'https://www.npmjs.com/package/use-position', caption: 'Package page on NPM' },
+      },
+    ],
   },
   'javascript-algorithms-book': {
     id: 'javascript-algorithms-book',
