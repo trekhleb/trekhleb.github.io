@@ -3,6 +3,7 @@ import React from 'react';
 import { Snapshot as SnapshotType } from '../types/Snapshots';
 import Snapshot from './Snapshot';
 import snapshot2021 from '../data/2021';
+// import snapshot2018 from '../data/2018';
 // import snapshot2020 from '../data/2020';
 
 const Snapshots = (): React.ReactElement | null => {
