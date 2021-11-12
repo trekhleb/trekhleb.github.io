@@ -4,10 +4,11 @@ import { Snapshot as SnapshotType } from '../types/Snapshots';
 type SnapshotProps = {
   index: number
   snapshot: SnapshotType,
+  kStarsHistory: (number | null)[],
 };
 
 const Snapshot = (props: SnapshotProps): React.ReactElement | null => {
-  const { index, snapshot } = props;
+  const { index, snapshot, kStarsHistory } = props;
   return (
     <div>
       <h2 style={{ marginBottom: '10px' }}>
@@ -24,6 +25,11 @@ const Snapshot = (props: SnapshotProps): React.ReactElement | null => {
           ★ {snapshot.kStars}k
         </em>
       </p>
+      <div>
+        {kStarsHistory[0]},
+        {kStarsHistory[2]},
+        {kStarsHistory[3]},
+      </div>
     </div>
   );
 };
