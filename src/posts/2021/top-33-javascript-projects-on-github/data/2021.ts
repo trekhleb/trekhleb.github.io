@@ -38,7 +38,7 @@ const snapshot: Snapshots = {
   },
   'd3/d3': {
     id: 'd3/d3',
-    description: 'Bring data to life with SVG, Canvas and HTML. :bar_chart::chart_with_upwards_trend::tada:',
+    description: 'Bring data to life with SVG, Canvas and HTML.',
     kStars: 99.2,
   },
   'facebook/create-react-app': {
@@ -58,7 +58,7 @@ const snapshot: Snapshots = {
   },
   'nodejs/node': {
     id: 'nodejs/node',
-    description: 'Node.js JavaScript runtime :sparkles::turtle::rocket::sparkles:',
+    description: 'Node.js JavaScript runtime',
     kStars: 83,
   },
   'vercel/next.js': {
