@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Snapshot as SnapshotType } from '../types/Snapshots';
 
 type SnapshotProps = {
@@ -9,6 +10,19 @@ type SnapshotProps = {
 
 const Snapshot = (props: SnapshotProps): React.ReactElement | null => {
   const { index, snapshot, kStarsHistory } = props;
+
+  const starsNow = (
+    <span>
+      ★ {Math.floor(snapshot.kStars)}k
+    </span>
+  );
+
+  const delta = (
+    <sup style={{ color: 'darkgreen', paddingLeft: '5px' }}>
+      +{Math.floor((kStarsHistory[2] || 0) - (kStarsHistory[1] || 0))}k
+    </sup>
+  );
+
   return (
     <div>
       <h2 style={{ marginBottom: '10px' }}>
@@ -22,14 +36,10 @@ const Snapshot = (props: SnapshotProps): React.ReactElement | null => {
       </p>
       <p style={{ marginTop: 0 }}>
         <em style={{ whiteSpace: 'nowrap' }}>
-          ★ {snapshot.kStars}k
+          {starsNow}{' '}
+          {delta}
         </em>
       </p>
-      <div>
-        {kStarsHistory[0]},
-        {kStarsHistory[2]},
-        {kStarsHistory[3]},
-      </div>
     </div>
   );
 };
