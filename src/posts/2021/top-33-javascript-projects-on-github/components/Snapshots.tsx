@@ -2,9 +2,9 @@ import React from 'react';
 
 import { Snapshot as SnapshotType } from '../types/Snapshots';
 import Snapshot from './Snapshot';
-import snapshot2021 from '../data/2021';
 import snapshot2018 from '../data/2018';
 import snapshot2020 from '../data/2020';
+import snapshot2021 from '../data/2021';
 
 const Snapshots = (): React.ReactElement | null => {
   const list = Object.values(snapshot2021).map((snapshot: SnapshotType, index: number) => {
