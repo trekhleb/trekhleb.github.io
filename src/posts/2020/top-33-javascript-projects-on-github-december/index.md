@@ -3,13 +3,13 @@ title: "Top 33 JavaScript Projects on GitHub (December 2020)"
 
 summary: "Snapshot of 33 most starred open-sourced JavaScript repositories on GitHub as of December"
 
-cover: assets/01-cover.png
+cover: assets/01-cover-01.png
 
 date: 2020-12-10
 
 ---
 
-![Top 33 JavaScript Projects on GitHub](assets/01-cover.png)
+![Top 33 JavaScript Projects on GitHub](assets/01-cover-01.png)
 
 2020 is coming to its end, and we may do another snapshot of **33 most starred open-sourced JavaScript repositories** on GitHub **as of December 10th, 2020**.
 

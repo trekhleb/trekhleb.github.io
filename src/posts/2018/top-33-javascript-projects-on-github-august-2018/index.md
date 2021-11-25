@@ -3,13 +3,13 @@ title: "Top 33 JavaScript Projects on GitHub (August 2018)"
 
 summary: "Top of JavaScript projects as for 2018"
 
-cover: assets/01-cover.png
+cover: assets/01-cover-01.png
 
 date: 2018-08-18
 
 ---
 
-![Top of JS](assets/01-cover.png)
+![Top of JS](assets/01-cover-01.png)
 
 Hello Readers!
 
