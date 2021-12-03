@@ -73,14 +73,19 @@ export const useDeviceOrientation = (): UseDeviceOrientationData => {
     // Requesting the permission to access device orientation in iOS.
     // @see: https://developer.apple.com/forums/thread/128376
     if (
+      // @ts-ignore
       DeviceOrientationEvent.requestPermission
+      // @ts-ignore
       && typeof DeviceMotionEvent.requestPermission === 'function'
     ) {
       let permission: PermissionState;
       try {
+        // @ts-ignore
         permission = await DeviceOrientationEvent.requestPermission();
       } catch (err) {
-        setError(err);
+        // @ts-ignore
+        const e = new Error((err && err.message) || 'unknown error');
+        setError(e);
         return false;
       }
       if (permission !== 'granted') {

@@ -9,8 +9,10 @@ const gitHubAPIBasePath = 'https://api.github.com';
 
 const starsJSONPath = path.resolve(__dirname, '__generated__', 'Top33JavaScriptRepos.json');
 
-function logError(err: Error): void {
-  console.error(err.message);
+function logError(err: Error | any): void {
+  if (err && err.message) {
+    console.error(err.message);
+  }
   process.exit(1);
 }
 

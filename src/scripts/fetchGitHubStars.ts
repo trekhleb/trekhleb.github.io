@@ -12,8 +12,10 @@ const gitHubAPIBasePath = 'https://api.github.com';
 
 const starsJSONPath = path.resolve(__dirname, '..', 'data', '__generated__', 'projectStars.json');
 
-function logError(err: Error): void {
-  console.error(err.message);
+function logError(err: Error | any): void {
+  if (err && err.message) {
+    console.error(err.message);
+  }
   process.exit(1);
 }
 
@@ -106,7 +108,7 @@ async function main(): Promise<void> {
       return;
     }
   } catch (err) {
-    logError(err.message);
+    logError(err);
     return;
   }
 
