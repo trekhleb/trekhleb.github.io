@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-project-tsx","path":"/projects/promote-your-next-startup","result":{"pageContext":{"projectID":"promote-your-next-startup"}},"staticQueryHashes":["2849418690"]}
+{
+    "componentChunkName": "component---src-templates-project-tsx",
+    "path": "/projects/promote-your-next-startup",
+    "result": {"pageContext":{"projectID":"promote-your-next-startup"}},
+    "staticQueryHashes": ["2849418690"]}

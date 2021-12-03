@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-project-tsx","path":"/projects/machine-learning-experiments","result":{"pageContext":{"projectID":"machine-learning-experiments"}},"staticQueryHashes":["2849418690"]}
+{
+    "componentChunkName": "component---src-templates-project-tsx",
+    "path": "/projects/machine-learning-experiments",
+    "result": {"pageContext":{"projectID":"machine-learning-experiments"}},
+    "staticQueryHashes": ["2849418690"]}

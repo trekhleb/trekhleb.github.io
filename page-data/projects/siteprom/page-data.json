@@ -1,1 +1,5 @@
-{"componentChunkName":"component---src-templates-project-tsx","path":"/projects/siteprom","result":{"pageContext":{"projectID":"siteprom"}},"staticQueryHashes":["2849418690"]}
+{
+    "componentChunkName": "component---src-templates-project-tsx",
+    "path": "/projects/siteprom",
+    "result": {"pageContext":{"projectID":"siteprom"}},
+    "staticQueryHashes": ["2849418690"]}
