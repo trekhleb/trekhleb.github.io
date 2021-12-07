@@ -511,7 +511,7 @@ export const projects: Projects = {
         link: { url: 'https://news.ycombinator.com/front?day=2021-07-26', caption: 'Hacker News archive' },
       },
       {
-        title: '3nd trending repository of the day on GitHub',
+        title: '3rd trending repository of the day on GitHub',
         image: { srcPath: 'projects/javascript-algorithms/achievements/10-github-trending-day-2021-10-18.png' },
         date: '2021-10-18',
       },
@@ -520,6 +520,11 @@ export const projects: Projects = {
         image: { srcPath: 'projects/javascript-algorithms/achievements/11-hacker-news-2021-10-22.png' },
         date: '2021-10-22',
         link: { url: 'https://news.ycombinator.com/front?day=2021-10-22', caption: 'Hacker News archive' },
+      },
+      {
+        title: 'Trending repository of the day on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/12-github-trending-day-2021-12-07.png' },
+        date: '2021-12-07',
       },
     ],
   },
