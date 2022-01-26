@@ -526,6 +526,12 @@ export const projects: Projects = {
         image: { srcPath: 'projects/javascript-algorithms/achievements/12-github-trending-day-2021-12-07.png' },
         date: '2021-12-07',
       },
+      {
+        title: 'Listed on Mozilla MDN Web Docs',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/13-mozilla-mdn-web-docs-2022-01-26.png' },
+        date: '2022-01-20',
+        link: { url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures', caption: 'MDN Web Docs' },
+      },
     ],
   },
   'machine-learning-octave': {
