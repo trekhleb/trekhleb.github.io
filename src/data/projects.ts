@@ -1,6 +1,22 @@
 import { Projects } from '../types/Project';
 
 export const projects: Projects = {
+  okso: {
+    id: 'okso',
+    name: '✍🏻 Ok! So...',
+    demoURL: { url: 'https://okso.app/' },
+    cover: { srcPath: 'projects/okso/cover-00.jpeg' },
+    startDate: '2022-07-20',
+    summary: [
+      'Drawing app to express, grasp, and organize your thoughts and ideas. Draw to explain. Draw to grasp.',
+    ],
+    tags: [
+      { name: 'Drawing' },
+      { name: 'Sketching' },
+      { name: 'Whiteboard' },
+    ],
+    achievements: [],
+  },
   'self-parking-car-evolution': {
     id: 'self-parking-car-evolution',
     name: '🧬 Self-Parking Car Evolution',
