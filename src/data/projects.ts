@@ -548,6 +548,11 @@ export const projects: Projects = {
         date: '2022-01-20',
         link: { url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures', caption: 'MDN Web Docs' },
       },
+      {
+        title: '3rd trending repository of the day on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/14-github-trending-day-2022-08-16.png' },
+        date: '2022-08-16',
+      },
     ],
   },
   'machine-learning-octave': {
