@@ -15,7 +15,12 @@ export const projects: Projects = {
       { name: 'Sketching' },
       { name: 'Whiteboard' },
     ],
-    achievements: [],
+    achievements: [
+      {
+        title: 'Top Hot post on r/coding sub-reddit',
+        image: { srcPath: 'projects/okso/achievements/00-reddit-coding-hot-2022-08-31.png' },
+      },
+    ],
   },
   'self-parking-car-evolution': {
     id: 'self-parking-car-evolution',
