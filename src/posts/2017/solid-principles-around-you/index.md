@@ -15,6 +15,8 @@ In this article, I want to briefly go through [SOLID](https://en.wikipedia.org/w
 
 > If you want to see code examples instead you may take a look at [variety of tree data structure implementations](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/tree) in **JavaScript** like [Binary Search Tree](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/tree/binary-search-tree), [AVL Tree](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/tree/avl-tree), [Red-Black Tree](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/tree/red-black-tree), [Segment Tree](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/tree/segment-tree) or [Fenwick Tree](https://github.com/trekhleb/javascript-algorithms/tree/master/src/data-structures/tree/fenwick-tree).
 
+> You may also check the interactive [SOLID Sketches](https://okso.app/showcase/solid)
+
 So let’s move on!
 
 ## S — Single Responsibility Principle
