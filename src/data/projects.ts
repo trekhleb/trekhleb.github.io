@@ -24,7 +24,7 @@ export const projects: Projects = {
       },
       {
         title: 'Top Hot post on r/coding sub-reddit',
-        image: { srcPath: 'projects/okso/achievements/01-reddit-coding-hot-2022-10-05' },
+        image: { srcPath: 'projects/okso/achievements/01-reddit-coding-hot-2022-10-05.png' },
         link: { url: 'https://www.reddit.com/r/coding/comments/xvujvl/solid_principles_sketches/', caption: 'The post on Reddit' },
         date: '2022-10-05',
       },
