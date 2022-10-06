@@ -19,6 +19,20 @@ export const projects: Projects = {
       {
         title: 'Top Hot post on r/coding sub-reddit',
         image: { srcPath: 'projects/okso/achievements/00-reddit-coding-hot-2022-08-31.png' },
+        link: { url: 'https://www.reddit.com/r/coding/comments/x1imp0/data_structure_sketches/', caption: 'The post on Reddit' },
+        date: '2022-08-31',
+      },
+      {
+        title: 'Top Hot post on r/coding sub-reddit',
+        image: { srcPath: 'projects/okso/achievements/01-reddit-coding-hot-2022-10-05' },
+        link: { url: 'https://www.reddit.com/r/coding/comments/xvujvl/solid_principles_sketches/', caption: 'The post on Reddit' },
+        date: '2022-10-05',
+      },
+      {
+        title: 'Top Hot post on r/InternetIsBeautiful sub-reddit',
+        image: { srcPath: 'projects/okso/achievements/02-reddit-internetisbeautiful-hot-2022-10-05.png' },
+        link: { url: 'https://www.reddit.com/r/InternetIsBeautiful/comments/xvum4n/interactive_sketches_to_illustrate_solid/', caption: 'The post on Reddit' },
+        date: '2022-10-05',
       },
     ],
   },
