@@ -34,6 +34,12 @@ export const projects: Projects = {
         link: { url: 'https://www.reddit.com/r/InternetIsBeautiful/comments/xvum4n/interactive_sketches_to_illustrate_solid/', caption: 'The post on Reddit' },
         date: '2022-10-05',
       },
+      {
+        title: 'Listed on Hacker News',
+        image: { srcPath: 'projects/okso/achievements/03-hacker-news-2022-10-09.png' },
+        date: '2022-10-09',
+        link: { url: 'https://news.ycombinator.com/front?day=2022-10-09', caption: 'Hacker News archive' },
+      },
     ],
   },
   'self-parking-car-evolution': {
