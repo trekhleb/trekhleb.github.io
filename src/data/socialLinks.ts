@@ -53,7 +53,8 @@ export const socialLinks: SocialLink[] = [
   },
   {
     type: socialLinkTypes.youTube,
-    url: 'https://www.youtube.com/c/OleksiiTrekhlebs',
+    // url: 'https://www.youtube.com/c/OleksiiTrekhlebs',
+    url: 'https://www.youtube.com/@trekhleb',
     secondary: true,
     caption: 'Oleksii Trekhleb on YouTube',
   },
