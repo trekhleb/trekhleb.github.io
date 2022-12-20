@@ -40,6 +40,12 @@ export const projects: Projects = {
         date: '2022-10-09',
         link: { url: 'https://news.ycombinator.com/front?day=2022-10-09', caption: 'Hacker News archive' },
       },
+      {
+        title: 'Mentioned in the TechCrunch article',
+        image: { srcPath: 'projects/okso/achievements/04-techcrunch-2022-12-16.png' },
+        date: '2022-12-16',
+        link: { url: 'https://techcrunch.com/2022/12/16/tldraw-offers-a-collaborative-whiteboard-without-any-login/', caption: 'TechCrunch article' },
+      },
     ],
   },
   'self-parking-car-evolution': {
