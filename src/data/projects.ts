@@ -585,7 +585,7 @@ export const projects: Projects = {
         date: '2022-08-16',
       },
       {
-        title: '2nd trending repository of the day on GitHub',
+        title: '1st trending repository of the day on GitHub',
         image: { srcPath: 'projects/javascript-algorithms/achievements/15-github-trending-day-2023-01-25.png' },
         date: '2023-01-25',
       },
