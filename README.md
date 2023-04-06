@@ -12,6 +12,18 @@ The website is built on [Gatsby](https://www.gatsbyjs.com/). See the [Gatsby che
 
 ### Running the project locally
 
+Install proper version of Node:
+
+```bash
+nvm use
+```
+
+Install dependencies:
+
+```bash
+npm i --legacy-peer-deps
+```
+
 To run the project locally in development mode on [http://localhost:8000](http://localhost:8000):
 
 ```bash
