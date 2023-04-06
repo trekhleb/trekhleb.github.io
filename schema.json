@@ -3232,6 +3232,18 @@
               "deprecationReason": null
             },
             {
+              "name": "JSFrontmatterEngine",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "Boolean",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "maxWidth",
               "description": null,
               "args": [],
@@ -3317,18 +3329,6 @@
             },
             {
               "name": "withWebp",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "tracedSVG",
               "description": null,
               "args": [],
               "type": {
@@ -3702,18 +3702,6 @@
               "deprecationReason": null
             },
             {
-              "name": "tracedSVG",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "loading",
               "description": null,
               "args": [],
@@ -4074,6 +4062,18 @@
             },
             {
               "name": "main",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "author",
               "description": null,
               "args": [],
               "type": {
@@ -5281,7 +5281,7 @@
                 },
                 {
                   "name": "placeholder",
-                  "description": "Format of generated placeholder image, displayed while the main image loads.\nBLURRED: a blurred, low resolution image, encoded as a base64 data URI (default)\nDOMINANT_COLOR: a solid color, calculated from the dominant color of the image.\nTRACED_SVG: a low-resolution traced SVG of the image.\nNONE: no placeholder. Set \"background\" to use a fixed background color.",
+                  "description": "Format of generated placeholder image, displayed while the main image loads.\nBLURRED: a blurred, low resolution image, encoded as a base64 data URI\nDOMINANT_COLOR: a solid color, calculated from the dominant color of the image (default).\nTRACED_SVG: deprecated. Will use DOMINANT_COLOR.\nNONE: no placeholder. Set \"background\" to use a fixed background color.",
                   "type": {
                     "kind": "ENUM",
                     "name": "ImagePlaceholder",
@@ -19537,6 +19537,16 @@
               "defaultValue": null
             },
             {
+              "name": "JSFrontmatterEngine",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "BooleanQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
               "name": "maxWidth",
               "description": null,
               "type": {
@@ -19608,16 +19618,6 @@
             },
             {
               "name": "withWebp",
-              "description": null,
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "BooleanQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "tracedSVG",
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -19931,16 +19931,6 @@
             },
             {
               "name": "withWebp",
-              "description": null,
-              "type": {
-                "kind": "INPUT_OBJECT",
-                "name": "BooleanQueryOperatorInput",
-                "ofType": null
-              },
-              "defaultValue": null
-            },
-            {
-              "name": "tracedSVG",
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -20298,6 +20288,16 @@
             },
             {
               "name": "main",
+              "description": null,
+              "type": {
+                "kind": "INPUT_OBJECT",
+                "name": "StringQueryOperatorInput",
+                "ofType": null
+              },
+              "defaultValue": null
+            },
+            {
+              "name": "author",
               "description": null,
               "type": {
                 "kind": "INPUT_OBJECT",
@@ -21579,6 +21579,12 @@
               "deprecationReason": null
             },
             {
+              "name": "pluginCreator___pluginOptions___JSFrontmatterEngine",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pluginCreator___pluginOptions___maxWidth",
               "description": null,
               "isDeprecated": false,
@@ -21622,12 +21628,6 @@
             },
             {
               "name": "pluginCreator___pluginOptions___withWebp",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "pluginCreator___pluginOptions___tracedSVG",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -21736,6 +21736,12 @@
             },
             {
               "name": "pluginCreator___packageJson___main",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "pluginCreator___packageJson___author",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -22977,12 +22983,6 @@
               "deprecationReason": null
             },
             {
-              "name": "pluginOptions___plugins___pluginOptions___tracedSVG",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
               "name": "pluginOptions___plugins___pluginOptions___loading",
               "description": null,
               "isDeprecated": false,
@@ -23139,6 +23139,12 @@
               "deprecationReason": null
             },
             {
+              "name": "pluginOptions___JSFrontmatterEngine",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
               "name": "pluginOptions___maxWidth",
               "description": null,
               "isDeprecated": false,
@@ -23182,12 +23188,6 @@
             },
             {
               "name": "pluginOptions___withWebp",
-              "description": null,
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "pluginOptions___tracedSVG",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
@@ -23296,6 +23296,12 @@
             },
             {
               "name": "packageJson___main",
+              "description": null,
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "packageJson___author",
               "description": null,
               "isDeprecated": false,
               "deprecationReason": null
