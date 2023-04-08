@@ -595,6 +595,16 @@ export const projects: Projects = {
         date: '2023-04-07',
         link: { url: 'https://news.ycombinator.com/front?day=2023-04-07', caption: 'Hacker News archive' },
       },
+      {
+        title: '2nd trending repository of the day on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/17-github-trending-day-2023-04-08.png' },
+        date: '2023-04-08',
+      },
+      {
+        title: '5th trending repository of the week on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/18-github-trending-week-2023-04-08.png' },
+        date: '2023-04-08',
+      },
     ],
   },
   'machine-learning-octave': {
