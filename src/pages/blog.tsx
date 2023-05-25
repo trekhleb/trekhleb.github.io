@@ -10,11 +10,10 @@ interface BlogProps extends PageProps {
 
 export const query = graphql`
   query BlogPageQuery {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+    allMdx(sort: {frontmatter: {date: DESC}}) {
       totalCount
       nodes {
         id
-        timeToRead
         fields {
           slug
         }
@@ -25,10 +24,10 @@ export const query = graphql`
           cover {
             childImageSharp {
               fluid(
-                fit: COVER,
-                cropFocus: CENTER,
-                grayscale: false,
-                quality: 90,
+                fit: COVER
+                cropFocus: CENTER
+                grayscale: false
+                quality: 90
                 maxWidth: 1000
               ) {
                 ...GatsbyImageSharpFluid

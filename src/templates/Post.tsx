@@ -11,7 +11,6 @@ export const query = graphql`
   query PostTemplateQuery ($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       id
-      timeToRead
       body
       fields {
         slug
