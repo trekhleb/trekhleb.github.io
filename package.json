@@ -8,7 +8,7 @@
   "scripts": {
     "fetch-stars": "node ./src/scripts/fetchGitHubStars.js",
     "lint": "eslint 'src/**/*.{js,ts,tsx}'",
-    "type": "tsc",
+    "type": "tsc --noEmit",
     "develop": "gatsby develop",
     "develop-secure": "gatsby develop --https",
     "develop-mobile": "gatsby develop --host 0.0.0.0",
@@ -21,14 +21,11 @@
     "deploy": "gh-pages --dist ./public --branch public"
   },
   "dependencies": {
+    "@gatsbyjs/reach-router": "^2.0.1",
     "@mdx-js/mdx": "^2.3.0",
     "@mdx-js/react": "^2.3.0",
     "@react-icons/all-files": "^4.1.0",
     "@tailwindcss/typography": "^0.5.9",
-    "@types/node": "^20.2.3",
-    "@types/react": "^18.2.6",
-    "@types/react-dom": "^18.2.4",
-    "@types/react-helmet": "^6.1.4",
     "@typescript-eslint/eslint-plugin": "^5.59.7",
     "@typescript-eslint/parser": "^5.59.7",
     "autoprefixer": "^10.4.0",
@@ -40,7 +37,6 @@
     "eslint-plugin-react-hooks": "^4.3.0",
     "gatsby": "^5.10.0",
     "gatsby-image": "^3.11.0",
-    "gatsby-plugin-codegen": "^3.0.1",
     "gatsby-plugin-feed": "^5.10.0",
     "gatsby-plugin-google-gtag": "^5.10.0",
     "gatsby-plugin-mdx": "^5.10.0",
@@ -50,12 +46,11 @@
     "gatsby-remark-autolink-headers": "^6.10.0",
     "gatsby-remark-copy-linked-files": "^6.10.0",
     "gatsby-remark-images": "^7.10.0",
-    "gatsby-remark-images-zoom": "^1.1.0",
     "gatsby-remark-prismjs": "^7.10.0",
     "gatsby-source-filesystem": "^5.10.0",
     "gatsby-transformer-sharp": "^5.10.0",
     "gh-pages": "^5.0.0",
-    "node-fetch": "^3.3.1",
+    "node-fetch": "^2.6.11",
     "postcss": "^8.4.23",
     "prismjs": "^1.25.0",
     "react": "^18.2.0",
@@ -63,10 +58,16 @@
     "react-helmet": "^6.1.0",
     "source-map-support": "^0.5.21",
     "tailwindcss": "^3.3.2",
-    "ts-node": "^10.9.1",
-    "typescript": "5.0.4"
+    "ts-node": "^10.9.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@types/gatsbyjs__reach-router": "^2.0.0",
+    "@types/node": "^20.2.3",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
+    "@types/react-helmet": "^6.1.6",
+    "typescript": "^5.0.4"
+  },
   "engines": {
     "node": ">=18.15.0",
     "npm": ">=9.5.0"
