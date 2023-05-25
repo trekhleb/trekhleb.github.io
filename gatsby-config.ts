@@ -64,6 +64,14 @@ const gatsbyConfig: GatsbyConfig = {
             },
           },
 
+          // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-images-medium-zoom/
+          {
+            resolve: 'gatsby-remark-images-medium-zoom',
+            options: {
+              background: '#fff',
+            },
+          },
+
           // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/
           {
             resolve: 'gatsby-remark-autolink-headers',
