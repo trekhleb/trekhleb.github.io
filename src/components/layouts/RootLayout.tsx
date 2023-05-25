@@ -7,6 +7,7 @@ type RootLayoutProps = {
 const RootLayout = (props: RootLayoutProps): React.ReactElement => {
   const { children } = props;
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {children}
     </>
