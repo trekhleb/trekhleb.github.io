@@ -52,7 +52,7 @@ async function searchGitHub(): Promise<SearchResponse> {
   return new Promise((resolve, reject) => {
     const requestURL = `${gitHubAPIBasePath}/search/repositories?q=stars:>1+language:JavaScript&sort=stars&order=desc&per_page=33`;
     fetch(requestURL)
-      .then((resp) => resp.json())
+      .then((resp) => resp.json() as Promise<SearchResponse>)
       .then((searchResults: SearchResponse) => {
         if (searchResults?.message) {
           reject(new Error(searchResults?.message));
