@@ -46,7 +46,7 @@ async function fetchGitHubRateLimits(): Promise<GitHubRateLimits> {
   return new Promise((resolve, reject) => {
     const requestURL = `${gitHubAPIBasePath}/rate_limit`;
     fetch(requestURL)
-      .then((resp) => resp.json())
+      .then((resp) => resp.json() as Promise<GitHubRateLimits>)
       .then((limits: GitHubRateLimits) => {
         resolve(limits);
       })
@@ -74,7 +74,7 @@ async function fetchGitHubProject(project: Project): Promise<GitHubProject> {
 
     const requestURL = `${gitHubAPIBasePath}/repos/${owner}/${repo}`;
     fetch(requestURL)
-      .then((resp) => resp.json())
+      .then((resp) => resp.json() as Promise<GitHubProject>)
       .then((repository: GitHubProject) => {
         if (repository?.message) {
           reject(new Error(repository?.message));
