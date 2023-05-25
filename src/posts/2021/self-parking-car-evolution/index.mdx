@@ -74,10 +74,30 @@ For example, the brain may send the signal with the value of `+1` to the engine 
 
 Here is how the brain signal values map to the muscle actions in our case:
 
-| Muscle             | `Signal = -1` | `Signal = 0` | `Signal = +1` |
-| :----------------- | :------------ | :----------- | :------------ |
-| **Engine**         | ↓ Backward    | ◎ Neutral    | ↑ Forward     |
-| **Steering wheel** | ← Left        | ◎ Straight   | → Right       |
+<table>
+  <thead>
+    <tr>
+        <th>Muscle</th>
+        <th>`Signal = -1`</th>
+        <th>`Signal = 0`</th>
+        <th>`Signal = +1`</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>**Engine**</td>
+        <td>↓ Backward</td>
+        <td>◎ Neutral</td>
+        <td>↑ Forward</td>
+    </tr>
+    <tr>
+        <td>**Steering wheel**</td>
+        <td>← Left</td>
+        <td>◎ Straight</td>
+        <td>→ Right</td>
+    </tr>
+  </tbody>
+</table>
 
 > You may [use the Evolution Simulator](https://trekhleb.dev/self-parking-car-evolution?parking=manual#/) and try to park the car manually to see how the car muscles work. Every time you press one of the `WASD` keyboard keys (or use a touch-screen joystick) you send these `-1`, `0`, or `+1` signals to the engine and steering wheel muscles.
 

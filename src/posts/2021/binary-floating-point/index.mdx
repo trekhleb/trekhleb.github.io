@@ -12,7 +12,7 @@ date: 2021-07-16
 import InteractivePostArea from '../../../components/shared/InteractivePostArea';
 import Formula from './components/Formula';
 
-> ~~Anti-intuitive~~ 🥸 but yet interactive example of how the floating-point numbers like -27.156 are stored in binary format in a computer's memory
+> Anti-intuitive 🥸 but yet interactive example of how the floating-point numbers like -27.156 are stored in binary format in a computer's memory
 
 ![Binary representation of floating point numbers](assets/01-cover-02.jpg)
 
@@ -77,12 +77,44 @@ The **base** part we may omit by just agreeing on what it will be equal to. In o
 
 Instead of using all 16 bits (or 32 bits, or 64 bits) to store the fraction of the number, we may share the bits and store a sign, exponent, and fraction at the same time. Depending on the number of bits that we're going to use to store the number we end up with the following splits:
 
-
-| Floating-point format | Total bits | Sign bits | Exponent bits | Fraction bits | Base |
-| :-------------------- | :--------: | :-------: | :-----------: | :--------------: | :--: |
-| [Half-precision](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)        | 16         | 1         | 5             | 10               | 2    |
-| [Single-precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format)      | 32         | 1         | 8             | 23               | 2    |
-| [Double-precision](https://en.wikipedia.org/wiki/Double-precision_floating-point_format)      | 64         | 1         | 11            | 52               | 2    |
+<table>
+  <thead>
+    <tr>
+        <th>Floating-point format</th>
+        <th>Total bits</th>
+        <th>Sign bits</th>
+        <th>Exponent bits</th>
+        <th>Fraction bits</th>
+        <th>Base</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>[Half-precision](https://en.wikipedia.org/wiki/Half-precision_floating-point_format)</td>
+        <td>16</td>
+        <td>1</td>
+        <td>5</td>
+        <td>10</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>[Single-precision](https://en.wikipedia.org/wiki/Single-precision_floating-point_format)</td>
+        <td>32</td>
+        <td>1</td>
+        <td>8</td>
+        <td>23</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>[Double-precision](https://en.wikipedia.org/wiki/Double-precision_floating-point_format)</td>
+        <td>64</td>
+        <td>1</td>
+        <td>11</td>
+        <td>52</td>
+        <td>2</td>
+    </tr>
+  </tbody>
+</table>
 
 With this approach, the number of bits for the fraction has been reduced (i.e. for the 16-bits number it was reduced from 16 bits to 10 bits). It means that the fraction might take a narrower range of values now (losing some precision). However, since we also have an exponent part, it will actually increase the ultimate number range and also allow us to describe the numbers between 0 and 1 (if the exponent is negative).
 
@@ -110,10 +142,33 @@ Here is also the interactive tool to give you better intuition of how the conver
 
 Here is the number ranges that different floating-point formats support:
 
-| Floating-point format | Exp min | Exp max | Range            | Min positive |
-| :-------------------- | :------ | :------ | :--------------- | :----------- |
-| Half-precision        | −14     | +15     | ±65,504          | 6.10 × 10⁻⁵  |
-| Single-precision      | −126    | +127    | ±3.4028235 × 10³⁸| 1.18 × 10⁻³⁸ |
+<table>
+  <thead>
+    <tr>
+        <th>Floating-point format</th>
+        <th>Exp min</th>
+        <th>Exp max</th>
+        <th>Range</th>
+        <th>Min positive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>Half-precision</td>
+        <td>−14</td>
+        <td>+15</td>
+        <td>±65,504</td>
+        <td>6.10 × 10⁻⁵</td>
+    </tr>
+    <tr>
+        <td>Single-precision</td>
+        <td>−126</td>
+        <td>+127</td>
+        <td>±3.4028235 × 10³⁸</td>
+        <td>1.18 × 10⁻³⁸</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Code examples
 
