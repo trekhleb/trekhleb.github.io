@@ -39,14 +39,18 @@ async function createPostPages(args: CreatePagesArgs): Promise<void> {
           fields {
             slug
           }
+          internal {
+            contentFilePath
+          }
         }
       }
     }
   `);
+
   (result?.data?.allMdx?.nodes || []).forEach((node) => {
     createPage({
       path: node.fields.slug,
-      component: path.resolve('./src/templates/Post.tsx'),
+      component: `${path.resolve('./src/templates/Post.tsx')}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug: node.fields.slug,
