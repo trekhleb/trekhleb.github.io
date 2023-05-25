@@ -37,6 +37,7 @@ module.exports = {
     '@typescript-eslint/no-empty-function': 'warn',
     '@typescript-eslint/no-shadow': 'error',
     'react/jsx-one-expression-per-line': 'off',
+    'react/function-component-definition': 'off',
     'react/jsx-filename-extension': ['error', { extensions: ['.js', '.jsx', '.ts', '.tsx'] }],
     'import/extensions': ['error', 'ignorePackages', {
       js: 'never',
