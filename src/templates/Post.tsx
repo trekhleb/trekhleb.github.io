@@ -15,6 +15,9 @@ export const query = graphql`
       fields {
         slug
       }
+      internal {
+        contentFilePath
+      }
       frontmatter {
         title
         summary
@@ -38,9 +41,9 @@ export const query = graphql`
 `;
 
 const BlogPost = (props: BlogPostProps): React.ReactElement => {
-  const { data } = props;
+  const { data, children } = props;
   return (
-    <PostScreen post={data} />
+    <PostScreen post={data}>{children}</PostScreen>
   );
 };
 
