@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLocation } from '@reach/router';
+import { useLocation } from '@gatsbyjs/reach-router';
 import { Helmet } from 'react-helmet';
 
 import {
