@@ -31,20 +31,18 @@ export default function CalculationStep(props: CalculationStepProps): React.Reac
         fontFamily: 'monospace',
       }}
     >
-      <>
-        {arrow}
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'center',
-            fontSize,
-            color,
-          }}
-        >
-          {children}
-        </div>
-      </>
+      {arrow}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          fontSize,
+          color,
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 }
