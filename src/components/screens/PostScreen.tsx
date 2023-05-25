@@ -9,10 +9,11 @@ import ErrorBoundary from '../shared/ErrorBoundary';
 
 type PostScreenProps = {
   post: PostTemplateQuery;
+  children: React.ReactNode;
 };
 
 const PostScreen = (props: PostScreenProps): React.ReactElement => {
-  const { post } = props;
+  const { post, children } = props;
 
   return (
     <PageLayout>
@@ -23,7 +24,7 @@ const PostScreen = (props: PostScreenProps): React.ReactElement => {
         image={post.mdx?.frontmatter?.cover?.childImageSharp?.fluid?.src || ''}
         type={ogTypeArticle}
       />
-      <Post post={post} />
+      <Post post={post}>{children}</Post>
       <div className="flex flex-row justify-center items-center mt-16">
         <div className="max-w-md">
           <ErrorBoundary>

@@ -1,7 +1,6 @@
 import React from 'react';
 import { FiCalendar } from '@react-icons/all-files/fi/FiCalendar';
 import { FiClock } from '@react-icons/all-files/fi/FiClock';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
 
 import { PostTemplateQuery } from '../../templates/__generated__/PostTemplateQuery';
 import PageHeader from '../shared/PageHeader';
@@ -11,10 +10,11 @@ import ErrorBoundary from '../shared/ErrorBoundary';
 
 type PostProps = {
   post: PostTemplateQuery,
+  children: React.ReactNode,
 };
 
 const Post = (props: PostProps): React.ReactElement | null => {
-  const { post } = props;
+  const { post, children } = props;
 
   const dateElement = post?.mdx?.frontmatter?.date ? (
     <Row className="mr-6">
@@ -41,7 +41,7 @@ const Post = (props: PostProps): React.ReactElement | null => {
           {timeToRead}
         </Row>
         <ErrorBoundary>
-          <MDXRenderer>{post.mdx?.body || ''}</MDXRenderer>
+          {children}
         </ErrorBoundary>
       </article>
     </div>
