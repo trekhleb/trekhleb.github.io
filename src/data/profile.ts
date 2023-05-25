@@ -9,7 +9,8 @@ export const profile: Profile = {
     'Author of 150k ★️ javascript-algorithms repo on GitHub',
   ],
   avatar: {
-    srcPath: 'profile/avatar_500x500.jpg',
+    // srcPath: 'profile/avatar_500x500.jpg',
+    srcPath: 'profile/avatar_500x500_v2.jpg',
     caption: 'Oleksii Trekhleb',
   },
   location: {
