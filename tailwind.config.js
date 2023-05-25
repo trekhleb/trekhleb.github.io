@@ -5,9 +5,8 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
-  // Reminder! Tailwind can't recognise conditional classes when using purge.
-  purge: ['./src/**/*.{js,jsx,ts,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+  // Reminder! Tailwind can't recognize conditional classes when using purge.
+  content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       fontFamily: {
