@@ -21,7 +21,7 @@ nvm use
 Install dependencies:
 
 ```bash
-npm i --legacy-peer-deps
+npm i
 ```
 
 To run the project locally in development mode on [http://localhost:8000](http://localhost:8000):
