@@ -23,15 +23,15 @@ jobs:
         node-version: [ 18.x ]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             **/node_modules
@@ -52,15 +52,15 @@ jobs:
     if: ${{ github.event_name == 'push' || github.event_name == 'schedule' }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
       - name: Cache dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             **/node_modules
@@ -70,13 +70,13 @@ jobs:
         run: npm i
 
       - name: Cache Gatsby cache folder
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: .cache
           key: gatsby-cache-folder
 
       - name: Cache Gatsby public folder
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: public
           key: gatsby-public-folder
