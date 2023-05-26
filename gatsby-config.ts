@@ -13,7 +13,7 @@ const gatsbyConfig: GatsbyConfig = {
 
   flags: {
     // Use DEV_SSR to debug the SSR related issues locally (i.e. hydration related ones).
-    // DEV_SSR: true,
+    DEV_SSR: false,
   },
 
   plugins: [
