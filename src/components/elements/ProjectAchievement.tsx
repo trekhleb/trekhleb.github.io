@@ -11,6 +11,7 @@ import CardContent from '../shared/CardContent';
 import HyperLink from '../shared/HyperLink';
 import { Link } from '../../types/Link';
 import DateRange from '../shared/DateRange';
+import { siteURL } from '../../constants/siteMeta';
 
 type ProjectAchievementsProps = {
   achievement: Achievement | null | undefined,
@@ -39,7 +40,7 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
   ) : null;
 
   const imageLink: Link = {
-    url: `${location?.origin || ''}${fluidImageFetched?.images?.fallback?.src}`,
+    url: `${location?.origin || siteURL}${fluidImageFetched?.images?.fallback?.src}`,
   };
 
   const detailsLink = achievement.link ? (
