@@ -1,20 +1,17 @@
 import React from 'react';
-import Img from 'gatsby-image';
+import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image';
 
-import { Image, FluidImage as FluidImageType } from '../../types/Image';
+import { Image } from '../../types/Image';
 import { useFluidCover } from '../../hooks/useFluidCover';
 
 type FluidImageProps = {
   image?: Image | null | undefined,
-  fluidImage?: FluidImageType | null | undefined,
+  fluidImage?: IGatsbyImageData | null | undefined,
   className?: string,
-  durationFadeIn?: number,
 };
 
 const FluidImage = (props: FluidImageProps): React.ReactElement | null => {
-  const {
-    image, fluidImage: fluidImageProvided, className = '', durationFadeIn = 500,
-  } = props;
+  const { image, fluidImage: fluidImageProvided, className = '' } = props;
 
   const fluidImageFetched = useFluidCover({ imagePath: image?.srcPath });
   const fluidImage = fluidImageProvided || fluidImageFetched;
@@ -25,15 +22,12 @@ const FluidImage = (props: FluidImageProps): React.ReactElement | null => {
   }
 
   return (
-    <Img
-      // @ts-ignore
-      fluid={fluidImage}
+    <GatsbyImage
+      image={fluidImage}
       style={{ height: '100%' }}
       alt={image?.caption || ''}
       title={image?.caption || ''}
-      durationFadeIn={durationFadeIn}
       className={className}
-      fadeIn
     />
   );
 };
