@@ -21,7 +21,8 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
 
   const location = useLocation();
 
-  const fluidImageFetched = useFluidCover({ imagePath: achievement?.image?.srcPath });
+  const imagePath = achievement?.image?.srcPath;
+  const fluidImageFetched = useFluidCover({ imagePath });
 
   if (!achievement) {
     return null;
@@ -38,7 +39,7 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
   ) : null;
 
   const imageLink: Link = {
-    url: `${location.origin}${fluidImageFetched?.src}`,
+    url: `${location?.origin || ''}${fluidImageFetched?.images?.fallback?.src}`,
   };
 
   const detailsLink = achievement.link ? (

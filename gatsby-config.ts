@@ -10,9 +10,18 @@ import {
 
 const gatsbyConfig: GatsbyConfig = {
   siteMetadata,
+
+  flags: {
+    // Use DEV_SSR to debug the SSR related issues locally (i.e. hydration related ones).
+    // DEV_SSR: true,
+  },
+
   plugins: [
     // @see: https://www.gatsbyjs.com/plugins/gatsby-plugin-postcss/
     'gatsby-plugin-postcss',
+
+    // @see: https://www.gatsbyjs.com/plugins/gatsby-plugin-image/
+    'gatsby-plugin-image',
 
     // @see: https://www.gatsbyjs.com/plugins/gatsby-plugin-react-helmet/
     'gatsby-plugin-react-helmet',
