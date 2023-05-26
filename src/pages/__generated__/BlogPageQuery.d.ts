@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { IGatsbyImageData } from "gatsby-plugin-image";
+
 // ====================================================
 // GraphQL query operation: BlogPageQuery
 // ====================================================
@@ -20,7 +22,7 @@ export interface BlogPageQuery_allMdx_nodes_frontmatter_cover_childImageSharp_fl
 }
 
 export interface BlogPageQuery_allMdx_nodes_frontmatter_cover_childImageSharp {
-  fluid: BlogPageQuery_allMdx_nodes_frontmatter_cover_childImageSharp_fluid | null;
+  gatsbyImageData: IGatsbyImageData;
 }
 
 export interface BlogPageQuery_allMdx_nodes_frontmatter_cover {

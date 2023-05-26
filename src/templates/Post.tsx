@@ -24,15 +24,15 @@ export const query = graphql`
         date(formatString: "DD MMMM, YYYY")
         cover {
           childImageSharp {
-            fluid(
-              fit: COVER,
-              cropFocus: CENTER,
-              grayscale: false,
-              quality: 90,
-              maxWidth: 1000
-            ) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(
+              layout: FULL_WIDTH,
+              quality: 95,
+              transformOptions: {
+                fit: COVER,
+                cropFocus: CENTER,
+                grayscale: false,
+              },
+            )
           }
         }
       }

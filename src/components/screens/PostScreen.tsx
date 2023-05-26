@@ -21,7 +21,7 @@ const PostScreen = (props: PostScreenProps): React.ReactElement => {
         title={post.mdx?.frontmatter?.title || ''}
         titleMode={titleModeSuffix}
         description={post.mdx?.frontmatter?.summary || ''}
-        image={post.mdx?.frontmatter?.cover?.childImageSharp?.fluid?.src || ''}
+        image={post.mdx?.frontmatter?.cover?.childImageSharp?.gatsbyImageData?.images?.fallback?.src || ''}
         type={ogTypeArticle}
       />
       <Post post={post}>{children}</Post>
