@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { IGatsbyImageData } from "gatsby-plugin-image";
+
 // ====================================================
 // GraphQL query operation: PostTemplateQuery
 // ====================================================
@@ -20,7 +22,7 @@ export interface PostTemplateQuery_mdx_frontmatter_cover_childImageSharp_fluid {
 }
 
 export interface PostTemplateQuery_mdx_frontmatter_cover_childImageSharp {
-  fluid: PostTemplateQuery_mdx_frontmatter_cover_childImageSharp_fluid | null;
+  gatsbyImageData: IGatsbyImageData;
 }
 
 export interface PostTemplateQuery_mdx_frontmatter_cover {

@@ -3,6 +3,8 @@
 // @generated
 // This file was automatically generated and should not be edited.
 
+import { IGatsbyImageData } from "gatsby-plugin-image";
+
 // ====================================================
 // GraphQL query operation: UseImagesQuery
 // ====================================================
@@ -16,7 +18,7 @@ export interface UseImagesQuery_allFile_nodes_childImageSharp_fluid {
 }
 
 export interface UseImagesQuery_allFile_nodes_childImageSharp {
-  fluid: UseImagesQuery_allFile_nodes_childImageSharp_fluid | null;
+  gatsbyImageData: IGatsbyImageData;
 }
 
 export interface UseImagesQuery_allFile_nodes {
