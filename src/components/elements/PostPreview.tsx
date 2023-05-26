@@ -23,8 +23,8 @@ const PostPreview = (props: PostPreviewProps): React.ReactElement | null => {
     url: post.fields?.slug,
   };
 
-  const postCover = post.frontmatter?.cover?.childImageSharp?.fluid ? (
-    <FluidImage fluidImage={post.frontmatter?.cover?.childImageSharp?.fluid} />
+  const postCover = post.frontmatter?.cover?.childImageSharp?.gatsbyImageData ? (
+    <FluidImage fluidImage={post.frontmatter?.cover?.childImageSharp?.gatsbyImageData} />
   ) : null;
 
   const postSummary = post?.frontmatter?.summary ? (
