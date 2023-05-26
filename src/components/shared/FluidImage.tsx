@@ -8,10 +8,13 @@ type FluidImageProps = {
   image?: Image | null | undefined,
   fluidImage?: FluidImageType | null | undefined,
   className?: string,
+  durationFadeIn?: number,
 };
 
 const FluidImage = (props: FluidImageProps): React.ReactElement | null => {
-  const { image, fluidImage: fluidImageProvided, className = '' } = props;
+  const {
+    image, fluidImage: fluidImageProvided, className = '', durationFadeIn = 500,
+  } = props;
 
   const fluidImageFetched = useFluidCover({ imagePath: image?.srcPath });
   const fluidImage = fluidImageProvided || fluidImageFetched;
@@ -28,7 +31,7 @@ const FluidImage = (props: FluidImageProps): React.ReactElement | null => {
       style={{ height: '100%' }}
       alt={image?.caption || ''}
       title={image?.caption || ''}
-      durationFadeIn={500}
+      durationFadeIn={durationFadeIn}
       className={className}
       fadeIn
     />

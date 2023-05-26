@@ -29,13 +29,13 @@ You may check several examples of how those collections may look like by visitin
 
 ## See how it works in action
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/9_3hk3dTqR4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/9_3hk3dTqR4" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
 One of the challenging tasks for the Aggregatus users was a necessity to come up with a proper CSS selector on the 3rd-party web-sites for the elements that users want to parse/scrape the data from.
 
 To make it easier the *CSS Wizard* feature was developed. It allows the users to preview the 3rd-party web-site inside the Aggregatus pop-up window, click on the elements that need to be parsed, and immediately get the CSS selector that might be used to scrape the data from the clicked element.
 
-<iframe width="100%" height="315" src="https://www.youtube.com/embed/8V3shqtDsrQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/8V3shqtDsrQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
 > The project is still in alpha stage of testing. This means that its features may be unstable. But also it means that a lot of new features are on their way. You also may take part in testing the project and [reporting new bugs and ideas](https://aggregatus.io/contact).
 

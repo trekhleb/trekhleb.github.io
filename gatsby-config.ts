@@ -11,9 +11,6 @@ import {
 const gatsbyConfig: GatsbyConfig = {
   siteMetadata,
   plugins: [
-    // @see: https://www.gatsbyjs.com/plugins/gatsby-plugin-codegen/
-    'gatsby-plugin-codegen',
-
     // @see: https://www.gatsbyjs.com/plugins/gatsby-plugin-postcss/
     'gatsby-plugin-postcss',
 
@@ -56,7 +53,8 @@ const gatsbyConfig: GatsbyConfig = {
       resolve: 'gatsby-plugin-mdx',
       options: {
         extensions: ['.md', '.mdx'],
-        plugins: [
+        plugins: [],
+        gatsbyRemarkPlugins: [
           // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-images/
           {
             resolve: 'gatsby-remark-images',
@@ -66,13 +64,14 @@ const gatsbyConfig: GatsbyConfig = {
             },
           },
 
-          // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-images-zoom/
+          // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-images-medium-zoom/
           {
-            resolve: 'gatsby-remark-images-zoom',
-            options: {},
+            resolve: 'gatsby-remark-images-medium-zoom',
+            options: {
+              background: '#fff',
+            },
           },
-        ],
-        gatsbyRemarkPlugins: [
+
           // @see: https://www.gatsbyjs.com/plugins/gatsby-remark-autolink-headers/
           {
             resolve: 'gatsby-remark-autolink-headers',
@@ -178,6 +177,9 @@ const gatsbyConfig: GatsbyConfig = {
                         title
                         date
                         summary
+                      }
+                      internal {
+                        contentFilePath
                       }
                     }
                   }

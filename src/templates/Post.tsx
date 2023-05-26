@@ -11,10 +11,12 @@ export const query = graphql`
   query PostTemplateQuery ($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
       id
-      timeToRead
       body
       fields {
         slug
+      }
+      internal {
+        contentFilePath
       }
       frontmatter {
         title
@@ -39,9 +41,9 @@ export const query = graphql`
 `;
 
 const BlogPost = (props: BlogPostProps): React.ReactElement => {
-  const { data } = props;
+  const { data, children } = props;
   return (
-    <PostScreen post={data} />
+    <PostScreen post={data}>{children}</PostScreen>
   );
 };
 
