@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-templates-project-tsx",
-    "path": "/projects/trekhleb-dev",
-    "result": {"pageContext":{"projectID":"trekhleb-dev"}},
-    "staticQueryHashes": ["2849418690"]}
+{"componentChunkName":"component---src-templates-project-tsx","path":"/projects/trekhleb-dev/","result":{"pageContext":{"projectID":"trekhleb-dev"}},"staticQueryHashes":["2849418690"],"slicesMap":{}}

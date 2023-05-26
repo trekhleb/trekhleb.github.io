@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-templates-project-tsx",
-    "path": "/projects/js-image-carver",
-    "result": {"pageContext":{"projectID":"js-image-carver"}},
-    "staticQueryHashes": ["2849418690"]}
+{"componentChunkName":"component---src-templates-project-tsx","path":"/projects/js-image-carver/","result":{"pageContext":{"projectID":"js-image-carver"}},"staticQueryHashes":["2849418690"],"slicesMap":{}}

@@ -1,5 +1,1 @@
-{
-    "componentChunkName": "component---src-templates-project-tsx",
-    "path": "/projects/okso",
-    "result": {"pageContext":{"projectID":"okso"}},
-    "staticQueryHashes": ["2849418690"]}
+{"componentChunkName":"component---src-templates-project-tsx","path":"/projects/okso/","result":{"pageContext":{"projectID":"okso"}},"staticQueryHashes":["2849418690"],"slicesMap":{}}
