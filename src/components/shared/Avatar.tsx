@@ -13,7 +13,7 @@ const Avatar = (props: AvatarProps): React.ReactElement => {
 
   return (
     <div className={className || ''}>
-      <FluidImage image={avatar} durationFadeIn={0} />
+      <FluidImage image={avatar} />
     </div>
   );
 };
