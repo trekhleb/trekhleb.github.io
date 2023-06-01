@@ -25,12 +25,14 @@ export const socialLinks: SocialLink[] = [
     type: socialLinkTypes.facebook,
     url: 'https://www.facebook.com/oleksii.trekhleb',
     secondary: true,
+    hidden: true,
     caption: 'Oleksii Trekhleb on Facebook',
   },
   {
     type: socialLinkTypes.instagram,
     url: 'https://www.instagram.com/oleksii_trekhleb',
     secondary: true,
+    hidden: true,
     caption: 'Oleksii Trekhleb on Instagram',
   },
   {
@@ -49,6 +51,7 @@ export const socialLinks: SocialLink[] = [
     type: socialLinkTypes.stackOverflow,
     url: 'https://stackoverflow.com/users/7794070/oleksii-trekhleb',
     secondary: true,
+    hidden: true,
     caption: 'Oleksii Trekhleb on StackOverflow',
   },
   {

@@ -45,6 +45,8 @@ const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
     return null;
   }
 
+  const filteredLinks = links.filter((link) => !link?.hidden);
+
   const onRender = (socialLink: SocialLinkType): React.ReactElement => {
     let linkIcon = null;
     const linkType = socialLink?.type || '';
@@ -65,7 +67,7 @@ const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
 
   return (
     <Expander
-      items={links}
+      items={filteredLinks}
       onRender={onRender}
       toHide={toHide}
       expandable={expandable}
