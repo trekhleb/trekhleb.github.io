@@ -1,17 +1,21 @@
 import React from 'react';
 
 import { Divider } from './Divider';
+import { SectionHash } from '../types/section';
 
 export type SectionContextT = {
-  hash: string,
-  normalizedHash: string,
+  hash: SectionHash | undefined,
+  normalizedHash: string | undefined,
 }
 
-export const SectionContext = React.createContext<SectionContextT>({ hash: '', normalizedHash: '' });
+export const SectionContext = React.createContext<SectionContextT>({
+  hash: undefined,
+  normalizedHash: undefined,
+});
 
 type SectionProps = {
   children: React.ReactNode,
-  hash: string,
+  hash: SectionHash,
 }
 
 export function Section(props: SectionProps): React.ReactElement {

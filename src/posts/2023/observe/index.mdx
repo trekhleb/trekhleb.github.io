@@ -13,6 +13,7 @@ import { Section } from './components/Section.tsx'
 import { SectionBody } from './components/SectionBody.tsx'
 import { SectionHeader } from './components/SectionHeader.tsx'
 import { Divider } from './components/Divider.tsx'
+import { SectionHash } from './types/section.ts'
 
 ![Observe](./assets/01-cover.jpeg)
 
@@ -26,7 +27,7 @@ The statements below are my subjective observations, assumptions, questions, and
 
 <Divider />
 
-<Section hash="observation 101">
+<Section hash={SectionHash.Observation101}>
   <SectionHeader>
     The **Creator** is more advanced than the **Creature**
   </SectionHeader>
