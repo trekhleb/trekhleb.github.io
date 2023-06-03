@@ -11,15 +11,18 @@ date: 2023-06-01
 
 import { Section } from './components/Section.tsx'
 import { Divider } from './components/Divider.tsx'
-import { Ref } from './components/Ref.tsx'
+import { ContentType } from './types/content.ts'
 
 The statements below are my subjective observations, assumptions, questions, and interpretations. They might be wrong. Don't take it seriously.
 
 <Divider />
 
-<Section>
-  > `observation` The **Creator** is more advanced than the **Creature**
-
+<Section
+  type={ContentType.Observation}
+  header={
+    <>The <b>Creator</b> is more advanced than the <b>Creature</b></>
+  }
+>
   - The Creature is not greater than the Creator
   - Software engineer (a creator) writes a program (a creature):
     - A program operates with the concepts inherent to an engineer

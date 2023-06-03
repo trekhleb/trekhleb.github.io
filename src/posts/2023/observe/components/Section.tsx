@@ -1,18 +1,23 @@
 import React from 'react';
 import { Divider } from './Divider';
+import { ContentType } from '../types/content';
 
 type SectionProps = {
-  children: React.ReactNode
+  type: ContentType,
+  header: React.ReactNode,
+  children: React.ReactNode,
 }
 
 export function Section(props: SectionProps): React.ReactElement {
-  const { children } = props;
-
-  const sectionStyle: React.CSSProperties = {};
+  const { children, type, header } = props;
 
   return (
     <>
-      <div style={sectionStyle}>{children}</div>
+      <div className="flex items-start">
+        <div className="flex bg-black text-xs text-white rounded-md px-2 py-1 mb-2 font-mono">{type}</div>
+      </div>
+      <div className="text-xl mb-8">{header}</div>
+      <div className="text-sm">{children}</div>
       <Divider />
     </>
   );

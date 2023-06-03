@@ -1,20 +1,9 @@
 import React from 'react';
 
 export function Divider(): React.ReactElement {
-  const margin = '100px';
-
-  const wrapperStyle: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: margin,
-    marginBottom: margin,
-  };
-
-  const dividerStyle: React.CSSProperties = {
-    borderBottom: '2px dotted #ccc',
-    flex: 1,
-  };
-
-  return <div style={wrapperStyle}><div style={dividerStyle} /></div>;
+  return (
+    <div className="flex-1 items-center justify-center mb-28 mt-28">
+      <div className="flex-1 border-dotted border-b-2 border-slate-400" />
+    </div>
+  );
 }
