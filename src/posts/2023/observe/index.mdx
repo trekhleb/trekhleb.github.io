@@ -10,6 +10,8 @@ date: 2023-06-01
 ---
 
 import { Section } from './components/Section.tsx'
+import { SectionBody } from './components/SectionBody.tsx'
+import { SectionHeader } from './components/SectionHeader.tsx'
 import { Divider } from './components/Divider.tsx'
 
 ![Observe](./assets/01-cover.jpeg)
@@ -24,22 +26,22 @@ The statements below are my subjective observations, assumptions, questions, and
 
 <Divider />
 
-<Section
-  hash="observation 101"
-  header={
-    <>The <b>Creator</b> is more advanced than the <b>Creature</b></>
-  }
->
-  - A creature is not greater than its creator
-  - Software engineer (a creator) writes a program (a creature):
-    - A program operates with the concepts inherent to an engineer
-    - The concepts might be math, words, etc.
-    - The program may do operations faster or with higher precision than an engineer, however, it can't jump out of the available concepts
-      - A program might calculate the factorial faster, but it will still be operating in the math concept
-    - For a program to start operating with a new concept, the latter must be introduced to it by an engineer
-      - A program may start creating music, but only after the concept of music was introduced to it by the creator (engineer)
-  - If a human being (a creature) has a concept of consciousness and feelings, then these concepts are inherent to his/her creator
-    - The Creator has consciousness and feelings
-    - The Creator is not just gravity or electricity or an abstract force
-</Section>
+<Section hash="observation 101">
+  <SectionHeader>
+    The **Creator** is more advanced than the **Creature**
+  </SectionHeader>
 
+  <SectionBody>
+    - A creature is not greater than its creator
+    - Software engineer (a creator) writes a program (a creature):
+      - A program operates with the concepts inherent to an engineer
+      - The concepts might be math, words, etc.
+      - The program may do operations faster or with higher precision than an engineer, however, it can't jump out of the available concepts
+        - A program might calculate the factorial faster, but it will still be operating in the math concept
+      - For a program to start operating with a new concept, the latter must be introduced to it by an engineer
+        - A program may start creating music, but only after the concept of music was introduced to it by the creator (engineer)
+    - If a human being (a creature) has a concept of consciousness and feelings, then these concepts are inherent to his/her creator
+      - The Creator has consciousness and feelings
+      - The Creator is not just gravity or electricity or an abstract force
+  </SectionBody>
+</Section>
