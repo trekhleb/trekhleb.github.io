@@ -2,14 +2,17 @@ import React from 'react';
 
 import { Divider } from './Divider';
 import { SectionHash } from '../types/section';
+import { normalizeHash } from '../utils/hash';
 
 export type SectionContextT = {
   hash: SectionHash | undefined,
+  deps: SectionHash[],
   normalizedHash: string | undefined,
 }
 
 export const SectionContext = React.createContext<SectionContextT>({
   hash: undefined,
+  deps: [],
   normalizedHash: undefined,
 });
 
@@ -25,9 +28,10 @@ export function Section(props: SectionProps): React.ReactElement {
   const context = React.useMemo<SectionContextT>(
     () => ({
       hash,
-      normalizedHash: hash.trim().toLowerCase().replace(/ /g, '-'),
+      deps: deps || [],
+      normalizedHash: normalizeHash(hash),
     }),
-    [hash],
+    [hash, deps],
   );
 
   return (
