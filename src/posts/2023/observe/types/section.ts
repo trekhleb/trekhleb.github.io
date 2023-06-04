@@ -1,4 +1,4 @@
 export enum SectionHash {
-  Observation101 = 'observation 101',
-  Assumption101 = 'assumption 101',
+  Observation1 = 'observation 1',
+  Assumption1 = 'assumption 1',
 }
