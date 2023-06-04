@@ -9,6 +9,7 @@ date: 2023-06-01
 
 ---
 
+import { Sections } from './components/Sections.tsx'
 import { Section } from './components/Section.tsx'
 import { SectionBody } from './components/SectionBody.tsx'
 import { SectionHeader } from './components/SectionHeader.tsx'
@@ -27,29 +28,30 @@ The statements below are my subjective observations, assumptions, questions, and
 
 <Divider />
 
-<Section hash={SectionHash.Observation101}>
-  <SectionHeader>
-    The **Creator** is more advanced than the **Creature**
-  </SectionHeader>
-  <SectionBody>
-    - A creature is not greater than its creator
-    - Software engineer (a creator) writes a program (a creature):
-      - A program operates with the concepts inherent to an engineer
-      - The concepts might be math, words, etc.
-      - The program may do operations faster or with higher precision than an engineer, however, it can't jump out of the available concepts
-        - A program might calculate the factorial faster, but it will still be operating in the math concept
-      - For a program to start operating with a new concept, the latter must be introduced to it by an engineer
-        - A program may start creating music, but only after the concept of music was introduced to it by the creator (engineer)
-  </SectionBody>
-</Section>
+<Sections>
+  <Section hash={SectionHash.Observation101}>
+    <SectionHeader>
+      The **Creator** is more advanced than the **Creature**
+    </SectionHeader>
+    <SectionBody>
+      - A creature is not greater than its creator
+      - Software engineer (a creator) writes a program (a creature):
+        - A program operates with the concepts inherent to an engineer
+        - The concepts might be math, words, etc.
+        - The program may do operations faster or with higher precision than an engineer, however, it can't jump out of the available concepts
+          - A program might calculate the factorial faster, but it will still be operating in the math concept
+        - For a program to start operating with a new concept, the latter must be introduced to it by an engineer
+          - A program may start creating music, but only after the concept of music was introduced to it by the creator (engineer)
+    </SectionBody>
+  </Section>
 
-<Section hash={SectionHash.Assumption101} deps={[SectionHash.Observation101]}>
-  <SectionHeader>
-    The **Creator** has **consciousness** and **feelings**
-  </SectionHeader>
-  <SectionBody>
-    - If a human being (a creature) has a concept of consciousness and feelings, then these concepts are inherent to his/her creator
-    - The Creator has consciousness and feelings
-    - The Creator is not just gravity or electricity or an abstract force
-  </SectionBody>
-</Section>
+  <Section hash={SectionHash.Assumption101} deps={[SectionHash.Observation101]}>
+    <SectionHeader>
+      The **Creator** has **consciousness** and **feelings**
+    </SectionHeader>
+    <SectionBody>
+      - If a human being (a creature) has a concept of consciousness and feelings, then these concepts are inherent to his/her creator
+      - The Creator is not just gravity or electricity or an abstract force
+    </SectionBody>
+  </Section>
+</Sections>
