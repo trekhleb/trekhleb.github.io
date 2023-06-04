@@ -16,10 +16,11 @@ export const SectionContext = React.createContext<SectionContextT>({
 type SectionProps = {
   children: React.ReactNode,
   hash: SectionHash,
+  deps?: SectionHash[],
 }
 
 export function Section(props: SectionProps): React.ReactElement {
-  const { children, hash } = props;
+  const { children, hash, deps } = props;
 
   const context = React.useMemo<SectionContextT>(
     () => ({

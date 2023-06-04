@@ -19,7 +19,7 @@ export function SectionHeader(props: SectionHeaderProps): React.ReactElement {
         </div>
       </div>
 
-      <div className="text-xl mb-8 group [&>p]:m-0 [&>p]:inline">
+      <div className="text-xl mb-6 group [&>p]:m-0 [&>p]:inline">
         {children}
         <a
           href={`#${ctx.normalizedHash}`}
