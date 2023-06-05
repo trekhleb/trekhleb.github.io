@@ -1,5 +1,5 @@
 import React from 'react';
-import { normalizeHash } from '../utils/hash';
+import { getHashColor, normalizeHash } from '../utils/hash';
 import { SectionHash } from '../types/section';
 
 type ReferenceProps = {
@@ -11,11 +11,13 @@ export function Reference(props: ReferenceProps): React.ReactElement {
 
   const normalizedHash = normalizeHash(hash);
 
+  const tagColorClass = getHashColor(hash, false);
+
   return (
     <span className="not-prose">
       <a
         href={`#${normalizedHash}`}
-        className="bg-slate-200 text-xs rounded-md px-2 py-1 font-mono font-medium no-underline hover:underline"
+        className={`text-xs rounded-md px-2 py-1 font-mono font-medium no-underline hover:underline ${tagColorClass}`}
       >
         {hash}
       </a>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { VscLink } from '@react-icons/all-files/vsc/VscLink';
 import { SectionContext } from './Section';
+import { getHashColor } from '../utils/hash';
 
 type SectionHeaderProps = {
   children: React.ReactNode,
@@ -11,10 +12,12 @@ export function SectionHeader(props: SectionHeaderProps): React.ReactElement {
 
   const ctx = React.useContext(SectionContext);
 
+  const tagColorClass = getHashColor(ctx.hash);
+
   return (
     <div className="flex-1">
       <div className="flex items-start mb-3" id={ctx.normalizedHash}>
-        <div className="flex bg-black text-xs text-white rounded-md px-2 py-1 font-mono font-medium">
+        <div className={`flex text-xs rounded-md px-2 py-1 font-mono font-medium ${tagColorClass}`}>
           {ctx.hash}
         </div>
       </div>
