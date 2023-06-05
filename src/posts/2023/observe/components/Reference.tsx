@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { getHashColor, normalizeHash } from '../utils/hash';
 import { SectionHash } from '../types/section';
 

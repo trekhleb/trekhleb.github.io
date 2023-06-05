@@ -1,7 +1,8 @@
 import React from 'react';
-import { SectionContext } from './Section';
+
 import { SectionHash } from '../types/section';
 import { Reference } from './Reference';
+import { SectionContext } from '../contexts/section';
 
 type SectionBodyProps = {
   children: React.ReactNode,
@@ -10,7 +11,7 @@ type SectionBodyProps = {
 export function SectionBody(props: SectionBodyProps): React.ReactElement {
   const { children } = props;
 
-  const { deps = [], siblings = [] } = React.useContext(SectionContext);
+  const { deps, siblings } = React.useContext(SectionContext);
 
   const followsFromList = deps.length ? deps.map((depHash: SectionHash) => {
     return <Reference key={depHash} hash={depHash} />;
