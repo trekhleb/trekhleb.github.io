@@ -30,7 +30,7 @@ The statements below are my subjective observations, assumptions, questions, and
 <Divider />
 
 <Sections>
-  <Section hash={SectionHash.Observation1}>
+  <Section hash={SectionHash.Observation1} siblings={[SectionHash.Observation2]}>
     <SectionHeader>
       We are like **2D** people trying to grasp the **3D** ideas
     </SectionHeader>
@@ -48,7 +48,7 @@ The statements below are my subjective observations, assumptions, questions, and
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Observation2}>
+  <Section hash={SectionHash.Observation2} siblings={[SectionHash.Observation1]}>
     <SectionHeader>
       We are like a **fetus** in a mother's belly trying to think about **life after birth**
     </SectionHeader>
@@ -56,7 +56,6 @@ The statements below are my subjective observations, assumptions, questions, and
       - How hard is it for a baby inside a mother's belly to think about the outside-belly world?
       - Is there a life after birth?
       - Is it hard for a baby to grasp the concept of higher education, for example?
-      - Relates to the <Reference hash={SectionHash.Observation1} />
     </SectionBody>
   </Section>
 
