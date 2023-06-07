@@ -62,13 +62,12 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Observation3}>
+  <Section hash={SectionHash.Observation3} siblings={[SectionHash.Observation4]}>
     <SectionHeader>
       Every physical object that we can grasp has an **origin** or a **cause**
     </SectionHeader>
     <SectionBody>
       - We can continue asking the "What was before" or "What caused it" questions until we stuck
-        - We are normally stuck at the <Link href="https://en.wikipedia.org/wiki/Big_Bang">Big Bang</Link> or the <Link href="https://en.wikipedia.org/wiki/Inflation_(cosmology)">Cosmic Inflation</Link> level
       - Example
         - A program has been created by an engineer on the laptop while drinking a lemon tea
           - An engineer has been "created" by his/her father and mother
@@ -84,7 +83,25 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Observation4}>
+  <Section hash={SectionHash.Observation4} siblings={[SectionHash.Observation3]}>
+    <SectionHeader>
+      Science doesn't have an answer to the question of **ultimate origin** for now
+    </SectionHeader>
+    <SectionBody>
+      - We can continue asking the "What was before X" or "What caused X" questions until we stuck
+      - We are normally stuck at <Link href="https://en.wikipedia.org/wiki/Initial_singularity">Initial Singularity</Link> or at the <Link href="https://en.wikipedia.org/wiki/Big_Bang">Big Bang</Link> level
+        - The universe began as a singularity, a point of infinite density and temperature, approximately 13.8 billion years ago
+      - The following remain unanswered:
+        - What is the origin of the lows of the Universe that singularity was following
+          - How were the environmental constraints created
+          - How was it possible to operate with such concepts as temperature and density
+        - How the components (parts) of the singularity were created
+        - What is the origin of Time
+      - The singularity represents a fundamental gap in our knowledge
+    </SectionBody>
+  </Section>
+
+  <Section hash={SectionHash.Observation5}>
     <SectionHeader>
       The **Creator** is more advanced than the **Creature**
     </SectionHeader>
@@ -99,7 +116,7 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Assumption1} deps={[SectionHash.Observation4]}>
+  <Section hash={SectionHash.Assumption1} deps={[SectionHash.Observation5]}>
     <SectionHeader>
       The **Creator** has **consciousness** and **feelings**
     </SectionHeader>

@@ -3,6 +3,7 @@ export enum SectionHash {
   Observation2 = 'observation 2',
   Observation3 = 'observation 3',
   Observation4 = 'observation 4',
+  Observation5 = 'observation 5',
 
   Assumption1 = 'assumption 1',
   Assumption2 = 'assumption 2',
