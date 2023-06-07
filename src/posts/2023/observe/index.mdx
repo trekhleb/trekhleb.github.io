@@ -15,6 +15,7 @@ import { Reference } from './components/Reference.tsx'
 import { SectionBody } from './components/SectionBody.tsx'
 import { SectionHeader } from './components/SectionHeader.tsx'
 import { Divider } from './components/Divider.tsx'
+import { Link } from './components/Link.tsx'
 import { SectionHash } from './types/section.ts'
 
 ![Observe](./assets/01-cover.jpeg)
@@ -32,7 +33,29 @@ The work on this list is ongoing and its content might be updated periodically.
 <Divider />
 
 <Sections>
-  <Section hash={SectionHash.Observation1} siblings={[SectionHash.Observation2]}>
+  <Section hash={SectionHash.Observation1}>
+    <SectionHeader>
+      Every physical object that we can grasp has an **origin** or a **cause**
+    </SectionHeader>
+    <SectionBody>
+      - We can continue asking the "What was before" or "What caused it" questions until we stuck
+        - We are normally stuck at the <Link href="https://en.wikipedia.org/wiki/Big_Bang">Big Bang</Link> or the <Link href="https://en.wikipedia.org/wiki/Inflation_(cosmology)">Cosmic Inflation</Link> level
+      - Example
+        - A program has been created by an engineer on the laptop while drinking a lemon tea
+          - An engineer has been "created" by his/her father and mother
+            - Engineer's mother was "created" by an engineer's grandma and grandpa
+              - ...
+          - A laptop was created by another engineer out of many pieces
+            - Some pieces were created out of silicon
+              - ...
+          - A lemon tree grew from a seed
+            - A seed was produced by a grand-tree
+              - Lemons are a hybrid of citrons and bitter oranges
+                - ...
+    </SectionBody>
+  </Section>
+
+  <Section hash={SectionHash.Observation2} siblings={[SectionHash.Observation3]}>
     <SectionHeader>
       We are like **2D** people trying to grasp the **3D** ideas
     </SectionHeader>
@@ -43,25 +66,25 @@ The work on this list is ongoing and its content might be updated periodically.
         - When a 3D cylinder intersects the 2D world its section might look different: from a circle, through an ellipse, to a square
         - When a 3D torus intersects the 2D world it sometimes is seen by the 2D people as one ellipse or sometimes as two independent circles, or sometimes as one circle inside another
         - Some 2D people may say that there is no such concept as a cylinder, but there are only concepts of circles and squares
-        - Some 2D people may say that there is a concept of a cylinder, but a cylinder itself looks like a circle only
+        - Some 2D people may say that there is a concept of a cylinder, but a cylinder itself is not more than a circle
         - The idea that a cylinder can be a circle and a square at the same time might sound contradictive to the 2D people
       - We're in a similar situation, except we're 4D people (let's say we have XYZ+Time) trying to think about higher dimensions
         - Spirituality might be such a higher dimension
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Observation2} siblings={[SectionHash.Observation1]}>
+  <Section hash={SectionHash.Observation3} siblings={[SectionHash.Observation2]}>
     <SectionHeader>
       We are like a **fetus** in a mother's belly trying to think about **life after birth**
     </SectionHeader>
     <SectionBody>
       - How hard is it for a baby inside a mother's belly to think about the outside-belly world?
       - Is there a life after birth?
-      - Is it hard for a baby to grasp the concept of higher education, for example?
+      - Is it hard for a fetus to grasp the concept of higher education, for example?
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Observation3}>
+  <Section hash={SectionHash.Observation4}>
     <SectionHeader>
       The **Creator** is more advanced than the **Creature**
     </SectionHeader>
@@ -76,7 +99,7 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Assumption1} deps={[SectionHash.Observation3]}>
+  <Section hash={SectionHash.Assumption1} deps={[SectionHash.Observation4]}>
     <SectionHeader>
       The **Creator** has **consciousness** and **feelings**
     </SectionHeader>
@@ -84,7 +107,7 @@ The work on this list is ongoing and its content might be updated periodically.
       - If a human being (a creature) has a concept of consciousness and feelings, then these concepts are inherent to his/her creator
       - The Creator is not just gravity or electricity or an abstract force
       - Consciousness and feelings are just some of the concepts or features that we share with the Creator
-      - The Creator might operate with some other concepts or features that we, as human beings, can't grasp. See the <Reference hash={SectionHash.Observation1} />.
+      - The Creator might operate with some other concepts or features that we, as human beings, can't grasp. See the <Reference hash={SectionHash.Observation2} />
     </SectionBody>
   </Section>
 </Sections>
