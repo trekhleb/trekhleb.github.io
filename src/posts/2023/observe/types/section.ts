@@ -8,3 +8,9 @@ export enum SectionHash {
   Assumption1 = 'assumption 1',
   Assumption2 = 'assumption 2',
 }
+
+export type Section = {
+  hash?: SectionHash,
+  deps?: SectionHash[],
+  siblings?: SectionHash[],
+};

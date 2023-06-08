@@ -1,7 +1,7 @@
 import React from 'react';
 import { VscLink } from '@react-icons/all-files/vsc/VscLink';
 
-import { getHashColor } from '../utils/hash';
+import { getHashColor, normalizeHash } from '../utils/hash';
 import { SectionContext } from '../contexts/section';
 
 type SectionHeaderProps = {
@@ -11,7 +11,9 @@ type SectionHeaderProps = {
 export function SectionHeader(props: SectionHeaderProps): React.ReactElement {
   const { children } = props;
 
-  const { hash, normalizedHash } = React.useContext(SectionContext);
+  const { hash } = React.useContext(SectionContext);
+
+  const normalizedHash = normalizeHash(hash);
 
   const tagColorClass = getHashColor(hash);
 

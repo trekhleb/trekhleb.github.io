@@ -13,7 +13,7 @@ export function SectionBody(props: SectionBodyProps): React.ReactElement {
 
   const { deps, siblings } = React.useContext(SectionContext);
 
-  const followsFromList = deps.length ? deps.map((depHash: SectionHash) => {
+  const followsFromList = deps?.length ? deps.map((depHash: SectionHash) => {
     return <Reference key={depHash} hash={depHash} />;
   }) : null;
 
@@ -21,7 +21,7 @@ export function SectionBody(props: SectionBodyProps): React.ReactElement {
     <div><span className="italic">Follows from:</span> {followsFromList}</div>
   ) : null;
 
-  const relatesToList = siblings.length ? siblings.map((depHash: SectionHash) => {
+  const relatesToList = siblings?.length ? siblings.map((depHash: SectionHash) => {
     return <Reference key={depHash} hash={depHash} />;
   }) : null;
 

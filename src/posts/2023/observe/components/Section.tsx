@@ -1,16 +1,10 @@
 import React from 'react';
 
 import { Divider } from './Divider';
-import { SectionHash } from '../types/section';
-import { normalizeHash } from '../utils/hash';
+import { Section as SectionT } from '../types/section';
 import { SectionContext, SectionContextT } from '../contexts/section';
 
-type SectionProps = {
-  children: React.ReactNode,
-  hash: SectionHash,
-  deps?: SectionHash[],
-  siblings?: SectionHash[],
-}
+type SectionProps = SectionT & { children: React.ReactNode }
 
 export function Section(props: SectionProps): React.ReactElement {
   const {
@@ -18,12 +12,7 @@ export function Section(props: SectionProps): React.ReactElement {
   } = props;
 
   const context = React.useMemo<SectionContextT>(
-    () => ({
-      hash,
-      deps: deps || [],
-      siblings: siblings || [],
-      normalizedHash: normalizeHash(hash),
-    }),
+    () => ({ hash, deps, siblings }),
     [hash, deps, siblings],
   );
 

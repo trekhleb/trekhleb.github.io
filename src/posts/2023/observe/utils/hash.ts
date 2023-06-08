@@ -1,7 +1,7 @@
 import { SectionHash } from '../types/section';
 
-export const normalizeHash = (hash: SectionHash): string => {
-  return hash.trim().toLowerCase().replace(/ /g, '-');
+export const normalizeHash = (hash: SectionHash | undefined): string => {
+  return hash?.trim().toLowerCase().replace(/ /g, '-') || '';
 };
 
 const tagClasses: Record<string, {primary: string, secondary: string}> = {
