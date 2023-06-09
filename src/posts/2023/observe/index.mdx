@@ -33,7 +33,7 @@ The work on this list is ongoing and its content might be updated periodically.
 <Divider />
 
 <Sections>
-  <Section hash={SectionHash.Observation1} siblings={[SectionHash.Observation2]}>
+  <Section hash={SectionHash.Assumption1} siblings={[SectionHash.Assumption2]}>
     <SectionHeader>
       We are like **2D** people trying to grasp the **3D** ideas
     </SectionHeader>
@@ -51,7 +51,7 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Observation2} siblings={[SectionHash.Observation1]}>
+  <Section hash={SectionHash.Assumption2} siblings={[SectionHash.Assumption1]}>
     <SectionHeader>
       We are like a **fetus** in a mother's belly trying to think about **life after birth**
     </SectionHeader>
@@ -62,7 +62,7 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Observation3} siblings={[SectionHash.Observation4]}>
+  <Section hash={SectionHash.Observation1} siblings={[SectionHash.Observation2]}>
     <SectionHeader>
       Every physical object that we can grasp has an **origin** or a **cause**
     </SectionHeader>
@@ -83,7 +83,7 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Observation4} siblings={[SectionHash.Observation3]}>
+  <Section hash={SectionHash.Observation2} siblings={[SectionHash.Observation1]}>
     <SectionHeader>
       Science doesn't have an answer to the question of **ultimate origin** for now
     </SectionHeader>
@@ -97,6 +97,46 @@ The work on this list is ongoing and its content might be updated periodically.
         - How the components (parts) of the singularity were created
         - What is the origin of time
       - The singularity represents a fundamental gap in our knowledge
+    </SectionBody>
+  </Section>
+
+  <Section hash={SectionHash.Observation3}>
+    <SectionHeader>
+      In science, some **theories** are getting **reconsidered** over time
+    </SectionHeader>
+    <SectionBody>
+      - Science often operates with theories
+        - *Theory of relativity*, *String theory*, *Quantum field theory*, *Big Bang theory*, *Field theory*, etc. (see <Link href="https://en.wikipedia.org/wiki/Theoretical_physics">60+ more central theories</Link>)
+      - Some theories get reconsidered or rejected by scientists over time
+        - *Geocentric Model*
+          - For centuries, the prevailing view in astronomy was the geocentric model
+          - The model proposed that Earth was at the center of the universe, and the sun, moon, planets, and stars revolved around it
+        - *Steady-State Theory*
+          - The steady-state theory was a cosmological model proposed in the mid-20th century as an alternative to the Big Bang theory
+          - It suggested that the universe was eternal and unchanging, with new matter continually being created to maintain a constant density.
+          - However, the discovery of cosmic microwave background radiation in 1965 provided strong evidence in favor of the Big Bang theory and led to the decline of the steady-state theory.
+        - *Static Universe Model*
+          - Before the discovery of the expanding universe, it was widely believed that the universe was static and unchanging
+          - However, Edwin Hubble's observations in the early 20th century provided evidence for the expanding universe, leading to the rejection of the static universe model
+        - *Newtonian Mechanics*
+          - In the early 20th century, the theory of relativity, introduced a new understanding of gravity and motion that superseded certain aspects of Newtonian mechanics
+          - Relativity showed that Newton's laws were an approximation valid only under certain conditions
+    </SectionBody>
+  </Section>
+
+  <Section hash={SectionHash.Observation4}>
+    <SectionHeader>
+      In science, some **theories** are not **accepted** at first
+    </SectionHeader>
+    <SectionBody>
+      - *General Relativity Theory*
+        - The theory was published by Albert Einstein in 1915
+        - In the U.S., a few understood it, but, in general, relativity was ridiculed as “totally impractical and absurd.”
+        - In Britain, his theories met with resistance, because relativity was seen as a direct challenge to the widely accepted theory of ether
+        - Only around 1960 general relativity became central to physics and astronomy
+      - *Plate Tectonics*
+        - The theory of plate tectonics, which describes the movement of the Earth's lithosphere in plates, was initially met with skepticism when it was proposed in the early 20th century
+        - It took several decades for accumulating evidence from geological studies, seismology, and oceanography to support the theory
     </SectionBody>
   </Section>
 
@@ -115,7 +155,7 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.Assumption1} deps={[SectionHash.Observation5]}>
+  <Section hash={SectionHash.Assumption3} deps={[SectionHash.Observation5]}>
     <SectionHeader>
       The **Creator** has **consciousness** and **feelings**
     </SectionHeader>
@@ -123,7 +163,7 @@ The work on this list is ongoing and its content might be updated periodically.
       - If a human being (a creature) has a concept of consciousness and feelings, then these concepts are inherent to his/her creator
       - The Creator is not just gravity or electricity or an abstract force
       - Consciousness and feelings are just some of the concepts or features that we share with the Creator
-      - The Creator might operate with some other concepts or features that we, as human beings, can't grasp. See the <Reference hash={SectionHash.Observation1} />
+      - The Creator might operate with some other concepts or features that we, as human beings, can't grasp. See the <Reference hash={SectionHash.Assumption1} />
     </SectionBody>
   </Section>
 </Sections>
