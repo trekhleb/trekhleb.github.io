@@ -14,23 +14,37 @@ export function SectionBody(props: SectionBodyProps): React.ReactElement {
   const { deps, siblings } = React.useContext(SectionContext);
 
   const followsFromList = deps?.length ? deps.map((depHash: SectionHash) => {
-    return <Reference key={depHash} hash={depHash} />;
+    return (
+      <div className="mr-2 mb-2" key={depHash}>
+        <Reference hash={depHash} />
+      </div>
+    );
   }) : null;
 
   const followsFrom = followsFromList ? (
-    <div><span className="italic">Follows from:</span> {followsFromList}</div>
+    <div className="flex flex-wrap">
+      <div className="italic mr-2 mb-2">Follows from:</div>
+      {followsFromList}
+    </div>
   ) : null;
 
   const relatesToList = siblings?.length ? siblings.map((depHash: SectionHash) => {
-    return <Reference key={depHash} hash={depHash} />;
+    return (
+      <div className="mr-2 mb-2" key={depHash}>
+        <Reference hash={depHash} />
+      </div>
+    );
   }) : null;
 
   const relatesTo = relatesToList ? (
-    <div><span className="italic">Relates to:</span> {relatesToList}</div>
+    <div className="flex flex-wrap">
+      <div className="italic mr-2 mb-2">Relates to:</div>
+      {relatesToList}
+    </div>
   ) : null;
 
   return (
-    <div className="text-sm">
+    <div className="text-sm pb-4">
       {followsFrom}
       {relatesTo}
       {children}

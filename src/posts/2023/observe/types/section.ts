@@ -8,6 +8,7 @@ export enum SectionHash {
   Assumption1 = 'assumption 1',
   Assumption2 = 'assumption 2',
   Assumption3 = 'assumption 3',
+  Assumption4 = 'assumption 4',
 }
 
 export type Section = {

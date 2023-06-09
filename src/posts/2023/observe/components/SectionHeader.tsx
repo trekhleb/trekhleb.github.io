@@ -19,7 +19,7 @@ export function SectionHeader(props: SectionHeaderProps): React.ReactElement {
 
   return (
     <div className="flex-1">
-      <div className="flex items-start mb-3" id={normalizedHash}>
+      <div className="flex items-start mb-3 pt-4" id={normalizedHash}>
         <div className={`flex text-xs rounded-md px-2 py-1 font-mono font-medium ${tagColorClass}`}>
           {hash}
         </div>

@@ -18,7 +18,7 @@ export function Reference(props: ReferenceProps): React.ReactElement {
     <span className="not-prose">
       <a
         href={`#${normalizedHash}`}
-        className={`text-xs rounded-md px-2 py-1 font-mono font-medium no-underline hover:underline ${tagColorClass}`}
+        className={`text-xs rounded-md px-2 py-1 font-mono font-medium whitespace-nowrap no-underline hover:underline ${tagColorClass}`}
       >
         {hash}
       </a>
