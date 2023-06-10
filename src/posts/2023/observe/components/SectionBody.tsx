@@ -22,7 +22,7 @@ export function SectionBody(props: SectionBodyProps): React.ReactElement {
   }) : null;
 
   const followsFrom = followsFromList ? (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap mt-4">
       <div className="italic mr-2 mb-2">Follows from:</div>
       {followsFromList}
     </div>
@@ -37,14 +37,14 @@ export function SectionBody(props: SectionBodyProps): React.ReactElement {
   }) : null;
 
   const relatesTo = relatesToList ? (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap mt-4">
       <div className="italic mr-2 mb-2">Relates to:</div>
       {relatesToList}
     </div>
   ) : null;
 
   return (
-    <div className="text-sm pb-4">
+    <div className="text-sm">
       {followsFrom}
       {relatesTo}
       {children}

@@ -3,21 +3,26 @@ import React from 'react';
 import { Divider } from './Divider';
 import { Section as SectionT } from '../types/section';
 import { SectionContext, SectionContextT } from '../contexts/section';
+import { SectionsContext } from '../contexts/sections';
 
 type SectionProps = SectionT & { children: React.ReactNode }
 
 export function Section(props: SectionProps): React.ReactElement {
-  const {
-    children, hash, deps, siblings,
-  } = props;
+  const { children, ...section } = props;
 
-  const context = React.useMemo<SectionContextT>(
-    () => ({ hash, deps, siblings }),
-    [hash, deps, siblings],
+  const sectionContext = React.useMemo<SectionContextT>(
+    () => (section),
+    [section],
   );
 
+  const sectionsContext = React.useContext(SectionsContext);
+  React.useEffect(() => {
+    sectionsContext.setSection(section);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
-    <SectionContext.Provider value={context}>
+    <SectionContext.Provider value={sectionContext}>
       {children}
       <Divider />
     </SectionContext.Provider>

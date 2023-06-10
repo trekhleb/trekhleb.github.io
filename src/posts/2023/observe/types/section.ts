@@ -16,3 +16,7 @@ export type Section = {
   deps?: SectionHash[],
   siblings?: SectionHash[],
 };
+
+export type SectionsMap = {
+  [values in SectionHash]?: Section;
+};

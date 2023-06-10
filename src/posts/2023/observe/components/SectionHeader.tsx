@@ -18,14 +18,14 @@ export function SectionHeader(props: SectionHeaderProps): React.ReactElement {
   const tagColorClass = getHashColor(hash);
 
   return (
-    <div className="flex-1">
-      <div className="flex items-start mb-3 pt-4" id={normalizedHash}>
+    <div className="flex flex-col flex-1">
+      <div className="flex items-start mb-4 pt-4" id={normalizedHash}>
         <div className={`flex text-xs rounded-md px-2 py-1 font-mono font-medium ${tagColorClass}`}>
           {hash}
         </div>
       </div>
 
-      <div className="text-xl mb-6 group [&>p]:m-0 [&>p]:inline">
+      <div className="text-xl group [&>p]:m-0 [&>p]:inline">
         {children}
         <a
           href={`#${normalizedHash}`}
