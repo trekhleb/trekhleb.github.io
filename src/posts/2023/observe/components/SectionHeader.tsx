@@ -1,7 +1,7 @@
 import React from 'react';
 import { VscLink } from '@react-icons/all-files/vsc/VscLink';
 
-import { getHashColor, normalizeHash } from '../utils/hash';
+import { getHashClasses, normalizeHash } from '../utils/hash';
 import { SectionContext } from '../contexts/section';
 
 type SectionHeaderProps = {
@@ -15,7 +15,7 @@ export function SectionHeader(props: SectionHeaderProps): React.ReactElement {
 
   const normalizedHash = normalizeHash(hash);
 
-  const tagColorClass = getHashColor(hash);
+  const tagColorClass = getHashClasses(hash);
 
   return (
     <div className="flex flex-col flex-1">

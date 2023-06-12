@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getHashColor, normalizeHash } from '../utils/hash';
+import { getHashClasses, normalizeHash } from '../utils/hash';
 import { SectionHash } from '../types/section';
 
 type ReferenceProps = {
@@ -12,7 +12,7 @@ export function Reference(props: ReferenceProps): React.ReactElement {
 
   const normalizedHash = normalizeHash(hash);
 
-  const tagColorClass = getHashColor(hash, false);
+  const tagColorClass = getHashClasses(hash, false);
 
   return (
     <span className="not-prose">

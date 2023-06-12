@@ -1,10 +1,12 @@
+import { CSSProperties } from 'react';
+import colors from 'tailwindcss/colors';
 import { SectionHash } from '../types/section';
 
 export const normalizeHash = (hash: SectionHash | undefined): string => {
   return hash?.trim().toLowerCase().replace(/ /g, '-') || '';
 };
 
-const tagClasses: Record<string, {primary: string, secondary: string}> = {
+const hashClasses: Record<string, {primary: string, secondary: string}> = {
   assumption: {
     primary: 'bg-orange-500 text-white',
     secondary: 'bg-orange-100',
@@ -15,18 +17,45 @@ const tagClasses: Record<string, {primary: string, secondary: string}> = {
   },
 };
 
-export const getHashColor = (hash: SectionHash | undefined, primary = true): string => {
+const hashStyles: Record<string, CSSProperties> = {
+  assumption: {
+    backgroundColor: colors.orange[500],
+    color: 'white',
+  },
+  observation: {
+    backgroundColor: colors.black,
+    color: 'white',
+  },
+};
+
+const getHashPrefix = (hash: SectionHash): string => {
+  return hash.toLocaleLowerCase().trim().split(' ')?.[0];
+};
+
+export const getHashClasses = (hash: SectionHash | undefined, primary = true): string => {
   const defaultPrimaryClasses = 'bg-black text-white';
   const defaultSecondaryClasses = 'bg-slate-200';
   const defaultClasses = primary ? defaultPrimaryClasses : defaultSecondaryClasses;
 
   if (!hash) return defaultClasses;
 
-  const hashPrefix = hash.toLocaleLowerCase().trim().split(' ')?.[0];
+  const hashPrefix = getHashPrefix(hash);
 
-  if (hashPrefix && tagClasses[hashPrefix]) {
-    return primary ? tagClasses[hashPrefix].primary : tagClasses[hashPrefix].secondary;
+  if (hashPrefix && hashClasses[hashPrefix]) {
+    return primary ? hashClasses[hashPrefix].primary : hashClasses[hashPrefix].secondary;
   }
 
   return defaultClasses;
+};
+
+export const getHashStyles = (hash: SectionHash | undefined): CSSProperties => {
+  if (!hash) return {};
+
+  const hashPrefix = getHashPrefix(hash);
+
+  if (hashPrefix && hashStyles[hashPrefix]) {
+    return hashStyles[hashPrefix];
+  }
+
+  return {};
 };
