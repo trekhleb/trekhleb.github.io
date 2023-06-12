@@ -181,8 +181,8 @@ export function Graph(): React.ReactElement {
           onEdgesChange={onEdgesChange}
           onNodeClick={onNodeClick}
           fitView={false}
-          snapGrid={[gridSize / 2, gridSize / 2]}
-          snapToGrid
+          snapGrid={[gridSize, gridSize]}
+          snapToGrid={DEBUG_NODE_POSITIONS}
         >
           <Controls />
           <MiniMap />
