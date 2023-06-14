@@ -32,7 +32,7 @@ type SectionNodePositions = Record<string, SectionNodePosition>;
 const DEBUG_NODE_POSITIONS = isLocalhost();
 
 const nodePositions: SectionNodePositions = {
-  'assumption-wb3': { x: 24, y: 120 }, 'assumption-bz4': { x: 72, y: 12 }, 'observation-bs3': { x: 528, y: 120 }, 'observation-xgt': { x: 468, y: 12 }, 'observation-ht9': { x: 204, y: 12 }, 'observation-hx2': { x: 336, y: 12 }, 'assumption-ml1': { x: 168, y: 228 }, 'observation-tg9': { x: 600, y: 12 }, 'observation-pw8': { x: 384, y: 120 }, 'assumption-bq2': { x: 324, y: 228 },
+  'assumption-wb3': { x: 24, y: 120 }, 'assumption-bz4': { x: 72, y: 12 }, 'observation-bs3': { x: 528, y: 120 }, 'observation-xgt': { x: 468, y: 12 }, 'observation-ht9': { x: 204, y: 12 }, 'observation-hx2': { x: 336, y: 12 }, 'assumption-ml1': { x: 168, y: 228 }, 'observation-vg2': { x: 732, y: 12 }, 'observation-me3': { x: 660, y: 120 }, 'observation-tg9': { x: 600, y: 12 }, 'observation-pw8': { x: 384, y: 120 }, 'assumption-bq2': { x: 324, y: 228 },
 };
 
 export function Graph(): React.ReactElement {
