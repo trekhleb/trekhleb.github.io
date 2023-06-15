@@ -16,6 +16,7 @@ import { SectionBody } from './components/SectionBody.tsx'
 import { SectionHeader } from './components/SectionHeader.tsx'
 import { Divider } from './components/Divider.tsx'
 import { Link } from './components/Link.tsx'
+import { Math } from './components/Math.tsx'
 import { SectionHash } from './types/section.ts'
 
 ![Observe](./assets/01-cover.jpeg)
@@ -39,14 +40,14 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionHeader>
     <SectionBody>
       - Imagine a world of 2D people
-        - They operate with 2D concepts of circles, rectangles, triangles, XY-axis, etc.
+        - They operate with 2D concepts of circles, rectangles, triangles, <Math>XY</Math>-axis, etc.
         - But they also want to grasp 3D concepts like a cylinder or torus
         - When a 3D cylinder intersects the 2D world its section might look different: from a circle, through an ellipse, to a square
         - When a 3D torus intersects the 2D world it sometimes is seen by the 2D people as one ellipse or sometimes as two independent circles, or sometimes as one circle inside another
         - Some 2D people may say that there is no such concept as a cylinder, but there are only concepts of circles and squares
         - Some 2D people may say that there is a concept of a cylinder, but a cylinder itself is not more than a circle
         - The idea that a cylinder can be a circle and a square at the same time might sound contradictive to the 2D people
-      - We're in a similar situation, except we're 4D people (let's say we have XYZ+Time) trying to think about higher dimensions
+      - We're in a similar situation, except we're 4D people (let's say we have <Math>XYZ</Math> + Time) trying to think about higher dimensions
         - Spirituality might be such a higher dimension
     </SectionBody>
   </Section>
@@ -123,7 +124,7 @@ The work on this list is ongoing and its content might be updated periodically.
           - The phlogiston theory was a prominent explanation of combustion and oxidation in the 17th and 18th centuries
           - It proposed that a substance called phlogiston was released during combustion, which explained phenomena such as fire and the rusting of metals
           - The theory held that phlogiston was a weightless, colorless, and odorless substance that resided within combustible materials. When a substance burned, it was believed that the phlogiston was released into the air, leaving behind a residue known as the "calx" or "phlogisticated" substance.
-          - The phlogiston theory provided an explanation for why substances decreased in weight when burned since it was believed that phlogiston had negative weight. It also accounted for other phenomena such as the ability of metals to gain weight when they were calcined (heated) since it was thought that phlogiston was absorbed during this process
+          - The phlogiston theory explained why substances decreased in weight when burned since it was believed that phlogiston had negative weight. It also accounted for other phenomena such as the ability of metals to gain weight when they were calcined (heated) since it was thought that phlogiston was absorbed during this process
           - However, the theory was later discredited with the discovery of oxygen and the development of the modern understanding of oxidation and combustion
         - *Newtonian Mechanics*
           - In the early 20th century, the theory of relativity, introduced a new understanding of gravity and motion that superseded certain aspects of Newtonian mechanics
@@ -189,7 +190,7 @@ The work on this list is ongoing and its content might be updated periodically.
         - *Euclid's Parallel Postulate*
           - Similar to Playfair's axiom. If a line intersects two other lines and the interior angles on one side are less than two right angles, then the lines will eventually intersect if extended far enough
         - *Peano's Axioms*
-          - A set of five axioms that provide a foundation for the natural numbers (0, 1, 2, 3, ...). For example, the Axiom of Zero: There exists a number called 0.
+          - A set of five axioms that provide a foundation for the natural numbers <Math>(0, 1, 2, 3, ...)</Math>. For example, the Axiom of Zero: there exists a number called <Math>0</Math>.
         - *Euclid's Common Notions*
           - Things equal the same thing also equal one another
           - If equals are added to equals, then the wholes are equal
@@ -198,35 +199,30 @@ The work on this list is ongoing and its content might be updated periodically.
           - The whole is greater than the part
         - *Axiom of Associativity*
           - This axiom states that the grouping of elements does not affect the result
-          - (a + b) + c = a + (b + c)
-          - (a * b) * c = a * (b * c)
+          - <Math>(a + b) + c = a + (b + c)</Math>
+          - <Math>(a * b) * c = a * (b * c)</Math>
         - <Link href="https://en.wikipedia.org/wiki/List_of_axioms">List of axioms</Link>
     </SectionBody>
   </Section>
 
   <Section hash={SectionHash.ObservationME3} siblings={[SectionHash.ObservationVG2]}>
     <SectionHeader>
-      Any mathematical system
+      Every mathematical system relies on at least one **true** statement that **cannot** be proven
     </SectionHeader>
     <SectionBody>
-      - Gödel's first incompleteness theorem shows that in any consistent formal system capable of expressing arithmetic, there are true statements that cannot be proven within the system itself.
-      - The second incompleteness theorem states that no consistent formal system capable of expressing arithmetic can prove its own consistency.
-      - Based on Gödel's incompleteness theorems, one significant conclusion in the context of axioms is that there are inherent limitations to any formal system: no consistent formal system capable of expressing arithmetic can simultaneously be both complete (able to prove all true statements) and able to prove its own consistency. This implies that there will always be true statements that are unprovable within the system and that the system itself cannot establish its own reliability.
-      - Explain
-        - Before Godel
-          - Every true statement in mathematical system should be provable (Hilbert's Problems)
-        - After Godel
-          - There are TRUE statements that CANNOT be proven within any mathematical system
-            - Examples
-              - Goldbach's conjecture
-                - It states that every even natural number greater than 2 is the sum of two prime numbers.
-              - Fermat's Last theorem (conjecture)
-                - No three positive integers a, b, and c satisfy the equation a^n + b^n = c^n for any integer value of n greater than 2.
-              - Paris-Harrington theorem
-                -  certain combinatorial principle in Ramsey theory, namely the strengthened finite Ramsey theorem, which is expressible in Peano arithmetic, is not provable in this system.
-              - Twin prime
-              - Riemann hypothesis
-                - ...
+      - Gödel's theorems
+        - *The 1st incompleteness theorem*
+          - In any consistent formal system capable of expressing arithmetic, there are true statements that cannot be proven within the system itself
+        - *The 2nd incompleteness theorem*
+          - No consistent formal system capable of expressing arithmetic can prove its own consistency
+      - Examples
+        - *Goldbach's Conjecture*
+          - Every even natural number greater than <Math>2</Math> is the sum of two prime numbers
+        - *Fermat's Last Theorem (conjecture)*
+          - No three positive integers <Math>a</Math>, <Math>b</Math>, and <Math>c</Math> satisfy the equation <Math>a<sup>n</sup> + b<sup>n</sup> = c<sup>n</sup></Math> for any integer value of <Math>n</Math> greater than <Math>2</Math>
+        - *Twin Prime Conjecture*
+          - There are infinitely many pairs of prime numbers <Math>(p, p+2)</Math> such that both <Math>p</Math> and <Math>p+2</Math> are prime. For example, the pair <Math>(3, 5)</Math>, <Math>(11, 13)</Math>, and <Math>(17, 19)</Math> are all twin prime pairs.
+        - *Riemann hypothesis*, *Paris-Harrington Theorem*, etc.
     </SectionBody>
   </Section>
 
