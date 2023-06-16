@@ -199,11 +199,11 @@ export function Graph(): React.ReactElement {
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onNodeClick={onNodeClick}
-          fitView={false}
           snapGrid={[gridSize, gridSize]}
           snapToGrid={DEBUG_NODE_POSITIONS}
           nodesConnectable={false}
           nodesDraggable={false}
+          fitView={false}
         >
           <Controls />
           <MiniMap />
