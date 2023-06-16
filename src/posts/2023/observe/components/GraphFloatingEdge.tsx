@@ -1,9 +1,11 @@
 import React from 'react';
-import { useStore, getBezierPath, EdgeProps } from 'reactflow';
+import {
+  useStore, getBezierPath, EdgeProps, BaseEdge, EdgeLabelRenderer,
+} from 'reactflow';
 import { getEdgeParams } from '../utils/graph';
 
 export const GraphFloatingEdge = ({
-  id, source, target, markerEnd, style, label, labelBgStyle,
+  id, source, target, markerEnd, style, label, labelStyle,
 }: EdgeProps): React.JSX.Element | null => {
   const sourceNode = useStore(
     React.useCallback((store) => store.nodeInternals.get(source), [source]),
@@ -21,7 +23,7 @@ export const GraphFloatingEdge = ({
     sx, sy, tx, ty, sourcePos, targetPos,
   } = getEdgeParams(sourceNode, targetNode);
 
-  const [edgePath] = getBezierPath({
+  const [edgePath, labelX, labelY] = getBezierPath({
     sourceX: sx,
     sourceY: sy,
     sourcePosition: sourcePos,
@@ -31,13 +33,21 @@ export const GraphFloatingEdge = ({
   });
 
   return (
-    <path
-      id={id}
-      className="react-flow__edge-path"
-      d={edgePath}
-      strokeWidth={5}
-      markerEnd={markerEnd}
-      style={style}
-    />
+    <>
+      <BaseEdge id={id} path={edgePath} markerEnd={markerEnd} style={style} />
+      <EdgeLabelRenderer>
+        <div
+          style={{
+            position: 'absolute',
+            transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
+            fontSize: 12,
+            ...labelStyle,
+          }}
+          className="nodrag nopan"
+        >
+          {label}
+        </div>
+      </EdgeLabelRenderer>
+    </>
   );
 };

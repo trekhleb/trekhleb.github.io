@@ -132,6 +132,9 @@ export function Graph(): React.ReactElement {
           label: 'follows',
           labelStyle: {
             fill: '#999',
+            color: '#999',
+            backgroundColor: 'white',
+            fontSize: '11px',
           },
           type: 'floating',
           sourceHandle: 'b',
@@ -163,6 +166,9 @@ export function Graph(): React.ReactElement {
             label: 'relates',
             labelStyle: {
               fill: '#999',
+              color: '#999',
+              backgroundColor: 'white',
+              fontSize: '11px',
             },
             type: 'floating',
             sourceHandle: 'b',
