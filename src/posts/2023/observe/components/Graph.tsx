@@ -83,6 +83,7 @@ export function Graph(): React.ReactElement {
             paddingRight: '0.5rem',
             paddingTop: '0.25rem',
             paddingBottom: '0.25rem',
+            cursor: 'pointer',
           },
         };
         return node;
