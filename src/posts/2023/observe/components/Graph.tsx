@@ -202,6 +202,8 @@ export function Graph(): React.ReactElement {
           fitView={false}
           snapGrid={[gridSize, gridSize]}
           snapToGrid={DEBUG_NODE_POSITIONS}
+          nodesConnectable={false}
+          nodesDraggable={false}
         >
           <Controls />
           <MiniMap />
