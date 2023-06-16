@@ -179,7 +179,7 @@ export function Graph(): React.ReactElement {
         href={`#${dependencyGraphSectionId}`}
         aria-label="Go to observations dependency graph"
         title="Go to observations dependency graph"
-        className="absolute text-black bg-slate-100 rounded-full flex p-3 items-center justify-center hover:bg-black hover:text-white border-4 border-white"
+        className="absolute text-black bg-slate-100 transition-all rounded-full flex p-3 items-center justify-center hover:bg-black hover:text-white border-4 border-white"
       >
         <ImTree className="cursor-pointer" size={18} />
       </a>
