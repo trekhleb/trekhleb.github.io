@@ -215,7 +215,7 @@ export function Graph(): React.ReactElement {
         Observations dependency graph
       </div>
       {sectionsCounter}
-      <div className="w-full" style={{ height: '500px' }}>
+      <div className="w-full" style={{ height: '450px' }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
