@@ -34,7 +34,10 @@ The work on this list is ongoing and its content might be updated periodically.
 <Divider />
 
 <Sections>
-  <Section hash={SectionHash.AssumptionWB3} siblings={[SectionHash.AssumptionBZ4]}>
+  <Section
+    hash={SectionHash.AssumptionWB3}
+    siblings={[SectionHash.AssumptionBZ4]}
+  >
     <SectionHeader>
       ## We are like **2D** people trying to grasp the **3D** ideas
     </SectionHeader>
@@ -52,7 +55,10 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.AssumptionBZ4} siblings={[SectionHash.AssumptionWB3]}>
+  <Section
+    hash={SectionHash.AssumptionBZ4}
+    siblings={[SectionHash.AssumptionWB3]}
+  >
     <SectionHeader>
       ## We are like a **fetus** in a mother's belly trying to think about **life after birth**
     </SectionHeader>
@@ -63,7 +69,10 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.ObservationBS3} siblings={[SectionHash.ObservationXGT]}>
+  <Section
+    hash={SectionHash.ObservationBS3}
+    siblings={[SectionHash.ObservationXGT]}
+  >
     <SectionHeader>
       ## Every physical object that we can grasp has an **origin** or a **cause**
     </SectionHeader>
@@ -85,7 +94,10 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.ObservationXGT} siblings={[SectionHash.ObservationBS3]}>
+  <Section
+    hash={SectionHash.ObservationXGT}
+    siblings={[SectionHash.ObservationBS3]}
+  >
     <SectionHeader>
       ## Science doesn't have an answer to the question of **ultimate origin** for now
     </SectionHeader>
@@ -102,7 +114,9 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.ObservationHT9}>
+  <Section
+    hash={SectionHash.ObservationHT9}
+  >
     <SectionHeader>
       ## In science, some **theories** are getting **reconsidered** over time
     </SectionHeader>
@@ -132,7 +146,9 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.ObservationHX2}>
+  <Section
+    hash={SectionHash.ObservationHX2}
+  >
     <SectionHeader>
       ## In science, some **theories** are not **accepted** at first
     </SectionHeader>
@@ -175,7 +191,10 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.ObservationVG2} siblings={[SectionHash.ObservationME3]}>
+  <Section
+    hash={SectionHash.ObservationVG2}
+    siblings={[SectionHash.ObservationME3]}
+  >
     <SectionHeader>
       ## Science operates with **axioms** that need to be **believed** in
     </SectionHeader>
@@ -205,7 +224,10 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.ObservationME3} siblings={[SectionHash.ObservationVG2]}>
+  <Section
+    hash={SectionHash.ObservationME3}
+    siblings={[SectionHash.ObservationVG2]}
+  >
     <SectionHeader>
       ## Every mathematical system relies on at least one **true** statement that **cannot** be proven
     </SectionHeader>
@@ -226,7 +248,9 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.ObservationTG9}>
+  <Section
+    hash={SectionHash.ObservationTG9}
+  >
     <SectionHeader>
       ## A child can be born only from **father** and **mother**
     </SectionHeader>
@@ -237,7 +261,29 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.ObservationPW8}>
+  <Section
+    hash={SectionHash.AssumptionCW5}
+    deps={[
+      SectionHash.ObservationBS3,
+      SectionHash.ObservationXGT,
+      SectionHash.ObservationME3,
+      SectionHash.ObservationVG2,
+    ]}
+  >
+    <SectionHeader>
+      ## Introducing the Creator
+    </SectionHeader>
+    <SectionBody>
+      - ...
+    </SectionBody>
+  </Section>
+
+  <Section
+    hash={SectionHash.ObservationPW8}
+    deps={[
+      SectionHash.AssumptionCW5,
+    ]}
+  >
     <SectionHeader>
       ## The **Creator** is more advanced than the **Creature**
     </SectionHeader>
@@ -253,7 +299,10 @@ The work on this list is ongoing and its content might be updated periodically.
     </SectionBody>
   </Section>
 
-  <Section hash={SectionHash.AssumptionBQ2} deps={[SectionHash.ObservationPW8]}>
+  <Section
+    hash={SectionHash.AssumptionBQ2}
+    deps={[SectionHash.ObservationPW8]}
+  >
     <SectionHeader>
       ## The **Creator** has **consciousness** and **feelings**
     </SectionHeader>

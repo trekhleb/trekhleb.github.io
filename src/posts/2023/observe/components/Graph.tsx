@@ -33,7 +33,7 @@ type SectionNodePositions = Record<string, SectionNodePosition>;
 const DEBUG_NODE_POSITIONS = isLocalhost();
 
 const nodePositions: SectionNodePositions = {
-  'assumption-wb3': { x: 24, y: 120 }, 'assumption-bz4': { x: 72, y: 12 }, 'observation-bs3': { x: 528, y: 120 }, 'observation-xgt': { x: 468, y: 12 }, 'observation-ht9': { x: 204, y: 12 }, 'observation-hx2': { x: 336, y: 12 }, 'assumption-ml1': { x: 168, y: 228 }, 'observation-vg2': { x: 660, y: 120 }, 'observation-me3': { x: 612, y: 12 }, 'observation-tg9': { x: 48, y: 288 }, 'observation-pw8': { x: 384, y: 120 }, 'assumption-bq2': { x: 324, y: 228 },
+  'assumption-wb3': { x: 24, y: 120 }, 'assumption-bz4': { x: 72, y: 12 }, 'observation-bs3': { x: 552, y: 72 }, 'observation-xgt': { x: 468, y: 12 }, 'observation-ht9': { x: 204, y: 12 }, 'observation-hx2': { x: 336, y: 12 }, 'assumption-ml1': { x: 168, y: 228 }, 'observation-vg2': { x: 720, y: 156 }, 'observation-me3': { x: 708, y: 36 }, 'observation-tg9': { x: 48, y: 288 }, 'assumption-cw5': { x: 348, y: 156 }, 'observation-pw8': { x: 324, y: 252 }, 'assumption-bq2': { x: 216, y: 336 },
 };
 
 const dependencyGraphSectionId = 'observations-dependency-graph';
