@@ -25,12 +25,14 @@ export function SectionHeader(props: SectionHeaderProps): React.ReactElement {
         </div>
       </div>
 
-      <div className="text-xl group [&>p]:m-0 [&>p]:inline">
+      <div
+        className="text-xl group [&>p]:m-0 [&>p]:inline [&>h2]:inline [&>h2>a]:overflow-hidden [&>h2>a]:hidden [&>h2>a]:invisible [&>h2>a]:w-0 [&>h2>a]:h-0 [&>h2>a]:opacity-0 not-prose"
+      >
         {children}
         <a
           href={`#${normalizedHash}`}
           aria-label="Link"
-          className="absolute text-black ml-3 mt-1 hidden group-hover:inline-block"
+          className="absolute text-black ml-0 mt-1 hidden group-hover:inline-block"
         >
           <VscLink className="text-black" />
         </a>
