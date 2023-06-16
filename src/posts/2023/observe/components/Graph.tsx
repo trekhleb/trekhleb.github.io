@@ -10,6 +10,8 @@ import ReactFlow, {
   Edge,
   MarkerType,
   NodeMouseHandler,
+  NodeTypes,
+  EdgeTypes,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { ImTree } from '@react-icons/all-files/im/ImTree';
@@ -20,6 +22,8 @@ import { Section, SectionHash } from '../types/section';
 import { getHashStyles, normalizeHash } from '../utils/hash';
 import { goToHash } from '../utils/navigation';
 import { isLocalhost } from '../utils/env';
+import { GraphFloatingNode } from './GraphFloatingNode';
+import { GraphFloatingEdge } from './GraphFloatingEdge';
 
 type SectionNodePosition = {
   x: number;
@@ -27,6 +31,14 @@ type SectionNodePosition = {
 };
 
 type SectionNodePositions = Record<string, SectionNodePosition>;
+
+const nodeTypes: NodeTypes = {
+  floating: GraphFloatingNode,
+};
+
+const edgeTypes: EdgeTypes = {
+  floating: GraphFloatingEdge,
+};
 
 // Turn this to true to see the node positions in the console.
 // The data from the console may be used to update default node positions
@@ -84,7 +96,14 @@ export function Graph(): React.ReactElement {
             paddingTop: '0.25rem',
             paddingBottom: '0.25rem',
             cursor: 'pointer',
+            fontSize: '12px',
+            fontWeight: 400,
+            fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace',
+            borderWidth: '0px',
+            borderStyle: 'solid',
+            borderColor: 'black',
           },
+          type: 'floating',
         };
         return node;
       },
@@ -114,6 +133,9 @@ export function Graph(): React.ReactElement {
           labelStyle: {
             fill: '#999',
           },
+          type: 'floating',
+          sourceHandle: 'b',
+          targetHandle: 't',
         };
         newEdges.push(edge);
       });
@@ -142,6 +164,9 @@ export function Graph(): React.ReactElement {
             labelStyle: {
               fill: '#999',
             },
+            type: 'floating',
+            sourceHandle: 'b',
+            targetHandle: 't',
           };
           newEdges.push(edge);
         }
@@ -197,6 +222,8 @@ export function Graph(): React.ReactElement {
         <ReactFlow
           nodes={nodes}
           edges={edges}
+          nodeTypes={nodeTypes}
+          edgeTypes={edgeTypes}
           onNodesChange={onNodesChange}
           onEdgesChange={onEdgesChange}
           onNodeClick={onNodeClick}
