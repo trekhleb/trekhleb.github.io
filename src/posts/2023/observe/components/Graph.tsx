@@ -12,6 +12,7 @@ import ReactFlow, {
   NodeMouseHandler,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
+import { ImTree } from '@react-icons/all-files/im/ImTree';
 
 import { SectionsContext } from '../contexts/sections';
 import { Spinner } from './Spinner';
@@ -34,6 +35,8 @@ const DEBUG_NODE_POSITIONS = isLocalhost();
 const nodePositions: SectionNodePositions = {
   'assumption-wb3': { x: 24, y: 120 }, 'assumption-bz4': { x: 72, y: 12 }, 'observation-bs3': { x: 528, y: 120 }, 'observation-xgt': { x: 468, y: 12 }, 'observation-ht9': { x: 204, y: 12 }, 'observation-hx2': { x: 336, y: 12 }, 'assumption-ml1': { x: 168, y: 228 }, 'observation-vg2': { x: 696, y: 120 }, 'observation-me3': { x: 744, y: 12 }, 'observation-tg9': { x: 600, y: 12 }, 'observation-pw8': { x: 384, y: 120 }, 'assumption-bq2': { x: 324, y: 228 },
 };
+
+const dependencyGraphSectionId = 'observations-dependency-graph';
 
 export function Graph(): React.ReactElement {
   const { sections } = React.useContext(SectionsContext);
@@ -170,8 +173,24 @@ export function Graph(): React.ReactElement {
 
   const gridSize = 12;
 
+  const goToGraphButton = (
+    <div className="not-prose fixed right-0 bottom-0 w-16 h-16 sm:w-20 sm:h-20">
+      <a
+        href={`#${dependencyGraphSectionId}`}
+        aria-label="Go to observations dependency graph"
+        title="Go to observations dependency graph"
+        className="absolute text-black bg-slate-100 rounded-full flex p-3 items-center justify-center hover:bg-black hover:text-white border-4 border-white"
+      >
+        <ImTree className="cursor-pointer" size={18} />
+      </a>
+    </div>
+  );
+
   return (
     <div>
+      <div className="text-xl mb-4 pt-4" id={dependencyGraphSectionId}>
+        Observations dependency graph
+      </div>
       {sectionsCounter}
       <div className="w-full h-96">
         <ReactFlow
@@ -194,6 +213,7 @@ export function Graph(): React.ReactElement {
           />
         </ReactFlow>
       </div>
+      {goToGraphButton}
     </div>
   );
 }
