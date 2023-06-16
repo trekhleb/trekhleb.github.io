@@ -7,17 +7,17 @@ export const GraphFloatingNode = React.memo(
     return (
       <>
         <div>{props.data.label}</div>
-        <Handle type="source" position={Position.Top} id="t" />
-        <Handle type="target" position={Position.Top} id="t" />
+        <Handle type="source" isConnectable={false} position={Position.Top} id="t" />
+        <Handle type="target" isConnectable={false} position={Position.Top} id="t" />
 
-        <Handle type="source" position={Position.Right} id="r" />
-        <Handle type="target" position={Position.Right} id="r" />
+        <Handle type="source" isConnectable={false} position={Position.Right} id="r" />
+        <Handle type="target" isConnectable={false} position={Position.Right} id="r" />
 
-        <Handle type="source" position={Position.Bottom} id="b" />
-        <Handle type="target" position={Position.Bottom} id="b" />
+        <Handle type="source" isConnectable={false} position={Position.Bottom} id="b" />
+        <Handle type="target" isConnectable={false} position={Position.Bottom} id="b" />
 
-        <Handle type="source" position={Position.Left} id="l" />
-        <Handle type="target" position={Position.Left} id="l" />
+        <Handle type="source" isConnectable={false} position={Position.Left} id="l" />
+        <Handle type="target" isConnectable={false} position={Position.Left} id="l" />
       </>
     );
   },
