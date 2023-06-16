@@ -24,13 +24,8 @@ import { goToHash } from '../utils/navigation';
 import { isLocalhost } from '../utils/env';
 import { GraphFloatingNode } from './GraphFloatingNode';
 import { GraphFloatingEdge } from './GraphFloatingEdge';
-
-type SectionNodePosition = {
-  x: number;
-  y: number;
-};
-
-type SectionNodePositions = Record<string, SectionNodePosition>;
+import { SectionNodePositions } from '../types/graph';
+import { nodePositions } from '../data/graph';
 
 const nodeTypes: NodeTypes = {
   floating: GraphFloatingNode,
@@ -43,10 +38,6 @@ const edgeTypes: EdgeTypes = {
 // Turn this to true to see the node positions in the console.
 // The data from the console may be used to update default node positions
 const DEBUG_NODE_POSITIONS = isLocalhost();
-
-const nodePositions: SectionNodePositions = {
-  'assumption-wb3': { x: 24, y: 120 }, 'assumption-bz4': { x: 72, y: 12 }, 'observation-bs3': { x: 372, y: 84 }, 'observation-xgt': { x: 468, y: 12 }, 'observation-ht9': { x: 204, y: 12 }, 'observation-hx2': { x: 336, y: 12 }, 'assumption-ml1': { x: 216, y: 132 }, 'observation-vg2': { x: 624, y: 132 }, 'observation-me3': { x: 600, y: 12 }, 'observation-tg9': { x: 84, y: 228 }, 'assumption-cw5': { x: 456, y: 192 }, 'observation-pw8': { x: 444, y: 264 }, 'assumption-bq2': { x: 288, y: 324 },
-};
 
 const dependencyGraphSectionId = 'observations-dependency-graph';
 
@@ -224,7 +215,7 @@ export function Graph(): React.ReactElement {
         Observations dependency graph
       </div>
       {sectionsCounter}
-      <div className="w-full h-96">
+      <div className="w-full" style={{ height: '500px' }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
