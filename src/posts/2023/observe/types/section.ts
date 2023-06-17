@@ -7,12 +7,14 @@ export enum SectionHash {
   ObservationTG9 = 'observation TG9',
   ObservationVG2 = 'observation VG2',
   ObservationME3 = 'observation ME3',
+  ObservationSQ4 = 'observation SQ4',
 
   AssumptionWB3 = 'assumption WB3',
   AssumptionBZ4 = 'assumption BZ4',
   AssumptionML1 = 'assumption ML1',
   AssumptionBQ2 = 'assumption BQ2',
   AssumptionCW5 = 'assumption CW5',
+  AssumptionHT4 = 'assumption HT4',
 }
 
 export type Section = {
