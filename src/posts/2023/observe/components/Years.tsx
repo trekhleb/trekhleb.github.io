@@ -1,14 +1,14 @@
 import React from 'react';
 
-type MathProps = {
+type YearsProps = {
   children: React.ReactNode,
 }
 
-export function Math(props: MathProps): React.ReactElement {
+export function Years(props: YearsProps): React.ReactElement {
   const { children } = props;
 
   return (
-    <span className="font-mono font-medium text-xs">
+    <span className="text-xs text-slate-400">
       {children}
     </span>
   );
