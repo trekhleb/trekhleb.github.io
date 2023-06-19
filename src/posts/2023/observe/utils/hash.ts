@@ -15,6 +15,10 @@ const hashClasses: Record<string, {primary: string, secondary: string}> = {
     primary: 'bg-black text-white',
     secondary: 'bg-slate-200',
   },
+  question: {
+    primary: 'bg-rose-500 text-white',
+    secondary: 'bg-rose-200',
+  },
 };
 
 const hashStyles: Record<string, CSSProperties> = {
@@ -24,6 +28,10 @@ const hashStyles: Record<string, CSSProperties> = {
   },
   observation: {
     backgroundColor: colors.black,
+    color: 'white',
+  },
+  question: {
+    backgroundColor: colors.rose[500],
     color: 'white',
   },
 };
