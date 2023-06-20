@@ -16,7 +16,7 @@ export function Link(props: LinkProps): React.ReactElement {
           [
           <a
             href={href}
-            className="font-medium underline hover:text-red-600"
+            className="text-xs font-medium underline hover:text-red-600"
           >
             {children}
           </a>
@@ -30,7 +30,7 @@ export function Link(props: LinkProps): React.ReactElement {
     <span className="not-prose">
       <a
         href={href}
-        className="font-medium underline hover:text-red-600"
+        className="text-xs font-medium underline hover:text-red-600"
       >
         {children}
       </a>
