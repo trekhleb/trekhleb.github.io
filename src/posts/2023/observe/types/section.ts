@@ -9,6 +9,7 @@ export enum SectionHash {
   ObservationME3 = 'observation ME3',
   ObservationSQ4 = 'observation SQ4',
   ObservationUR9 = 'observation UR9',
+  ObservationNW7 = 'observation NW7',
 
   AssumptionWB3 = 'assumption WB3',
   AssumptionBZ4 = 'assumption BZ4',
