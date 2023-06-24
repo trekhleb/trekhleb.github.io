@@ -4,7 +4,7 @@ export const projects: Projects = {
   observations: {
     id: 'observations',
     name: '👁️ Observations',
-    demoURL: { url: 'https://trekhleb.dev/blog/2023/observe/' },
+    demoURL: { url: '/blog/2023/observations/' },
     cover: { srcPath: 'projects/observations/04-cover.png' },
     startDate: '2023-06-01',
     summary: [
