@@ -1,6 +1,21 @@
 import { Projects } from '../types/Project';
 
 export const projects: Projects = {
+  observations: {
+    id: 'observations',
+    name: '👁️ Observations',
+    demoURL: { url: 'https://trekhleb.dev/blog/2023/observe/' },
+    cover: { srcPath: 'projects/observations/04-cover.png' },
+    startDate: '2023-06-01',
+    summary: [
+      'Subjective graph of observations, assumptions, questions, and interpretations',
+    ],
+    tags: [
+      { name: 'Observations' },
+      { name: 'Thoughts' },
+    ],
+    achievements: [],
+  },
   okso: {
     id: 'okso',
     name: '✍🏻 Ok! So...',
