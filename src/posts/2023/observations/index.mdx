@@ -18,7 +18,7 @@ import { Divider } from './components/Divider.tsx'
 import { Link } from './components/Link.tsx'
 import { Math } from './components/Math.tsx'
 import { Years } from './components/Years.tsx'
-import { SectionHash } from './types/section.ts'
+import { SectionHash as Hash } from './types/section.ts'
 
 ![Observe](./assets/02-cover.jpeg)
 
@@ -36,8 +36,8 @@ The work on this list is ongoing and its content might be updated periodically.
 
 <Sections>
   <Section
-    hash={SectionHash.AssumptionWB3}
-    siblings={[SectionHash.AssumptionBZ4]}
+    hash={Hash.AssumptionWB3}
+    siblings={[Hash.AssumptionBZ4]}
   >
     <SectionHeader>
       ## We are like **2D** people trying to grasp the **3D** ideas
@@ -58,8 +58,8 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.AssumptionBZ4}
-    siblings={[SectionHash.AssumptionWB3]}
+    hash={Hash.AssumptionBZ4}
+    siblings={[Hash.AssumptionWB3]}
   >
     <SectionHeader>
       ## We are like a **fetus** in a mother's belly trying to think about **life after birth**
@@ -72,8 +72,8 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationBS3}
-    siblings={[SectionHash.ObservationXGT]}
+    hash={Hash.ObservationBS3}
+    siblings={[Hash.ObservationXGT]}
   >
     <SectionHeader>
       ## Every physical object that we can grasp has an **origin** or a **cause**
@@ -97,8 +97,8 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationXGT}
-    siblings={[SectionHash.ObservationBS3]}
+    hash={Hash.ObservationXGT}
+    siblings={[Hash.ObservationBS3]}
   >
     <SectionHeader>
       ## Science doesn't have an answer to the question of **ultimate origin** for now
@@ -120,7 +120,7 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationHT9}
+    hash={Hash.ObservationHT9}
   >
     <SectionHeader>
       ## In science, some **theories** are getting **reconsidered** over time
@@ -152,7 +152,7 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationHX2}
+    hash={Hash.ObservationHX2}
   >
     <SectionHeader>
       ## In science, some **theories** are not **accepted** at first
@@ -170,12 +170,12 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.AssumptionML1}
+    hash={Hash.AssumptionML1}
     deps={[
-      SectionHash.AssumptionWB3,
-      SectionHash.AssumptionBZ4,
-      SectionHash.ObservationHT9,
-      SectionHash.ObservationHX2,
+      Hash.AssumptionWB3,
+      Hash.AssumptionBZ4,
+      Hash.ObservationHT9,
+      Hash.ObservationHX2,
     ]}
   >
     <SectionHeader>
@@ -197,8 +197,8 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationVG2}
-    siblings={[SectionHash.ObservationME3]}
+    hash={Hash.ObservationVG2}
+    siblings={[Hash.ObservationME3]}
   >
     <SectionHeader>
       ## Science operates with **axioms** that need to be **believed** in
@@ -231,8 +231,8 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationME3}
-    siblings={[SectionHash.ObservationVG2]}
+    hash={Hash.ObservationME3}
+    siblings={[Hash.ObservationVG2]}
   >
     <SectionHeader>
       ## Every mathematical system relies on at least one **true** statement that **cannot** be proven
@@ -255,24 +255,24 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.AssumptionCW5}
+    hash={Hash.AssumptionCW5}
     deps={[
-      SectionHash.ObservationBS3,
-      SectionHash.ObservationXGT,
-      SectionHash.ObservationME3,
-      SectionHash.ObservationVG2,
-      SectionHash.AssumptionML1,
+      Hash.ObservationBS3,
+      Hash.ObservationXGT,
+      Hash.ObservationME3,
+      Hash.ObservationVG2,
+      Hash.AssumptionML1,
     ]}
     siblings={[
-      SectionHash.AssumptionHT4,
-      SectionHash.ObservationSQ4,
+      Hash.AssumptionHT4,
+      Hash.ObservationSQ4,
     ]}
   >
     <SectionHeader>
       ## To answer the question of **origin** we need an axiom or a statement of the **Creator / Initiator /  Designer / God**
     </SectionHeader>
     <SectionBody>
-      - We, as human beings, are living in a lower-dimension (closed or limited) system. See <Reference hash={SectionHash.AssumptionWB3} /> and <Reference hash={SectionHash.AssumptionBZ4} />
+      - We, as human beings, are living in a lower-dimension (closed or limited) system. See <Reference hash={Hash.AssumptionWB3} /> and <Reference hash={Hash.AssumptionBZ4} />
         - We might not be able to grasp the higher-dimension concepts clearly
         - We need abstractions that have connection points to our lower-dimension world to reason about higher-dimension concepts
           - For example, to reason about *time*, it is helpful to draw it as a 2D calendar or a 1D timeline even though the concept of time is not that straightforward (think about its connection to gravity for example)
@@ -293,8 +293,8 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.AssumptionHT4}
-    siblings={[SectionHash.AssumptionCW5]}
+    hash={Hash.AssumptionHT4}
+    siblings={[Hash.AssumptionCW5]}
   >
     <SectionHeader>
       ## **Spiritual** and **scientific** paths are not contradictory, but **convergent**
@@ -313,8 +313,8 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationSQ4}
-    siblings={[SectionHash.AssumptionCW5]}
+    hash={Hash.ObservationSQ4}
+    siblings={[Hash.AssumptionCW5]}
   >
     <SectionHeader>
       ## **Scientists'** quotes about the **Creator**
@@ -364,9 +364,9 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationPW8}
+    hash={Hash.ObservationPW8}
     deps={[
-      SectionHash.AssumptionCW5,
+      Hash.AssumptionCW5,
     ]}
   >
     <SectionHeader>
@@ -385,7 +385,7 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationTG9}
+    hash={Hash.ObservationTG9}
   >
     <SectionHeader>
       ## A child can be born only from **father** and **mother**
@@ -398,8 +398,8 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.AssumptionBQ2}
-    deps={[SectionHash.ObservationPW8]}
+    hash={Hash.AssumptionBQ2}
+    deps={[Hash.ObservationPW8]}
   >
     <SectionHeader>
       ## The **Creator** has **consciousness** and **feelings**
@@ -408,12 +408,13 @@ The work on this list is ongoing and its content might be updated periodically.
       - If a human being (a creature) has a concept of consciousness and feelings, then these concepts are inherent to his/her creator
       - The Creator is not just gravity or electricity or an abstract force
       - Consciousness and feelings are just some of the concepts or features that we share with the Creator
-      - The Creator might operate with some other concepts or features that we, as human beings, can't grasp. See the <Reference hash={SectionHash.AssumptionWB3} />
+      - The Creator might operate with some other concepts or features that we, as human beings, can't grasp
+        - See the <Reference hash={Hash.AssumptionWB3} />
     </SectionBody>
   </Section>
 
   <Section
-    hash={SectionHash.ObservationNW7}
+    hash={Hash.ObservationNW7}
   >
     <SectionHeader>
       ## **You** and your physical traits are **unique** throughout the history of Earth
@@ -443,7 +444,7 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationEA5}
+    hash={Hash.ObservationEA5}
   >
     <SectionHeader>
       ## The **Universe** is **fine-tuned** for your existence
@@ -528,10 +529,10 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.AssumptionPU9}
+    hash={Hash.AssumptionPU9}
     deps={[
-      SectionHash.ObservationNW7,
-      SectionHash.ObservationEA5,
+      Hash.ObservationNW7,
+      Hash.ObservationEA5,
     ]}
   >
     <SectionHeader>
@@ -558,7 +559,7 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationUR9}
+    hash={Hash.ObservationUR9}
   >
     <SectionHeader>
       ## In most movies **good** defeats **evil**
@@ -585,12 +586,12 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.AssumptionHB5}
+    hash={Hash.AssumptionHB5}
     siblings={[
-      SectionHash.AssumptionGS2,
+      Hash.AssumptionGS2,
     ]}
     deps={[
-      SectionHash.ObservationUR9,
+      Hash.ObservationUR9,
     ]}
   >
     <SectionHeader>
@@ -601,7 +602,7 @@ The work on this list is ongoing and its content might be updated periodically.
         - Regardless of the culture, country, political or religious views, language, skin color or gender
         - Most people genuinely admire true love, support, kindness, sacrifice, etc.
         - Most people feel genuinely disgusted once encountered injustice, raping, lying, betrayal, etc.
-      - This explains the demand for movies where good conquers evil in <Reference hash={SectionHash.ObservationUR9} />
+      - This explains the demand for movies where good conquers evil in <Reference hash={Hash.ObservationUR9} />
       - Interesting <Link href="https://www.bbcearth.com/news/are-we-born-good-or-evil-naughty-or-nice">experiment</Link> carried out at Yale University
       - Human beings are free to repeatedly suppress the signals of this internal good-vs-evil "sensor" and act against it
           - When acting wrong most people have an internal conflict or a conviction
@@ -612,23 +613,50 @@ The work on this list is ongoing and its content might be updated periodically.
   </Section>
 
   <Section
-    hash={SectionHash.ObservationGS1}
+    hash={Hash.ObservationGS1}
   >
     <SectionHeader>
       ## Human beings sense **non-physical dimensions**
     </SectionHeader>
     <SectionBody>
-      - Remember your most precios moments in lifr
+      - Remember several most precious moments of your life
+        - It might be watching the sun setting down over the infinite ocean horizon
+        - It might be spending time with your loved ones (like seeing your kids playing)
+        - It might be lying on the grass and watching the summer sky and clouds
+        - It might be witnessing good conquering evil
+          - See the <Reference hash={Hash.AssumptionHB5} />
+        - It might be different things for different people
+      - You can't easily plan such moments and the things that you sense there
+        - You don't know when and where it comes from
+        - You don't know where it goes
+      - There is something in moments like these that is far beyond simply biological
+        - Yes, we see it with our eyes, we hear it with our ears, and sense it with our skin
+        - Yes, our brain does something with hormones, that, in turn, affect our heartbeat rate and so on
+        - But this is all a mechanics, a logistics of it. The consequence, rather than the reason
+      - We're trying to describe what is going on during the moments like these using words like
+        - peace
+        - love
+        - joy
+        - hope
+        - happiness
+        - awe
+        - calmness
+        - kindness
+        - etc
+      - The words above look like an attempt to describe something non-physical, something from a "higher dimension"
+        - The words above are like an attempt of 2D people to describe a 3D object
+          - See the <Reference hash={Hash.AssumptionWB3} />
+      - Human beings sense non-physical dimensions, which is not so easy for us to describe
     </SectionBody>
   </Section>
 
   <Section
-    hash={SectionHash.AssumptionGS2}
+    hash={Hash.AssumptionGS2}
     siblings={[
-      SectionHash.AssumptionHB5,
+      Hash.AssumptionHB5,
     ]}
     deps={[
-      SectionHash.ObservationGS1,
+      Hash.ObservationGS1,
     ]}
   >
     <SectionHeader>
