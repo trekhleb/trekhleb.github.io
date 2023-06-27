@@ -17,7 +17,7 @@ const Post = (props: PostProps): React.ReactElement | null => {
   const { post, children } = props;
 
   const dateElement = post?.mdx?.frontmatter?.date ? (
-    <Row className="mr-6 text-gray-500">
+    <Row className="mr-6 mb-6 text-gray-500 text-sm">
       <FiCalendar className="mr-1" />
       {post?.mdx?.frontmatter.date}
     </Row>
