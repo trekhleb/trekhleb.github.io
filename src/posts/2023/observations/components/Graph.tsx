@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactFlow, {
-  MiniMap,
   Controls,
   Background,
   BackgroundVariant,
@@ -215,7 +214,7 @@ export function Graph(): React.ReactElement {
         Observations dependency graph
       </div>
       {sectionsCounter}
-      <div className="w-full" style={{ height: '450px' }}>
+      <div className="w-full" style={{ height: '490px' }}>
         <ReactFlow
           nodes={nodes}
           edges={edges}
@@ -231,7 +230,6 @@ export function Graph(): React.ReactElement {
           fitView={false}
         >
           <Controls />
-          <MiniMap />
           <Background
             variant={BackgroundVariant.Dots}
             gap={gridSize}
