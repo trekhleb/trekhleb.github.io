@@ -131,7 +131,7 @@ async function main(): Promise<void> {
       }
       projectStars[projectID] = {
         stars: ghRepo.stargazers_count,
-        updatedAt: Date.now(),
+        updatedAt: new Date().toISOString(),
       };
       logInfo(projectStars[projectID]);
     } catch (err) {

@@ -1,6 +1,6 @@
 export type GitHubProjectStars = {
   stars: number,
-  updatedAt: number,
+  updatedAt: string,
 };
 
 export type GitHubStars = Record<string, GitHubProjectStars>;
