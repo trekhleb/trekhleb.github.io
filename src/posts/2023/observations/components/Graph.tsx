@@ -74,7 +74,7 @@ export function Graph(): React.ReactElement {
             ? { ...nodePositions[normalizedHash] }
             : { x: sectionIndex * 10, y: sectionIndex * 10 },
           data: {
-            label: section?.hash || '',
+            label: section?.title || section?.hash || '',
           },
           style: {
             ...getHashStyles(section?.hash),

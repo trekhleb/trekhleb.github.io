@@ -29,6 +29,7 @@ export type Section = {
   hash?: SectionHash,
   deps?: SectionHash[],
   siblings?: SectionHash[],
+  title?: string,
 };
 
 export type SectionsMap = {
