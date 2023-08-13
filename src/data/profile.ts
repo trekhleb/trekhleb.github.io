@@ -14,7 +14,7 @@ export const profile: Profile = {
     caption: 'Oleksii Trekhleb',
   },
   location: {
-    name: 'Amsterdam, The Netherlands (from 🇺🇦)',
+    name: 'Amsterdam, The Netherlands • from 🇺🇦',
   },
   tags: [
     { name: 'Full Stack' },
