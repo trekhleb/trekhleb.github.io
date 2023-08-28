@@ -1,10 +1,10 @@
 import React from 'react';
 
 type LinkProps = {
-  href: string,
-  children: React.ReactNode,
-  asRef?: boolean,
-}
+  href: string;
+  children: React.ReactNode;
+  asRef?: boolean;
+};
 
 export function Link(props: LinkProps): React.ReactElement {
   const { children, href, asRef } = props;
@@ -13,14 +13,9 @@ export function Link(props: LinkProps): React.ReactElement {
     return (
       <sup>
         <span className="not-prose">
-          [
-          <a
-            href={href}
-            className="font-medium underline hover:text-red-600"
-          >
-            {children}
+          <a href={href} className="font-medium underline hover:text-red-600">
+            [{children}]
           </a>
-          ]
         </span>
       </sup>
     );
@@ -28,10 +23,7 @@ export function Link(props: LinkProps): React.ReactElement {
 
   return (
     <span className="not-prose">
-      <a
-        href={href}
-        className="font-medium underline hover:text-red-600"
-      >
+      <a href={href} className="font-medium underline hover:text-red-600">
         {children}
       </a>
     </span>
