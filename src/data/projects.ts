@@ -642,6 +642,14 @@ export const projects: Projects = {
         image: { srcPath: 'projects/javascript-algorithms/achievements/18-github-trending-week-2023-04-08.png' },
         date: '2023-04-08',
       },
+      {
+        title: '200+ contributors on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/19-github-contributors-2024-05-05.png' },
+      },
+      {
+        title: '180K+ stars, 29K+ forks on GitHub',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/20-github-stats-2024-05-05.png' },
+      },
     ],
   },
   'machine-learning-octave': {
