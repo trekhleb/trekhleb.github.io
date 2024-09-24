@@ -17,7 +17,7 @@ export const socialLinks: SocialLink[] = [
   },
   {
     type: socialLinkTypes.twitter,
-    url: 'https://twitter.com/Trekhleb',
+    url: 'https://twitter.com/trekhleb',
     secondary: false,
     caption: 'Oleksii Trekhleb on Twitter',
   },
