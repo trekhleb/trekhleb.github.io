@@ -1,6 +1,30 @@
 import { Projects } from '../types/Project';
 
 export const projects: Projects = {
+  'homemade-gpt-js': {
+    id: 'homemade-gpt-js',
+    name: '💬 Homemade GPT • JS',
+    srcURL: { url: 'https://github.com/trekhleb/homemade-gpt-js' },
+    demoURL: { url: 'https://trekhleb.dev/homemade-gpt-js' },
+    cover: { srcPath: 'projects/homemade-gpt-js/cover.jpg' },
+    startDate: '2024-11-10',
+    summary: [
+      'A minimal TensorFlow.js re-implementation of Karpathy\'s minGPT (Generative Pre-trained Transformer)',
+    ],
+    tags: [
+      { name: 'GPT' },
+      { name: 'Transformers' },
+      { name: 'TensorFlow' },
+      { name: 'Machine Learning' },
+      { name: 'AI' },
+      { name: 'ML' },
+    ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'homemade-gpt-js',
+    },
+    achievements: [],
+  },
   'micrograd-ts': {
     id: 'micrograd-ts',
     name: '🤖 Micrograd TS',
