@@ -7,11 +7,17 @@ import Expander from './Expander';
 type TagsProps = {
   tags: TagType[],
   className?: string,
+  itemClassName?: string,
   numToShow?: number,
 };
 
 const Tags = (props: TagsProps): React.ReactElement | null => {
-  const { tags, className = '', numToShow = Infinity } = props;
+  const {
+    tags,
+    className = '',
+    itemClassName = 'mr-2 mb-2',
+    numToShow = Infinity,
+  } = props;
 
   if (!tags) {
     return null;
@@ -36,7 +42,7 @@ const Tags = (props: TagsProps): React.ReactElement | null => {
         items={tags}
         toHide={toHide}
         onRender={onRender}
-        itemClassName="mr-2 mb-2"
+        itemClassName={itemClassName}
       />
     </div>
   );
