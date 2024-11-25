@@ -7,7 +7,7 @@ export const publications: Publication[] = [
     date: '2024-07-15',
     publisher: 'ITNEXT',
     link: {
-      url: 'https://dou.ua/lenta/articles/open-source-in-ukraine/',
+      url: 'https://itnext.io/system-design-sketches-d8cb8e1d539f',
     },
   },
   {
@@ -132,7 +132,7 @@ export const publications: Publication[] = [
     date: '2019-07-01',
     publisher: 'ITNEXT',
     link: {
-      url: 'https://towardsdatascience.com/interactive-machine-learning-experiments-e9b29b0cb7b9',
+      url: 'https://itnext.io/creating-react-useposition-hook-for-getting-browsers-geolocation-2f27fc1d96de',
     },
   },
   {
