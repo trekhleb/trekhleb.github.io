@@ -12,6 +12,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Ukrainian developers — about the benefits of participating in open source (in UA)',
+    summary: ['The article discusses the growth and challenges of open-source development in Ukraine, highlighting notable Ukrainian contributors and projects, the community\'s role in fostering collaboration, and how open-source tools are being leveraged to support Ukraine'],
     date: '2022-02-03',
     publisher: 'DOU',
     link: {
@@ -91,7 +92,7 @@ export const publications: Publication[] = [
     },
   },
   {
-    title: 'JavaScript Algorithms Book',
+    title: '[Book] JavaScript Algorithms',
     summary: ['Pass your algorithms interview with confidence by learning data structures and algorithms in JavaScript. The book should help engineers to better prepare for tech interviews.'],
     date: '2020-07-02',
     publisher: 'Newline',
@@ -146,6 +147,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Homemade Machine Learning is a repository for learning ML in Python with a Jupyter demo',
+    summary: ['Article about the project that contains examples of popular machine learning algorithms implemented in Python with mathematics behind them being explained.'],
     date: '2019-01-08',
     publisher: 'DOU',
     link: {
@@ -163,6 +165,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Homemade Machine Learning in Python',
+    summary: ['Article about the project that contains examples of popular machine learning algorithms implemented in Python with mathematics behind them being explained.'],
     date: '2018-12-21',
     publisher: 'Data Driven Investor',
     link: {
@@ -171,6 +174,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Machine Learning in MatLab/Octave',
+    summary: ['MatLab/Octave examples of popular machine learning algorithms with code examples and mathematics behind them being explained.'],
     date: '2018-10-31',
     publisher: 'Data Driven Investor',
     link: {
@@ -179,6 +183,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Dynamic Programming vs Divide-and-Conquer',
+    summary: ['In this article I’m trying to explain the difference/similarities between dynamic programming and divide and conquer approaches based on two examples: binary search and minimum edit distance (Levenshtein distance).'],
     date: '2018-09-19',
     publisher: 'GeeksForGeeks',
     link: {
@@ -187,6 +192,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Playground and Cheatsheet for Learning Python (in UA)',
+    summary: ['Collection of Python scripts that are split by topics and contain code examples with explanations.'],
     date: '2018-09-04',
     publisher: 'DOU',
     link: {
@@ -195,6 +201,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'What I Learned In My Career Developing 50+ Web-Projects, Launching 2 Startups And 2 Open-Source Projects',
+    summary: ['How to stay productive and to be open to new opportunities (career developing).'],
     date: '2018-07-09',
     publisher: 'HowIGotJob',
     link: {
@@ -203,6 +210,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Permutations/Combinations Algorithms Cheat Sheets',
+    summary: ['This article briefly describes the difference between mathematical permutations and combinations, explains the main idea behind permutations and combinations algorithms and contains links to algorithms implementation in JavaScript.'],
     date: '2018-06-29',
     publisher: 'ITNEXT',
     link: {
@@ -211,6 +219,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Dynamic Programming vs Divide-and-Conquer',
+    summary: ['In this article I’m trying to explain the difference/similarities between dynamic programming and divide and conquer approaches based on two examples: binary search and minimum edit distance (Levenshtein distance).'],
     date: '2018-06-15',
     publisher: 'ITNEXT',
     link: {
@@ -219,6 +228,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Algorithms and Data Structures in JavaScript',
+    summary: ['Algorithms and data structures implemented in JavaScript with explanations and links to further readings.'],
     date: '2018-05-21',
     publisher: 'ITNEXT',
     link: {
