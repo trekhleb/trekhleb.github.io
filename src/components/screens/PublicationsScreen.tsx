@@ -1,6 +1,5 @@
 import React from 'react';
 
-import ProjectsList from '../elements/ProjectsList';
 import PageLayout from '../layouts/PageLayout';
 import PageHeader from '../shared/PageHeader';
 import Badge from '../shared/Badge';

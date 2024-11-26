@@ -1,8 +1,9 @@
 import { Tag } from './Tag';
 import { DateString } from './Date';
 import { Link } from './Link';
+import { Image } from './Image';
 
-type Publisher =
+export type Publisher =
   | 'AI Time Journal'
   | 'DOU'
   | 'Data Driven Investor'
@@ -21,5 +22,6 @@ export type Publication = {
   link: Link;
   date: DateString;
   publisher: Publisher;
+  publisherLogo: Image,
   tags?: Tag[];
 };
