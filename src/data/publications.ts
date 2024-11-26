@@ -14,6 +14,42 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'JavaScript-algorithms: Algorithms and data structures implemented in JavaScript (github.com/trekhleb)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2023-04-07',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2023-04-07',
+    },
+  },
+  {
+    title: 'TLDraw offers a collaborative whiteboard without any login',
+    summary: ['My okso.app drawing app is mentioned in the TechCrunch article related to TLDraw app'],
+    date: '2022-12-16',
+    publisher: 'TechCrunch',
+    publisherLogo: {
+      srcPath: 'publishers/tech-crunch.png',
+    },
+    link: {
+      url: 'https://techcrunch.com/2022/12/16/tldraw-offers-a-collaborative-whiteboard-without-any-login/',
+    },
+  },
+  {
+    title: 'Data Structures Sketches (okso.app)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2022-10-09',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2022-10-09',
+    },
+  },
+  {
     title: 'Ukrainian developers — about the benefits of participating in open source (in UA)',
     summary: ['The article discusses the growth and challenges of open-source development in Ukraine, highlighting notable Ukrainian contributors and projects, the community\'s role in fostering collaboration, and how open-source tools are being leveraged to support Ukraine'],
     date: '2022-02-03',
@@ -26,6 +62,42 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'JavaScript Algorithms and Data Structures (2018) (github.com/trekhleb)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2021-10-22',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2021-10-22',
+    },
+  },
+  {
+    title: 'Free resources to promote your next startup (github.com/trekhleb)',
+    summary: ['Published on Hacker News 2nd page. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2021-10-09',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2021-10-09&p=2',
+    },
+  },
+  {
+    title: 'Show HN: Self-Parking Car Evolution (trekhleb.dev)',
+    summary: ['Published on Hacker News 2nd page. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2021-09-28',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2021-09-28&p=2',
+    },
+  },
+  {
     title: 'Self-Parking Car in <500 Lines of Code',
     summary: ['Training the car to do self-parking using a genetic algorithm'],
     date: '2021-09-28',
@@ -35,6 +107,18 @@ export const publications: Publication[] = [
     },
     link: {
       url: 'https://towardsdatascience.com/self-parking-car-in-500-lines-of-code-c1b2a57455af',
+    },
+  },
+  {
+    title: 'Binary representation of floating-point numbers (github.com/trekhleb)',
+    summary: ['Published on Hacker News 2nd page. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2021-07-26',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2021-07-26&p=2',
     },
   },
   {
@@ -59,6 +143,30 @@ export const publications: Publication[] = [
     },
     link: {
       url: 'https://hackernoon.com/how-to-resize-an-image-correctly-in-javascript-4548336j',
+    },
+  },
+  {
+    title: 'Dynamic Programming vs. Divide-and-Conquer (2018) (trekhleb.dev)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2021-04-25',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2021-04-25',
+    },
+  },
+  {
+    title: 'Content-aware image resizing in JavaScript (trekhleb.dev)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2021-04-16',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2021-04-16',
     },
   },
   {
@@ -134,6 +242,18 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'Generating weird cooking recipes with TensorFlow (github.com/trekhleb)',
+    summary: ['Published on Hacker News 2nd page. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2020-06-22',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2020-06-22&p=2',
+    },
+  },
+  {
     title: 'Generating cooking recipes using TensorFlow and LSTM Recurrent Neural Network: A step-by-step guide',
     summary: ['This article contains details of how the recipes generator LSTM model may be trained trained on Python using TensorFlow 2 with Keras API.'],
     date: '2020-06-20',
@@ -179,6 +299,18 @@ export const publications: Publication[] = [
     },
     link: {
       url: 'https://towardsdatascience.com/interactive-machine-learning-experiments-e9b29b0cb7b9',
+    },
+  },
+  {
+    title: 'NanoNeuron – simple JavaScript functions that explain how machines learn (github.com/trekhleb)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2019-12-06',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2019-12-06',
     },
   },
   {
@@ -278,6 +410,18 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'Classic Algorithms Implemented in JavaScript (github.com/trekhleb)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2018-07-20',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2018-07-20',
+    },
+  },
+  {
     title: 'What I Learned In My Career Developing 50+ Web-Projects, Launching 2 Startups And 2 Open-Source Projects',
     summary: ['How to stay productive and to be open to new opportunities (career developing).'],
     date: '2018-07-09',
@@ -311,6 +455,18 @@ export const publications: Publication[] = [
     },
     link: {
       url: 'https://itnext.io/dynamic-programming-vs-divide-and-conquer-2fea680becbe',
+    },
+  },
+  {
+    title: 'Algorithms and Data Structures Explained and Implemented in JavaScript (github.com/trekhleb)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2018-05-23',
+    publisher: 'Hacker News',
+    publisherLogo: {
+      srcPath: 'publishers/hacker-news.png',
+    },
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2018-05-23',
     },
   },
   {

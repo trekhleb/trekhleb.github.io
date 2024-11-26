@@ -8,12 +8,14 @@ export type Publisher =
   | 'DOU'
   | 'Data Driven Investor'
   | 'GeeksForGeeks'
+  | 'Hacker News'
   | 'HackerNoon'
   | 'HowIGotJob'
   | 'ITNEXT'
   | 'JavaScript in Plain English'
   | 'KDnuggets'
   | 'Newline'
+  | 'TechCrunch'
   | 'Towards Data Science';
 
 export type Publication = {
