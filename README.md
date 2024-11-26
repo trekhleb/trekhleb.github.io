@@ -51,6 +51,12 @@ npm run lint
 npm run type
 ```
 
+To fix the Lint errors run:
+
+```bash
+npm run lint -- --fix
+```
+
 ### Working with icons
 
 Use [react-icons.github.io](https://react-icons.github.io/react-icons) to search for available icons.

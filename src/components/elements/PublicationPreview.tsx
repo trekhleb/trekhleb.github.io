@@ -31,13 +31,13 @@ const PublicationPreview = (props: PublicationPreviewProps): React.ReactElement 
   );
 
   /* eslint-disable react/no-array-index-key */
-  const publicationSummaryLines = publication.summary ? publication.summary.map(
+  const publicationSummaryLines = publication.summary.map(
     (summaryLine: string | null, index: number) => (
       <p key={index}>
         {summaryLine}
       </p>
     ),
-  ) : null;
+  );
 
   const publicationSummary = publicationSummaryLines ? (
     <div className="mb-3 font-light">
