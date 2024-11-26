@@ -11,14 +11,20 @@ type PublicationsListProps = {
 const PublicationsList = (props: PublicationsListProps): React.ReactElement => {
   const { publications } = props;
 
-  const publicationElements = publications.map((publication) => {
-    return (
-      <PublicationPreview
-        publication={publication}
-        key={publication.publisher + publication.title}
-      />
-    );
-  });
+  const publicationElements = publications
+    .sort((publicationA, publicationB) => {
+      const dateA = new Date(publicationA.date).getTime();
+      const dateB = new Date(publicationB.date).getTime();
+      return dateB - dateA;
+    })
+    .map((publication) => {
+      return (
+        <PublicationPreview
+          publication={publication}
+          key={publication.publisher + publication.title}
+        />
+      );
+    });
 
   return (
     <Cards mode={cardModeList}>
