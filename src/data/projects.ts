@@ -674,6 +674,12 @@ export const projects: Projects = {
         title: '180K+ stars, 29K+ forks on GitHub',
         image: { srcPath: 'projects/javascript-algorithms/achievements/20-github-stats-2024-05-05.png' },
       },
+      {
+        title: 'Top 5 of "BestOfJS" projects list',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/21-best-of-js-top-five-2024-11-26.png' },
+        date: '2024-11-26',
+        link: { url: 'https://bestofjs.org/projects', caption: 'All BestOfJS projects list' },
+      },
     ],
   },
   'machine-learning-octave': {
