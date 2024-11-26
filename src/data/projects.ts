@@ -233,6 +233,12 @@ export const projects: Projects = {
         date: '2021-10-09',
         link: { url: 'https://news.ycombinator.com/front?day=2021-10-09', caption: 'Hacker News archive' },
       },
+      {
+        title: 'Listed in BestOfJS hall of fame',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/02-bestofjs-hall-of-fame-2024-11-26.png' },
+        date: '2024-11-26',
+        link: { url: 'https://bestofjs.org/hall-of-fame', caption: 'BestOfJS hall of fame' },
+      },
     ],
   },
   'links-detector': {
