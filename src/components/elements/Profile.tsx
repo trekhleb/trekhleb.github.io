@@ -69,7 +69,7 @@ const Profile = (props: ProfileProps): React.ReactElement => {
   ) : null;
 
   const socialLinksElement = (
-    <SocialLinks links={profile?.socialLinks} />
+    <SocialLinks links={profile?.socialLinks} forceShowingSecondaryLinks />
   );
 
   return (

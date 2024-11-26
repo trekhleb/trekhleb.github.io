@@ -17,6 +17,7 @@ import Expander from './Expander';
 type SocialLinksProps = {
   links: SocialLinkType[] | null | undefined,
   expandable?: boolean,
+  forceShowingSecondaryLinks?: boolean,
   iconClassName?: string,
   itemClassName?: string,
 };
@@ -37,6 +38,7 @@ const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
   const {
     links = [],
     expandable = true,
+    forceShowingSecondaryLinks = false,
     iconClassName = 'w-6 h-6',
     itemClassName = 'mr-4 mb-2',
   } = props;
@@ -62,6 +64,9 @@ const SocialLinks = (props: SocialLinksProps): React.ReactElement | null => {
   };
 
   const toHide = (socialLink: SocialLinkType): boolean => {
+    if (forceShowingSecondaryLinks) {
+      return false;
+    }
     return typeof socialLink.secondary !== 'boolean' || socialLink.secondary;
   };
 
