@@ -14,13 +14,13 @@ const Greeting = (): React.ReactElement => {
 
   const projectsLinkElement = (
     <span className="inline-block">
-      <HyperLink link={projectsLink} className="underline font-semibold">projects</HyperLink>
+      <HyperLink link={projectsLink} className="underline font-medium underline-offset-2">projects</HyperLink>
     </span>
   );
 
   const blogLinkElement = (
     <span className="inline-block">
-      <HyperLink link={blogLink} className="underline font-semibold">articles</HyperLink>
+      <HyperLink link={blogLink} className="underline font-medium underline-offset-2">articles</HyperLink>
     </span>
   );
 

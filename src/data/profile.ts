@@ -6,7 +6,9 @@ export const profile: Profile = {
   lastName: 'Trekhleb',
   position: 'Senior Software Engineer @ Uber',
   summary: [
-    'Author of 170k ★️ javascript-algorithms repo on GitHub',
+    'Author of 180k ★️ js-algorithms GitHub repo',
+    '8+ times on HackerNews homepage',
+    '15+ years of full-stack experience',
   ],
   avatar: {
     // srcPath: 'profile/avatar_500x500.jpg',
@@ -16,10 +18,6 @@ export const profile: Profile = {
   location: {
     name: 'Amsterdam, The Netherlands • from 🇺🇦',
   },
-  tags: [
-    { name: 'Full Stack' },
-    { name: 'JavaScript' },
-    { name: 'React' },
-  ],
+  tags: [],
   socialLinks,
 };
