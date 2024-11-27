@@ -692,6 +692,12 @@ export const projects: Projects = {
         date: '2024-11-26',
         link: { url: 'https://bestofjs.org/projects', caption: 'All BestOfJS projects list' },
       },
+      {
+        title: 'Featured in Top 20 "GitStar Repositories" ranking',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/22-gitstars-repository-ranking-2024-11-27.png' },
+        date: '2024-11-27',
+        link: { url: 'https://gitstar-ranking.com/repositories', caption: 'GitStar Repositories Ranking' },
+      },
     ],
   },
   'machine-learning-octave': {
