@@ -239,6 +239,12 @@ export const projects: Projects = {
         date: '2024-11-26',
         link: { url: 'https://bestofjs.org/hall-of-fame', caption: 'BestOfJS hall of fame' },
       },
+      {
+        title: 'Featured in Top 10 "GitStar Users" ranking',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/03-gitstar-ranking-2024-11-27.png' },
+        date: '2024-11-27',
+        link: { url: 'https://gitstar-ranking.com/users', caption: 'GitStar Users Ranking' },
+      },
     ],
   },
   'links-detector': {
