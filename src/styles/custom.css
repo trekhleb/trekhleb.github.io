@@ -25,6 +25,10 @@
   font-weight: normal;
 }
 
+.prose code {
+  font-size: 13px !important;
+}
+
 /* Align images in blog post to the center of the page */
 .prose p>img {
   margin: auto;
