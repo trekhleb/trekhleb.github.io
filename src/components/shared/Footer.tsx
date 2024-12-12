@@ -12,9 +12,9 @@ import SocialLinks from './SocialLinks';
 import { profile } from '../../data/profile';
 
 type FooterProps = {
-  className?: string,
-  withFeedback?: boolean,
-  withSupport?: boolean,
+  className?: string;
+  withFeedback?: boolean;
+  withSupport?: boolean;
 };
 
 const Footer = (props: FooterProps): React.ReactElement => {
@@ -40,7 +40,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
     <HyperLink
       link={issuesLink}
       className="text-xs mr-5"
-      startEnhancer={(<FiGithub size={20} />)}
+      startEnhancer={<FiGithub size={20} />}
     >
       Feedback
     </HyperLink>
@@ -50,7 +50,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
     <HyperLink
       link={supportLink}
       className="text-xs mr-5"
-      startEnhancer={(<FaRegHeart size={20} />)}
+      startEnhancer={<FaRegHeart size={20} />}
     >
       Support
     </HyperLink>
@@ -63,7 +63,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
           <HyperLink
             link={subscribeLink}
             className="text-xs mr-5"
-            startEnhancer={(<AiOutlineMail size={20} />)}
+            startEnhancer={<AiOutlineMail size={20} />}
           >
             Subscribe
           </HyperLink>
@@ -75,7 +75,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
           <HyperLink
             link={rssLink}
             className="text-xs"
-            startEnhancer={(<FiRss size={20} />)}
+            startEnhancer={<FiRss size={20} />}
           >
             RSS
           </HyperLink>
@@ -91,6 +91,17 @@ const Footer = (props: FooterProps): React.ReactElement => {
             iconClassName="w-5 h-5"
             itemClassName="mr-2 ml-2"
           />
+          <div className="ml-3">
+            <HyperLink
+              className="text-2xl leading-4"
+              link={{
+                url: 'https://war.ukraine.ua/',
+                caption: 'Help Ukraine to survive the russian invasion',
+              }}
+            >
+              🇺🇦
+            </HyperLink>
+          </div>
         </div>
 
         <div style={{ flex: 1 }} className="hidden sm:flex">
