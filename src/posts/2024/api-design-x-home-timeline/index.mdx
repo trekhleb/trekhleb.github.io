@@ -31,7 +31,7 @@ We will only explore these challenges on the API level, treating the backend imp
 
 ### The endpoint and request/response structure
 
-Fetching of the list of tweets for the home timeline starts with the `POST` request to the following endpoint:
+Fetching the list of tweets for the home timeline starts with the `POST` request to the following endpoint:
 
 ```
 POST https://x.com/i/api/graphql/{query-id}/HomeTimeline
@@ -138,7 +138,7 @@ I'm using the word *"flavor"* here because the request body itself doesn't look 
 
 The assumption here is that the home timeline API is not a pure GraphQL API, but is a **mix of several approaches**. Passing the parameters in a POST request like this seems closer to the "functional" RPC call. But at the same time, it seems like the GraphQL features might be used somewhere on the backend behind the *HomeTimeline* endpoint handler/controller. A mix like this might also be caused by a legacy code or some sort of ongoing migration. But again, these are just my speculations.
 
-You may also notice that the same `TimelineRequest.queryId` is used in the API URL as well as in the API request body. This queryId is most probably generated on the backend, then it gets embedded to the `main.js` bundle, and then it is used when fetching the data from the backend. It is hard for me to understand how this `queryId` is used exactly since X's backend is a black box in our case. But, again, the speculation here might be that, it might be needed for some sort of performance optimization (re-using some pre-computed query results?), caching (Apollo related?), debugging (join logs by queryId?), or tracking/tracing purposes.
+You may also notice that the same `TimelineRequest.queryId` is used in the API URL as well as in the API request body. This queryId is most probably generated on the backend, then it gets embedded in the `main.js` bundle, and then it is used when fetching the data from the backend. It is hard for me to understand how this `queryId` is used exactly since X's backend is a black box in our case. But, again, the speculation here might be that, it might be needed for some sort of performance optimization (re-using some pre-computed query results?), caching (Apollo related?), debugging (join logs by queryId?), or tracking/tracing purposes.
 
 It is also interesting to note, that the `TimelineResponse` contains not a list of tweets, but rather a list of **instructions**, like *"add a tweet to the timeline"* (see the `TimelineAddEntries` type), or *"terminate the timeline"* (see the `TimelineTerminateTimeline` type).
 
@@ -213,14 +213,14 @@ Every page contains the list of tweets along with "top" and "bottom" cursors:
 
 After the page data is loaded, we can go from the current page in both directions and fetch either the "previous/older" tweets using the "bottom" cursor or the "next/newer" tweets using the "top" cursor. My assumption is that fetching the "next" tweets using the "top" cursor happens in two cases: when the new tweets were added while the user is still reading the current page, or when the user starts scrolling the feed upwards (and there are no cached entries or if the previous entries were deleted for the performance reasons).
 
-The X's cursor itself might look like this: `DAABCgABGemI6Mk__9sKAAIZ6MSYG9fQGwgAAwAAAAIAAA`. In some API designs, the cursor may be a Base64 encoded string that contains the id of the last entry in the list, or the timestamp of the last seen entry. For example: `eyJpZCI6ICIxMjM0NTY3ODkwIn0= --> {"id": "1234567890"}`, and then, this data is being used to query the database accordingly. In the case of X API, it looks like the cursor is being Base64 decoded into some custom binary sequence that might require some further decoding to get any meaning out of it (i.e. via the Protobuf message definitions). Since we don't know if it is a `.proto` encoding and also we don't know the `.proto` message definition we may just assume that the backend knows how to query the next batch of tweets based on the cursor string.
+The X's cursor itself might look like this: `DAABCgABGemI6Mk__9sKAAIZ6MSYG9fQGwgAAwAAAAIAAA`. In some API designs, the cursor may be a Base64 encoded string that contains the id of the last entry in the list, or the timestamp of the last seen entry. For example: `eyJpZCI6ICIxMjM0NTY3ODkwIn0= --> {"id": "1234567890"}`, and then, this data is used to query the database accordingly. In the case of X API, it looks like the cursor is being Base64 decoded into some custom binary sequence that might require some further decoding to get any meaning out of it (i.e. via the Protobuf message definitions). Since we don't know if it is a `.proto` encoding and also we don't know the `.proto` message definition we may just assume that the backend knows how to query the next batch of tweets based on the cursor string.
 
 The `TimelineResponse.variables.seenTweetIds` parameter is used to inform the server about which tweets from the currently active page of the infinite scrolling the client has already seen. This most probably helps ensure that the server does not include duplicate tweets in subsequent pages of results.
 
 ## Linked/hierarchical entities
 
 One of the challenges to be solved in the APIs like home timeline (or Home Feed) is to figure out how to return the linked or hierarchical entities (i.e. `tweet → user`, `tweet → media`, `media → author`, etc):
-- Should we only return the list of tweets first and then fetch the dependant entities (like user details) in a bunch of separate queries on-demand?
+- Should we only return the list of tweets first and then fetch the dependent entities (like user details) in a bunch of separate queries on-demand?
 - Or should we return all the data at once, increasing the time and the size of the first load, but saving the time for all subsequent calls?
   - Do we need to normalize the data in this case to reduce the payload size (i.e. when the same user is an author of many tweets and we want to avoid repeating the user data over and over again in each tweet entity)?
 - Or should it be a combination of the approaches above?
@@ -526,7 +526,7 @@ Initially, I had a plan to go through similar top-tech websites to get some insi
 
 ## Appendix: All types in one place
 
-For the reference I'm adding all types in one go here. You may also find all types in [types/x.ts](https://github.com/trekhleb/trekhleb.github.io/blob/master/src/posts/2024/api-design-x-home-timeline/types/x.ts) file.
+For the reference, I'm adding all types in one go here. You may also find all types in [types/x.ts](https://github.com/trekhleb/trekhleb.github.io/blob/master/src/posts/2024/api-design-x-home-timeline/types/x.ts) file.
 
 ```typescript
 /**
@@ -538,8 +538,6 @@ For the reference I'm adding all types in one go here. You may also find all typ
  *
  * Many properties and types are omitted for simplicity.
  */
-
-/* eslint-disable max-len */
 
 // POST https://x.com/i/api/graphql/{query-id}/HomeTimeline
 export type TimelineRequest = {
