@@ -1,7 +1,7 @@
 ---
 title: "API Design: X (Twitter) Home Timeline"
 
-summary: "An exploration of how X's Home Timeline API is designed"
+summary: "An exploration of how X's home timeline API is designed"
 
 cover: assets/01-cover.png
 
@@ -12,7 +12,7 @@ date: 2024-12-12
 
 When it comes to designing the API of the system the software engineers often consider different options like [REST vs RPC vs GraphQL](https://okso.app/showcase/system-design/page/0d03d895-b5b1-40c6-3549-945df9d98dcd) (or other hybrid approaches) to determine the best fit for a specific task or project.
 
-In this article, we explore how the **X** (**Twitter**) Home Timeline (x.com/home) API is designed and what approaches they use to solve the following challenges:
+In this article, we explore how the **X** (**Twitter**) home timeline (x.com/home) API is designed and what approaches they use to solve the following challenges:
 - How to fetch the list of tweets
 - How to do a sorting and pagination
 - How to return the hierarchical/linked entities (tweets, users, media)
@@ -21,9 +21,9 @@ In this article, we explore how the **X** (**Twitter**) Home Timeline (x.com/hom
 
 We will only explore these challenges on the API level, treating the backend implementation as a black box, since we don't have access to the backend code itself.
 
-![X Home Timeline Example](./assets/02-home.jpg)
+![X home timeline Example](./assets/02-home.jpg)
 
-> Showing the exact requests and responses here might be cumbersome and hard to follow since the deeply nested and repetitive objects are hard to read. To make it easier to see the request/response payload structure, I've made my attempt to "type out" the Home Timeline API in TypeScript. So when it comes to the request/response examples I'll use the request and response **types** instead of actual JSON objects. Also, remember that the types are simplified and many properties are omitted for brevity.
+> Showing the exact requests and responses here might be cumbersome and hard to follow since the deeply nested and repetitive objects are hard to read. To make it easier to see the request/response payload structure, I've made my attempt to "type out" the home timeline API in TypeScript. So when it comes to the request/response examples I'll use the request and response **types** instead of actual JSON objects. Also, remember that the types are simplified and many properties are omitted for brevity.
 >
 > You may find all types in [types/x.ts](https://github.com/trekhleb/trekhleb.github.io/blob/master/src/posts/2024/api-design-x-home-timeline/types/x.ts) file or at the bottom of this article in the "Appendix: All types at one place" section.
 
@@ -31,7 +31,7 @@ We will only explore these challenges on the API level, treating the backend imp
 
 ### The endpoint and request/response structure
 
-Fetching of the list of tweets for the Home Timeline starts with the `POST` request to the following endpoint:
+Fetching of the list of tweets for the home timeline starts with the `POST` request to the following endpoint:
 
 ```
 POST https://x.com/i/api/graphql/{query-id}/HomeTimeline
@@ -136,7 +136,7 @@ I'm using the word *"flavor"* here because the request body itself doesn't look 
 }
 ```
 
-The assumption here is that the Home Timeline API is not a pure GraphQL API, but is a **mix of several approaches**. Passing the parameters in a POST request like this seems closer to the "functional" RPC call. But at the same time, it seems like the GraphQL features might be used somewhere on the backend behind the *HomeTimeline* endpoint handler/controller. A mix like this might also be caused by a legacy code or some sort of ongoing migration. But again, these are just my speculations.
+The assumption here is that the home timeline API is not a pure GraphQL API, but is a **mix of several approaches**. Passing the parameters in a POST request like this seems closer to the "functional" RPC call. But at the same time, it seems like the GraphQL features might be used somewhere on the backend behind the *HomeTimeline* endpoint handler/controller. A mix like this might also be caused by a legacy code or some sort of ongoing migration. But again, these are just my speculations.
 
 You may also notice that the same `TimelineRequest.queryId` is used in the API URL as well as in the API request body. This queryId is most probably generated on the backend, then it gets embedded to the `main.js` bundle, and then it is used when fetching the data from the backend. It is hard for me to understand how this `queryId` is used exactly since X's backend is a black box in our case. But, again, the speculation here might be that, it might be needed for some sort of performance optimization (re-using some pre-computed query results?), caching (Apollo related?), debugging (join logs by queryId?), or tracking/tracing purposes.
 
@@ -165,7 +165,7 @@ type TimelineAddEntries = {
 };
 ```
 
-This is interesting from the extendability point of view since it allows a wider variety of what can be rendered in the Home Timeline without tweaking the API too much.
+This is interesting from the extendability point of view since it allows a wider variety of what can be rendered in the home timeline without tweaking the API too much.
 
 ### Pagination
 
@@ -219,7 +219,7 @@ The `TimelineResponse.variables.seenTweetIds` parameter is used to inform the se
 
 ## Linked/hierarchical entities
 
-One of the challenges to be solved in the APIs like Home Timeline (or Home Feed) is to figure out how to return the linked or hierarchical entities (i.e. `tweet → user`, `tweet → media`, `media → author`, etc):
+One of the challenges to be solved in the APIs like home timeline (or Home Feed) is to figure out how to return the linked or hierarchical entities (i.e. `tweet → user`, `tweet → media`, `media → author`, etc):
 - Should we only return the list of tweets first and then fetch the dependant entities (like user details) in a bunch of separate queries on-demand?
 - Or should we return all the data at once, increasing the time and the size of the first load, but saving the time for all subsequent calls?
   - Do we need to normalize the data in this case to reduce the payload size (i.e. when the same user is an author of many tweets and we want to avoid repeating the user data over and over again in each tweet entity)?
@@ -318,13 +318,13 @@ type Media = {
 
 What's interesting here is that most of the dependent data like `tweet → media` and `tweet → author` is embedded into the response on the first call (no subsequent queries).
 
-Also, the `User` and `Media` connections with `Tweet` entities are not normalized (if two tweets have the same author, their data will be repeated in each tweet object). But it seems like it should be ok, since in the scope of the Home Timeline for a specific user the tweets will be authored by many authors and repetitions are possible but sparse.
+Also, the `User` and `Media` connections with `Tweet` entities are not normalized (if two tweets have the same author, their data will be repeated in each tweet object). But it seems like it should be ok, since in the scope of the home timeline for a specific user the tweets will be authored by many authors and repetitions are possible but sparse.
 
 My assumption was that the `UserTweets` API (that we don't cover here), which is responsible for fetching the tweets of *one particular user* will handle it differently, but, apparently, it is not the case. The `UserTweets` returns the list of tweets of the same user and embeds the same user data over and over again for each tweet. It's interesting. Maybe the simplicity of the approach beats some data size overhead (maybe user data is considered pretty small in size). I'm not sure.
 
 Another observation about the entities' relationship is that the `Media` entity also has a link to the `User` (the author). But it does it not via direct entity embedding as the `Tweet` entity does, but rather it links via the `Media.source_user_id_str` property.
 
-The "comments" (which are also the "tweets" by their nature) for each "tweet" in the Home Timeline are not fetched at all. To see the tweet thread the user must click on the tweet to see its detailed view. The tweet thread will be fetched by calling the `TweetDetail` endpoint (more about it in the "Tweet detail page" section below).
+The "comments" (which are also the "tweets" by their nature) for each "tweet" in the home timeline are not fetched at all. To see the tweet thread the user must click on the tweet to see its detailed view. The tweet thread will be fetched by calling the `TweetDetail` endpoint (more about it in the "Tweet detail page" section below).
 
 Another entity that each `Tweet` has is `FeedbackActions` (i.e. "Recommend less often" or "See fewer"). The way the `FeedbackActions` are stored in the response object is different from the way the `User` and `Media` objects are stored. While the `User` and `Media` entities are part of the `Tweet`, the `FeedbackActions` are stored separately in `TimelineItem.content.feedbackInfo.feedbackKeys` array and are linked via the `ActionKey`. That was a slight surprise for me since it doesn't seem to be the case that any action is re-usable. It looks like one action is used for one particular tweet only. So it seems like the `FeedbackActions` could be embedded into each tweet in the same way as `Media` entities. But I might be missing some hidden complexity here (like the fact that each action can have children actions).
 
@@ -485,7 +485,7 @@ type TimelineModule = {
 
 The response is pretty similar (in its types) to the list response, so we won't for too long here.
 
-One interesting nuance is that the "comments" (or conversations) of each tweet are actually other tweets (see the `TimelineModule` type). So the tweet thread looks very similar to the Home Timeline feed by showing the list of `TimelineTweet` entries. This looks elegant. A good example of a universal and re-usable approach to the API design.
+One interesting nuance is that the "comments" (or conversations) of each tweet are actually other tweets (see the `TimelineModule` type). So the tweet thread looks very similar to the home timeline feed by showing the list of `TimelineTweet` entries. This looks elegant. A good example of a universal and re-usable approach to the API design.
 
 ## Liking the tweet
 
@@ -520,7 +520,7 @@ Looks straightforward and also resembles the RPC-like approach to the API design
 
 ## Conclusion
 
-We have touched on some basic parts of the Home Timeline API design by looking at X's API example. I made some assumptions along the way to the best of my knowledge. I believe some things I might have interpreted incorrectly and I might have missed some complex nuances. But even with that in mind, I hope you got some useful insights from this high-level overview, something that you could apply in your next API Design session.
+We have touched on some basic parts of the home timeline API design by looking at X's API example. I made some assumptions along the way to the best of my knowledge. I believe some things I might have interpreted incorrectly and I might have missed some complex nuances. But even with that in mind, I hope you got some useful insights from this high-level overview, something that you could apply in your next API Design session.
 
 Initially, I had a plan to go through similar top-tech websites to get some insights from Facebook, Reddit, YouTube, and others and to collect battle-tested best practices and solutions. I'm not sure if I'll find the time to do that. Will see. But it could be an interesting exercise.
 
@@ -530,7 +530,7 @@ For the reference I'm adding all types in one go here. You may also find all typ
 
 ```typescript
 /**
- * This file contains the simplified types for X's (Twitter's) Home Timeline API.
+ * This file contains the simplified types for X's (Twitter's) home timeline API.
  *
  * These types are created for exploratory purposes, to see the current implementation
  * of the X's API, to see how they fetch Home Feed, how they do a pagination and sorting,
