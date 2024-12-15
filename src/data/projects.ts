@@ -245,6 +245,12 @@ export const projects: Projects = {
         date: '2024-11-27',
         link: { url: 'https://gitstar-ranking.com/users', caption: 'GitStar Users Ranking' },
       },
+      {
+        title: 'Featured in TLDR DevOps newsletter',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/04-tldr-devops-newsletter-2024-12-13.png' },
+        date: '2024-12-13',
+        link: { url: 'https://tldr.tech/devops/2024-12-13', caption: 'TLDR DevOps 2024-12-13' },
+      },
     ],
   },
   'links-detector': {
