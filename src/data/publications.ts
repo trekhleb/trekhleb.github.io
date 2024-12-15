@@ -2,6 +2,18 @@ import { Publication } from '../types/Publication';
 
 export const publications: Publication[] = [
   {
+    title: 'How X (Twitter) Designed Its Home Timeline API: Lessons to Learn',
+    summary: ['A closer look at X’s API: fetching data, linking entities, and solving under-fetching.'],
+    date: '2024-12-15',
+    publisher: 'Towards Data Science',
+    publisherLogo: {
+      srcPath: 'publishers/towards-data-science.jpg',
+    },
+    link: {
+      url: 'https://towardsdatascience.com/api-design-of-x-twitter-home-timeline-da426f19edfe',
+    },
+  },
+  {
     title: 'System Design Sketches',
     summary: ['System design sketches for popular system design interview questions.'],
     date: '2024-07-15',
