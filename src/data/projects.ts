@@ -826,6 +826,23 @@ export const projects: Projects = {
       { name: 'MySQL' },
       { name: 'Bible' },
     ],
+    achievements: [
+      {
+        title: '50K+ registered users',
+        date: '2024-12-17',
+        image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
+      },
+      {
+        title: '5K+ daily active users',
+        date: '2024-12-17',
+        image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
+      },
+      {
+        title: 'Visited from 205 countries and territories',
+        date: '2024-12-17',
+        image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
+      },
+    ],
   },
   'hook-and-thread': {
     id: 'hook-and-thread',
