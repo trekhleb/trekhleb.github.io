@@ -829,17 +829,27 @@ export const projects: Projects = {
     achievements: [
       {
         title: '50K+ registered users',
-        date: '2024-12-17',
+        date: '2024-12-03',
         image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
       },
       {
-        title: '5K+ daily active users',
-        date: '2024-12-17',
+        title: '5K+ daily active users (Google Analytics)',
+        date: '2024-12-03',
         image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
       },
       {
-        title: 'Visited from 205 countries and territories',
-        date: '2024-12-17',
+        title: 'Visited from 205 countries and territories (Google Analytics)',
+        date: '2024-12-03',
+        image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
+      },
+      {
+        title: '136K clicks per month from Google search results (Google Search Console)',
+        date: '2024-12-03',
+        image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
+      },
+      {
+        title: '1.52M impressions per month in Google search results (Google Search Console)',
+        date: '2024-12-03',
         image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
       },
     ],
