@@ -685,12 +685,26 @@ export const projects: Projects = {
         date: '2023-04-08',
       },
       {
+        title: 'Issued in "JavaScript Weekly" newsletter',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/23-javascript-weekly-2023-08-17.png' },
+        date: '2023-08-17',
+        link: { url: 'https://javascriptweekly.com/issues/652', caption: 'JavaScript Weekly (issue #652)' },
+      },
+      {
         title: '200+ contributors on GitHub',
         image: { srcPath: 'projects/javascript-algorithms/achievements/19-github-contributors-2024-05-05.png' },
+        date: '2024-05-05',
       },
       {
         title: '180K+ stars, 29K+ forks on GitHub',
         image: { srcPath: 'projects/javascript-algorithms/achievements/20-github-stats-2024-05-05.png' },
+        date: '2024-05-05',
+      },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/24-javascript-weekly-2024-10-17.png' },
+        date: '2024-10-17',
+        link: { url: 'https://javascriptweekly.com/issues/709', caption: 'JavaScript Weekly (issue #709)' },
       },
       {
         title: 'Top 5 of "BestOfJS" projects list',
