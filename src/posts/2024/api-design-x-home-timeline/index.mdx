@@ -524,6 +524,14 @@ We have touched on some basic parts of the home timeline API design by looking a
 
 Initially, I had a plan to go through similar top-tech websites to get some insights from Facebook, Reddit, YouTube, and others and to collect battle-tested best practices and solutions. I'm not sure if I'll find the time to do that. Will see. But it could be an interesting exercise.
 
+## UPD (2025-12-18)
+
+> Based on the X thread from [@UriGoldshtein](https://x.com/UriGoldshtein/status/1869403702668214451)
+>
+> "He (trekhleb) says they are not using "pure GraphQL" because they are not sending the query over the network - but that's exactly how you should use GraphQL - using "Persisted/Trusted queries". That makes GraphQL a developer time tool, not a runtime feature. Which means you can basically think of each query is a REST endpoint, but instead of writing code to create controllers and endpoints, it is done automatically for you using static, type-safe, graph queries that at build time turn into endpoints and a secure allow list. It also means you don't need to upload the whole query body, just the query id. You 100% should use trusted documents for you GraphQL API and X is obviously doing it!"
+>
+> "He (trekhleb) was asking "I was curious here why the list of tweets is being fetched via the POST call, but each tweet detail is fetched via the GET call". My uneducated guess is that because a single tweet is more static content compared to the list of tweets that might change based on many things, with GET it could use simple, popular and existing caching mechanisms. That is another misconception about GraphQL - it can use both GET and POST and as we discussed before - if you use (and you should) trust documents, you basically create GET endpoints that are easily cacheable."
+
 ## Appendix: All types in one place
 
 For the reference, I'm adding all types in one go here. You may also find all types in [types/x.ts](https://github.com/trekhleb/trekhleb.github.io/blob/master/src/posts/2024/api-design-x-home-timeline/types/x.ts) file.
