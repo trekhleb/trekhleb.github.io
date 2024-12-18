@@ -182,6 +182,12 @@ export const projects: Projects = {
         link: { url: 'https://news.ycombinator.com/front?day=2021-04-16', caption: 'Hacker News archive' },
       },
       {
+        title: 'Published on "JavaScript in Plain English"',
+        image: { srcPath: 'projects/js-image-carver/achievements/02-javascript-in-plain-english-2021-04-16.png' },
+        date: '2021-04-16',
+        link: { url: 'https://javascript.plainenglish.io/content-aware-image-resizing-in-javascript-89144c1b5a5c', caption: 'Content-Aware Image Resizing in JavaScript' },
+      },
+      {
         title: '#3 product of the day on Product Hunt',
         image: { srcPath: 'projects/js-image-carver/achievements/01-product-hunt-third-product-of-the-day-2021-04-19.png' },
         date: '2021-04-19',
