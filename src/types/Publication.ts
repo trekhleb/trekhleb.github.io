@@ -5,6 +5,7 @@ import { Image } from './Image';
 
 export type Publisher =
   | 'AI Time Journal'
+  | 'CodeProject'
   | 'DOU'
   | 'Data Driven Investor'
   | 'GeeksForGeeks'

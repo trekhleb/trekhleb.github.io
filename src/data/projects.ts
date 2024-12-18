@@ -193,6 +193,12 @@ export const projects: Projects = {
         date: '2021-04-19',
         link: { url: 'https://www.producthunt.com/posts/js-image-carver', caption: 'Product page' },
       },
+      {
+        title: 'Published on CodeProject',
+        image: { srcPath: 'projects/js-image-carver/achievements/03-code-project-2022-01-19.png' },
+        date: '2022-01-19',
+        link: { url: 'https://www.codeproject.com/Articles/5322937/Content-Aware-Image-Resizing-in-JavaScript', caption: 'Content-Aware Image Resizing in JavaScript' },
+      },
     ],
   },
   'trekhleb-dev': {

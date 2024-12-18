@@ -74,6 +74,18 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'Content-Aware Image Resizing in JavaScript',
+    summary: ['JavaScript implementation of so-called Seam Carving algorithm for content-aware image resizing'],
+    date: '2022-01-19',
+    publisher: 'CodeProject',
+    publisherLogo: {
+      srcPath: 'publishers/code-project.jpg',
+    },
+    link: {
+      url: 'https://www.codeproject.com/Articles/5322937/Content-Aware-Image-Resizing-in-JavaScript',
+    },
+  },
+  {
     title: 'JavaScript Algorithms and Data Structures (2018) (github.com/trekhleb)',
     summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
     date: '2021-10-22',
