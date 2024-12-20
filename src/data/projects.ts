@@ -878,6 +878,21 @@ export const projects: Projects = {
         date: '2024-12-03',
         image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
       },
+      {
+        title: '~1M completed Bible reading plan steps by the readers',
+        date: '2024-12-03',
+        image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
+      },
+      {
+        title: '~120K user-created notes for Bible verses',
+        date: '2024-12-03',
+        image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
+      },
+      {
+        title: '~50K user-created tags that group Bible verses into categories',
+        date: '2024-12-03',
+        image: { srcPath: 'projects/allbible/achievements/01-chart.jpg' },
+      },
     ],
   },
   'hook-and-thread': {
