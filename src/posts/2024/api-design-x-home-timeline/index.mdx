@@ -159,6 +159,17 @@ The assumption here is that the home timeline API is not a pure GraphQL API, but
 
 You may also notice that the same `TimelineRequest.queryId` is used in the API URL as well as in the API request body. This queryId is most probably generated on the backend, then it gets embedded in the `main.js` bundle, and then it is used when fetching the data from the backend. It is hard for me to understand how this `queryId` is used exactly since X's backend is a black box in our case. But, again, the speculation here might be that, it might be needed for some sort of performance optimization (re-using some pre-computed query results?), caching (Apollo related?), debugging (join logs by queryId?), or tracking/tracing purposes.
 
+One assumption here is that the actual GraphQL query might be just prepared (but not yet executed) on the server side and mapped to a specific `queryId`. Then, the client (i.e. the browser or the mobile app) will send the `queryId` along with some additional "dynamic" data (like pagination cursor) to the backend, which, in turn, would fetch the query by its `queryId`, augment the prepared query with a dynamic data and then would finally execute the actual GraphQL query. This may be useful, for example, in the following cases:
+
+- it may potentially save some traffic, since less data is being transmitted with each query,
+- it may take into account some security considerations and hide some query parameters or details from the user (the "secret" parameters will be attached on the backend side and are not visible in the browser's network tab),
+- it may allow the backend to have a full control over the actual GraphQL query structure
+  - there are many times when query structure may need to be changed (i.e. A/B testing, API v1->v2 migration, maybe some performance issues mitigation (like having a default sorting on field `A` is faster than on field `B`), and other cases)
+  - if such query adaptation may be performed solely on the backend without involving the web and mobile (iOS + Android) teams, it may have some benefits: 1 team (backend) and 1 deployment (backend service), instead of 3 teams (frontend, backend, mobile) and 4 deployments (backend, frontend, iOS, Android). This would require a generation of a new `queryId` and some mechanisms to pass this new `queryId` to the clients without them being re-build every time though.
+- caching (not on the API-gateway level)?
+
+But again, the points above, are just mine speculations and assumptions. I can't be sure that this is how the `queryId` is used by X team.
+
 It is also interesting to note, that the `TimelineResponse` contains not a list of tweets, but rather a list of **instructions**, like *"add a tweet to the timeline"* (see the `TimelineAddEntries` type), or *"terminate the timeline"* (see the `TimelineTerminateTimeline` type).
 
 The `TimelineAddEntries` instruction itself may also contain different types of entities:
