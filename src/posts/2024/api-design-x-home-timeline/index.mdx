@@ -110,7 +110,26 @@ type TimelineCursor = {
 type ActionKey = string;
 ```
 
-It is interesting to note here, that "getting" the data is done via "POSTing", which is not common for the REST-like API but it is common for a GraphQL-like API. Also, the `graphql` part of the URL indicates that X is using the GraphQL flavor for their API.
+It is interesting to note here, that "getting" the data is done via "POSTing", which is not common for the REST-like API but it is common for a GraphQL-like API.
+
+> It is worth mentioning that sometimes data fetching in RESTful APIs can still be done via `POST` requests. See the [Get Commits Batch](https://learn.microsoft.com/en-us/rest/api/azure/devops/git/commits/get-commits-batch?view=azure-devops-rest-7.2&tabs=HTTP) API from Azure as an example. However, one could arguably assume that such an approach is either an anti-pattern or a corner case to address specific RESTful limitations (e.g., URL length limits, avoiding HTTP-level caching, preventing unwanted logging of data in the URL, or other reasons).
+>
+> Most of the time, RESTful APIs are pretty picky on how HTTP methods like `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` are used. What you would [typically see](https://aws.amazon.com/what-is/restful-api/) is:
+>
+> - `GET` — Fetches resources from the server (e.g., retrieves a user entity)
+> - `POST` — Creates new resources (e.g., adds a new user).
+> - `PUT` — Completely updates a resource (e.g., overwrites the entire user profile).
+> - `PATCH` — Partially updates a resource (e.g., updates the user's phone number while leaving the rest of the profile unchanged).
+> - `DELETE` — Deletes a resource (e.g., removes a user from the database).
+>
+> These constraints are considered a strength of RESTful APIs because such a standardized approach makes it easier to understand and use any RESTful API (engineers and users know what to expect). However, it can also create confusion, such as deciding which method to use when a user:
+>
+> 1. Requests a password reset, and then
+> 2. Resets the password by clicking the link in the email.
+>
+>Should this be a POST, PUT, PATCH, or something else?
+
+Additionally, in the case of the X API, the `graphql` part of the URL indicates that X uses a GraphQL-based API.
 
 I'm using the word *"flavor"* here because the request body itself doesn't look like a pure [GraphQL query](https://graphql.org/learn/queries/), where we may describe the required response structure, listing all the properties we want to fetch:
 
