@@ -1,3 +1,4 @@
+import React from 'react';
 import { Tag } from './Tag';
 import { DateString } from './Date';
 import { Link } from './Link';
@@ -22,6 +23,7 @@ export enum Publisher {
 
 export type PublisherData = {
   logo: Image,
+  description?: React.ReactNode,
 }
 
 export type Publication = {
