@@ -7,7 +7,7 @@ import HyperLink from './HyperLink';
 import { rssPath, supportURL } from '../../constants/links';
 import Row from './Row';
 import SocialLinks from './SocialLinks';
-import { profile } from '../../data/profile';
+import { PROFILE } from '../../data/profile';
 import FooterMenu from './FooterMenu';
 import { FOOTER_NAV } from '../../constants/routes';
 
@@ -61,7 +61,7 @@ const Footer = (props: FooterProps): React.ReactElement => {
         className="flex flex-row items-center justify-center"
       >
         <SocialLinks
-          links={profile?.socialLinks}
+          links={PROFILE?.socialLinks}
           expandable={false}
           iconClassName="w-5 h-5"
           itemClassName="mr-2 ml-2"

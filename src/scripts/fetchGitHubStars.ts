@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import fetch from 'node-fetch';
 
-import { projects } from '../data/projects';
+import { PROJECTS } from '../data/projects';
 import { Project } from '../types/Project';
 import { getGitHubProjectID, projectMapToArray } from '../utils/project';
 import { GitHubStars } from '../types/GitHubStars';
@@ -86,7 +86,7 @@ async function fetchGitHubProject(project: Project): Promise<GitHubProject> {
 }
 
 async function main(): Promise<void> {
-  const ghProjects = projectMapToArray(projects)
+  const ghProjects = projectMapToArray(PROJECTS)
     .filter((project: Project) => project?.gitHubRepo?.owner && project?.gitHubRepo?.repo);
 
   if (!ghProjects || !ghProjects.length) {

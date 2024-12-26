@@ -2,7 +2,7 @@
 import { socialLinkTypes } from '../types/SocialLink';
 import type { SocialLink } from '../types/SocialLink';
 
-export const socialLinks: SocialLink[] = [
+export const SOCIAL_LINKS: SocialLink[] = [
   {
     type: socialLinkTypes.linkedIn,
     url: 'https://www.linkedin.com/in/trekhleb/',

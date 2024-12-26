@@ -1,6 +1,6 @@
 import { Projects } from '../types/Project';
 
-export const projects: Projects = {
+export const PROJECTS: Projects = {
   'homemade-gpt-js': {
     id: 'homemade-gpt-js',
     name: '💬 Homemade GPT • JS',
