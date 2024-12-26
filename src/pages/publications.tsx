@@ -1,11 +1,11 @@
 import React from 'react';
 
 import PublicationsScreen from '../components/screens/PublicationsScreen';
-import { publications } from '../data/publications';
+import { PUBLICATIONS } from '../data/publications';
 
 const Publications = (): React.ReactElement => {
   return (
-    <PublicationsScreen publications={publications} />
+    <PublicationsScreen publications={PUBLICATIONS} />
   );
 };
 

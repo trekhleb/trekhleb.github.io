@@ -3,21 +3,26 @@ import { DateString } from './Date';
 import { Link } from './Link';
 import { Image } from './Image';
 
-export type Publisher =
-  | 'AI Time Journal'
-  | 'CodeProject'
-  | 'DOU'
-  | 'Data Driven Investor'
-  | 'GeeksForGeeks'
-  | 'Hacker News'
-  | 'HackerNoon'
-  | 'HowIGotJob'
-  | 'ITNEXT'
-  | 'JavaScript in Plain English'
-  | 'KDnuggets'
-  | 'Newline'
-  | 'TechCrunch'
-  | 'Towards Data Science';
+export enum Publisher {
+  AITimeJournal = 'AI Time Journal',
+  CodeProject = 'CodeProject',
+  DOU = 'DOU',
+  DataDrivenInvestor = 'Data Driven Investor',
+  GeeksForGeeks = 'GeeksForGeeks',
+  HackerNews = 'Hacker News',
+  HackerNoon = 'HackerNoon',
+  HowIGotJob = 'HowIGotJob',
+  ITNEXT = 'ITNEXT',
+  JavaScriptInPlainEnglish = 'JavaScript in Plain English',
+  KDnuggets = 'KDnuggets',
+  Newline = 'Newline',
+  TechCrunch = 'TechCrunch',
+  TowardsDataScience = 'Towards Data Science',
+}
+
+export type PublisherData = {
+  logo: Image,
+}
 
 export type Publication = {
   title: string;
@@ -25,6 +30,5 @@ export type Publication = {
   link: Link;
   date: DateString;
   publisher: Publisher;
-  publisherLogo: Image,
   tags?: Tag[];
 };

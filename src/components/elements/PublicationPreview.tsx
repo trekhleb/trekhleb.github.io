@@ -7,6 +7,7 @@ import CardTitle from '../shared/CardTitle';
 import Row from '../shared/Row';
 import { Publication } from '../../types/Publication';
 import Publisher from '../shared/Publisher';
+import { PUBLISHERS } from '../../data/publishers';
 
 type PublicationPreviewProps = {
   publication: Publication | null,
@@ -44,7 +45,7 @@ const PublicationPreview = (props: PublicationPreviewProps): React.ReactElement 
           <div className="flex flex-row justify-center items-center">
             <Publisher
               publisher={publication.publisher}
-              publisherLogo={publication.publisherLogo}
+              publisherLogo={PUBLISHERS[publication.publisher].logo}
             />
             <div className="text-gray-500 text-sm mr-3 ml-3">•</div>
             <DateRange
