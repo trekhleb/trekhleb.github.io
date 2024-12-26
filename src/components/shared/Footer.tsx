@@ -16,62 +16,60 @@ type FooterProps = {
 const Footer = (props: FooterProps): React.ReactElement => {
   const { className = '' } = props;
 
+  const withSupportLink = false;
+
   return (
-    <footer className={`${className}`}>
-      <Row responsive>
-        <Row style={{ flex: 1 }} className="mb-6 sm:mb-0">
-          <HyperLink
-            link={{ url: '/subscribe' }}
-            className="text-xs mr-5"
-            startEnhancer={<AiOutlineMail size={20} />}
-          >
-            Subscribe
-          </HyperLink>
-
-          <HyperLink
-            link={{ url: supportURL }}
-            className="text-xs mr-5"
-            startEnhancer={<FaRegHeart size={20} />}
-          >
-            Support
-          </HyperLink>
-
-          <HyperLink
-            link={{ url: rssPath }}
-            className="text-xs"
-            startEnhancer={<FiRss size={20} />}
-          >
-            RSS
-          </HyperLink>
-        </Row>
-
-        <div
-          style={{ flex: 1 }}
-          className="flex flex-row items-center justify-center"
+    <footer className={`flex flex-col justify-center items-center ${className}`}>
+      <Row className="mb-6">
+        <HyperLink
+          link={{ url: '/subscribe' }}
+          className="text-xs mr-5"
+          startEnhancer={<AiOutlineMail size={20} />}
         >
-          <SocialLinks
-            links={profile?.socialLinks}
-            expandable={false}
-            iconClassName="w-5 h-5"
-            itemClassName="mr-2 ml-2"
-          />
-          <div className="ml-3">
-            <HyperLink
-              className="text-2xl leading-4"
-              link={{
-                url: 'https://war.ukraine.ua/',
-                caption: 'Help Ukraine to survive the russian invasion',
-              }}
-            >
-              🇺🇦
-            </HyperLink>
-          </div>
-        </div>
+          Subscribe
+        </HyperLink>
 
-        <div style={{ flex: 1 }} className="hidden sm:flex">
-          &nbsp;
-        </div>
+        {withSupportLink && (
+        <HyperLink
+          link={{ url: supportURL }}
+          className="text-xs mr-5"
+          startEnhancer={<FaRegHeart size={20} />}
+        >
+          Support
+        </HyperLink>
+        )}
+
+        <HyperLink
+          link={{ url: rssPath }}
+          className="text-xs"
+          startEnhancer={<FiRss size={20} />}
+        >
+          RSS
+        </HyperLink>
       </Row>
+
+      <div
+        style={{ flex: 1 }}
+        className="flex flex-row items-center justify-center"
+      >
+        <SocialLinks
+          links={profile?.socialLinks}
+          expandable={false}
+          iconClassName="w-5 h-5"
+          itemClassName="mr-2 ml-2"
+        />
+        <div className="ml-3">
+          <HyperLink
+            className="text-2xl leading-4"
+            link={{
+              url: 'https://war.ukraine.ua/',
+              caption: 'Help Ukraine to survive the russian invasion',
+            }}
+          >
+            🇺🇦
+          </HyperLink>
+        </div>
+      </div>
     </footer>
   );
 };
