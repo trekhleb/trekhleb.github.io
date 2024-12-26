@@ -1,7 +1,7 @@
 import React from 'react';
 import { Publisher, PublisherData } from '../types/Publication';
 
-export const PUBLISHERS: Record<Publisher, PublisherData> = {
+export const publishers: Record<Publisher, PublisherData> = {
   [Publisher.AITimeJournal]: {
     logo: { srcPath: 'publishers/ai-time-journal.jpg' },
     description: (

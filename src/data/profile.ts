@@ -1,7 +1,7 @@
 import { Profile } from '../types/Profile';
-import { SOCIAL_LINKS } from './socialLinks';
+import { socialLinks } from './socialLinks';
 
-export const PROFILE: Profile = {
+export const profile: Profile = {
   firstName: 'Oleksii',
   lastName: 'Trekhleb',
   position: 'Senior Software Engineer @ Uber',
@@ -19,5 +19,5 @@ export const PROFILE: Profile = {
     name: 'Amsterdam, The Netherlands • (from Ukraine)',
   },
   tags: [],
-  socialLinks: SOCIAL_LINKS,
+  socialLinks,
 };

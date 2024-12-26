@@ -8,7 +8,7 @@ import CardTitle from '../shared/CardTitle';
 import Row from '../shared/Row';
 import { Publication } from '../../types/Publication';
 import Publisher from '../shared/Publisher';
-import { PUBLISHERS } from '../../data/publishers';
+import { publishers } from '../../data/publishers';
 import Tooltip from '../shared/Tooltip';
 
 type PublicationPreviewProps = {
@@ -35,9 +35,9 @@ const PublicationPreview = (
     <div className="mb-3 font-light">{publicationSummaryLines}</div>
   ) : null;
 
-  const publisherDetails = PUBLISHERS[publication.publisher].description ? (
+  const publisherDetails = publishers[publication.publisher].description ? (
     <div className="ml-2">
-      <Tooltip content={PUBLISHERS[publication.publisher].description}>
+      <Tooltip content={publishers[publication.publisher].description}>
         <FaInfoCircle />
       </Tooltip>
     </div>
@@ -51,7 +51,7 @@ const PublicationPreview = (
           <div className="flex flex-row justify-center items-center">
             <Publisher
               publisher={publication.publisher}
-              publisherLogo={PUBLISHERS[publication.publisher].logo}
+              publisherLogo={publishers[publication.publisher].logo}
             />
             {publisherDetails}
             <div className="text-gray-500 text-sm mr-3 ml-3">•</div>

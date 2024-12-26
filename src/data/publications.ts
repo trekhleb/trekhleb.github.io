@@ -1,6 +1,6 @@
 import { Publication, Publisher } from '../types/Publication';
 
-export const PUBLICATIONS: Publication[] = [
+export const publications: Publication[] = [
   {
     title: 'How X (Twitter) Designed Its Home Timeline API: Lessons to Learn',
     summary: ['A closer look at X’s API: fetching data, linking entities, and solving under-fetching.'],

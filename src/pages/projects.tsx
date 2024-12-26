@@ -1,11 +1,11 @@
 import React from 'react';
 
 import ProjectsScreen from '../components/screens/ProjectsScreen';
-import { PROJECTS } from '../data/projects';
+import { projects } from '../data/projects';
 
 const Projects = (): React.ReactElement => {
   return (
-    <ProjectsScreen projects={PROJECTS} />
+    <ProjectsScreen projects={projects} />
   );
 };
 

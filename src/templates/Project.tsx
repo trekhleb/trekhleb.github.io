@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { PageProps } from 'gatsby';
 import ProjectScreen from '../components/screens/ProjectScreen';
-import { PROJECTS } from '../data/projects';
+import { projects } from '../data/projects';
 import { ProjectID, Project as ProjectType } from '../types/Project';
 
 interface ProjectProps extends PageProps {
@@ -14,8 +14,8 @@ const Project = (props: ProjectProps): React.ReactElement => {
   const { pageContext } = props;
   const { projectID = null } = pageContext;
 
-  const project: ProjectType | null = projectID && (projectID in PROJECTS)
-    ? PROJECTS[projectID]
+  const project: ProjectType | null = projectID && (projectID in projects)
+    ? projects[projectID]
     : null;
 
   return (

@@ -7,7 +7,7 @@ export type Route = {
 
 type Routes = Record<Slug, Route>;
 
-export const ROUTES: Routes = {
+export const routes: Routes = {
   home: {
     path: '/',
     name: 'About',
@@ -27,9 +27,9 @@ export const ROUTES: Routes = {
 };
 
 export const TOP_NAV: Route[] = [
-  ROUTES.projects,
-  ROUTES.blog,
-  ROUTES.publications,
+  routes.projects,
+  routes.blog,
+  routes.publications,
 ];
 
 export const FOOTER_NAV: Route[] = [];

@@ -1,15 +1,15 @@
 import React from 'react';
 import HyperLink from './HyperLink';
 import type { Link } from '../../types/Link';
-import { ROUTES } from '../../constants/routes';
+import { routes } from '../../constants/routes';
 
 const Greeting = (): React.ReactElement => {
   const projectsLink: Link = {
-    url: `${ROUTES.projects.path}/`,
+    url: `${routes.projects.path}/`,
   };
 
   const blogLink: Link = {
-    url: `${ROUTES.blog.path}/`,
+    url: `${routes.blog.path}/`,
   };
 
   const projectsLinkElement = (

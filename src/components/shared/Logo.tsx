@@ -1,13 +1,13 @@
 import React from 'react';
 
-import { ROUTES } from '../../constants/routes';
+import { routes } from '../../constants/routes';
 import { brandName } from '../../constants/siteMeta';
 import type { Link as LinkType } from '../../types/Link';
 import HyperLink from './HyperLink';
 
 const Logo = (): React.ReactElement => {
   const link: LinkType = {
-    url: ROUTES.home.path,
+    url: routes.home.path,
   };
   return (
     <div>
