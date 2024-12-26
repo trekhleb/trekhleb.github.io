@@ -1,22 +1,16 @@
-type Slug =
-  | 'home'
-  | 'projects'
-  | 'blog'
-  | 'publications';
+type Slug = 'home' | 'projects' | 'blog' | 'publications';
 
 export type Route = {
-  path: string,
-  name: string,
-  hidden?: boolean,
+  path: string;
+  name: string;
 };
 
 type Routes = Record<Slug, Route>;
 
-export const routes: Routes = {
+export const ROUTES: Routes = {
   home: {
     path: '/',
     name: 'About',
-    hidden: true,
   },
   projects: {
     path: '/projects',
@@ -31,3 +25,11 @@ export const routes: Routes = {
     name: 'Publications',
   },
 };
+
+export const TOP_NAV: Route[] = [
+  ROUTES.projects,
+  ROUTES.blog,
+  ROUTES.publications,
+];
+
+export const FOOTER_NAV: Route[] = [];

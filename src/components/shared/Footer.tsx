@@ -8,6 +8,8 @@ import { rssPath, supportURL } from '../../constants/links';
 import Row from './Row';
 import SocialLinks from './SocialLinks';
 import { profile } from '../../data/profile';
+import FooterMenu from './FooterMenu';
+import { FOOTER_NAV } from '../../constants/routes';
 
 type FooterProps = {
   className?: string;
@@ -20,6 +22,12 @@ const Footer = (props: FooterProps): React.ReactElement => {
 
   return (
     <footer className={`flex flex-col justify-center items-center ${className}`}>
+      {!!FOOTER_NAV.length && (
+      <Row className="mb-6">
+        <FooterMenu />
+      </Row>
+      )}
+
       <Row className="mb-6">
         <HyperLink
           link={{ url: '/subscribe' }}

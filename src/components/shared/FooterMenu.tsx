@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Route, TOP_NAV } from '../../constants/routes';
+import { FOOTER_NAV, Route } from '../../constants/routes';
 import { Link } from '../../types/Link';
 import HyperLink from './HyperLink';
 
-const NavMenu = (): React.ReactElement => {
-  const links = Object.values(TOP_NAV)
+const FooterMenu = (): React.ReactElement => {
+  const links = Object.values(FOOTER_NAV)
     .map((route: Route): React.ReactElement => {
       // Adding a / to the end of the links so that activeClassName parameter
       // would work correctly.
@@ -31,4 +31,4 @@ const NavMenu = (): React.ReactElement => {
   );
 };
 
-export default NavMenu;
+export default FooterMenu;
