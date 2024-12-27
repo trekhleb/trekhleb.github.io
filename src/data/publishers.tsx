@@ -12,7 +12,11 @@ export const publishers: Record<Publisher, PublisherData> = {
           <A href="https://www.aitimejournal.com/">aitimejournal.com</A>
         </p>
         <p>
-          ~9K followers on LinkedIn.
+          The journal that explores how AI and Exponential Technologies
+          can help thrive in this constantly changing world.
+        </p>
+        <p>
+          ~9K followers <A href="https://www.linkedin.com/company/ai-time-journal/">on LinkedIn</A>.
         </p>
       </>
     ),
@@ -80,15 +84,16 @@ export const publishers: Record<Publisher, PublisherData> = {
         <p>
           Data Driven Investor (DDI) publishes various
           news and op-ed pieces in the areas of technologies,
-          finance, and society. They are dedicated to relentlessly
-          covering tech topics, their anomalies and controversies,
-          and reviewing all things fascinating and worth knowing.
+          finance, and society.
         </p>
         <p>
-          ~2K followers on LinkedIn.
+          The publication requires an editorial review and approval process (<A href="https://medium.datadriveninvestor.com/working-with-datadriveninvestor-17d8dcada24c">rules</A>).
         </p>
         <p>
-          ~2K followers on X.
+          ~2K followers <A href="https://www.linkedin.com/company/data-driven-investor/">on LinkedIn</A>.
+        </p>
+        <p>
+          ~2K followers <A href="https://x.com/ddinvestorhq">on X</A>.
         </p>
       </>
     ),
@@ -181,7 +186,10 @@ export const publishers: Record<Publisher, PublisherData> = {
           a career path, lesson learnt.
         </p>
         <p>
-          ~12K followers on LinkedIn.
+          Articles are written by the web site editors.
+        </p>
+        <p>
+          ~12K followers <A href="https://www.linkedin.com/company/howigotjob/">on LinkedIn</A>.
         </p>
       </>
     ),
