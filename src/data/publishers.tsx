@@ -253,7 +253,26 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
-  [Publisher.Newline]: { logo: { srcPath: 'publishers/newline.png' } },
+  [Publisher.Newline]: {
+    logo: { srcPath: 'publishers/newline.png' },
+    description: (
+      <>
+        <p>
+          <b>Newline</b><br />
+          <A href="https://www.newline.co/">newline.co</A>
+        </p>
+        <p>
+          Newline (formerly Fullstack.io) is a book publisher.
+        </p>
+        <p>
+          ~5K followers <A href="https://x.com/newlinedotco">on X</A>.
+        </p>
+        <p>
+          ~8K followers <A href="https://www.youtube.com/channel/UCOFUtpf-AKbCXN1nrBL2qcw">on YouTube</A>
+        </p>
+      </>
+    ),
+  },
   [Publisher.TechCrunch]: {
     logo: { srcPath: 'publishers/tech-crunch.png' },
     description: (
