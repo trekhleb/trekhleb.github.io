@@ -107,10 +107,13 @@ export const publishers: Record<Publisher, PublisherData> = {
           interview and exam preparations for upcoming aspirants.
         </p>
         <p>
-          ~2M followers on LinkedIn.
+          The publication requires an editorial review and approval process (<A href="https://www.geeksforgeeks.org/contribute/">rules</A>).
         </p>
         <p>
-          ~73K followers on X.
+          ~2M followers <A href="https://www.linkedin.com/company/geeksforgeeks/">on LinkedIn</A>.
+        </p>
+        <p>
+          ~73K followers <A href="https://x.com/geeksforgeeks">on X</A>.
         </p>
       </>
     ),
