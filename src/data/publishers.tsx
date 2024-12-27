@@ -45,23 +45,26 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>DOU (Developers Of Ukraine)</b><br />
+          <b>DOU</b><br />
           <A href="https://dou.ua/">dou.ua</A>
         </p>
         <p>
-          DOU is the largest IT community in Ukraine.
-          DOU has 700K registered users, more than 14K companies,
-          and articles and topics receive over 2.5M views per month
-          (and the entire site receives 9M).
+          DOU (Developers Of Ukraine) is the largest IT community in Ukraine.
         </p>
         <p>
-          ~180K followers on LinkedIn.
+          The publication requires an editorial review and approval process (<A href="https://dou.ua/add-post/">rules</A>).
         </p>
         <p>
-          ~70K followers on Facebook.
+          ~700K registered users, ~2.5M articles views per month (<A href="https://dou.ua/forum-articles-howto/">source</A>).
         </p>
         <p>
-          ~27K followers on X.
+          ~180K followers <A href="https://www.linkedin.com/company/developers.org.ua/">on LinkedIn</A>.
+        </p>
+        <p>
+          ~70K followers <A href="https://www.facebook.com/doucommunity/">on Facebook</A>.
+        </p>
+        <p>
+          ~27K followers <A href="https://x.com/doucommunity">on X</A>.
         </p>
       </>
     ),
@@ -124,6 +127,16 @@ export const publishers: Record<Publisher, PublisherData> = {
           A social news website focusing on computer science and entrepreneurship.
           It is run by the investment fund and startup incubator Y Combinator.
         </p>
+        <p>
+          The publications get to the Hacker News front page through a combination of upvotes,
+          and user engagement.
+        </p>
+        <p>
+          ~10M page views per day (<A href="https://news.ycombinator.com/item?id=33450094">source</A>)
+        </p>
+        <p>
+          ~35M backlinks, ~59K linking web sites (source: <A href="https://ahrefs.com/website-authority-checker/?input=https%3A%2F%2Fnews.ycombinator.com">ahrefs</A>)
+        </p>
       </>
     ),
   },
@@ -180,10 +193,13 @@ export const publishers: Record<Publisher, PublisherData> = {
           connect, collaborate, learn and experience next-gen technologies.
         </p>
         <p>
-          ~1.4K followers on LinkedIn.
+          The publication requires an editorial review and approval process (<A href="https://itnext.io/write-for-itnext-4dea1fd3adf">rules</A>).
         </p>
         <p>
-          ~4K followers on X.
+          ~1K followers <A href="https://www.linkedin.com/company/itnext-io/">on LinkedIn</A>.
+        </p>
+        <p>
+          ~4K followers <A href="https://x.com/itnext_io">on X</A>.
         </p>
       </>
     ),
@@ -242,13 +258,16 @@ export const publishers: Record<Publisher, PublisherData> = {
           regarding high-tech and startup companies.
         </p>
         <p>
-          ~10M followers on X.
+          The publication requires an editorial review and approval process (<A href="https://techcrunch.com/2023/08/17/how-to-submit-a-guest-column-to-techcrunch/">rules</A>).
         </p>
         <p>
-          ~3M followers on LinkedIn.
+          ~10M followers <A href="https://x.com/TechCrunch">on X</A>.
         </p>
         <p>
-          ~3M followers on Facebook.
+          ~3M followers <A href="https://www.linkedin.com/company/techcrunch/">on LinkedIn</A>.
+        </p>
+        <p>
+          ~3M followers <A href="https://www.facebook.com/techcrunch/">on Facebook</A>.
         </p>
       </>
     ),
