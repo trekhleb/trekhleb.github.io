@@ -32,10 +32,10 @@ export const publishers: Record<Publisher, PublisherData> = {
           C++, Java, and other topics.
         </p>
         <p>
-          ~3K followers on LinkedIn.
+          ~3K followers <A href="https://www.linkedin.com/company/the-code-project/">on LinkedIn</A>.
         </p>
         <p>
-          ~16K followers on X.
+          ~16K followers <A href="https://x.com/codeproject">on X</A>.
         </p>
       </>
     ),
@@ -153,10 +153,13 @@ export const publishers: Record<Publisher, PublisherData> = {
           100M+ humans have visited HackerNoon to learn about technology.
         </p>
         <p>
-          ~87K followers on X.
+          The publication requires an editorial review and approval process (<A href="https://help.hackernoon.com/your-complete-guide-to-writing-for-hacker-noon">rules</A>).
         </p>
         <p>
-          ~16K followers on LinkedIn.
+          ~87K followers <A href="https://x.com/hackernoon">on X</A>.
+        </p>
+        <p>
+          ~16K followers <A href="https://www.linkedin.com/company/hackernoon/">on LinkedIn</A>.
         </p>
       </>
     ),
@@ -213,10 +216,13 @@ export const publishers: Record<Publisher, PublisherData> = {
           <A href="https://javascript.plainenglish.io/">javascript.plainenglish.io</A>
         </p>
         <p>
-          ~114K followers on Medium.
+          The publication requires an editorial review and approval process.
         </p>
         <p>
-          ~5K followers on X.
+          ~114K followers <A href="https://javascript.plainenglish.io/about">on Medium</A>.
+        </p>
+        <p>
+          ~5K followers <A href="https://x.com/js_plainenglish">on X</A>.
         </p>
       </>
     ),
@@ -233,13 +239,16 @@ export const publishers: Record<Publisher, PublisherData> = {
           KDnuggets is a leading site on Data Science, Machine Learning, AI and Analytics.
         </p>
         <p>
-          ~218K followers on X.
+          The publication requires an editorial review and approval process (<A href="https://www.kdnuggets.com/2019/11/write-for-kdnuggets.html">rules</A>).
         </p>
         <p>
-          ~52K followers on LinkedIn.
+          ~218K followers <A href="https://x.com/kdnuggets">on X</A>.
         </p>
         <p>
-          ~39K followers on Facebook.
+          ~52K followers <A href="https://www.linkedin.com/company/kdnuggets/">on LinkedIn</A>.
+        </p>
+        <p>
+          ~39K followers <A href="https://www.facebook.com/kdnuggets/">on Facebook</A>.
         </p>
       </>
     ),
