@@ -55,3 +55,13 @@
 .prose h5:hover>a.gatsby-remark-autolink-header-anchor {
   visibility: visible;
 }
+
+/*
+Tooltip content styles
+*/
+.shared-tooltip-content a {
+  text-decoration: underline;
+}
+.shared-tooltip-content p:not(:last-child) {
+  margin-bottom: 10px;
+}
