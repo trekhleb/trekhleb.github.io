@@ -8,7 +8,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>AI Time Journal</b>
+          <b>AI Time Journal</b><br />
+          <A href="https://www.aitimejournal.com/">aitimejournal.com</A>
         </p>
         <p>
           ~9K followers on LinkedIn.
@@ -21,7 +22,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>CodeProject</b>
+          <b>CodeProject</b><br />
+          <A href="https://www.codeproject.com/">codeproject.com</A>
         </p>
         <p>
           A community for computer programmers with articles
@@ -43,7 +45,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>DOU (Developers Of Ukraine)</b>
+          <b>DOU (Developers Of Ukraine)</b><br />
+          <A href="https://dou.ua/">dou.ua</A>
         </p>
         <p>
           DOU is the largest IT community in Ukraine.
@@ -68,7 +71,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>Data Driven Investor</b>
+          <b>Data Driven Investor</b><br />
+          <A href="https://www.datadriveninvestor.com/">datadriveninvestor.com</A>
         </p>
         <p>
           Data Driven Investor (DDI) publishes various
@@ -91,7 +95,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>GeeksForGeeks</b>
+          <b>GeeksForGeeks</b><br />
+          <A href="https://www.geeksforgeeks.org/">geeksforgeeks.org</A>
         </p>
         <p>
           GeeksforGeeks is a leading platform that provides computer science resources
@@ -112,7 +117,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>Hacker News (HN)</b>
+          <b>Hacker News (HN)</b><br />
+          <A href="https://news.ycombinator.com/">news.ycombinator.com</A>
         </p>
         <p>
           A social news website focusing on computer science and entrepreneurship.
@@ -126,7 +132,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>HackerNoon</b>
+          <b>HackerNoon</b><br />
+          <A href="https://hackernoon.com/">hackernoon.com</A>
         </p>
         <p>
           HackerNoon is a free platform with 25k+ contributing writers.
@@ -146,7 +153,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>HowIGotJob</b>
+          <b>HowIGotJob</b><br />
+          <A href="https://howigotjob.com/">howigotjob.com</A>
         </p>
         <p>
           A blog dedicated to curating experiences of
@@ -164,7 +172,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>ITNEXT</b>
+          <b>ITNEXT</b><br />
+          <A href="https://itnext.io/">itnext.io</A>
         </p>
         <p>
           A platform for IT developers & software engineers to share knowledge,
@@ -184,7 +193,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>JavaScript in Plain English</b>
+          <b>JavaScript in Plain English</b><br />
+          <A href="https://javascript.plainenglish.io/">javascript.plainenglish.io</A>
         </p>
         <p>
           ~114K followers on Medium.
@@ -200,7 +210,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>KDnuggets</b>
+          <b>KDnuggets</b><br />
+          <A href="https://www.kdnuggets.com/">kdnuggets.com</A>
         </p>
         <p>
           KDnuggets is a leading site on Data Science, Machine Learning, AI and Analytics.
@@ -223,7 +234,8 @@ export const publishers: Record<Publisher, PublisherData> = {
     description: (
       <>
         <p>
-          <b>TechCrunch</b>
+          <b>TechCrunch</b><br />
+          <A href="https://techcrunch.com/">techcrunch.com</A>
         </p>
         <p>
           An American global online newspaper focusing on topics
