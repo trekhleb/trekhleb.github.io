@@ -16,7 +16,7 @@ export const profile: Profile = {
     caption: 'Oleksii Trekhleb',
   },
   location: {
-    name: 'Amsterdam, The Netherlands • (from Ukraine)',
+    name: 'San Francisco Bay Area • (from Ukraine)',
   },
   tags: [],
   socialLinks,
