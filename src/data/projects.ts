@@ -199,6 +199,12 @@ export const projects: Projects = {
         date: '2022-01-19',
         link: { url: 'https://www.codeproject.com/Articles/5322937/Content-Aware-Image-Resizing-in-JavaScript', caption: 'Content-Aware Image Resizing in JavaScript' },
       },
+      {
+        title: 'Mentioned on Wikipedia',
+        image: { srcPath: 'projects/js-image-carver/achievements/04-wikipedia-2025-08-01.png' },
+        date: '2025-08-01',
+        link: { url: 'https://en.m.wikipedia.org/wiki/Seam_carving#Implementations', caption: 'Mentioned as an implementation example in the Wikipedia article' },
+      },
     ],
   },
   'trekhleb-dev': {

@@ -264,6 +264,22 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.MozillaMDNWebDocs]: {
+    logo: { srcPath: 'publishers/mozilla-mdn-web-docs.png' },
+    description: (
+      <>
+        <p>
+          <b>Mozilla MDN Web Docs</b><br />
+          <A href="https://developer.mozilla.org/en-US/">developer.mozilla.org</A>
+        </p>
+        <p>
+          MDN Web Docs, previously Mozilla Developer Network and
+          formerly Mozilla Developer Center, is a documentation
+          repository and learning resource for web developers
+        </p>
+      </>
+    ),
+  },
   [Publisher.Newline]: {
     logo: { srcPath: 'publishers/newline.png' },
     description: (
@@ -334,6 +350,24 @@ export const publishers: Record<Publisher, PublisherData> = {
         </p>
         <p>
           ~234K followers <A href="https://x.com/TDataScience">on X</A>.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.Wikipedia]: {
+    logo: { srcPath: 'publishers/wikipedia.jpg' },
+    description: (
+      <>
+        <p>
+          <b>Wikipedia</b><br />
+          <A href="https://www.wikipedia.org/">wikipedia.org</A>
+        </p>
+        <p>
+          Wikipedia is a free online encyclopedia written and
+          maintained by a community of volunteers.
+        </p>
+        <p>
+          Wikipedia is the largest and most-read reference work in history
         </p>
       </>
     ),

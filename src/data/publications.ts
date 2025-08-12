@@ -2,6 +2,15 @@ import { Publication, Publisher } from '../types/Publication';
 
 export const publications: Publication[] = [
   {
+    title: 'Seam carving',
+    summary: ['My GitHub project trekhleb/js-image-carver is mentioned as an implementation example in the Wikipedia article about the Seam Carving algorithm.'],
+    date: '2025-08-01',
+    publisher: Publisher.Wikipedia,
+    link: {
+      url: 'https://en.m.wikipedia.org/wiki/Seam_carving#Implementations',
+    },
+  },
+  {
     title: 'How X (Twitter) Designed Its Home Timeline API: Lessons to Learn',
     summary: ['A closer look at X’s API: fetching data, linking entities, and solving under-fetching.'],
     date: '2024-12-15',
@@ -62,6 +71,15 @@ export const publications: Publication[] = [
     publisher: Publisher.CodeProject,
     link: {
       url: 'https://www.codeproject.com/Articles/5322937/Content-Aware-Image-Resizing-in-JavaScript',
+    },
+  },
+  {
+    title: 'JavaScript data types and data structures',
+    summary: ['My GitHub project trekhleb/javascript-algorithms is mentioned as an implementation example in the MDN Web Docs article.'],
+    date: '2022-01-19',
+    publisher: Publisher.MozillaMDNWebDocs,
+    link: {
+      url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures',
     },
   },
   {

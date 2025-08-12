@@ -16,9 +16,11 @@ export enum Publisher {
   ITNEXT = 'ITNEXT',
   JavaScriptInPlainEnglish = 'JavaScript in Plain English',
   KDnuggets = 'KDnuggets',
+  MozillaMDNWebDocs = 'Mozilla MDN Web Docs',
   Newline = 'Newline',
   TechCrunch = 'TechCrunch',
   TowardsDataScience = 'Towards Data Science',
+  Wikipedia = 'Wikipedia',
 }
 
 export type PublisherData = {
