@@ -7,6 +7,7 @@ import { Image } from './Image';
 export enum Publisher {
   AITimeJournal = 'AI Time Journal',
   CodeProject = 'CodeProject',
+  Changelog = 'Changelog',
   DOU = 'DOU',
   DataDrivenInvestor = 'Data Driven Investor',
   GeeksForGeeks = 'GeeksForGeeks',

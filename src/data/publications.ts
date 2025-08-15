@@ -2,6 +2,15 @@ import { Publication, Publisher } from '../types/Publication';
 
 export const publications: Publication[] = [
   {
+    title: 'OkSo app in Changelog podcast',
+    summary: ['My okso.app has been mentioned in the Changelog podcast #6'],
+    date: '2022-08-01',
+    publisher: Publisher.Changelog,
+    link: {
+      url: 'https://changelog.com/news/6',
+    },
+  },
+  {
     title: 'JavaScript Algorithms and Data Structures',
     summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #417 (Top code and tools of 2018)'],
     date: '2018-12-21',

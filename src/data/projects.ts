@@ -78,6 +78,12 @@ export const projects: Projects = {
     ],
     achievements: [
       {
+        title: 'Mentioned in the Changelog podcast',
+        image: { srcPath: 'projects/okso/achievements/05-changelog-podcast-2022-08-01.png' },
+        link: { url: 'https://changelog.com/news/6', caption: 'Changelog podcast #6' },
+        date: '2022-08-01',
+      },
+      {
         title: 'Top Hot post on r/coding sub-reddit',
         image: { srcPath: 'projects/okso/achievements/00-reddit-coding-hot-2022-08-31.png' },
         link: { url: 'https://www.reddit.com/r/coding/comments/x1imp0/data_structure_sketches/', caption: 'The post on Reddit' },

@@ -392,4 +392,25 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.Changelog]: {
+    logo: { srcPath: 'publishers/changelog.jpg' },
+    description: (
+      <>
+        <p>
+          <b>Changelog</b><br />
+          <A href="https://changelog.com/">changelog.com</A>
+        </p>
+        <p>
+          Podcast for developers. Software best weekly news brief,
+          deep technical interviews, and weekend talk show.
+        </p>
+        <p>
+          ~24K+ subscribers.
+        </p>
+        <p>
+          ~32K followers <A href="https://x.com/changelog">on X</A>.
+        </p>
+      </>
+    ),
+  },
 };
