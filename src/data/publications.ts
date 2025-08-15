@@ -2,6 +2,60 @@ import { Publication, Publisher } from '../types/Publication';
 
 export const publications: Publication[] = [
   {
+    title: 'JavaScript Algorithms and Data Structures',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #417 (Top code and tools of 2018)'],
+    date: '2018-12-21',
+    publisher: Publisher.JavaScriptWeekly,
+    link: {
+      url: 'https://javascriptweekly.com/issues/417',
+    },
+  },
+  {
+    title: 'js-image-carver: Content-Aware Image Resizer and Object Remover',
+    summary: ['My GitHub project trekhleb/js-image-carver has been included to JavaScript Weekly newsletter issue #535'],
+    date: '2021-04-23',
+    publisher: Publisher.JavaScriptWeekly,
+    link: {
+      url: 'https://javascriptweekly.com/issues/535',
+    },
+  },
+  {
+    title: 'JS Image Carver: Content-Aware Image Resizer and Object Remover ',
+    summary: ['My GitHub project trekhleb/js-image-carver has been included to JavaScript Weekly newsletter issue #618'],
+    date: '2022-12-09',
+    publisher: Publisher.JavaScriptWeekly,
+    link: {
+      url: 'https://javascriptweekly.com/issues/618',
+    },
+  },
+  {
+    title: 'Over 100 Algorithms and Data Structures Demonstrated in JS',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #633'],
+    date: '2023-04-06',
+    publisher: Publisher.JavaScriptWeekly,
+    link: {
+      url: 'https://javascriptweekly.com/issues/633',
+    },
+  },
+  {
+    title: 'More than 100 Algorithms and Data Structures Demonstrated in JS',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #652'],
+    date: '2023-08-17',
+    publisher: Publisher.JavaScriptWeekly,
+    link: {
+      url: 'https://javascriptweekly.com/issues/652',
+    },
+  },
+  {
+    title: '100+ Algorithms and Data Structures Demonstrated in JS',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #709'],
+    date: '2024-10-17',
+    publisher: Publisher.JavaScriptWeekly,
+    link: {
+      url: 'https://javascriptweekly.com/issues/709',
+    },
+  },
+  {
     title: 'Seam carving',
     summary: ['My GitHub project trekhleb/js-image-carver is mentioned as an implementation example in the Wikipedia article about the Seam Carving algorithm.'],
     date: '2025-08-01',

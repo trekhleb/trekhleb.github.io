@@ -6,7 +6,7 @@ export const profile: Profile = {
   lastName: 'Trekhleb',
   position: 'Senior Software Engineer @ Uber',
   summary: [
-    'Author of 180k ★️ js-algorithms GitHub repo',
+    'Author of 190k ★️ js-algorithms GitHub repo',
     '8+ times on HackerNews homepage',
     '15+ years of full-stack experience',
   ],

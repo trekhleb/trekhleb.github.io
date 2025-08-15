@@ -373,4 +373,23 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.JavaScriptWeekly]: {
+    logo: { srcPath: 'publishers/javascript-weekly.jpg' },
+    description: (
+      <>
+        <p>
+          <b>JavaScript Weekly</b><br />
+          <A href="https://javascriptweekly.com/">javascriptweekly.com</A>
+        </p>
+        <p>
+          JavaScript Weekly is a curated weekly newsletter that aggregates
+          the latest articles, tutorials, releases, and noteworthy projects
+          in the JavaScript ecosystem.
+        </p>
+        <p>
+          It boasts a subscriber base of 175,000+ and over 700+ issues published to date.
+        </p>
+      </>
+    ),
+  },
 };

@@ -15,6 +15,7 @@ export enum Publisher {
   HowIGotJob = 'HowIGotJob',
   ITNEXT = 'ITNEXT',
   JavaScriptInPlainEnglish = 'JavaScript in Plain English',
+  JavaScriptWeekly = 'JavaScript Weekly',
   KDnuggets = 'KDnuggets',
   MozillaMDNWebDocs = 'Mozilla MDN Web Docs',
   Newline = 'Newline',
