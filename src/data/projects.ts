@@ -603,6 +603,12 @@ export const projects: Projects = {
         link: { url: 'https://news.ycombinator.com/front?day=2018-07-20', caption: 'Hacker News archive' },
       },
       {
+        title: 'Issued in "JavaScript Weekly" newsletter (Top code and tools of 2018)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/25-javascript-weekly-2018-12-21.png' },
+        date: '2018-12-21',
+        link: { url: 'https://javascriptweekly.com/issues/417', caption: 'JavaScript Weekly (issue #417)' },
+      },
+      {
         title: 'Ranked as #6 of top JavaScript repositories on GitHub',
         image: { srcPath: 'projects/javascript-algorithms/achievements/00-top-js-repos-on-github-2021-04-30.png' },
         date: '2021-04-30',
@@ -685,6 +691,12 @@ export const projects: Projects = {
         title: '1st trending repository of the day on GitHub',
         image: { srcPath: 'projects/javascript-algorithms/achievements/15-github-trending-day-2023-01-25.png' },
         date: '2023-01-25',
+      },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/26-javascript-weekly-2023-04-06.png' },
+        date: '2023-04-06',
+        link: { url: 'https://javascriptweekly.com/issues/633', caption: 'JavaScript Weekly (issue #633)' },
       },
       {
         title: 'Listed on Hacker News front page',
