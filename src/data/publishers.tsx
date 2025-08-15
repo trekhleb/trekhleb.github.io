@@ -275,8 +275,9 @@ export const publishers: Record<Publisher, PublisherData> = {
         <p>
           MDN Web Docs, previously Mozilla Developer Network and
           formerly Mozilla Developer Center, is a documentation
-          repository and learning resource for web developers
+          repository and learning resource for web developers.
         </p>
+        <p>It has been the go‑to documentation hub for web technologies since 2005.</p>
       </>
     ),
   },
