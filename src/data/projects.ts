@@ -188,6 +188,12 @@ export const projects: Projects = {
         link: { url: 'https://news.ycombinator.com/front?day=2021-04-16', caption: 'Hacker News archive' },
       },
       {
+        title: 'Mentioned in JavaScript Weekly newsletter',
+        image: { srcPath: 'projects/js-image-carver/achievements/05-javascript-weekly-2021-04-23.png' },
+        date: '2021-04-23',
+        link: { url: 'https://javascriptweekly.com/issues/535', caption: 'JavaScript Weekly (issue #535)' },
+      },
+      {
         title: 'Published on "JavaScript in Plain English"',
         image: { srcPath: 'projects/js-image-carver/achievements/02-javascript-in-plain-english-2021-04-16.png' },
         date: '2021-04-16',
@@ -204,6 +210,12 @@ export const projects: Projects = {
         image: { srcPath: 'projects/js-image-carver/achievements/03-code-project-2022-01-19.png' },
         date: '2022-01-19',
         link: { url: 'https://www.codeproject.com/Articles/5322937/Content-Aware-Image-Resizing-in-JavaScript', caption: 'Content-Aware Image Resizing in JavaScript' },
+      },
+      {
+        title: 'Mentioned in JavaScript Weekly newsletter',
+        image: { srcPath: 'projects/js-image-carver/achievements/07-javascript-weekly-2022-12-09.png' },
+        date: '2022-12-09',
+        link: { url: 'https://javascriptweekly.com/issues/618', caption: 'JavaScript Weekly (issue #618)' },
       },
       {
         title: 'Mentioned on Wikipedia',
