@@ -212,6 +212,12 @@ export const projects: Projects = {
         link: { url: 'https://www.codeproject.com/Articles/5322937/Content-Aware-Image-Resizing-in-JavaScript', caption: 'Content-Aware Image Resizing in JavaScript' },
       },
       {
+        title: 'Reviewed by Bram.US',
+        image: { srcPath: 'projects/js-image-carver/achievements/08-bram-us-2021-04-26.png' },
+        date: '2021-04-26',
+        link: { url: 'https://www.bram.us/2021/04/26/seam-carving-content-aware-image-resizing-in-javascript/', caption: 'Seam carving: content-aware image resizing' },
+      },
+      {
         title: 'Mentioned in JavaScript Weekly newsletter',
         image: { srcPath: 'projects/js-image-carver/achievements/07-javascript-weekly-2022-12-09.png' },
         date: '2022-12-09',
