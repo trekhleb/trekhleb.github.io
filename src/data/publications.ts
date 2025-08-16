@@ -462,4 +462,13 @@ export const publications: Publication[] = [
       url: 'https://itnext.io/algorithms-and-data-structures-in-javascript-a71548f902cb',
     },
   },
+  {
+    title: 'API Design of X (Twitter) Home Timeline',
+    summary: ['My article about the API design of X (Twitter) home timeline has been included to TLDR Newsletter.'],
+    date: '2024-12-13',
+    publisher: Publisher.TLDRNewsletter,
+    link: {
+      url: 'https://tldr.tech/devops/2024-12-13',
+    },
+  },
 ];

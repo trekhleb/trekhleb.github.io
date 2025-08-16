@@ -21,6 +21,7 @@ export enum Publisher {
   MozillaMDNWebDocs = 'Mozilla MDN Web Docs',
   Newline = 'Newline',
   TechCrunch = 'TechCrunch',
+  TLDRNewsletter = 'TLDR Newsletter',
   TowardsDataScience = 'Towards Data Science',
   Wikipedia = 'Wikipedia',
 }

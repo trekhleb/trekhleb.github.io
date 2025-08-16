@@ -413,4 +413,24 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.TLDRNewsletter]: {
+    logo: { srcPath: 'publishers/tldr-newsletter.jpg' },
+    description: (
+      <>
+        <p>
+          <b>TLDR Newsletter</b><br />
+          <A href="https://tldr.tech/">tldr.tech</A>
+        </p>
+        <p>
+          Startups, Tech & Programming Newsletter.
+        </p>
+        <p>
+          ~1.2M+ subscribers.
+        </p>
+        <p>
+          ~122K followers <A href="https://x.com/tldrnewsletter">on X</A>.
+        </p>
+      </>
+    ),
+  },
 };
