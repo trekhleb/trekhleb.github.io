@@ -79,7 +79,9 @@ export const publications: Publication[] = [
     date: '2024-12-15',
     publisher: Publisher.TowardsDataScience,
     link: {
-      url: 'https://towardsdatascience.com/api-design-of-x-twitter-home-timeline-da426f19edfe',
+      // Fos some reason this link cannot be found on TDS. Probably they restructured the URLs.
+      // url: 'https://towardsdatascience.com/api-design-of-x-twitter-home-timeline-da426f19edfe',
+      url: 'https://www.linkedin.com/posts/towards-data-science_api-design-of-x-twitter-home-timeline-activity-7274584447545421824-6b5d/',
     },
   },
   {
