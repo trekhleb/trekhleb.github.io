@@ -471,4 +471,13 @@ export const publications: Publication[] = [
       url: 'https://tldr.tech/devops/2024-12-13',
     },
   },
+  {
+    title: 'Why is explainability so important right now?',
+    summary: ['My article about the "Genetic algorithm learns how to park a car" has been mentioned in this Towards Data Science publication.'],
+    date: '2021-10-07',
+    publisher: Publisher.TowardsDataScience,
+    link: {
+      url: 'https://towardsdatascience.com/why-is-explainability-so-important-right-now-60f1b850023a/',
+    },
+  },
 ];
