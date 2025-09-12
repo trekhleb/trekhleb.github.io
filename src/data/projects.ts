@@ -772,6 +772,12 @@ export const projects: Projects = {
         date: '2024-11-27',
         link: { url: 'https://gitstar-ranking.com/repositories', caption: 'GitStar Repositories Ranking' },
       },
+      {
+        title: '7K+ backlinks from 861 unique domains',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/27-backlinks-2025-09-12.png' },
+        date: '2025-09-12',
+        link: { url: 'https://ahrefs.com/backlink-checker/?input=https%3A%2F%2Fgithub.com%2Ftrekhleb%2Fjavascript-algorithms&mode=exact', caption: 'Backlink profile for javascript-algorithms' },
+      },
     ],
   },
   'machine-learning-octave': {
