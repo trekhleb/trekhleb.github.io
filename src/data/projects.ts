@@ -778,6 +778,12 @@ export const projects: Projects = {
         date: '2025-09-12',
         link: { url: 'https://ahrefs.com/backlink-checker/?input=https%3A%2F%2Fgithub.com%2Ftrekhleb%2Fjavascript-algorithms&mode=exact', caption: 'Backlink profile for javascript-algorithms' },
       },
+      {
+        title: 'Listed on #2 position in global GitHub "Algorithms" topic among 35K+ other resources',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/28-github-algorithms-topic-2025-10-15.png' },
+        date: '2025-10-15',
+        link: { url: 'https://github.com/topics/algorithms', caption: 'GitHub "Algorithms" topic' },
+      },
     ],
   },
   'machine-learning-octave': {
