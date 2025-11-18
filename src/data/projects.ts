@@ -293,6 +293,12 @@ export const projects: Projects = {
         date: '2024-12-13',
         link: { url: 'https://tldr.tech/devops/2024-12-13', caption: 'TLDR DevOps 2024-12-13' },
       },
+      {
+        title: '45 GitHub sponsors in total',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/05-github-sponsorship-2025-11-18.png' },
+        date: '2025-11-13',
+        link: { url: 'https://github.com/sponsors/trekhleb', caption: 'Sponsorship page' },
+      },
     ],
   },
   'links-detector': {
