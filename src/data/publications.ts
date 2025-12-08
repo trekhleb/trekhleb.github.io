@@ -79,9 +79,10 @@ export const publications: Publication[] = [
     date: '2024-12-15',
     publisher: Publisher.TowardsDataScience,
     link: {
-      // Fos some reason this link cannot be found on TDS. Probably they restructured the URLs.
+      // This link stopped working after TDS restructured the URLs. It was moved to the TDS Archive.
       // url: 'https://towardsdatascience.com/api-design-of-x-twitter-home-timeline-da426f19edfe',
-      url: 'https://www.linkedin.com/posts/towards-data-science_api-design-of-x-twitter-home-timeline-activity-7274584447545421824-6b5d/',
+      // url: 'https://www.linkedin.com/posts/towards-data-science_api-design-of-x-twitter-home-timeline-activity-7274584447545421824-6b5d/',
+      url: 'https://medium.com/data-science/api-design-of-x-twitter-home-timeline-da426f19edfe',
     },
   },
   {
@@ -180,7 +181,9 @@ export const publications: Publication[] = [
     date: '2021-09-28',
     publisher: Publisher.TowardsDataScience,
     link: {
-      url: 'https://towardsdatascience.com/self-parking-car-in-500-lines-of-code-c1b2a57455af',
+      // This link stopped working after TDS restructured the URLs. It was moved to the TDS Archive.
+      // url: 'https://towardsdatascience.com/self-parking-car-in-500-lines-of-code-c1b2a57455af',
+      url: 'https://medium.com/data-science/self-parking-car-in-500-lines-of-code-c1b2a57455af',
     },
   },
   {
@@ -198,7 +201,9 @@ export const publications: Publication[] = [
     date: '2021-07-15',
     publisher: Publisher.TowardsDataScience,
     link: {
-      url: 'https://towardsdatascience.com/binary-representation-of-the-floating-point-numbers-77d7364723f1',
+      // This link stopped working after TDS restructured the URLs. It was moved to the TDS Archive.
+      // url: 'https://towardsdatascience.com/binary-representation-of-the-floating-point-numbers-77d7364723f1',
+      url: 'https://medium.com/data-science/binary-representation-of-the-floating-point-numbers-77d7364723f1',
     },
   },
   {
@@ -252,7 +257,9 @@ export const publications: Publication[] = [
     date: '2020-12-01',
     publisher: Publisher.TowardsDataScience,
     link: {
-      url: 'https://towardsdatascience.com/making-the-printed-links-clickable-using-tensorflow-2-object-detection-api-be42bd65488a',
+      // This link stopped working after TDS restructured the URLs. It was moved to the TDS Archive.
+      // url: 'https://towardsdatascience.com/making-the-printed-links-clickable-using-tensorflow-2-object-detection-api-be42bd65488a',
+      url: 'https://medium.com/data-science/making-the-printed-links-clickable-using-tensorflow-2-object-detection-api-be42bd65488a',
     },
   },
   {
@@ -261,7 +268,9 @@ export const publications: Publication[] = [
     date: '2020-07-04',
     publisher: Publisher.TowardsDataScience,
     link: {
-      url: 'https://towardsdatascience.com/making-the-printed-links-clickable-using-tensorflow-2-object-detection-api-be42bd65488a',
+      // This link stopped working after TDS restructured the URLs. It was moved to the TDS Archive.
+      // url: 'https://towardsdatascience.com/nanoneuron-7-simple-js-functions-that-explain-how-machines-learn-d2d647b21497',
+      url: 'https://medium.com/data-science/nanoneuron-7-simple-js-functions-that-explain-how-machines-learn-d2d647b21497',
     },
   },
   {
@@ -297,7 +306,9 @@ export const publications: Publication[] = [
     date: '2020-06-20',
     publisher: Publisher.TowardsDataScience,
     link: {
-      url: 'https://towardsdatascience.com/generating-cooking-recipes-using-tensorflow-and-lstm-recurrent-neural-network-a7bf242acad3',
+      // This link stopped working after TDS restructured the URLs. It was moved to the TDS Archive.
+      // url: 'https://towardsdatascience.com/generating-cooking-recipes-using-tensorflow-and-lstm-recurrent-neural-network-a7bf242acad3',
+      url: 'https://medium.com/data-science/generating-cooking-recipes-using-tensorflow-and-lstm-recurrent-neural-network-a7bf242acad3',
     },
   },
   {
@@ -324,7 +335,9 @@ export const publications: Publication[] = [
     date: '2020-05-06',
     publisher: Publisher.TowardsDataScience,
     link: {
-      url: 'https://towardsdatascience.com/interactive-machine-learning-experiments-e9b29b0cb7b9',
+      // This link stopped working after TDS restructured the URLs. It was moved to the TDS Archive.
+      // url: 'https://towardsdatascience.com/interactive-machine-learning-experiments-e9b29b0cb7b9',
+      url: 'https://medium.com/data-science/interactive-machine-learning-experiments-e9b29b0cb7b9',
     },
   },
   {
