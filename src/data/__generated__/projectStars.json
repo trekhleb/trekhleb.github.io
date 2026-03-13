@@ -1,70 +1,74 @@
 {
+  "trekhleb/cali-vibe": {
+    "stars": 0,
+    "updatedAt": "2026-03-13T14:44:16.184Z"
+  },
   "trekhleb/homemade-gpt-js": {
     "stars": 88,
-    "updatedAt": "2026-03-10T13:01:57.834Z"
+    "updatedAt": "2026-03-13T14:44:16.437Z"
   },
   "trekhleb/micrograd-ts": {
     "stars": 72,
-    "updatedAt": "2026-03-10T13:01:58.127Z"
+    "updatedAt": "2026-03-13T14:44:16.681Z"
   },
   "trekhleb/self-parking-car-evolution": {
     "stars": 758,
-    "updatedAt": "2026-03-10T13:01:58.399Z"
+    "updatedAt": "2026-03-13T14:44:16.935Z"
   },
   "trekhleb/js-image-carver": {
     "stars": 1595,
-    "updatedAt": "2026-03-10T13:01:58.661Z"
+    "updatedAt": "2026-03-13T14:44:17.218Z"
   },
   "trekhleb/trekhleb.github.io": {
     "stars": 236,
-    "updatedAt": "2026-03-10T13:01:58.939Z"
+    "updatedAt": "2026-03-13T14:44:17.503Z"
   },
   "trekhleb/links-detector": {
     "stars": 185,
-    "updatedAt": "2026-03-10T13:01:59.202Z"
+    "updatedAt": "2026-03-13T14:44:17.795Z"
   },
   "trekhleb/machine-learning-experiments": {
     "stars": 1798,
-    "updatedAt": "2026-03-10T13:01:59.458Z"
+    "updatedAt": "2026-03-13T14:44:18.048Z"
   },
   "trekhleb/state-of-the-art-shitcode": {
     "stars": 6158,
-    "updatedAt": "2026-03-10T13:01:59.726Z"
+    "updatedAt": "2026-03-13T14:44:18.294Z"
   },
   "trekhleb/covid-19": {
     "stars": 266,
-    "updatedAt": "2026-03-10T13:01:59.976Z"
+    "updatedAt": "2026-03-13T14:44:18.573Z"
   },
   "trekhleb/nano-neuron": {
     "stars": 2270,
-    "updatedAt": "2026-03-10T13:02:00.244Z"
+    "updatedAt": "2026-03-13T14:44:18.843Z"
   },
   "trekhleb/use-position": {
     "stars": 307,
-    "updatedAt": "2026-03-10T13:02:00.505Z"
+    "updatedAt": "2026-03-13T14:44:19.100Z"
   },
   "trekhleb/homemade-machine-learning": {
-    "stars": 24295,
-    "updatedAt": "2026-03-10T13:02:00.802Z"
+    "stars": 24300,
+    "updatedAt": "2026-03-13T14:44:19.368Z"
   },
   "trekhleb/promote-your-next-startup": {
     "stars": 2196,
-    "updatedAt": "2026-03-10T13:02:01.109Z"
+    "updatedAt": "2026-03-13T14:44:19.623Z"
   },
   "trekhleb/javascript-algorithms": {
-    "stars": 195825,
-    "updatedAt": "2026-03-10T13:02:01.426Z"
+    "stars": 195752,
+    "updatedAt": "2026-03-13T14:44:19.905Z"
   },
   "trekhleb/machine-learning-octave": {
     "stars": 895,
-    "updatedAt": "2026-03-10T13:02:01.723Z"
+    "updatedAt": "2026-03-13T14:44:20.190Z"
   },
   "trekhleb/learn-python": {
-    "stars": 17773,
-    "updatedAt": "2026-03-10T13:02:02.007Z"
+    "stars": 17784,
+    "updatedAt": "2026-03-13T14:44:20.472Z"
   },
   "trekhleb/angular-library-seed": {
     "stars": 201,
-    "updatedAt": "2026-03-10T13:02:02.276Z"
+    "updatedAt": "2026-03-13T14:44:20.729Z"
   }
 }

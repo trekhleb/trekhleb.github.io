@@ -1,6 +1,28 @@
 import { Projects } from '../types/Project';
 
 export const projects: Projects = {
+  'cali-vibe': {
+    id: 'cali-vibe',
+    name: '🏔 Cali Vibe',
+    srcURL: { url: 'https://github.com/trekhleb/cali-vibe' },
+    demoURL: { url: 'https://trekhleb.dev/cali-vibe/' },
+    cover: { srcPath: 'projects/cali-vibe/cover-02.png' },
+    startDate: '2026-03-13',
+    summary: [
+      'Explore California counties and cities — population, crime, temperature, 3D terrain, and other metrics on one interactive map',
+    ],
+    tags: [
+      { name: 'Vibe-coded' },
+      { name: 'React' },
+      { name: 'Maps' },
+      { name: 'Three.js' },
+    ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'cali-vibe',
+    },
+    achievements: [],
+  },
   'homemade-gpt-js': {
     id: 'homemade-gpt-js',
     name: '💬 Homemade GPT • JS',
