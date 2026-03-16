@@ -3,13 +3,13 @@ import { Projects } from '../types/Project';
 export const projects: Projects = {
   'cali-vibe': {
     id: 'cali-vibe',
-    name: '🏔 Cali Vibe',
+    name: '⛰️ CaliVibe',
     srcURL: { url: 'https://github.com/trekhleb/cali-vibe' },
     demoURL: { url: 'https://trekhleb.dev/cali-vibe/' },
     cover: { srcPath: 'projects/cali-vibe/cover-02.png' },
     startDate: '2026-03-13',
     summary: [
-      'Explore California counties and cities — population, crime, temperature, 3D terrain, and other metrics on one interactive map',
+      'Explore California neighborhoods — crime, population, climate, 3D terrain, other metrics',
     ],
     tags: [
       { name: 'Vibe-coded' },
@@ -21,7 +21,20 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'cali-vibe',
     },
-    achievements: [],
+    achievements: [
+      {
+        title: '2nd best post of the day on /dataisbeautiful sub-reddit',
+        image: { srcPath: 'projects/cali-vibe/achievements/01-reddit-dataisbeautiful-2026-03-14.png' },
+        link: { url: 'https://www.reddit.com/r/dataisbeautiful/comments/1rsu3ki/oc_interactive_map_of_california_counties_and/', caption: 'The post on Reddit' },
+        date: '2026-03-14',
+      },
+            {
+        title: '2nd best post of the day on /california sub-reddit',
+        image: { srcPath: 'projects/cali-vibe/achievements/02-reddit-california-2026-03-15.png' },
+        link: { url: 'https://www.reddit.com/r/California/comments/1rsz2pq/interactive_map_of_california_counties_and_cities/', caption: 'The post on Reddit' },
+        date: '2026-03-15',
+      },
+    ],
   },
   'homemade-gpt-js': {
     id: 'homemade-gpt-js',
