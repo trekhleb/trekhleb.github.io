@@ -22,18 +22,18 @@ export const projects: Projects = {
       repo: 'cali-vibe',
     },
     achievements: [
-      {
-        title: '2nd best post of the day on /dataisbeautiful sub-reddit',
-        image: { srcPath: 'projects/cali-vibe/achievements/01-reddit-dataisbeautiful-2026-03-14.png' },
-        link: { url: 'https://www.reddit.com/r/dataisbeautiful/comments/1rsu3ki/oc_interactive_map_of_california_counties_and/', caption: 'The post on Reddit' },
-        date: '2026-03-14',
-      },
-      {
-        title: '2nd best post of the day on /california sub-reddit',
-        image: { srcPath: 'projects/cali-vibe/achievements/02-reddit-california-2026-03-15.png' },
-        link: { url: 'https://www.reddit.com/r/California/comments/1rsz2pq/interactive_map_of_california_counties_and_cities/', caption: 'The post on Reddit' },
-        date: '2026-03-15',
-      },
+      // {
+      //   title: '2nd best post of the day on /dataisbeautiful sub-reddit',
+      //   image: { srcPath: 'projects/cali-vibe/achievements/01-reddit-dataisbeautiful-2026-03-14.png' },
+      //   link: { url: 'https://www.reddit.com/r/dataisbeautiful/comments/1rsu3ki/oc_interactive_map_of_california_counties_and/', caption: 'The post on Reddit' },
+      //   date: '2026-03-14',
+      // },
+      // {
+      //   title: '2nd best post of the day on /california sub-reddit',
+      //   image: { srcPath: 'projects/cali-vibe/achievements/02-reddit-california-2026-03-15.png' },
+      //   link: { url: 'https://www.reddit.com/r/California/comments/1rsz2pq/interactive_map_of_california_counties_and_cities/', caption: 'The post on Reddit' },
+      //   date: '2026-03-15',
+      // },
     ],
   },
   'homemade-gpt-js': {
