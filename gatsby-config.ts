@@ -201,6 +201,9 @@ const gatsbyConfig: GatsbyConfig = {
         ],
       },
     },
+
+    // @see: https://www.gatsbyjs.com/plugins/gatsby-plugin-sitemap/
+    'gatsby-plugin-sitemap',
   ],
 };
 

@@ -43,6 +43,7 @@
     "gatsby-plugin-postcss": "^6.10.0",
     "gatsby-plugin-react-helmet": "^6.10.0",
     "gatsby-plugin-sharp": "^5.10.0",
+    "gatsby-plugin-sitemap": "^6.16.0",
     "gatsby-remark-autolink-headers": "^6.10.0",
     "gatsby-remark-copy-linked-files": "^6.10.0",
     "gatsby-remark-images": "^7.10.0",
