@@ -1,6 +1,28 @@
 import { Projects } from '../types/Project';
 
 export const projects: Projects = {
+  'claude-pod': {
+    id: 'claude-pod',
+    name: '📦 Claude Pod',
+    srcURL: { url: 'https://github.com/trekhleb/claude-pod' },
+    cover: { srcPath: 'projects/claude-pod/cover.jpeg' },
+    startDate: '2026-05-02',
+    summary: [
+      'Docker sandbox for the Claude Code CLI. Runs Claude against a single project folder — while your home directory, SSH keys, and other projects stay invisible to the container',
+    ],
+    tags: [
+      { name: 'Docker' },
+      { name: 'Claude Code' },
+      { name: 'Sandbox' },
+      { name: 'CLI' },
+      { name: 'Shell' },
+    ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'claude-pod',
+    },
+    achievements: [],
+  },
   'cali-vibe': {
     id: 'cali-vibe',
     name: '⛰️ CaliVibe',
