@@ -2,6 +2,15 @@ import { Publication, Publisher } from '../types/Publication';
 
 export const publications: Publication[] = [
   {
+    title: 'Run Claude Code\'s --dangerously-skip-permissions Flag Safely with Docker',
+    summary: ['How to run Claude Code with the --dangerously-skip-permissions flag safely inside a Docker sandbox (claude-pod), keeping your home directory, SSH keys, and other projects invisible to the container.'],
+    date: '2026-06-13',
+    publisher: Publisher.ITNEXT,
+    link: {
+      url: 'https://itnext.io/run-claude-codes-dangerously-skip-permissions-flag-safely-with-docker-a2182dea3d6d',
+    },
+  },
+  {
     title: 'OkSo app in Changelog podcast',
     summary: ['My okso.app has been mentioned in the Changelog podcast #6'],
     date: '2022-08-01',

@@ -21,7 +21,14 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'claude-pod',
     },
-    achievements: [],
+    achievements: [
+      {
+        title: 'Published on ITNEXT',
+        image: { srcPath: 'projects/claude-pod/achievements/01-itnext-2026-06-13.png' },
+        date: '2026-06-13',
+        link: { url: 'https://itnext.io/run-claude-codes-dangerously-skip-permissions-flag-safely-with-docker-a2182dea3d6d', caption: 'ITNEXT article' },
+      },
+    ],
   },
   'cali-vibe': {
     id: 'cali-vibe',
