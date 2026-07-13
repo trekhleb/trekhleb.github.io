@@ -1,6 +1,28 @@
 import { Projects } from '../types/Project';
 
 export const projects: Projects = {
+  'yesbrainer': {
+    id: 'yesbrainer',
+    name: '🧠 Yes-Brainer',
+    demoURL: { url: 'https://yesbrainer.ai' },
+    srcURL: { url: 'https://github.com/trekhleb/yesbrainer' },
+    cover: { srcPath: 'projects/yesbrainer/cover-01.png' },
+    startDate: '2026-07-13',
+    summary: [
+      'A council of AI models for the decisions that aren\'t no-brainers — they answer in parallel, debate to consensus, or get judged to a verdict.',
+    ],
+    tags: [
+      { name: 'AI' },
+      { name: 'LLM' },
+      { name: 'ML' },
+      { name: 'BYOK' },
+    ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'yesbrainer',
+    },
+    achievements: [],
+  },
   'claude-pod': {
     id: 'claude-pod',
     name: '📦 Claude Pod',
