@@ -1,0 +1,140 @@
+---
+title: "Yes-Brainer — A Council of AI Models"
+
+summary: "Yes-Brainer is a council of AI models for the decisions that aren't no-brainers. One question fans out to several models — they answer in parallel, debate to consensus, or get judged to a verdict. No backend, no accounts: your keys, your browser."
+
+cover: assets/01-cover.jpg
+
+date: 2026-07-13
+
+---
+
+![Yes-Brainer](./assets/01-cover.jpg)
+
+For non-trivial questions — the ones that are either complex or important — I caught myself in a "ritual": copy-pasting the same prompt into Claude, then Gemini, then ChatGPT, in three browser tabs, and eyeballing the differences.
+
+The differences were the interesting part. Where the models agreed, I felt more confident. Where they disagreed, that was a nudge to give the problem a second thought and dig deeper.
+
+So I built the ritual into an app.
+
+🧠 **Yes-Brainer** — a council of AI models for the decisions that aren't no-brainers.
+
+- 🔗 Try it: [yesbrainer.ai](https://yesbrainer.ai)
+- 🔗 Source code: [github.com/trekhleb/yesbrainer](https://github.com/trekhleb/yesbrainer)
+
+One question fans out to several models at once, and instead of juggling tabs you get a deliberation in one place:
+
+- 🔀 **Parallel** — independent answers, side by side
+- ⚖️ **Trial** — the models vote anonymously on each other's answers, then a judge synthesizes a verdict
+- 🤝 **Consensus** — a real multi-round debate, with a mediator that either drives it to convergence or honestly reports what stayed contested
+
+Consensus is my favourite. It's fun to watch the models drift from their original opinions under their peers' arguments.
+
+You can try all of this without pasting any keys: a few recorded **demo councils** are one click away on the front page. I'll walk through them below, because they show the point of the app better than the feature list.
+
+![Yes-Brainer front page](./assets/02-home.jpg)
+
+## Setting up a council
+
+Creating a council is the whole setup: pick the deliberation mode, seat the models, choose who referees. The roster can mix providers freely — Anthropic, OpenAI, Google, Groq, OpenRouter, and local Ollama models can sit at the same table. Each seat shows its capabilities (vision, tools, reasoning) and context window at a glance, and each model's native abilities — web search, code execution, attachments — stay available per seat. If you don't feel like choosing, the "✨ Smartest available" button seats a council for you.
+
+![Creating a new council](./assets/03-new-council.jpg)
+
+Then the council convenes: the question goes to every seat in parallel, and the answers stream in side by side. Here is an example of the question/prompt to be resolved by the Council: *"Our 8-year-old speaks English and Spanish and can pick the 3rd language to learn. Converge on ONE for maximum lifetime value."*
+
+![The council convenes](./assets/04-council-convenes.jpg)
+
+Claude recommends **French**. GPT-5.5 and Gemini both pick **Mandarin**. And that spread is exactly what the app is built around — a single model would have given me one of these answers with full confidence, and I would never have known the other one existed.
+
+What happens next depends on the council type. Let me go through the three of them, each with a real recorded example.
+
+### 🔀 Parallel — independent answers, side by side
+
+Sometimes you don't need the council to agree — you want several drafts, several perspectives, several second opinions. Parallel is the simplest structure: every participant answers independently, no voting, no synthesis, you compare the raw answers yourself. (A council of one is just a regular single-model chat.)
+
+The Parallel demo is self-referential: while building the app, I asked the council to name it. Claude proposed *Quorum*, *Polymind*, *Concordia*; GPT-5.5 went with *QuorumIQ*, *VerdictMesh*, *ManyMindsAI*; Gemini offered *ModelJury*, *Dialectix*, *SynthCouncil*. Councils are multi-turn — follow-ups carry the whole conversation to every seat — so I asked a follow-up: what about names that pair with a `.ai` domain without having "AI" in the name itself? All three models landed on *Tribunal*, and *Quorum* and *Conclave* each showed up twice but also introduced another different versions. Such a broad lookup (see different perspectives, different variants) without the need to consolidate them — that's exactly what Parallel is about. Come up with the name, write a letter, draft several versions of that letter — you get all of these side by side, and you pick the best.
+
+![Parallel: three models naming the app, side by side](./assets/05-parallel-naming.png)
+
+### ⚖️ Trial — anonymous peer votes, then a verdict
+
+In Trial mode, the participants answer first, then rate each other's answers **anonymously** on accuracy, completeness, and insight. The anonymity is a real mechanism, not decoration: self-identification is stripped from the answers and the names are hidden behind neutral labels, so nobody can play favorites. The votes feed a small leaderboard with agreement indicators — you see where the models agreed and where they split *before* the verdict — and only then a separate Judge model reads the answers plus the votes and delivers one ruling, with the decisive evidence spelled out.
+
+The Trial demo is a question with a factually right answer: I attached a photo I took on a beach and asked — *"Where exactly was this photo taken? Be as specific as you can."*
+
+![Trial: where was this photo taken](./assets/06-trial-photo.jpg)
+
+The seats had live web search and code execution at their disposal, and watching them work is half the fun. Claude ran a couple of searches and landed on the **Langevelderslag beach access near Noordwijk, the Netherlands** — ~85% confident about the stretch of coast, 65–70% about the exact spot. Gemini named the same place with high confidence, keying off a half-visible silhouetted sign reading "NEDER…" — which matches *Nederzandt*, the beach pavilion sitting exactly at that beach entrance. GPT-5.5 made the most tool calls of the three (four web searches plus coordinate math in code) and still guessed a different beach further north on the same coastline: right country, right coast, wrong village.
+
+Then the votes came in: Gemini's answer took the peer-rated trophy at 4.7★, Claude got 4.5★, GPT-5.5 got 3.2★. The Judge ruled for **Langevelderslag at ~90% confidence** and explained that "the sign does the heavy lifting" — the offshore wind turbines on the horizon confirm the region but can't pin a village, which is exactly where the wrong guess overreached.
+
+![Trial: votes and the verdict](./assets/07-trial-verdict.jpg)
+
+The photo was indeed taken at Langevelderslag. What I like about this demo is how it separates the quality of the reasoning from the confidence of the prose — and shows that more tool calls don't automatically buy a better answer.
+
+One deliberate design decision: Trial has **no revision step**. The Judge rules on first-draft answers plus votes — judgment from authority. Mind-changing belongs to the next mode.
+
+### 🤝 Consensus — a genuine multi-round debate
+
+Consensus is the mode I called my favourite above. Every round, **every participant re-answers** the question — seeing its own previous answer and its peers' positions (anonymized again, with labels that reshuffle between turns). A Mediator model then checks: did they converge? If yes, it writes the final consensus summary. If not, it distills what the disagreement is actually about and seeds the next round with it. Rounds are capped (configurable), and if the cap is hit without agreement, the Mediator reports the points of agreement and the remaining conflicts instead of faking harmony. (Fair warning: it's the most expensive mode — roughly participants × rounds model calls.)
+
+Remember the third-language council — Claude arguing French, GPT-5.5 and Gemini both firmly on Mandarin? After round one, the Mediator refused to declare consensus and pinned down the crux: the Mandarin camp was optimizing for the highest ceiling, the French camp for *expected* value — payoff times the probability that a kid actually reaches fluency — plus an unexamined assumption about immersion, and an unanswered claim about machine translation eroding the "transactional" value of hard languages.
+
+Round two is where it gets fun. GPT-5.5 opened with *"What changed my mind: my earlier answer over-weighted Mandarin's ceiling…"* — and flipped to French. Gemini wrote that the expected-value framing *"has genuinely changed my mind"* and flipped too, spelling out the exact condition under which Mandarin wins instead (a heritage speaker at home, or a full-immersion school). Claude held. Consensus reached: **French**, with an explicit escape hatch to Mandarin — and a "What changed this round" strip showing who shifted and who held.
+
+![Consensus reached, with shifted and held chips](./assets/08-consensus-reached.jpg)
+
+The two-against-one majority lost to the better argument. That's the property I care about most here: the debate isn't a vote, and the initial majority isn't treated as truth.
+
+The second Consensus demo is a factual one: on a 7:00am flight from Oakland to Maui, which side of the plane should you sit on to see the Golden Gate Bridge? Claude and GPT-5.5 said **right**, working out the actual geometry — jets depart Oakland's Runway 30 heading roughly 300° northwest, the bridge sits at bearing ~296°, and then the aircraft banks left toward Hawaii, leaving the bridge on the right side. Gemini said **left**, assuming a due-west takeoff. The Mediator flagged the runway assumption as *the* open disagreement; in round two Gemini re-did the geometry and shifted. Consensus: right side, ideally a forward window seat — with honest caveats about fog and ATC routing.
+
+Any verdict can be shared as an image — here is the card that council produced:
+
+![Consensus share card](./assets/09-consensus-share-card.png)
+
+"3 models · 2 rounds of debate · 1 changed its position · consensus reached" is my favourite status line in the whole app.
+
+## Your keys, your data
+
+Yes-Brainer is a **static page**. There is no backend, no accounts, no subscription — and that's not a pricing decision, it's the architecture:
+
+- **Your API keys live in your browser** (localStorage) and travel exactly one route: directly from your browser to the provider you chose. You pay only your model providers. There's no server of mine in between — so there's nothing for me to leak.
+- **Your conversations live on your device** (IndexedDB). Nobody holds a copy; JSON export/import is the manual bridge between devices.
+- The production build ships a strict **Content-Security-Policy** whose allowlist names exactly the supported provider endpoints — even if malicious code somehow ran in the page, the browser would refuse to send your keys anywhere else.
+- Provider errors are **scrubbed of secrets** before they're stored or logged — an SDK error that echoes your auth header persists as `[redacted]`.
+- The app is **open source under AGPL-3.0**. "Read the code you're pasting keys into" is the trust story, and the AGPL network clause keeps every hosted fork readable too.
+
+![Settings — Keys](./assets/10-keys.jpg)
+
+Your part of the deal (the app says this right where you paste the key): check that the address bar says **yesbrainer.ai** — a copied site can fake everything except its URL — and use a dedicated key with a spending limit set in the provider's console. Two honest footnotes: prompts sent to OpenRouter models pass through OpenRouter's gateway (that's what its one-key-for-many-vendors convenience buys), and the official site sends a single cookieless pageview ping to a self-hosted counter with a closed payload — no third-party scripts, forks send nothing, and there's an opt-out. The full threat model, including what the code *can't* protect against, is in [SECURITY.md](https://github.com/trekhleb/yesbrainer/blob/main/SECURITY.md).
+
+## Phone-first, installable as a PWA
+
+I use this from the couch more often than from the desk, so mobile is not an afterthought: the side-by-side answers become a focus carousel (one answer in focus, the next peeking in from the edge), and the app installs on the home screen as a PWA.
+
+![Yes-Brainer on a phone](./assets/11-mobile.png)
+
+## Standing on the shoulders of llm-council
+
+The idea is not new, and the starting point deserves proper credit: [llm-council](https://github.com/karpathy/llm-council) by [Andrej Karpathy](https://twitter.com/karpathy) is a great experiment that runs an "answer → review → synthesize" pass over several models, and its orchestration concept and prompt designs (judge synthesis, anonymized peer evaluation) are where this project started.
+
+What I pushed further is the shape:
+
+- **Three deliberation structures instead of one fixed pipeline** — including the multi-round Consensus debate refereed to convergence, which is the part I haven't seen elsewhere.
+- **Follow-ups** — a council is a conversation, not a one-shot; every follow-up carries the full context to every seat.
+- **No server at all** — llm-council (and most of its 80+ forks) needs a local server you run; Yes-Brainer is a static bundle that works on your phone.
+- **The disagreement made visible** — the vote spread, the agreement indicators, the "who shifted / who held" chips. The app shows you where the models split instead of smoothing it over.
+
+The multi-LLM space is busy in general: there are hosted council products (subscription-based, with your conversations on their servers) and multi-model aggregators (side-by-side answers without a deliberation mechanic). The combination here — open source, zero backend, bring-your-own-keys, an iterative debate, on-device data — is a slot I haven't found occupied. If you know a closer neighbor, [open an issue](https://github.com/trekhleb/yesbrainer/issues) — I keep the comparison section of the README honest.
+
+## More models isn't truth
+
+One honest caveat before you go:
+
+> A council reduces single-model blind spots, but every answer is still AI-generated and can be confidently wrong — including a full council converging, in perfect agreement, on a wrong answer. The app repeats this under every council for a reason: "AI can make mistakes — even a full council. Verify before acting on it." Yes-Brainer's job is to show you the spread and the reasoning; the judgment stays yours.
+
+## Try it
+
+👉 **[yesbrainer.ai](https://yesbrainer.ai)** — the recorded demo councils are one click away, no keys needed. Paste a key (or enable local Ollama) and those same councils become interactive — you can keep asking them follow-ups.
+
+It's a side project, so there will be rough edges. If you hit one, [issues and feedback](https://github.com/trekhleb/yesbrainer/issues) are very welcome. And if you want to poke at how it's built — the whole thing is open: [github.com/trekhleb/yesbrainer](https://github.com/trekhleb/yesbrainer).
