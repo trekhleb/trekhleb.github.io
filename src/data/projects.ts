@@ -1,7 +1,7 @@
 import { Projects } from '../types/Project';
 
 export const projects: Projects = {
-  'yesbrainer': {
+  yesbrainer: {
     id: 'yesbrainer',
     name: '🧠 Yes-Brainer',
     demoURL: { url: 'https://yesbrainer.ai' },
