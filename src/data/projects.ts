@@ -970,7 +970,7 @@ export const projects: Projects = {
         title: 'Mentioned in jaki-jezyk-programowania.pl',
         image: { srcPath: 'projects/javascript-algorithms/achievements/41-jaki-jezyk-programowania-2024-12.png' },
         date: '2024-12-10',
-        link: { url: 'https://jaki-jezyk-programowania.pl/technologie/javascript/', caption: 'JavaScript: Zastosowanie' },
+        link: { url: 'https://jaki-jezyk-programowania.pl/technologie/javascript/', caption: 'JavaScript - Zastosowanie' },
       },
       {
         title: 'Cited in: Korean — Hanbit interview book',
