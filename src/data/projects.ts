@@ -21,7 +21,14 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'yesbrainer',
     },
-    achievements: [],
+    achievements: [
+      {
+        title: 'Featured on Sidebar.io',
+        image: { srcPath: 'projects/yesbrainer/achievements/01-sidebar-io-2026-07-17.png' },
+        date: '2026-07-17',
+        link: { url: 'https://sidebar.io/date/2026-07-17', caption: 'Sidebar.io' },
+      },
+    ],
   },
   'claude-pod': {
     id: 'claude-pod',
