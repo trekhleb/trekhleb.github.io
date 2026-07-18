@@ -28,6 +28,12 @@ export const projects: Projects = {
         date: '2026-07-17',
         link: { url: 'https://sidebar.io/date/2026-07-17', caption: 'Sidebar.io' },
       },
+      {
+        title: 'Published on ITNEXT',
+        image: { srcPath: 'projects/yesbrainer/achievements/02-itnext-2027-07-18.png' },
+        date: '2026-07-18',
+        link: { url: 'https://itnext.io/yes-brainer-a-council-of-ai-models-fe31baa61f93#7b1f-5bd36f31d734', caption: 'See the post' },
+      },
     ],
   },
   'claude-pod': {
