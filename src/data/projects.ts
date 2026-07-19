@@ -242,6 +242,13 @@ export const projects: Projects = {
         date: '2021-10-01',
         link: { url: 'https://javascriptweekly.com/issues/558', caption: 'JavaScript Weekly Newsletter' },
       },
+      {
+        title: 'The arXiv paper citing self-parking-car-evolution',
+        image: { srcPath: 'projects/self-parking-car-evolution/achievements/05-arxiv-automated-parking-2024-05-24.png' },
+        date: '2024-05-24',
+        // Also here: https://arxiv.org/abs/2406.15430
+        link: { url: 'https://arxiv.org/pdf/2406.15430', caption: 'See the paper' },
+      },
     ],
   },
   'js-image-carver': {
@@ -497,6 +504,12 @@ export const projects: Projects = {
           caption: 'Publication',
         },
       },
+      {
+        title: 'Listed in dive-into-machine-learning repo',
+        image: { srcPath: 'projects/machine-learning-experiments/achievements/03-dive-into-machine-learning-2022-03-03.png' },
+        date: '2021-11-15',
+        link: { url: 'https://github.com/dive-into-machine-learning/dive-into-machine-learning', caption: 'See the repo' },
+      },
     ],
   },
   'state-of-the-art-shitcode': {
@@ -689,6 +702,19 @@ export const projects: Projects = {
         image: { srcPath: 'projects/homemade-machine-learning/achievements/07-cited-in-Hands-On-Artificial-Intelligence-for-Cybersecurity-2019.png' },
         date: '2019-08-02',
         link: { url: 'https://books.google.com/books?id=7GOnDwAAQBAJ', caption: 'See the book in Google Books' },
+      },
+      {
+        title: 'Listed in dive-into-machine-learning repo',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/08-dive-into-machine-learning-2022-03-03.png' },
+        date: '2021-11-15',
+        link: { url: 'https://github.com/dive-into-machine-learning/dive-into-machine-learning', caption: 'See the repo' },
+      },
+      {
+        title: 'Cited in the "Legal liability of AI driven-systems" LLM thesis (International Hellenic University, Greece)',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/09-legal-liability-of-ai-driven-systems-2019-04-18.png' },
+        date: '2019-04-18',
+        // Also here: https://repository.ihu.gr/files/8039fa71-e2cd-4a1b-97d9-126802696bfa/download/c.bertsia_llm_15.04.2019.pdf 
+        link: { url: 'https://repository.ihu.gr/items/9d0d87d4-1c64-4bda-b998-3f61b424f0a7', caption: 'See the paper' },
       },
     ],
   },
@@ -1036,6 +1062,86 @@ export const projects: Projects = {
         // Also here https://ieeexplore.ieee.org/document/9978351
         link: { url: 'https://domiii.github.io/dbux/pdg', caption: 'See the details' },
       },
+      {
+        title: 'GitHub stars history trend',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/49-stars-history-2026-07-17.png' },
+        date: '2026-07-17',
+        link: { url: 'https://emanuelef.github.io/daily-stars-explorer/#/trekhleb/javascript-algorithms', caption: 'See the trend' },
+      },
+      {
+        title: 'Referenced in 33-js-concepts project',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/50-33-js-concepts-2026-01-02.png' },
+        date: '2026-01-02',
+        link: { url: 'https://github.com/leonardomso/33-js-concepts/blob/master/docs/concepts/data-structures.mdx', caption: 'See the Data Structures section' },
+      },
+      {
+        title: 'Featured in Node Weekly (Issue #318)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/51-node-weekly-2019-12-12.png' },
+        date: '2019-12-12',
+        link: { url: 'https://nodeweekly.com/issues/318', caption: 'See Issue #318' },
+      },
+      {
+        title: 'Featured in FrontEndGitHub editorials (issues #2 and #37)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/52-FrontEndGitHub-2021-05-25.png' },
+        date: '2021-03-25',
+        link: { url: 'https://github.com/FrontEndGitHub/FrontEndGitHub/issues/37', caption: 'See Issue #37' },
+      },
+      {
+        title: 'Mentioned in Better Programming',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/53-better-programming-2019-07-10.png' },
+        date: '2019-07-10',
+        link: { url: 'https://medium.com/better-programming/here-are-the-most-common-javascript-algorithms-and-data-structures-ec3729050169', caption: 'Most Common JavaScript Algorithms and Data Structures' },
+      },
+      {
+        title: 'ACM SBES 2023 (peer-reviewed citation)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/54-Semantics-Aware-Bug-Seeding-2023-09-25.png' },
+        date: '2023-09-25',
+        // Also here: https://dl.acm.org/doi/epdf/10.1145/3613372.3613412
+        link: { url: 'https://dl.acm.org/doi/10.1145/3613372.3613412', caption: 'See the paper' },
+      },
+      {
+        title: 'Listed in qianguyihao/Web (28.6K★ Chinese curriculum)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/55-qianguyihao-Web-2021-07-28.png' },
+        date: '2019-11-05',
+        link: { url: 'https://github.com/qianguyihao/Web/blob/master/17-%E8%B5%84%E6%BA%90%E6%8E%A8%E8%8D%90/03-%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%BA%90%E6%8E%A8%E8%8D%90.md', caption: 'See the repo' },
+      },
+      {
+        title: 'Cited in UTFPR thesis (Brazil)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/56-UTFPR-thesis-2021-12-08.png' },
+        date: '2021-12-08',
+        // Also here: http://repositorio.utfpr.edu.br/jspui/bitstream/1/30141/1/estudoempiricoduplicacaocodigojavascript.pdf
+        link: { url: 'http://repositorio.utfpr.edu.br/jspui/handle/1/30141', caption: 'See the thesis' },
+      },
+      {
+        title: 'Zenn — AI Shift / CyberAgent corporate blog (Japan, 2024)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/57-Zenn-AI-Shift-2024-07-01.png' },
+        date: '2024-07-01',
+        link: { url: 'https://zenn.dev/aishift/articles/8d02ac3e190bb7', caption: 'See the blog post' },
+      },
+      {
+        title: 'SegmentFault: Tech Weekly (staff editorial)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/58-SegmentFault-2021-01-16.png' },
+        date: '2021-01-16',
+        link: { url: 'https://segmentfault.com/a/1190000039004357', caption: 'See the blog post' },
+      },
+      {
+        title: 'TU Delft E. Li thesis',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/59-TU-Delft-Research-Project-Erwin-Li-2023-06-25.png' },
+        date: '2023-06-25',
+        link: { url: 'https://repository.tudelft.nl/file/File_9c3a2e23-83c5-4004-930b-c3b2f5a0a3f7', caption: 'See the paper (pdf)' },
+      },
+      {
+        title: 'Åbo Akademi thesis',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/60-Abo-Akademi-thesis-2023-10-29.png' },
+        date: '2023-10-29',
+        link: { url: 'https://www.doria.fi/handle/10024/188141', caption: 'See the thesis' },
+      },
+      {
+        title: 'Program with Erik: How Do You Land A Web Development Job? Interview Github Practice Guide (YouTube)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/61-program-with-erik-2021-04-19.png' },
+        date: '2021-04-19',
+        link: { url: 'https://www.youtube.com/watch?v=FXv0k6Dh8GI', caption: 'See the YouTube video' },
+      },
     ],
   },
   'machine-learning-octave': {
@@ -1091,6 +1197,12 @@ export const projects: Projects = {
         title: 'Trending repository of the day on GitHub',
         image: { srcPath: 'projects/learn-python/achievements/02-github-trending-day-2020-11-23.png' },
         date: '2020-11-23',
+      },
+      {
+        title: '15 Python GitHub Repos Every Developer Should Know 2024',
+        image: { srcPath: 'projects/learn-python/achievements/03-github-repositories-python-2024-04-16.png' },
+        date: '2024-04-16',
+        link: { url: 'https://favtutor.com/articles/github-repositories-python/', caption: 'See the article' },
       },
     ],
   },
