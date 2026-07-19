@@ -713,7 +713,7 @@ export const projects: Projects = {
         title: 'Cited in the "Legal liability of AI driven-systems" LLM thesis (International Hellenic University, Greece)',
         image: { srcPath: 'projects/homemade-machine-learning/achievements/09-legal-liability-of-ai-driven-systems-2019-04-18.png' },
         date: '2019-04-18',
-        // Also here: https://repository.ihu.gr/files/8039fa71-e2cd-4a1b-97d9-126802696bfa/download/c.bertsia_llm_15.04.2019.pdf 
+        // Also here: https://repository.ihu.gr/files/8039fa71-e2cd-4a1b-97d9-126802696bfa/download/c.bertsia_llm_15.04.2019.pdf
         link: { url: 'https://repository.ihu.gr/items/9d0d87d4-1c64-4bda-b998-3f61b424f0a7', caption: 'See the paper' },
       },
     ],
