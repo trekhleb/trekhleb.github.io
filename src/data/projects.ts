@@ -199,6 +199,12 @@ export const projects: Projects = {
         date: '2022-12-16',
         link: { url: 'https://techcrunch.com/2022/12/16/tldraw-offers-a-collaborative-whiteboard-without-any-login/', caption: 'TechCrunch article' },
       },
+      {
+        title: 'Featured in Changelog News',
+        image: { srcPath: 'projects/okso/achievements/06-changelog-2022-07-29.png' },
+        date: '2022-07-29',
+        link: { url: 'https://changelog.com/news/a-drawing-app-to-express-grasp-and-organize-your-thoughts-and-ideas-PpNm', caption: 'Changelog News item' },
+      },
     ],
   },
   'self-parking-car-evolution': {
@@ -309,6 +315,12 @@ export const projects: Projects = {
         image: { srcPath: 'projects/js-image-carver/achievements/08-bram-us-2021-04-26.png' },
         date: '2021-04-26',
         link: { url: 'https://www.bram.us/2021/04/26/seam-carving-content-aware-image-resizing-in-javascript/', caption: 'Seam carving: content-aware image resizing' },
+      },
+      {
+        title: 'Wikipedia citation added by an independent editor ("a great web implementation")',
+        image: { srcPath: 'projects/js-image-carver/achievements/09-wikipedia-revision-2025-08-11.png' },
+        date: '2025-08-11',
+        link: { url: 'https://en.wikipedia.org/w/index.php?title=Seam_carving&diff=1305306194&oldid=1296800033', caption: 'Wikipedia revision diff' },
       },
       {
         title: 'Mentioned in JavaScript Weekly newsletter',
@@ -715,6 +727,12 @@ export const projects: Projects = {
         date: '2019-04-18',
         // Also here: https://repository.ihu.gr/files/8039fa71-e2cd-4a1b-97d9-126802696bfa/download/c.bertsia_llm_15.04.2019.pdf
         link: { url: 'https://repository.ihu.gr/items/9d0d87d4-1c64-4bda-b998-3f61b424f0a7', caption: 'See the paper' },
+      },
+      {
+        title: 'Cited in the "Law, artificial intelligence, & liability" LLB thesis (Strathmore University)',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/10-strathmore-2024-03.png' },
+        date: '2024-03-01',
+        link: { url: 'https://su-plus.strathmore.edu/handle/11071/16160', caption: 'See the paper' },
       },
     ],
   },
@@ -1141,6 +1159,24 @@ export const projects: Projects = {
         image: { srcPath: 'projects/javascript-algorithms/achievements/61-program-with-erik-2021-04-19.png' },
         date: '2021-04-19',
         link: { url: 'https://www.youtube.com/watch?v=FXv0k6Dh8GI', caption: 'See the YouTube video' },
+      },
+      {
+        title: 'MDN listing confirmed in the Internet Archive (snapshot Dec 1, 2025)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/62-wayback-mdn-2025-12-01.png' },
+        date: '2025-12-01',
+        link: { url: 'https://web.archive.org/web/20251201091840/https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures', caption: 'Wayback Machine snapshot' },
+      },
+      {
+        title: 'Dedicated Medium article "Every JavaScript Algorithm" profiles the repository and its author',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/63-medium-khan-2023-04-11.png' },
+        date: '2023-04-11',
+        link: { url: 'https://medium.com/@fareedkhandev/every-javascript-algorithm-7fb074cd66d1', caption: 'Every JavaScript Algorithm (Medium)' },
+      },
+      {
+        title: 'Cited in the "A One-Sided Tale: Investigating a few Code Dependency Risks" project report (University of Waterloo)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/65-waterloo.png' },
+        date: '2023-04-01',
+        link: { url: 'https://plg.uwaterloo.ca/~migod/846/2023-Winter/projects/05-Funmi-Anuradha-report.pdf', caption: 'See the paper' },
       },
     ],
   },
