@@ -436,6 +436,12 @@ export const projects: Projects = {
         date: '2022-02-03',
         link: { url: 'https://dou.ua/lenta/articles/open-source-in-ukraine/', caption: 'DOU article' },
       },
+      {
+        title: '18K GitHub Followers',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/11-github-profile-2026-07-28.png' },
+        date: '2026-07-28',
+        link: { url: 'https://github.com/trekhleb', caption: 'See profile' },
+      },
     ],
   },
   'links-detector': {
