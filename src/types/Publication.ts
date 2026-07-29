@@ -1,5 +1,4 @@
 import React from 'react';
-import { Tag } from './Tag';
 import { DateString } from './Date';
 import { Link } from './Link';
 import { Image } from './Image';
@@ -51,11 +50,27 @@ export type PublisherData = {
   description?: React.ReactNode,
 }
 
+// The type of a publication based on who wrote it and who vetted it.
+export enum PublicationTag {
+  // Written by me (self-published or editorially approved).
+  Authored = 'Authored',
+  // My work picked by curators or communities (newsletters, Hacker News, etc.).
+  Featured = 'Featured',
+  // Third parties writing about me or my work (reviews, interviews, mentions).
+  Coverage = 'Coverage',
+  // Peer-reviewed papers and theses citing or using my work.
+  ResearchCitation = 'Cited in research',
+  // Books citing my work.
+  BookCitation = 'Cited in books',
+  // Canonical documentation listing my work (MDN, Wikipedia, etc.).
+  ReferenceDocs = 'Reference docs',
+}
+
 export type Publication = {
   title: string;
   summary: string[];
   link: Link;
   date: DateString;
   publisher: Publisher;
-  tags?: Tag[];
+  tag: PublicationTag;
 };

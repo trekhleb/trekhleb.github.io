@@ -5,7 +5,7 @@ import PageHeader from '../shared/PageHeader';
 import Badge from '../shared/Badge';
 import Row from '../shared/Row';
 import SEO from '../shared/SEO';
-import { Publication, Publisher } from '../../types/Publication';
+import { Publication, PublicationTag, Publisher } from '../../types/Publication';
 import PublicationsList from '../elements/PublicationsList';
 import PublicationFilters from '../elements/PublicationFilters';
 
@@ -17,18 +17,22 @@ const PublicationsScreen = (props: PublicationsScreenProps): React.ReactElement 
   const { publications } = props;
 
   const [publisher, setPublisher] = React.useState<Publisher | 'All'>('All');
+  const [tag, setTag] = React.useState<PublicationTag | 'All'>('All');
 
   const filteredPublications = publications.filter((publication) => {
-    if (publisher === 'All') {
-      return true;
-    }
-    return publication.publisher === publisher;
+    const publisherMatches = publisher === 'All' || publication.publisher === publisher;
+    const tagMatches = tag === 'All' || publication.tag === tag;
+    return publisherMatches && tagMatches;
   });
 
   const publicationsNum = publications.length;
 
   const onPublisherSelect = (selectedPublisher: Publisher): void => {
     setPublisher(selectedPublisher);
+  };
+
+  const onTagSelect = (selectedTag: PublicationTag): void => {
+    setTag(selectedTag);
   };
 
   return (
@@ -45,7 +49,9 @@ const PublicationsScreen = (props: PublicationsScreenProps): React.ReactElement 
         <PublicationFilters
           publications={publications}
           publisher={publisher}
+          tag={tag}
           onPublisherSelect={onPublisherSelect}
+          onTagSelect={onTagSelect}
         />
       </Row>
       <PublicationsList publications={filteredPublications} />
