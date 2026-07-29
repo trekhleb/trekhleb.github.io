@@ -1,5 +1,6 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
 import Row from '../shared/Row';
+import Select, { SelectOption } from '../shared/Select';
 import { Publication, Publisher } from '../../types/Publication';
 
 type PublisherStat = Partial<Record<Publisher, number>>
@@ -24,35 +25,37 @@ const PublicationFilters = (props: PublicationFiltersProps): React.ReactElement 
       return stat;
     }, {} as PublisherStat);
 
-  const publisherOptions = (Object.keys(publishersStat) as Publisher[])
-    .sort()
-    .map((currPublisher: Publisher) => {
-      return (
-        <option key={currPublisher} value={currPublisher}>
-          {currPublisher} ({publishersStat[currPublisher]})
-        </option>
-      );
-    });
+  const publisherOptions: SelectOption[] = [
+    {
+      value: 'All',
+      label: `All (${publications.length})`,
+    },
+    ...(Object.keys(publishersStat) as Publisher[])
+      .sort((publisherA: Publisher, publisherB: Publisher) => (
+        publisherA.localeCompare(publisherB, 'en', { sensitivity: 'base' })
+      ))
+      .map((currPublisher: Publisher): SelectOption => ({
+        value: currPublisher,
+        label: `${currPublisher} (${publishersStat[currPublisher]})`,
+      })),
+  ];
 
-  const onPublisherChange = (event: ChangeEvent<HTMLSelectElement>): void => {
-    const selectedPublisher = event.target.value as Publisher;
-    onPublisherSelect(selectedPublisher);
+  const onPublisherChange = (selectedPublisher: string): void => {
+    onPublisherSelect(selectedPublisher as Publisher);
   };
 
   return (
     <div>
       <Row>
-        <div className="text-sm text-gray-500 mr-1">
+        <div className="text-sm text-gray-500 mr-2">
           Publisher:
         </div>
-        <div>
-          <select onChange={onPublisherChange} defaultValue={publisher} className="text-sm">
-            <option value="All">
-              All ({publications.length})
-            </option>
-            {publisherOptions}
-          </select>
-        </div>
+        <Select
+          options={publisherOptions}
+          value={publisher}
+          onChange={onPublisherChange}
+          ariaLabel="Filter publications by publisher"
+        />
       </Row>
     </div>
   );

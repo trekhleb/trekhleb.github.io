@@ -8,8 +8,8 @@ import Badge from '../shared/Badge';
 import Row from '../shared/Row';
 import SEO from '../shared/SEO';
 import ProjectFilters, {
-  sortByStarsDesc, sortByStartDateAsc,
-  sortByStartDateDesc,
+  sortByAchievementsDesc, sortByStarsDesc,
+  sortByStartDateAsc, sortByStartDateDesc,
   SortOption, supportedSortOptions,
 } from '../elements/ProjectFilters';
 import { getGitHubProjectStars, getTotalGetHubProjectStars, projectMapToArray } from '../../utils/project';
@@ -55,6 +55,16 @@ const projectSorters: ProjectSorters = {
         return 0;
       }
       return aStars > bStars ? -1 : 1;
+    },
+  },
+  [sortByAchievementsDesc]: {
+    sort: (a: ProjectType, b: ProjectType): number => {
+      const aAchievements = a?.achievements?.length || 0;
+      const bAchievements = b?.achievements?.length || 0;
+      if (aAchievements === bAchievements) {
+        return 0;
+      }
+      return aAchievements > bAchievements ? -1 : 1;
     },
   },
 };

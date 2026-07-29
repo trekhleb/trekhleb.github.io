@@ -34,7 +34,7 @@ async function createPostPages(args: CreatePagesArgs): Promise<void> {
   const { createPage } = actions;
   const result: CreatePostPagesQuery = await graphql(`
     query CreatePostPagesQuery {
-      allMdx {
+      allMdx(filter: {internal: {contentFilePath: {regex: "/\\/src\\/posts\\//"}}}) {
         nodes {
           fields {
             slug

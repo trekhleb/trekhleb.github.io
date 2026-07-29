@@ -10,7 +10,10 @@ interface BlogProps extends PageProps {
 
 export const query = graphql`
   query BlogPageQuery {
-    allMdx(sort: {frontmatter: {date: DESC}}) {
+    allMdx(
+      filter: {internal: {contentFilePath: {regex: "/\\/src\\/posts\\//"}}},
+      sort: {frontmatter: {date: DESC}},
+    ) {
       totalCount
       nodes {
         id

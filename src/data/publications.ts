@@ -502,4 +502,287 @@ export const publications: Publication[] = [
       url: 'https://towardsdatascience.com/why-is-explainability-so-important-right-now-60f1b850023a/',
     },
   },
+  {
+    title: 'Yes-Brainer: A Council of AI Models',
+    summary: ['A council of AI models for the decisions that aren\'t no-brainers — models answer in parallel, debate to consensus, or get judged to a verdict. The article explains the ideas behind my yesbrainer.ai project.'],
+    date: '2026-07-18',
+    publisher: Publisher.ITNEXT,
+    link: {
+      url: 'https://itnext.io/yes-brainer-a-council-of-ai-models-fe31baa61f93',
+    },
+  },
+  {
+    title: 'Yes-Brainer: A Council of AI Models',
+    summary: ['My yesbrainer.ai project has been featured on Sidebar — the five best design and front-end links of the day.'],
+    date: '2026-07-17',
+    publisher: Publisher.SidebarIO,
+    link: {
+      url: 'https://sidebar.io/date/2026-07-17',
+    },
+  },
+  {
+    title: 'Developer Technical Interview Notes',
+    summary: ['A tech-interview preparation book published by Hanbit Media (South Korea) that cites my GitHub project trekhleb/javascript-algorithms.'],
+    date: '2025-04-07',
+    publisher: Publisher.HanbitMedia,
+    link: {
+      url: 'https://books.google.com/books?id=aUZUEQAAQBAJ',
+    },
+  },
+  {
+    title: '万星开源推荐: JavaScript Algorithms',
+    summary: ['A dedicated article on Juejin (掘金), a major Chinese developer platform, about my GitHub project trekhleb/javascript-algorithms.'],
+    date: '2024-11-03',
+    publisher: Publisher.Juejin,
+    link: {
+      url: 'https://juejin.cn/post/7433256760679809035',
+    },
+  },
+  {
+    title: 'Easys Git & GitHub book',
+    summary: ['A Git & GitHub handbook published by Easys Publishing (South Korea) that cites my GitHub project trekhleb/javascript-algorithms.'],
+    date: '2024-08-09',
+    publisher: Publisher.EasysPublishing,
+    link: {
+      url: 'https://books.google.com/books?id=vw4dEQAAQBAJ',
+    },
+  },
+  {
+    title: 'AI Shift engineering blog (CyberAgent group)',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been referenced in the AI Shift (CyberAgent group, Japan) corporate engineering blog on Zenn.'],
+    date: '2024-07-01',
+    publisher: Publisher.Zenn,
+    link: {
+      url: 'https://zenn.dev/aishift/articles/8d02ac3e190bb7',
+    },
+  },
+  {
+    title: 'Automated Parking Planning with Vision-Based BEV Approach',
+    summary: ['The research paper on automated parking (arXiv:2406.15430) that cites my GitHub project trekhleb/self-parking-car-evolution.'],
+    date: '2024-05-24',
+    publisher: Publisher.ArXiv,
+    link: {
+      url: 'https://arxiv.org/abs/2406.15430',
+    },
+  },
+  {
+    title: 'CrashJS: A NodeJS Benchmark for Automated Crash Reproduction',
+    summary: ['A peer-reviewed paper from the 21st International Conference on Mining Software Repositories (MSR 2024) that uses my GitHub project trekhleb/javascript-algorithms in its benchmark of real-world JavaScript crashes.'],
+    date: '2024-04-15',
+    publisher: Publisher.ACM,
+    link: {
+      // Also here: https://arxiv.org/html/2405.05541v1
+      url: 'https://dl.acm.org/doi/10.1145/3643991.3644912',
+    },
+  },
+  {
+    title: 'SynTest-JavaScript: Automated Unit-Level Test Case Generation for JavaScript',
+    summary: ['A peer-reviewed tool paper from the 17th ACM/IEEE International Workshop on Search-Based and Fuzz Testing (SBFT 2024), by TU Delft, that uses my GitHub project trekhleb/javascript-algorithms as one of the benchmark subject systems.'],
+    date: '2024-04-14',
+    publisher: Publisher.ACM,
+    link: {
+      // Also here: https://repository.tudelft.nl/file/File_d8f52062-ebcb-4d05-a56d-9298e8b7bf78
+      url: 'https://dl.acm.org/doi/10.1145/3643659.3643928',
+    },
+  },
+  {
+    title: 'Analyzing a Semantics-Aware Bug Seeding Tool\'s Efficacy: A qualitative study with the SemSeed tool',
+    summary: ['A peer-reviewed paper from the XXXVII Brazilian Symposium on Software Engineering (SBES 2023) that references my GitHub project trekhleb/javascript-algorithms.'],
+    date: '2023-09-25',
+    publisher: Publisher.ACM,
+    link: {
+      url: 'https://dl.acm.org/doi/10.1145/3613372.3613412',
+    },
+  },
+  {
+    title: 'Introduction to Programming for the Organic Chemist',
+    summary: ['A chapter in the Wiley book "Enabling Tools and Techniques for Organic Synthesis" (by Jason M. Stevens, Bristol Myers Squibb) that cites my GitHub project trekhleb/learn-python.'],
+    date: '2023-08-31',
+    publisher: Publisher.Wiley,
+    link: {
+      url: 'https://onlinelibrary.wiley.com/doi/10.1002/9781119855668.ch9',
+    },
+  },
+  {
+    title: 'JavaScript Algorithms cited in a TU Delft Research Project thesis',
+    summary: ['A TU Delft Computer Science research project thesis (E. Li, 2023) that cites my GitHub project trekhleb/javascript-algorithms.'],
+    date: '2023-06-25',
+    publisher: Publisher.TUDelft,
+    link: {
+      url: 'https://repository.tudelft.nl/file/File_9c3a2e23-83c5-4004-930b-c3b2f5a0a3f7',
+    },
+  },
+  {
+    title: 'Every JavaScript Algorithm',
+    summary: ['A dedicated Medium article that profiles my GitHub project trekhleb/javascript-algorithms and walks through its algorithm collection.'],
+    date: '2023-04-11',
+    publisher: Publisher.Medium,
+    link: {
+      url: 'https://medium.com/@fareedkhandev/every-javascript-algorithm-7fb074cd66d1',
+    },
+  },
+  {
+    title: 'Guess What: Test Case Generation for Javascript with Unsupervised Probabilistic Type Inference',
+    summary: ['A peer-reviewed paper from the 14th International Symposium on Search-Based Software Engineering (SSBSE 2022), published in Springer\'s Lecture Notes in Computer Science, that uses my GitHub project trekhleb/javascript-algorithms for test case generation experiments.'],
+    date: '2022-11-15',
+    publisher: Publisher.Springer,
+    link: {
+      url: 'https://link.springer.com/chapter/10.1007/978-3-031-21251-2_5',
+    },
+  },
+  {
+    title: 'Dbux-PDG: An Interactive Program Dependency Graph for Data Structures and Algorithms',
+    summary: ['A peer-reviewed paper from the IEEE Working Conference on Software Visualization (VISSOFT 2022) that uses algorithms from my GitHub project trekhleb/javascript-algorithms as its analysis examples.'],
+    date: '2022-10-03',
+    publisher: Publisher.IEEE,
+    link: {
+      // Also here: https://domiii.github.io/dbux/pdg
+      url: 'https://ieeexplore.ieee.org/document/9978351',
+    },
+  },
+  {
+    title: 'A drawing app to express, grasp, and organize your thoughts and ideas',
+    summary: ['My okso.app drawing app has been featured in the Changelog News.'],
+    date: '2022-07-29',
+    publisher: Publisher.Changelog,
+    link: {
+      url: 'https://changelog.com/news/a-drawing-app-to-express-grasp-and-organize-your-thoughts-and-ideas-PpNm',
+    },
+  },
+  {
+    title: 'Application of Deep Learning Techniques for the Impedance-based SHM to the Oil & Gas Industry',
+    summary: ['A book chapter published by the University of Brasília (in "Fundamental Concepts and Models for the Direct Problem", 2022) that cites my GitHub project trekhleb/homemade-machine-learning.'],
+    // Only the year of the publication is known
+    date: '2022',
+    publisher: Publisher.UniversidadeDeBrasilia,
+    link: {
+      url: 'https://doi.editoracubo.com.br/10.4322/978-65-86503-83-8.c13.pdf',
+    },
+  },
+  {
+    title: 'Self-Parking Car Evolution',
+    summary: ['My GitHub project trekhleb/self-parking-car-evolution has been included to JavaScript Weekly newsletter issue #558'],
+    date: '2021-10-01',
+    publisher: Publisher.JavaScriptWeekly,
+    link: {
+      url: 'https://javascriptweekly.com/issues/558',
+    },
+  },
+  {
+    title: 'Seam Carving: Content-Aware Image Resizing in JavaScript',
+    summary: ['A dedicated review of my trekhleb/js-image-carver project by Bram Van Damme (Bramus), a Chrome Developer Relations Engineer at Google.'],
+    date: '2021-04-26',
+    publisher: Publisher.BramUs,
+    link: {
+      url: 'https://www.bram.us/2021/04/26/seam-carving-content-aware-image-resizing-in-javascript/',
+    },
+  },
+  {
+    title: 'Accessing device orientation in pure JavaScript (trekhleb.dev)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News post about the Gyro-web article.'],
+    date: '2021-03-07',
+    publisher: Publisher.HackerNews,
+    link: {
+      url: 'https://news.ycombinator.com/item?id=26327532',
+    },
+  },
+  {
+    title: 'SegmentFault Tech Weekly (staff editorial)',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been featured in the SegmentFault (思否) Tech Weekly staff editorial.'],
+    date: '2021-01-16',
+    publisher: Publisher.SegmentFault,
+    link: {
+      url: 'https://segmentfault.com/a/1190000039004357',
+    },
+  },
+  {
+    title: 'Making the Printed Links Clickable Using TensorFlow 2 Object Detection API',
+    summary: ['My article about the trekhleb/links-detector project has been featured in PyCoder\'s Weekly issue #450.'],
+    date: '2020-12-08',
+    publisher: Publisher.PyCodersWeekly,
+    link: {
+      url: 'https://pycoders.com/issues/450',
+    },
+  },
+  {
+    title: 'Generating Cooking Recipes using TensorFlow and LSTM Recurrent Neural Network',
+    summary: ['My article about generating cooking recipes with TensorFlow (the machine-learning-experiments project) has been featured in PyCoder\'s Weekly issue #426.'],
+    date: '2020-06-23',
+    publisher: Publisher.PyCodersWeekly,
+    link: {
+      url: 'https://pycoders.com/issues/426',
+    },
+  },
+  {
+    title: 'Music Genre Detection (TU Delft BSc thesis)',
+    summary: ['A TU Delft Bachelor thesis on music genre detection that cites my article on the Fourier Transform from trekhleb/javascript-algorithms.'],
+    date: '2020-06-09',
+    publisher: Publisher.TUDelft,
+    link: {
+      url: 'https://repository.tudelft.nl/record/uuid:f26347d8-be90-4099-887d-fd668275ef0e',
+    },
+  },
+  {
+    title: 'Interactive Machine Learning Experiments',
+    summary: ['My GitHub project trekhleb/machine-learning-experiments has been featured in PyCoder\'s Weekly issue #420.'],
+    date: '2020-05-12',
+    publisher: Publisher.PyCodersWeekly,
+    link: {
+      url: 'https://pycoders.com/issues/420',
+    },
+  },
+  {
+    title: 'JavaScript Algorithms and Data Structures',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been featured in Node Weekly newsletter issue #318'],
+    date: '2019-12-12',
+    publisher: Publisher.NodeWeekly,
+    link: {
+      url: 'https://nodeweekly.com/issues/318',
+    },
+  },
+  {
+    title: 'Homemade Machine Learning (github.com/trekhleb)',
+    summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
+    date: '2019-11-02',
+    publisher: Publisher.HackerNews,
+    link: {
+      url: 'https://news.ycombinator.com/front?day=2019-11-02',
+    },
+  },
+  {
+    title: 'Hands-On Artificial Intelligence for Cybersecurity',
+    summary: ['The book by Alessandro Parisi published by Packt that cites my GitHub project trekhleb/homemade-machine-learning.'],
+    date: '2019-08-02',
+    publisher: Publisher.Packt,
+    link: {
+      url: 'https://books.google.com/books?id=7GOnDwAAQBAJ',
+    },
+  },
+  {
+    title: 'Here Are the Most Common JavaScript Algorithms and Data Structures',
+    summary: ['The Better Programming article walking through the most common JavaScript algorithms and data structures, based on my GitHub project trekhleb/javascript-algorithms.'],
+    date: '2019-07-10',
+    publisher: Publisher.BetterProgramming,
+    link: {
+      url: 'https://medium.com/better-programming/here-are-the-most-common-javascript-algorithms-and-data-structures-ec3729050169',
+    },
+  },
+  {
+    title: 'Homemade Machine Learning',
+    summary: ['My GitHub project trekhleb/homemade-machine-learning has been featured in PyCoder\'s Weekly issue #349.'],
+    date: '2019-01-01',
+    publisher: Publisher.PyCodersWeekly,
+    link: {
+      url: 'https://pycoders.com/issues/349',
+    },
+  },
+  {
+    title: 'Algoritmos e estrutura de dados clássicos em JavaScript',
+    summary: ['A dedicated iMasters article by Diego Pinho (in Portuguese) about my GitHub project trekhleb/javascript-algorithms.'],
+    date: '2018-11-23',
+    publisher: Publisher.IMasters,
+    link: {
+      url: 'https://imasters.com.br/desenvolvimento/algoritmos-e-estrutura-de-dados-classicos-em-javascript',
+    },
+  },
 ];
