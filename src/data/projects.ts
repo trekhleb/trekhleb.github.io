@@ -1,6 +1,29 @@
 import { Projects } from '../types/Project';
 
 export const projects: Projects = {
+  'bible-cross-references': {
+    id: 'bible-cross-references',
+    name: '📚 Bible Cross-References',
+    demoURL: { url: 'https://trekhleb.dev/bible-cross-references/' },
+    srcURL: { url: 'https://github.com/trekhleb/bible-cross-references' },
+    cover: { srcPath: 'projects/bible-cross-references/cover-01.jpg' },
+    startDate: '2026-09-26',
+    summary: [
+      'Explore all 344,799 Bible cross-references — every verse on one line with its links drawn as arcs, and every chapter read alongside threads to where its verses connect.',
+    ],
+    tags: [
+      { name: 'Data Viz' },
+      { name: 'Bible' },
+      { name: 'React' },
+      { name: 'TypeScript' },
+      { name: 'Three.js' },
+    ],
+    gitHubRepo: {
+      owner: 'trekhleb',
+      repo: 'bible-cross-references',
+    },
+    achievements: [],
+  },
   yesbrainer: {
     id: 'yesbrainer',
     name: '🧠 Yes-Brainer',
