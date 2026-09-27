@@ -27,7 +27,8 @@ const NavMenu = (): React.ReactElement => {
     });
 
   return (
-    <ul className="flex flex-row items-center gap-0.5 sm:gap-1">
+    // Phones: 14px between the words (4px item padding + 6px gap + 4px); wider screens: pills.
+    <ul className="flex flex-row items-center gap-1.5 sm:gap-1">
       {links}
     </ul>
   );

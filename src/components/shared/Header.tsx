@@ -33,7 +33,7 @@ const Header = (props: HeaderProps): React.ReactElement => {
           on the right edge instead (`justify-between`; if the row ever wraps, at 320px, the
           wrapped navigation starts on the left under the wordmark), and `-mr-1` cancels the last
           item's padding so "Publications" ends exactly on the content edge. */}
-      <div className="container-page flex min-h-[3.5rem] flex-wrap items-center justify-between gap-x-5 sm:min-h-[4rem] sm:justify-start sm:gap-x-9">
+      <div className="container-page flex min-h-[3.5rem] flex-wrap items-center justify-between gap-x-4 sm:min-h-[4rem] sm:justify-start sm:gap-x-9">
         <Logo />
         <nav aria-label="Main navigation" className="-mr-1 sm:mr-0">
           <NavMenu />
