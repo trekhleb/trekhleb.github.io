@@ -2,9 +2,9 @@
 
 [![CI](https://github.com/trekhleb/trekhleb.github.io/workflows/CI/badge.svg)](https://github.com/trekhleb/trekhleb.github.io/actions?query=workflow%3ACI+branch%3Amaster)
 
-My personal [website](https://trekhleb.dev) with a list of my projects that help people learn and blog posts about life, web-development, and machine-learning.
-
 ![trekhleb.dev](https://trekhleb.dev/static-assets/images/site-meta-image-01.png)
+
+Source code of my personal website, [trekhleb.dev](https://trekhleb.dev). I'm Oleksii, a full-stack software engineer and a lifelong learner, building software since 2007. What I enjoy most is taking a complex technical idea, digging into it until it feels simple, and distilling it into something minimal, visual, and interactive. The site collects my open-source [projects](https://trekhleb.dev/projects/), [articles](https://trekhleb.dev/blog/) about learning, life, web development, and machine learning, and [publications](https://trekhleb.dev/publications/) about my work.
 
 ## Development
 
