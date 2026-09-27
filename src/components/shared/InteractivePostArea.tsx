@@ -7,6 +7,7 @@ type InteractivePostAreaProps = {
   className?: string,
 };
 
+// Frames the interactive demos that live inside blog posts.
 const InteractivePostArea = (props: InteractivePostAreaProps): React.ReactElement | null => {
   const { children, title, className = '' } = props;
 
@@ -15,7 +16,7 @@ const InteractivePostArea = (props: InteractivePostAreaProps): React.ReactElemen
   }
 
   const titleElement = title ? (
-    <div className="text-xs font-light">
+    <div className="mb-2 text-xs font-medium uppercase tracking-wider text-muted">
       {title}
     </div>
   ) : null;
@@ -23,7 +24,7 @@ const InteractivePostArea = (props: InteractivePostAreaProps): React.ReactElemen
   return (
     <ErrorBoundary>
       {titleElement}
-      <div className={`p-6 border border-dashed border-gray-300 rounded-md overflow-hidden ${className}`}>
+      <div className={`overflow-hidden rounded-xl2 border border-dashed border-line-strong p-4 sm:p-6 ${className}`}>
         {children}
       </div>
     </ErrorBoundary>

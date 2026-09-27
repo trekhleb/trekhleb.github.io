@@ -2,6 +2,8 @@
 /* eslint-disable */
 // @generated
 // This file was automatically generated and should not be edited.
+// (Updated by hand: the nodes select the `PostPreviewFields` fragment — see
+// src/components/elements/PostPreview.tsx.)
 
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
@@ -41,7 +43,6 @@ export interface BlogPageQuery_allMdx_nodes_frontmatter {
 
 export interface BlogPageQuery_allMdx_nodes {
   id: string;
-  timeToRead: number | null;
   fields: BlogPageQuery_allMdx_nodes_fields | null;
   frontmatter: BlogPageQuery_allMdx_nodes_frontmatter | null;
 }

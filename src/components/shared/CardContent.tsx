@@ -18,14 +18,14 @@ const CardContent = (props: CardContentProps): React.ReactElement | null => {
     return null;
   }
 
-  const commonClasses = `p-6 ${className}`;
+  const commonClasses = `min-w-0 flex-1 p-5 sm:p-6 ${className}`;
 
   const classes = mode === cardContentModeRow
     ? `${commonClasses} sm:w-3/5 lg:w-3/4`
     : `${commonClasses}`;
 
   return (
-    <div className={classes} style={{ flex: 1 }}>
+    <div className={classes}>
       {children}
     </div>
   );

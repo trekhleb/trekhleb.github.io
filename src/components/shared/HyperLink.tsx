@@ -8,7 +8,8 @@ export type HyperLinkProps = {
   children: React.ReactNode,
   className?: string,
   activeClassName?: string,
-  separatorClassName?: string,
+  // Marks the link active for nested routes as well (e.g. "Blog" while reading a post).
+  partiallyActive?: boolean,
   hoverClassName?: string | null | undefined,
   startEnhancer?: React.ReactNode,
   formatted?: boolean,
@@ -21,7 +22,7 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     children,
     className = '',
     activeClassName = '',
-    separatorClassName = 'w-2',
+    partiallyActive = false,
     hoverClassName = null,
     startEnhancer = null,
     formatted = true,
@@ -33,10 +34,11 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     return null;
   }
 
-  const hoverClasses = hoverClassName || 'hover:text-red-600';
+  const hoverClasses = hoverClassName || 'hover:text-accent';
 
+  // `gap-1.5` is the default icon->label distance; callers override it when they need to.
   const commonClasses = formatted
-    ? `transition duration-200 ease-in-out flex flex-row items-center ${hoverClasses}`
+    ? `inline-flex flex-row items-center gap-1.5 transition-colors duration-150 ease-out ${hoverClasses}`
     : '';
 
   const caption = link?.caption || undefined;
@@ -44,19 +46,15 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
   const isExternal = link.url.startsWith('http');
   const isHash = link.url.startsWith('#');
 
-  const separator = startEnhancer ? (
-    <span className={separatorClassName} />
-  ) : null;
-
   const externalLink = (
     <a
       href={link.url}
       className={`${commonClasses} ${className}`}
       onClick={onClick}
       title={caption}
+      rel={isExternal ? 'noopener' : undefined}
     >
       {formatted && startEnhancer}
-      {formatted && separator}
       {children}
     </a>
   );
@@ -65,12 +63,12 @@ const HyperLink = (props: HyperLinkProps): React.ReactElement | null => {
     <Link
       to={link.url}
       activeClassName={activeClassName}
+      partiallyActive={partiallyActive}
       className={`${commonClasses} ${className}`}
       onClick={onClick}
       title={caption}
     >
       {formatted && startEnhancer}
-      {formatted && separator}
       {children}
     </Link>
   );

@@ -4,7 +4,6 @@ import PageLayout from '../layouts/PageLayout';
 import PostsList from '../elements/PostsList';
 import { BlogPageQuery } from '../../pages/__generated__/BlogPageQuery';
 import PageHeader from '../shared/PageHeader';
-import Row from '../shared/Row';
 import Badge from '../shared/Badge';
 import SEO from '../shared/SEO';
 
@@ -21,13 +20,13 @@ const BlogScreen = (props: BlogScreenProps): React.ReactElement => {
     <PageLayout>
       <SEO
         title="Blog"
-        description="Articles about life, web-development and machine-learning"
+        description={`${postsNum} articles by Oleksii Trekhleb about web development, algorithms, machine learning, and life — with interactive examples and code.`}
       />
-      <Row>
+      <div className="flex items-start gap-3">
         <PageHeader>Blog</PageHeader>
-        <Badge className="ml-3 self-start">{postsNum}</Badge>
-      </Row>
-      <PostsList posts={posts} />
+        <Badge className="mt-2">{postsNum}</Badge>
+      </div>
+      <PostsList posts={posts.allMdx.nodes} />
     </PageLayout>
   );
 };

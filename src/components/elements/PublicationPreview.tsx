@@ -1,12 +1,9 @@
 import React from 'react';
-import { FaInfoCircle } from '@react-icons/all-files/fa/FaInfoCircle';
+import { FiInfo } from '@react-icons/all-files/fi/FiInfo';
 
 import Badge from '../shared/Badge';
 import DateRange from '../shared/DateRange';
-import Card, { cardModeRow } from '../shared/Card';
-import CardContent, { cardContentModeRow } from '../shared/CardContent';
-import CardTitle from '../shared/CardTitle';
-import Row from '../shared/Row';
+import HyperLink from '../shared/HyperLink';
 import { Publication } from '../../types/Publication';
 import Publisher from '../shared/Publisher';
 import { publishers } from '../../data/publishers';
@@ -32,43 +29,43 @@ const PublicationPreview = (
     ),
   );
 
-  const publicationSummary = publicationSummaryLines ? (
-    <div className="mb-3 font-light">{publicationSummaryLines}</div>
+  const publicationSummary = publicationSummaryLines.length ? (
+    <div className="mt-2 text-[15px] leading-relaxed text-muted">{publicationSummaryLines}</div>
   ) : null;
 
-  const publisherDetails = publishers[publication.publisher].description ? (
-    <div className="ml-2">
-      <Tooltip content={publishers[publication.publisher].description}>
-        <FaInfoCircle />
-      </Tooltip>
-    </div>
+  const publisherData = publishers[publication.publisher];
+
+  const publisherDetails = publisherData?.description ? (
+    <Tooltip content={publisherData.description} label={`About ${publication.publisher}`}>
+      <FiInfo size={15} aria-hidden="true" />
+    </Tooltip>
   ) : null;
 
   return (
-    <Card mode={cardModeRow}>
-      <CardContent mode={cardContentModeRow}>
-        <CardTitle link={publication.link}>{publication.title}</CardTitle>
-        <Row className="mb-3 justify-between">
-          <div className="flex flex-row flex-wrap items-center gap-y-1">
-            <Publisher
-              publisher={publication.publisher}
-              publisherLogo={publishers[publication.publisher].logo}
-            />
-            {publisherDetails}
-            <div className="text-gray-500 text-sm mr-3 ml-3">•</div>
-            <DateRange
-              startDate={publication.date}
-              className="text-xs text-gray-500"
-            />
-            <div className="text-gray-500 text-sm mr-3 ml-3">•</div>
-            <Badge className="whitespace-nowrap text-gray-700">
-              {publication.tag}
-            </Badge>
-          </div>
-        </Row>
-        {publicationSummary}
-      </CardContent>
-    </Card>
+    <li className="py-6">
+      <h2 className="text-[17px] font-semibold leading-snug">
+        <HyperLink link={publication.link} className="text-fg" hoverClassName="hover:text-accent">
+          {publication.title}
+        </HyperLink>
+      </h2>
+      <div className="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted">
+        <Publisher
+          publisher={publication.publisher}
+          publisherLogo={publisherData?.logo}
+        />
+        {publisherDetails}
+        <span aria-hidden="true">•</span>
+        <DateRange
+          startDate={publication.date}
+          className="text-xs text-muted"
+        />
+        <span aria-hidden="true">•</span>
+        <Badge className="whitespace-nowrap">
+          {publication.tag}
+        </Badge>
+      </div>
+      {publicationSummary}
+    </li>
   );
 };
 

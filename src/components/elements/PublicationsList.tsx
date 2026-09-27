@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Cards, { cardModeList } from '../shared/Cards';
 import { Publication } from '../../types/Publication';
 import PublicationPreview from './PublicationPreview';
 
@@ -8,28 +7,33 @@ type PublicationsListProps = {
   publications: Publication[],
 };
 
-const PublicationsList = (props: PublicationsListProps): React.ReactElement => {
+// Newest first; every row carries its own date, so no extra grouping is needed.
+const PublicationsList = (props: PublicationsListProps): React.ReactElement | null => {
   const { publications } = props;
 
-  const publicationElements = publications
+  if (!publications.length) {
+    return (
+      <p className="text-sm text-muted">No publications match the selected filters.</p>
+    );
+  }
+
+  const items = [...publications]
     .sort((publicationA, publicationB) => {
       const dateA = new Date(publicationA.date).getTime();
       const dateB = new Date(publicationB.date).getTime();
       return dateB - dateA;
     })
-    .map((publication) => {
-      return (
-        <PublicationPreview
-          publication={publication}
-          key={publication.publisher + publication.title}
-        />
-      );
-    });
+    .map((publication) => (
+      <PublicationPreview
+        publication={publication}
+        key={publication.publisher + publication.title}
+      />
+    ));
 
   return (
-    <Cards mode={cardModeList}>
-      {publicationElements}
-    </Cards>
+    <ul className="divide-y divide-line border-t border-line">
+      {items}
+    </ul>
   );
 };
 

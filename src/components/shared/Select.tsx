@@ -13,8 +13,14 @@ export type SelectProps = {
   className?: string,
   disabled?: boolean,
   ariaLabel?: string,
+  // Stretches the control across its container on phones (it is content-sized on wider screens).
+  fullWidth?: boolean,
 };
 
+/*
+  The one control used for every sort/filter on the site: a native <select> (best on phones)
+  styled as a pill. 40px tall on phones, 36px on desktop; full width on phones when `fullWidth`.
+*/
 const Select = (props: SelectProps): React.ReactElement => {
   const {
     options,
@@ -24,13 +30,15 @@ const Select = (props: SelectProps): React.ReactElement => {
     className = '',
     disabled = false,
     ariaLabel = undefined,
+    fullWidth = false,
   } = props;
 
   const disabledClasses = disabled
-    ? 'border-gray-300 text-gray-500 cursor-not-allowed'
-    : 'cursor-pointer hover:border-black focus:border-black';
-  const defaultClasses = 'appearance-none bg-white text-black border border-solid border-gray-400 rounded-lg shadow-sm pl-2 pr-7 py-1 text-sm transition duration-200 ease-in-out focus:outline-none focus:ring-1 focus:ring-black max-w-full truncate';
-  const classes = `${defaultClasses} ${disabledClasses} ${className}`;
+    ? 'cursor-not-allowed border-line text-muted'
+    : 'cursor-pointer hover:border-fg/60 focus:border-accent';
+  const defaultClasses = 'h-10 max-w-full appearance-none truncate rounded-full border border-line-strong bg-bg pl-4 pr-10 text-sm font-medium text-fg transition-colors duration-150 ease-out focus:outline-none focus:ring-2 focus:ring-accent/30 sm:h-9';
+  const widthClasses = fullWidth ? 'w-full sm:w-auto' : '';
+  const classes = `${defaultClasses} ${disabledClasses} ${widthClasses} ${className}`;
 
   const optionElements = options.map((option: SelectOption) => (
     <option key={option.value} value={option.value}>
@@ -43,7 +51,7 @@ const Select = (props: SelectProps): React.ReactElement => {
   };
 
   return (
-    <div className="relative inline-flex items-center max-w-full">
+    <div className={`relative inline-flex max-w-full items-center ${fullWidth ? 'w-full sm:w-auto' : ''}`}>
       <select
         onChange={onSelectChange}
         value={value}
@@ -53,7 +61,7 @@ const Select = (props: SelectProps): React.ReactElement => {
       >
         {optionElements}
       </select>
-      <FiChevronDown className="absolute right-2 pointer-events-none text-gray-500" />
+      <FiChevronDown className="pointer-events-none absolute right-3.5 text-muted" aria-hidden="true" />
     </div>
   );
 };

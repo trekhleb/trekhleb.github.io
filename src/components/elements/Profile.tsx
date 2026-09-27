@@ -11,15 +11,19 @@ import Greeting from '../shared/Greeting';
 
 type ProfileProps = {
   profile: ProfileType,
+  // Years since the career started (see AboutScreen); left out of the introduction when unknown.
+  experienceYears?: number,
 };
 
+// Home page hero: who this is, in one glance. One column at every size: portrait, name, role,
+// introduction, social links (the proof points sit beside it on desktop, see AboutScreen).
 const Profile = (props: ProfileProps): React.ReactElement => {
-  const { profile } = props;
+  const { profile, experienceYears } = props;
 
+  // The only copy of the current portrait is 500×500, so it stays small enough (≤ 250 CSS px)
+  // to be sharp on 2× screens. Loaded eagerly: it is above the fold on every screen.
   const avatarElement = profile.avatar ? (
-    <div className="mr-0 mb-6 sm:mr-6 sm:mb-0">
-      <Avatar avatar={profile.avatar} className="w-64 h-64 rounded-full overflow-hidden" />
-    </div>
+    <Avatar avatar={profile.avatar} className="h-24 w-24 sm:h-28 sm:w-28" loading="eager" />
   ) : null;
 
   const userName = [
@@ -28,67 +32,54 @@ const Profile = (props: ProfileProps): React.ReactElement => {
   ].join(' ');
 
   const userNameElement = userName ? (
-    <div className="flex flex-row text-center">
-      <H level={hLevel.h1} className="mb-1 uppercase font-extrabold">
-        {userName}
-      </H>
-    </div>
+    <H level={hLevel.h1} className="!text-display">
+      {userName}
+    </H>
   ) : null;
 
   const positionElement = profile?.position ? (
-    <div className="mb-3 font-light text-gray-500 flex flex-row items-center">
-      <FiBriefcase className="mr-1 w-4 h-4" />
-      {profile.position}
-    </div>
-  ) : null;
-
-  const summaryLines = (profile?.summary || []).map(
-    (summaryLine: string) => (
-      <div key={summaryLine} className="text-center sm:text-left mb-0">
-        {summaryLine}
-      </div>
-    ),
-  );
-
-  const summaryLinesElement = profile?.summary ? (
-    <div className="mb-3 font-light">
-      {summaryLines}
-    </div>
+    <span className="inline-flex items-center gap-1.5">
+      <FiBriefcase className="h-4 w-4 shrink-0" aria-hidden="true" />
+      <span>{profile.position}</span>
+    </span>
   ) : null;
 
   const locationElement = profile?.location ? (
-    <div className="mb-3 text-gray-500">
-      <Location location={profile.location} />
+    <Location location={profile.location} />
+  ) : null;
+
+  const metaElement = positionElement || locationElement ? (
+    <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-[15px] text-muted">
+      {positionElement}
+      {locationElement}
     </div>
   ) : null;
 
-  const tagsElement = profile?.tags ? (
-    <div className="mb-4">
+  const tagsElement = profile?.tags && profile.tags.length ? (
+    <div className="mt-4">
       <Tags tags={profile.tags} />
     </div>
   ) : null;
 
   const socialLinksElement = (
-    <SocialLinks links={profile?.socialLinks} forceShowingSecondaryLinks />
+    <div className="mt-7">
+      <SocialLinks links={profile?.socialLinks} forceShowingSecondaryLinks />
+    </div>
   );
 
   return (
-    <div>
-      <div className="flex flex-col items-center sm:flex-row mb-12">
-        {avatarElement}
-        <div className="flex flex-col justify-center items-center sm:items-start">
-          {userNameElement}
-          {positionElement}
-          {summaryLinesElement}
-          {locationElement}
-          {tagsElement}
-          {socialLinksElement}
-        </div>
+    <section aria-label="About Oleksii Trekhleb" className="min-w-0 max-w-2xl">
+      {avatarElement}
+      <div className={avatarElement ? 'mt-6' : ''}>
+        {userNameElement}
       </div>
-      <div>
-        <Greeting />
+      {metaElement}
+      <div className="mt-6 text-[17px] leading-relaxed text-fg/90">
+        <Greeting experienceYears={experienceYears} />
       </div>
-    </div>
+      {tagsElement}
+      {socialLinksElement}
+    </section>
   );
 };
 

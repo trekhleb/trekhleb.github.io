@@ -11,10 +11,10 @@ const Location = (props: LocationProps): React.ReactElement => {
   const { location } = props;
 
   return (
-    <div className="flex flex-row items-center font-light">
-      <FiMapPin className="mr-1 w-4 h-4" />
-      <div>{location.name}</div>
-    </div>
+    <span className="inline-flex items-center gap-1.5">
+      <FiMapPin className="h-4 w-4 shrink-0" aria-hidden="true" />
+      <span>{location.name}</span>
+    </span>
   );
 };
 

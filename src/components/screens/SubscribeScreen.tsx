@@ -13,13 +13,11 @@ const SubscribeScreen = (): React.ReactElement => {
         title="Subscribe"
         description="Subscribe to get my latest posts and projects updates by email"
       />
-      <PageHeader>Subscribe to the newsletter</PageHeader>
-      <div className="flex flex-row justify-start items-center">
-        <div className="max-w-md">
-          <ErrorBoundary>
-            <SubscriptionForm withHeader={false} />
-          </ErrorBoundary>
-        </div>
+      <div className="mx-auto max-w-xl">
+        <PageHeader>Subscribe to the newsletter</PageHeader>
+        <ErrorBoundary>
+          <SubscriptionForm withHeader={false} />
+        </ErrorBoundary>
       </div>
     </PageLayout>
   );

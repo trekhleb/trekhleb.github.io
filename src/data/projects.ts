@@ -90,6 +90,7 @@ export const projects: Projects = {
   },
   'cali-vibe': {
     id: 'cali-vibe',
+    featured: 6,
     name: '⛰️ CaliVibe',
     srcURL: { url: 'https://github.com/trekhleb/cali-vibe' },
     demoURL: { url: 'https://trekhleb.dev/cali-vibe/' },
@@ -232,6 +233,7 @@ export const projects: Projects = {
   },
   'self-parking-car-evolution': {
     id: 'self-parking-car-evolution',
+    featured: 5,
     name: '🧬 Self-Parking Car Evolution',
     srcURL: { url: 'https://github.com/trekhleb/self-parking-car-evolution' },
     demoURL: { url: 'https://trekhleb.dev/self-parking-car-evolution' },
@@ -282,6 +284,7 @@ export const projects: Projects = {
   },
   'js-image-carver': {
     id: 'js-image-carver',
+    featured: 4,
     name: '🌅 JS Image Carver',
     srcURL: { url: 'https://github.com/trekhleb/js-image-carver' },
     demoURL: { url: 'https://trekhleb.dev/js-image-carver' },
@@ -506,6 +509,7 @@ export const projects: Projects = {
   },
   'machine-learning-experiments': {
     id: 'machine-learning-experiments',
+    featured: 3,
     name: '🤖 Interactive Machine Learning Experiments',
     srcURL: { url: 'https://github.com/trekhleb/machine-learning-experiments' },
     demoURL: { url: 'https://trekhleb.dev/machine-learning-experiments/' },
@@ -712,6 +716,7 @@ export const projects: Projects = {
   },
   'homemade-machine-learning': {
     id: 'homemade-machine-learning',
+    featured: 2,
     name: '🤖 Homemade Machine Learning',
     srcURL: { url: 'https://github.com/trekhleb/homemade-machine-learning' },
     startDate: '2018-12-01',
@@ -831,6 +836,7 @@ export const projects: Projects = {
   },
   'javascript-algorithms': {
     id: 'javascript-algorithms',
+    featured: 1,
     name: '📝 JavaScript Algorithms and Data-Structures',
     srcURL: { url: 'https://github.com/trekhleb/javascript-algorithms' },
     startDate: '2018-02-01',

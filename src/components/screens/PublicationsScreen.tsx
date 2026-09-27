@@ -3,11 +3,11 @@ import React from 'react';
 import PageLayout from '../layouts/PageLayout';
 import PageHeader from '../shared/PageHeader';
 import Badge from '../shared/Badge';
-import Row from '../shared/Row';
 import SEO from '../shared/SEO';
 import { Publication, PublicationTag, Publisher } from '../../types/Publication';
 import PublicationsList from '../elements/PublicationsList';
 import PublicationFilters from '../elements/PublicationFilters';
+import { countCitations } from '../../utils/profile';
 
 type PublicationsScreenProps = {
   publications: Publication[],
@@ -26,6 +26,11 @@ const PublicationsScreen = (props: PublicationsScreenProps): React.ReactElement 
   });
 
   const publicationsNum = publications.length;
+  const authoredNum = publications.filter((p) => p.tag === PublicationTag.Authored).length;
+  const citationsNum = countCitations(publications);
+  const description = `${publicationsNum} publications by and about Oleksii Trekhleb: `
+    + `${authoredNum} authored articles, features in TechCrunch, JavaScript Weekly, KDnuggets and `
+    + `Hacker News, ${citationsNum} citations in research papers and books, and reference docs.`;
 
   const onPublisherSelect = (selectedPublisher: Publisher): void => {
     setPublisher(selectedPublisher);
@@ -39,13 +44,14 @@ const PublicationsScreen = (props: PublicationsScreenProps): React.ReactElement 
     <PageLayout>
       <SEO
         title="Publications"
-        description="Trekhleb's publications"
+        description={description}
       />
-      <Row>
+      <div className="mb-2 flex items-start gap-3">
         <PageHeader>Publications</PageHeader>
-        <Badge className="ml-3 self-start">{publicationsNum}</Badge>
-      </Row>
-      <Row className="mb-6 justify-between">
+        <Badge className="mt-2">{publicationsNum}</Badge>
+      </div>
+      {/* The filters belong to the list: 32px below the title, 24px above the first row. */}
+      <div className="mb-6">
         <PublicationFilters
           publications={publications}
           publisher={publisher}
@@ -53,7 +59,7 @@ const PublicationsScreen = (props: PublicationsScreenProps): React.ReactElement 
           onPublisherSelect={onPublisherSelect}
           onTagSelect={onTagSelect}
         />
-      </Row>
+      </div>
       <PublicationsList publications={filteredPublications} />
     </PageLayout>
   );

@@ -1,26 +1,34 @@
 import React from 'react';
 import HyperLink, { HyperLinkProps } from './HyperLink';
+import {
+  buttonBaseClasses,
+  buttonKindClasses,
+  BUTTON_KIND_SECONDARY,
+  ButtonKind,
+} from './Button';
 
-type ButtonLinkProps = HyperLinkProps;
+type ButtonLinkProps = HyperLinkProps & {
+  kind?: ButtonKind,
+};
 
+// A link that looks like a button: light with a hairline border, filling solid black on hover.
+// Pass `kind` to get the always-solid primary treatment instead. The button classes own the whole
+// look (`formatted={false}`): the link's own layout and transition classes would otherwise compete
+// with them (its snappier timing won and made the hover fill look instant).
 const ButtonLink = (props: ButtonLinkProps): React.ReactElement => {
   const {
-    className,
-    hoverClassName = '',
+    className = '',
+    kind = BUTTON_KIND_SECONDARY,
+    startEnhancer = null,
     children,
     ...rest
   } = props;
 
-  const hoverButtonClasses = `hover:bg-black hover:text-white ${hoverClassName}`;
-  const buttonClasses = 'bg-white py-2 px-3 rounded shadow-sm border border-solid border-gray-300';
-  const classes = `${className} ${buttonClasses}`;
+  const classes = `${buttonBaseClasses} ${buttonKindClasses[kind]} ${className}`;
 
   return (
-    <HyperLink
-      {...rest}
-      className={classes}
-      hoverClassName={hoverButtonClasses}
-    >
+    <HyperLink {...rest} className={classes} formatted={false}>
+      {startEnhancer}
       {children}
     </HyperLink>
   );

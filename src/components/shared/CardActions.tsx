@@ -1,23 +1,23 @@
 import React from 'react';
-import Row from './Row';
 
 type CardActionsProps = {
   children: React.ReactNode,
   className?: string,
 };
 
+// Button row at the bottom of a card. Sits above the stretched card link so buttons stay clickable.
 const CardActions = (props: CardActionsProps): React.ReactElement | null => {
-  const { children, className = 'px-6 pb-6' } = props;
+  const { children, className = 'px-5 pb-5 sm:px-6 sm:pb-6' } = props;
 
   if (!children) {
     return null;
   }
 
   return (
-    <div className={className}>
-      <Row>
+    <div className={`relative z-10 ${className}`}>
+      <div className="flex flex-row flex-wrap items-center gap-4">
         {children}
-      </Row>
+      </div>
     </div>
   );
 };

@@ -13,9 +13,11 @@ export function Link(props: LinkProps): React.ReactElement {
     return (
       <sup>
         <span className="not-prose">
-          <a href={href} className="font-medium underline hover:text-red-600">
-            [{children}]
+          [
+          <a href={href} className="font-medium !underline !underline-offset-1 !decoration-black dark:!decoration-white hover:text-accent hover:!decoration-accent">
+            {children}
           </a>
+          ]
         </span>
       </sup>
     );
@@ -23,7 +25,7 @@ export function Link(props: LinkProps): React.ReactElement {
 
   return (
     <span className="not-prose">
-      <a href={href} className="font-medium underline hover:text-red-600">
+      <a href={href} className="font-medium underline hover:text-accent">
         {children}
       </a>
     </span>

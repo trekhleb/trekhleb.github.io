@@ -6,14 +6,15 @@ import FluidImage from './FluidImage';
 type AvatarProps = {
   avatar: Image,
   className?: string | null | undefined,
+  loading?: 'eager' | 'lazy',
 };
 
 const Avatar = (props: AvatarProps): React.ReactElement => {
-  const { avatar, className } = props;
+  const { avatar, className, loading } = props;
 
   return (
-    <div className={className || ''}>
-      <FluidImage image={avatar} />
+    <div className={`overflow-hidden rounded-full bg-subtle ring-1 ring-line ${className || ''}`}>
+      <FluidImage image={avatar} loading={loading} />
     </div>
   );
 };

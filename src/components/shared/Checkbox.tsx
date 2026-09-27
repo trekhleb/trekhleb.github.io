@@ -18,8 +18,8 @@ const Checkbox = (props: CheckboxProps): React.ReactElement => {
 
   const checkboxRef = useRef<HTMLInputElement>(null);
 
-  const disabledClasses = disabled ? 'cursor-not-allowed text-gray-500' : '';
-  const defaultClasses = 'flex items-center cursor-pointer';
+  const disabledClasses = disabled ? 'cursor-not-allowed text-muted' : 'cursor-pointer';
+  const defaultClasses = 'inline-flex items-center gap-2 text-sm';
   const classes = `${defaultClasses} ${disabledClasses} ${className}`;
 
   const onCheckboxChange = (): void => {
@@ -37,8 +37,9 @@ const Checkbox = (props: CheckboxProps): React.ReactElement => {
         disabled={disabled}
         onChange={onCheckboxChange}
         ref={checkboxRef}
+        className="h-4 w-4 rounded border-line-strong accent-accent"
       />
-      <div className="ml-2">{children}</div>
+      <span>{children}</span>
     </label>
   );
 };

@@ -1,8 +1,6 @@
 import React from 'react';
-import { BsFillInfoCircleFill } from '@react-icons/all-files/bs/BsFillInfoCircleFill';
-import { BiErrorCircle } from '@react-icons/all-files/bi/BiErrorCircle';
-
-import Row from './Row';
+import { FiInfo } from '@react-icons/all-files/fi/FiInfo';
+import { FiAlertCircle } from '@react-icons/all-files/fi/FiAlertCircle';
 
 type AlertType = 'error' | 'info';
 
@@ -19,13 +17,13 @@ export const InfoAlert: AlertType = 'info';
 export const ErrorAlert: AlertType = 'error';
 
 const alertIcons: alertIcons = {
-  [InfoAlert]: <BsFillInfoCircleFill size={18} />,
-  [ErrorAlert]: <BiErrorCircle size={18} />,
+  [InfoAlert]: <FiInfo size={22} aria-hidden="true" />,
+  [ErrorAlert]: <FiAlertCircle size={22} aria-hidden="true" />,
 };
 
 const alertClasses: alertClasses = {
-  [InfoAlert]: 'text-blue-600 bg-blue-100',
-  [ErrorAlert]: 'text-red-600 bg-red-100',
+  [InfoAlert]: 'border-accent/20 bg-accent/5 text-accent shadow-sm backdrop-blur-md',
+  [ErrorAlert]: 'border-red-500/20 bg-red-500/5 text-red-700 dark:text-red-300 shadow-sm backdrop-blur-md',
 };
 
 const Alert = (props: AlertProps): React.ReactElement | null => {
@@ -36,15 +34,13 @@ const Alert = (props: AlertProps): React.ReactElement | null => {
   }
 
   return (
-    <div className={`py-3 px-4 rounded-md ${alertClasses[type]}`}>
-      <Row>
-        <div className="mr-3">
-          {alertIcons[type]}
-        </div>
-        <div className="text-sm">
-          {children}
-        </div>
-      </Row>
+    <div role={type === ErrorAlert ? 'alert' : 'status'} className={`flex items-start gap-4 rounded-xl border px-5 py-4 text-[15px] font-medium leading-relaxed ${alertClasses[type]}`}>
+      <div className="mt-0.5 shrink-0">
+        {alertIcons[type]}
+      </div>
+      <div className="min-w-0 [&>*:first-child]:mt-0 [&>*:last-child]:mb-0">
+        {children}
+      </div>
     </div>
   );
 };

@@ -3,7 +3,14 @@ import HyperLink from './HyperLink';
 import type { Link } from '../../types/Link';
 import { routes } from '../../constants/routes';
 
-const Greeting = (): React.ReactElement => {
+type GreetingProps = {
+  // Years since the career started; the phrase is left out when unknown.
+  experienceYears?: number,
+};
+
+const Greeting = (props: GreetingProps): React.ReactElement => {
+  const { experienceYears } = props;
+
   const projectsLink: Link = {
     url: `${routes.projects.path}/`,
   };
@@ -12,27 +19,33 @@ const Greeting = (): React.ReactElement => {
     url: `${routes.blog.path}/`,
   };
 
+  const linkClasses = 'inline underline decoration-fg decoration-1 underline-offset-[3px] transition-colors hover:text-accent hover:decoration-accent';
+
   const projectsLinkElement = (
-    <span className="inline-block">
-      <HyperLink link={projectsLink} className="underline underline-offset-2">projects</HyperLink>
-    </span>
+    <HyperLink link={projectsLink} className={linkClasses} formatted={false}>projects</HyperLink>
   );
 
   const blogLinkElement = (
-    <span className="inline-block">
-      <HyperLink link={blogLink} className="underline underline-offset-2">articles</HyperLink>
-    </span>
+    <HyperLink link={blogLink} className={linkClasses} formatted={false}>articles</HyperLink>
   );
 
+  const experience = experienceYears
+    ? ` with more than ${experienceYears} years of experience`
+    : '';
+
   return (
-    <p className="font-light">
-      Hi there! I&apos;m Oleksii, a full-stack software engineer. In my spare time, I do
-      open-sourcing. Most of my open-source {projectsLinkElement} focus on a single
-      goal &ndash; helping people learn. These projects can help you explore algorithms
-      in JavaScript and prepare for technical interviews, or learn Python syntax and
-      start experimenting with machine learning algorithms and the math behind them,
-      among other topics. I also write {blogLinkElement} about life, web development,
-      and machine learning.
+    <p>
+      Hi there! I&apos;m Oleksii, a full-stack software engineer{experience} and a lifelong
+      learner. What I enjoy most is taking a complex technical idea, digging into it until it feels
+      simple, and then distilling it into something minimal, visual, and interactive that makes it
+      click for others too. That&apos;s the thread running through most of my open-source
+      {' '}
+      {projectsLinkElement}
+      : algorithms and data structures in JavaScript, machine learning built from scratch, a neural
+      network in a handful of functions, a self-parking car that learns through a genetic
+      algorithm, and more. I&apos;m drawn to the hidden connections between ideas and to clean code
+      and interfaces where less is more. I also write {blogLinkElement} about learning, life, web
+      development, and machine learning.
     </p>
   );
 };

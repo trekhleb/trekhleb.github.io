@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Achievement } from '../../types/Achievement';
 import H, { hLevel } from '../shared/H';
-import Row from '../shared/Row';
 import Badge from '../shared/Badge';
 import Cards from '../shared/Cards';
 import ProjectAchievement from './ProjectAchievement';
@@ -29,19 +28,19 @@ const ProjectAchievements = (props: ProjectAchievementsProps): React.ReactElemen
   });
 
   return (
-    <div className="mt-6 mb-6">
-      <Row className="mb-3">
+    <section className="mt-14" aria-labelledby="achievements">
+      <div className="mb-6 flex items-start gap-3">
         <H level={hLevel.h2} id="achievements">
           Achievements
         </H>
-        <Badge className="ml-3 self-start">
+        <Badge className="mt-1">
           {achievements.length}
         </Badge>
-      </Row>
+      </div>
       <Cards>
         {achievementsItems}
       </Cards>
-    </div>
+    </section>
   );
 };
 

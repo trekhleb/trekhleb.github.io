@@ -1,5 +1,4 @@
 import React from 'react';
-import Row from '../shared/Row';
 import Select, { SelectOption } from '../shared/Select';
 import { Publication, PublicationTag, Publisher } from '../../types/Publication';
 
@@ -88,30 +87,37 @@ const PublicationFilters = (props: PublicationFiltersProps): React.ReactElement 
     onTagSelect(selectedTag as PublicationTag);
   };
 
+  const currentTag = tag || 'All';
+
+  // Both filters are the same pill-shaped dropdown: stacked with aligned labels on phones
+  // (the group wrappers dissolve into the grid via `contents`), side by side on wider screens.
+  // Proximity does the grouping: 8px between a label and its control, 40px between groups.
   return (
-    <div className="flex flex-col items-start gap-3 sm:flex-row sm:items-center sm:gap-6">
-      <Row>
-        <div className="text-sm text-gray-500 mr-2">
-          Publisher:
+    <div className="grid grid-cols-[max-content_1fr] items-center gap-x-3 gap-y-3 sm:flex sm:flex-wrap sm:gap-x-10 sm:gap-y-3">
+      <div className="contents sm:flex sm:items-center sm:gap-2">
+        <span className="text-sm text-muted">Type:</span>
+        <div className="min-w-0">
+          <Select
+            options={tagOptions}
+            value={currentTag}
+            onChange={onTagChange}
+            ariaLabel="Filter publications by type"
+            fullWidth
+          />
         </div>
-        <Select
-          options={publisherOptions}
-          value={publisher}
-          onChange={onPublisherChange}
-          ariaLabel="Filter publications by publisher"
-        />
-      </Row>
-      <Row>
-        <div className="text-sm text-gray-500 mr-2">
-          Type:
+      </div>
+      <div className="contents sm:flex sm:items-center sm:gap-2">
+        <span className="text-sm text-muted">Publisher:</span>
+        <div className="min-w-0">
+          <Select
+            options={publisherOptions}
+            value={publisher}
+            onChange={onPublisherChange}
+            ariaLabel="Filter publications by publisher"
+            fullWidth
+          />
         </div>
-        <Select
-          options={tagOptions}
-          value={tag}
-          onChange={onTagChange}
-          ariaLabel="Filter publications by type"
-        />
-      </Row>
+      </div>
     </div>
   );
 };

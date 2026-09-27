@@ -21,10 +21,21 @@ export function onCreateNode(args: CreateNodeArgs): void {
   }
 }
 
+export type PostNavItem = {
+  slug: string,
+  title: string,
+};
+
+type CreatePostPagesNode = {
+  fields: { slug: string },
+  internal: { contentFilePath: string },
+  frontmatter: { title: string },
+};
+
 type CreatePostPagesQuery = {
   data?: {
     allMdx?: {
-      nodes?: any[],
+      nodes?: CreatePostPagesNode[],
     },
   },
 };
@@ -34,7 +45,10 @@ async function createPostPages(args: CreatePagesArgs): Promise<void> {
   const { createPage } = actions;
   const result: CreatePostPagesQuery = await graphql(`
     query CreatePostPagesQuery {
-      allMdx(filter: {internal: {contentFilePath: {regex: "/\\/src\\/posts\\//"}}}) {
+      allMdx(
+        filter: {internal: {contentFilePath: {regex: "/\\/src\\/posts\\//"}}},
+        sort: {frontmatter: {date: DESC}},
+      ) {
         nodes {
           fields {
             slug
@@ -42,18 +56,33 @@ async function createPostPages(args: CreatePagesArgs): Promise<void> {
           internal {
             contentFilePath
           }
+          frontmatter {
+            title
+          }
         }
       }
     }
   `);
 
-  (result?.data?.allMdx?.nodes || []).forEach((node) => {
+  const nodes: CreatePostPagesNode[] = result?.data?.allMdx?.nodes || [];
+
+  const toNavItem = (node: CreatePostPagesNode | undefined): PostNavItem | null => {
+    if (!node) {
+      return null;
+    }
+    return { slug: node.fields.slug, title: node.frontmatter.title };
+  };
+
+  nodes.forEach((node: CreatePostPagesNode, index: number) => {
     createPage({
       path: node.fields.slug,
       component: `${path.resolve('./src/templates/Post.tsx')}?__contentFilePath=${node.internal.contentFilePath}`,
       context: {
         // Data passed to context is available in page queries as GraphQL variables.
         slug: node.fields.slug,
+        // Neighbouring posts (the list is sorted newest first) for the previous/next navigation.
+        newerPost: toNavItem(nodes[index - 1]),
+        olderPost: toNavItem(nodes[index + 1]),
       },
     });
   });

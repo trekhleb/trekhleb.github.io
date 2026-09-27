@@ -16,10 +16,12 @@ type HProps = {
   id?: string,
 };
 
+// Fluid type scale defined in tailwind.config.js (fontSize.h1/h2/h3).
+// break-words lets very long unbreakable titles (e.g. "Permutations/Combinations") wrap on phones.
 const classes = {
-  [hLevel.h1]: 'text-3xl',
-  [hLevel.h2]: 'text-2xl',
-  [hLevel.h3]: 'text-xl',
+  [hLevel.h1]: 'text-h1 text-balance break-words',
+  [hLevel.h2]: 'text-h2 break-words',
+  [hLevel.h3]: 'text-h3 break-words',
 };
 
 const H = (props: HProps): React.ReactElement | null => {

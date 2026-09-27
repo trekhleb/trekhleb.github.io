@@ -1,23 +1,15 @@
 import React from 'react';
 import { FiArchive } from '@react-icons/all-files/fi/FiArchive';
 
-import Row from './Row';
-
 const Archived = (): React.ReactElement => {
   return (
-    <div
+    <span
       title="Project has been archived and is currently not active"
-      className="transition duration-200 ease-in-out py-2 px-3 text-red-600 border border-red-600 rounded border-solid hover:bg-red-500 hover:text-white rounded cursor-not-allowed"
+      className="inline-flex h-10 items-center gap-2 rounded-lg border border-dashed border-line-strong px-3 text-sm font-medium text-muted"
     >
-      <Row>
-        <div className="mr-2">
-          <FiArchive />
-        </div>
-        <div>
-          Archived
-        </div>
-      </Row>
-    </div>
+      <FiArchive size={15} aria-hidden="true" />
+      <span>Archived</span>
+    </span>
   );
 };
 

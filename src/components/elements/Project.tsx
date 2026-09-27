@@ -1,22 +1,20 @@
 import React from 'react';
 import { IoPlay } from '@react-icons/all-files/io5/IoPlay';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
-import { BiInfoCircle } from '@react-icons/all-files/bi/BiInfoCircle';
+import { FiExternalLink } from '@react-icons/all-files/fi/FiExternalLink';
 
 import { Project as ProjectType } from '../../types/Project';
 import DateRange from '../shared/DateRange';
-import Card from '../shared/Card';
-import CardMedia from '../shared/CardMedia';
 import Tags from '../shared/Tags';
 import FluidImage from '../shared/FluidImage';
 import ButtonLink from '../shared/ButtonLink';
 import Archived from '../shared/Archived';
 import Stars from '../shared/Stars';
-import Row from '../shared/Row';
 import { getGitHubProjectStars } from '../../utils/project';
 import { Link } from '../../types/Link';
 import HyperLink from '../shared/HyperLink';
 import ProjectAchievements from './ProjectAchievements';
+import { useFluidCover } from '../../hooks/useFluidCover';
 
 type ProjectProps = {
   project: ProjectType | null,
@@ -27,12 +25,15 @@ const tagsPerProject = 5;
 const Project = (props: ProjectProps): React.ReactElement | null => {
   const { project } = props;
 
+  // Hooks run before the early return (rules of hooks).
+  const coverData = useFluidCover({ imagePath: project?.cover?.srcPath });
+
   if (!project) {
     return null;
   }
 
   const projectTags = project?.tags ? (
-    <div>
+    <div className="mt-5">
       <Tags tags={project.tags} numToShow={tagsPerProject} />
     </div>
   ) : null;
@@ -41,7 +42,8 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
     <DateRange
       startDate={project.startDate}
       endDate={project.endDate}
-      className="text-xs text-gray-500"
+      className="text-sm text-muted"
+      withIcon
     />
   );
 
@@ -54,7 +56,7 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
     <Stars
       stars={projectStars}
       link={projectStarsLink}
-      className="text-xs text-gray-500 font-light"
+      className="text-sm text-muted"
     />
   ) : null;
 
@@ -68,7 +70,7 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
   ) : null;
 
   const projectSummary = projectSummaryLines ? (
-    <div className="mb-3 font-light">
+    <div className="mt-6 max-w-prose text-lg leading-relaxed text-fg/90">
       {projectSummaryLines}
     </div>
   ) : null;
@@ -78,8 +80,7 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
   const demoLink = project.demoURL && !project.archived ? (
     <ButtonLink
       link={project.demoURL}
-      startEnhancer={<IoPlay />}
-      className="mr-4"
+      startEnhancer={<IoPlay size={15} aria-hidden="true" />}
     >
       Demo
     </ButtonLink>
@@ -88,37 +89,53 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
   const sourceCodeLink = project.srcURL && !project.archived ? (
     <ButtonLink
       link={project.srcURL}
-      startEnhancer={<FaGithub />}
+      startEnhancer={<FaGithub size={15} aria-hidden="true" />}
     >
       Source Code
     </ButtonLink>
   ) : null;
 
+  // Portrait covers (book covers, long screenshots) are shown whole inside a 36rem frame instead
+  // of taking over the page; landscape covers keep their natural aspect ratio.
+  const isPortraitCover = !!coverData && coverData.height / coverData.width > 0.9;
+
   const projectCover = project.cover ? (
-    <FluidImage image={project.cover} />
+    <FluidImage
+      image={project.cover}
+      className="h-full w-full"
+      objectFit={isPortraitCover ? 'contain' : 'cover'}
+    />
   ) : null;
 
-  const projectCoverCard = (
-    <div className="mb-6">
-      <Card>
-        <CardMedia link={defaultProjectUrl} className="h-96">
-          {projectCover}
-        </CardMedia>
-      </Card>
+  const coverInner = defaultProjectUrl?.url ? (
+    <HyperLink
+      link={{ ...defaultProjectUrl, caption: defaultProjectUrl.caption || project.name }}
+      formatted={false}
+      className="block h-full"
+    >
+      {projectCover}
+    </HyperLink>
+  ) : projectCover;
+
+  const coverFrameClasses = isPortraitCover ? 'h-[36rem]' : '';
+
+  const projectCoverCard = projectCover ? (
+    <div className={`overflow-hidden rounded-xl2 border border-line bg-subtle ${coverFrameClasses}`}>
+      {coverInner}
     </div>
-  );
+  ) : null;
 
   const archivedStamp = project?.archived ? (
-    <Row className="py-6">
+    <div className="mt-6">
       <Archived />
-    </Row>
+    </div>
   ) : null;
 
   const actions = demoLink || sourceCodeLink ? (
-    <Row className="py-6">
+    <div className="mt-6 flex flex-wrap items-center gap-4">
       {demoLink}
       {sourceCodeLink}
-    </Row>
+    </div>
   ) : null;
 
   const extraLinksList = project?.links && project?.links.length
@@ -127,10 +144,11 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
         <li key={linkIndex}>
           <HyperLink
             link={extraLink}
-            className="text-sm underline"
-            startEnhancer={(<BiInfoCircle size={14} />)}
+            className="gap-1.5 text-sm text-muted"
+            hoverClassName="hover:text-fg"
+            startEnhancer={(<FiExternalLink size={14} aria-hidden="true" />)}
           >
-            {extraLink?.caption || 'Read more'}
+            <span className="link-underline">{extraLink?.caption || 'Read more'}</span>
           </HyperLink>
         </li>
       );
@@ -138,20 +156,16 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
     : null;
 
   const externalLinks = extraLinksList ? (
-    <ul className="mt-3">
+    <ul className="mt-5 flex flex-col gap-2">
       {extraLinksList}
     </ul>
   ) : null;
 
   const projectDatesAndStars = (
-    <Row className="mb-3 justify-between">
-      <div>
-        {projectDates}
-      </div>
-      <div>
-        {stars}
-      </div>
-    </Row>
+    <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
+      {projectDates}
+      {stars}
+    </div>
   );
 
   const projectAchievements = (

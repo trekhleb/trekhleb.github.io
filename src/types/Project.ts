@@ -20,6 +20,8 @@ export type Project = {
   endDate?: DateString,
   tags?: Tag[],
   archived?: boolean,
+  // Position in the "Featured projects" block of the home page (1 = first). Unset = not featured.
+  featured?: number,
   gitHubRepo?: GitHubRepo,
   links?: Link[],
   achievements?: Achievement[],

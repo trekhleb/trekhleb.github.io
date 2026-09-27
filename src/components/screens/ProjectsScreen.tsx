@@ -5,7 +5,6 @@ import ProjectsList from '../elements/ProjectsList';
 import PageLayout from '../layouts/PageLayout';
 import PageHeader from '../shared/PageHeader';
 import Badge from '../shared/Badge';
-import Row from '../shared/Row';
 import SEO from '../shared/SEO';
 import ProjectFilters, {
   sortByAchievementsDesc, sortByStarsDesc,
@@ -104,21 +103,20 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
     <PageLayout>
       <SEO
         title="Projects"
-        description="Projects and experiments that help people learn"
+        description={`${projectsNum} open-source projects and experiments by Oleksii Trekhleb that help people learn: algorithms and data structures in JavaScript, machine learning from scratch, Python, and interactive browser demos.`}
       />
-      <Row>
+      <div className="mb-2 flex items-start gap-3">
         <PageHeader>Projects</PageHeader>
-        <Badge className="ml-3 self-start">{projectsNum}</Badge>
-      </Row>
-      <Row className="mb-6 justify-between">
+        <Badge className="mt-2">{projectsNum}</Badge>
+      </div>
+      {/* The toolbar belongs to the list: 32px below the title, 24px above the cards. */}
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <ProjectFilters onSort={onSort} sortBy={sortBy} />
-        <Row className="ml-3">
-          <div className="text-sm text-gray-500 mr-1">
-            Total stars:
-          </div>
-          <Stars stars={getTotalGetHubProjectStars(projects)} />
-        </Row>
-      </Row>
+        <div className="flex items-center gap-1.5 text-sm text-muted">
+          <span>Total stars:</span>
+          <Stars stars={getTotalGetHubProjectStars(projects)} className="text-fg" />
+        </div>
+      </div>
       <ProjectsList projects={filteredProjects} />
     </PageLayout>
   );

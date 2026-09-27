@@ -1,4 +1,4 @@
-import React, { CSSProperties, useState } from 'react';
+import React, { CSSProperties, useId, useState } from 'react';
 
 import './Toggle.css';
 
@@ -26,7 +26,8 @@ const Toggle = (props: ToggleProps): React.ReactElement => {
     setIsOn(!isOn);
   };
 
-  const toggleRandomId = `toggle-${Math.random().toString(36).substring(2)}`;
+  // Stable id on server and client (Math.random() caused hydration mismatches).
+  const toggleId = `toggle-${useId()}`;
 
   const toggleDotStyles: CSSProperties = {
     top: '-.25rem',
@@ -35,28 +36,28 @@ const Toggle = (props: ToggleProps): React.ReactElement => {
   };
 
   const labelElement = labelOn && labelOff ? (
-    <div className="ml-3 text-gray-700">
+    <div className="ml-3 text-fg/80">
       {isOn ? labelOn : labelOff}
     </div>
   ) : null;
 
   return (
     <div className="flex items-center justify-start ml-1">
-      <label htmlFor={toggleRandomId} className="flex items-center cursor-pointer">
+      <label htmlFor={toggleId} className="flex items-center cursor-pointer">
         <div className="relative">
           <input
-            id={toggleRandomId}
+            id={toggleId}
             type="checkbox"
             className="hidden"
             onChange={onToggle}
             checked={isOn}
           />
           <div
-            className="toggle__line w-10 h-4 bg-gray-400 rounded-full shadow-inner"
+            className="toggle__line w-10 h-4 bg-line-strong rounded-full shadow-inner"
           />
           <div
             style={toggleDotStyles}
-            className="toggle__dot absolute w-6 h-6 bg-white rounded-full shadow inset-y-0 left-0"
+            className="toggle__dot absolute w-6 h-6 bg-bg border border-line rounded-full shadow inset-y-0 left-0"
           />
         </div>
         {labelElement}

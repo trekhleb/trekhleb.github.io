@@ -3,5 +3,5 @@ input:checked ~ .toggle__dot {
 }
 
 input:checked ~ .toggle__line {
-  background-color: #48bb78;
+  background-color: rgb(var(--c-accent));
 }

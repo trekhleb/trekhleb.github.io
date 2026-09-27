@@ -16,28 +16,7 @@ export const query = graphql`
     ) {
       totalCount
       nodes {
-        id
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          summary
-          date(formatString: "MMM D, YYYY")
-          cover {
-            childImageSharp {
-              gatsbyImageData(
-                layout: FULL_WIDTH,
-                quality: 95,
-                transformOptions: {
-                  fit: COVER,
-                  cropFocus: CENTER,
-                  grayscale: false,
-                },
-              )
-            }
-          }
-        }
+        ...PostPreviewFields
       }
     }
   }

@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react';
 
-type ButtonKind = 'primary' | 'secondary';
+export type ButtonKind = 'primary' | 'secondary';
 
 export const BUTTON_KIND_PRIMARY: ButtonKind = 'primary';
 export const BUTTON_KIND_SECONDARY: ButtonKind = 'secondary';
@@ -16,6 +16,17 @@ export type ButtonProps = {
   kind?: ButtonKind,
 };
 
+// Shared button look, also used by ButtonLink (anchor) and the newsletter submit input. The hover
+// fill fades like on the previous site (200ms ease-in-out): quick, but visibly animated.
+export const buttonBaseClasses = 'inline-flex h-10 select-none items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4 text-sm font-medium transition-colors duration-200 ease-in-out';
+
+export const buttonKindClasses: Record<ButtonKind, string> = {
+  [BUTTON_KIND_PRIMARY]: 'border border-transparent bg-fg text-bg hover:bg-fg/85',
+  [BUTTON_KIND_SECONDARY]: 'border border-line-strong bg-bg text-fg hover:border-fg hover:bg-fg hover:text-bg',
+};
+
+const buttonDisabledClasses = 'cursor-not-allowed border border-line bg-subtle text-muted hover:bg-subtle hover:border-line';
+
 const Button = (props: ButtonProps): React.ReactElement => {
   const {
     children,
@@ -29,23 +40,7 @@ const Button = (props: ButtonProps): React.ReactElement => {
     kind = BUTTON_KIND_PRIMARY,
   } = props;
 
-  const defaultClasses = ' transition duration-200 ease-in-out flex flex-row items-center uppercase font-medium text-xs tracking-wider';
-
-  const disabledClasses: Record<ButtonKind, string> = {
-    [BUTTON_KIND_PRIMARY]: 'cursor-not-allowed bg-white text-gray-500 hover:bg-white hover:text-gray-500 border-gray-300',
-    [BUTTON_KIND_SECONDARY]: 'cursor-not-allowed bg-white text-gray-500 hover:bg-white hover:text-gray-500 border-gray-300',
-  };
-
-  const kindClasses: Record<ButtonKind, string> = {
-    [BUTTON_KIND_PRIMARY]: 'hover:bg-white hover:text-black py-2 px-3 rounded shadow-sm border border-solid border-white hover:border-gray-400 bg-black text-white',
-    [BUTTON_KIND_SECONDARY]: 'bg-white text-black py-2 px-3 rounded shadow-sm border border-solid hover:border-white border-gray-400 hover:bg-black hover:text-white',
-  };
-
-  const classes = `${defaultClasses} ${kindClasses[kind]} ${disabled ? disabledClasses[kind] : ''} ${className}`;
-
-  const separator = startEnhancer ? (
-    <span className="w-2" />
-  ) : null;
+  const classes = `${buttonBaseClasses} ${disabled ? buttonDisabledClasses : buttonKindClasses[kind]} ${className}`;
 
   return (
     <button
@@ -57,7 +52,6 @@ const Button = (props: ButtonProps): React.ReactElement => {
       style={style}
     >
       {startEnhancer}
-      {separator}
       {children}
     </button>
   );

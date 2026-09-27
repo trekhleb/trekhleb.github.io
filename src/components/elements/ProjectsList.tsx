@@ -12,7 +12,7 @@ const ProjectsList = (props: ProjectsListProps): React.ReactElement => {
   const { projects } = props;
 
   const projectsElements = projects.map((project) => {
-    return <ProjectPreview project={project} key={project.id} />;
+    return <ProjectPreview project={project} key={project.id} titleLevel="h2" />;
   });
 
   return (

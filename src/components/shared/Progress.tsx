@@ -16,8 +16,15 @@ const Progress = (props: CheckboxProps): React.ReactElement => {
   };
 
   return (
-    <div className="bg-gray-100 h-0.5 overflow-hidden flex flex-row justify-start items-center rounded">
-      <div className="bg-black w-36 h-full transition duration-500 ease-in-out rounded transition" style={barStyle} />
+    <div
+      role="progressbar"
+      aria-label="Progress"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={progressPercentage}
+      className="flex h-1 flex-row items-center justify-start overflow-hidden rounded-full bg-subtle"
+    >
+      <div className="h-full rounded-full bg-accent" style={barStyle} />
     </div>
   );
 };

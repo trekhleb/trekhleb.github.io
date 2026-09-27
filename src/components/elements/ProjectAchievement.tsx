@@ -1,5 +1,5 @@
 import React from 'react';
-import { BiLink } from '@react-icons/all-files/bi/BiLink';
+import { FiLink } from '@react-icons/all-files/fi/FiLink';
 import { useLocation } from '@gatsbyjs/reach-router';
 
 import { Achievement } from '../../types/Achievement';
@@ -30,10 +30,10 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
   }
 
   const date = achievement?.date ? (
-    <div className="mt-3">
+    <div className="mt-2">
       <DateRange
         startDate={achievement.date}
-        className="text-xs text-gray-500"
+        className="text-xs text-muted"
         withDay
       />
     </div>
@@ -41,16 +41,18 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
 
   const imageLink: Link = {
     url: `${location?.origin || siteURL}${fluidImageFetched?.images?.fallback?.src}`,
+    caption: 'Open the screenshot',
   };
 
   const detailsLink = achievement.link ? (
     <div className="mt-3">
       <HyperLink
         link={achievement.link}
-        className="text-sm underline"
-        startEnhancer={(<BiLink size={16} />)}
+        className="gap-1.5 text-sm text-muted"
+        hoverClassName="hover:text-fg"
+        startEnhancer={(<FiLink size={14} aria-hidden="true" />)}
       >
-        {achievement.link?.caption || 'Details'}
+        <span className="link-underline">{achievement.link?.caption || 'Details'}</span>
       </HyperLink>
     </div>
   ) : null;
@@ -58,10 +60,10 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
   return (
     <Card key={achievement.title}>
       <CardMedia link={imageLink}>
-        <FluidImage fluidImage={fluidImageFetched} />
+        <FluidImage fluidImage={fluidImageFetched} className="h-full w-full" />
       </CardMedia>
       <CardContent>
-        <HyperLink link={imageLink}>
+        <HyperLink link={imageLink} className="text-[15px] font-semibold leading-snug text-fg" hoverClassName="hover:text-accent">
           {achievement.title}
         </HyperLink>
         {date}

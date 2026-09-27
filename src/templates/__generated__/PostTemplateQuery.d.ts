@@ -2,6 +2,7 @@
 /* eslint-disable */
 // @generated
 // This file was automatically generated and should not be edited.
+// (Updated by hand for `tableOfContents` and `frontmatter.isoDate` — see src/templates/Post.tsx.)
 
 import { IGatsbyImageData } from "gatsby-plugin-image";
 
@@ -36,13 +37,13 @@ export interface PostTemplateQuery_mdx_frontmatter {
   title: string;
   summary: string | null;
   date: any | null;
+  isoDate: any | null;
   cover: PostTemplateQuery_mdx_frontmatter_cover | null;
 }
 
 export interface PostTemplateQuery_mdx {
   id: string;
-  timeToRead: number | null;
-  body: string;
+  tableOfContents: any | null;
   fields: PostTemplateQuery_mdx_fields | null;
   frontmatter: PostTemplateQuery_mdx_frontmatter | null;
 }

@@ -449,6 +449,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
         <div className="mb-2 mr-6 flex flex-row items-center">
           <div className="text-xs mr-1">Width</div>
           <Input
+            aria-label="Width, percent of the original"
             onChange={onWidthSizeChange}
             disabled={isResizing}
             // @ts-ignore
@@ -462,6 +463,7 @@ const ImageResizer = (props: ImageResizerProps): React.ReactElement => {
 
           <div className="text-xs mr-1">Height</div>
           <Input
+            aria-label="Height, percent of the original"
             onChange={onHeightSizeChange}
             disabled={isResizing}
             // @ts-ignore

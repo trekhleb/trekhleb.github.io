@@ -2,13 +2,13 @@ import React from 'react';
 import { FiCalendar } from '@react-icons/all-files/fi/FiCalendar';
 
 import { DateString } from '../../types/Date';
-import Row from './Row';
 
 export type DateRangeProps = {
   startDate?: DateString | null,
   endDate?: DateString | null,
   className?: string,
   withDay?: boolean,
+  withIcon?: boolean,
 };
 
 const months = [
@@ -39,6 +39,7 @@ const DateRange = (props: DateRangeProps): React.ReactElement | null => {
     endDate,
     className = '',
     withDay = false,
+    withIcon = false,
   } = props;
 
   if (!startDate && !endDate) {
@@ -51,17 +52,17 @@ const DateRange = (props: DateRangeProps): React.ReactElement | null => {
 
   const endDateString = endDate ? dateToString(new Date(endDate), withDay) : null;
 
+  const dateTime = startDate || endDate || undefined;
+
   return (
-    <div className={className}>
-      <Row>
-        <FiCalendar className="mr-1" />
-        <div>
-          {startDateString}
-          {dateSeparator}
-          {endDateString}
-        </div>
-      </Row>
-    </div>
+    <time dateTime={dateTime} className={`inline-flex items-center gap-1 whitespace-nowrap tabular-nums ${className}`}>
+      {withIcon && <FiCalendar size={14} aria-hidden="true" />}
+      <span>
+        {startDateString}
+        {dateSeparator}
+        {endDateString}
+      </span>
+    </time>
   );
 };
 

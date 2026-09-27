@@ -176,7 +176,10 @@ const gatsbyConfig: GatsbyConfig = {
             },
             query: `
               {
-                allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
+                allMdx(
+                  filter: {internal: {contentFilePath: {regex: "/\\\\/src\\\\/posts\\\\//"}}},
+                  sort: { fields: [frontmatter___date], order: DESC }
+                ) {
                   edges {
                     node {
                       fields {

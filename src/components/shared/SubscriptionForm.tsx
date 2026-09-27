@@ -1,44 +1,50 @@
 import React from 'react';
+import { inputClasses } from './Input';
+import { buttonBaseClasses, buttonKindClasses, BUTTON_KIND_PRIMARY } from './Button';
 
 type SubscriptionFormProps = {
   withHeader?: boolean,
+  className?: string,
 };
 
+// Mailchimp form. The action URL, field names, honeypot and "required" flags must stay as they are.
 const SubscriptionForm = (props: SubscriptionFormProps): React.ReactElement => {
-  const { withHeader = true } = props;
+  const { withHeader = true, className = '' } = props;
 
   const formAction = 'https://dev.us1.list-manage.com/subscribe/post?u=7714f14ff32085c685da2cfaa&amp;id=53ffa81463';
 
-  const inputClass = 'border py-2 px-3 mb-3 rounded border-gray-300 border-solid appearance-none';
-
   const header = withHeader ? (
-    <h1 className="text-grey-darkest uppercase font-bold text-xl mb-3">
+    <h2 className="text-h2 mb-2">
       Subscribe to the Newsletter
-    </h1>
+    </h2>
   ) : null;
 
   return (
-    <div className="bg-white rounded-md shadow-md p-8">
+    <div className={`rounded-xl2 border border-line bg-subtle/60 p-6 sm:p-8 ${className}`}>
       {header}
 
-      <p className="text-sm mb-3">
+      <p className="mb-5 text-sm text-muted">
         Get my latest posts and project updates by email
       </p>
 
-      <form action={formAction} method="post" className="flex flex-col">
+      <form action={formAction} method="post" className="flex flex-col gap-3 sm:flex-row">
         <input
           placeholder="First Name"
+          aria-label="First name"
           type="text"
           name="FNAME"
-          className={inputClass}
+          autoComplete="given-name"
+          className={`${inputClasses} w-full sm:w-40`}
           required
         />
 
         <input
           placeholder="Email"
+          aria-label="Email"
           type="email"
           name="EMAIL"
-          className={inputClass}
+          autoComplete="email"
+          className={`${inputClasses} w-full sm:flex-1`}
           required
         />
 
@@ -53,7 +59,7 @@ const SubscriptionForm = (props: SubscriptionFormProps): React.ReactElement => {
         <input
           type="submit"
           value="Subscribe"
-          className="transition duration-200 ease-in-out bg-black text-white py-2 px-3 rounded shadow-sm cursor-pointer hover:bg-gray-800"
+          className={`${buttonBaseClasses} ${buttonKindClasses[BUTTON_KIND_PRIMARY]} cursor-pointer`}
         />
       </form>
     </div>

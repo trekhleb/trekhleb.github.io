@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { MDXProvider } from '@mdx-js/react';
 import { FiCalendar } from '@react-icons/all-files/fi/FiCalendar';
-import { FiClock } from '@react-icons/all-files/fi/FiClock';
 
 import { PostTemplateQuery } from '../../templates/__generated__/PostTemplateQuery';
-import PageHeader from '../shared/PageHeader';
-import Row from '../shared/Row';
-import { timeToReadFromRemark } from '../../utils/time';
+import ProseImage from '../shared/ProseImage';
+import H, { hLevel } from '../shared/H';
 import ErrorBoundary from '../shared/ErrorBoundary';
+import TableOfContents from '../shared/TableOfContents';
+import { useProseEnhancements } from '../../hooks/useProseEnhancements';
 
 type PostProps = {
   post: PostTemplateQuery,
@@ -16,34 +17,46 @@ type PostProps = {
 const Post = (props: PostProps): React.ReactElement | null => {
   const { post, children } = props;
 
+  const articleRef = useRef<HTMLDivElement>(null);
+  useProseEnhancements(articleRef);
+
   const dateElement = post?.mdx?.frontmatter?.date ? (
-    <Row className="mr-6 mb-6 text-gray-500 text-sm">
-      <FiCalendar className="mr-1" />
+    <time
+      dateTime={post?.mdx?.frontmatter?.isoDate || undefined}
+      className="inline-flex items-center gap-1.5"
+    >
+      <FiCalendar size={14} aria-hidden="true" />
       {post?.mdx?.frontmatter.date}
-    </Row>
+    </time>
   ) : null;
 
-  const timeToRead = post?.mdx?.timeToRead ? (
-    <Row>
-      <FiClock className="mr-1" />
-      {timeToReadFromRemark(post?.mdx?.timeToRead)} min to read
-    </Row>
-  ) : null;
+  // Markdown images that are not processed by gatsby-remark-images (GIFs) render lazily.
+  const mdxComponents = { img: ProseImage };
 
   // To style the blog post the tailwindcss-typography plugin is used.
   // @see: https://github.com/tailwindlabs/tailwindcss-typography
   return (
-    <div className="flex flex-col items-center">
-      <article className="w-full prose prose-sm sm:prose overflow-hidden prose-red" style={{ maxWidth: '860px' }}>
-        <PageHeader>{post.mdx?.frontmatter?.title || ''}</PageHeader>
-        <Row>
-          {dateElement}
-          {timeToRead}
-        </Row>
-        <ErrorBoundary>
-          {children}
-        </ErrorBoundary>
+    <div className="relative mx-auto w-full max-w-prose">
+      <article>
+        <header className="mb-8 sm:mb-10">
+          <H level={hLevel.h1}>{post.mdx?.frontmatter?.title || ''}</H>
+          <div className="mt-4 flex flex-wrap items-center gap-x-2 text-sm text-muted">
+            {dateElement}
+          </div>
+        </header>
+        <div ref={articleRef} className="prose sm:prose-lg">
+          <ErrorBoundary>
+            <MDXProvider components={mdxComponents}>
+              {children}
+            </MDXProvider>
+          </ErrorBoundary>
+        </div>
       </article>
+      <TableOfContents
+        toc={post?.mdx?.tableOfContents}
+        articleRef={articleRef}
+        className="absolute left-full top-0 ml-10 hidden h-full w-56 toc:block"
+      />
     </div>
   );
 };

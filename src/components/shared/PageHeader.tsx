@@ -9,7 +9,7 @@ type PageHeaderProps = {
 const PageHeader = (props: PageHeaderProps): React.ReactElement | null => {
   const { children, className = '' } = props;
 
-  const commonClasses = 'mb-6 uppercase font-extrabold';
+  const commonClasses = 'mb-6';
 
   const classes = `${commonClasses} ${className}`;
 

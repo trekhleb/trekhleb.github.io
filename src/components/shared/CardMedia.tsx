@@ -14,6 +14,8 @@ type CardMediaProps = {
   link?: Link,
 };
 
+// Card image area: 2:1 on top (column) or a side column on wide screens (row). 2:1 is the ratio
+// the project covers are drawn at (median 2.00), so almost nothing gets cropped off the sides.
 const CardMedia = (props: CardMediaProps): React.ReactElement | null => {
   const {
     children,
@@ -22,18 +24,14 @@ const CardMedia = (props: CardMediaProps): React.ReactElement | null => {
     link,
   } = props;
 
-  const linkClasses = link && link.url
-    ? 'cursor-pointer'
-    : '';
-
-  const commonClasses = `transition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-105 h-48 bg-cover bg-gray-200 overflow-hidden block ${className} ${linkClasses}`;
+  const commonClasses = `relative block w-full shrink-0 overflow-hidden bg-subtle [&_img]:transition-opacity [&_img]:duration-300 group-hover:[&_img]:opacity-90 ${className}`;
 
   const classes = mode === cardMediaModeRow
-    ? `${commonClasses} sm:h-auto sm:w-2/5 lg:w-1/4`
-    : `${commonClasses}`;
+    ? `${commonClasses} aspect-[2/1] rounded-t-xl2 sm:aspect-auto sm:w-2/5 sm:rounded-l-xl2 sm:rounded-tr-none lg:w-1/4`
+    : `${commonClasses} aspect-[2/1] rounded-t-xl2`;
 
   const wrappedChildren = link && link.url ? (
-    <HyperLink link={link} formatted={false}>
+    <HyperLink link={link} formatted={false} className="block h-full w-full">
       {children}
     </HyperLink>
   ) : children;

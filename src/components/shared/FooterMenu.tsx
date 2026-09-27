@@ -12,11 +12,12 @@ const FooterMenu = (): React.ReactElement => {
       const url = route.path === '/' ? route.path : `${route.path}/`;
       const link: Link = { url };
       return (
-        <li key={route.path} className="ml-5">
+        <li key={route.path}>
           <HyperLink
             link={link}
-            className="uppercase text-xs"
-            activeClassName="font-bold"
+            className="inline-flex h-10 items-center text-sm text-muted hover:text-fg"
+            hoverClassName="hover:text-fg"
+            activeClassName="text-fg"
           >
             {route.name}
           </HyperLink>
@@ -25,7 +26,7 @@ const FooterMenu = (): React.ReactElement => {
     });
 
   return (
-    <ul className="flex flex-row">
+    <ul className="flex flex-row flex-wrap gap-x-5">
       {links}
     </ul>
   );

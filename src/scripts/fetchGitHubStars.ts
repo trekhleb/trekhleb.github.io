@@ -4,6 +4,7 @@ import path from 'path';
 import fetch from 'node-fetch';
 
 import { projects } from '../data/projects';
+import { profile } from '../data/profile';
 import { Project } from '../types/Project';
 import { getGitHubProjectID, projectMapToArray } from '../utils/project';
 import { GitHubStars } from '../types/GitHubStars';
@@ -11,6 +12,12 @@ import { GitHubStars } from '../types/GitHubStars';
 const gitHubAPIBasePath = 'https://api.github.com';
 
 const starsJSONPath = path.resolve(__dirname, '..', 'data', '__generated__', 'projectStars.json');
+
+// The projects highlighted on the home page also get their contributors and README translations
+// counted (two extra requests each).
+const detailedProjectIDs: string[] = (profile.highlights || [])
+  .map((highlight) => highlight.starsOfProject || '')
+  .filter(Boolean);
 
 function logError(err: Error | any): void {
   if (err && err.message) {
@@ -21,6 +28,15 @@ function logError(err: Error | any): void {
 
 function logInfo(message: any): void {
   console.log(message);
+}
+
+// The numbers from the previous run: a failed extra request keeps them instead of failing the build.
+function readPreviousStars(starsPath: string): GitHubStars {
+  try {
+    return JSON.parse(fs.readFileSync(starsPath, 'utf8')) as GitHubStars;
+  } catch (err) {
+    return {};
+  }
 }
 
 function saveStars(projectStars: GitHubStars, starsPath: string): void {
@@ -57,6 +73,7 @@ async function fetchGitHubRateLimits(): Promise<GitHubRateLimits> {
 type GitHubProject = {
   full_name?: string,
   stargazers_count?: number,
+  forks_count?: number,
   message?: string,
 };
 
@@ -85,6 +102,33 @@ async function fetchGitHubProject(project: Project): Promise<GitHubProject> {
   });
 }
 
+// @see: https://docs.github.com/en/rest/repos/repos#list-repository-contributors
+// With one contributor per page, the number of the "last" page is the number of contributors
+// (people with a GitHub account, as listed on the repository page).
+async function fetchContributorsCount(owner: string, repo: string): Promise<number> {
+  const resp = await fetch(`${gitHubAPIBasePath}/repos/${owner}/${repo}/contributors?per_page=1`);
+  if (!resp.ok) {
+    throw new Error(`Cannot fetch contributors of ${owner}/${repo}: HTTP ${resp.status}`);
+  }
+  const lastPage = /[?&]page=(\d+)>; rel="last"/.exec(resp.headers.get('link') || '');
+  if (lastPage) {
+    return parseInt(lastPage[1], 10);
+  }
+  const contributors = await resp.json() as unknown[];
+  return contributors.length;
+}
+
+// README translations live next to README.md as README.<language>.md (e.g. README.uk-UA.md).
+// @see: https://docs.github.com/en/rest/repos/contents#get-repository-content
+async function fetchReadmeTranslationsCount(owner: string, repo: string): Promise<number> {
+  const resp = await fetch(`${gitHubAPIBasePath}/repos/${owner}/${repo}/contents/`);
+  if (!resp.ok) {
+    throw new Error(`Cannot list the files of ${owner}/${repo}: HTTP ${resp.status}`);
+  }
+  const files = await resp.json() as { name: string }[];
+  return files.filter((file) => /^README\.[A-Za-z-]+\.md$/.test(file.name)).length;
+}
+
 async function main(): Promise<void> {
   const ghProjects = projectMapToArray(projects)
     .filter((project: Project) => project?.gitHubRepo?.owner && project?.gitHubRepo?.repo);
@@ -103,7 +147,8 @@ async function main(): Promise<void> {
     const rateLimits: GitHubRateLimits = await fetchGitHubRateLimits();
     logInfo(`Limit: ${rateLimits.resources.core.limit}`);
     logInfo(`Remaining: ${rateLimits.resources.core.remaining}`);
-    if (rateLimits.resources.core.remaining < ghProjects.length) {
+    const requestsNeeded = ghProjects.length + 2 * detailedProjectIDs.length;
+    if (rateLimits.resources.core.remaining < requestsNeeded) {
       logInfo('Skipping stars fetching since rate limit is smaller than number of projects to fetch');
       return;
     }
@@ -113,6 +158,7 @@ async function main(): Promise<void> {
   }
 
   const projectStars: GitHubStars = {};
+  const previousStars: GitHubStars = readPreviousStars(starsJSONPath);
 
   for (const ghProject of ghProjects) {
     const projectID = getGitHubProjectID(ghProject);
@@ -129,8 +175,27 @@ async function main(): Promise<void> {
         logError(new Error('Cannot fetch the number of stars from the response'));
         continue;
       }
+      const previous = previousStars[projectID];
+      let contributors: number | undefined;
+      let translations: number | undefined;
+      if (detailedProjectIDs.includes(ghProject.id)) {
+        const owner = ghProject?.gitHubRepo?.owner || '';
+        const repo = ghProject?.gitHubRepo?.repo || '';
+        try {
+          contributors = await fetchContributorsCount(owner, repo);
+          translations = await fetchReadmeTranslationsCount(owner, repo);
+        } catch (err) {
+          console.error((err as Error)?.message || err);
+          contributors = previous?.contributors;
+          translations = previous?.translations;
+        }
+      }
+      // Fields in reading order; the ones a project does not have are left out of the JSON.
       projectStars[projectID] = {
         stars: ghRepo.stargazers_count,
+        forks: typeof ghRepo.forks_count === 'number' ? ghRepo.forks_count : previous?.forks,
+        contributors,
+        translations,
         updatedAt: new Date().toISOString(),
       };
       logInfo(projectStars[projectID]);

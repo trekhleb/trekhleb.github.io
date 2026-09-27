@@ -6,20 +6,21 @@ import { Image } from '../../types/Image';
 
 type PublisherProps = {
   publisher: PublisherT,
-  publisherLogo: Image,
+  publisherLogo?: Image,
 };
 
 const Publisher = (props: PublisherProps): React.ReactElement => {
   const { publisher, publisherLogo } = props;
 
   return (
-    <div
-      key={publisher}
-      className="inline-block rounded-sm text-xs font-normal  flex flex-row justify-center items-center gap-1"
-    >
-      <FluidImage image={publisherLogo} className="w-5" />
-      <div>{publisher}</div>
-    </div>
+    <span className="inline-flex items-center gap-1.5 text-sm font-medium text-fg/85">
+      {publisherLogo && (
+        <span className="h-5 w-5 shrink-0 overflow-hidden rounded bg-subtle">
+          <FluidImage image={publisherLogo} className="h-full w-full" />
+        </span>
+      )}
+      <span>{publisher}</span>
+    </span>
   );
 };
 

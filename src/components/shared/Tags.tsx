@@ -15,7 +15,7 @@ const Tags = (props: TagsProps): React.ReactElement | null => {
   const {
     tags,
     className = '',
-    itemClassName = 'mr-2 mb-2',
+    itemClassName = '',
     numToShow = Infinity,
   } = props;
 
@@ -38,10 +38,14 @@ const Tags = (props: TagsProps): React.ReactElement | null => {
 
   return (
     <div className={classes}>
+      {/* Spacing comes from the list's gap only (16px between tags, 8px between wrapped rows):
+          per-item margins would make the tags taller than the "+ more" button and push it off the
+          tags' centre line. */}
       <Expander
         items={tags}
         toHide={toHide}
         onRender={onRender}
+        className="gap-x-4"
         itemClassName={itemClassName}
       />
     </div>

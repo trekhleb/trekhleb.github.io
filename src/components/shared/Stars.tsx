@@ -1,6 +1,5 @@
 import React from 'react';
 import { FiStar } from '@react-icons/all-files/fi/FiStar';
-import Row from './Row';
 import HyperLink from './HyperLink';
 import { Link as LinkType } from '../../types/Link';
 import { numberToConciseString } from '../../utils/numbers';
@@ -20,23 +19,27 @@ const Stars = (props: StarsProps): React.ReactElement | null => {
 
   const starsElements = (
     <>
-      <FiStar size={14} />
-      <div className="ml-1 text-xs font-bold">
+      <FiStar size={14} aria-hidden="true" />
+      <span className="text-xs font-semibold tabular-nums">
         {numberToConciseString(stars)}
-      </div>
+      </span>
     </>
   );
 
   const starsElementsWrapped = link ? (
-    <HyperLink link={link}>
+    <HyperLink link={link} className="relative z-10 gap-1" hoverClassName="hover:text-fg">
       {starsElements}
     </HyperLink>
-  ) : starsElements;
+  ) : (
+    <span className="inline-flex items-center gap-1">
+      {starsElements}
+    </span>
+  );
 
   return (
-    <Row className={className}>
+    <span className={`inline-flex items-center ${className}`}>
       {starsElementsWrapped}
-    </Row>
+    </span>
   );
 };
 

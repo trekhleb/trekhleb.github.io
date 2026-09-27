@@ -1,19 +1,624 @@
-/* @TODO: Remove unused Roboto font variants to reduce the bundle size */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+/*
+  Global styles: self-hosted font, design tokens (light/dark), base element styles, and — after the
+  Tailwind directives — the prose/code/Prism styles for blog posts.
+*/
+
+/* Inter (variable, self-hosted). Only the unicode ranges that a page uses are downloaded. */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/static-assets/fonts/inter-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/static-assets/fonts/inter-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/static-assets/fonts/inter-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/static-assets/fonts/inter-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* Metric-compatible fallback so text does not jump when Inter arrives. */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial'), local('Helvetica Neue'), local('Helvetica');
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  size-adjust: 107.12%;
+}
 
 @tailwind base;
 
-/*
-Adding base styles
-@see: https://tailwindcss.com/docs/adding-base-styles
-*/
 @layer base {
-  /*.blog-post h1 {*/
-  /*  @apply text-3xl;*/
-  /*}*/
+  /* Design tokens. Colours are stored as "r g b" triplets so Tailwind can apply opacity modifiers. */
+  :root {
+    --c-bg: 255 255 255;
+    --c-bg-subtle: 244 244 245;
+    --c-fg: 17 17 19;
+    --c-muted: 107 111 118;
+    --c-accent: 29 78 216;
+    --line: rgb(17 17 19 / 0.1);
+    --line-strong: rgb(17 17 19 / 0.2);
+    --accent-soft: rgb(29 78 216 / 0.12);
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 10px 30px -10px rgb(0 0 0 / 0.12);
+    --header-bg: rgb(255 255 255 / 0.82);
+    /* Code blocks are dark in any colour mode, like VS Code's Dark+ editor. */
+    --code-bg: 30 30 30;
+    --code-fg: 212 212 212;
+    color-scheme: light;
+  }
+
+  /* Dormant dark palette: nothing adds the `dark` class today (the owner wants a light site);
+     kept so an automatic dark mode can be enabled later by adding the class on <html>. */
+  .dark {
+    --c-bg: 11 11 12;
+    --c-bg-subtle: 23 23 26;
+    --c-fg: 237 237 239;
+    --c-muted: 160 164 171;
+    --c-accent: 147 180 253;
+    --line: rgb(255 255 255 / 0.12);
+    --line-strong: rgb(255 255 255 / 0.24);
+    --accent-soft: rgb(147 180 253 / 0.18);
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.5), 0 10px 30px -10px rgb(0 0 0 / 0.7);
+    --header-bg: rgb(11 11 12 / 0.8);
+    color-scheme: dark;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* No `scroll-behavior: smooth` on purpose: it also animates route changes and scroll
+       restoration, and its duration grows with the distance, so leaving a long article felt slow.
+       Same-page anchors get a fixed, fast glide from src/utils/scroll.ts instead. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-bg text-fg font-sans antialiased;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'cv11', 'ss03';
+  }
+
+  ::selection {
+    background: var(--accent-soft);
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--c-accent));
+    outline-offset: 2px;
+    border-radius: 0.25rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
 }
 
 @tailwind components;
+
+@layer components {
+  /* Page container used by the shell and every screen. */
+  .container-page {
+    @apply mx-auto w-full max-w-page px-6 sm:px-12;
+  }
+
+  /* Text link with an animated underline (used for inline links in UI, not prose). */
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.2s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible,
+  a:hover > .link-underline {
+    background-size: 100% 1px;
+  }
+
+  /* Whole-card click target: the element carrying this class is stretched over its nearest
+     `relative` ancestor; other interactive children get `relative z-10` so they stay clickable. */
+  .stretched-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .hairline {
+    border-color: var(--line);
+  }
+
+  .card {
+    @apply relative overflow-hidden rounded-xl2 border bg-bg;
+    border-color: var(--line);
+    transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .card-hover:hover {
+    border-color: var(--line-strong);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-2px);
+  }
+
+  .visually-hidden {
+    @apply sr-only;
+  }
+
+  /* Balanced line breaks for headings (progressive enhancement; Tailwind 3.3 has no utility for it). */
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
 @tailwind utilities;
 
-@import "custom.css";
+/* ==========================================================================================
+   Prose, code blocks and Prism colours. Kept in this file on purpose: css-loader hoists @import-ed
+   files ABOVE the importing file, which would put these rules before Tailwind's generated
+   `.prose` rules and lose the cascade (dark mode text would stay dark).
+   ========================================================================================== */
+
+/*
+  Prose (blog post) styles on top of @tailwindcss/typography, code block styling and the Prism
+  token colours for both colour schemes. Everything here is theme-aware through the tokens in global.css.
+*/
+
+/* ---------- Prose: colours mapped to the design tokens (works in light and dark) ---------- */
+.prose {
+  --tw-prose-body: rgb(var(--c-fg) / 0.92);
+  --tw-prose-headings: rgb(var(--c-fg));
+  --tw-prose-lead: rgb(var(--c-muted));
+  --tw-prose-links: rgb(var(--c-accent));
+  --tw-prose-bold: rgb(var(--c-fg));
+  --tw-prose-counters: rgb(var(--c-muted));
+  --tw-prose-bullets: var(--line-strong);
+  --tw-prose-hr: var(--line);
+  --tw-prose-quotes: rgb(var(--c-fg));
+  --tw-prose-quote-borders: var(--line-strong);
+  --tw-prose-captions: rgb(var(--c-muted));
+  --tw-prose-code: rgb(var(--c-fg));
+  --tw-prose-pre-code: rgb(var(--code-fg));
+  --tw-prose-pre-bg: rgb(var(--code-bg));
+  --tw-prose-th-borders: var(--line-strong);
+  --tw-prose-td-borders: var(--line);
+  max-width: none;
+  /* Inherited by every descendant: long unbreakable tokens (URLs, "Hashset/Hashmap/Hashtable")
+     wrap instead of pushing the page wider than a phone screen. */
+  overflow-wrap: break-word;
+}
+
+.prose a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgb(var(--c-accent) / 0.4);
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+  /* Long URLs break only when they really do not fit (break-word, not anywhere: "anywhere"
+     also shrinks the min-content width and splits words that would fit on the next line). */
+  overflow-wrap: break-word;
+}
+.prose a:hover {
+  text-decoration-color: rgb(var(--c-accent));
+}
+
+/* Subtle marker for links that leave the site. Skipped for image links, heading anchors and
+   anchors whose content is block-level (author-formatted captions), where it cannot sit inline.
+   \2060 (word joiner) keeps the arrow attached to the last word. */
+.prose a.is-external:not(:has(img, p, div, h1, h2, h3, h4))::after {
+  content: '\2060\2197';
+  display: inline;
+  margin-left: 0.12em;
+  font-size: 0.72em;
+  line-height: 1;
+  opacity: 0.6;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.prose sub a::after,
+.prose sup a::after,
+.prose .gatsby-remark-autolink-header-anchor::after {
+  content: none !important;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+  letter-spacing: -0.015em;
+  overflow-wrap: break-word;
+  /* No scroll-margin here on purpose: `scroll-padding-top` on <html> already parks anchors 80px
+     below the viewport top. Setting both makes the two offsets add up (160px), which pushed the
+     clicked heading past the table of contents' active threshold and highlighted the previous item. */
+}
+.prose h2 {
+  margin-top: 2.4em;
+  padding-top: 0;
+  font-weight: 650;
+}
+.prose h3 {
+  font-weight: 620;
+}
+
+/* Heading anchors from gatsby-remark-autolink-headers (icon after the header): show on hover/focus. */
+.prose h1 > a.gatsby-remark-autolink-header-anchor,
+.prose h2 > a.gatsby-remark-autolink-header-anchor,
+.prose h3 > a.gatsby-remark-autolink-header-anchor,
+.prose h4 > a.gatsby-remark-autolink-header-anchor,
+.prose h5 > a.gatsby-remark-autolink-header-anchor {
+  display: inline-block;
+  margin-left: 0.4em;
+  color: rgb(var(--c-muted));
+  opacity: 0;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.prose h1:hover > a.gatsby-remark-autolink-header-anchor,
+.prose h2:hover > a.gatsby-remark-autolink-header-anchor,
+.prose h3:hover > a.gatsby-remark-autolink-header-anchor,
+.prose h4:hover > a.gatsby-remark-autolink-header-anchor,
+.prose h5:hover > a.gatsby-remark-autolink-header-anchor,
+.prose a.gatsby-remark-autolink-header-anchor:focus-visible {
+  opacity: 1;
+}
+.prose a.gatsby-remark-autolink-header-anchor svg {
+  width: 0.7em;
+  height: 0.7em;
+  vertical-align: middle;
+}
+
+/* Inline code: no backticks, soft chip. */
+.prose code::before,
+.prose code::after {
+  content: none !important;
+}
+.prose :not(pre) > code {
+  font-weight: 450;
+  font-size: 0.875em;
+  padding: 0.15em 0.4em;
+  border-radius: 0.375rem;
+  background: rgb(var(--c-bg-subtle));
+  border: 1px solid var(--line);
+  overflow-wrap: anywhere;
+}
+.dark .prose :not(pre) > code {
+  background: rgb(var(--c-bg-subtle));
+}
+/* Old posts mark inline code with the language-text class: same treatment, no bold. */
+.prose p code.language-text,
+.prose li code.language-text,
+.prose th code.language-text,
+.prose tr code.language-text,
+.prose td code.language-text {
+  font-weight: 450;
+}
+
+/* Quotes: no smart-quote pseudo elements, normal weight, calm bar. */
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none !important;
+}
+.prose blockquote {
+  font-weight: 400 !important;
+  font-style: normal;
+  color: rgb(var(--c-fg) / 0.8);
+  border-left-width: 2px;
+  padding-left: 1.25em;
+}
+
+/* Images: centred, rounded, never wider than the column. gatsby-remark-images wraps them in a span. */
+.prose p > img,
+.prose .gatsby-resp-image-wrapper {
+  margin-left: auto;
+  margin-right: auto;
+}
+.prose img,
+.prose .gatsby-resp-image-wrapper,
+.prose .gatsby-resp-image-image,
+.prose .gatsby-resp-image-background-image,
+.prose video,
+.prose iframe {
+  border-radius: 0.75rem;
+}
+.prose .gatsby-resp-image-wrapper {
+  overflow: hidden;
+}
+.prose img {
+  height: auto;
+}
+.prose .gatsby-resp-image-link {
+  text-decoration: none;
+}
+.prose iframe {
+  max-width: 100%;
+}
+
+/* Tables: scroll horizontally on small screens instead of breaking the layout (no wrapper needed). */
+.prose table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  font-size: 0.925em;
+  line-height: 1.5;
+}
+.prose thead th {
+  font-weight: 600;
+  padding: 0.7em 0.9em;
+  background: rgb(var(--c-bg-subtle));
+}
+.prose tbody td {
+  padding: 0.7em 0.9em;
+  vertical-align: top;
+}
+.prose tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+/* Footnote markers used in some posts (<sup>). */
+.prose sup {
+  font-size: 0.72em;
+  line-height: 0;
+}
+.prose sup a {
+  text-decoration: none;
+  padding: 0 0.15em;
+}
+
+.prose hr {
+  margin: 3em 0;
+}
+
+.prose ul > li::marker {
+  color: var(--line-strong);
+}
+
+.prose kbd {
+  font-family: inherit;
+  font-size: 0.85em;
+  padding: 0.1em 0.45em;
+  border-radius: 0.375rem;
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 2px;
+  background: rgb(var(--c-bg-subtle));
+}
+
+/* ---------- Code blocks (gatsby-remark-prismjs output: .gatsby-highlight > pre > code) ----------
+   Dark, in the spirit of VS Code's default Dark+ theme, so code looks like the editor engineers
+   work in; the page and inline code stay light. A faint light edge keeps the block crisp. */
+.gatsby-highlight {
+  position: relative;
+  margin: 1.75em 0;
+  border-radius: 0.75rem;
+  border: 1px solid rgb(255 255 255 / 0.06);
+  background: rgb(var(--code-bg));
+  color: rgb(var(--code-fg));
+  color-scheme: dark; /* dark native scrollbars */
+  overflow: hidden;
+}
+.gatsby-highlight ::selection {
+  background: #264f78; /* VS Code's selection colour */
+}
+.gatsby-highlight > pre[class*='language-'] {
+  margin: 0;
+  padding: 2.25rem 1.25rem 1.1rem;
+  background: transparent;
+  border-radius: 0;
+  font-size: 0.875rem;
+  line-height: 1.65;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  tab-size: 2;
+}
+/* Language label, top-left, from the data-language attribute — no JS needed. */
+.gatsby-highlight[data-language]::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 0.55rem;
+  left: 1.1rem;
+  font-family: theme('fontFamily.mono');
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgb(var(--code-fg) / 0.5);
+  pointer-events: none;
+}
+.gatsby-highlight[data-language='text']::before,
+.gatsby-highlight[data-language='none']::before {
+  content: none;
+}
+/* Copy button injected by useProseEnhancements. */
+.code-copy {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.75rem;
+  width: 1.75rem;
+  padding: 0;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgb(var(--code-fg) / 0.6);
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.15s ease, color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease;
+}
+.gatsby-highlight:hover .code-copy,
+.code-copy:focus-visible,
+.code-copy[data-copied='true'] {
+  opacity: 1;
+}
+@media (hover: none) {
+  .code-copy {
+    opacity: 1;
+  }
+}
+.code-copy:hover {
+  color: #fff;
+  background: rgb(255 255 255 / 0.08);
+  border-color: rgb(255 255 255 / 0.12);
+}
+.code-copy[data-copied='true'] {
+  color: #4ec9b0;
+}
+
+/* The code takes the block's size (14px everywhere); the typography plugin would shrink it again. */
+.prose pre code {
+  font-weight: 400;
+  font-size: inherit;
+}
+pre[class*='language-'] .gatsby-highlight-code-line {
+  display: block;
+  margin: 0 -1.25rem;
+  padding: 0 1.25rem;
+  background: rgb(255 255 255 / 0.06);
+  border-left: 2px solid #569cd6;
+}
+
+/* ---------- Prism token colours: VS Code Dark+ ---------- */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #6a9955;
+}
+.token.punctuation,
+.token.operator {
+  color: #d4d4d4;
+}
+.token.namespace,
+.token.class-name,
+.token.builtin {
+  color: #4ec9b0;
+}
+.token.keyword,
+.token.boolean,
+.token.tag,
+.token.entity {
+  color: #569cd6;
+}
+.token.property,
+.token.variable,
+.token.attr-name,
+.token.parameter {
+  color: #9cdcfe;
+}
+.token.constant {
+  color: #4fc1ff;
+}
+.token.function {
+  color: #dcdcaa;
+}
+.token.string,
+.token.char,
+.token.attr-value,
+.token.url,
+.token.template-string {
+  color: #ce9178;
+}
+.token.number,
+.token.symbol,
+.token.inserted {
+  color: #b5cea8;
+}
+.token.deleted {
+  color: #ce9178;
+}
+.token.regex {
+  color: #d16969;
+}
+.token.selector {
+  color: #d7ba7d;
+}
+.token.atrule,
+.token.important {
+  color: #c586c0;
+}
+.token.important,
+.token.bold {
+  font-weight: 600;
+}
+.token.italic {
+  font-style: italic;
+}
+.token.entity {
+  cursor: help;
+}
+
+/* ---------- medium-zoom overlay follows the theme ---------- */
+.medium-zoom-overlay {
+  background: rgb(var(--c-bg)) !important;
+}
+.medium-zoom-image--opened {
+  border-radius: 0;
+}
+
+/* ---------- Tooltip / popover content ---------- */
+.shared-tooltip-content a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.shared-tooltip-content p:not(:last-child) {
+  margin-bottom: 0.6rem;
+}
+
+/* ---------- Print: the article only ---------- */
+@media print {
+  header,
+  footer,
+  nav,
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+    color: #000;
+  }
+  .prose {
+    max-width: none;
+  }
+  .prose a::after {
+    content: none !important;
+  }
+  .gatsby-highlight {
+    background: #fff !important;
+    border: 1px solid #d0d0d0 !important;
+  }
+  .gatsby-highlight pre,
+  .gatsby-highlight code,
+  .gatsby-highlight .token {
+    color: #000 !important;
+  }
+}

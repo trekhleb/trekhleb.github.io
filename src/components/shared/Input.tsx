@@ -1,11 +1,16 @@
 import React, { ChangeEvent } from 'react';
 
-export type InputProps = {
+// Any native <input> attribute (type, min, max, aria-label, ...) can be passed through.
+type NativeInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'onChange' | 'value'>;
+
+export type InputProps = NativeInputProps & {
   onChange?: (value: string) => void,
   className?: string,
   disabled?: boolean,
   value?: string | ReadonlyArray<string> | number,
 };
+
+export const inputClasses = 'h-10 rounded-lg border border-line-strong bg-bg px-3 text-sm text-fg transition-colors duration-150 ease-out placeholder:text-muted focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/30';
 
 const Input = (props: InputProps): React.ReactElement => {
   const {
@@ -17,16 +22,15 @@ const Input = (props: InputProps): React.ReactElement => {
     ...rest
   } = props;
 
-  const disabledClasses = disabled ? 'border-gray-300 text-gray-500 cursor-not-allowed' : '';
-  const defaultClasses = 'border border-solid border-black rounded px-2 py-1 text-sm';
-  const classes = `${defaultClasses} ${disabledClasses} ${className}`;
+  const disabledClasses = disabled ? 'cursor-not-allowed border-line text-muted' : '';
+  const classes = `${inputClasses} ${disabledClasses} ${className}`;
 
   const onInputChange = (event: ChangeEvent<HTMLInputElement>): void => {
     onChange(event.target.value);
   };
 
   return (
-    <div className="flex flex-row justify-center items-center">
+    <div className="flex flex-row items-center justify-center">
       <input
         disabled={disabled}
         onChange={onInputChange}

@@ -1,6 +1,4 @@
-import React, { SyntheticEvent, useState } from 'react';
-
-import HyperLink from './HyperLink';
+import React, { useState } from 'react';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 type ExpanderProps = {
@@ -12,6 +10,7 @@ type ExpanderProps = {
   expandable?: boolean,
 };
 
+// Renders a wrapping list of items, hiding some behind a "+ more" button.
 const Expander = (props: ExpanderProps): React.ReactElement | null => {
   const {
     items,
@@ -28,8 +27,7 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
     return null;
   }
 
-  const toggle = (event: SyntheticEvent): void => {
-    event.preventDefault();
+  const toggle = (): void => {
     setExpanded(!expanded);
   };
 
@@ -45,7 +43,7 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
     })
     .map((item: any, index: number) => onRender(item, index))
     .map((child: React.ReactElement, index: number) => {
-      const itemDefaultClasses = 'flex flex-row items-center last:mr-0';
+      const itemDefaultClasses = 'flex flex-row items-center';
       const itemClasses = `${itemDefaultClasses} ${itemClassName}`;
       /* eslint-disable react/no-array-index-key */
       return (
@@ -55,20 +53,21 @@ const Expander = (props: ExpanderProps): React.ReactElement | null => {
       );
     });
 
-  /* eslint-disable jsx-a11y/anchor-is-valid */
   const moreLessButton = somethingToHide && expandable ? (
-    <li className="flex flex-row items-center mb-2">
-      <HyperLink
-        link={{ url: '#', caption: expanded ? 'Show less' : 'Show more' }}
-        className="text-xs font-light"
+    <li className="flex flex-row items-center">
+      <button
+        type="button"
         onClick={toggle}
+        aria-expanded={expanded}
+        title={expanded ? 'Show less' : 'Show more'}
+        className="inline-flex h-6 items-center rounded px-1 text-xs font-medium text-muted transition-colors hover:text-fg"
       >
         {expanded ? '- less' : '+ more'}
-      </HyperLink>
+      </button>
     </li>
   ) : null;
 
-  const defaultClasses = 'flex flex-row flex-wrap';
+  const defaultClasses = 'flex flex-row flex-wrap items-center gap-2';
   const classes = `${defaultClasses} ${className}`;
 
   return (

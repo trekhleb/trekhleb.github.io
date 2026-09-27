@@ -12,11 +12,13 @@ const NavMenu = (): React.ReactElement => {
       const url = route.path === '/' ? route.path : `${route.path}/`;
       const link: Link = { url };
       return (
-        <li key={route.path} className="ml-5">
+        <li key={route.path}>
           <HyperLink
             link={link}
-            className="uppercase text-xs"
-            activeClassName="font-bold"
+            className="relative inline-flex h-11 items-center px-1 text-[14px] font-medium text-muted transition-colors duration-150 hover:text-fg sm:h-9 sm:rounded-lg sm:px-3 sm:text-[15px] sm:hover:bg-subtle"
+            hoverClassName="hover:text-fg"
+            activeClassName="is-active !text-fg after:absolute after:inset-x-1 after:bottom-0 after:h-0.5 after:rounded-full after:bg-fg sm:after:inset-x-3 sm:after:-bottom-px"
+            partiallyActive
           >
             {route.name}
           </HyperLink>
@@ -25,7 +27,7 @@ const NavMenu = (): React.ReactElement => {
     });
 
   return (
-    <ul className="flex flex-row">
+    <ul className="flex flex-row items-center gap-0.5 sm:gap-1">
       {links}
     </ul>
   );
