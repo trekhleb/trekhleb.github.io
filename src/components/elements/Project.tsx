@@ -15,6 +15,7 @@ import { Link } from '../../types/Link';
 import HyperLink from '../shared/HyperLink';
 import ProjectAchievements from './ProjectAchievements';
 import { useFluidCover } from '../../hooks/useFluidCover';
+import H, { hLevel } from '../shared/H';
 
 type ProjectProps = {
   project: ProjectType | null,
@@ -168,6 +169,22 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
     </div>
   );
 
+  // The longer description comes after the buttons, so the top of the page stays short.
+  const projectDescription = project.description && project.description.length ? (
+    <section className="mt-14" aria-labelledby="about">
+      <H level={hLevel.h2} id="about">
+        About
+      </H>
+      <div className="mt-5 flex max-w-prose flex-col gap-4 text-base leading-relaxed text-fg/90 sm:text-[17px]">
+        {project.description.map((paragraph: string, index: number) => (
+          <p key={index}>
+            {paragraph}
+          </p>
+        ))}
+      </div>
+    </section>
+  ) : null;
+
   const projectAchievements = (
     <ProjectAchievements
       achievements={project?.achievements}
@@ -183,6 +200,7 @@ const Project = (props: ProjectProps): React.ReactElement | null => {
       {externalLinks}
       {actions}
       {archivedStamp}
+      {projectDescription}
       {projectAchievements}
     </>
   );

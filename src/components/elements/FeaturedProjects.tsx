@@ -8,12 +8,13 @@ type FeaturedProjectsProps = {
 };
 
 // Home page cards stay short: cover, title, stars, a three-line summary and the Demo / Source
-// buttons. Dates, tags, achievements and extra links live on the projects page.
+// buttons. Dates, tags, achievements, extra links and "Learn more" live on the projects page.
 const homeCardSections: ProjectCardSections = {
   dates: false,
   tags: false,
   achievements: false,
   links: false,
+  details: false,
 };
 
 const FeaturedProjects = (props: FeaturedProjectsProps): React.ReactElement | null => {

@@ -10,6 +10,7 @@ import PostNav from '../elements/PostNav';
 import AuthorCard from '../elements/AuthorCard';
 import type { PostNavItem } from '../../types/Post';
 import { authorName, siteURL } from '../../constants/siteMeta';
+import { getShareImage } from '../../utils/shareImage';
 
 type PostScreenProps = {
   post: PostTemplateQuery;
@@ -28,7 +29,8 @@ const PostScreen = (props: PostScreenProps): React.ReactElement => {
   const isoDate = post.mdx?.frontmatter?.isoDate || undefined;
   const slug = post.mdx?.fields?.slug || '';
   const cover = post.mdx?.frontmatter?.cover?.childImageSharp?.gatsbyImageData;
-  const coverSrc = cover?.images?.fallback?.src || '';
+  // The cover is queried as the link-preview image: one JPEG, at most 1200px wide.
+  const shareImage = getShareImage(cover);
 
   const articleJsonLd = {
     '@context': 'https://schema.org',
@@ -37,7 +39,7 @@ const PostScreen = (props: PostScreenProps): React.ReactElement => {
     description: summary,
     datePublished: isoDate,
     author: { '@type': 'Person', name: authorName, url: siteURL },
-    image: coverSrc ? `${siteURL}${coverSrc}` : undefined,
+    image: shareImage ? `${siteURL}${shareImage.src}` : undefined,
     mainEntityOfPage: `${siteURL}${slug}`,
   };
 
@@ -47,9 +49,9 @@ const PostScreen = (props: PostScreenProps): React.ReactElement => {
         title={title}
         titleMode={titleModeSuffix}
         description={summary}
-        image={coverSrc}
-        imageWidth={cover?.width}
-        imageHeight={cover?.height}
+        image={shareImage?.src}
+        imageWidth={shareImage?.width}
+        imageHeight={shareImage?.height}
         type={ogTypeArticle}
         publishedTime={isoDate}
         jsonLd={articleJsonLd}

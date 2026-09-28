@@ -11,6 +11,11 @@ export const projects: Projects = {
     summary: [
       'Explore all 344,799 Bible cross-references — every verse on one line with its links drawn as arcs, and every chapter read alongside threads to where its verses connect.',
     ],
+    description: [
+      'Cross-references are the notes that lead a reader from one Bible passage to another that echoes, quotes or fulfills it. On paper you can only follow them one at a time, so the bigger picture stays hidden: how the prophets echo the Law, or how the New Testament quotes the Psalms and Isaiah.',
+      'This project draws all of them at once. Every verse sits on one line from Genesis to Revelation, and every cross-reference is an arc colored by the genres it connects. You can zoom from the whole Bible down to a single verse, search for a reference such as John 3:16, and read any passage with all of its connections one click away.',
+      'It works on phones too. It\'s free and open source, and it\'s built only on openly licensed data.',
+    ],
     tags: [
       { name: 'Data Viz' },
       { name: 'Bible' },
@@ -33,6 +38,11 @@ export const projects: Projects = {
     startDate: '2026-07-13',
     summary: [
       'A council of AI models for the decisions that aren\'t no-brainers — they answer in parallel, debate to consensus, or get judged to a verdict.',
+    ],
+    description: [
+      'Yes-Brainer puts one question to several AI models at once, so you can see where they agree and where they don\'t. Instead of juggling browser tabs, you get the whole deliberation in one place: independent answers, peer review, debate and a final verdict.',
+      'There are three ways to deliberate. Parallel answers shows the responses side by side. A trial has the models vote anonymously on each other\'s answers before a judge decides. A consensus debate runs several rounds, with a mediator steering the models toward agreement. Models from Anthropic, OpenAI, Google, Groq and OpenRouter, as well as local Ollama models, can sit on the same council.',
+      'There\'s no backend and no account. Your API keys, history and settings stay in your browser, and your prompts go straight to the providers you choose, so you pay them directly and nobody else. Recorded demo councils show how it works before you add a key, and the app works on phones and can be installed like a native app.',
     ],
     tags: [
       { name: 'AI' },
@@ -68,6 +78,11 @@ export const projects: Projects = {
     summary: [
       'Docker sandbox for the Claude Code CLI. Runs Claude against a single project folder — while your home directory, SSH keys, and other projects stay invisible to the container',
     ],
+    description: [
+      'Claude Pod runs the Claude Code command-line tool inside a Docker container that can see only the project folder you start it from. Claude can read and edit that folder, but your home directory, SSH keys, cloud credentials, other projects and host shell aren\'t there at all.',
+      'This makes the auto-approval mode, --dangerously-skip-permissions, far safer to use, and it limits the damage an over-broad command, a prompt injection or a malicious dependency can do in normal mode too. It isn\'t full isolation: the project folder itself is fully exposed and outbound network access stays open, so the README spells out exactly where the boundary lies.',
+      'After a one-time image build, a single command starts Claude in any project. The README also covers aliases, exposing ports for dev servers, pasting screenshots, pinning a Claude Code version and running without a network. Claude Pod is an unofficial tool.',
+    ],
     tags: [
       { name: 'Docker' },
       { name: 'Claude Code' },
@@ -99,6 +114,11 @@ export const projects: Projects = {
     summary: [
       'Explore California neighborhoods — crime, population, climate, 3D terrain, other metrics',
     ],
+    description: [
+      'CaliVibe puts California\'s public data on a single interactive map. Instead of jumping between Census tables, crime reports, climate databases and transit schedules, you can explore and compare counties and cities in one place.',
+      'The map layers cover housing costs, income, education, school performance, race and ethnicity, age, poverty, crime rates, population, temperature and sunshine hours, plus rail transit routes and 3D terrain. A comparison table puts any counties or cities side by side, highlights the best and worst values, and can be shared as a link.',
+      'The data comes from public sources, including the US Census Bureau and California\'s Department of Justice, Department of Education and Department of Finance. The app was vibe-coded: almost all of its code was written by Claude Code.',
+    ],
     tags: [
       { name: 'Vibe-coded' },
       { name: 'React' },
@@ -120,6 +140,11 @@ export const projects: Projects = {
     startDate: '2024-11-10',
     summary: [
       'A minimal TensorFlow.js re-implementation of Karpathy\'s minGPT (Generative Pre-trained Transformer)',
+    ],
+    description: [
+      'Homemade GPT JS is a minimal re-implementation of Andrej Karpathy\'s minGPT in TypeScript and TensorFlow.js. The whole GPT model, the decoder part of the transformer described in the Attention Is All You Need paper, fits in a single file of under 300 lines.',
+      'A web playground lets you train the model, experiment with its parameters and generate text right in the browser, on your GPU through WebGPU, and there\'s a Node.js playground as well. A simplified copy of the model processes attention heads one at a time, which is slower but easier to read, and presets range from tiny models up to the size of GPT-2.',
+      'It\'s made for learning how GPT works from the inside, and it pairs well with Karpathy\'s lecture Let\'s build GPT: from scratch, in code, spelled out.',
     ],
     tags: [
       { name: 'GPT' },
@@ -145,6 +170,11 @@ export const projects: Projects = {
     summary: [
       'A tiny scalar-valued autograd engine and a neural net on top of it. A TypeScript version of the karpathy/micrograd repo.',
     ],
+    description: [
+      'Micrograd TS is a TypeScript version of Andrej Karpathy\'s micrograd: a tiny autograd engine for scalar values, with a small neural network library built on top of it, in about 200 lines of code.',
+      'The Value class records math operations such as addition, multiplication, powers, exp and tanh into a computation graph, and its backward() method walks that graph to compute derivatives, which is the heart of backpropagation. The Neuron, Layer and MLP classes then build a multi-layer perceptron out of those values.',
+      'A demo app and several playgrounds let you train small networks and experiment with them, which makes the project a hands-on companion to Karpathy\'s video The spelled-out intro to neural networks and backpropagation: building micrograd.',
+    ],
     tags: [
       { name: 'AI' },
       { name: 'ML' },
@@ -166,6 +196,10 @@ export const projects: Projects = {
     summary: [
       'Subjective graph of observations, assumptions, questions, and interpretations',
     ],
+    description: [
+      'Observations is my personal, deliberately subjective map of thoughts about the big questions: origins, science and faith, axioms, consciousness, the universe, and good and evil.',
+      'Each note is an observation, an assumption, a question or an interpretation. The notes link to one another, so the collection reads as a graph in which one idea follows from another or relates to it. It isn\'t science or a finished argument, just a work in progress that changes as the thinking does.',
+    ],
     tags: [
       { name: 'Observations' },
       { name: 'Thoughts' },
@@ -180,6 +214,11 @@ export const projects: Projects = {
     startDate: '2022-07-20',
     summary: [
       'Drawing app to express, grasp, and organize your thoughts and ideas. Draw to explain. Draw to grasp.',
+    ],
+    description: [
+      'Ok! So... is an online drawing app for people who think visually, for the moments when two circles joined by an arrow explain more than a paragraph of text. Draw to explain an idea to someone else, or draw to grasp it yourself.',
+      'It removes the limits of pen and paper: the canvas is infinite, there\'s no limit on colors, and every drawing can be edited, with undo and redo. Drawings can also be organized as nested pages, so one sketch links to others, for example a Learning page that leads to Algorithms and then to Binary search.',
+      'The name comes from the breath you take before explaining something: "Ok! So..."',
     ],
     tags: [
       { name: 'Drawing' },
@@ -243,6 +282,11 @@ export const projects: Projects = {
     summary: [
       'Training the car to do self-parking using a genetic algorithm',
     ],
+    description: [
+      'Self-Parking Car Evolution teaches cars to park themselves using a genetic algorithm. The whole evolution runs in your browser: you watch each generation try to park in a 3D simulation and can tune the training as it goes.',
+      'Each car is controlled by simple linear formulas whose coefficients are encoded in a 180-bit genome. The cars that get closest to the parking spot are more likely to be selected as parents, and crossover and mutation produce the next generation. The first generations drive around at random, and by roughly the 40th generation the cars start heading for the parking spot.',
+      'The genetic algorithm itself takes less than 500 lines of TypeScript. The rest is the React app, a Three.js 3D world and Cannon.js physics.',
+    ],
     tags: [
       { name: 'Genetic' },
       { name: 'Algorithms' },
@@ -293,6 +337,11 @@ export const projects: Projects = {
     endDate: '2021-04-30',
     summary: [
       'Content-aware image resizer based on Seam Carving algorithm. Also performs objects removal',
+    ],
+    description: [
+      'JS Image Carver changes an image\'s proportions without distorting what\'s in it. Plain scaling squeezes everything, while content-aware resizing removes the least important pixels and keeps the main objects intact.',
+      'It implements the Seam Carving algorithm: find a seam, a connected path of pixels that contributes least to the picture, remove it, and repeat until the image reaches the target size. Dynamic programming keeps the search for the cheapest seam fast. The same technique can remove objects: mark an object and it\'s carved out while the rest of the image closes the gap.',
+      'Everything runs in the browser, and the accompanying article explains the algorithm step by step.',
     ],
     tags: [
       { name: 'JavaScript' },
@@ -371,6 +420,10 @@ export const projects: Projects = {
     startDate: '2020-12-30',
     summary: [
       'My personal website with a list of my projects that help people learn and blog posts about life, web-development, and machine-learning',
+    ],
+    description: [
+      'This is the site you\'re on: my personal website, with my open-source projects, articles and publications in one place.',
+      'It\'s built with Gatsby, React and TypeScript, styled with Tailwind CSS, and served from GitHub Pages as a static site. Articles are written in MDX, so a post can include interactive demos right next to the text. Numbers such as GitHub stars are fetched from the GitHub API at build time and stored in the repository, so the pages stay static and fast.',
     ],
     tags: [
       { name: 'Gatsby' },
@@ -481,6 +534,11 @@ export const projects: Projects = {
     summary: [
       'Links Detector makes printed links clickable via your smartphone camera. No need to type a link in, just scan and click on it',
     ],
+    description: [
+      'Links Detector makes printed links clickable. Point your phone\'s camera at a page of a book or a magazine, and it finds the links and lets you open them with a tap instead of typing them in character by character.',
+      'It works like a QR code scanner for ordinary URLs. A detection model trained with the TensorFlow 2 Object Detection API finds the links in the camera image, and Tesseract.js reads their text. It all runs in the browser on the phone\'s GPU through WebGL, and the app can be installed as a progressive web app.',
+      'The project is an experimental alpha, and the accompanying article explains how the model was trained and how the detection works.',
+    ],
     tags: [
       { name: 'ML' },
       { name: 'AI' },
@@ -518,6 +576,11 @@ export const projects: Projects = {
     endDate: '2020-05-01',
     summary: [
       'Interactive Machine Learning experiments: models training + models demo',
+    ],
+    description: [
+      'A collection of interactive machine learning experiments. Each one has a Jupyter or Colab notebook that shows how the model was trained, and a demo page where you can try the model right in your browser.',
+      'The experiments cover recognizing handwritten digits and sketches with multilayer perceptrons and convolutional networks, recognizing rock-paper-scissors hand gestures, detecting objects and classifying images with MobileNetV2, generating text and cooking recipes with recurrent networks, adding numbers with a sequence-to-sequence model, and generating images of clothes with a GAN.',
+      'Most models were trained with TensorFlow 2 and Keras and converted to run in the browser with TensorFlow.js. They\'re a playground for learning, not production-ready models.',
     ],
     tags: [
       { name: 'ML' },
@@ -586,6 +649,10 @@ export const projects: Projects = {
     summary: [
       'Curated list of state-of-the-art shitcode principles your project should follow to call it a proper shitcode',
     ],
+    description: [
+      'A tongue-in-cheek style guide for writing the worst possible code. Each principle is stated with a straight face and illustrated with a "good" and a "bad" example, where "good" is exactly what you should never do.',
+      'The principles cover the classics: naming variables as if the code were already obfuscated, mixing naming and formatting styles, never writing comments, failing silently, relying on global variables, avoiding tests and linters, and starting a project without a README. Read in reverse, it\'s a checklist of habits that make code hard to read and maintain, and projects that follow it can even display a badge.',
+    ],
     tags: [
       { name: 'JavaScript' },
       { name: 'StyleGuide' },
@@ -608,6 +675,10 @@ export const projects: Projects = {
     summary: [
       'Coronavirus (COVID-19) dashboard to show the dynamics of Сoronavirus distribution per country',
     ],
+    description: [
+      'A simple dashboard that charts how COVID-19 spread in each country: confirmed cases, recoveries and deaths over time. I built it early in the pandemic to answer questions the well-known Johns Hopkins dashboard didn\'t make easy, such as whether growth was slowing down in a particular country and how countries compared.',
+      'The data came from the Johns Hopkins CSSE COVID-19 data repository. The front end is deliberately minimal: plain React without a build step or JSX, with charts drawn by Chart.js.',
+    ],
     tags: [
       { name: 'COVID-19' },
       { name: 'React' },
@@ -626,6 +697,11 @@ export const projects: Projects = {
     endDate: '2020-01-01',
     summary: [
       'NanoNeuron is 7 simple JavaScript functions that will give you a feeling of how machines can actually "learn".',
+    ],
+    description: [
+      'NanoNeuron is seven simple JavaScript functions that give you a feel for how a machine can learn. There are no libraries, no external datasets and no dependencies, just plain functions for prediction, cost, forward and backward propagation, and training.',
+      'The NanoNeuron learns a single task: converting temperatures from Celsius to Fahrenheit. It starts with random parameters and adjusts them step by step until its predictions match the real formula, which shows that machine learning is math, not magic.',
+      'Many concepts are deliberately simplified or skipped, so it\'s a first step toward understanding neural networks rather than a complete guide.',
     ],
     tags: [
       { name: 'AI' },
@@ -667,6 +743,10 @@ export const projects: Projects = {
     summary: [
       'React hook usePosition() for fetching and following a browser geolocation',
     ],
+    description: [
+      'usePosition is a React hook that gets the user\'s location from the browser\'s Geolocation API. It can fetch the position once, or keep following it and update your component whenever the location changes.',
+      'The hook returns the latitude, longitude, speed, heading, accuracy and timestamp of the position, along with any error, and accepts the standard position options: high accuracy, timeout and the maximum age of a cached position. It\'s published on npm, and a Storybook demo shows it in action.',
+    ],
     tags: [
       { name: 'JavaScript' },
       { name: 'React' },
@@ -696,6 +776,10 @@ export const projects: Projects = {
     summary: [
       'The book about basic algorithms and datastructures implemented in JavaScript',
     ],
+    description: [
+      'JavaScript Algorithms: The Web Developer\'s Guide to Data Structures and Algorithms is a book I co-wrote with Sophia Shoemaker, published by Fullstack.io (now newline) in 2019.',
+      'A companion to the javascript-algorithms repository, it explains the basic data structures and algorithms, with implementations in JavaScript, for web developers who want to understand how they work.',
+    ],
     tags: [
       { name: 'JavaScript' },
       { name: 'Algorithms' },
@@ -724,6 +808,11 @@ export const projects: Projects = {
     cover: { srcPath: 'projects/homemade-machine-learning/cover.png' },
     summary: [
       'Python examples of popular machine learning algorithms with interactive Jupyter demos and math being explained',
+    ],
+    description: [
+      'Homemade Machine Learning implements popular machine learning algorithms from scratch in Python and explains the math behind each one. The goal isn\'t to call a ready-made library but to understand how the algorithms actually work.',
+      'It covers linear and logistic regression, k-means clustering, anomaly detection with a Gaussian distribution, and a multilayer perceptron neural network. Each algorithm has an interactive Jupyter notebook where you can change the training data and settings and immediately see the results, charts and predictions.',
+      'Most of the explanations follow Andrew Ng\'s machine learning course. The same algorithms are also available in MatLab/Octave as a separate project.',
     ],
     tags: [
       { name: 'AI' },
@@ -811,6 +900,10 @@ export const projects: Projects = {
     summary: [
       'Curated list of the free web-resources you may want to use to promote your next startup',
     ],
+    description: [
+      'A curated list of free places to promote a startup or a side project: news sites such as Hacker News and Reddit, product and tool directories, blogs that accept articles, Q&A sites and forums, developer chats, RSS aggregators and startup directories.',
+      'It also collects advanced Google search techniques for finding sites that link to your competitors, guest post and resource page opportunities, and useful subreddits. The underlying advice is to build something people love first, because happy users are the best promotion channel there is.',
+    ],
     tags: [
       { name: 'Promotion' },
       { name: 'Links' },
@@ -843,6 +936,11 @@ export const projects: Projects = {
     cover: { srcPath: 'projects/javascript-algorithms/cover.png' },
     summary: [
       'Algorithms and data structures implemented in JavaScript with explanations and links to further readings',
+    ],
+    description: [
+      'JavaScript Algorithms and Data Structures is a collection of classic data structures and algorithms implemented in JavaScript. Each one comes with its own explanation and links to further reading, including videos.',
+      'The data structures range from linked lists, queues, stacks and hash tables to heaps, tries, trees, graphs, disjoint sets and Bloom filters. The algorithms are grouped by topic, such as math, sets, strings, searching, sorting, trees, graphs, cryptography and machine learning, and by paradigm: brute force, greedy, divide and conquer, dynamic programming, backtracking, and branch and bound.',
+      'The implementations come with Jest tests, and the README includes Big O cheat sheets for data structure operations and sorting algorithms. It\'s widely used to learn computer science fundamentals and to prepare for technical interviews, and volunteers have translated it into many languages.',
     ],
     tags: [
       { name: 'JavaScript' },
@@ -1305,6 +1403,10 @@ export const projects: Projects = {
     summary: [
       'MatLab/Octave examples of popular machine learning algorithms with code examples and mathematics being explained',
     ],
+    description: [
+      'Machine Learning in MatLab/Octave implements popular machine learning algorithms from scratch and explains the math behind them, to understand how each algorithm works rather than calling a library one-liner.',
+      'It covers linear and logistic regression, k-means clustering, anomaly detection with a Gaussian distribution, and a multilayer perceptron neural network, each with demo scripts you can run in Octave or MatLab. The explanations follow Andrew Ng\'s machine learning course, and a Python version with interactive Jupyter notebooks is available as Homemade Machine Learning.',
+    ],
     tags: [
       { name: 'AI' },
       { name: 'ML' },
@@ -1326,6 +1428,10 @@ export const projects: Projects = {
     cover: { srcPath: 'projects/learn-python/cover-2.jpg' },
     summary: [
       'Playground and cheatsheet for learning Python. Collection of Python scripts that are split by topics and contain code examples with explanations',
+    ],
+    description: [
+      'A playground and cheatsheet for learning Python: a collection of Python scripts split by topic, each with code examples, explanations and links to further reading.',
+      'It\'s a playground because you can change the code, check that it still works with the tests and assertions, and lint it against the Python style guide. It\'s a cheatsheet because you can come back to recall the syntax of a statement or a construct. The topics run from operators and data types through control flow, functions, classes and modules to exceptions, files and the standard library.',
     ],
     tags: [
       { name: 'Python' },
@@ -1374,6 +1480,11 @@ export const projects: Projects = {
     summary: [
       'Service that helps you to aggregate information of the same meaning but from the different websites and makes it searchable, filterable, and sortable as if it all was from the one website',
     ],
+    description: [
+      'Aggregatus was a data aggregation service. It collected information of the same kind from many websites, such as shoe catalogs, apartment listings or news, and made it searchable, filterable and sortable as if it all came from one site.',
+      'Users built collections with their own sets of properties. A CSS Wizard opened a third-party site in a preview window, where users clicked the elements they wanted to scrape and got the matching CSS selectors automatically. It was built with Scrapy, Elasticsearch, Lumen, MySQL and React, behind Nginx.',
+      'The service launched in 2018 and is no longer running.',
+    ],
     tags: [
       { name: 'Nginx' },
       { name: 'React' },
@@ -1401,6 +1512,10 @@ export const projects: Projects = {
     summary: [
       'Seed project for Angular libraries that are AOT/JIT compatible and that use external SCSS-styles and HTML-templates',
     ],
+    description: [
+      'A starter project for building Angular libraries that work with both AOT and JIT compilation and keep component styles in external SCSS files and templates in external HTML files.',
+      'It ships with a tiny example library that shows the current time, but the real value is the environment around it: AOT and JIT builds through the Angular compiler, a UMD bundle through Webpack for direct use in browsers, a watch mode, testing, linting, documentation, demo applications and a publishing workflow. It was created in the Angular 4 era, and the README explains the architectural problems it solves.',
+    ],
     tags: [
       { name: 'TypeScript' },
       { name: 'WebPack' },
@@ -1420,6 +1535,10 @@ export const projects: Projects = {
     cover: { srcPath: 'projects/allbible/cover.png' },
     summary: [
       'Online Bible study web-service that gives users possibility to study Bible by reading it in 4 modern translations, comparing verses to theirs Greek and Hebrew originals, investigating cross-linked verses, making a cross-Bible search, listening to audio Bible, using different Bible study plans and more',
+    ],
+    description: [
+      'AllBible.info is an online Bible study service in Russian, Ukrainian and English. Readers can compare several translations, look into the original Greek and Hebrew words, follow cross-references between verses, and search the whole Bible like a concordance.',
+      'It also offers a Bible dictionary, an atlas, reading plans and audio. Registered users can highlight verses, group them into their own categories, add bookmarks and write notes, and other websites can embed its Bible text.',
     ],
     tags: [
       { name: 'JavaScript' },
@@ -1483,6 +1602,10 @@ export const projects: Projects = {
       'We\'ve launched this project with my wife to get an online selling platform for knitted accessories she was producing at that time.',
       'The project was running on WordPress with the great support of the WooCommerce module.',
     ],
+    description: [
+      'Hook&Thread was an online shop for knitted accessories. My wife and I launched it to give the accessories she was making at the time an online storefront.',
+      'The shop ran on WordPress, with WooCommerce handling the catalog, cart and orders. It\'s closed now.',
+    ],
     tags: [
       { name: 'Wordpress' },
       { name: 'WooCommerce' },
@@ -1498,6 +1621,10 @@ export const projects: Projects = {
     archived: true,
     summary: [
       'The web-studio that was created by my friend and I where we were specialized on providing a full-support during website creation',
+    ],
+    description: [
+      'SiteProm was a web studio that a friend and I ran, supporting clients through the whole process of creating a website: design, development and promotion.',
+      'The studio\'s own site had a playful theme: it presented itself as a "Ministry of Website Building", with finished projects shown as numbered case files. The sites were built with PHP, MySQL and JavaScript. The studio has since closed.',
     ],
     tags: [
       { name: 'PHP' },

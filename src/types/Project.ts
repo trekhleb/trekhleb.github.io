@@ -12,6 +12,8 @@ export type Project = {
   id: ProjectID,
   name?: string,
   summary?: string[],
+  // Longer plain-text description (one string per paragraph), shown on the project's own page.
+  description?: string[],
   // Relative to the src/images folder path to the image (i.e. projects/links-detector-cover.png)
   cover?: Image,
   srcURL?: Link,

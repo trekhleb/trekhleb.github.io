@@ -10,7 +10,7 @@ import Project from '../elements/Project';
 import Badge from '../shared/Badge';
 import HyperLink from '../shared/HyperLink';
 import { routes } from '../../constants/routes';
-import { useFluidCover } from '../../hooks/useFluidCover';
+import { useShareImage } from '../../hooks/useShareImage';
 
 type ProjectScreenProps = {
   project: ProjectType | null,
@@ -20,8 +20,7 @@ const ProjectScreen = (props: ProjectScreenProps): React.ReactElement => {
   const { project } = props;
 
   // The project cover doubles as the share image of the page.
-  const cover = useFluidCover({ imagePath: project?.cover?.srcPath });
-  const coverImage = cover?.images?.fallback?.src;
+  const shareImage = useShareImage({ imagePath: project?.cover?.srcPath });
 
   if (!project) {
     return (
@@ -37,9 +36,9 @@ const ProjectScreen = (props: ProjectScreenProps): React.ReactElement => {
         title={project?.name || ''}
         // Prefixed so a project page never shares its snippet with the blog post about it.
         description={`A project by Oleksii Trekhleb: ${project?.summary && project?.summary.length ? project.summary[0] : ''}`}
-        image={coverImage || undefined}
-        imageWidth={cover?.width}
-        imageHeight={cover?.height}
+        image={shareImage?.src}
+        imageWidth={shareImage?.width}
+        imageHeight={shareImage?.height}
       />
       <div className="mb-6">
         <HyperLink

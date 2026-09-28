@@ -3,6 +3,7 @@ import { IoPlay } from '@react-icons/all-files/io5/IoPlay';
 import { FaGithub } from '@react-icons/all-files/fa/FaGithub';
 import { FiExternalLink } from '@react-icons/all-files/fi/FiExternalLink';
 import { GiAchievement } from '@react-icons/all-files/gi/GiAchievement';
+import { FiChevronRight } from '@react-icons/all-files/fi/FiChevronRight';
 
 import { Project as ProjectType } from '../../types/Project';
 import DateRange from '../shared/DateRange';
@@ -16,7 +17,11 @@ import CardActions from '../shared/CardActions';
 import ButtonLink from '../shared/ButtonLink';
 import Archived from '../shared/Archived';
 import Stars from '../shared/Stars';
-import { getGitHubProjectStars, getProjectAchievementsLink } from '../../utils/project';
+import {
+  getGitHubProjectStars,
+  getProjectAchievementsLink,
+  getProjectLink,
+} from '../../utils/project';
 import { Link } from '../../types/Link';
 import HyperLink from '../shared/HyperLink';
 import Badge from '../shared/Badge';
@@ -27,6 +32,8 @@ export type ProjectCardSections = {
   tags?: boolean,
   achievements?: boolean,
   links?: boolean,
+  // The "Learn more" link to the project's own page.
+  details?: boolean,
 };
 
 type ProjectPreviewProps = {
@@ -56,6 +63,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
     tags: sections.tags !== false,
     achievements: sections.achievements !== false,
     links: sections.links !== false,
+    details: sections.details !== false,
   };
 
   const projectTags = show.tags && project?.tags ? (
@@ -97,6 +105,27 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
   const projectSummary = projectSummaryLines ? (
     <div className={`mt-3 text-[15px] leading-relaxed text-fg/80 ${clampSummary ? 'line-clamp-3' : ''}`}>
       {projectSummaryLines}
+    </div>
+  ) : null;
+
+  // A link to the project's own page, where the full description lives (the title and the cover
+  // lead to the demo or the source code instead). Styled like the Achievements link below it.
+  const detailsLink = show.details ? (
+    <div className="mt-4 flex items-center">
+      <HyperLink
+        link={getProjectLink(project.id)}
+        className="gap-1.5 text-sm text-fg"
+        hoverClassName="hover:text-accent"
+        // The chevron sits in an 18px box, as wide as the Achievements medal, so the labels align.
+        startEnhancer={(
+          <span className="flex w-[18px] justify-center" aria-hidden="true">
+            <FiChevronRight size={16} />
+          </span>
+        )}
+      >
+        <span className="underline decoration-current decoration-1 underline-offset-[3px]">Learn more</span>
+        <span className="sr-only">{` about ${project.name}`}</span>
+      </HyperLink>
     </div>
   ) : null;
 
@@ -200,6 +229,7 @@ const ProjectPreview = (props: ProjectPreviewProps): React.ReactElement | null =
         </div>
         {projectSummary}
         {projectTags}
+        {detailsLink}
         {achievementsLink}
         {externalLinks}
       </CardContent>
