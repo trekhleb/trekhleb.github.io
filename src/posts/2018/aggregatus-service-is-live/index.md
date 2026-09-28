@@ -13,9 +13,9 @@ date: 2018-03-07
 
 Hello everyone!
 
-I’m glad to announce that new data aggregation service is now live and in alpha stage of testing, and it is called [Aggregatus](https://aggregatus.io/)!
+I’m glad to announce that new data aggregation service is now live and in alpha stage of testing, and it is called Aggregatus (deprecated link: `aggregatus.io`)!
 
-[Aggregatus](https://aggregatus.io/) is a service that helps you to aggregate information of the same meaning but from the different websites and make it searchable, filterable and sortable as if it all was from the one website.
+Aggregatus (deprecated link: `aggregatus.io`) is a service that helps you to aggregate information of the same meaning but from the different websites and make it searchable, filterable and sortable as if it all was from the one website.
 
 ![aggregatus flow](assets/02-flow.jpeg)
 
@@ -23,7 +23,7 @@ You may think of shoes catalogs, apartments advertisements, news items or whatev
 
 Aggregatus users are able to create many collections (collection of shoes, collection of blog posts etc.). Each collection contains data of certain type with specific set of data properties. For example shoes collection might have data with such data properties as name, photo, category, available sizes and so on.
 
-You may check several examples of how those collections may look like by visiting [Nike Shoes](https://aggregatus.io/collection/1) or [Startup News](https://aggregatus.io/collection/2) collections.
+You may check several examples of how those collections may look like by visiting Nike Shoes (deprecated link: `aggregatus.io/collection/1`) or Startup News (deprecated link: `aggregatus.io/collection/2`) collections.
 
 ![aggregatus shoes](assets/03-shoes.png)
 
@@ -37,6 +37,6 @@ To make it easier the *CSS Wizard* feature was developed. It allows the users to
 
 <iframe width="100%" height="315" src="https://www.youtube.com/embed/8V3shqtDsrQ" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
 
-> The project is still in alpha stage of testing. This means that its features may be unstable. But also it means that a lot of new features are on their way. You also may take part in testing the project and [reporting new bugs and ideas](https://aggregatus.io/contact).
+> The project is still in alpha stage of testing. This means that its features may be unstable. But also it means that a lot of new features are on their way. You also may take part in testing the project and reporting new bugs and ideas (deprecated link: `aggregatus.io/contact`).
 
 > **UPD 2019:** The service was deprecated...
