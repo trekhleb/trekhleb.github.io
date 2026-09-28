@@ -16,7 +16,7 @@ type ProfileProps = {
 };
 
 // Home page hero: who this is, in one glance. One column at every size: portrait, name, role,
-// introduction, social links (the proof points sit beside it on desktop, see AboutScreen).
+// social links, introduction (the proof points sit beside it on desktop, see AboutScreen).
 const Profile = (props: ProfileProps): React.ReactElement => {
   const { profile, experienceYears } = props;
 
@@ -62,7 +62,7 @@ const Profile = (props: ProfileProps): React.ReactElement => {
   ) : null;
 
   const socialLinksElement = (
-    <div className="mt-7">
+    <div className="mt-5">
       <SocialLinks links={profile?.socialLinks} forceShowingSecondaryLinks />
     </div>
   );
@@ -74,11 +74,11 @@ const Profile = (props: ProfileProps): React.ReactElement => {
         {userNameElement}
       </div>
       {metaElement}
+      {socialLinksElement}
       <div className="mt-6 text-[17px] leading-relaxed text-fg/90">
         <Greeting experienceYears={experienceYears} />
       </div>
       {tagsElement}
-      {socialLinksElement}
     </section>
   );
 };
