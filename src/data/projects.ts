@@ -324,6 +324,12 @@ export const projects: Projects = {
         // Also here: https://arxiv.org/abs/2406.15430
         link: { url: 'https://arxiv.org/pdf/2406.15430', caption: 'See the paper' },
       },
+      {
+        title: 'Listed on Bored.com',
+        image: { srcPath: 'projects/self-parking-car-evolution/achievements/06-bored-com-2026-08-31.png' },
+        date: '2026-08-31',
+        link: { url: 'https://www.bored.com/link/trekhleb-dev/', caption: 'Bored.com listing' },
+      },
     ],
   },
   'js-image-carver': {
