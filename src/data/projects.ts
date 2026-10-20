@@ -48,8 +48,8 @@ export const projects: Projects = {
       },
       {
         title: "Tyler J. Rauwolf's Instagram Reel reached 50.6K likes",
-        image: { srcPath: 'projects/bible-cross-references/achievements/03-instagram-reel-50k-likes-2026-10-17.png' },
-        date: '2026-10-17',
+        image: { srcPath: 'projects/bible-cross-references/achievements/03-instagram-reel-50k-likes-2026-10-20.png' },
+        date: '2026-10-20',
         link: { url: 'https://www.instagram.com/reel/DekDWUPAfvu/', caption: 'See the reel' },
       },
     ],
