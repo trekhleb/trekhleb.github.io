@@ -27,7 +27,26 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'bible-cross-references',
     },
-    achievements: [],
+    achievements: [
+      {
+        title: 'Featured on Instagram by Tyler J. Rauwolf, Ph.D.',
+        image: { srcPath: 'projects/bible-cross-references/achievements/00-instagram-dr-tylerrauwolf-2026-10-13.png' },
+        date: '2026-10-13',
+        link: { url: 'https://www.instagram.com/p/Dec5HPlGhnZ/', caption: 'See the post' },
+      },
+      {
+        title: "Tyler J. Rauwolf's Instagram post reached 827K views",
+        image: { srcPath: 'projects/bible-cross-references/achievements/01-instagram-827k-views-2026-10-20.png' },
+        date: '2026-10-20',
+        link: { url: 'https://www.instagram.com/p/Dec5HPlGhnZ/', caption: 'See the post' },
+      },
+      {
+        title: 'Featured on YouTube Shorts by J.C. Statler (341K views)',
+        image: { srcPath: 'projects/bible-cross-references/achievements/02-youtube-shorts-jc-statler-2026-10-15.png' },
+        date: '2026-10-15',
+        link: { url: 'https://www.youtube.com/shorts/3Q20TMkJUjo', caption: 'Watch the video' },
+      },
+    ],
   },
   yesbrainer: {
     id: 'yesbrainer',
