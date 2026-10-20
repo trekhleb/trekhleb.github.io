@@ -36,8 +36,8 @@ export const projects: Projects = {
       },
       {
         title: "Tyler J. Rauwolf's Instagram post reached 827K views",
-        image: { srcPath: 'projects/bible-cross-references/achievements/01-instagram-827k-views-2026-10-20.png' },
-        date: '2026-10-20',
+        image: { srcPath: 'projects/bible-cross-references/achievements/01-instagram-827k-views-2026-10-13.png' },
+        date: '2026-10-13',
         link: { url: 'https://www.instagram.com/p/Dec5HPlGhnZ/', caption: 'See the post' },
       },
       {
@@ -45,6 +45,12 @@ export const projects: Projects = {
         image: { srcPath: 'projects/bible-cross-references/achievements/02-youtube-shorts-jc-statler-2026-10-15.png' },
         date: '2026-10-15',
         link: { url: 'https://www.youtube.com/shorts/3Q20TMkJUjo', caption: 'Watch the video' },
+      },
+      {
+        title: "Tyler J. Rauwolf's Instagram Reel reached 50.6K likes",
+        image: { srcPath: 'projects/bible-cross-references/achievements/03-instagram-reel-50k-likes-2026-10-17.png' },
+        date: '2026-10-17',
+        link: { url: 'https://www.instagram.com/reel/DekDWUPAfvu/', caption: 'See the reel' },
       },
     ],
   },
