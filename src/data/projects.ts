@@ -552,6 +552,12 @@ export const projects: Projects = {
         date: '2026-07-28',
         link: { url: 'https://github.com/trekhleb', caption: 'See profile' },
       },
+      {
+        title: 'Featured in "Best 18 Eastern European Software Developers"',
+        image: { srcPath: 'projects/trekhleb-dev/achievements/12-echoglobal-top-ee-developers-2026-09-19.png' },
+        date: '2026-09-19',
+        link: { url: 'https://echoglobal.tech/top-ee-software-developers/', caption: 'EchoGlobal article' },
+      },
     ],
   },
   'links-detector': {
