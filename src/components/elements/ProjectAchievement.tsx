@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { FiLink } from '@react-icons/all-files/fi/FiLink';
 import { useLocation } from '@gatsbyjs/reach-router';
 
 import { Achievement } from '../../types/Achievement';
 import Card from '../shared/Card';
 import CardMedia from '../shared/CardMedia';
-import { useFluidCover } from '../../hooks/useFluidCover';
+import { useFluidCoversByPaths } from '../../hooks/useFluidCoversByPaths';
 import FluidImage from '../shared/FluidImage';
+import CardMediaCarousel from '../shared/CardMediaCarousel';
 import CardContent from '../shared/CardContent';
 import HyperLink from '../shared/HyperLink';
 import { Link } from '../../types/Link';
+import { Image } from '../../types/Image';
 import DateRange from '../shared/DateRange';
 import { siteURL } from '../../constants/siteMeta';
+import { fullSizeImageURL, toImageList } from '../../utils/image';
 
 type ProjectAchievementsProps = {
   achievement: Achievement | null | undefined,
@@ -22,8 +25,14 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
 
   const location = useLocation();
 
-  const imagePath = achievement?.image?.srcPath;
-  const fluidImageFetched = useFluidCover({ imagePath });
+  // Nearly every achievement is told by one screenshot; a few need a couple of them.
+  const images: Image[] = toImageList(achievement?.image);
+  const fluidImages = useFluidCoversByPaths({
+    imagePaths: images.map((image: Image) => image.srcPath),
+  });
+
+  // Which screenshot is on show, so the title opens that one rather than always the first.
+  const [activeIndex, setActiveIndex] = useState<number>(0);
 
   if (!achievement) {
     return null;
@@ -39,10 +48,40 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
     </div>
   ) : null;
 
-  const imageLink: Link = {
-    url: `${location?.origin || siteURL}${fluidImageFetched?.images?.fallback?.src}`,
-    caption: 'Open the screenshot',
+  const origin = location?.origin || siteURL;
+
+  const imageLinkAt = (index: number): Link | undefined => {
+    const url = fullSizeImageURL(fluidImages[index], origin);
+    return url ? { url, caption: 'Open the screenshot' } : undefined;
   };
+
+  const imageLink = imageLinkAt(activeIndex) || imageLinkAt(0);
+
+  // More than one screenshot turns the picture area into something you can flip through. Nothing
+  // below it moves: the dots and chevrons ride on the picture, so the card keeps its usual shape.
+  const media = fluidImages.length > 1 ? (
+    <CardMediaCarousel
+      images={images}
+      fluidImages={fluidImages}
+      slideLink={imageLinkAt}
+      onActiveIndexChange={setActiveIndex}
+      label={achievement.title}
+    />
+  ) : (
+    <CardMedia link={imageLink}>
+      <FluidImage image={images[0]} fluidImage={fluidImages[0]} className="h-full w-full" />
+    </CardMedia>
+  );
+
+  const titleClasses = 'text-[15px] font-semibold leading-snug text-fg';
+
+  const title = imageLink ? (
+    <HyperLink link={imageLink} className={titleClasses} hoverClassName="hover:text-accent">
+      {achievement.title}
+    </HyperLink>
+  ) : (
+    <span className={titleClasses}>{achievement.title}</span>
+  );
 
   const detailsLink = achievement.link ? (
     <div className="mt-3">
@@ -59,13 +98,9 @@ const ProjectAchievement = (props: ProjectAchievementsProps): React.ReactElement
 
   return (
     <Card key={achievement.title}>
-      <CardMedia link={imageLink}>
-        <FluidImage fluidImage={fluidImageFetched} className="h-full w-full" />
-      </CardMedia>
+      {media}
       <CardContent>
-        <HyperLink link={imageLink} className="text-[15px] font-semibold leading-snug text-fg" hoverClassName="hover:text-accent">
-          {achievement.title}
-        </HyperLink>
+        {title}
         {date}
         {detailsLink}
       </CardContent>

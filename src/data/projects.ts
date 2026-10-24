@@ -29,14 +29,11 @@ export const projects: Projects = {
     },
     achievements: [
       {
-        title: 'Featured on Instagram by Tyler J. Rauwolf, Ph.D.',
-        image: { srcPath: 'projects/bible-cross-references/achievements/00-instagram-dr-tylerrauwolf-2026-10-13.png' },
-        date: '2026-10-13',
-        link: { url: 'https://www.instagram.com/p/Dec5HPlGhnZ/', caption: 'See the post' },
-      },
-      {
-        title: "Tyler J. Rauwolf's Instagram post reached 827K views",
-        image: { srcPath: 'projects/bible-cross-references/achievements/01-instagram-827k-views-2026-10-13.png' },
+        title: 'Featured on Instagram by Tyler J. Rauwolf, Ph.D. (827K+ views)',
+        image: [
+          { srcPath: 'projects/bible-cross-references/achievements/00-instagram-dr-tylerrauwolf-2026-10-13.png' },
+          { srcPath: 'projects/bible-cross-references/achievements/01-instagram-827k-views-2026-10-13.png' },
+        ],
         date: '2026-10-13',
         link: { url: 'https://www.instagram.com/p/Dec5HPlGhnZ/', caption: 'See the post' },
       },
