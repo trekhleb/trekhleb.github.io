@@ -25,12 +25,6 @@ type CardMediaCarouselProps = {
   label?: string,
 };
 
-/*
-  One frosted "material" carries every control: a translucent sheet of the page's own background
-  colour, blurred and slightly saturated, with a hairline edge. It borrows the picture underneath
-  instead of painting over it, so a control stays readable on a white screenshot and on a dark one
-  alike, without ever becoming a heavy black button.
-*/
 type DragState = {
   pointerId: number,
   startX: number,
@@ -44,31 +38,22 @@ const DRAG_THRESHOLD_PX = 6;
 // Browsers want to drag a picture off the page; here that gesture belongs to the carousel.
 const preventNativeDrag = (event: React.DragEvent<HTMLDivElement>): void => event.preventDefault();
 
+// A frosted sheet of the page's own background: translucent, blurred, with a hairline edge. It
+// borrows the picture beneath it, so a control reads on a white screenshot and a dark one alike.
 const materialClasses = 'bg-bg/80 ring-1 ring-line backdrop-blur-xl backdrop-saturate-150';
 
-/*
-  Hover follows the round icon buttons elsewhere on the site (social links, footer, tooltip close):
-  the sheet turns solid `subtle`, the hairline strengthens and the shadow deepens, so the button
-  reads as lifting off the picture. It matters more here than on a control that appears on hover,
-  because these stay on screen and the hover is the only thing marking them as pressable.
-*/
+// Hover matches the site's other round icon buttons (social links, footer, tooltip close). These
+// stay on screen rather than appearing on hover, so it is the only thing marking them pressable.
 const arrowClasses = `pointer-events-auto flex h-8 w-8 items-center justify-center rounded-full text-fg shadow-[0_1px_4px_rgb(0_0_0/0.12)] transition duration-150 ease-out hover:bg-subtle hover:shadow-[0_2px_8px_rgb(0_0_0/0.16)] hover:ring-line-strong disabled:pointer-events-none disabled:opacity-0 ${materialClasses}`;
 
 /*
-  Several pictures in the place a card normally shows one: swipe it with a finger, or use the
-  chevrons and the dots. The sliding itself is the browser's own (CSS scroll snapping), so it keeps
-  native momentum and still works before the JavaScript loads — the script only follows along to
-  light the right dot and to move the row when a control is used. Scrolling is set to glide in CSS
-  rather than from script, so the global `prefers-reduced-motion` rule can switch it off.
-
-  The dots ride on the picture itself, on the same frosted sheet as the chevrons, so that adding
-  pictures to an achievement moves nothing below: the title keeps its usual distance and stays
-  level with the titles of the single-picture cards beside it. Laying them over the picture is
-  what makes that possible, and the sheet is what keeps them readable — checked against eight
-  backdrops (white, light and dark screenshots, busy colour, flat grey, black), where bare dots
-  vanished on the light ones and a dark pill both shouted on the light ones and sank into the dark
-  ones. A light sheet does neither: on the pale screenshots that most of these are, it fades to
-  almost nothing and leaves just the dots; on a dark picture it reads as a quiet lozenge.
+  Several pictures where a card usually shows one: swipe with a finger or a trackpad, drag with a
+  mouse, or use the chevrons and dots. The sliding is the browser's own (CSS scroll snapping), so
+  it keeps native momentum and works before the JavaScript loads; the script only lights the right
+  dot and moves the row when a control is used. Gliding is set in CSS rather than from script, so
+  the global `prefers-reduced-motion` rule switches it off. Both controls sit *on* the picture, on
+  the frosted sheet that keeps them legible, so giving an achievement more pictures shifts nothing
+  below it and its title stays level with the single-picture cards beside it.
 */
 const CardMediaCarousel = (props: CardMediaCarouselProps): React.ReactElement | null => {
   const {
@@ -137,11 +122,9 @@ const CardMediaCarousel = (props: CardMediaCarouselProps): React.ReactElement | 
   }, [count]);
 
   /*
-    A finger and a trackpad already slide the row — that is the browser's own scrolling, momentum
-    and all. A mouse does not, so these handlers lend it the same gesture: hold the button down,
-    drag, and the row follows. Snapping is off for the duration (mandatory snap would yank the row
-    back on every pixel) and comes back on release, a frame later so the class is on the element
-    before the scroll is asked for.
+    A finger and a trackpad slide the row natively; a mouse does not, so these handlers lend it the
+    same gesture. Snapping is off while dragging — mandatory snap would yank the row back on every
+    pixel — and returns on release, a frame later so the class is on the element first.
   */
   const handlePointerDown = useCallback((event: React.PointerEvent<HTMLDivElement>): void => {
     swallowClickRef.current = false;
