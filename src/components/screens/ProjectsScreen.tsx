@@ -108,12 +108,12 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
 
   /*
     A quiet note at the foot of the page, in the spirit of a build-time readout: how much is on
-    record across the whole site. Counted from every project rather than the sorted list on
-    screen, so it stays a fact about the site and not about the current view.
+    record across the whole site. It follows the grid: left-aligned beside the cards, and centred
+    once the grid drops to a single column — the same breakpoint at which the footer centres.
   */
   const achievements: AchievementsStats = getAchievementsStats(projects);
   const achievementsNote = achievements.achievementsNum ? (
-    <p className="mt-6 text-[11px] text-muted/80 sm:mt-7">
+    <p className="mt-6 text-center text-[11px] text-muted/80 sm:mt-7 sm:text-left">
       {`${pluralize(achievements.achievementsNum, 'achievement')} across ${achievements.projectsWithAchievementsNum} of ${pluralize(achievements.projectsNum, 'project')}`}
     </p>
   ) : null;
