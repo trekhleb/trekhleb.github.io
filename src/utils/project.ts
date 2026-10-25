@@ -55,6 +55,34 @@ export function getTotalGetHubProjectStars(projects: Projects): number | null {
   }, 0);
 }
 
+export type AchievementsStats = {
+  achievementsNum: number,
+  // Projects carrying at least one achievement, out of `projectsNum` in total. Both are reported
+  // so the smaller one can be shown as the subset it is, rather than as a second grand total.
+  projectsWithAchievementsNum: number,
+  projectsNum: number,
+};
+
+/*
+  How much is on record across the whole site: achievement entries, and how many projects they
+  come from. Entries, not pictures — one entry may carry several screenshots — so this total is
+  the sum of the counts shown beside each project's "Achievements" heading and can be checked
+  against them.
+*/
+export function getAchievementsStats(projects: Projects): AchievementsStats {
+  return projectMapToArray(projects).reduce(
+    (stats: AchievementsStats, project: Project) => {
+      const achievementsNum = project?.achievements?.length || 0;
+      return {
+        achievementsNum: stats.achievementsNum + achievementsNum,
+        projectsWithAchievementsNum: stats.projectsWithAchievementsNum + (achievementsNum ? 1 : 0),
+        projectsNum: stats.projectsNum + 1,
+      };
+    },
+    { achievementsNum: 0, projectsWithAchievementsNum: 0, projectsNum: 0 },
+  );
+}
+
 export function getProjectAchievementsLink(projectID: ProjectID): Link {
   return {
     url: `${routes.projects.path}/${projectID}#achievements`,

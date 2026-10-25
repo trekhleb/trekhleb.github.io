@@ -5,6 +5,11 @@ export function numberToConciseString(num: number): string {
   return `${num}`;
 }
 
+// "1 project" / "17 projects". Counts stay exact here — these are facts to be read, not headlines.
+export function pluralize(num: number, word: string, plural = `${word}s`): string {
+  return `${num} ${num === 1 ? word : plural}`;
+}
+
 // Rounder variant for headline numbers: 257186 → "257K", 12345 → "12.3K", 43 → "43".
 export function numberToHeadlineString(num: number): string {
   if (num >= 100000) {

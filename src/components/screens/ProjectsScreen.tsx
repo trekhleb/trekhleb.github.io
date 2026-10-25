@@ -11,9 +11,16 @@ import ProjectFilters, {
   sortByStartDateAsc, sortByStartDateDesc,
   SortOption, supportedSortOptions,
 } from '../elements/ProjectFilters';
-import { getGitHubProjectStars, getTotalGetHubProjectStars, projectMapToArray } from '../../utils/project';
+import {
+  AchievementsStats,
+  getAchievementsStats,
+  getGitHubProjectStars,
+  getTotalGetHubProjectStars,
+  projectMapToArray,
+} from '../../utils/project';
 import Stars from '../shared/Stars';
 import { getStringSearchParam, setSearchParam } from '../../utils/url';
+import { pluralize } from '../../utils/numbers';
 
 type ProjectsScreenProps = {
   projects: ProjectsType,
@@ -99,6 +106,18 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
 
   const projectsNum = filteredProjects.length;
 
+  /*
+    A quiet note at the foot of the page, in the spirit of a build-time readout: how much is on
+    record across the whole site. Counted from every project rather than the sorted list on
+    screen, so it stays a fact about the site and not about the current view.
+  */
+  const achievements: AchievementsStats = getAchievementsStats(projects);
+  const achievementsNote = achievements.achievementsNum ? (
+    <p className="mt-6 text-[11px] text-muted/80 sm:mt-7">
+      {`${pluralize(achievements.achievementsNum, 'achievement')} across ${achievements.projectsWithAchievementsNum} of ${pluralize(achievements.projectsNum, 'project')}`}
+    </p>
+  ) : null;
+
   return (
     <PageLayout>
       <SEO
@@ -118,6 +137,7 @@ const ProjectsScreen = (props: ProjectsScreenProps): React.ReactElement => {
         </div>
       </div>
       <ProjectsList projects={filteredProjects} />
+      {achievementsNote}
     </PageLayout>
   );
 };
