@@ -26,7 +26,11 @@ const PublicationsList = (props: PublicationsListProps): React.ReactElement | nu
     .map((publication) => (
       <PublicationPreview
         publication={publication}
-        key={publication.publisher + publication.title}
+        // The date is part of the key because a publisher can run the same title more than once:
+        // JavaScript Weekly has featured "JavaScript Algorithms and Data Structures" three times.
+        // Without it those rows share a key, and React keeps the stale ones on screen when the
+        // list is filtered — the filter appears to do nothing.
+        key={`${publication.publisher}-${publication.title}-${publication.date}`}
       />
     ));
 
