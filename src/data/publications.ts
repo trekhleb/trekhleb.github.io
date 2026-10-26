@@ -488,7 +488,7 @@ export const publications: Publication[] = [
   },
   {
     title: '[Book] JavaScript Algorithms',
-    summary: ['Pass your algorithms interview with confidence by learning data structures and algorithms in JavaScript. The book should help engineers to better prepare for tech interviews.'],
+    summary: ['Pass your algorithms interview with confidence by learning data structures and algorithms in JavaScript. The book should help engineers to better prepare for tech interviews.', 'The sample chapter is indexed by Google Scholar (2026-10-25); the two citing works Scholar attributes to it — Dbux-PDG (IEEE VISSOFT 2022) and a PyScript benchmarking paper (IEEE UEMCON 2022) — cite the javascript-algorithms repository, which shares the book\'s title.'],
     date: '2020-07-02',
     publisher: Publisher.Newline,
     tag: PublicationTag.Authored,
@@ -672,7 +672,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Dynamic Programming vs Divide-and-Conquer',
-    summary: ['In this article I’m trying to explain the difference/similarities between dynamic programming and divide and conquer approaches based on two examples: binary search and minimum edit distance (Levenshtein distance).'],
+    summary: ['In this article I’m trying to explain the difference/similarities between dynamic programming and divide and conquer approaches based on two examples: binary search and minimum edit distance (Levenshtein distance).', 'Indexed by Google Scholar, where three theses cite it (2026-10-25): a University of Namur master\'s thesis (2020) and a Friedrich Schiller University Jena bachelor thesis written at the German Aerospace Center (2021) reproduce its Levenshtein-distance figure; a Juraj Dobrila University of Pula thesis (2018) adapts its dynamic-programming diagram.'],
     date: '2018-06-15',
     publisher: Publisher.ITNEXT,
     tag: PublicationTag.Authored,
@@ -864,7 +864,7 @@ export const publications: Publication[] = [
   },
   {
     title: 'Dbux-PDG: An Interactive Program Dependency Graph for Data Structures and Algorithms',
-    summary: ['A peer-reviewed paper from the IEEE Working Conference on Software Visualization (VISSOFT 2022) that uses algorithms from my GitHub project trekhleb/javascript-algorithms as its analysis examples.'],
+    summary: ['A peer-reviewed paper from the IEEE Working Conference on Software Visualization (VISSOFT 2022) that uses algorithms from my GitHub project trekhleb/javascript-algorithms as its analysis examples.', 'Reference 23 of the paper reads "Trekhleb, Oleksii. (2018) Javascript algorithms. [Online]. Available: https://github.com/trekhleb/javascript-algorithms".'],
     date: '2022-10-03',
     publisher: Publisher.IEEE,
     tag: PublicationTag.ResearchCitation,
@@ -891,6 +891,87 @@ export const publications: Publication[] = [
     tag: PublicationTag.ResearchCitation,
     link: {
       url: 'https://ieeexplore.ieee.org/document/9505063',
+    },
+  },
+  {
+    title: 'Understanding Promotion-as-a-Service on GitHub',
+    summary: ['A peer-reviewed paper from the 36th Annual Computer Security Applications Conference (ACSAC 2020; Tsinghua University, University of Delaware, Virginia Tech, UT Dallas, UC Irvine, Fudan University) on paid fake-star services. Its Table 2 lists my GitHub project trekhleb/homemade-machine-learning (8,749 stars in December 2018) among the well-known "Popular Author" repositories — beside Facebook Research\'s and Alibaba\'s — that fake accounts star in order to look like normal users.'],
+    date: '2020-12-08',
+    publisher: Publisher.ACM,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.1145/3427228.3427258',
+    },
+  },
+  {
+    title: 'Performance Benchmarking of PyScript and Comparative Results with Javascript',
+    summary: ['A peer-reviewed paper from the 2022 IEEE 13th Annual Ubiquitous Computing, Electronics & Mobile Communication Conference (UEMCON) that benchmarks PyScript against JavaScript and cites my GitHub project trekhleb/javascript-algorithms (reference 13).'],
+    date: '2022-10-26',
+    publisher: Publisher.IEEE,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://ieeexplore.ieee.org/document/9965680',
+    },
+  },
+  {
+    title: 'Development of an Educational Mobile Game Applications for Grade 5 for Knowledge Channel Inc.',
+    summary: ['A peer-reviewed paper from the 2nd International Conference on Information Science and Systems (ICISS 2019, ACM; Technological Institute of the Philippines). Its Section 2.4 describes the Fisher–Yates shuffle used to randomise questions, items and assets in the mobile games and cites the fisher-yates implementation in my GitHub project trekhleb/javascript-algorithms as its source (references 16 and 17).'],
+    date: '2019-03-16',
+    publisher: Publisher.ACM,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.1145/3322645.3322695',
+    },
+  },
+  {
+    title: 'Psalm Text Generator Comparison Between English and Korean Using LSTM Blocks in a Recurrent Neural Network',
+    summary: ['A paper from the Korea Institute of Information and Communication Engineering 2022 Fall Conference (Hanbat National University) that cites the "Shakespeare Text Generation (using RNN LSTM)" notebook from my GitHub project trekhleb/machine-learning-experiments as a demonstration of RNN/LSTM text generation (reference 4).'],
+    date: '2022-10-27',
+    publisher: Publisher.KIICE,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://koreascience.kr/article/CFKO202232558326317.page',
+    },
+  },
+  {
+    title: 'CHATssistant: un agent conversationnel pour l\'apprentissage de la programmation',
+    summary: ['A master\'s thesis in computer science (data science) at the University of Namur, Belgium (Maxime Dalla Valle and Antoine Jacques, 2020), whose Figure 14 reproduces the Levenshtein-distance example from my article "Dynamic Programming vs Divide-and-Conquer" and cites it.'],
+    // Only the award year of the thesis is known
+    date: '2020',
+    publisher: Publisher.UniversiteDeNamur,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://pure.unamur.be/ws/portalfiles/portal/52807751/2020_DallaValleM_memoire.pdf',
+    },
+  },
+  {
+    title: 'Komparacija metoda za oblikovanje algoritma (Comparison of Algorithm Design Methods)',
+    summary: ['An undergraduate thesis at the Faculty of Informatics, Juraj Dobrila University of Pula, Croatia (Maja Mandarić, defended 2018-09-26), whose Figure 8 on dynamic programming is "adapted from (Trekhleb, n.d.)" — my article "Dynamic Programming vs Divide-and-Conquer" — and which cites it.'],
+    date: '2018-09-26',
+    publisher: Publisher.UniversityOfPula,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://repozitorij.unipu.hr/object/unipu:2981',
+    },
+  },
+  {
+    title: 'Entwicklung einer nutzergestützten Matching-Software zum Datenaustausch zwischen APIs',
+    summary: ['A bachelor thesis at Friedrich Schiller University Jena, written at the German Aerospace Center (DLR) Institute of Data Science (Max Möbius, 2021-03-24; open access on DLR\'s electronic library), whose Figure 3 reproduces the Levenshtein-distance matrix from my article "Dynamic Programming vs Divide-and-Conquer" and cites it as reference 16.'],
+    date: '2021-03-24',
+    publisher: Publisher.FSUJena,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://elib.dlr.de/145473/',
+    },
+  },
+  {
+    title: 'SBOM Generation Tools Under Microscope: A Focus on the npm Ecosystem',
+    summary: ['A peer-reviewed paper from the 39th ACM/SIGAPP Symposium on Applied Computing (SAC 2024; Idaho State University) that evaluates four SBOM generators on the 50 most-starred JavaScript npm projects it found on GitHub. Its Table 2 lists my GitHub project trekhleb/javascript-algorithms first (174 thousand stars, 1,783 kLOC, 11 npm packages), ahead of Bootstrap, three.js and Express.'],
+    date: '2024-05-21',
+    publisher: Publisher.ACM,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.1145/3605098.3635927',
     },
   },
   {

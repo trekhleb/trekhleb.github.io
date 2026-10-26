@@ -316,6 +316,22 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.KIICE]: {
+    logo: { srcPath: 'publishers/kiice.png' },
+    description: (
+      <>
+        <p>
+          <b>KIICE</b><br />
+          <A href="https://www.kiice.org/">kiice.org</A>
+        </p>
+        <p>
+          The Korea Institute of Information and Communication Engineering (한국정보통신학회), a
+          Korean learned society; the citing paper appeared in the proceedings of its 2022 Fall
+          Conference.
+        </p>
+      </>
+    ),
+  },
   [Publisher.KDnuggets]: {
     logo: { srcPath: 'publishers/kdnuggets.jpg' },
     description: (
@@ -792,6 +808,52 @@ export const publishers: Record<Publisher, PublisherData> = {
           Springer is one of the world&apos;s leading publishers of scientific
           books and peer-reviewed journals, including the Lecture Notes
           in Computer Science (LNCS) series.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.FSUJena]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Friedrich Schiller University Jena</b><br />
+          <A href="https://www.uni-jena.de/">uni-jena.de</A>
+        </p>
+        <p>
+          A German public research university founded in 1558. The citing bachelor thesis was
+          written at the German Aerospace Center (DLR) Institute of Data Science and is hosted on
+          DLR&apos;s electronic library.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.UniversiteDeNamur]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Université de Namur</b><br />
+          <A href="https://researchportal.unamur.be/">researchportal.unamur.be</A>
+        </p>
+        <p>
+          A Belgian public university; its research portal hosts the citing master&apos;s thesis in
+          computer science (data science).
+        </p>
+      </>
+    ),
+  },
+  [Publisher.UniversityOfPula]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Juraj Dobrila University of Pula</b><br />
+          <A href="https://repozitorij.unipu.hr/">repozitorij.unipu.hr</A>
+        </p>
+        <p>
+          A Croatian public university; its digital repository hosts the citing undergraduate
+          thesis of the Faculty of Informatics.
         </p>
       </>
     ),
