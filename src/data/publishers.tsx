@@ -3,6 +3,20 @@ import { Publisher, PublisherData } from '../types/Publication';
 import A from '../components/shared/A';
 
 export const publishers: Record<Publisher, PublisherData> = {
+  [Publisher.ADTmag]: {
+    logo: { srcPath: 'publishers/adtmag.png' },
+    description: (
+      <>
+        <p>
+          <b>ADTmag (Application Development Trends)</b><br />
+          <A href="https://adtmag.com/">adtmag.com</A>
+        </p>
+        <p>
+          A trade publication for software developers and development managers, published by 1105 Media.
+        </p>
+      </>
+    ),
+  },
   [Publisher.AITimeJournal]: {
     logo: { srcPath: 'publishers/ai-time-journal.jpg' },
     description: (
@@ -17,6 +31,20 @@ export const publishers: Record<Publisher, PublisherData> = {
         </p>
         <p>
           ~9K followers <A href="https://www.linkedin.com/company/ai-time-journal/">on LinkedIn</A>.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.CellPress]: {
+    logo: { srcPath: 'publishers/cell-press.png' },
+    description: (
+      <>
+        <p>
+          <b>Cell Press (iScience)</b><br />
+          <A href="https://www.cell.com/iscience/home">cell.com/iscience</A>
+        </p>
+        <p>
+          Cell Press is a scientific publisher within Elsevier; iScience is its interdisciplinary, peer-reviewed open-access journal.
         </p>
       </>
     ),
@@ -98,6 +126,20 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.DiceInsights]: {
+    logo: { srcPath: 'publishers/dice.png' },
+    description: (
+      <>
+        <p>
+          <b>Dice Insights</b><br />
+          <A href="https://www.dice.com/career-advice">dice.com</A>
+        </p>
+        <p>
+          The editorial section of Dice, a US technology-careers marketplace. The 2018 article is no longer online and survives in the Internet Archive.
+        </p>
+      </>
+    ),
+  },
   [Publisher.GeeksForGeeks]: {
     logo: { srcPath: 'publishers/geeks-for-geeks.jpg' },
     description: (
@@ -123,6 +165,20 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.GitHubBlog]: {
+    logo: { srcPath: 'publishers/github-blog.jpg' },
+    description: (
+      <>
+        <p>
+          <b>The GitHub Blog</b><br />
+          <A href="https://github.blog/">github.blog</A>
+        </p>
+        <p>
+          GitHub&apos;s official blog. Its annual &quot;State of the Octoverse&quot; report is GitHub&apos;s own analysis of activity on the platform.
+        </p>
+      </>
+    ),
+  },
   [Publisher.HackerNews]: {
     logo: { srcPath: 'publishers/hacker-news.png' },
     description: (
@@ -144,6 +200,24 @@ export const publishers: Record<Publisher, PublisherData> = {
         </p>
         <p>
           ~35M backlinks, ~59K linking web sites (source: <A href="https://ahrefs.com/website-authority-checker/?input=https%3A%2F%2Fnews.ycombinator.com">ahrefs</A>)
+        </p>
+      </>
+    ),
+  },
+  [Publisher.HackerNewsletter]: {
+    logo: { srcPath: 'publishers/hacker-newsletter.png' },
+    description: (
+      <>
+        <p>
+          <b>Hacker Newsletter</b><br />
+          <A href="https://hackernewsletter.com/">hackernewsletter.com</A>
+        </p>
+        <p>
+          A weekly email digest of the best articles from Hacker News,
+          hand-curated since 2010.
+        </p>
+        <p>
+          60,000+ subscribers (as stated on the site, 2026-10-25).
         </p>
       </>
     ),
@@ -351,6 +425,20 @@ export const publishers: Record<Publisher, PublisherData> = {
         </p>
         <p>
           ~234K followers <A href="https://x.com/TDataScience">on X</A>.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.UniversidadeDoPorto]: {
+    logo: { srcPath: 'publishers/u-porto.jpg' },
+    description: (
+      <>
+        <p>
+          <b>Universidade do Porto (FEUP)</b><br />
+          <A href="https://repositorio-aberto.up.pt/">repositorio-aberto.up.pt</A>
+        </p>
+        <p>
+          The University of Porto, Portugal. Repositório Aberto is its open-access institutional repository; the citing work is a dissertation of the Faculty of Engineering (FEUP).
         </p>
       </>
     ),
@@ -642,6 +730,20 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.SBC]: {
+    logo: { srcPath: 'publishers/sbc.jpeg' },
+    description: (
+      <>
+        <p>
+          <b>SBC (Sociedade Brasileira de Computação)</b><br />
+          <A href="https://sol.sbc.org.br/">sol.sbc.org.br</A>
+        </p>
+        <p>
+          The Brazilian Computer Society. SBC OpenLib (SOL) is its open library of conference proceedings, including SEMISH, the Integrated Software and Hardware Seminar.
+        </p>
+      </>
+    ),
+  },
   [Publisher.SegmentFault]: {
     logo: { srcPath: 'publishers/generic-book.png' },
     description: (
@@ -732,6 +834,20 @@ export const publishers: Record<Publisher, PublisherData> = {
           John Wiley &amp; Sons is a multinational academic publisher founded
           in 1807, publishing peer-reviewed journals, books, and reference
           works in science and engineering.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.Zenodo]: {
+    logo: { srcPath: 'publishers/zenodo.jpg' },
+    description: (
+      <>
+        <p>
+          <b>Zenodo</b><br />
+          <A href="https://zenodo.org/">zenodo.org</A>
+        </p>
+        <p>
+          An open research repository operated by CERN; every record receives a DOI.
         </p>
       </>
     ),

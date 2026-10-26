@@ -335,7 +335,10 @@ export const projects: Projects = {
       },
       {
         title: 'Listed in JavaScript Weekly',
-        image: { srcPath: 'projects/self-parking-car-evolution/achievements/04-javascript-weekly-newsletter-2021-10-01.png' },
+        image: [
+          { srcPath: 'projects/self-parking-car-evolution/achievements/04-javascript-weekly-newsletter-2021-10-01.png' },
+          { srcPath: 'projects/self-parking-car-evolution/achievements/07-javascript-weekly-558-2021-10-01.png' },
+        ],
         date: '2021-10-01',
         link: { url: 'https://javascriptweekly.com/issues/558', caption: 'JavaScript Weekly Newsletter' },
       },
@@ -351,6 +354,12 @@ export const projects: Projects = {
         image: { srcPath: 'projects/self-parking-car-evolution/achievements/06-bored-com-2026-08-31.png' },
         date: '2026-08-31',
         link: { url: 'https://www.bored.com/link/trekhleb-dev/', caption: 'Bored.com listing' },
+      },
+      {
+        title: 'Featured in Changelog News',
+        image: { srcPath: 'projects/self-parking-car-evolution/achievements/08-changelog-news-2021-10-06.png' },
+        date: '2021-10-06',
+        link: { url: 'https://changelog.com/news/a-selfparking-car-in-500-lines-of-code-zg3q', caption: 'Changelog News item' },
       },
     ],
   },
@@ -436,6 +445,12 @@ export const projects: Projects = {
         image: { srcPath: 'projects/js-image-carver/achievements/04-wikipedia-2025-08-01.png' },
         date: '2025-08-01',
         link: { url: 'https://en.m.wikipedia.org/wiki/Seam_carving#Implementations', caption: 'Mentioned as an implementation example in the Wikipedia article' },
+      },
+      {
+        title: 'Mentioned in JavaScript Weekly newsletter (Quick Bits: the seam-carving article)',
+        image: { srcPath: 'projects/js-image-carver/achievements/10-javascript-weekly-549-quick-bits-2021-07-30.png' },
+        date: '2021-07-30',
+        link: { url: 'https://javascriptweekly.com/issues/549', caption: 'JavaScript Weekly (issue #549)' },
       },
     ],
   },
@@ -554,6 +569,17 @@ export const projects: Projects = {
         image: { srcPath: 'projects/trekhleb-dev/achievements/12-echoglobal-top-ee-developers-2026-09-19.png' },
         date: '2026-09-19',
         link: { url: 'https://echoglobal.tech/top-ee-software-developers/', caption: 'EchoGlobal article' },
+      },
+      {
+        title: 'Article "Top 33 JavaScript Projects on GitHub" (ITNEXT, 2018) cited by a peer-reviewed IEEE/IFIP DSN 2021 paper as the source of its training corpus',
+        image: [
+          { srcPath: 'projects/trekhleb-dev/achievements/13-dsn-2021-moog-cites-top-33-article-2021-06-21-1.png' },
+          { srcPath: 'projects/trekhleb-dev/achievements/13-dsn-2021-moog-cites-top-33-article-2021-06-21-2.png' },
+          { srcPath: 'projects/trekhleb-dev/achievements/13-dsn-2021-moog-cites-top-33-article-2021-06-21-3.png' },
+          { srcPath: 'projects/trekhleb-dev/achievements/13-dsn-2021-moog-cites-top-33-article-2021-06-21-4.png' },
+        ],
+        date: '2021-06-21',
+        link: { url: 'https://ieeexplore.ieee.org/document/9505063', caption: 'The paper on IEEE Xplore' },
       },
     ],
   },
@@ -764,6 +790,18 @@ export const projects: Projects = {
           caption: 'Reddit post',
         },
       },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter',
+        image: { srcPath: 'projects/nano-neuron/achievements/02-javascript-weekly-466-2019-12-06.png' },
+        date: '2019-12-06',
+        link: { url: 'https://javascriptweekly.com/issues/466', caption: 'JavaScript Weekly (issue #466)' },
+      },
+      {
+        title: 'Issued in Hacker Newsletter (issue #483, Favorites)',
+        image: { srcPath: 'projects/nano-neuron/achievements/03-hacker-newsletter-483-2019-12-13.png' },
+        date: '2019-12-13',
+        link: { url: 'https://mailchi.mp/hackernewsletter/483', caption: 'Hacker Newsletter (issue #483)' },
+      },
     ],
   },
   'use-position': {
@@ -923,6 +961,15 @@ export const projects: Projects = {
         date: '2019-01-01',
         link: { url: 'https://pycoders.com/issues/349', caption: 'See the issue' },
       },
+      {
+        title: 'Ranked #76 by stars among the 259,000+ repositories in GitHub\'s "machine-learning" topic',
+        image: [
+          { srcPath: 'projects/homemade-machine-learning/achievements/13-github-topic-machine-learning-rank-76-2026-10-24-1.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/13-github-topic-machine-learning-rank-76-2026-10-24-2.png' },
+        ],
+        date: '2026-10-24',
+        link: { url: 'https://github.com/topics/machine-learning?o=desc&s=stars', caption: 'See the topic page' },
+      },
     ],
   },
   'promote-your-next-startup': {
@@ -1001,7 +1048,10 @@ export const projects: Projects = {
       },
       {
         title: 'Issued in "JavaScript Weekly" newsletter (Top code and tools of 2018)',
-        image: { srcPath: 'projects/javascript-algorithms/achievements/25-javascript-weekly-2018-12-21.png' },
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/25-javascript-weekly-2018-12-21.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/25-javascript-weekly-2018-12-21-2.png' },
+        ],
         date: '2018-12-21',
         link: { url: 'https://javascriptweekly.com/issues/417', caption: 'JavaScript Weekly (issue #417)' },
       },
@@ -1425,6 +1475,192 @@ export const projects: Projects = {
         date: '2019-02-27',
         link: { url: 'https://qiita.com/oimo23/items/b380a914867ec973039a', caption: 'See the article' },
       },
+      {
+        title: 'Ranked #2 among the new open-source projects of 2018 in GitHub\'s "State of the Octoverse" report',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/74-github-octoverse-2018-new-projects-2018-12-13-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/74-github-octoverse-2018-new-projects-2018-12-13-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/74-github-octoverse-2018-new-projects-2018-12-13-3.png' },
+        ],
+        date: '2018-12-13',
+        link: { url: 'https://github.blog/news-insights/octoverse/new-open-source-projects/', caption: 'See the report' },
+      },
+      {
+        title: 'Dice Insights on GitHub\'s 2018 review: "A JavaScript algorithms repo was second place"',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/75-dice-insights-octoverse-second-place-2018-12-18-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/75-dice-insights-octoverse-second-place-2018-12-18-2.png' },
+        ],
+        date: '2018-12-18',
+        link: { url: 'https://web.archive.org/web/20190722121648/https://insights.dice.com/2018/12/18/github-javascript-learning-trends-2018/', caption: 'See the article (archived)' },
+      },
+      {
+        title: 'ADTmag names the repository in GitHub\'s "Top New Projects Based on Stars" chart',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/76-adtmag-javascript-dominated-open-source-2018-12-20-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/76-adtmag-javascript-dominated-open-source-2018-12-20-2.png' },
+        ],
+        date: '2018-12-20',
+        link: { url: 'https://adtmag.com/articles/2018/12/20/github-javascript.aspx', caption: 'See the article' },
+      },
+      {
+        title: 'One of the 135 GitHub repositories with more than 100,000 stars (#32 by stars in GitHub\'s own search)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/77-github-search-over-100k-stars-rank-32-of-135-2026-10-24-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/77-github-search-over-100k-stars-rank-32-of-135-2026-10-24-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/77-github-search-over-100k-stars-rank-32-of-135-2026-10-24-3.png' },
+        ],
+        date: '2026-10-24',
+        link: { url: 'https://github.com/search?q=stars%3A%3E100000&type=repositories&s=stars&o=desc', caption: 'See the search results' },
+      },
+      {
+        title: 'Ranked #3 by stars among the 4.8 million JavaScript repositories on GitHub (GitHub search, repositories with at least one star)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/78-github-search-javascript-repos-rank-3-2026-10-24.png' },
+        date: '2026-10-24',
+        link: { url: 'https://github.com/search?q=language%3AJavaScript+stars%3A%3E0&type=repositories&s=stars&o=desc', caption: 'See the search results' },
+      },
+      {
+        title: 'Ranked #2 by stars among the 46,070 repositories in GitHub\'s "algorithms" topic',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/79-github-topic-algorithms-rank-2-2026-10-24-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/79-github-topic-algorithms-rank-2-2026-10-24-2.png' },
+        ],
+        date: '2026-10-24',
+        link: { url: 'https://github.com/topics/algorithms?o=desc&s=stars', caption: 'See the topic page' },
+      },
+      {
+        title: 'Ranked #2 by stars among the 36,085 repositories in GitHub\'s "data-structures" topic',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/80-github-topic-data-structures-rank-2-2026-10-24-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/80-github-topic-data-structures-rank-2-2026-10-24-2.png' },
+        ],
+        date: '2026-10-24',
+        link: { url: 'https://github.com/topics/data-structures?o=desc&s=stars', caption: 'See the topic page' },
+      },
+      {
+        title: 'The MDN listing was proposed by an independent contributor and merged by MDN\'s reviewers (mdn/content pull request #11589, Dec 30, 2021)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/81-mdn-content-pr-11589-independent-contributor-2021-12-30-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/81-mdn-content-pr-11589-independent-contributor-2021-12-30-2.png' },
+        ],
+        date: '2021-12-30',
+        link: { url: 'https://github.com/mdn/content/pull/11589', caption: 'See the pull request' },
+      },
+      {
+        title: 'Still listed in MDN\'s "JavaScript data types and data structures" guide (page last modified on Jul 8, 2025)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/82-mdn-data-structures-guide-see-also-2026-10-24-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/82-mdn-data-structures-guide-see-also-2026-10-24-2.png' },
+        ],
+        date: '2026-10-24',
+        link: { url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Data_structures', caption: 'MDN Web Docs' },
+      },
+      {
+        title: 'Used as the source of the code samples in a peer-reviewed SEMISH 2025 study on code readability (Universidade Federal do Pará, SBC)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/83-semish-2025-ufpa-study-code-from-repo-2025-07-20-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/83-semish-2025-ufpa-study-code-from-repo-2025-07-20-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/83-semish-2025-ufpa-study-code-from-repo-2025-07-20-3.png' },
+        ],
+        date: '2025-07-20',
+        link: { url: 'https://doi.org/10.5753/semish.2025.9259', caption: 'See the paper' },
+      },
+      {
+        title: 'Fourier Transform article cited and its figure adapted in a Universidade do Porto MSc dissertation (FEUP, 2020)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/84-uporto-feup-2020-thesis-dft-article-2020-07-09-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/84-uporto-feup-2020-thesis-dft-article-2020-07-09-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/84-uporto-feup-2020-thesis-dft-article-2020-07-09-3.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/84-uporto-feup-2020-thesis-dft-article-2020-07-09-4.png' },
+        ],
+        date: '2020-07-09',
+        link: { url: 'https://hdl.handle.net/10216/128283', caption: 'See the dissertation' },
+      },
+      {
+        title: 'Cited in "Maze Solver: A React-Based Pathfinding Visualization using BFS and DFS" (student journal article, 2025)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/85-zenodo-2025-maze-solver-citation-2025-07-03-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/85-zenodo-2025-maze-solver-citation-2025-07-03-2.png' },
+        ],
+        date: '2025-07-03',
+        link: { url: 'https://zenodo.org/records/15797242', caption: 'See the record' },
+      },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter (first selection)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/86-javascript-weekly-387-2018-05-25.png' },
+        date: '2018-05-25',
+        link: { url: 'https://javascriptweekly.com/issues/387', caption: 'JavaScript Weekly (issue #387)' },
+      },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter for the second time ("it has been substantially improved since then")',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/87-javascript-weekly-396-2018-07-27.png' },
+        date: '2018-07-27',
+        link: { url: 'https://javascriptweekly.com/issues/396', caption: 'JavaScript Weekly (issue #396)' },
+      },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter (Code & Tools)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/88-javascript-weekly-466-2019-12-06.png' },
+        date: '2019-12-06',
+        link: { url: 'https://javascriptweekly.com/issues/466', caption: 'JavaScript Weekly (issue #466)' },
+      },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/89-javascript-weekly-517-2020-12-04.png' },
+        date: '2020-12-04',
+        link: { url: 'https://javascriptweekly.com/issues/517', caption: 'JavaScript Weekly (issue #517)' },
+      },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/90-javascript-weekly-561-2021-10-22.png' },
+        date: '2021-10-22',
+        link: { url: 'https://javascriptweekly.com/issues/561', caption: 'JavaScript Weekly (issue #561)' },
+      },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter (The Best of JavaScript Weekly in 2021: Top Code & Tools of 2021)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/91-javascript-weekly-570-best-of-2021-2021-12-24.png' },
+        date: '2021-12-24',
+        link: { url: 'https://javascriptweekly.com/issues/570', caption: 'JavaScript Weekly (issue #570)' },
+      },
+      {
+        title: 'Issued in "JavaScript Weekly" newsletter ("Over 150 Algorithms and Data Structures Demonstrated in JS", eighteen other languages)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/92-javascript-weekly-763-2025-11-28.png' },
+        date: '2025-11-28',
+        link: { url: 'https://javascriptweekly.com/issues/763', caption: 'JavaScript Weekly (issue #763)' },
+      },
+      {
+        title: 'Logged in Changelog News by the editor',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/96-changelog-news-item-2018-05-28.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/95-changelog-news-2018-05-28.png' },
+        ],
+        date: '2018-05-28',
+        link: { url: 'https://changelog.com/news/algorithms-and-data-structures-implemented-in-js-gba0', caption: 'Changelog News item' },
+      },
+      {
+        title: 'Issued in Hacker Newsletter (issue #412, "Classic Algorithms Implemented in JavaScript")',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/94-hacker-newsletter-412-2018-07-27.png' },
+        date: '2018-07-27',
+        link: { url: 'https://mailchi.mp/hackernewsletter/412', caption: 'Hacker Newsletter (issue #412)' },
+      },
+      {
+        title: 'Featured in Node Weekly (Issue #603, "Over 150 algorithms and data structures demonstrated in JavaScript")',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/93-node-weekly-603-2025-12-02.png' },
+        date: '2025-12-02',
+        link: { url: 'https://nodeweekly.com/issues/603', caption: 'See Issue #603' },
+      },
+      {
+        title: 'Selected as one of the 50 most popular JavaScript projects on GitHub for a peer-reviewed study (Empirical Software Engineering, Springer, 2020)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/97-emse-2020-soltani-250-most-popular-projects-2020-09-14-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/97-emse-2020-soltani-250-most-popular-projects-2020-09-14-6.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/97-emse-2020-soltani-250-most-popular-projects-2020-09-14-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/97-emse-2020-soltani-250-most-popular-projects-2020-09-14-3.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/97-emse-2020-soltani-250-most-popular-projects-2020-09-14-4.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/97-emse-2020-soltani-250-most-popular-projects-2020-09-14-5.png' },
+        ],
+        date: '2020-09-14',
+        link: { url: 'https://doi.org/10.1007/s10664-020-09882-z', caption: 'See the paper (open access)' },
+      },
     ],
   },
   'machine-learning-octave': {
@@ -1452,6 +1688,17 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'machine-learning-octave',
     },
+    achievements: [
+      {
+        title: 'Listed in the Key Resources Table of an iScience (Cell Press) paper as the logistic-regression resource',
+        image: [
+          { srcPath: 'projects/machine-learning-octave/achievements/00-iscience-2026-key-resources-table-2026-06-22-1.png' },
+          { srcPath: 'projects/machine-learning-octave/achievements/00-iscience-2026-key-resources-table-2026-06-22-2.png' },
+        ],
+        date: '2026-06-22',
+        link: { url: 'https://doi.org/10.1016/j.isci.2026.116408', caption: 'See the paper' },
+      },
+    ],
   },
   'learn-python': {
     id: 'learn-python',
@@ -1500,6 +1747,12 @@ export const projects: Projects = {
         image: { srcPath: 'projects/learn-python/achievements/04-Introduction-to-Programming-for-the-Organic-Chemist-2023-08-31.png' },
         date: '2023-08-31',
         link: { url: 'https://onlinelibrary.wiley.com/doi/10.1002/9781119855668.ch9', caption: 'See the book' },
+      },
+      {
+        title: 'Featured in PyCoder\'s Weekly (issue #332, Projects)',
+        image: { srcPath: 'projects/learn-python/achievements/05-pycoders-332-2018-09-04.png' },
+        date: '2018-09-04',
+        link: { url: 'https://pycoders.com/issues/332', caption: 'See the issue' },
       },
     ],
   },

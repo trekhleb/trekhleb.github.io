@@ -32,6 +32,87 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'The State of the Octoverse: new open source projects in 2018',
+    summary: ['GitHub\'s own report lists trekhleb/javascript-algorithms second among the ten new open-source projects of 2018 by stars in their first 28 days, and names it as an example of the projects with coding examples starred by those new to code.'],
+    date: '2018-12-13',
+    publisher: Publisher.GitHubBlog,
+    tag: PublicationTag.Coverage,
+    link: {
+      url: 'https://github.blog/news-insights/octoverse/new-open-source-projects/',
+    },
+  },
+  {
+    title: 'GitHub Review Shows JavaScript, Learning Are Top Trends in 2018',
+    summary: ['Dice Insights on GitHub\'s 2018 review: "A JavaScript algorithms repo was second place" — the linked repository is trekhleb/javascript-algorithms.'],
+    date: '2018-12-18',
+    publisher: Publisher.DiceInsights,
+    tag: PublicationTag.Coverage,
+    link: {
+      url: 'https://web.archive.org/web/20190722121648/https://insights.dice.com/2018/12/18/github-javascript-learning-trends-2018/',
+      caption: 'Internet Archive copy (the original page is gone)',
+    },
+  },
+  {
+    title: 'JavaScript Dominated Open Source in 2018',
+    summary: ['ADTmag (Application Development Trends) reproduces GitHub\'s "Top New Projects Based on Stars" chart and names trekhleb/javascript-algorithms among the top new projects of 2018.'],
+    date: '2018-12-20',
+    publisher: Publisher.ADTmag,
+    tag: PublicationTag.Coverage,
+    link: {
+      url: 'https://adtmag.com/articles/2018/12/20/github-javascript.aspx',
+    },
+  },
+  {
+    title: 'Investigando o Cognitive-Driven Development: Percepções sobre Legibilidade e Manutenção de Código',
+    summary: ['A peer-reviewed SEMISH 2025 paper (Universidade Federal do Pará, SBC) whose code samples were extracted from my trekhleb/javascript-algorithms repository, chosen among repositories "with the highest number of stars, an indicator of quality and acceptance by the community" (section 4.2, footnote 1).'],
+    date: '2025-07-20',
+    publisher: Publisher.SBC,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.5753/semish.2025.9259',
+    },
+  },
+  {
+    title: 'Estudo comparativo de normas na área de danos estruturais causados por vibrações impulsivas',
+    summary: ['An MSc dissertation in civil engineering (FEUP, Universidade do Porto, 2020) that adapts a figure from my article "Playing with Discrete Fourier Transform Algorithm in JavaScript" (Figure 5.6) and cites the article in its bibliography.'],
+    date: '2020-07-09',
+    publisher: Publisher.UniversidadeDoPorto,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://hdl.handle.net/10216/128283',
+    },
+  },
+  {
+    title: 'Epilepsy-IEDs: An automated machine learning model for detecting interictal epileptiform discharges from scalp electroencephalograms',
+    summary: ['An iScience (Cell Press) paper that lists my trekhleb/machine-learning-octave repository in its Key Resources Table as the logistic-regression resource.'],
+    date: '2026-06-22',
+    publisher: Publisher.CellPress,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.1016/j.isci.2026.116408',
+    },
+  },
+  {
+    title: 'Maze Solver: A React-Based Pathfinding Visualization using BFS and DFS',
+    summary: ['A student journal article (Mahatma Gandhi Institute of Technology, Hyderabad; Journal of Advancement in Data Computational Statistics and Data Analysis, 2025) that cites my trekhleb/javascript-algorithms repository.'],
+    date: '2025-07-03',
+    publisher: Publisher.Zenodo,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.5281/zenodo.15797242',
+    },
+  },
+  {
+    title: 'The significance of bug report elements',
+    summary: ['Soltani, Hermans and Bäck (Leiden University) selected my GitHub project trekhleb/javascript-algorithms as one of the 50 most popular JavaScript projects on GitHub, by stars and forks, for the dataset of this peer-reviewed study: Table 4 lists the repository and Table 5 reports the mining of its issue tracker.'],
+    date: '2020-09-14',
+    publisher: Publisher.Springer,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.1007/s10664-020-09882-z',
+    },
+  },
+  {
     title: 'js-image-carver: Content-Aware Image Resizer and Object Remover',
     summary: ['My GitHub project trekhleb/js-image-carver has been included to JavaScript Weekly newsletter issue #535'],
     date: '2021-04-23',
@@ -49,6 +130,16 @@ export const publications: Publication[] = [
     tag: PublicationTag.Featured,
     link: {
       url: 'https://javascriptweekly.com/issues/618',
+    },
+  },
+  {
+    title: 'A fun look at content-aware image resizing in JavaScript with seam carving',
+    summary: ['My article "Content-aware image resizing in JavaScript" (trekhleb.dev) has been linked in the Quick Bits section of JavaScript Weekly newsletter issue #549'],
+    date: '2021-07-30',
+    publisher: Publisher.JavaScriptWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://javascriptweekly.com/issues/549',
     },
   },
   {
@@ -79,6 +170,76 @@ export const publications: Publication[] = [
     tag: PublicationTag.Featured,
     link: {
       url: 'https://javascriptweekly.com/issues/709',
+    },
+  },
+  {
+    title: 'JavaScript Algorithms and Data Structures',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #387 (the newsletter\'s first selection of the project)'],
+    date: '2018-05-25',
+    publisher: Publisher.JavaScriptWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://javascriptweekly.com/issues/387',
+    },
+  },
+  {
+    title: 'JavaScript Algorithms and Data Structures',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #396, with the editor\'s note "We linked this a couple of months ago but it has been substantially improved since then"'],
+    date: '2018-07-27',
+    publisher: Publisher.JavaScriptWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://javascriptweekly.com/issues/396',
+    },
+  },
+  {
+    title: 'Over 100 JavaScript Algorithms and Data Structures Demonstrated',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #466 (Code & Tools section)', 'The same issue also featured my GitHub project trekhleb/nano-neuron ("NanoNeuron: 7 Simple Functions to Demo Simple Machine Learning")'],
+    date: '2019-12-06',
+    publisher: Publisher.JavaScriptWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://javascriptweekly.com/issues/466',
+    },
+  },
+  {
+    title: 'Over 100 JavaScript Algorithms and Data Structures Demonstrated',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #517'],
+    date: '2020-12-04',
+    publisher: Publisher.JavaScriptWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://javascriptweekly.com/issues/517',
+    },
+  },
+  {
+    title: 'Over 100 Algorithms and Data Structures Demonstrated in JS',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #561'],
+    date: '2021-10-22',
+    publisher: Publisher.JavaScriptWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://javascriptweekly.com/issues/561',
+    },
+  },
+  {
+    title: 'Over 100 Algorithms and Data Structures Demonstrated in JS',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #570, "The Best of JavaScript Weekly in 2021" (Top Code & Tools of 2021 section)'],
+    date: '2021-12-24',
+    publisher: Publisher.JavaScriptWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://javascriptweekly.com/issues/570',
+    },
+  },
+  {
+    title: 'Over 150 Algorithms and Data Structures Demonstrated in JS',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included to JavaScript Weekly newsletter issue #763 ("Available in eighteen other written languages too")'],
+    date: '2025-11-28',
+    publisher: Publisher.JavaScriptWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://javascriptweekly.com/issues/763',
     },
   },
   {
@@ -166,7 +327,10 @@ export const publications: Publication[] = [
   },
   {
     title: 'JavaScript data types and data structures',
-    summary: ['My GitHub project trekhleb/javascript-algorithms is mentioned as an implementation example in the MDN Web Docs article.'],
+    summary: [
+      'My GitHub project trekhleb/javascript-algorithms is mentioned as an implementation example in the MDN Web Docs article.',
+      'The link was proposed by an independent contributor and merged by MDN\'s reviewers on December 30, 2021 (mdn/content pull request #11589); it is still on the page (last modified July 8, 2025).',
+    ],
     date: '2022-01-19',
     publisher: Publisher.MozillaMDNWebDocs,
     tag: PublicationTag.ReferenceDocs,
@@ -710,6 +874,26 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'Top 33 JavaScript Projects on GitHub (August 2018)',
+    summary: ['My list of the top 33 JavaScript projects on GitHub as of August 2018.', 'Cited in 2021 by Moog, Demmel, Backes and Fass (Saarland University / CISPA Helmholtz Center) in their IEEE/IFIP DSN paper as the source of the "popular GitHub projects" from which they collected regular JavaScript files to train their detectors.'],
+    date: '2018-08-18',
+    publisher: Publisher.ITNEXT,
+    tag: PublicationTag.Authored,
+    link: {
+      url: 'https://itnext.io/top-33-javascript-projects-on-github-ad9d1dc822f7',
+    },
+  },
+  {
+    title: 'Statically Detecting JavaScript Obfuscation and Minification Techniques in the Wild',
+    summary: ['A peer-reviewed paper from the 51st Annual IEEE/IFIP International Conference on Dependable Systems and Networks (DSN 2021) that cites my article "Top 33 JavaScript Projects on GitHub" as the source of the popular GitHub projects used to build its corpus of regular JavaScript files (reference 46).'],
+    date: '2021-06-21',
+    publisher: Publisher.IEEE,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://ieeexplore.ieee.org/document/9505063',
+    },
+  },
+  {
     title: 'A drawing app to express, grasp, and organize your thoughts and ideas',
     summary: ['My okso.app drawing app has been featured in the Changelog News.'],
     date: '2022-07-29',
@@ -717,6 +901,56 @@ export const publications: Publication[] = [
     tag: PublicationTag.Featured,
     link: {
       url: 'https://changelog.com/news/a-drawing-app-to-express-grasp-and-organize-your-thoughts-and-ideas-PpNm',
+    },
+  },
+  {
+    title: 'Algorithms and data structures implemented in JS',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been logged in Changelog News by the editor (2018-05-28).'],
+    date: '2018-05-28',
+    publisher: Publisher.Changelog,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://changelog.com/news/algorithms-and-data-structures-implemented-in-js-gba0',
+    },
+  },
+  {
+    title: 'A self-parking car in 500 lines of code',
+    summary: ['My article about trekhleb/self-parking-car-evolution has been featured in Changelog News.'],
+    date: '2021-10-06',
+    publisher: Publisher.Changelog,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://changelog.com/news/a-selfparking-car-in-500-lines-of-code-zg3q',
+    },
+  },
+  {
+    title: 'Content-aware image resizing in JavaScript',
+    summary: ['My article about the seam-carving algorithm (trekhleb/js-image-carver) has been featured in Changelog News.'],
+    date: '2021-10-25',
+    publisher: Publisher.Changelog,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://changelog.com/news/contentaware-image-resizing-in-javascript-4EJ4',
+    },
+  },
+  {
+    title: 'Classic Algorithms Implemented in JavaScript',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been included in Hacker Newsletter issue #412 (Learn section).'],
+    date: '2018-07-27',
+    publisher: Publisher.HackerNewsletter,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://mailchi.mp/hackernewsletter/412',
+    },
+  },
+  {
+    title: 'NanoNeuron – simple JavaScript functions that explain how machines learn',
+    summary: ['My GitHub project trekhleb/nano-neuron has been included in Hacker Newsletter issue #483 (Favorites section).'],
+    date: '2019-12-13',
+    publisher: Publisher.HackerNewsletter,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://mailchi.mp/hackernewsletter/483',
     },
   },
   {
@@ -821,6 +1055,16 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'Over 150 algorithms and data structures demonstrated in JavaScript',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been featured in Node Weekly newsletter issue #603 ("Available in eighteen written languages")'],
+    date: '2025-12-02',
+    publisher: Publisher.NodeWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://nodeweekly.com/issues/603',
+    },
+  },
+  {
     title: 'Homemade Machine Learning (github.com/trekhleb)',
     summary: ['Published on Hacker News frontpage. The link leads to the Hacker News archive for that day where the mention can be found.'],
     date: '2019-11-02',
@@ -858,6 +1102,16 @@ export const publications: Publication[] = [
     tag: PublicationTag.Featured,
     link: {
       url: 'https://pycoders.com/issues/349',
+    },
+  },
+  {
+    title: 'learn-python: Playground and cheatsheet for learning Python',
+    summary: ['My GitHub project trekhleb/learn-python has been featured in PyCoder\'s Weekly issue #332 (Projects section).'],
+    date: '2018-09-04',
+    publisher: Publisher.PyCodersWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://pycoders.com/issues/332',
     },
   },
   {

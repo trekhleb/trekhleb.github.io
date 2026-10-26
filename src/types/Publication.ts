@@ -5,17 +5,22 @@ import { Image } from './Image';
 
 export enum Publisher {
   ACM = 'ACM',
+  ADTmag = 'ADTmag',
   AITimeJournal = 'AI Time Journal',
   ArXiv = 'arXiv',
   BetterProgramming = 'Better Programming',
   BramUs = 'Bram.us',
+  CellPress = 'Cell Press',
   CodeProject = 'CodeProject',
   Changelog = 'Changelog',
   DOU = 'DOU',
   DataDrivenInvestor = 'Data Driven Investor',
+  DiceInsights = 'Dice Insights',
   EasysPublishing = 'Easys Publishing',
   GeeksForGeeks = 'GeeksForGeeks',
+  GitHubBlog = 'GitHub Blog',
   HackerNews = 'Hacker News',
+  HackerNewsletter = 'Hacker Newsletter',
   HackerNoon = 'HackerNoon',
   HanbitMedia = 'Hanbit Media',
   HowIGotJob = 'HowIGotJob',
@@ -32,6 +37,7 @@ export enum Publisher {
   NodeWeekly = 'Node Weekly',
   Packt = 'Packt',
   PyCodersWeekly = 'PyCoder\'s Weekly',
+  SBC = 'SBC',
   SegmentFault = 'SegmentFault',
   SidebarIO = 'Sidebar.io',
   Springer = 'Springer',
@@ -40,9 +46,11 @@ export enum Publisher {
   TowardsDataScience = 'Towards Data Science',
   TUDelft = 'TU Delft',
   UniversidadeDeBrasilia = 'Universidade de Brasília',
+  UniversidadeDoPorto = 'Universidade do Porto',
   Wikipedia = 'Wikipedia',
   Wiley = 'Wiley',
   Zenn = 'Zenn',
+  Zenodo = 'Zenodo',
 }
 
 export type PublisherData = {
