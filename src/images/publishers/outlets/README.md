@@ -36,4 +36,6 @@ The stats numbers behind the publishers and media platforrms that publish the in
   - https://en.wikipedia.org/wiki/MDN_Web_Docs
 - Bram.us
   - https://www.bram.us/about/
+- Hacker Newsletter
+  - https://hackernewsletter.com/
     
