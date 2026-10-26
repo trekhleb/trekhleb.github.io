@@ -12,7 +12,8 @@ export const publishers: Record<Publisher, PublisherData> = {
           <A href="https://adtmag.com/">adtmag.com</A>
         </p>
         <p>
-          A trade publication for software developers and development managers, published by 1105 Media.
+          A trade publication for software developers and development managers, published by 1105
+          Media.
         </p>
       </>
     ),
@@ -44,7 +45,8 @@ export const publishers: Record<Publisher, PublisherData> = {
           <A href="https://www.cell.com/iscience/home">cell.com/iscience</A>
         </p>
         <p>
-          Cell Press is a scientific publisher within Elsevier; iScience is its interdisciplinary, peer-reviewed open-access journal.
+          Cell Press is a scientific publisher within Elsevier; iScience is its interdisciplinary,
+          peer-reviewed open-access journal.
         </p>
       </>
     ),
@@ -135,7 +137,8 @@ export const publishers: Record<Publisher, PublisherData> = {
           <A href="https://www.dice.com/career-advice">dice.com</A>
         </p>
         <p>
-          The editorial section of Dice, a US technology-careers marketplace. The 2018 article is no longer online and survives in the Internet Archive.
+          The editorial section of Dice, a US technology-careers marketplace. The 2018 article is no
+          longer online and survives in the Internet Archive.
         </p>
       </>
     ),
@@ -174,7 +177,8 @@ export const publishers: Record<Publisher, PublisherData> = {
           <A href="https://github.blog/">github.blog</A>
         </p>
         <p>
-          GitHub&apos;s official blog. Its annual &quot;State of the Octoverse&quot; report is GitHub&apos;s own analysis of activity on the platform.
+          GitHub&apos;s official blog. Its annual &quot;State of the Octoverse&quot; report is
+          GitHub&apos;s own analysis of activity on the platform.
         </p>
       </>
     ),
@@ -438,7 +442,8 @@ export const publishers: Record<Publisher, PublisherData> = {
           <A href="https://repositorio-aberto.up.pt/">repositorio-aberto.up.pt</A>
         </p>
         <p>
-          The University of Porto, Portugal. Repositório Aberto is its open-access institutional repository; the citing work is a dissertation of the Faculty of Engineering (FEUP).
+          The University of Porto, Portugal. Repositório Aberto is its open-access institutional
+          repository; the citing work is a dissertation of the Faculty of Engineering (FEUP).
         </p>
       </>
     ),
@@ -739,7 +744,8 @@ export const publishers: Record<Publisher, PublisherData> = {
           <A href="https://sol.sbc.org.br/">sol.sbc.org.br</A>
         </p>
         <p>
-          The Brazilian Computer Society. SBC OpenLib (SOL) is its open library of conference proceedings, including SEMISH, the Integrated Software and Hardware Seminar.
+          The Brazilian Computer Society. SBC OpenLib (SOL) is its open library of conference
+          proceedings, including SEMISH, the Integrated Software and Hardware Seminar.
         </p>
       </>
     ),
