@@ -858,6 +858,202 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.VictoriaUniversityOfWellington]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Victoria University of Wellington</b><br />
+          <A href="https://openaccess.wgtn.ac.nz/">openaccess.wgtn.ac.nz</A>
+        </p>
+        <p>
+          Te Herenga Waka — Victoria University of Wellington, New Zealand; its open-access
+          repository (on figshare) hosts the citing PhD thesis.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.UtrechtUniversity]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Utrecht University</b><br />
+          <A href="https://studenttheses.uu.nl/">studenttheses.uu.nl</A>
+        </p>
+        <p>
+          A Dutch public research university founded in 1636; its student-theses repository hosts
+          the citing master&apos;s thesis in Artificial Intelligence.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.VirginiaCommonwealthUniversity]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Virginia Commonwealth University</b><br />
+          <A href="https://scholarscompass.vcu.edu/">scholarscompass.vcu.edu</A>
+        </p>
+        <p>
+          A public research university in Richmond, Virginia; VCU Scholars Compass is its
+          open-access repository and hosts the citing master&apos;s thesis.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.McMasterUniversity]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>McMaster University</b><br />
+          <A href="https://macsphere.mcmaster.ca/">macsphere.mcmaster.ca</A>
+        </p>
+        <p>
+          A public research university in Hamilton, Ontario, Canada; MacSphere is its institutional
+          repository and hosts the citing master&apos;s thesis.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.BlekingeInstituteOfTechnology]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Blekinge Institute of Technology</b><br />
+          <A href="https://bth.diva-portal.org/">bth.diva-portal.org</A>
+        </p>
+        <p>
+          A Swedish public university of technology in Karlskrona; its DiVA portal hosts the citing
+          master&apos;s thesis in computer security.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.SeoulNationalUniversity]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Seoul National University</b><br />
+          <A href="https://s-space.snu.ac.kr/">s-space.snu.ac.kr</A>
+        </p>
+        <p>
+          A national research university in Seoul; its S-Space open repository hosts the citing
+          doctoral dissertation in mechanical and aerospace engineering.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.DrexelUniversity]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Drexel University</b><br />
+          <A href="https://researchdiscovery.drexel.edu/">researchdiscovery.drexel.edu</A>
+        </p>
+        <p>
+          A private research university in Philadelphia; its Research Discovery repository hosts
+          the citing PhD dissertation.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.BUET]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Bangladesh University of Engineering and Technology</b><br />
+          <A href="http://lib.buet.ac.bd:8080/xmlui/">lib.buet.ac.bd</A>
+        </p>
+        <p>
+          The national engineering university in Dhaka; its institutional repository hosts
+          the citing master&apos;s thesis in civil engineering.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.Metropolia]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Metropolia University of Applied Sciences</b><br />
+          <A href="https://www.theseus.fi/">theseus.fi</A>
+        </p>
+        <p>
+          A university of applied sciences in Helsinki; the citing bachelor&apos;s thesis is in
+          Theseus, the open repository of the Finnish universities of applied sciences.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.UniversiteDeLille]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Université de Lille</b><br />
+          <A href="https://theses.hal.science/">theses.hal.science</A>
+        </p>
+        <p>
+          A French public research university; the citing doctoral thesis in cell biology is open
+          access on HAL, the French national open archive.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.UniversitaetKoblenzLandau]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Universität Koblenz-Landau</b><br />
+          <A href="https://opus4.kobv.de/opus4-uni-koblenz/">opus4.kobv.de</A>
+        </p>
+        <p>
+          A German public university (today the University of Koblenz); the citing
+          master&apos;s thesis in Web Science is on its OPUS repository.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.FHOberoesterreich]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>University of Applied Sciences Upper Austria</b><br />
+          <A href="https://theses.fh-hagenberg.at/">theses.fh-hagenberg.at</A>
+        </p>
+        <p>
+          FH Oberösterreich; its Hagenberg campus (Faculty of Informatics, Communications and
+          Media) publishes its theses on its own server. The citing master&apos;s thesis is in
+          Interactive Media.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.StrathmoreUniversity]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Strathmore University</b><br />
+          <A href="https://su-plus.strathmore.edu/">su-plus.strathmore.edu</A>
+        </p>
+        <p>
+          A private university in Nairobi, Kenya; its SU+ repository publishes the Law School&apos;s
+          undergraduate research dissertations, among them the citing one.
+        </p>
+      </>
+    ),
+  },
   [Publisher.TUDelft]: {
     logo: { srcPath: 'publishers/tu-delft.jpg' },
     description: (

@@ -975,6 +975,146 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'Investigating Configurations for Automated Crash Reproduction in JavaScript',
+    summary: ['A PhD thesis in engineering at Victoria University of Wellington, New Zealand (Philip Oliver, 2024; DOI 10.26686/wgtn.27633654). Its CrashJS benchmark reuses the SynTest-JavaScript dataset, for which five JavaScript projects with high star counts were selected from GitHub: Commander.js, Express, Moment.js, my GitHub project trekhleb/javascript-algorithms, and Lodash.'],
+    date: '2024-11-07',
+    publisher: Publisher.VictoriaUniversityOfWellington,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.26686/wgtn.27633654',
+    },
+  },
+  {
+    title: 'Think & Play: Classifying left and right hand motor imagery EEG signals by using dry electrodes for real-time BCI gaming',
+    summary: ['A master\'s thesis in Artificial Intelligence at Utrecht University, Faculty of Science (Hunter Sterk, 16 June 2022; research supported by Sogeti), which cites my article "Playing with Discrete Fourier Transform Algorithm in JavaScript" as the source of its Figure 3.9, the Fourier transform of EEG data (reference 63).'],
+    date: '2022-06-16',
+    publisher: Publisher.UtrechtUniversity,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://studenttheses.uu.nl/server/api/core/bitstreams/464cfa46-d23b-483c-a004-ea2561b8cc2e/content',
+    },
+  },
+  {
+    title: 'Smart City Management Using Machine Learning Techniques',
+    summary: ['A Master of Science thesis in Electrical and Computer Engineering at Virginia Commonwealth University, Richmond (Mostafa Zaman, December 2022; advisor Dr Sherif Abdelwahed; DOI 10.25772/QA5Q-SX30), whose Figure 2 "A map of Machine learning techniques" is the map from my GitHub project trekhleb/homemade-machine-learning, cited as reference 88.'],
+    date: '2022-12',
+    publisher: Publisher.VirginiaCommonwealthUniversity,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.25772/QA5Q-SX30',
+    },
+  },
+  {
+    title: 'Law, artificial intelligence, & liability: Assessing the correspondence between Kenyan law and civil liability for autonomous artificially intelligent systems',
+    summary: ['An undergraduate (Bachelor of Laws) research dissertation at Strathmore University Law School, Nairobi (Beatrice Shako, March 2024; supervisor Mr Juan Riofrio; published in the SU+ repository in 2025), which cites my project trekhleb/homemade-machine-learning as its example of an open-source machine-learning library that dispersed contributors can modify (footnote 142).'],
+    date: '2024-03',
+    publisher: Publisher.StrathmoreUniversity,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'http://hdl.handle.net/11071/16160',
+    },
+  },
+  {
+    title: 'The Response of Mobile Applications to Crisis in Canada',
+    summary: ['A Master of Science (eHealth) thesis at McMaster University, Hamilton, Canada (Noella Noronha, August 2020). Its COVID-19 chapter reviews the online dashboards that let the public follow the pandemic and cites my COVID-19 Dashboard (trekhleb.github.io/covid-19) among them (reference 43).'],
+    date: '2020-08',
+    publisher: Publisher.McMasterUniversity,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://hdl.handle.net/11375/25931',
+    },
+  },
+  {
+    title: 'Sandbox evasion in web browsers: A research paper on detection of sandbox evasion attacks in web browsers using convolutional neural network',
+    summary: ['A master\'s thesis in computer security at Blekinge Institute of Technology, Karlskrona, Sweden (Christoffer Persson and Martin Philipsson, October 2024; supervisor Dr Dragos Ilie; in cooperation with Knowit Cybersecurity & Law), whose Table 3.3 lists my GitHub project trekhleb/javascript-algorithms among the repositories used as "good" (benign) code to build the training and test datasets of its sandbox-evasion detector.'],
+    date: '2024-10-28',
+    publisher: Publisher.BlekingeInstituteOfTechnology,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://urn.kb.se/resolve?urn=urn:nbn:se:bth-27000',
+    },
+  },
+  {
+    title: 'Sound-based Remote Manufacturing Process Monitoring using Convolutional Neural Network (CNN)',
+    summary: ['A doctoral dissertation in engineering at Seoul National University, Department of Mechanical and Aerospace Engineering, Graduate School (Jisoo Kim, February 2021), which cites my article "Playing with Discrete Fourier Transform Algorithm in JavaScript" as the source of its Figure 16 "Concept of Fourier Transform" (reference 85).'],
+    date: '2021-02',
+    publisher: Publisher.SeoulNationalUniversity,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://s-space.snu.ac.kr/handle/10371/175175',
+    },
+  },
+  {
+    title: 'On the Real-World Interactivity Potential of Minimalistic Knitted Sensors at the Intersection of Artificial Intelligence and User Experience',
+    summary: ['A PhD dissertation at Drexel University, Philadelphia (Denisa Qori McDonald, December 2021; DOI 10.17918/00000901), whose Figure 3.2, an example of the Levenshtein distance algorithm, is the "Saturday to Sunday" edit-distance illustration from the Levenshtein Distance page of my project trekhleb/javascript-algorithms, cited as reference 130 ("Trekhleb, Oleksii. Levenshtein distance").'],
+    date: '2021-12',
+    publisher: Publisher.DrexelUniversity,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.17918/00000901',
+    },
+  },
+  {
+    title: 'Mitigation of subway induced vibrations using wave barriers',
+    summary: ['A Master of Science thesis in civil engineering (geotechnical) at Bangladesh University of Engineering and Technology, Dhaka (Mahbubah Ahmed, 2023; repository date 2023-10-16), which cites my article "Playing with Discrete Fourier Transform Algorithm in JavaScript" (its Medium copy) as the source of its Figure 2.7, a view of a signal in the time and frequency domains.'],
+    date: '2023-10',
+    publisher: Publisher.BUET,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'http://lib.buet.ac.bd:8080/xmlui/handle/123456789/6872',
+    },
+  },
+  {
+    title: 'Combining GPS and sensors to determine mode of transportation',
+    summary: ['A Bachelor of Engineering thesis in Information Technology at Metropolia University of Applied Sciences, Helsinki (Gajalakshan Chandrasegaran, 6 March 2023; 1,186 downloads on Theseus as of 2026-10-26), which lists my article "Gyro-web: Accessing the device orientation in JavaScript" first among its picture references.'],
+    date: '2023-03-06',
+    publisher: Publisher.Metropolia,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://urn.fi/URN:NBN:fi:amk-2023052212712',
+    },
+  },
+  {
+    title: 'Etude expérimentale du couplage entre horloge circadienne et métabolisme',
+    summary: ['A doctoral thesis in biology (molecular and cellular aspects) at Université de Lille, defended on 18 December 2024 (Alan Vandenberghe; supervisors Prof. Marc Lefranc and Dr Alessandro Furlan; HAL tel-05424736), which cites the French Fourier Transform page of my project trekhleb/javascript-algorithms as the source of its Figure 2-11, the discrete Fourier transform applied to a measured signal.'],
+    date: '2024-12-18',
+    publisher: Publisher.UniversiteDeLille,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://theses.hal.science/tel-05424736v1',
+    },
+  },
+  {
+    title: 'Hands-free text editing using voice and gaze',
+    summary: ['A master\'s thesis in Web Science at Universität Koblenz-Landau, Institute for Web Science and Technologies (Sabin Bhattarai, December 2019; supervisors Prof. Dr. Steffen Staab and Korok Sengupta), which cites the Levenshtein Distance page of my project trekhleb/javascript-algorithms as its reference for the edit-distance metric used in its evaluation (reference 46).'],
+    date: '2019-12',
+    publisher: Publisher.UniversitaetKoblenzLandau,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://opus4.kobv.de/opus4-uni-koblenz/frontdoor/index/index/docId/2009',
+    },
+  },
+  {
+    title: 'Explainability of Neural Networks – A Novel Method for Language Models',
+    summary: ['A master\'s thesis in the Interactive Media programme at the University of Applied Sciences Upper Austria (FH Oberösterreich), Hagenberg Campus (Christina Grafeneder, June 2019; supervisor FH-Prof. Mag. DI Dr. Andreas Stöckl), whose first character-level LSTM language model was trained on the code of my project trekhleb/javascript-algorithms merged with PubNub\'s JavaScript SDK (Section 6.1.1, footnote 2).'],
+    date: '2019-06',
+    publisher: Publisher.FHOberoesterreich,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://theses.fh-hagenberg.at/index.php/thesis/Grafeneder19',
+    },
+  },
+  {
+    title: 'Designing an Extensible PBT Framework to Support Multiple Search Strategies',
+    summary: ['A master\'s dissertation (Mestrado Integrado em Engenharia Informática e Computação) at the Faculty of Engineering of the University of Porto (Rui Jorge Leão Guedes, 28 July 2021; supervisor Prof. Hugo Sereno Ferreira; DOI 10.34626/qf8v-q994), which uses the Stack implementation from my project trekhleb/javascript-algorithms as one of its six evaluation benchmarks for property-based-testing search strategies (Section 7.3.2.2 and Table 7.2; results in Section 7.5.2 and Appendix C).'],
+    date: '2021-07-28',
+    publisher: Publisher.UniversidadeDoPorto,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://hdl.handle.net/10216/135614',
+    },
+  },
+  {
     title: 'A drawing app to express, grasp, and organize your thoughts and ideas',
     summary: ['My okso.app drawing app has been featured in the Changelog News.'],
     date: '2022-07-29',

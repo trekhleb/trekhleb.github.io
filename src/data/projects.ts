@@ -623,6 +623,16 @@ export const projects: Projects = {
         date: '2021-03-24',
         link: { url: 'https://elib.dlr.de/145473/', caption: 'The thesis (DLR electronic library)' },
       },
+      {
+        title: 'Article "Gyro-web: Accessing the device orientation in JavaScript" cited as a picture source by a Metropolia University of Applied Sciences bachelor\'s thesis (Finland, 2023)',
+        image: [
+          { srcPath: 'projects/trekhleb-dev/achievements/18-metropolia-2023-chandrasegaran-bsc-thesis-gyro-web-article-cited-2023-03-06-1.png' },
+          { srcPath: 'projects/trekhleb-dev/achievements/18-metropolia-2023-chandrasegaran-bsc-thesis-gyro-web-article-cited-2023-03-06-2.png' },
+          { srcPath: 'projects/trekhleb-dev/achievements/18-metropolia-2023-chandrasegaran-bsc-thesis-gyro-web-article-cited-2023-03-06-3.png' },
+        ],
+        date: '2023-03-06',
+        link: { url: 'https://urn.fi/URN:NBN:fi:amk-2023052212712', caption: 'The thesis (Theseus)' },
+      },
     ],
   },
   'links-detector': {
@@ -800,6 +810,19 @@ export const projects: Projects = {
       owner: 'trekhleb',
       repo: 'covid-19',
     },
+    achievements: [
+      {
+        title: 'Cited in a McMaster University MSc (eHealth) thesis reviewing the dashboards that let the public follow COVID-19 (2020)',
+        image: [
+          { srcPath: 'projects/covid-dashboard/achievements/00-mcmaster-2020-noronha-msc-thesis-covid-dashboard-cited-2020-08-4.png' },
+          { srcPath: 'projects/covid-dashboard/achievements/00-mcmaster-2020-noronha-msc-thesis-covid-dashboard-cited-2020-08-1.png' },
+          { srcPath: 'projects/covid-dashboard/achievements/00-mcmaster-2020-noronha-msc-thesis-covid-dashboard-cited-2020-08-3.png' },
+          { srcPath: 'projects/covid-dashboard/achievements/00-mcmaster-2020-noronha-msc-thesis-covid-dashboard-cited-2020-08-2.png' },
+        ],
+        date: '2020-08',
+        link: { url: 'https://hdl.handle.net/11375/25931', caption: 'The thesis (McMaster University, MacSphere)' },
+      },
+    ],
   },
   'nano-neuron': {
     id: 'nano-neuron',
@@ -1044,6 +1067,28 @@ export const projects: Projects = {
         ],
         date: '2020-12-08',
         link: { url: 'https://doi.org/10.1145/3427228.3427258', caption: 'See the paper (ACM, free access)' },
+      },
+      {
+        title: 'The machine-learning map from the repository cited in a Virginia Commonwealth University MSc thesis in Electrical and Computer Engineering (2022)',
+        image: [
+          { srcPath: 'projects/homemade-machine-learning/achievements/15-vcu-2022-zaman-msc-thesis-ml-map-cited-2022-1.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/15-vcu-2022-zaman-msc-thesis-ml-map-cited-2022-2.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/15-vcu-2022-zaman-msc-thesis-ml-map-cited-2022-4.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/15-vcu-2022-zaman-msc-thesis-ml-map-cited-2022-3.png' },
+        ],
+        date: '2022-12',
+        link: { url: 'https://doi.org/10.25772/QA5Q-SX30', caption: 'The thesis (VCU Scholars Compass)' },
+      },
+      {
+        title: 'Cited as the example of an open-source machine-learning library in a Strathmore University Law School dissertation on AI liability (Kenya, 2024)',
+        image: [
+          { srcPath: 'projects/homemade-machine-learning/achievements/16-strathmore-2024-shako-llb-dissertation-repository-cited-2024-03-1.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/16-strathmore-2024-shako-llb-dissertation-repository-cited-2024-03-2.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/16-strathmore-2024-shako-llb-dissertation-repository-cited-2024-03-3.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/16-strathmore-2024-shako-llb-dissertation-repository-cited-2024-03-4.png' },
+        ],
+        date: '2024-03',
+        link: { url: 'http://hdl.handle.net/11071/16160', caption: 'The dissertation (Strathmore University SU+ repository)' },
       },
     ],
   },
@@ -1771,6 +1816,112 @@ export const projects: Projects = {
         ],
         date: '2024-05-21',
         link: { url: 'https://doi.org/10.1145/3605098.3635927', caption: 'See the paper (ACM, free access)' },
+      },
+      {
+        title: 'One of the five high-star projects of the SynTest-JavaScript benchmark reused in a Victoria University of Wellington PhD thesis on automated crash reproduction (2024)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/101-vuw-2024-oliver-phd-thesis-crashjs-benchmark-subject-2024-11-07-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/101-vuw-2024-oliver-phd-thesis-crashjs-benchmark-subject-2024-11-07-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/101-vuw-2024-oliver-phd-thesis-crashjs-benchmark-subject-2024-11-07-4.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/101-vuw-2024-oliver-phd-thesis-crashjs-benchmark-subject-2024-11-07-3.png' },
+        ],
+        date: '2024-11-07',
+        link: { url: 'https://doi.org/10.26686/wgtn.27633654', caption: 'The thesis (open access)' },
+      },
+      {
+        title: 'Fourier Transform article cited in an Utrecht University MSc thesis in Artificial Intelligence (2022)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/102-utrecht-2022-sterk-msc-thesis-dft-figure-2022-06-16-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/102-utrecht-2022-sterk-msc-thesis-dft-figure-2022-06-16-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/102-utrecht-2022-sterk-msc-thesis-dft-figure-2022-06-16-3.png' },
+        ],
+        date: '2022-06-16',
+        link: { url: 'https://studenttheses.uu.nl/server/api/core/bitstreams/464cfa46-d23b-483c-a004-ea2561b8cc2e/content', caption: 'The thesis (Utrecht University student theses)' },
+      },
+      {
+        title: 'Used as a source of benign JavaScript for the datasets of a Blekinge Institute of Technology MSc thesis in computer security (Sweden, 2024)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/103-bth-2024-persson-philipsson-msc-thesis-benign-code-source-2024-10-28-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/103-bth-2024-persson-philipsson-msc-thesis-benign-code-source-2024-10-28-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/103-bth-2024-persson-philipsson-msc-thesis-benign-code-source-2024-10-28-3.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/103-bth-2024-persson-philipsson-msc-thesis-benign-code-source-2024-10-28-4.png' },
+        ],
+        date: '2024-10-28',
+        link: { url: 'https://urn.kb.se/resolve?urn=urn:nbn:se:bth-27000', caption: 'The thesis (DiVA, open access)' },
+      },
+      {
+        title: 'Fourier Transform article cited in a Seoul National University doctoral dissertation in mechanical and aerospace engineering (South Korea, 2021)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/104-snu-2021-kim-phd-dissertation-fourier-transform-figure-2021-02-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/104-snu-2021-kim-phd-dissertation-fourier-transform-figure-2021-02-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/104-snu-2021-kim-phd-dissertation-fourier-transform-figure-2021-02-3.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/104-snu-2021-kim-phd-dissertation-fourier-transform-figure-2021-02-4.png' },
+        ],
+        date: '2021-02',
+        link: { url: 'https://s-space.snu.ac.kr/handle/10371/175175', caption: 'The dissertation (SNU Open Repository, S-Space)' },
+      },
+      {
+        title: 'Levenshtein distance illustration reproduced with credit in a Drexel University PhD dissertation (USA, 2021)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/105-drexel-2021-mcdonald-phd-dissertation-levenshtein-figure-2021-12-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/105-drexel-2021-mcdonald-phd-dissertation-levenshtein-figure-2021-12-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/105-drexel-2021-mcdonald-phd-dissertation-levenshtein-figure-2021-12-3.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/105-drexel-2021-mcdonald-phd-dissertation-levenshtein-figure-2021-12-4.png' },
+        ],
+        date: '2021-12',
+        link: { url: 'https://doi.org/10.17918/00000901', caption: 'The dissertation (Drexel University, open access)' },
+      },
+      {
+        title: 'Fourier Transform article cited in a Bangladesh University of Engineering and Technology MSc thesis in civil engineering (2023)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/106-buet-2023-ahmed-msc-thesis-dft-article-cited-2023-10-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/106-buet-2023-ahmed-msc-thesis-dft-article-cited-2023-10-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/106-buet-2023-ahmed-msc-thesis-dft-article-cited-2023-10-3.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/106-buet-2023-ahmed-msc-thesis-dft-article-cited-2023-10-4.png' },
+        ],
+        date: '2023-10',
+        link: { url: 'http://lib.buet.ac.bd:8080/xmlui/handle/123456789/6872', caption: 'The thesis (BUET Institutional Repository)' },
+      },
+      {
+        title: 'Fourier Transform page of the repository (French translation) cited in a Université de Lille doctoral thesis in cell biology (France, 2024)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/107-lille-2024-vandenberghe-phd-thesis-fourier-transform-page-cited-2024-12-18-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/107-lille-2024-vandenberghe-phd-thesis-fourier-transform-page-cited-2024-12-18-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/107-lille-2024-vandenberghe-phd-thesis-fourier-transform-page-cited-2024-12-18-3.png' },
+        ],
+        date: '2024-12-18',
+        link: { url: 'https://theses.hal.science/tel-05424736v1', caption: 'The thesis (HAL open science)' },
+      },
+      {
+        title: 'Levenshtein Distance page of the repository cited in a Universität Koblenz-Landau master\'s thesis in Web Science (Germany, 2019)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/108-koblenz-2019-bhattarai-msc-thesis-levenshtein-page-cited-2019-12-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/108-koblenz-2019-bhattarai-msc-thesis-levenshtein-page-cited-2019-12-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/108-koblenz-2019-bhattarai-msc-thesis-levenshtein-page-cited-2019-12-3.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/108-koblenz-2019-bhattarai-msc-thesis-levenshtein-page-cited-2019-12-4.png' },
+        ],
+        date: '2019-12',
+        link: { url: 'https://opus4.kobv.de/opus4-uni-koblenz/frontdoor/index/index/docId/2009', caption: 'The thesis (OPUS, University of Koblenz)' },
+      },
+      {
+        title: 'Repository code used as training data for the language model of a University of Applied Sciences Upper Austria master\'s thesis in Interactive Media (Hagenberg, 2019)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/109-fh-hagenberg-2019-grafeneder-msc-thesis-lstm-training-data-2019-06-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/109-fh-hagenberg-2019-grafeneder-msc-thesis-lstm-training-data-2019-06-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/109-fh-hagenberg-2019-grafeneder-msc-thesis-lstm-training-data-2019-06-3.png' },
+        ],
+        date: '2019-06',
+        link: { url: 'https://theses.fh-hagenberg.at/index.php/thesis/Grafeneder19', caption: 'The thesis (FH Hagenberg thesis server)' },
+      },
+      {
+        title: 'Stack implementation from the repository used as an evaluation benchmark in a University of Porto (FEUP) master\'s dissertation on property-based testing (Portugal, 2021)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/110-feup-2021-guedes-msc-dissertation-stack-benchmark-2021-07-28-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/110-feup-2021-guedes-msc-dissertation-stack-benchmark-2021-07-28-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/110-feup-2021-guedes-msc-dissertation-stack-benchmark-2021-07-28-3.png' },
+        ],
+        date: '2021-07-28',
+        link: { url: 'https://hdl.handle.net/10216/135614', caption: 'The dissertation (U.Porto open repository)' },
       },
     ],
   },
