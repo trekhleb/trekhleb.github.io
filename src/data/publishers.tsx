@@ -1054,6 +1054,66 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.UFES]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Universidade Federal do Espírito Santo</b><br />
+          <A href="https://engenhariaeletrica.ufes.br/">engenhariaeletrica.ufes.br</A>
+        </p>
+        <p>
+          A Brazilian federal university in Vitória; its Department of Electrical Engineering
+          publishes its graduation projects on its own site, among them the citing one.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.IManagerPublications]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>i-manager Publications</b><br />
+          <A href="https://imanagerpublications.com/">imanagerpublications.com</A>
+        </p>
+        <p>
+          An Indian academic publisher; its i-manager&apos;s Journal on Software Engineering carried
+          the citing article.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.UAB]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Universitat Autònoma de Barcelona</b><br />
+          <A href="https://ddd.uab.cat/">ddd.uab.cat</A>
+        </p>
+        <p>
+          A public university near Barcelona; its Dipòsit Digital de Documents holds the citing
+          bachelor&apos;s final project in computer engineering.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.ISCRAM]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>ISCRAM</b><br />
+          <A href="https://idl.iscram.org/">idl.iscram.org</A>
+        </p>
+        <p>
+          The Information Systems for Crisis Response and Management association; its digital
+          library holds the proceedings of the ISCRAM 2021 conference with the citing paper.
+        </p>
+      </>
+    ),
+  },
   [Publisher.TUDelft]: {
     logo: { srcPath: 'publishers/tu-delft.jpg' },
     description: (

@@ -822,6 +822,16 @@ export const projects: Projects = {
         date: '2020-08',
         link: { url: 'https://hdl.handle.net/11375/25931', caption: 'The thesis (McMaster University, MacSphere)' },
       },
+      {
+        title: 'Listed among the GitHub projects studied by a peer-reviewed ISCRAM 2021 paper on software requirements for disaster-management systems',
+        image: [
+          { srcPath: 'projects/covid-dashboard/achievements/01-iscram-2021-diirr-software-requirements-disaster-management-table-4-2021-1.png' },
+          { srcPath: 'projects/covid-dashboard/achievements/01-iscram-2021-diirr-software-requirements-disaster-management-table-4-2021-2.png' },
+          { srcPath: 'projects/covid-dashboard/achievements/01-iscram-2021-diirr-software-requirements-disaster-management-table-4-2021-3.png' },
+        ],
+        date: '2021',
+        link: { url: 'https://idl.iscram.org/files/brunadiirr/2021/2395_BrunaDiirr_etal2021.pdf', caption: 'The paper (ISCRAM Digital Library, PDF)' },
+      },
     ],
   },
   'nano-neuron': {
@@ -1922,6 +1932,57 @@ export const projects: Projects = {
         ],
         date: '2021-07-28',
         link: { url: 'https://hdl.handle.net/10216/135614', caption: 'The dissertation (U.Porto open repository)' },
+      },
+      {
+        title: 'Fourier Transform article cited in a Universidade Federal do Espírito Santo electrical-engineering graduation project (Brazil, 2020)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/111-ufes-2020-barcelos-graduation-project-dft-article-cited-2020-12-11-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/111-ufes-2020-barcelos-graduation-project-dft-article-cited-2020-12-11-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/111-ufes-2020-barcelos-graduation-project-dft-article-cited-2020-12-11-3.png' },
+        ],
+        date: '2020-12-11',
+        link: { url: 'https://engenhariaeletrica.ufes.br/sites/engenhariaeletrica.ufes.br/files/field/anexo/pg_ii_-_marcos_correa_barcelos_junior_-_final-_2020.1.pdf', caption: 'The graduation project (UFES, PDF)' },
+      },
+      {
+        title: 'Linked List page of the repository cited as the data-structure reference in an i-manager\'s Journal on Software Engineering article (India, 2018)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/112-imanager-jse-2018-sharma-bharali-linked-list-page-cited-2018-06-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/112-imanager-jse-2018-sharma-bharali-linked-list-page-cited-2018-06-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/112-imanager-jse-2018-sharma-bharali-linked-list-page-cited-2018-06-3.png' },
+        ],
+        date: '2018-06',
+        link: { url: 'https://doi.org/10.26634/jse.12.4.14588', caption: 'The article (DOI)' },
+      },
+      {
+        title: 'Cited as the reference for the Travelling Salesman Problem in a Universitat Autònoma de Barcelona computer-engineering final project (Spain, 2019)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/113-uab-2019-munoz-vidal-tfg-tsp-reference-2019-02-12-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/113-uab-2019-munoz-vidal-tfg-tsp-reference-2019-02-12-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/113-uab-2019-munoz-vidal-tfg-tsp-reference-2019-02-12-3.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/113-uab-2019-munoz-vidal-tfg-tsp-reference-2019-02-12-4.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/113-uab-2019-munoz-vidal-tfg-tsp-reference-2019-02-12-5.png' },
+        ],
+        date: '2019-02-12',
+        link: { url: 'https://ddd.uab.cat/record/203341', caption: 'The project (UAB digital repository)' },
+      },
+      {
+        title: 'Repository address in the full text of an IEEE ICICI 2026 paper on an AI-assisted code-understanding IDE extension (India, June 2026)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/114-icici-2026-code-flow-repository-url-in-full-text-2026-06-10-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/114-icici-2026-code-flow-repository-url-in-full-text-2026-06-10-2.png' },
+        ],
+        date: '2026-06-10',
+        link: { url: 'https://doi.org/10.1109/ICICI68773.2026.11581039', caption: 'The paper on IEEE Xplore (DOI)' },
+      },
+      {
+        title: 'Named with its star count ("led by javascript-algorithms (193,622 stars)") in the full text of an IEEE SIML 2026 paper on emoji activism in GitHub repositories (Indonesia, June 2026)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/115-siml-2026-hudaya-fan-kula-phrase-led-by-javascript-algorithms-2026-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/115-siml-2026-hudaya-fan-kula-phrase-led-by-javascript-algorithms-2026-2.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/115-siml-2026-hudaya-fan-kula-phrase-led-by-javascript-algorithms-2026-3.png' },
+        ],
+        date: '2026-06-10',
+        link: { url: 'https://doi.org/10.1109/SIML69834.2026.11621497', caption: 'The paper on IEEE Xplore (DOI)' },
       },
     ],
   },

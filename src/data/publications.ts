@@ -1015,6 +1015,66 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'Implementação de Algoritmos de Correção Automática de Tom',
+    summary: ['An electrical-engineering graduation project (Projeto de Graduação) at the Universidade Federal do Espírito Santo, Vitória, Brazil (Marcos Corrêa Barcelos Junior, approved 11 December 2020; advisor Prof. Dr. Jorge Leonid Aching Samatelo), on automatic pitch correction, which cites my article "Playing with Discrete Fourier Transform Algorithm in JavaScript" as the source of one of its illustrations.'],
+    date: '2020-12-11',
+    publisher: Publisher.UFES,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://engenhariaeletrica.ufes.br/sites/engenhariaeletrica.ufes.br/files/field/anexo/pg_ii_-_marcos_correa_barcelos_junior_-_final-_2020.1.pdf',
+    },
+  },
+  {
+    title: 'Top Hill Method - A New Sorting Approach to Reduce Execution Time',
+    summary: ['A journal article in i-manager\'s Journal on Software Engineering, vol. 12 no. 4, April–June 2018 (Sandeep Kumar Sharma, Poornima University, Jaipur, and Debabrat Bharali, Assam Down Town University, Guwahati; DOI 10.26634/jse.12.4.14588), which cites the Linked List page of my project trekhleb/javascript-algorithms as its reference for the data structure its sorting method is built on (reference 3).'],
+    date: '2018-06',
+    publisher: Publisher.IManagerPublications,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.26634/jse.12.4.14588',
+    },
+  },
+  {
+    title: 'NexttPOS Delivery App: Aplicació mòbil per a la restauració',
+    summary: ['A bachelor\'s final project (Treball de Fi de Grau) in Computer Engineering at the Universitat Autònoma de Barcelona, Escola d\'Enginyeria (Daniel Muñoz Vidal, February 2019; tutor Lluís Gesa Boté), a delivery app whose routing solves the Travelling Salesman Problem; it cites my project trekhleb/javascript-algorithms as its reference for the problem (reference 15).'],
+    date: '2019-02-12',
+    publisher: Publisher.UAB,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://ddd.uab.cat/record/203341',
+    },
+  },
+  {
+    title: 'Software Requirements for Disaster Management Systems: A Study of Literature and Practice',
+    summary: ['A paper in the proceedings of ISCRAM 2021, the 18th International Conference on Information Systems for Crisis Response and Management (Bruna Diirr, UNIRIO; Vânia de Oliveira Neves, UFF; Marcus Vinícius Vasconcelos de Almeida Cunha, Ana Beatriz Kapps dos Reis and Jairo Francisco de Souza, UFJF; Virginia Tech, Blacksburg, 2021, pp. 1042–1054), whose repository mining lists my COVID-19 Dashboard repository (trekhleb/covid-19) among the GitHub projects studied (Table 4, R38, Group 2: projects with 100 to 249 stars).'],
+    date: '2021',
+    publisher: Publisher.ISCRAM,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://idl.iscram.org/files/brunadiirr/2021/2395_BrunaDiirr_etal2021.pdf',
+    },
+  },
+  {
+    title: 'Code-Flow: Leveraging AI-Assisted Visualization and Knowledge-Graph Integration for Enhanced Code Understanding Within the IDE',
+    summary: ['A paper at the 2026 4th International Conference on Inventive Computing and Informatics (ICICI), Bangalore, 10–12 June 2026 (Meena Rhoshini C, Catherine Jessie J, Tharun M, Geetha M, Senthamizhselvi S and S. Pavithra; IEEE; DOI 10.1109/ICICI68773.2026.11581039), whose full text, as indexed by Google Scholar, contains the address of my project trekhleb/javascript-algorithms.'],
+    date: '2026-06-10',
+    publisher: Publisher.IEEE,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.1109/ICICI68773.2026.11581039',
+    },
+  },
+  {
+    title: 'On the Usage of Emojis to Signal Activism in GitHub Repositories',
+    summary: ['A paper at the 2026 International Conference on Smart Computing, IoT and Machine Learning (SIML), Surakarta, Indonesia, 10–11 June 2026 (Amri Zadi Hudaya, Youmei Fan, Raula Gaikovina Kula, Yusuf Sulistyo Nugroho and Kenichi Matsumoto; IEEE; DOI 10.1109/SIML69834.2026.11621497), on emoji in GitHub README files signalling support for social movements, whose full text, as indexed by Google Scholar, contains the phrase "led by javascript-algorithms (193,622 stars)" — my project trekhleb/javascript-algorithms, identified by its star count.'],
+    date: '2026-06-10',
+    publisher: Publisher.IEEE,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.1109/SIML69834.2026.11621497',
+    },
+  },
+  {
     title: 'The Response of Mobile Applications to Crisis in Canada',
     summary: ['A Master of Science (eHealth) thesis at McMaster University, Hamilton, Canada (Noella Noronha, August 2020). Its COVID-19 chapter reviews the online dashboards that let the public follow the pandemic and cites my COVID-19 Dashboard (trekhleb.github.io/covid-19) among them (reference 43).'],
     date: '2020-08',
