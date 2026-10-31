@@ -638,6 +638,26 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.HelloGitHub]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>HelloGitHub</b><br />
+          <A href="https://hellogithub.com/">hellogithub.com</A>
+        </p>
+        <p>
+          A Chinese monthly that shares interesting, beginner-friendly
+          open-source projects from GitHub, published on the 28th of every
+          month (127 volumes as of October 2026).
+        </p>
+        <p>
+          183,000+ GitHub stars on its repository 521xueweihan/HelloGitHub
+          (183,776 on 2026-10-23).
+        </p>
+      </>
+    ),
+  },
   [Publisher.IEEE]: {
     logo: { srcPath: 'publishers/ieee.jpg' },
     description: (
@@ -747,6 +767,26 @@ export const publishers: Record<Publisher, PublisherData> = {
         </p>
         <p>
           ~100K+ subscribers.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.RuanYifengWeekly]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Ruan Yifeng&apos;s Weekly (科技爱好者周刊)</b><br />
+          <A href="https://www.ruanyifeng.com/blog/">ruanyifeng.com</A>
+        </p>
+        <p>
+          A Chinese weekly digest of technology content worth sharing, written
+          by Ruan Yifeng (阮一峰) and published every Friday (417 issues as of
+          October 2026); the issues are also kept open source on GitHub.
+        </p>
+        <p>
+          106,000+ GitHub stars on its repository ruanyf/weekly
+          (106,796 on 2026-10-23).
         </p>
       </>
     ),

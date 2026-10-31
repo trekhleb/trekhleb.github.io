@@ -38,4 +38,12 @@ The stats numbers behind the publishers and media platforrms that publish the in
   - https://www.bram.us/about/
 - Hacker Newsletter
   - https://hackernewsletter.com/
+- Ruan Yifeng's Weekly (科技爱好者周刊)
+  - https://github.com/ruanyf/weekly
+  - https://www.ruanyifeng.com/blog/
+- HelloGitHub
+  - https://github.com/521xueweihan/HelloGitHub
+  - https://hellogithub.com/
+- GitHub Trending archive (bonfy/github-trending, third-party daily record)
+  - https://github.com/bonfy/github-trending
     

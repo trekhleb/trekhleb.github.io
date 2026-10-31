@@ -452,6 +452,15 @@ export const projects: Projects = {
         date: '2021-07-30',
         link: { url: 'https://javascriptweekly.com/issues/549', caption: 'JavaScript Weekly (issue #549)' },
       },
+      {
+        title: 'Featured in Ruan Yifeng\'s weekly (issue #156, "JS image carver", with an explanation of seam carving and a link to the tutorial)',
+        image: [
+          { srcPath: 'projects/js-image-carver/achievements/11-ruanyf-weekly-156-2021-04-30-1.png' },
+          { srcPath: 'projects/js-image-carver/achievements/11-ruanyf-weekly-156-2021-04-30-2.png' },
+        ],
+        date: '2021-04-30',
+        link: { url: 'https://www.ruanyifeng.com/blog/2021/04/weekly-issue-156.html', caption: 'See issue #156' },
+      },
     ],
   },
   'trekhleb-dev': {
@@ -504,7 +513,10 @@ export const projects: Projects = {
       },
       {
         title: 'Listed in BestOfJS hall of fame',
-        image: { srcPath: 'projects/trekhleb-dev/achievements/02-bestofjs-hall-of-fame-2024-11-26.png' },
+        image: [
+          { srcPath: 'projects/trekhleb-dev/achievements/02-bestofjs-hall-of-fame-2024-11-26.png' },
+          { srcPath: 'projects/trekhleb-dev/achievements/19-bestofjs-hall-of-fame-157-members-2026-10-31.png' },
+        ],
         date: '2024-11-26',
         link: { url: 'https://bestofjs.org/hall-of-fame', caption: 'BestOfJS hall of fame' },
       },
@@ -1984,6 +1996,64 @@ export const projects: Projects = {
         date: '2026-06-10',
         link: { url: 'https://doi.org/10.1109/SIML69834.2026.11621497', caption: 'The paper on IEEE Xplore (DOI)' },
       },
+      {
+        title: 'Featured in HelloGitHub, the Chinese monthly of open-source projects (Vol. 26, entry 13, JavaScript section)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/116-hellogithub-26-2018-05-28-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/116-hellogithub-26-2018-05-28-2.png' },
+        ],
+        date: '2018-05-28',
+        link: { url: 'https://hellogithub.com/periodical/volume/26', caption: 'See HelloGitHub Vol. 26' },
+      },
+      {
+        title: 'Featured in Ruan Yifeng\'s weekly (issue #8, "JavaScript 算法与数据结构", the repository\'s Chinese README)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/117-ruanyf-weekly-8-2018-06-08-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/117-ruanyf-weekly-8-2018-06-08-2.png' },
+        ],
+        date: '2018-06-08',
+        link: { url: 'https://www.ruanyifeng.com/blog/2018/06/weekly-issue-8.html', caption: 'See issue #8' },
+      },
+      {
+        title: 'Featured in Ruan Yifeng\'s weekly (issue #171, "JavaScript 的浮点数格式", the binary floating-point article)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/118-ruanyf-weekly-171-2021-08-13-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/118-ruanyf-weekly-171-2021-08-13-2.png' },
+        ],
+        date: '2021-08-13',
+        link: { url: 'https://www.ruanyifeng.com/blog/2021/08/weekly-issue-171.html', caption: 'See issue #171' },
+      },
+      {
+        title: 'Featured in Ruan Yifeng\'s weekly (issue #373, "Dijkstra 算法详细图解", the illustrated Dijkstra article)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/119-ruanyf-weekly-373-2025-11-14-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/119-ruanyf-weekly-373-2025-11-14-2.png' },
+        ],
+        date: '2025-11-14',
+        link: { url: 'https://www.ruanyifeng.com/blog/2025/11/weekly-issue-373.html', caption: 'See issue #373' },
+      },
+      {
+        title: 'Ranked 8th of the 1,538 active projects tracked by Best of JS by total GitHub stars, tagged "Learning resource" (October 2026)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/120-bestofjs-8th-of-1538-by-stars-2026-10-31.png' },
+        date: '2026-10-31',
+        link: { url: 'https://bestofjs.org/projects/js-algorithms-and-data-structures', caption: 'The project on Best of JS' },
+      },
+      {
+        title: 'On GitHub Trending (JavaScript) on 846 days between 2018 and 2026 and #1 on 80 of them, in every year 2018–2025, per a third-party daily archive (bonfy/github-trending)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/121-github-trending-archive-2018-05-25.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/121-github-trending-archive-2019-12-11.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/121-github-trending-archive-2020-10-29.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/121-github-trending-archive-2021-03-29.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/121-github-trending-archive-2022-08-16.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/121-github-trending-archive-2023-01-25.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/121-github-trending-archive-2024-04-17.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/121-github-trending-archive-2025-08-04.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/121-github-trending-archive-2026-05-25.png' },
+        ],
+        date: '2018-05-25',
+        link: { url: 'https://github.com/bonfy/github-trending', caption: 'The third-party GitHub Trending archive' },
+      },
     ],
   },
   'machine-learning-octave': {
@@ -2076,6 +2146,21 @@ export const projects: Projects = {
         image: { srcPath: 'projects/learn-python/achievements/05-pycoders-332-2018-09-04.png' },
         date: '2018-09-04',
         link: { url: 'https://pycoders.com/issues/332', caption: 'See the issue' },
+      },
+      {
+        title: 'Featured in HelloGitHub, the Chinese monthly of open-source projects (Vol. 62, entry 21, Python section)',
+        image: [
+          { srcPath: 'projects/learn-python/achievements/06-hellogithub-62-2021-05-28-1.png' },
+          { srcPath: 'projects/learn-python/achievements/06-hellogithub-62-2021-05-28-2.png' },
+        ],
+        date: '2021-05-28',
+        link: { url: 'https://hellogithub.com/periodical/volume/62', caption: 'See HelloGitHub Vol. 62' },
+      },
+      {
+        title: '#1 on GitHub Trending (Python) on 2018-08-31, the first of three #1 days in a row, per a third-party daily archive (bonfy/github-trending)',
+        image: { srcPath: 'projects/learn-python/achievements/07-github-trending-archive-2018-08-31.png' },
+        date: '2018-08-31',
+        link: { url: 'https://github.com/bonfy/github-trending/blob/master/2018/2018-08-31.md', caption: 'The archive file for 2018-08-31' },
       },
     ],
   },

@@ -1235,6 +1235,66 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'javascript-algorithms: 包含了多种基于 JavaScript 的算法与数据结构',
+    summary: ['My GitHub project trekhleb/javascript-algorithms has been featured in HelloGitHub Vol. 26 (entry 13, JavaScript section).'],
+    date: '2018-05-28',
+    publisher: Publisher.HelloGitHub,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://hellogithub.com/periodical/volume/26',
+    },
+  },
+  {
+    title: 'JavaScript 算法与数据结构 (JavaScript Algorithms and Data Structures)',
+    summary: ['My GitHub project trekhleb/javascript-algorithms (its Chinese README) has been featured in Ruan Yifeng\'s weekly, issue #8.'],
+    date: '2018-06-08',
+    publisher: Publisher.RuanYifengWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://www.ruanyifeng.com/blog/2018/06/weekly-issue-8.html',
+    },
+  },
+  {
+    title: 'JS image carver',
+    summary: ['My project trekhleb/js-image-carver has been featured in Ruan Yifeng\'s weekly, issue #156, with an explanation of seam carving and a link to my tutorial.'],
+    date: '2021-04-30',
+    publisher: Publisher.RuanYifengWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://www.ruanyifeng.com/blog/2021/04/weekly-issue-156.html',
+    },
+  },
+  {
+    title: 'learn-python: 一份以代码和注释方式讲解 Python 的免费教程',
+    summary: ['My GitHub project trekhleb/learn-python has been featured in HelloGitHub Vol. 62 (entry 21, Python section).'],
+    date: '2021-05-28',
+    publisher: Publisher.HelloGitHub,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://hellogithub.com/periodical/volume/62',
+    },
+  },
+  {
+    title: 'JavaScript 的浮点数格式 (Binary representation of floating-point numbers)',
+    summary: ['My article on binary floating-point numbers in trekhleb/javascript-algorithms has been featured in Ruan Yifeng\'s weekly, issue #171, with my illustration.'],
+    date: '2021-08-13',
+    publisher: Publisher.RuanYifengWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://www.ruanyifeng.com/blog/2021/08/weekly-issue-171.html',
+    },
+  },
+  {
+    title: 'Dijkstra 算法详细图解 (Dijkstra\'s algorithm, illustrated step by step)',
+    summary: ['The Chinese page of the illustrated Dijkstra article in my GitHub project trekhleb/javascript-algorithms has been featured in Ruan Yifeng\'s weekly, issue #373.'],
+    date: '2025-11-14',
+    publisher: Publisher.RuanYifengWeekly,
+    tag: PublicationTag.Featured,
+    link: {
+      url: 'https://www.ruanyifeng.com/blog/2025/11/weekly-issue-373.html',
+    },
+  },
+  {
     title: 'Application of Deep Learning Techniques for the Impedance-based SHM to the Oil & Gas Industry',
     summary: ['A book chapter published by the University of Brasília (in "Fundamental Concepts and Models for the Direct Problem", 2022) that cites my GitHub project trekhleb/homemade-machine-learning.'],
     // Only the year of the publication is known

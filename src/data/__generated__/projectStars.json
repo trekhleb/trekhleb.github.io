@@ -1,109 +1,109 @@
 {
   "trekhleb/bible-cross-references": {
-    "stars": 48,
-    "forks": 20,
-    "updatedAt": "2026-10-20T02:54:00.196Z"
+    "stars": 88,
+    "forks": 23,
+    "updatedAt": "2026-10-31T20:21:12.870Z"
   },
   "trekhleb/yesbrainer": {
-    "stars": 39,
+    "stars": 38,
     "forks": 5,
-    "updatedAt": "2026-10-20T02:54:00.486Z"
+    "updatedAt": "2026-10-31T20:21:13.139Z"
   },
   "trekhleb/claude-pod": {
-    "stars": 40,
-    "forks": 14,
-    "updatedAt": "2026-10-20T02:54:00.769Z"
+    "stars": 43,
+    "forks": 15,
+    "updatedAt": "2026-10-31T20:21:13.405Z"
   },
   "trekhleb/cali-vibe": {
     "stars": 12,
     "forks": 0,
-    "updatedAt": "2026-10-20T02:54:01.040Z"
+    "updatedAt": "2026-10-31T20:21:13.665Z"
   },
   "trekhleb/homemade-gpt-js": {
-    "stars": 93,
+    "stars": 94,
     "forks": 13,
-    "updatedAt": "2026-10-20T02:54:01.319Z"
+    "updatedAt": "2026-10-31T20:21:13.944Z"
   },
   "trekhleb/micrograd-ts": {
     "stars": 74,
     "forks": 10,
-    "updatedAt": "2026-10-20T02:54:01.627Z"
+    "updatedAt": "2026-10-31T20:21:14.238Z"
   },
   "trekhleb/self-parking-car-evolution": {
     "stars": 766,
-    "forks": 87,
-    "updatedAt": "2026-10-20T02:54:01.895Z"
+    "forks": 86,
+    "updatedAt": "2026-10-31T20:21:14.508Z"
   },
   "trekhleb/js-image-carver": {
     "stars": 1594,
     "forks": 150,
-    "updatedAt": "2026-10-20T02:54:02.169Z"
+    "updatedAt": "2026-10-31T20:21:14.759Z"
   },
   "trekhleb/trekhleb.github.io": {
-    "stars": 240,
+    "stars": 241,
     "forks": 28,
-    "updatedAt": "2026-10-20T02:54:02.459Z"
+    "updatedAt": "2026-10-31T20:21:15.010Z"
   },
   "trekhleb/links-detector": {
-    "stars": 184,
+    "stars": 186,
     "forks": 28,
-    "updatedAt": "2026-10-20T02:54:02.723Z"
+    "updatedAt": "2026-10-31T20:21:15.259Z"
   },
   "trekhleb/machine-learning-experiments": {
     "stars": 1836,
-    "forks": 330,
-    "updatedAt": "2026-10-20T02:54:03.020Z"
+    "forks": 329,
+    "updatedAt": "2026-10-31T20:21:15.530Z"
   },
   "trekhleb/state-of-the-art-shitcode": {
-    "stars": 6213,
+    "stars": 6210,
     "forks": 335,
-    "updatedAt": "2026-10-20T02:54:03.305Z"
+    "updatedAt": "2026-10-31T20:21:15.772Z"
   },
   "trekhleb/covid-19": {
     "stars": 263,
     "forks": 68,
-    "updatedAt": "2026-10-20T02:54:03.690Z"
+    "updatedAt": "2026-10-31T20:21:16.035Z"
   },
   "trekhleb/nano-neuron": {
     "stars": 2273,
     "forks": 122,
-    "updatedAt": "2026-10-20T02:54:03.942Z"
+    "updatedAt": "2026-10-31T20:21:16.337Z"
   },
   "trekhleb/use-position": {
-    "stars": 306,
+    "stars": 307,
     "forks": 49,
-    "updatedAt": "2026-10-20T02:54:04.223Z"
+    "updatedAt": "2026-10-31T20:21:16.586Z"
   },
   "trekhleb/homemade-machine-learning": {
-    "stars": 24833,
+    "stars": 24842,
     "forks": 4183,
-    "updatedAt": "2026-10-20T02:54:04.499Z"
+    "updatedAt": "2026-10-31T20:21:16.848Z"
   },
   "trekhleb/promote-your-next-startup": {
-    "stars": 2232,
-    "forks": 193,
-    "updatedAt": "2026-10-20T02:54:04.762Z"
+    "stars": 2239,
+    "forks": 198,
+    "updatedAt": "2026-10-31T20:21:17.080Z"
   },
   "trekhleb/javascript-algorithms": {
-    "stars": 196683,
-    "forks": 31007,
+    "stars": 196715,
+    "forks": 30995,
     "contributors": 211,
     "translations": 18,
-    "updatedAt": "2026-10-20T02:54:05.599Z"
+    "updatedAt": "2026-10-31T20:21:17.881Z"
   },
   "trekhleb/machine-learning-octave": {
     "stars": 900,
     "forks": 250,
-    "updatedAt": "2026-10-20T02:54:05.857Z"
+    "updatedAt": "2026-10-31T20:21:18.126Z"
   },
   "trekhleb/learn-python": {
-    "stars": 18422,
-    "forks": 3064,
-    "updatedAt": "2026-10-20T02:54:06.127Z"
+    "stars": 18475,
+    "forks": 2993,
+    "updatedAt": "2026-10-31T20:21:18.377Z"
   },
   "trekhleb/angular-library-seed": {
     "stars": 201,
-    "forks": 84,
-    "updatedAt": "2026-10-20T02:54:06.426Z"
+    "forks": 85,
+    "updatedAt": "2026-10-31T20:21:18.635Z"
   }
 }
