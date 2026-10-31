@@ -11,6 +11,7 @@ The stats numbers behind the publishers and media platforrms that publish the in
   - https://towardsdatascience.com/about/
 - BestOfJS
   - https://bestofjs.org/about
+  - https://risingstars.js.org/2020/en (JavaScript Rising Stars, built on Best of JS data)
 - DOU
   - https://dou.ua/
   - https://dou.ua/adv/

@@ -38,8 +38,11 @@ export const projects: Projects = {
         link: { url: 'https://www.instagram.com/p/Dec5HPlGhnZ/', caption: 'See the post' },
       },
       {
-        title: 'Featured on YouTube Shorts by J.C. Statler (341K views)',
-        image: { srcPath: 'projects/bible-cross-references/achievements/02-youtube-shorts-jc-statler-2026-10-15.png' },
+        title: 'Featured on YouTube Shorts by J.C. Statler (uploaded October 15, 2026; 560K views by October 31, 2026)',
+        image: [
+          { srcPath: 'projects/bible-cross-references/achievements/02-youtube-shorts-jc-statler-2026-10-15.png' },
+          { srcPath: 'projects/bible-cross-references/achievements/02-youtube-shorts-jc-statler-560k-views-2026-10-31.png' },
+        ],
         date: '2026-10-15',
         link: { url: 'https://www.youtube.com/shorts/3Q20TMkJUjo', caption: 'Watch the video' },
       },
@@ -527,6 +530,15 @@ export const projects: Projects = {
         link: { url: 'https://gitstar-ranking.com/users', caption: 'GitStar Users Ranking' },
       },
       {
+        title: 'Ranked 15th among GitHub users by total stars on Gitstar Ranking (data of October 11, 2026)',
+        image: [
+          { srcPath: 'projects/trekhleb-dev/achievements/20-gitstar-users-rank-15-2026-10-31.png' },
+          { srcPath: 'projects/trekhleb-dev/achievements/20-gitstar-users-ranking-page-2026-10-31.png' },
+        ],
+        date: '2026-10-11',
+        link: { url: 'https://gitstar-ranking.com/trekhleb', caption: 'The profile on Gitstar Ranking' },
+      },
+      {
         title: 'Featured in TLDR DevOps newsletter',
         image: { srcPath: 'projects/trekhleb-dev/achievements/04-tldr-devops-newsletter-2024-12-13.png' },
         date: '2024-12-13',
@@ -572,7 +584,10 @@ export const projects: Projects = {
       },
       {
         title: '18K GitHub Followers',
-        image: { srcPath: 'projects/trekhleb-dev/achievements/11-github-profile-2026-07-28.png' },
+        image: [
+          { srcPath: 'projects/trekhleb-dev/achievements/11-github-profile-2026-07-28.png' },
+          { srcPath: 'projects/trekhleb-dev/achievements/11-github-profile-2026-10-31.png' },
+        ],
         date: '2026-07-28',
         link: { url: 'https://github.com/trekhleb', caption: 'See profile' },
       },
@@ -1112,6 +1127,21 @@ export const projects: Projects = {
         date: '2024-03',
         link: { url: 'http://hdl.handle.net/11071/16160', caption: 'The dissertation (Strathmore University SU+ repository)' },
       },
+      {
+        title: 'Referenced in the READMEs of 78 other public GitHub repositories (GitHub search, 2026-10-31), among them huangsam/ultimate-python, the "Ultimate Python study guide" (6k stars), under "Data science & machine learning"',
+        image: [
+          { srcPath: 'projects/homemade-machine-learning/achievements/17-github-readme-references-78-2026-10-31.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/17-ultimate-python-readme-2026-10-31.png' },
+        ],
+        date: '2026-10-31',
+        link: { url: 'https://github.com/search?q=%22trekhleb%2Fhomemade-machine-learning%22+in%3Areadme&type=repositories&s=stars&o=desc', caption: 'The GitHub search' },
+      },
+      {
+        title: 'In GitHub\'s "Made in Ukraine" Explore collection (since April 2021)',
+        image: { srcPath: 'projects/homemade-machine-learning/achievements/18-github-collection-made-in-ukraine-2026-10-31.png' },
+        date: '2021-04-15',
+        link: { url: 'https://github.com/collections/made-in-ukraine', caption: 'The collection' },
+      },
     ],
   },
   'promote-your-next-startup': {
@@ -1494,8 +1524,11 @@ export const projects: Projects = {
         link: { url: 'https://nodeweekly.com/issues/318', caption: 'See Issue #318' },
       },
       {
-        title: 'Featured in FrontEndGitHub editorials (issues #2 and #37)',
-        image: { srcPath: 'projects/javascript-algorithms/achievements/52-FrontEndGitHub-2021-05-25.png' },
+        title: 'Featured in FrontEndGitHub editorials (issues #2 and #37) and listed in its README since November 2020',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/52-FrontEndGitHub-2021-05-25.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/52-FrontEndGitHub-readme-commit-2020-11-07.png' },
+        ],
         date: '2021-03-25',
         link: { url: 'https://github.com/FrontEndGitHub/FrontEndGitHub/issues/37', caption: 'See Issue #37' },
       },
@@ -1593,7 +1626,10 @@ export const projects: Projects = {
       },
       {
         title: 'JavaScript Rising Stars 2020 (Top 1 in Learning Resource category)',
-        image: { srcPath: 'projects/javascript-algorithms/achievements/69-js-rising-star-2020.png' },
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/69-js-rising-star-2020.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/69-js-rising-star-2020-2026-10-31.png' },
+        ],
         date: '2020',
         link: { url: 'https://risingstars.js.org/2020/en', caption: 'See the rating' },
       },
@@ -2054,6 +2090,56 @@ export const projects: Projects = {
         date: '2018-05-25',
         link: { url: 'https://github.com/bonfy/github-trending', caption: 'The third-party GitHub Trending archive' },
       },
+      {
+        title: 'Referenced in the READMEs of 650 other public GitHub repositories (GitHub search, 2026-10-31), among them charlax/professional-programming (51.7k stars; added by its owner in January 2020) and the Data Structures and Algorithms resources of DSC KIIT, India (August 2020)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/122-github-readme-references-650-2026-10-31.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/122-charlax-professional-programming-readme-2026-10-31.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/122-charlax-professional-programming-commit-2020-01-08.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/122-gdsc-kiit-dsa-resources-2026-10-31.png' },
+        ],
+        date: '2020-01-08',
+        link: { url: 'https://github.com/search?q=%22trekhleb%2Fjavascript-algorithms%22+in%3Areadme&type=repositories&s=stars&o=desc', caption: 'The GitHub search' },
+      },
+      {
+        title: 'Listed first in GitHub\'s "Made in Ukraine" Explore collection of open source projects built in or receiving significant contributions from Ukraine (since April 2021)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/123-github-collection-made-in-ukraine-2026-10-31.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/123-github-explore-pr-2283-made-in-ukraine-2021-04-15.png' },
+        ],
+        date: '2021-04-15',
+        link: { url: 'https://github.com/collections/made-in-ukraine', caption: 'The collection' },
+      },
+      {
+        title: 'Starred around the world: the United States leads the stargazers\' locations (14.99%), followed by China, India and Brazil (OSSInsight, October 2026)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/124-ossinsight-stargazers-geography-2026-10-31.png' },
+        date: '2026-10-31',
+        link: { url: 'https://ossinsight.io/analyze/trekhleb/javascript-algorithms#people', caption: 'The analysis on OSSInsight' },
+      },
+      {
+        title: 'Tracked by Trendshift: #1 on GitHub Trending for JavaScript on September 27, 2023, and Trendshift\'s #1 JavaScript repository of the day on April 14, 2024',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/125-trendshift-achievements-2026-10-31-1.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/125-trendshift-achievements-2026-10-31-2.png' },
+        ],
+        date: '2023-09-27',
+        link: { url: 'https://trendshift.io/repositories/1067', caption: 'The repository on Trendshift' },
+      },
+      {
+        title: 'Global rank #34 among GitHub repositories by stars on Star History (October 31, 2026)',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/126-star-history-global-rank-34-2026-10-31.png' },
+        date: '2026-10-31',
+        link: { url: 'https://star-history.com/trekhleb/javascript-algorithms', caption: 'The repository on Star History' },
+      },
+      {
+        title: '307 merged pull requests, 288 of them from other contributors (GitHub, October 31, 2026)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/127-github-merged-pull-requests-307-2026-10-31.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/127-github-merged-pull-requests-288-by-others-2026-10-31.png' },
+        ],
+        date: '2026-10-31',
+        link: { url: 'https://github.com/trekhleb/javascript-algorithms/pulls?q=is%3Apr+is%3Amerged', caption: 'Merged pull requests' },
+      },
     ],
   },
   'machine-learning-octave': {
@@ -2161,6 +2247,22 @@ export const projects: Projects = {
         image: { srcPath: 'projects/learn-python/achievements/07-github-trending-archive-2018-08-31.png' },
         date: '2018-08-31',
         link: { url: 'https://github.com/bonfy/github-trending/blob/master/2018/2018-08-31.md', caption: 'The archive file for 2018-08-31' },
+      },
+      {
+        title: 'Referenced in the READMEs of 60 other public GitHub repositories (GitHub search, 2026-10-31), among them the SIB Swiss Institute of Bioinformatics "Collection of bioinformatics training materials" (since May 2023)',
+        image: [
+          { srcPath: 'projects/learn-python/achievements/08-github-readme-references-60-2026-10-31.png' },
+          { srcPath: 'projects/learn-python/achievements/08-sib-swiss-training-collection-readme-2026-10-31.png' },
+          { srcPath: 'projects/learn-python/achievements/08-sib-swiss-github-organisation-2026-10-31.png' },
+        ],
+        date: '2023-05-21',
+        link: { url: 'https://github.com/search?q=%22trekhleb%2Flearn-python%22+in%3Areadme&type=repositories&s=stars&o=desc', caption: 'The GitHub search' },
+      },
+      {
+        title: 'In GitHub\'s "Made in Ukraine" Explore collection (since April 2021)',
+        image: { srcPath: 'projects/learn-python/achievements/09-github-collection-made-in-ukraine-2026-10-31.png' },
+        date: '2021-04-15',
+        link: { url: 'https://github.com/collections/made-in-ukraine', caption: 'The collection' },
       },
     ],
   },
