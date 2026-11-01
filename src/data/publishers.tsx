@@ -1154,6 +1154,85 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.JohnsHopkinsUniversity]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Johns Hopkins University</b><br />
+          <A href="https://www.jhu.edu/">jhu.edu</A>
+        </p>
+        <p>
+          A private research university in Baltimore, Maryland; Software Carpentry
+          (EN.540.635) is a graduate course of its Department of Chemical and Biomolecular
+          Engineering.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.Umweltbundesamt]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>Umweltbundesamt (German Environment Agency)</b><br />
+          <A href="https://www.umweltbundesamt.de/">umweltbundesamt.de</A>
+        </p>
+        <p>
+          Germany&apos;s federal environment agency; its TEXTE series published the citing report,
+          the final report of a research project it commissioned under the Federal Environment
+          Ministry&apos;s research plan (REFOPLAN).
+        </p>
+      </>
+    ),
+  },
+  [Publisher.UniversityOfSplitFESB]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>University of Split, FESB</b><br />
+          <A href="https://ai.fesb.hr/">ai.fesb.hr</A>
+        </p>
+        <p>
+          The Faculty of Electrical Engineering, Mechanical Engineering and Naval Architecture of
+          the University of Split, Croatia; it published the citing textbook in the University of
+          Split textbook series.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.NYSDS]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>New York Scientific Data Summit</b><br />
+          <A href="https://www.bnl.gov/nysds19/">bnl.gov/nysds19</A>
+        </p>
+        <p>
+          A symposium series established by Brookhaven National Laboratory, a US Department of
+          Energy laboratory; the 2019 edition was hosted by Columbia University&apos;s Data Science
+          Institute, and the laboratory publishes the talks.
+        </p>
+      </>
+    ),
+  },
+  [Publisher.UniversityOfMiamiIDSC]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>University of Miami, Frost Institute for Data Science &amp; Computing</b><br />
+          <A href="https://idsc.miami.edu/">idsc.miami.edu</A>
+        </p>
+        <p>
+          The University of Miami&apos;s data-science institute; its Data Citizens distinguished
+          lecture series is hosted by Professor Alberto Cairo, Knight Chair in Visual Journalism.
+        </p>
+      </>
+    ),
+  },
   [Publisher.TUDelft]: {
     logo: { srcPath: 'publishers/tu-delft.jpg' },
     description: (

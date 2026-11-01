@@ -1055,6 +1055,56 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'Software Carpentry (EN.540.635), Lecture 12: Data Mining, APIs, and an Introduction to Machine Learning',
+    summary: ['Lecture slides of Software Carpentry (EN.540.635), a 3-credit, peer-taught course for new graduate students in Chemical and Biomolecular Engineering at Johns Hopkins University (Whiting School of Engineering), whose slide "Machine Learning… in a Nut Shell" (slide 31 of 37) reproduces the Machine Learning Map of my project trekhleb/homemade-machine-learning and cites the repository.'],
+    date: '2023-11',
+    publisher: Publisher.JohnsHopkinsUniversity,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://clancylab.github.io/software_carpentry/Lectures/Lecture12.pdf',
+    },
+  },
+  {
+    title: 'POP-Profiling – Kontaminationen auf der Spur (TEXTE 07/2026)',
+    summary: ['The final report of a research project commissioned by the German Environment Agency (Umweltbundesamt) on using artificial-intelligence methods to profile PCB contamination (Alexander Blume, Dornier Power and Heat GmbH; Prof. Dr. Benny Selle, Berliner Hochschule für Technik; completed September 2024, published January 2026), which names the Machine Learning Map of my project trekhleb/homemade-machine-learning among the five sources of its overview figure of machine-learning methods (Figure 9) and lists it in its references.'],
+    date: '2026-01',
+    publisher: Publisher.Umweltbundesamt,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://doi.org/10.60810/openumwelt-8001',
+    },
+  },
+  {
+    title: 'Uvod u umjetnu inteligenciju (Introduction to Artificial Intelligence)',
+    summary: ['A university textbook in the University of Split textbook series (Darko Stipaničev, Ljiljana Šerić and Maja Braović; Faculty of Electrical Engineering, Mechanical Engineering and Naval Architecture, Split; approved by the University Senate in December 2020; first edition November 2021; ISBN 978-953-290-108-5), whose worked example of anomaly detection in server latency and throughput (Figure 6-28, footnote 102) is adapted from my project trekhleb/machine-learning-octave.'],
+    date: '2021-11',
+    publisher: Publisher.UniversityOfSplitFESB,
+    tag: PublicationTag.BookCitation,
+    link: {
+      url: 'https://ai.fesb.hr/knjiga/AI-knjiga-FINAL.pdf',
+    },
+  },
+  {
+    title: 'A Hierarchical Feature Extraction Pipeline using Resting-state fMRI for Autism Classification',
+    summary: ['A talk at the 2019 New York Scientific Data Summit (June 12–14, 2019; hosted by Columbia University\'s Data Science Institute; a series established by Brookhaven National Laboratory) by Qian Wang, Jongwoo Choi and Xiaofu He (New York State Psychiatric Institute and Columbia University), whose classification method (random-forest feature selection with a logistic-regression classifier, slide 17) links the logistic-regression implementation of my project trekhleb/machine-learning-octave.'],
+    date: '2019-06',
+    publisher: Publisher.NYSDS,
+    tag: PublicationTag.ResearchCitation,
+    link: {
+      url: 'https://www.bnl.gov/nysds19/files/talks/session6/he_nysds19.pdf',
+    },
+  },
+  {
+    title: 'Catch the Replay: Santiago Ortiz\'s Data Citizens Lecture',
+    summary: ['The University of Miami\'s Frost Institute for Data Science & Computing on the opening lecture of the second year of its Data Citizens distinguished lecture series (Santiago Ortiz, September 23, 2021; host Professor Alberto Cairo): in the part "How Machines \'Think\' About Data" the lecturer used my article "Content-Aware Image Resizing in JavaScript" to explain the seam-carving algorithm, and the page lists the article among the references mentioned in the lecture.'],
+    date: '2021-09-24',
+    publisher: Publisher.UniversityOfMiamiIDSC,
+    tag: PublicationTag.Coverage,
+    link: {
+      url: 'https://idsc.miami.edu/catch-the-replay-santiago-ortiz/',
+    },
+  },
+  {
     title: 'Code-Flow: Leveraging AI-Assisted Visualization and Knowledge-Graph Integration for Enhanced Code Understanding Within the IDE',
     summary: ['A paper at the 2026 4th International Conference on Inventive Computing and Informatics (ICICI), Bangalore, 10–12 June 2026 (Meena Rhoshini C, Catherine Jessie J, Tharun M, Geetha M, Senthamizhselvi S and S. Pavithra; IEEE; DOI 10.1109/ICICI68773.2026.11581039), whose full text, as indexed by Google Scholar, contains the address of my project trekhleb/javascript-algorithms.'],
     date: '2026-06-10',

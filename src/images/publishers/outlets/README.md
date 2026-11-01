@@ -48,3 +48,5 @@ The stats numbers behind the publishers and media platforrms that publish the in
 - GitHub Trending archive (bonfy/github-trending, third-party daily record)
   - https://github.com/bonfy/github-trending
     
+- Johns Hopkins University (Academic Catalogue, the course citing homemade-machine-learning)
+  - https://e-catalogue.jhu.edu/search/?P=EN.540.635

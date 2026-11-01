@@ -464,6 +464,16 @@ export const projects: Projects = {
         date: '2021-04-30',
         link: { url: 'https://www.ruanyifeng.com/blog/2021/04/weekly-issue-156.html', caption: 'See issue #156' },
       },
+      {
+        title: 'The content-aware image resizing article used as an example in a University of Miami distinguished lecture (Data Citizens, Frost Institute for Data Science & Computing, 2021)',
+        image: [
+          { srcPath: 'projects/js-image-carver/achievements/12-umiami-idsc-2021-santiago-ortiz-lecture-1.png' },
+          { srcPath: 'projects/js-image-carver/achievements/12-umiami-idsc-2021-santiago-ortiz-lecture-2.png' },
+          { srcPath: 'projects/js-image-carver/achievements/12-umiami-idsc-2021-santiago-ortiz-lecture-3.png' },
+        ],
+        date: '2021-09-23',
+        link: { url: 'https://idsc.miami.edu/catch-the-replay-santiago-ortiz/', caption: 'The lecture page' },
+      },
     ],
   },
   'trekhleb-dev': {
@@ -1141,6 +1151,35 @@ export const projects: Projects = {
         image: { srcPath: 'projects/homemade-machine-learning/achievements/18-github-collection-made-in-ukraine-2026-10-31.png' },
         date: '2021-04-15',
         link: { url: 'https://github.com/collections/made-in-ukraine', caption: 'The collection' },
+      },
+      {
+        title: 'The repository\'s Machine Learning Map used in a Johns Hopkins University graduate course: Software Carpentry (EN.540.635), Lecture 12, citing the repository',
+        image: [
+          { srcPath: 'projects/homemade-machine-learning/achievements/19-jhu-2023-software-carpentry-lecture-12-1.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/19-jhu-2023-software-carpentry-lecture-12-2.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/19-jhu-2023-software-carpentry-lecture-12-3.png' },
+        ],
+        date: '2023-11',
+        link: { url: 'https://clancylab.github.io/software_carpentry/Lectures/Lecture12.pdf', caption: 'Lecture 12 (PDF, slide 31)' },
+      },
+      {
+        title: 'The repository\'s Machine Learning Map cited by the German Environment Agency (Umweltbundesamt) in a research report on AI for PCB contamination profiling (TEXTE 07/2026), among the sources of its overview of machine-learning methods',
+        image: [
+          { srcPath: 'projects/homemade-machine-learning/achievements/20-uba-2026-pop-profiling-ml-map-cited-1.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/20-uba-2026-pop-profiling-ml-map-cited-2.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/20-uba-2026-pop-profiling-ml-map-cited-3.png' },
+        ],
+        date: '2026-01',
+        link: { url: 'https://doi.org/10.60810/openumwelt-8001', caption: 'The report (DOI)' },
+      },
+      {
+        title: 'Used as the lecture code of a Udemy data-science course (Professional Certificate in Data Science, Academy of Computing & Artificial Intelligence; 963 students by October 2026)',
+        image: [
+          { srcPath: 'projects/homemade-machine-learning/achievements/21-udemy-professional-certificate-in-data-science-1.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/21-udemy-professional-certificate-in-data-science-2.png' },
+        ],
+        date: '2024-01',
+        link: { url: 'https://www.udemy.com/course/professional-certificate-in-data-science/', caption: 'The course on Udemy' },
       },
     ],
   },
@@ -2176,6 +2215,29 @@ export const projects: Projects = {
         ],
         date: '2026-06-22',
         link: { url: 'https://doi.org/10.1016/j.isci.2026.116408', caption: 'See the paper' },
+      },
+      {
+        title: 'The anomaly-detection example adapted in an official University of Split textbook, Introduction to Artificial Intelligence (FESB, 2021), crediting the repository',
+        image: [
+          { srcPath: 'projects/machine-learning-octave/achievements/01-fesb-2021-uvod-u-umjetnu-inteligenciju-textbook-1.png' },
+          { srcPath: 'projects/machine-learning-octave/achievements/01-fesb-2021-uvod-u-umjetnu-inteligenciju-textbook-2.png' },
+          { srcPath: 'projects/machine-learning-octave/achievements/01-fesb-2021-uvod-u-umjetnu-inteligenciju-textbook-3.png' },
+          { srcPath: 'projects/machine-learning-octave/achievements/01-fesb-2021-uvod-u-umjetnu-inteligenciju-textbook-4.png' },
+          { srcPath: 'projects/machine-learning-octave/achievements/01-fesb-2021-uvod-u-umjetnu-inteligenciju-textbook-5.png' },
+          { srcPath: 'projects/machine-learning-octave/achievements/01-fesb-2021-uvod-u-umjetnu-inteligenciju-textbook-6.png' },
+          { srcPath: 'projects/machine-learning-octave/achievements/01-fesb-2021-uvod-u-umjetnu-inteligenciju-textbook-7.png' },
+        ],
+        date: '2021-11',
+        link: { url: 'https://ai.fesb.hr/knjiga/AI-knjiga-FINAL.pdf', caption: 'The textbook (PDF, page 217)' },
+      },
+      {
+        title: 'The logistic-regression implementation linked in the autism-classification method of Columbia University and New York State Psychiatric Institute researchers at the 2019 New York Scientific Data Summit',
+        image: [
+          { srcPath: 'projects/machine-learning-octave/achievements/02-nysds-2019-columbia-autism-classification-talk-1.png' },
+          { srcPath: 'projects/machine-learning-octave/achievements/02-nysds-2019-columbia-autism-classification-talk-2.png' },
+        ],
+        date: '2019-06',
+        link: { url: 'https://www.bnl.gov/nysds19/files/talks/session6/he_nysds19.pdf', caption: 'The slides (slide 17)' },
       },
     ],
   },
