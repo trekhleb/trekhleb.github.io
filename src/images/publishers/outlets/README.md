@@ -50,3 +50,11 @@ The stats numbers behind the publishers and media platforrms that publish the in
     
 - Johns Hopkins University (Academic Catalogue, the course citing homemade-machine-learning)
   - https://e-catalogue.jhu.edu/search/?P=EN.540.635
+- InfoQ (C4Media; the article on content-aware image resizing, 2021)
+  - https://www.infoq.com/about-infoq/
+  - https://web.archive.org/web/20210127093914/https://www.infoq.com/about-infoq/
+  - https://www.infoq.com/profile/Bruno-Couriol/
+  - https://devmarketing.c4media.com/p/partner-with-infoq-and-qcon
+- Dice (Dice Insights; the 2018 article on GitHub's year in review)
+  - https://web.archive.org/web/20190227164240/https://insights.dice.com/about-dice/
+  - https://en.wikipedia.org/wiki/Dice.com
