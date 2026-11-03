@@ -1,0 +1,82 @@
+---
+title: "Homemade GPT JS"
+
+summary: "A minimal TensorFlow.js re-implementation of Karpathy's minGPT (Generative Pre-trained Transformer)"
+
+cover: assets/01-cover.jpg
+
+date: 2024-11-10
+
+---
+
+For learning purposes, I made a minimal TensorFlow.js re-implementation of Karpathy's [minGPT](https://github.com/karpathy/minGPT) (Generative Pre-trained Transformer). One nice side effect of having the 300-lines-of-code model in a .ts file is that you can train it on a GPU in the browser.
+
+![Homemade GPT JS](./assets/01-cover.jpg)
+
+[https://github.com/trekhleb/homemade-gpt-js](https://github.com/trekhleb/homemade-gpt-js)
+
+A full definition of this "homemade" **GPT** language model (all of it) can be found in this single [model.ts](https://github.com/trekhleb/homemade-gpt-js/blob/main/gpt/src/model.ts) file (less than `300` lines of code).
+
+Since [model.ts](https://github.com/trekhleb/homemade-gpt-js/blob/main/gpt/src/model.ts) is written in TypeScript, you can use [homemade GPT playground](https://trekhleb.dev/homemade-gpt-js) to train it, experiment with parameters, and generate its predictions directly in the browser using a GPU.
+
+The model and the playground are written for *learning purposes*, to understand how GPT works, and to use WebGPU for training.
+
+To understand what's happening in the [model.ts](https://github.com/trekhleb/homemade-gpt-js/blob/main/gpt/src/model.ts) file please refer to Andrej Karpathy's well-explained, hands-on lecture "[Let's build GPT: from scratch, in code, spelled out](https://www.youtube.com/watch?v=kCc8FmEb1nY)" (arguably one of the best explanations of GPT out there).
+
+## GPT Folder
+
+Inside the [./gpt/src/](https://github.com/trekhleb/homemade-gpt-js/blob/main/gpt/src) folder you'll find the following files:
+
+- [model.ts](https://github.com/trekhleb/homemade-gpt-js/blob/main/gpt/src/model.ts) — this is the main file of interest, as it contains the full (yet minimalistic) definition of the decoder GPT model, as described in the [Attention Is All You Need](https://arxiv.org/pdf/1706.03762) paper.
+- [model-easier.ts](https://github.com/trekhleb/homemade-gpt-js/blob/main/gpt/src/model-easier.ts) — this is the same GPT model as in the previous file but simplified for easier understanding. The main difference is that it processes all `Heads` inside `CausalSelfAttention` *sequentially* (instead of in parallel). As a result, the model is a bit slower but more readable.
+- [config.ts](https://github.com/trekhleb/homemade-gpt-js/blob/main/gpt/src/config.ts) — contains pre-configured sets of GPT model parameters: GPT-pico, GPT-nano, GPT-mini, GPT-2, etc.
+- [dataset.ts](https://github.com/trekhleb/homemade-gpt-js/blob/main/gpt/src/dataset.ts) — Nothing GPT-specific here. A helper wrapper on top of any txt-file-based character-level dataset. It loads an arbitrary txt file, treats each letter as a token, splits the characters into training and testing batches, and encodes/decodes letters to indices and vice versa.
+- [trainer.ts](https://github.com/trekhleb/homemade-gpt-js/blob/main/gpt/src/trainer.ts) — Nothing GPT-specific here as well. This file provides a simple training loop that could apply to any arbitrary neural network.
+
+## Web Playground
+
+To experiment with model parameters, training, and text generation you may use the [Homemade GPT JS playground](https://trekhleb.dev/homemade-gpt-js).
+
+<iframe width="100%" height="315" src="https://www.youtube.com/embed/WAdG5xmBSJk" title="Homemade GPT JS Playground" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+You may also launch the playground locally if you want to modify and experiment with the code of the transformer model itself.
+
+Install dependencies:
+
+```bash
+npm i
+```
+
+Launch web playground locally:
+
+```bash
+npm run playground-web
+```
+
+The playground will be accessible on [http://localhost:3000/homemade-gpt-js](http://localhost:3000/homemade-gpt-js)
+
+Run these commands from the root of the project. You need to have Node.js ≥ 20.0.0.
+
+## Node.js Playground
+
+You may also experiment with the model in Node.js environment.
+
+Install dependencies:
+
+```bash
+npm i
+```
+
+Launch Node.js playground:
+
+```bash
+npm run playground-node
+```
+
+The [./playground-node/src/index.ts](https://github.com/trekhleb/homemade-gpt-js/blob/main/playground-node/src/index.ts) file contains the basic example of training and text generation.
+
+Run these commands from the root of the project. You need to have Node.js ≥ 20.0.0.
+
+---
+
+I hope this TS-based GPT example will be helpful for you, learners.
