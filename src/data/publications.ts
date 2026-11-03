@@ -1376,6 +1376,16 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'Content-Aware Image Resizing in Go and JavaScript',
+    summary: ['An InfoQ news article by Bruno Couriol, an InfoQ editor. It opens with my use of dynamic programming to speed up content-aware image resizing and discusses my JavaScript implementation and the JS Image Carver app, with links to my article, the demo and the repository. InfoQ Japan published a translation on 2021-06-13.'],
+    date: '2021-04-26',
+    publisher: Publisher.InfoQ,
+    tag: PublicationTag.Coverage,
+    link: {
+      url: 'https://www.infoq.com/news/2021/04/content-aware-image-resizing/',
+    },
+  },
+  {
     title: 'Accessing device orientation in pure JavaScript (trekhleb.dev)',
     summary: ['Published on Hacker News frontpage. The link leads to the Hacker News post about the Gyro-web article.'],
     date: '2021-03-07',

@@ -45,6 +45,7 @@ export enum Publisher {
   HowIGotJob = 'HowIGotJob',
   IEEE = 'IEEE',
   IMasters = 'iMasters',
+  InfoQ = 'InfoQ',
   ITNEXT = 'ITNEXT',
   JavaScriptInPlainEnglish = 'JavaScript in Plain English',
   JavaScriptWeekly = 'JavaScript Weekly',

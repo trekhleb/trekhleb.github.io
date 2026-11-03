@@ -692,6 +692,26 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.InfoQ]: {
+    logo: { srcPath: 'publishers/infoq.jpg' },
+    description: (
+      <>
+        <p>
+          <b>InfoQ</b><br />
+          <A href="https://www.infoq.com/">infoq.com</A>
+        </p>
+        <p>
+          A news and knowledge site for professional software developers, published by C4Media
+          (the QCon conferences) since 2006, in English, Japanese, Chinese, Portuguese and French.
+          It states that it carefully curates and peer reviews everything it publishes.
+        </p>
+        <p>
+          Over 550,000 senior software developers rely on it every month (as stated on the site,
+          2026-11-02).
+        </p>
+      </>
+    ),
+  },
   [Publisher.Juejin]: {
     logo: { srcPath: 'publishers/juejin.jpg' },
     description: (
