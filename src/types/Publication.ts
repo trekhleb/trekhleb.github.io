@@ -31,10 +31,12 @@ export enum Publisher {
   CellPress = 'Cell Press',
   CodeProject = 'CodeProject',
   Changelog = 'Changelog',
+  CtMagazin = 'c\'t magazin',
   DOU = 'DOU',
   DataDrivenInvestor = 'Data Driven Investor',
   DiceInsights = 'Dice Insights',
   EasysPublishing = 'Easys Publishing',
+  EuropeanPatentOffice = 'European Patent Office',
   GeeksForGeeks = 'GeeksForGeeks',
   GitHubBlog = 'GitHub Blog',
   HackerNews = 'Hacker News',
@@ -59,6 +61,7 @@ export enum Publisher {
   NodeWeekly = 'Node Weekly',
   Packt = 'Packt',
   PyCodersWeekly = 'PyCoder\'s Weekly',
+  QbitAI = 'QbitAI',
   RuanYifengWeekly = 'Ruan Yifeng\'s Weekly',
   SBC = 'SBC',
   SegmentFault = 'SegmentFault',
@@ -99,6 +102,8 @@ export enum PublicationTag {
   ResearchCitation = 'Cited in research',
   // Books citing my work.
   BookCitation = 'Cited in books',
+  // Patent office documents (search reports, patents) citing my work.
+  PatentCitation = 'Cited in patents',
   // Canonical documentation listing my work (MDN, Wikipedia, etc.).
   ReferenceDocs = 'Reference docs',
 }

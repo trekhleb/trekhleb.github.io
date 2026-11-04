@@ -1075,6 +1075,16 @@ export const publications: Publication[] = [
     },
   },
   {
+    title: 'European search report on EP 4 566 493 A1, "Method and system for providing recipes for cooking" (BSH Hausgeräte GmbH)',
+    summary: ['The European Patent Office\'s search report on BSH Hausgeräte\'s European patent application for generating cooking recipes with a trained recipe generator (application EP 23 21 5292, filed December 2023) lists my article "Generating cooking recipes using TensorFlow and LSTM Recurrent Neural Network: A step-by-step guide" (KDnuggets) among the five documents considered relevant: category A (technological background), claims 1–16, "the whole document". The search was completed in Munich on 7 May 2024 and published with the application on 11 June 2025.'],
+    date: '2025-06-11',
+    publisher: Publisher.EuropeanPatentOffice,
+    tag: PublicationTag.PatentCitation,
+    link: {
+      url: 'https://data.epo.org/publication-server/rest/v1.2/publication-dates/20250611/patents/EP4566493NWA1/document.pdf#page=23',
+    },
+  },
+  {
     title: 'Uvod u umjetnu inteligenciju (Introduction to Artificial Intelligence)',
     summary: ['A university textbook in the University of Split textbook series (Darko Stipaničev, Ljiljana Šerić and Maja Braović; Faculty of Electrical Engineering, Mechanical Engineering and Naval Architecture, Split; approved by the University Senate in December 2020; first edition November 2021; ISBN 978-953-290-108-5), whose worked example of anomaly detection in server latency and throughput (Figure 6-28, footnote 102) is adapted from my project trekhleb/machine-learning-octave.'],
     date: '2021-11',
@@ -1383,6 +1393,46 @@ export const publications: Publication[] = [
     tag: PublicationTag.Coverage,
     link: {
       url: 'https://www.infoq.com/news/2021/04/content-aware-image-resizing/',
+    },
+  },
+  {
+    title: 'GitHub上已超过2900星！这份有原理、有代码、有Demo的算法资源火了 (Over 2,900 stars on GitHub! This algorithms resource with theory, code and demos is taking off)',
+    summary: ['An article by QbitAI (量子位), a Chinese media outlet covering artificial intelligence and frontier technology, about my project Homemade Machine Learning (byline 乾明). Its section "谁干的好事？" ("Who did this?") introduces me by name, as a Ukrainian engineer then working at EPAM Systems, with my photo, and explains the project\'s purpose: to implement machine-learning algorithms from scratch rather than with library one-liners. 51CTO republished it on 2019-01-04.'],
+    date: '2019-01-02',
+    publisher: Publisher.QbitAI,
+    tag: PublicationTag.Coverage,
+    link: {
+      url: 'https://www.sohu.com/a/286095207_610300',
+    },
+  },
+  {
+    title: 'Web-Tipps: Frauen in Filmen, Algorithmen in JavaScript, Billie Eilish',
+    summary: ['The web tips of c\'t magazin (Merlin Schumacher and Sylvester Tremmel; print c\'t 1/2021) recommend my repository trekhleb/javascript-algorithms in the item "Algorithmen und Datenstrukturen – in JavaScript": it "eignet sich gut zur Wiederauffrischung und als Nachschlagewerk" (is well suited for refreshing your knowledge and as a reference work). Common and lesser-known ideas are each explained in a README, with one or more example implementations in JavaScript, and the code is well commented.'],
+    date: '2020-12-27',
+    publisher: Publisher.CtMagazin,
+    tag: PublicationTag.Coverage,
+    link: {
+      url: 'https://www.heise.de/news/Web-Tipps-Frauen-in-Filmen-Algorithmen-in-JavaScript-Billie-Eilish-4988547.html',
+    },
+  },
+  {
+    title: 'Why Python keeps growing, explained',
+    summary: ['A GitHub Blog article by Rizel Scarlett on Python\'s growth in GitHub\'s Octoverse report. Its section "How to get started with Python" lists my repository trekhleb/learn-python among "a few helpful GitHub repositories to help you get started with Python": "Grab some tips from this cheatsheet: Check out this collection of Python scripts with code examples and explanations for learning the language."'],
+    date: '2023-03-02',
+    publisher: Publisher.GitHubBlog,
+    tag: PublicationTag.Coverage,
+    link: {
+      url: 'https://github.blog/developer-skills/programming-languages-and-frameworks/why-python-keeps-growing-explained/',
+    },
+  },
+  {
+    title: '10 GitHub Repositories to Master Python',
+    summary: ['A KDnuggets article by Abid Ali Awan, KDnuggets Assistant Editor, presenting "10 essential GitHub repositories" for mastering Python. My repository trekhleb/learn-python is second: "a comprehensive resource that emphasizes learning Python through hacking. It covers a wide range of Python functions and best practices, making it suitable for learners at different levels."'],
+    date: '2024-04-10',
+    publisher: Publisher.KDnuggets,
+    tag: PublicationTag.Coverage,
+    link: {
+      url: 'https://www.kdnuggets.com/10-github-repositories-to-master-python',
     },
   },
   {

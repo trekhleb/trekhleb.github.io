@@ -58,3 +58,8 @@ The stats numbers behind the publishers and media platforrms that publish the in
 - Dice (Dice Insights; the 2018 article on GitHub's year in review)
   - https://web.archive.org/web/20190227164240/https://insights.dice.com/about-dice/
   - https://en.wikipedia.org/wiki/Dice.com
+- c't magazin (heise)
+  - https://mediadaten.heise.de/en/ (heise medien, the publisher)
+  - https://mediadaten.heise.de/produkte/print/europas-grosstes-it-und-tech-magazin/ (c't's media kit: "Europas größtes IT und Tech-Magazin", readers and copies sold)
+- QbitAI (量子位)
+  - https://www.qbitai.com/关于我们 (formerly `?page_id=99`: subscribers across platforms and on WeChat, and its ranking by Newrank and Gsdata data)

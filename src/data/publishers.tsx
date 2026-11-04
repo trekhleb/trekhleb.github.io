@@ -712,6 +712,39 @@ export const publishers: Record<Publisher, PublisherData> = {
       </>
     ),
   },
+  [Publisher.QbitAI]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>QbitAI (量子位)</b><br />
+          <A href="https://www.qbitai.com/">qbitai.com</A>
+        </p>
+        <p>
+          A Chinese media outlet covering artificial intelligence and frontier technology. It
+          states that it has over 3.5 million subscribers across platforms, over 1 million of them
+          on WeChat (as stated on its site, 2026-11-04). Its Sohu account shows 17,000 articles and
+          340 million reads (2026-11-03).
+        </p>
+      </>
+    ),
+  },
+  [Publisher.CtMagazin]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>c&apos;t magazin</b><br />
+          <A href="https://www.heise.de/ct/">heise.de/ct</A>
+        </p>
+        <p>
+          A German computer magazine published every two weeks by heise medien. Its media kit
+          calls it Europe&apos;s largest IT and tech magazine, with 227,396 copies sold per issue
+          and 877,000 readers (AWA 2026; as stated on 2026-11-04).
+        </p>
+      </>
+    ),
+  },
   [Publisher.Juejin]: {
     logo: { srcPath: 'publishers/juejin.jpg' },
     description: (
@@ -1202,6 +1235,22 @@ export const publishers: Record<Publisher, PublisherData> = {
           Germany&apos;s federal environment agency; its TEXTE series published the citing report,
           the final report of a research project it commissioned under the Federal Environment
           Ministry&apos;s research plan (REFOPLAN).
+        </p>
+      </>
+    ),
+  },
+  [Publisher.EuropeanPatentOffice]: {
+    logo: { srcPath: 'publishers/generic-book.png' },
+    description: (
+      <>
+        <p>
+          <b>European Patent Office</b><br />
+          <A href="https://www.epo.org/">epo.org</A>
+        </p>
+        <p>
+          The patent office of the European Patent Organisation, which examines European patent
+          applications. Its search report on BSH Hausgeräte&apos;s application EP 4 566 493 A1,
+          completed in Munich in May 2024, cites the article.
         </p>
       </>
     ),
