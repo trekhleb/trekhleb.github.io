@@ -1218,6 +1218,16 @@ export const projects: Projects = {
         date: '2019-01-02',
         link: { url: 'https://www.sohu.com/a/286095207_610300', caption: 'The article (QbitAI on Sohu)' },
       },
+      {
+        title: 'Listed among the course resources of Machine Learning for Materials (MATE70026), a course in the Department of Materials at Imperial College London (since October 2023)',
+        image: [
+          { srcPath: 'projects/homemade-machine-learning/achievements/23-imperial-mlformaterials-resources-md-homemade-machine-learning-2026-11-05.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/23-imperial-mlformaterials-readme-department-of-materials-2026-11-05.png' },
+          { srcPath: 'projects/homemade-machine-learning/achievements/23-imperial-mlformaterials-resources-md-raw-2026-11-05.png' },
+        ],
+        date: '2023-10-11',
+        link: { url: 'https://github.com/aronwalsh/MLforMaterials', caption: 'The course repository' },
+      },
     ],
   },
   'promote-your-next-startup': {
@@ -2258,6 +2268,7 @@ export const projects: Projects = {
           { srcPath: 'projects/javascript-algorithms/achievements/130-shifty-tweenable-ts-adapted-from-credit-2026-11-02.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/130-shifty-commit-f983ece-2018-08-10.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/130-shifty-commit-f983ece-credit-added-2018-08-10.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/130-shifty-2-5-0-unpkg-credit-2018-08-10.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/130-shifty-2-6-1-unpkg-credit-2018-11-16.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/130-shifty-npm-registry-2-6-1-published-2018-11-16.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/130-shifty-github-repository-2026-11-02.png' },
@@ -2319,6 +2330,7 @@ export const projects: Projects = {
           { srcPath: 'projects/javascript-algorithms/achievements/134-shareloc-utils-js-longest-common-substring-credit-2026-11-03.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/134-shareloc-commit-51c1e35-2021-07-06.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/134-shareloc-commit-51c1e35-credit-added-2021-07-06.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/134-shareloc-commit-51c1e35-file-preview-field-calls-longest-common-substring-2021-07-06.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/134-shareloc-nature-methods-2022-correspondence-2026-11-03.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/134-shareloc-nature-methods-2022-code-availability-2026-11-03.png' },
           { srcPath: 'projects/javascript-algorithms/achievements/134-imodpasteur-github-organisation-institut-pasteur-2026-11-03.png' },
@@ -2399,6 +2411,30 @@ export const projects: Projects = {
         ],
         date: '2019-09-13',
         link: { url: 'https://github.com/adammertel/historical-geocoding-assistant/blob/dev/app/base.js#L197-L250', caption: 'The source code' },
+      },
+      {
+        title: 'Monkeytype, an open-source typing test (over 20,000 GitHub stars), uses four of this repository\'s implementations (Fibonacci, binary search tree, Cartesian product, Fisher–Yates shuffle) among its 47 JavaScript code-typing passages, each credited to trekhleb/javascript-algorithms (since January 2022)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/141-monkeytype-code-javascript-quotes-trekhleb-sources-2026-11-05.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/141-monkeytype-pr-2233-new-quotes-for-javascript-merged-2022-01-01.png' },
+        ],
+        date: '2022-01-01',
+        link: { url: 'https://github.com/monkeytypegame/monkeytype/blob/master/frontend/static/quotes/code_javascript.json', caption: 'Monkeytype\'s JavaScript passages' },
+      },
+      {
+        title: 'Recommended under "6.4 Algorithms" in The Front End Developer/Engineer Handbook 2024, written by Cody Lindley for Frontend Masters',
+        image: { srcPath: 'projects/javascript-algorithms/achievements/142-frontend-masters-front-end-handbook-2024-algorithms-learn-more-2026-11-05.png' },
+        date: '2026-11-05',
+        link: { url: 'https://frontendmasters.com/guides/front-end-handbook/2024/#6.4', caption: 'The handbook' },
+      },
+      {
+        title: 'Listed with my name in the French, Japanese, Chinese, Brazilian Portuguese and Korean editions of MDN Web Docs\' guide to JavaScript data structures (as of November 2026)',
+        image: [
+          { srcPath: 'projects/javascript-algorithms/achievements/143-mdn-fr-data-structures-voir-aussi-oleksii-trekhleb-2026-11-05.png' },
+          { srcPath: 'projects/javascript-algorithms/achievements/143-mdn-ja-data-structures-related-oleksii-trekhleb-2026-11-05.png' },
+        ],
+        date: '2026-11-05',
+        link: { url: 'https://developer.mozilla.org/fr/docs/Web/JavaScript/Guide/Data_structures', caption: 'MDN (French edition)' },
       },
     ],
   },
