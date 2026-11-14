@@ -238,7 +238,7 @@ Try to have 1–2 questions prepared for the end for your interviewer.
 **Misc**
 
 - [JavaScript Algorithms and Data Structures](https://github.com/trekhleb/javascript-algorithms)
-- [Grokking Dynamic Programming Patterns for Coding Interviews](https://www.educative.io/collection/5668639101419520/5633779737559040?authorName=Design%20Gurus)
+- [Grokking Dynamic Programming Patterns for Coding Interviews](https://www.designgurus.io/course/grokking-dynamic-programming)
 - [Google: How we hire](https://careers.google.com/how-we-hire/)
 - [Interviewing @ Google](https://careers.google.com/how-we-hire/interview/)
 - [Google Tech Dev Guide](https://techdevguide.withgoogle.com/)
@@ -253,7 +253,7 @@ Try to have 1–2 questions prepared for the end for your interviewer.
 - [Tech Interview Handbook](https://github.com/yangshun/tech-interview-handbook)
 - [30 minutes guide to rocking your next coding interview](https://medium.freecodecamp.org/coding-interviews-for-dummies-5e048933b82b)
 - [The Tech Interview Cheatsheet](https://hackernoon.com/the-tech-interview-cheatsheet-8e28d94f5f04)
-- [Grokking the Object Oriented Design Interview](https://www.educative.io/collection/5668639101419520/5692201761767424?authorName=Design%20Gurus)
+- [Grokking the Object Oriented Design Interview](https://www.designgurus.io/course/grokking-the-object-oriented-design-interview)
 - [Awesome Interview Questions](https://github.com/MaximAbramchuck/awesome-interview-questions)
 - [Practice live interviews with peers](https://www.pramp.com/#/)
 
@@ -290,7 +290,7 @@ To practice, take any well-known app and imagine you work for a competitor. Your
 
 For example, YouTube spends a ton of money on bandwidth, and secondarily on storage and compute. On the other hand, their long-tail traffic pattern means that their fundamental bottleneck is random disk seeks. Netflix also is a bandwidth hog but most of their traffic is at night (when it’s cheap) and their library of videos is much much smaller, so disk-seeks are probably not an issue at all. Work out the above problems on a paper and just think about the ways to break them down.
 
-Probably the best way to study is to work out the problems that are mentioned below and just think about the ways to break them down. You may find a lot of example of how to do it in [Grokking the System Design Interview course](https://www.educative.io/collection/5668639101419520/5649050225344512).
+Probably the best way to study is to work out the problems that are mentioned below and just think about the ways to break them down. You may find a lot of example of how to do it in [Grokking the System Design Interview course](https://www.designgurus.io/course/grokking-the-system-design-interview).
 
 **Sample questions:**
 
@@ -399,13 +399,13 @@ Think also about **caching**: both on the client and server? What data will you 
 
 **Misc**
 
--   [Grokking the System Design Interview](https://www.educative.io/collection/5668639101419520/5649050225344512) — This course contains thoughtful and clear explanations for common system design interview questions
+-   [Grokking the System Design Interview](https://www.designgurus.io/course/grokking-the-system-design-interview) — This course contains thoughtful and clear explanations for common system design interview questions
 -   [The System Design Primer](https://github.com/donnemartin/system-design-primer) — an organized collection of resources on learning systems at scale.
 -   [How to ace a system design interview](https://www.palantir.com/2011/10/how-to-ace-a-systems-design-interview/) — a summary of concepts worth knowing on system design interviews.
 -   [Systems design tutorials on Interviewbit](https://www.interviewbit.com/courses/system-design/) — structured exercises that cover a lot of the theory, wrapped into specific exercises.
 -   [System Design CheatSheet](https://gist.github.com/vasanthk/485d1c25737e8e72759f)
 -   [Bitly: Lessons Learned Building A Distributed System That Handles 6 Billion Clicks A Month](http://highscalability.com/blog/2014/7/14/bitly-lessons-learned-building-a-distributed-system-that-han.html)
--   [Grokking the System Design Interview](https://www.educative.io/collection/5668639101419520/5649050225344512?utm_source=google_ars&utm_medium=cpc)
+-   [Grokking the System Design Interview](https://www.designgurus.io/course/grokking-the-system-design-interview)
 -   [CAP theorem](https://en.wikipedia.org/wiki/CAP_theorem)
 
 **Google Papers**
